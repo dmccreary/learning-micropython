@@ -42,6 +42,7 @@ Every ADC has two parameters, its [resolution](#resolution), measured in digital
 * Also know as: ADC
 
 #### Blit
+
 A special form of copy operation; it copies a rectangular area of pixels from one framebuffer to another.  It is used in MicroPython when doing drawing to a display such as an OLED display.
 
 #### BOOTSEL
@@ -52,6 +53,7 @@ A button on the pico that when pressed during power up will allow you to mount t
 * Also known as: Boot Selection
 
 #### Castellated Edge
+
 Plated through holes or vias located in the edges of a printed circuit board that make it easier to solder onto another circuit board.
 
 ![](../img/castellated-edge.png)
@@ -61,11 +63,29 @@ The word "Castellated" means having grooves or slots on an edge and is derived f
 The Raspberry Pi Pico uses castellated edges so that it can be used with headers on a breadboard
 or soldered directly to a PC board.  This is the most flexible way to manufacturing boards today.
 
+#### Computational Thinking
+
+A problem-solving approach that involves breaking down complex problems into smaller, more manageable parts using fundamental concepts from computer science. It encompasses four key components:
+
+1.  [Decomposition](#decomposition) - Breaking problems into smaller, more manageable parts
+2.  [Pattern Recognition](#pattern-recognition) - Identifying similarities or patterns among problems
+3.  [Abstraction](#abstraction) - Focusing on important information while ignoring irrelevant details
+4.  [Algorithms](#algorithms) - Developing step-by-step solutions that can be understood by both humans and computers
+
+For example: When creating a MicroPython project to monitor room temperature, computational thinking would involve:
+
+-   Decomposing the task into reading sensor data, processing measurements, and displaying results
+-   Recognizing patterns in temperature changes over time
+-   Abstracting away hardware-specific details into configuration files
+-   Designing algorithms to convert raw sensor data into meaningful temperature readings
+
 #### Debugging Strategies
 
 Systematic approaches to finding and fixing errors in both software and hardware configurations, including using print statements, LED indicators, and serial monitoring.
 
 Our course uses the [Thonny](#thonny) Integrated Development Environment (IDE) which has extensive tools to help with debugging including the ability to set breakpoints and examine state variables.
+
+* See our [Debugging](../debugging/index.md) section for tips on debugging MicroPython with Thonny.
 
 #### Decomposition
 
