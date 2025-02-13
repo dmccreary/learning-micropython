@@ -391,6 +391,8 @@
       
         
       
+        
+      
     
     
     
@@ -516,9 +518,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#welcome-to-pulse-width-modulation" class="md-nav__link">
+  <a href="#using-pulse-width-modulation-pwm" class="md-nav__link">
     <span class="md-ellipsis">
-      Welcome to Pulse Width Modulation
+      Using Pulse Width Modulation (PWM)
     </span>
   </a>
   
@@ -528,6 +530,24 @@
   <a href="#pwm-functions" class="md-nav__link">
     <span class="md-ellipsis">
       PWM Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pwm-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWM Cleanup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-pwm-example-with-init-and-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full PWM Example with Init and Cleanup
     </span>
   </a>
   
@@ -692,6 +712,27 @@
   
   <span class="md-ellipsis">
     Wireless
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config
   </span>
   
 
@@ -1527,9 +1568,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#welcome-to-pulse-width-modulation" class="md-nav__link">
+  <a href="#using-pulse-width-modulation-pwm" class="md-nav__link">
     <span class="md-ellipsis">
-      Welcome to Pulse Width Modulation
+      Using Pulse Width Modulation (PWM)
     </span>
   </a>
   
@@ -1539,6 +1580,24 @@
   <a href="#pwm-functions" class="md-nav__link">
     <span class="md-ellipsis">
       PWM Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pwm-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWM Cleanup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-pwm-example-with-init-and-cleanup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full PWM Example with Init and Cleanup
     </span>
   </a>
   
@@ -1596,8 +1655,10 @@
 
 
 <h1 id="fade-an-led-in-and-out">Fade an LED in and Out</h1>
-<p>In the prior Blink lab, we turned an LED on an off at different speeds.  But what if we want to slowly turn on our LED on and off?  In this lab we will show you how to dim your LED to any brightness level you want.</p>
-<h2 id="welcome-to-pulse-width-modulation">Welcome to Pulse Width Modulation</h2>
+<p>In the prior Blink lab, we turned an LED on an off at different speeds.
+But what if we want to slowly turn on our LED on and off?<br />
+In this lab we will show you how to dim your LED to any brightness level you want.</p>
+<h2 id="using-pulse-width-modulation-pwm">Using Pulse Width Modulation (PWM)</h2>
 <p><img alt="PWM Duty Cycle" src="../../img/PWM-duty-cycle.png" /></p>
 <p>Although digital computers are good at quickly turning signals on and off, they don't really allow us to easily set an output to a given voltage level without complex circuits.  But there is an easier way to adjust the brightness of an LED!  We can quickly turn the signal to the LED on and off.  We can do this so quickly that you can't even see it flicker.  Controlling the amount of time a signal is on is all about controlling the width of the ON pulse.  That is why this is called Pulse Width Modulation or PWM for short.</p>
 <p>With a PWM design there are two things we need to tell the microcontroller:</p>
@@ -1605,10 +1666,12 @@
 <li>How often do you want a square wave to go on and off?</li>
 <li>How wide should the on part of the pulse be (relative to the total width).  This is called the duty cycle.</li>
 </ol>
-<p>The rate of change of the pulse is call the frequency.  You can set the frequency to be 1,000 changes per second, which is much faster than the human eye can detect.  This is done using the following line:</p>
+<p>The rate of change of the pulse is call the frequency.  You can set the frequency to be 1,000 changes per second (1K), which is much faster than the human eye can detect.  This is done using the following line:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">pwm</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Note that we can slow the frequency way down and the dimming effect will still work.  As an experiment you can change the PWM frequency to around 20 and you will see a distinct flicker as the LED turns on.</p>
+<p>Using a 1K frequency is a good practice when you are using LEDs.  If you use a very low frequency of around 20 chances per second the human eye will start to see flicker.  Keeping the frequency well above 20 is a good idea
+and using frequency higher that 1K will not help and can cause additional noise in your system.</p>
 <p>Here is the sample program that will slowly dim the builtin LED that is on pin 25:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1623,20 +1686,22 @@
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code>from machine import Pin, PWM
-from time import sleep
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 
-pwm = PWM(Pin(25))
+<span class="n">pwm</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>
 
-pwm.freq(1000)
+<span class="c1"># use a 1K frequency to avoid flicker</span>
+<span class="n">pwm</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 
-while True:
-    for duty in range(65025):
-        pwm.duty_u16(duty)
-        sleep(0.0001)
-    for duty in range(65025, 0, -1):
-        pwm.duty_u16(duty)
-        sleep(0.0001)
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">duty</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">65025</span><span class="p">):</span>
+        <span class="n">pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty</span><span class="p">)</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.0001</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">duty</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">65025</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty</span><span class="p">)</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.0001</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Note that the duty cycle starts at 0 (always off) and moves slowly up to 65,025 (always on).  It then does the reverse and slowly dims the LED and then repeats.  There is only a 1/10,000 of a delay between these changes so the LED will completely turn on in about six seconds before it starts to dim again.</p>
 <h2 id="pwm-functions">PWM Functions</h2>
@@ -1657,7 +1722,138 @@ while True:
 <span class="n">pwm0</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>      <span class="c1"># set duty cycle, range 0-65535</span>
 <span class="n">pwm0</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>           <span class="c1"># turn off PWM on the pin</span>
 </code></pre></div></td></tr></table></div>
-<p>Make sure you <code>deinit()</code> to de-initialize the PWM controller after you are done.  You may have to trap the stop to do this.  For example if a PWM is driving motors, your Stop must send deinit() to each motor controller.  See the <a href="../../advanced-labs/02-interrupt-handlers/">Interrupt Handlers</a> for details.</p>
+<h2 id="pwm-cleanup">PWM Cleanup</h2>
+<p>If you are using PWM to control sound and motors, make sure you <code>deinit()</code> to de-initialize the PWM controller after you are done.  You may have to trap the stop to do this.  For example if a PWM is driving motors, your Stop must send <code>deinit()</code> to each motor controller.  See the <a href="../../advanced-labs/02-interrupt-handlers/">Interrupt Handlers</a> for details.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+
+<span class="n">PWM_PIN</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="c1"># Create PWM instance</span>
+<span class="n">my_pwm</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">PWM_PIN</span><span class="p">))</span>  <span class="c1"># Example using GPIO 15</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># main code loop here</span>
+
+<span class="c1"># This allows us to stop the sound by doing a Stop or Control-C which is a keyboard intrrup</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Got ctrl-c&#39;</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="c1"># Cleanup PWM</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;turning off sound&#39;</span><span class="p">)</span>
+    <span class="n">my_pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">my_pwm</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="full-pwm-example-with-init-and-cleanup">Full PWM Example with Init and Cleanup</h2>
+<p>If you have many PWM objects then you can centralize all the hardware
+initialization and cleanup functions so they are created and shut
+down in a consistent way.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+
+<span class="c1"># Constants</span>
+<span class="n">PWM_PIN</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="c1"># Global PWM objects (since we need to access in cleanup)</span>
+<span class="n">pwm_objects</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">def</span> <span class="nf">init_hardware</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize hardware and store PWM objects for cleanup&quot;&quot;&quot;</span>
+    <span class="n">pwm</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">PWM_PIN</span><span class="p">))</span>
+    <span class="n">pwm_objects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pwm</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pwm</span>
+
+<span class="k">def</span> <span class="nf">cleanup</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cleanup function to ensure all PWM objects are properly shut down&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cleaning up hardware...&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">pwm</span> <span class="ow">in</span> <span class="n">pwm_objects</span><span class="p">:</span>
+        <span class="n">pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">pwm</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Cleanup complete&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Main program loop&quot;&quot;&quot;</span>
+    <span class="c1"># Initialize hardware</span>
+    <span class="n">my_pwm</span> <span class="o">=</span> <span class="n">init_hardware</span><span class="p">()</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="c1"># Main code loop here</span>
+            <span class="k">pass</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Program error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">raise</span>  <span class="c1"># Re-raise the exception after printing</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">main</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Got ctrl-c&#39;</span><span class="p">)</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">cleanup</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
 <h2 id="suggested-exercises">Suggested Exercises</h2>
 <ol>
 <li>Change the frequency from 1,000 to 500, 100, 50, 40, 30, 25, 20, and 10.  When can you just barley see it flicker?  What does this tell you about the human eye?</li>

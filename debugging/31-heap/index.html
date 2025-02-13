@@ -12,13 +12,13 @@
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/sound/09-converting-mp3-to-wav/">
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/debugging/31-heap/">
       
       
-        <link rel="prev" href="../07-play-audio-file/">
+        <link rel="prev" href="../30-stack-view/">
       
       
-        <link rel="next" href="../../wireless/01-intro/">
+        <link rel="next" href="../../kits/01-intro/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Converting Audio Files - Learning MicroPython</title>
+        <title>Viewing the Heap - Learning MicroPython</title>
       
     
     
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#converting-mp3-to-wav-formats" class="md-skip">
+        <a href="#viewing-the-heap-in-thonny" class="md-skip">
           Skip to content
         </a>
       
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Converting Audio Files
+              Viewing the Heap
             
           </span>
         </div>
@@ -699,8 +699,6 @@
       
   
   
-    
-  
   
   
     
@@ -728,318 +726,29 @@
     
     
       
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
+  
+  
+    <a href="../../sound/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     Sound and Music
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_9">
-            <span class="md-nav__icon md-icon"></span>
-            Sound and Music
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-play-tone/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Playing a Tone
-  </span>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
   
 
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03-play-three-tones/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Playing Three Tones
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04-play-scale/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Playing a Scale
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05-play-mario/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Play Mario
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06-eight-key-piano/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Eight Key Piano
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07-play-audio-file/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Playing Audio File
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Converting Audio Files
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Converting Audio Files
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#method-1-use-the-ffmpeg-command-line-tool" class="md-nav__link">
-    <span class="md-ellipsis">
-      Method 1: Use the ffmpeg Command Line Tool
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#converting-mp3-to-8k-16-bit-wav-files" class="md-nav__link">
-    <span class="md-ellipsis">
-      Converting MP3 to 8K 16 bit WAV Files
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bulk-conversions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bulk Conversions
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#inspect-the-files-using-the-unix-file-command" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inspect the Files Using the UNIX file command:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#method-2-use-the-pydub-python-module" class="md-nav__link">
-    <span class="md-ellipsis">
-      Method 2: Use the pydub Python Module
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Method 2: Use the pydub Python Module">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#install-conda-and-the-python-libraries" class="md-nav__link">
-    <span class="md-ellipsis">
-      Install Conda and the Python libraries
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#running-pydub" class="md-nav__link">
-    <span class="md-ellipsis">
-      Running pydub
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#transferring-the-files-with-rshell" class="md-nav__link">
-    <span class="md-ellipsis">
-      Transferring the Files with Rshell
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1171,6 +880,8 @@
       
   
   
+    
+  
   
   
     
@@ -1226,6 +937,464 @@
     
     
       
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../advanced-labs/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Advanced Labs
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced Labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-labs/03-internal-temperature/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internal Temperature
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-labs/02-interrupt-handlers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interrupt Handlers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-labs/03-timing-functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Timing Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-labs/04-conda-env/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conda Environment Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-labs/05-os-functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OS Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-labs/06-i2c/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I2C Scanner
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-labs/07-framebuffer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frame Buffer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-labs/08-minicom/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Minicom
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-labs/09-micro-sd-card-reader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SD Card Reader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-labs/10-converting-circuitpython-to-micropython/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Converting CircuitPython
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-labs/11-mpremote/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MicroPython Remote
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-labs/11-rshell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rshell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-labs/13-timers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Timers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-labs/14-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-labs/20-tinyml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TinyML
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-labs/12-string-formatting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    String Formatting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-labs/11-os/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operating System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-labs/15-measuring-vsys/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Measuring Battery Voltage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-labs/17-file-system/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
         
         
       
@@ -1235,11 +1404,11 @@
         
   
   
-    <a href="../../advanced-labs/" class="md-nav__link">
+    <a href="../../advanced-labs/30-spectrum-analyzer/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    Advanced Labs
+    Spectrum Analyzer
   </span>
   
 
@@ -1249,6 +1418,334 @@
     </a>
   
 
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_22" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_12_22" id="__nav_12_22_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Debugging
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_22_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_12_22">
+            <span class="md-nav__icon md-icon"></span>
+            Debugging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../28-debugging-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debugging Python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29a-debugging-i2c/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debugging I2C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../29-debugging-spi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debugging SPI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-debugging-with-thonny/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debugging With Thonny
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../30-stack-view/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Viewing the Stack
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Viewing the Heap
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Viewing the Heap
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-heap-in-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is a Heap in Python?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#heap-management-in-micropython" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heap Management in MicroPython
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-the-heap-view-in-thonny" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing the Heap View in Thonny
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Accessing the Heap View in Thonny">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objects-in-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objects in Memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object References
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-bindings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variable Bindings
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-understanding-object-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example: Understanding Object References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example: Understanding Object References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-uses-for-heap-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Uses for Heap View
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heap-view-best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Heap View Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1533,64 +2030,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#method-1-use-the-ffmpeg-command-line-tool" class="md-nav__link">
+  <a href="#what-is-a-heap-in-python" class="md-nav__link">
     <span class="md-ellipsis">
-      Method 1: Use the ffmpeg Command Line Tool
+      What is a Heap in Python?
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#converting-mp3-to-8k-16-bit-wav-files" class="md-nav__link">
+  <a href="#heap-management-in-micropython" class="md-nav__link">
     <span class="md-ellipsis">
-      Converting MP3 to 8K 16 bit WAV Files
+      Heap Management in MicroPython
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bulk-conversions" class="md-nav__link">
+  <a href="#accessing-the-heap-view-in-thonny" class="md-nav__link">
     <span class="md-ellipsis">
-      Bulk Conversions
+      Accessing the Heap View in Thonny
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#inspect-the-files-using-the-unix-file-command" class="md-nav__link">
-    <span class="md-ellipsis">
-      Inspect the Files Using the UNIX file command:
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#method-2-use-the-pydub-python-module" class="md-nav__link">
-    <span class="md-ellipsis">
-      Method 2: Use the pydub Python Module
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Method 2: Use the pydub Python Module">
+    <nav class="md-nav" aria-label="Accessing the Heap View in Thonny">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#install-conda-and-the-python-libraries" class="md-nav__link">
+  <a href="#objects-in-memory" class="md-nav__link">
     <span class="md-ellipsis">
-      Install Conda and the Python libraries
+      Objects in Memory
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#running-pydub" class="md-nav__link">
+  <a href="#object-references" class="md-nav__link">
     <span class="md-ellipsis">
-      Running pydub
+      Object References
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variable-bindings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variable Bindings
     </span>
   </a>
   
@@ -1602,20 +2090,35 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#transferring-the-files-with-rshell" class="md-nav__link">
+  <a href="#example-understanding-object-references" class="md-nav__link">
     <span class="md-ellipsis">
-      Transferring the Files with Rshell
+      Example: Understanding Object References
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Example: Understanding Object References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-uses-for-heap-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Uses for Heap View
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#heap-view-best-practices" class="md-nav__link">
     <span class="md-ellipsis">
-      References
+      Heap View Best Practices
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1637,115 +2140,121 @@
   
 
 
-<h1 id="converting-mp3-to-wav-formats">Converting MP3 to WAV formats</h1>
-<p>In last lab we will learned how to play an audio file stored on the flash memory or SD card.  We used an early version of a Python module that plays .WAV files in a fixed format: 8,000 samples per second using 16-bit encoding.  Because there are hundreds of different formats of audio files, we need a consistent way to convert all of these formats to 8K samples/second 16-bit .WAV formats.</p>
-<p>The audio data file conversions are done on your host PC, not the microcontroller. This allows us to use a rich library of tools that don't need to run on our microcontroller.</p>
-<h2 id="method-1-use-the-ffmpeg-command-line-tool">Method 1: Use the ffmpeg Command Line Tool</h2>
-<p>One of the easiest ways to get started is to go to the web site <a href="https://www.ffmpeg.org/download.html">ffmpeg.org</a> and download the program that does the conversion using a command line.  Note that on a Mac you will need to go into your System Preferences and indicate that the following programs are trusted:</p>
-<p>Here are the direct links for MacOS</p>
-<ol>
-<li><a href="https://evermeet.cx/ffmpeg/ffmpeg-104676-g5593f5cf24.zip">ffmpeg (mac)</a></li>
-<li><a href="https://evermeet.cx/ffmpeg/ffprobe-104676-g5593f5cf24.zip">ffprobe (mac)</a></li>
-<li><a href="https://evermeet.cx/ffmpeg/ffplay-104454-gd92fdc7144.zip">ffplay (mac)</a></li>
-</ol>
-<p>This will download a zip file which you will need to unzip and place in a location such as <code>~/bin</code>.  After you do this make sure you add <code>`~/bin</code> to your path by adding the following file to your .bash_profile:</p>
-<p><code>PATH=$PATH:~/bin</code></p>
-<p>After you source your .bash_profile type in the following:</p>
-<p><code>which ffmpeg</code></p>
-<p>This should return the location that it finds the ffmpeg shell script.  You can then see the many file-format MPEG options:</p>
-<p><code>ffmpeg --help</code></p>
-<h2 id="converting-mp3-to-8k-16-bit-wav-files">Converting MP3 to 8K 16 bit WAV Files</h2>
-<p>To get the format we need for the MicroPython wave player class we just specific <code>-i</code> for the input file and use the <code>-ar 8000</code> to specify the output bit rate of 8K samples per second.  The final parameter is a file name that must in <code>.wav</code> so the command knows to use WAV PCM encoding.  The default value is 16 gits per sample.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ffmpeg<span class="w"> </span>-i<span class="w"> </span>r2d2-beeping.mp3<span class="w"> </span>-ar<span class="w"> </span><span class="m">8000</span><span class="w"> </span>r2d2-beeping-8k.wav
-</code></pre></div></td></tr></table></div>
-<h2 id="bulk-conversions">Bulk Conversions</h2>
-<p>We can use unix shell commands to do a batch conversion of all the .  The following is an example of using awk and sed to convert all the .mp3 files in a directory and convert them to 8K Hz WAV files and put them in a sibling directory.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ls<span class="w"> </span>-1<span class="w"> </span>*.mp3<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print &quot;ffmpeg -i &quot; $1 &quot; -ar 8000 ../wav-8k/&quot;$1}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>s/mp3$/wav/<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
-</code></pre></div></td></tr></table></div>
-<h2 id="inspect-the-files-using-the-unix-file-command">Inspect the Files Using the UNIX file command:</h2>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>../wav-8k
-file<span class="w"> </span>*.wav
-</code></pre></div></td></tr></table></div>
-<p>returns
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code>r2d2-another-beep.wav:          RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz
-r2d2-beeping-2.wav:             RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz
-r2d2-beeping-4.wav:             RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz
-r2d2-beeping-8k.wav:            RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz
-r2d2-beeping-like-an-alarm.wav: RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz
-r2d2-beeping.wav:               RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz
-r2d2-cheerful.wav:              RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz
-r2d2-determined.wav:            RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz
-r2d2-excited.wav:               RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz
-r2d2-laughing.wav:              RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz
-r2d2-more-chatter.wav:          RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz
-r2d2-processing.wav:            RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz
-r2d2-sad.wav:                   RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz
-r2d2-shocked.wav:               RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz
-r2d2-surprised.wav:             RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz
-r2d2-taking-to-himself.wav:     RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz
-r2d2-unsure.wav:                RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit, mono 8000 Hz
-</code></pre></div></td></tr></table></div></p>
-<p>Note that these are WAVE audio, Pulse-code Modulated (PCM), 16 bit and mono at 8K Hz.</p>
-<h2 id="method-2-use-the-pydub-python-module">Method 2: Use the pydub Python Module</h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This section is only for experienced Python developers.</p>
-</div>
-<h3 id="install-conda-and-the-python-libraries">Install Conda and the Python libraries</h3>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>mp3-to-wav<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>
-conda<span class="w"> </span>activate<span class="w"> </span>mp3-to-wav
-pip<span class="w"> </span>install<span class="w"> </span>pydub<span class="w"> </span>ffprobe<span class="w"> </span>ffmpeg
-</code></pre></div></td></tr></table></div>
-<p>Check your versions:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pip<span class="w"> </span>freeze
-</code></pre></div></td></tr></table></div>
-<p>returns:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>ffmpeg==1.4
-ffprobe==0.5
-pydub==0.25.1
-</code></pre></div></td></tr></table></div>
-<h3 id="running-pydub">Running pydub</h3>
+<h1 id="viewing-the-heap-in-thonny">Viewing the Heap in Thonny</h1>
+<p>In this lesson we will learn:</p>
+<ul>
+<li>What the Heap view shows and why it's useful</li>
+<li>How to access the Heap view in Thonny</li>
+<li>How to interpret the view</li>
+<li>A practical example showing object references</li>
+<li>Common use cases</li>
+<li>Best practices for using the Heap view effectively</li>
+</ul>
+<h2 id="what-is-a-heap-in-python">What is a Heap in Python?</h2>
+<p>In Python, the heap is like a giant storage space in your computer's memory where all your program's objects (like lists, dictionaries, custom objects, etc.) live. Think of it as a messy bedroom - objects are scattered around wherever there's space, rather than being neatly organized in a specific order. When you create a new variable or object in your program, Python automatically finds a spot in this heap to store it.  Python works
+hard to tuck new objects into the best place in memory so that it does not waste memory.</p>
+<p>The neat thing about the heap is that objects can be any size (like a small number or a huge list) and they don't need to be stored next to each other. Python keeps track of where everything is using special tags (called references or pointers) - kind of like having sticky notes that tell you where to find your stuff. When you don't need an object anymore (like when a variable goes out of scope or you delete it), Python has a helpful cleanup crew called the "garbage collector" that automatically removes these unused objects from the heap, freeing up space for new objects. This is why in Python, unlike some other programming languages, you don't have to manually manage memory - Python takes care of the cleanup for you!</p>
+<h2 id="heap-management-in-micropython">Heap Management in MicroPython</h2>
+<p>Heap management becomes crucial on microcontrollers because they have extremely limited RAM - often just a few hundred kilobytes or less. Unlike a desktop computer where you might have gigabytes of RAM and virtual memory, on a microcontroller like the Raspberry Pi Pico, you have to work within strict memory constraints.
+Here's why heap management is critical in MicroPython on microcontrollers:</p>
+<p><strong>Limited Memory:</strong> The Raspberry Pi Pico has only 264KB of RAM total, and MicroPython itself needs a portion of this just to run. This leaves you with even less space for your own programs and data.</p>
+<p><strong>No Virtual Memory:</strong> Unlike desktop computers, microcontrollers can't use hard drive space as extra memory when they run out of RAM. When you're out of memory, you're really out of memory - your program will crash.</p>
+<p><strong>Fragmentation:</strong> As you create and delete objects, the heap can become fragmented - like having many small gaps between objects. Even if you have enough total free memory, if it's fragmented into small pieces, you might not be able to allocate a large object.</p>
+<p><strong>Real-time Operations:</strong> Many microcontroller applications need to respond in real-time (like reading sensors or controlling motors). Memory operations like garbage collection can cause unpredictable delays that might interfere with these time-sensitive tasks.</p>
+<p>Some practical tips for managing heap memory in MicroPython:</p>
+<p><strong>Preallocate:</strong> When possible, create data structures at startup rather than dynamically during operation.
+<strong>Reuse:</strong> Instead of creating new objects repeatedly, reuse existing ones.
+<strong>Avoid Memory-Heavy Operations:</strong> String concatenation, large lists, and complex data structures can quickly consume memory.
+<strong>Monitor Memory:</strong> Use tools like Thonny's Heap view to watch memory usage during development.
+<strong>Regular Cleanup:</strong> Call gc.collect() at appropriate points to trigger garbage collection when timing is less critical.</p>
+<h2 id="accessing-the-heap-view-in-thonny">Accessing the Heap View in Thonny</h2>
+<p>Opening the Heap View</p>
+<ul>
+<li>Go to "View" in the menu bar</li>
+<li>Select "Heap"</li>
+<li>The Heap view will appear as a new panel on the right side of screen</li>
+</ul>
+<p><img alt="" src="../heap.png" /></p>
+<p>Above is a sample heap view from our prior example.</p>
+<p>The Heap view shows:</p>
+<h3 id="objects-in-memory">Objects in Memory</h3>
+<p>Each MicroPython object is shown as a box. The box includes the object's:
+-   Type
+-   ID (memory address)
+-   Value or content summary</p>
+<h3 id="object-references">Object References</h3>
+<ul>
+<li>Arrows show how objects reference each other</li>
+<li>Direction indicates which object holds the reference</li>
+<li>Multiple references to the same object are visible</li>
+</ul>
+<h3 id="variable-bindings">Variable Bindings</h3>
+<ul>
+<li>Shows which variables point to which objects</li>
+<li>Helps understand variable aliasing</li>
+</ul>
+<h2 id="example-understanding-object-references">Example: Understanding Object References</h2>
+<p>One of the best ways to </p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pydub</span> <span class="kn">import</span> <span class="n">AudioSegment</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Create some objects with references</span>
+<span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">list2</span> <span class="o">=</span> <span class="n">list1</span>      <span class="c1"># Creates a reference</span>
+<span class="n">list3</span> <span class="o">=</span> <span class="n">list1</span><span class="p">[:]</span>   <span class="c1"># Creates a copy</span>
 
-<span class="n">sound</span> <span class="o">=</span> <span class="n">AudioSegment</span><span class="o">.</span><span class="n">from_mp3</span><span class="p">(</span><span class="s2">&quot;r2d2-beeping.mp3&quot;</span><span class="p">)</span>
-<span class="n">sound</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s2">&quot;r2d2-beeping.wav&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;wav&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Robot name&#39;</span><span class="p">:</span> <span class="s1">&#39;R2D2&#39;</span><span class="p">})</span>
+<span class="n">dict1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">list1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">list2</span><span class="p">}</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="transferring-the-files-with-rshell">Transferring the Files with Rshell</h2>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>../wav-8k
-rshell<span class="w"> </span>-p<span class="w"> </span>/dev/cu.usbmodem14101
-cp<span class="w"> </span>*.wav<span class="w"> </span>/pico/sounds
-</code></pre></div></td></tr></table></div>
-<h2 id="references">References</h2>
+<p><img alt="" src="../heap-lists.png" /></p>
+<p>Using the Heap view with this code shows:</p>
+<ul>
+<li><code>list1</code> and <code>list2</code> pointing to the same object</li>
+<li><code>list3</code> as a separate object with the same values</li>
+<li><code>dict1</code> containing references to the shared list object</li>
+</ul>
+<h3 id="common-uses-for-heap-view">Common Uses for Heap View</h3>
 <ol>
-<li><a href="http://pydub.com/">PyDub Documentation</a></li>
-<li><a href="http://www.ffmpeg.org/general.html#Audio-Codecs">File Formats for Audio from MPEG</a></li>
-<li><a href="http://www.ffmpeg.org/general.html#File-Formats">File Formats for motion picture experts group Python Library</a></li>
+<li><strong>Debugging Reference Issues</strong><ul>
+<li>Tracking shared references</li>
+<li>Finding unexpected aliases</li>
+<li>Understanding copy vs. reference behavior</li>
+</ul>
+</li>
+<li><strong>Memory Analysis</strong><ul>
+<li>Identifying memory usage patterns</li>
+<li>Finding unused objects</li>
+<li>Understanding object lifecycle</li>
+</ul>
+</li>
+<li><strong>Teaching and Learning</strong><ul>
+<li>Visualizing Python's memory model</li>
+<li>Understanding object references</li>
+<li>Learning about variable assignment</li>
+</ul>
+</li>
+</ol>
+<h3 id="heap-view-best-practices">Heap View Best Practices</h3>
+<ol>
+<li><strong>Regular Checking</strong><ul>
+<li>Review the heap during key operations</li>
+<li>Watch for unexpected object creation</li>
+<li>Monitor reference patterns</li>
+</ul>
+</li>
+<li><strong>Memory Management</strong><ul>
+<li>Track object creation and deletion</li>
+<li>Identify potential memory leaks</li>
+<li>Understand cleanup behavior</li>
+</ul>
+</li>
+<li><strong>Object Analysis</strong><ul>
+<li>Examine object relationships</li>
+<li>Verify reference counting</li>
+<li>Check object persistence</li>
+</ul>
+</li>
 </ol>
 
 
@@ -1784,7 +2293,7 @@ cp<span class="w"> </span>*.wav<span class="w"> </span>/pico/sounds
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../07-play-audio-file/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Playing Audio File">
+          <a href="../30-stack-view/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Viewing the Stack">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
@@ -1794,14 +2303,14 @@ cp<span class="w"> </span>*.wav<span class="w"> </span>/pico/sounds
                 Previous
               </span>
               <div class="md-ellipsis">
-                Playing Audio File
+                Viewing the Stack
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../wireless/01-intro/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction">
+          <a href="../../kits/01-intro/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next

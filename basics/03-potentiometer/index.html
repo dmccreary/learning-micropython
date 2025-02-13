@@ -391,6 +391,8 @@
       
         
       
+        
+      
     
     
     
@@ -686,6 +688,27 @@
   
   <span class="md-ellipsis">
     Wireless
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.config/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Config
   </span>
   
 
@@ -1613,6 +1636,7 @@ terminating at this pin.</p>
     <span class="nb">print</span><span class="p">(</span><span class="n">pot</span><span class="o">.</span><span class="n">read_u16</span><span class="p">())</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">.2</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+<p>&lt;!-
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1627,6 +1651,7 @@ p[Pico]--&gt;|GP26 pin=26 ADC0 31 row=10| tap(Center Tap)
     neg(Negative) --- pot(Potentiometer)
     tap(Center Tap) --- pot(Potentiometer)
 </code></pre></div></td></tr></table></div>
+--&gt;</p>
 <p>Connect the positive to pin 35 ADC_REF (row 6 on the breadboard) and the negative to pin 33 AGND (row 8 on the breadboard).  The Pico has special noise reduction circuits to avoid power supply jitter on these reference pins.</p>
 <h2 id="changing-blink-speed-with-a-potentiometer">Changing Blink Speed with a Potentiometer</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
