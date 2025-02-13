@@ -153,6 +153,7 @@ nav:
       - Debugging Python: debugging/28-debugging-python.md
       - Debugging I2C: debugging/29a-debugging-i2c.md
       - Debugging SPI: debugging/29-debugging-spi.md
+      - Debugging With Thonny: debugging/27-debugging-with-thonny.md
   - Project Kits:
     - Introduction: kits/01-intro.md
     - Maker Pi RP2040:
