@@ -144,6 +144,7 @@ nav:
     - String Formatting: advanced-labs/12-string-formatting.md
     - Operating System: advanced-labs/11-os.md
     - Measuring Battery Voltage: advanced-labs/15-measuring-vsys.md
+    - Multi-Core Programming: advanced-labs/16-multi-core.md
     - File System: advanced-labs/17-file-system.md
     - Spectrum Analyzer: 
       - Introduction: advanced-labs/30-spectrum-analyzer/index.md
