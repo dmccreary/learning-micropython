@@ -12,9 +12,13 @@
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/advanced-labs/16-dual-core/">
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/advanced-labs/16-multi-core/">
       
       
+        <link rel="prev" href="../15-measuring-vsys/">
+      
+      
+        <link rel="next" href="../17-file-system/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -22,7 +26,7 @@
     
     
       
-        <title>Multi-Core Programming with MicroPython - Learning MicroPython</title>
+        <title>Multi-Core Programming - Learning MicroPython</title>
       
     
     
@@ -119,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Multi-Core Programming with MicroPython
+              Multi-Core Programming
             
           </span>
         </div>
@@ -876,6 +880,8 @@
       
   
   
+    
+  
   
   
     
@@ -933,6 +939,639 @@
     
     
       
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Advanced Labs
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced Labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-internal-temperature/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internal Temperature
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-interrupt-handlers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interrupt Handlers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-timing-functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Timing Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-conda-env/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conda Environment Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-os-functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OS Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-i2c/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I2C Scanner
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-framebuffer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frame Buffer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-minicom/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Minicom
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-micro-sd-card-reader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SD Card Reader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-converting-circuitpython-to-micropython/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Converting CircuitPython
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-mpremote/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MicroPython Remote
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-rshell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rshell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-timers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Timers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-tinyml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TinyML
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-string-formatting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    String Formatting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-os/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operating System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-measuring-vsys/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Measuring Battery Voltage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Multi-Core Programming
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Multi-Core Programming
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-use-a-second-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Use a Second Core?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-world-example-display-updates-and-sensor-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-World Example: Display Updates and Sensor Reading
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-to-core-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core-to-Core Communication
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#led-blink-rates-on-multiple-cores" class="md-nav__link">
+    <span class="md-ellipsis">
+      LED Blink Rates on Multiple Cores
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-irqs-and-pios-on-multiple-cores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding IRQs and PIOs on Multiple Cores
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding IRQs and PIOs on Multiple Cores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interrupts-irqs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interrupts (IRQs)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pio-programmable-inputoutput" class="md-nav__link">
+    <span class="md-ellipsis">
+      PIO (Programmable Input/Output)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-for-using-two-cores-effectively" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips for Using Two Cores Effectively
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-issues-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues and Solutions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-file-system/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
         
         
       
@@ -942,11 +1581,11 @@
         
   
   
-    <a href="../" class="md-nav__link">
+    <a href="../30-spectrum-analyzer/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    Advanced Labs
+    Spectrum Analyzer
   </span>
   
 
@@ -956,6 +1595,68 @@
     </a>
   
 
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../debugging/28-debugging-python/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Debugging
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1385,7 +2086,9 @@ multiple tasks simultaneously.  Having two cores means we can run two different 
 <li>Play music while running LED animations</li>
 <li>Process incoming data while sending responses</li>
 </ul>
-<p>Using the second core lets you handle these tasks properly without one task slowing down the other.</p>
+<p>Using the second core lets you handle these tasks properly without one task slowing down the other.
+Having a second core matches the job of physical computing.  One core is used
+to gather data and one core is used to analyze the data and log or display the data.</p>
 <h2 id="real-world-example-display-updates-and-sensor-reading">Real-World Example: Display Updates and Sensor Reading</h2>
 <p>Let's look at a common problem: updating an OLED display while reading from a sensor. If we do both on one core, we might miss important sensor readings while the display is updating.</p>
 <p>Here's a practical example showing how to use both cores.  In this
@@ -1999,6 +2702,44 @@ Try changing <code>time.sleep(1)</code> to <code>time.sleep(0.5)</code> in the <
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../15-measuring-vsys/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Measuring Battery Voltage">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Measuring Battery Voltage
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../17-file-system/" class="md-footer__link md-footer__link--next" aria-label="Next: File System">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                File System
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
