@@ -1167,6 +1167,63 @@
       
         
       
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../debugging/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Debugging
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1556,29 +1613,24 @@ changes can be time consuming and distracts from learning.</p>
 <p>Let's start out with a simple NeoPixel example that just has two numbers:
 a NeoPixel Pin number and the number of pins.  Here is a sample configuration
 file for this program:</p>
-<p>```python config.py
-NEOPIXEL_PIN = 0
-NUMBER_PIXELS = 30
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NEOPIXEL_PIN</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">NUMBER_PIXELS</span> <span class="o">=</span> <span class="mi">30</span>
+</code></pre></div></td></tr></table></div>
+<p>Now you can simply reference your config.py file and use the numbers when you
+prefix the parameters with the <code>config.</code> string like this:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code>Now you can simply reference your config.py file and use the numbers after you
-prefix the parameters with the &quot;config.&quot; string:
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">config.py</span>
 
-```python
-import config.py
-
-NEOPIXEL_PIN = config.NEOPIXEL_PIN
-NUMBER_PIXELS = config.NUMBER_PIXELS
-</code></pre></div></td></tr></table></div></p>
+<span class="n">NEOPIXEL_PIN</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">NEOPIXEL_PIN</span>
+<span class="n">NUMBER_PIXELS</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">NUMBER_PIXELS</span>
+</code></pre></div></td></tr></table></div>
 <p>Note that when a user opens this file they don't actually see the values of the pins.
 If they are not aware of how <code>config.py</code> files are used they might not
 know they have to change the <code>config.py</code> file.  So there are always tradeoffs.</p>
-<p>Putting all your hardware configuration information in a separate file is called <a href="../glossary.md#abstraction">abstraction</a></p>
+<p>Putting all your hardware configuration information in a separate file is called <a href="../glossary.md#abstraction">abstraction</a> and it is one of the critical skills we use in <a href="../../misc/glossary/#computational-thinking">computational thinking</a>.</p>
 
 
 

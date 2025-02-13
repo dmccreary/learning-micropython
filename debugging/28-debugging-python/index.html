@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/debugging/28-debugging-python/">
       
       
-        <link rel="prev" href="../../advanced-labs/30-spectrum-analyzer/02-gain-pot/">
+        <link rel="prev" href="../27-debugging-with-thonny/">
       
       
         <link rel="next" href="../29a-debugging-i2c/">
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#how-to-debug-micropython" class="md-skip">
+        <a href="#getting-information-about-your-builtin-libraries" class="md-skip">
           Skip to content
         </a>
       
@@ -903,38 +903,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
     
     
     
@@ -949,11 +917,11 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../advanced-labs/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    Advanced Labs
+    Debugging
   </span>
   
 
@@ -969,536 +937,32 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_12">
             <span class="md-nav__icon md-icon"></span>
-            Advanced Labs
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/03-internal-temperature/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Internal Temperature
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/02-interrupt-handlers/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Interrupt Handlers
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/03-timing-functions/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Timing Functions
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/04-conda-env/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Conda Environment Setup
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/05-os-functions/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    OS Functions
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/06-i2c/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    I2C Scanner
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/07-framebuffer/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Frame Buffer
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/08-minicom/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Minicom
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/09-micro-sd-card-reader/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    SD Card Reader
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/10-converting-circuitpython-to-micropython/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Converting CircuitPython
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/11-mpremote/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    MicroPython Remote
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/11-rshell/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Rshell
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/13-timers/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Timers
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/14-memory-management/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Memory Management
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/20-tinyml/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    TinyML
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/12-string-formatting/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    String Formatting
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/11-os/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Operating System
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/15-measuring-vsys/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Measuring Battery Voltage
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/16-multi-core/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Multi-Core Programming
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../advanced-labs/17-file-system/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    File System
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../../advanced-labs/30-spectrum-analyzer/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Spectrum Analyzer
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12_23" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_12_23" id="__nav_12_23_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Debugging
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_12_23_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_12_23">
-            <span class="md-nav__icon md-icon"></span>
             Debugging
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../27-debugging-with-thonny/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Debugging With Thonny
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1553,9 +1017,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#listing-the-modules" class="md-nav__link">
+  <a href="#listing-the-building-micropython-modules" class="md-nav__link">
     <span class="md-ellipsis">
-      Listing the Modules
+      Listing the Building MicroPython Modules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listing-instance-variables-and-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Listing Instance Variables and Methods
     </span>
   </a>
   
@@ -1564,7 +1037,7 @@
         <li class="md-nav__item">
   <a href="#micropython-issues" class="md-nav__link">
     <span class="md-ellipsis">
-      Micropython issues
+      Micropython Issues
     </span>
   </a>
   
@@ -1628,27 +1101,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../27-debugging-with-thonny/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Debugging With Thonny
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../30-stack-view/" class="md-nav__link">
         
   
@@ -1690,10 +1142,91 @@
     </li>
   
 
-              
-            
-          </ul>
-        </nav>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../advanced-labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Advanced Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
       
     </li>
   
@@ -1978,9 +1511,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#listing-the-modules" class="md-nav__link">
+  <a href="#listing-the-building-micropython-modules" class="md-nav__link">
     <span class="md-ellipsis">
-      Listing the Modules
+      Listing the Building MicroPython Modules
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listing-instance-variables-and-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Listing Instance Variables and Methods
     </span>
   </a>
   
@@ -1989,7 +1531,7 @@
         <li class="md-nav__item">
   <a href="#micropython-issues" class="md-nav__link">
     <span class="md-ellipsis">
-      Micropython issues
+      Micropython Issues
     </span>
   </a>
   
@@ -2013,8 +1555,17 @@
   
 
 
-<h1 id="how-to-debug-micropython">How to Debug Micropython</h1>
-<h2 id="listing-the-modules">Listing the Modules</h2>
+<h1 id="getting-information-about-your-builtin-libraries">Getting Information about Your Builtin Libraries</h1>
+<p>The official documentation on the MicroPython libraries is located
+here:</p>
+<p><a href="https://docs.micropython.org/en/latest/">https://docs.micropython.org/en/latest/</a></p>
+<p>This documentation is very good and it should be your first place to check
+the libraries you need that are builtin to the MicroPython runtime.</p>
+<p>However, sometimes you might need to verify that the version that you
+are using has the correct models and functions.</p>
+<h2 id="listing-the-building-micropython-modules">Listing the Building MicroPython Modules</h2>
+<p>Here is the function you can put into the console to list the current modules
+in your MicroPython runtime:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">help</span><span class="p">(</span><span class="s1">&#39;modules&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Result:</p>
@@ -2038,8 +1589,63 @@ ds18x20           uasyncio/core     uio               uzlib
 framebuf          uasyncio/event    ujson
 Plus any modules on the filesystem
 </code></pre></div></td></tr></table></div>
-<h2 id="micropython-issues">Micropython issues</h2>
-<p>https://github.com/micropython/micropython/issues</p>
+<h2 id="listing-instance-variables-and-methods">Listing Instance Variables and Methods</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># For any built-in module, first import it</span>
+<span class="kn">import</span> <span class="nn">machine</span>
+
+<span class="c1"># Then use dir() to list all attributes</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">machine</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># First import the Pin class from machine</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+
+<span class="c1"># We can look at the Pin class itself</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pin class attributes and methods:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">Pin</span><span class="p">))</span>
+
+<span class="c1"># We can also look at a specific pin instance</span>
+<span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>  <span class="c1"># Example using Pico&#39;s onboard LED pin</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Pin instance attributes and methods:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">led</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+<p>Sample Response:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Pin class attributes and methods:</span>
+<span class="p">[</span><span class="s1">&#39;IN&#39;</span><span class="p">,</span> <span class="s1">&#39;IRQ_FALLING&#39;</span><span class="p">,</span> <span class="s1">&#39;IRQ_RISING&#39;</span><span class="p">,</span> <span class="s1">&#39;OPEN_DRAIN&#39;</span><span class="p">,</span> <span class="s1">&#39;OUT&#39;</span><span class="p">,</span> <span class="s1">&#39;PULL_DOWN&#39;</span><span class="p">,</span> <span class="s1">&#39;PULL_UP&#39;</span><span class="p">,</span> <span class="s1">&#39;__class__&#39;</span><span class="p">,</span> <span class="s1">&#39;__name__&#39;</span><span class="p">,</span> <span class="s1">&#39;init&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">]</span>
+
+<span class="c1"># Pin instance attributes and methods:</span>
+<span class="p">[</span><span class="s1">&#39;__class__&#39;</span><span class="p">,</span> <span class="s1">&#39;init&#39;</span><span class="p">,</span> <span class="s1">&#39;irq&#39;</span><span class="p">,</span> <span class="s1">&#39;off&#39;</span><span class="p">,</span> <span class="s1">&#39;on&#39;</span><span class="p">,</span> <span class="s1">&#39;toggle&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+<p>The output shows:</p>
+<p>Class-level attributes like IN, OUT, PULL_UP, etc. which are used for pin configuration
+Instance methods like value(), on(), off(), toggle() that you can use to control the pin
+Special attributes like <strong>class</strong> which are part of Python's object system</p>
+<p>This is particularly useful when you're working with different MicroPython boards or versions, as it helps you discover what functionality is available on your specific platform.</p>
+<h2 id="micropython-issues">Micropython Issues</h2>
+<p>If you have questions, one of the best places to go is to the 
+MicroPython Discussion area:</p>
+<p><a href="https://github.com/orgs/micropython/discussions">MicroPython Discussion</a></p>
+<p>I strongly suggest posting questions here before you create an issue on the issue log.</p>
+<p>If you have a question that is specific to the Raspberry Pi Pico you can
+get the RP2 documentation here:</p>
+<p><a href="https://docs.micropython.org/en/latest/rp2/quickref.html">https://docs.micropython.org/en/latest/rp2/quickref.html</a></p>
 
 
 
@@ -2077,7 +1683,7 @@ Plus any modules on the filesystem
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../advanced-labs/30-spectrum-analyzer/02-gain-pot/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Gain Pot">
+          <a href="../27-debugging-with-thonny/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Debugging With Thonny">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
@@ -2087,7 +1693,7 @@ Plus any modules on the filesystem
                 Previous
               </span>
               <div class="md-ellipsis">
-                Gain Pot
+                Debugging With Thonny
               </div>
             </div>
           </a>

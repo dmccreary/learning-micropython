@@ -12,9 +12,13 @@
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/advanced-labs/21-botton-callback/">
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/advanced-labs/21-button-callback/">
       
       
+        <link rel="prev" href="../17-file-system/">
+      
+      
+        <link rel="next" href="../30-spectrum-analyzer/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -84,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#button-callback" class="md-skip">
+        <a href="#button-callback-regular-expression" class="md-skip">
           Skip to content
         </a>
       
@@ -897,6 +901,51 @@
       
         
       
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../debugging/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Debugging
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
         
       
         
@@ -921,6 +970,530 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Advanced Labs
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_13" id="__nav_13_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced Labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-internal-temperature/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Internal Temperature
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-interrupt-handlers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Interrupt Handlers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-timing-functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Timing Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-conda-env/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conda Environment Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-os-functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OS Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-i2c/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I2C Scanner
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-framebuffer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frame Buffer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-minicom/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Minicom
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-micro-sd-card-reader/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SD Card Reader
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-converting-circuitpython-to-micropython/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Converting CircuitPython
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-mpremote/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MicroPython Remote
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-rshell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rshell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-timers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Timers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-memory-management/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Management
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-tinyml/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TinyML
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-string-formatting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    String Formatting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-os/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operating System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-measuring-vsys/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Measuring Battery Voltage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-multi-core/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multi-Core Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-file-system/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File System
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Button Callback
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
         
       
         
@@ -942,11 +1515,11 @@
         
   
   
-    <a href="../" class="md-nav__link">
+    <a href="../30-spectrum-analyzer/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
-    Advanced Labs
+    Spectrum Analyzer
   </span>
   
 
@@ -956,6 +1529,14 @@
     </a>
   
 
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1249,7 +1830,19 @@
   
 
 
-<h1 id="button-callback">Button Callback</h1>
+<h1 id="button-callback-regular-expression">Button Callback Regular Expression</h1>
+<p>When a IRQ is called for a button press, we are passed
+an event that tell us what pin gets called.  Unfortunately, 
+MicroPython does not provide a method to just get
+the integer of the pin, which we need of all our
+buttons use a single IRQ function but need to do
+different tasks based on which button is being used.</p>
+<p>The pin number is buried within the GPIO string like this:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Pin(GPIO15, mode=IN, pull=PULL_UP)
+</code></pre></div></td></tr></table></div>
+<p>We need to have a function that we can pass this string and it
+will just return the integer of the GPIO.  It
+does this using the regular expression (re) function within MicroPython.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1260,12 +1853,7 @@
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
 
 <span class="k">def</span> <span class="nf">extract_gpio_pin</span><span class="p">(</span><span class="n">input_string</span><span class="p">):</span>
     <span class="c1"># Use a regular expression to find the GPIO number</span>
@@ -1276,13 +1864,33 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># Return None if no match is found (or raise an exception if that&#39;s preferable)</span>
         <span class="k">return</span> <span class="kc">None</span>
-
-<span class="c1"># Test the function with examples</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Test the function with examples including if the returned values have leading zero</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">extract_gpio_pin</span><span class="p">(</span><span class="s2">&quot;Pin(GPIO15, mode=IN, pull=PULL_UP)&quot;</span><span class="p">))</span>  <span class="c1"># Output: 15</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">extract_gpio_pin</span><span class="p">(</span><span class="s2">&quot;Pin(GPIO7, mode=IN, pull=PULL_UP)&quot;</span><span class="p">))</span>   <span class="c1"># Output: 7</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">extract_gpio_pin</span><span class="p">(</span><span class="s2">&quot;Pin(GPIO03, mode=IN, pull=PULL_UP)&quot;</span><span class="p">))</span>  <span class="c1"># Output: 3</span>
 </code></pre></div></td></tr></table></div>
-<p>https://chat.openai.com/share/6e6d8123-ed4d-4dc6-a915-030fe2245dfe</p>
+<p>Here is the regular expression line</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;GPIO(\d+)&quot;</span><span class="p">,</span> <span class="n">input_string</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>This function will look into the input_string for the letters "GPIO" followed by
+a decimal digit.  It will then return that decimal digit as a string to the match variable.</p>
+<p>It uses a regular expression pattern <code>r"GPIO(\d+)"</code> to find and extract the GPIO number:
+-   <code>GPIO</code> matches the literal characters "GPIO"
+-   <code>(\d+)</code> is a capturing group that matches one or more digits:
+-   <code>\d</code> matches any digit (0-9)
+-   <code>+</code> means "one or more times"
+-   The parentheses <code>()</code> create a capturing group so we can extract just the number</p>
+<p>The <code>re.search()</code> function looks for this pattern anywhere in the input string and returns a <strong>match object</strong> if found
+a match.</p>
+<p>If a match is found (<code>if match</code>):
+-   <code>match.group(1)</code> gets the text from the first capturing group (the digits)
+-   <code>int()</code> converts the string of digits to an integer
+-   This automatically removes any leading zeros (so "03" becomes 3)</p>
+<p>If no match is found, it returns None.</p>
 
 
 
@@ -1315,6 +1923,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../17-file-system/" class="md-footer__link md-footer__link--prev" aria-label="Previous: File System">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                File System
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../30-spectrum-analyzer/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Introduction
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
