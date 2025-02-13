@@ -18,6 +18,8 @@ Imagine you're trying to pat your head and rub your stomach at the same time. It
 - Process incoming data while sending responses
 
 Using the second core lets you handle these tasks properly without one task slowing down the other.
+Having a second core matches the job of physical computing.  One core is used
+to gather data and one core is used to analyze the data and log or display the data.
 
 ## Real-World Example: Display Updates and Sensor Reading
 
