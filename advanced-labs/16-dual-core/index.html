@@ -22,7 +22,7 @@
     
     
       
-        <title>16 dual core - Learning MicroPython</title>
+        <title>Multi-Core Programming with MicroPython - Learning MicroPython</title>
       
     
     
@@ -83,6 +83,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#multi-core-programming-with-micropython" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -114,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              16 dual core
+              Multi-Core Programming with MicroPython
             
           </span>
         </div>
@@ -922,6 +927,8 @@
       
         
       
+        
+      
     
     
     
@@ -1223,6 +1230,130 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-use-a-second-core" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Use a Second Core?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-world-example-display-updates-and-sensor-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-World Example: Display Updates and Sensor Reading
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-to-core-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Core-to-Core Communication
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#led-blink-rates-on-multiple-cores" class="md-nav__link">
+    <span class="md-ellipsis">
+      LED Blink Rates on Multiple Cores
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-irqs-and-pios-on-multiple-cores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding IRQs and PIOs on Multiple Cores
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding IRQs and PIOs on Multiple Cores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interrupts-irqs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interrupts (IRQs)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pio-programmable-inputoutput" class="md-nav__link">
+    <span class="md-ellipsis">
+      PIO (Programmable Input/Output)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tips-for-using-two-cores-effectively" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips for Using Two Cores Effectively
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-issues-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues and Solutions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1240,18 +1371,608 @@
   
 
 
-  <h1>16 dual core</h1>
+<h1 id="multi-core-programming-with-micropython">Multi-Core Programming with MicroPython</h1>
+<p>The Raspberry Pi Pico and the Pico W both come with two "Cores". In this section we will review
+why microcontrollers have multiple cores and how they are used.</p>
+<h2 id="introduction">Introduction</h2>
+<p>Having multiple processor cores is critical when you need to do
+multiple tasks simultaneously.  Having two cores means we can run two different parts of our program at the same time - just like having two brains working on different tasks! This tutorial will help you understand how to use both cores effectively.</p>
+<h2 id="why-use-a-second-core">Why Use a Second Core?</h2>
+<p>Imagine you're trying to pat your head and rub your stomach at the same time. It's tricky because you're trying to do two different tasks simultaneously. This is similar to what your Pico faces when it needs to:</p>
+<ul>
+<li>Read sensor data while updating a display</li>
+<li>Control a motor while monitoring buttons</li>
+<li>Play music while running LED animations</li>
+<li>Process incoming data while sending responses</li>
+</ul>
+<p>Using the second core lets you handle these tasks properly without one task slowing down the other.</p>
+<h2 id="real-world-example-display-updates-and-sensor-reading">Real-World Example: Display Updates and Sensor Reading</h2>
+<p>Let's look at a common problem: updating an OLED display while reading from a sensor. If we do both on one core, we might miss important sensor readings while the display is updating.</p>
+<p>Here's a practical example showing how to use both cores.  In this
+example we are trying to gather sensor data on our Analog-to-digital (ADC) input and update our
+OLED display at the same time.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
+<span class="kn">import</span> <span class="nn">_thread</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>
+<span class="kn">import</span> <span class="nn">framebuf</span>
+
+<span class="c1"># Setup I2C and Display</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">display</span> <span class="o">=</span> <span class="n">SSD1306_I2C</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">i2c</span><span class="p">)</span>
+
+<span class="c1"># Setup sensor (example using ADC)</span>
+<span class="n">sensor</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">ADC</span><span class="p">(</span><span class="mi">26</span><span class="p">)</span>
+
+<span class="c1"># Shared variables between cores</span>
+<span class="n">sensor_value</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">lock</span> <span class="o">=</span> <span class="n">_thread</span><span class="o">.</span><span class="n">allocate_lock</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">update_display_task</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Second core task: Handles display updates</span>
+<span class="sd">    This runs on core 1 and updates the display every 0.1 seconds</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">sensor_value</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Get the latest sensor value safely</span>
+        <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+            <span class="n">current_value</span> <span class="o">=</span> <span class="n">sensor_value</span>
+
+        <span class="c1"># Clear the display</span>
+        <span class="n">display</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Draw the value</span>
+        <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sensor:&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Value: </span><span class="si">{</span><span class="n">current_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+        <span class="c1"># Update display</span>
+        <span class="n">display</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+        <span class="c1"># Small delay to prevent display flicker</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="c1"># Main program (runs on core 0)</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">sensor_value</span>
+
+    <span class="c1"># Start the second core number 1</span>
+    <span class="n">_thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">update_display_task</span><span class="p">,</span> <span class="p">())</span>
+
+    <span class="c1"># Main loop for sensor reading</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Read sensor</span>
+        <span class="n">reading</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
+
+        <span class="c1"># Safely update the shared variable</span>
+        <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+            <span class="n">sensor_value</span> <span class="o">=</span> <span class="n">reading</span>
+
+        <span class="c1"># Read sensor as fast as possible</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>
+
+<span class="c1"># Start the program</span>
+<span class="n">main</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>In the example above, the key line is the following:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Start the second core</span>
+<span class="n">_thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">update_display_task</span><span class="p">,</span> <span class="p">())</span>
+</code></pre></div></td></tr></table></div>
+<p>By default, the main() function is always started on the main core number 0.
+This line starts the new task on the second core - core number 1</p>
+<p>Let me break this down in a clear step-by-step way.</p>
+<p>The line <code>_thread.start_new_thread(update_display_task, ())</code> is like hitting a "start" button for a second brain in your Pico. Let's understand it piece by piece:</p>
+<ol>
+<li><code>_thread</code> is a special MicroPython module that lets us work with multiple cores. The underscore at the start just means it's a more technical, behind-the-scenes module.</li>
+<li><code>start_new_thread</code> is a function that does exactly what its name suggests - it starts running code on a new thread. On the Pico, this new thread automatically runs on Core 1 (while your main program runs on Core 0).</li>
+<li><code>update_display_task</code> is the name of the function we want to run on the second core. Notice there are no parentheses after it - we're just telling the system which function to run, not actually running it yet.</li>
+<li>The empty parentheses <code>()</code> at the end are where you'd put any arguments that your function needs. In our case, <code>update_display_task</code> doesn't need any arguments, so we leave them empty.</li>
+</ol>
+<h2 id="core-to-core-communication">Core-to-Core Communication</h2>
+<p>Here's how the cores communicate in our example:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Shared variables between cores</span>
+<span class="n">sensor_value</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># This variable can be seen by both cores</span>
+<span class="n">lock</span> <span class="o">=</span> <span class="n">_thread</span><span class="o">.</span><span class="n">allocate_lock</span><span class="p">()</span>  <span class="c1"># This helps cores share data safely</span>
+
+<span class="k">def</span> <span class="nf">update_display_task</span><span class="p">():</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Core 1 safely reads the shared variable</span>
+        <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+            <span class="n">current_value</span> <span class="o">=</span> <span class="n">sensor_value</span>
+
+        <span class="c1"># Core 1 updates the display with this value</span>
+        <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Value: </span><span class="si">{</span><span class="n">current_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>  <span class="c1"># This runs on Core 0</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">reading</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
+        <span class="c1"># Core 0 safely updates the shared variable</span>
+        <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+            <span class="n">sensor_value</span> <span class="o">=</span> <span class="n">reading</span>
+</code></pre></div></td></tr></table></div>
+<p>Think of it like two people (cores) sharing a notepad (sensor_value):</p>
+<ul>
+<li>Core 0 writes new sensor readings to the notepad</li>
+<li>Core 1 reads from the notepad to update the display</li>
+<li>The <code>lock</code> is like a "do not disturb" sign - when one core is using the notepad, the other core has to wait</li>
+</ul>
+<p>We know it's running on the second core because:</p>
+<ol>
+<li>The main program runs on Core 0 by default</li>
+<li>When we call <code>_thread.start_new_thread()</code>, the Pico automatically runs that function on Core 1</li>
+<li>Both functions keep running continuously (the <code>while True</code> loops) - this would be impossible if they were running on the same core</li>
+</ol>
+<h2 id="led-blink-rates-on-multiple-cores">LED Blink Rates on Multiple Cores</h2>
+<p>How do we know that the functions are running on different cores?
+Let's create a simple test program that clearly demonstrates both cores running independently.</p>
+<p>This program proves the cores are running independently in several ways:</p>
+<ol>
+<li><strong>Different Blink Rates</strong>: </li>
+<li>Core 0's LED blinks fast (every 0.25 seconds)</li>
+<li>Core 1's LED blinks slow (every 1 second)</li>
+<li>
+<p>If they were running on the same core, you couldn't have different timing like this</p>
+</li>
+<li>
+<p><strong>Print Statements</strong>: </p>
+</li>
+<li>You'll see "Core 0 blink" printing four times for every one "Core 1 blink"</li>
+<li>
+<p>The prints will interleave, showing both cores are running simultaneously</p>
+</li>
+<li>
+<p><strong>Visual Proof</strong>:</p>
+</li>
+<li>Connect two LEDs (with appropriate resistors) to pins 14 and 15</li>
+<li>You'll see them blinking at different rates independently</li>
+<li>If this was running on a single core, the blink rates would interfere with each other</li>
+</ol>
+<p>To try this out:
+1. Connect an LED + resistor (220Ω) to GPIO 15 (Core 0 LED)
+2. Connect another LED + resistor to GPIO 14 (Core 1 LED)
+3. Run the program
+4. Watch the LEDs blink at different rates
+5. Look at the print output in your console</p>
+<p>Here's a diagram showing how to wire it up:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>Pico GPIO 15 ---&gt; 220Ω resistor ---&gt; LED ---&gt; Ground
+Pico GPIO 14 ---&gt; 220Ω resistor ---&gt; LED ---&gt; Ground
+</code></pre></div></td></tr></table></div>
+<p>You can also modify the sleep times to see how changing one core's timing doesn't affect the other core. 
+Try changing <code>time.sleep(1)</code> to <code>time.sleep(0.5)</code> in the <code>blink_core1</code> function - you'll see that LED change speed while the other LED keeps its original timing.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
+<span class="kn">import</span> <span class="nn">_thread</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># Set up two LEDs - one for each core</span>
+<span class="n">led_core0</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>  <span class="c1"># First LED</span>
+<span class="n">led_core1</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>  <span class="c1"># Second LED</span>
+
+<span class="c1"># Variable to help us stop the program</span>
+<span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">def</span> <span class="nf">blink_core1</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function will run on Core 1</span>
+<span class="sd">    It blinks LED 1 every 1 second</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Core 1 is starting!&quot;</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="n">running</span><span class="p">:</span>
+        <span class="n">led_core1</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">led_core1</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Core 1 blink&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function runs on Core 0</span>
+<span class="sd">    It blinks LED 0 every 0.25 seconds</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">running</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Core 0 is starting!&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Start Core 1</span>
+    <span class="n">_thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">blink_core1</span><span class="p">,</span> <span class="p">())</span>
+
+    <span class="c1"># Now do Core 0&#39;s work</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">while</span> <span class="n">running</span><span class="p">:</span>
+            <span class="n">led_core0</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+            <span class="n">led_core0</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Core 0 blink&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+        <span class="c1"># Clean up when program is stopped</span>
+        <span class="n">running</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">led_core0</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
+        <span class="n">led_core1</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Program stopped!&quot;</span><span class="p">)</span>
+
+<span class="c1"># Start the program</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting dual core LED blink test...&quot;</span><span class="p">)</span>
+<span class="n">main</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="understanding-irqs-and-pios-on-multiple-cores">Understanding IRQs and PIOs on Multiple Cores</h2>
+<h3 id="interrupts-irqs">Interrupts (IRQs)</h3>
+<p>Interrupts are special signals that can pause your program to handle important events. When using two cores, each core can handle its own interrupts independently. This means:</p>
+<ol>
+<li>Core 0 can handle button presses without affecting display updates on Core 1</li>
+<li>Each core can respond to time-critical events without waiting for the other core</li>
+<li>You can prioritize which interrupts go to which core</li>
+</ol>
+<p>Here's an example showing how to handle interrupts on different cores:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
+<span class="kn">import</span> <span class="nn">_thread</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="c1"># Setup LED and button</span>
+<span class="n">led</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+<span class="n">button</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
+
+<span class="c1"># Shared variables</span>
+<span class="n">button_presses</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">lock</span> <span class="o">=</span> <span class="n">_thread</span><span class="o">.</span><span class="n">allocate_lock</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">button_handler</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Interrupt handler for button press&quot;&quot;&quot;</span>
+    <span class="k">global</span> <span class="n">button_presses</span>
+    <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+        <span class="n">button_presses</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="k">def</span> <span class="nf">core1_task</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Second core task: LED blinking pattern</span>
+<span class="sd">    This keeps running even when button interrupts occur</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Main program (runs on core 0)</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Setup button interrupt</span>
+    <span class="n">button</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">button_handler</span><span class="p">)</span>
+
+    <span class="c1"># Start LED control on second core</span>
+    <span class="n">_thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">core1_task</span><span class="p">,</span> <span class="p">())</span>
+
+    <span class="c1"># Main loop to display button presses</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
+            <span class="n">current_presses</span> <span class="o">=</span> <span class="n">button_presses</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Button has been pressed </span><span class="si">{</span><span class="n">current_presses</span><span class="si">}</span><span class="s2"> times&quot;</span><span class="p">)</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Start the program</span>
+<span class="n">main</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="pio-programmable-inputoutput">PIO (Programmable Input/Output)</h3>
+<p>The Pico has special hardware called PIO (Programmable Input/Output) that can handle tasks like generating precise signals or reading sensor data. The great thing about PIO is that it works independently of both cores. This means:</p>
+<ol>
+<li>You can set up a PIO program to handle precise timing tasks</li>
+<li>Both cores can interact with the PIO programs</li>
+<li>PIO can keep running even if both cores are busy</li>
+</ol>
+<p>Here's a simple example using PIO with two cores:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">import</span> <span class="nn">rp2</span>
+<span class="kn">import</span> <span class="nn">_thread</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="c1"># Define a PIO program to generate a square wave</span>
+<span class="nd">@rp2</span><span class="o">.</span><span class="n">asm_pio</span><span class="p">(</span><span class="n">set_init</span><span class="o">=</span><span class="n">rp2</span><span class="o">.</span><span class="n">PIO</span><span class="o">.</span><span class="n">OUT_LOW</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">square_wave</span><span class="p">():</span>
+    <span class="n">wrap_target</span><span class="p">()</span>
+    <span class="nb">set</span><span class="p">(</span><span class="n">pins</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">nop</span><span class="p">()</span> <span class="p">[</span><span class="mi">31</span><span class="p">]</span>  <span class="c1"># Delay for 32 cycles</span>
+    <span class="nb">set</span><span class="p">(</span><span class="n">pins</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">nop</span><span class="p">()</span> <span class="p">[</span><span class="mi">31</span><span class="p">]</span>  <span class="c1"># Delay for 32 cycles</span>
+    <span class="n">wrap</span><span class="p">()</span>
+
+<span class="c1"># Setup the state machine with the PIO program</span>
+<span class="n">sm</span> <span class="o">=</span> <span class="n">rp2</span><span class="o">.</span><span class="n">StateMachine</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">square_wave</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">set_base</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">core1_task</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Second core task: Monitors the square wave</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Setup an input pin to monitor the square wave</span>
+    <span class="n">monitor</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Count transitions for 1 second</span>
+        <span class="n">transitions</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
+        <span class="n">last_value</span> <span class="o">=</span> <span class="n">monitor</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+
+        <span class="k">while</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_diff</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">(),</span> <span class="n">start</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">:</span>
+            <span class="n">current_value</span> <span class="o">=</span> <span class="n">monitor</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">current_value</span> <span class="o">!=</span> <span class="n">last_value</span><span class="p">:</span>
+                <span class="n">transitions</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">last_value</span> <span class="o">=</span> <span class="n">current_value</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Frequency: </span><span class="si">{</span><span class="n">transitions</span><span class="o">/</span><span class="mi">2</span><span class="si">}</span><span class="s2"> Hz&quot;</span><span class="p">)</span>
+
+<span class="c1"># Main program (runs on core 0)</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># Start the PIO state machine</span>
+    <span class="n">sm</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Start monitoring on second core</span>
+    <span class="n">_thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">core1_task</span><span class="p">,</span> <span class="p">())</span>
+
+    <span class="c1"># Main core can do other tasks</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Main core is free to do other work!&quot;</span><span class="p">)</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Start the program</span>
+<span class="n">main</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="tips-for-using-two-cores-effectively">Tips for Using Two Cores Effectively</h2>
+<ol>
+<li><strong>Use Locks for Shared Data</strong>: Always use locks when both cores need to access the same variable</li>
+<li><strong>Keep Tasks Independent</strong>: Try to split your program so each core has separate responsibilities</li>
+<li><strong>Avoid Printing from Both Cores</strong>: The USB serial connection works best when only one core prints</li>
+<li><strong>Mind Your Resources</strong>: Remember both cores share the same memory and pins</li>
+<li><strong>Start Simple</strong>: Begin with basic two-core programs before trying complex applications</li>
+</ol>
+<h2 id="common-issues-and-solutions">Common Issues and Solutions</h2>
+<ol>
+<li><strong>Program Crashes</strong>: Usually happens when both cores try to access the same resource. Use locks to prevent this.</li>
+<li><strong>One Core Stops</strong>: Check if your while loops have proper sleep() calls to prevent core lockups.</li>
+<li><strong>Data Gets Mixed Up</strong>: Always use locks when sharing data between cores.</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>Using both cores of your Raspberry Pi Pico can make your projects much more capable. You can handle multiple tasks simultaneously without one task interfering with another. Remember to start simple and gradually build up to more complex applications as you get comfortable with dual-core programming.</p>
+<p>Remember that practice makes perfect - try modifying the example programs to handle different tasks on each core and experiment with different ways of sharing data between them!</p>
+<p>Would you like me to explain any part of this tutorial in more detail?</p>
+<h2 id="references">References</h2>
+<p><a href="https://circuitdigest.com/microcontroller-projects/dual-core-programming-on-raspberry-pi-pico-using-micropython">Circuit Digest</a></p>
 
 
 
 
 
 
-
-
-
-  
-  
 
 
 
