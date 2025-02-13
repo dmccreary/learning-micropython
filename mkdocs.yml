@@ -1,7 +1,14 @@
-site_name: 'MicroPython for Kids'
+site_name: 'Learning MicroPython'
+site_description: 'Resources for teaching MicroPython to CoderDojo Twin Cities students.  All content licensed Creative Commons ShareAlike Attribution Noncommercial'
+repo_url: 'https://github.com/dmccreary/learning-micropython'
+site_url: 'https://dmccreary.github.io/learning-micropython/'
+site_author: 'Dan McCreary'
+repo_name: 'GitHub Repo'
+edit_uri: 'blob/master/docs'
+
+
 nav:
-  - CoderDojo Mentor Resources: https://coderdojotc.github.io/CoderDojoTC/
-  - MicroPython Home: index.md
+  - Home: index.md
   - Introduction:
     - About This Site: intro/01-about.md
     - Physical Computing:  intro/02-physical-computing.md
@@ -208,15 +215,9 @@ nav:
   - Colophon: misc/30-colophon.md
   # - Render Test: misc/mermaid-test.md
 
-site_description: 'Resources for teaching MicroPython to CoderDojo Twin Cities students.  All content licensed Creative Commons ShareAlike Attribution Noncommercial'
-site_author: 'Dan McCreary'
-repo_name: 'GitHub Repo'
-repo_url: 'https://github.com/CoderDojoTC/micropython'
+# Dan McCreary's Microsite Standards from here down
 
-# CoderDojo Microsite Standards from here down
-edit_uri: 'blob/master/docs'
 theme:
-  # should be name: material
   name: material
   logo: img/coderdojo-logo.png
   icon:
