@@ -1187,6 +1187,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#debugging-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging Strategies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#decomposition" class="md-nav__link">
     <span class="md-ellipsis">
       Decomposition
@@ -1235,6 +1244,15 @@
   <a href="#interrupts" class="md-nav__link">
     <span class="md-ellipsis">
       Interrupts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interrupt-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interrupt ReQuest
     </span>
   </a>
   
@@ -1635,6 +1653,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#debugging-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debugging Strategies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#decomposition" class="md-nav__link">
     <span class="md-ellipsis">
       Decomposition
@@ -1683,6 +1710,15 @@
   <a href="#interrupts" class="md-nav__link">
     <span class="md-ellipsis">
       Interrupts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interrupt-request" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interrupt ReQuest
     </span>
   </a>
   
@@ -1928,6 +1964,9 @@ see the <a href="#mpremote">mpremote</a> tool for the current best practice.</p>
 <p>The word "Castellated" means having grooves or slots on an edge and is derived from the turrets of a castle.</p>
 <p>The Raspberry Pi Pico uses castellated edges so that it can be used with headers on a breadboard
 or soldered directly to a PC board.  This is the most flexible way to manufacturing boards today.</p>
+<h4 id="debugging-strategies">Debugging Strategies</h4>
+<p>Systematic approaches to finding and fixing errors in both software and hardware configurations, including using print statements, LED indicators, and serial monitoring.</p>
+<p>Our course uses the <a href="#thonny">Thonny</a> Integrated Development Environment (IDE) which has extensive tools to help with debugging including the ability to set breakpoints and examine state variables.</p>
 <h4 id="decomposition">Decomposition</h4>
 <p>The process of breaking down complex problems into smaller, more manageable parts that can be solved independently. </p>
 <p><strong>Example:</strong> In a MicroPython program, this could involve separating hardware initialization, sensor reading, and display updating into distinct functions or modules.</p>
@@ -1945,7 +1984,7 @@ or soldered directly to a PC board.  This is the most flexible way to manufactur
 <ul>
 <li><a href="https://www.ebay.com/itm/ESP32-ESP-32S-NodeMCU-Development-Board-2-4GHz-WiFi-Bluetooth-Dual-Mode-CP2102/392899357234">Sample on eBay</a> $5</li>
 <li><a href="https://www.amazon.com/HiLetgo-ESP-WROOM-32-Development-Microcontroller-Integrated/dp/B0718T232Z/ref=sr_1_1_sspa">Sample on Amazon</a> $11</li>
-<li><a href="https://www.sparkfun.com/products/13907">Sample on Sparkfun</a> $21</li>
+<li><a href="https://www.sparkfun.com/products/13907">Sample on SparkFun</a> $21</li>
 <li><a href="http://docs.micropython.org/en/latest/esp32/quickref.html">ESP32 Quick Reference</a></li>
 <li><a href="https://www.ebay.com/sch/i.html?_from=R40&amp;_nkw=esp32&amp;_sacat=175673&amp;LH_TitleDesc=0&amp;LH_BIN=1&amp;_udhi=20&amp;rt=nc&amp;_udlo=5">Sample eBay Search for ESP32 from $5 to $20</a></li>
 </ul>
@@ -1974,13 +2013,37 @@ or soldered directly to a PC board.  This is the most flexible way to manufactur
 <p>For a 128X64 monochrome display this would be 128 * 64 = 8,192 bits or 1,024 bytes (1K).  Color displays must store up to 8 bytes per color for each color (red, green and blue).</p>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Framebuffer">Wikipedia page on Framebuffer</a></li>
-<li><a href="https://docs.micropython.org/en/latest/library/framebuf.html">MicroPython Documentation on FrameBuffer</a>
-]</li>
+<li><a href="https://docs.micropython.org/en/latest/library/framebuf.html">MicroPython Documentation on FrameBuffer</a></li>
 </ul>
 <h4 id="interrupts">Interrupts</h4>
-<p>A type of signal used to pause a program and execute a different program.  We
-use interrupts to pause our program and execute a different program when a
-button is pressed.</p>
+<p>A type of signal used to pause a program and execute a different program. </p>
+<p>We use interrupts to pause our program and execute a different program when a
+button is pressed.  Interrupts are also known as <a href="#interrup-request">IRQs</a> Interrupt ReQuest</p>
+<h4 id="interrupt-request">Interrupt ReQuest</h4>
+<p>A hardware signal that interrupts the normal flow of program execution to handle a high-priority event. </p>
+<p>When an Interrupt ReQuest (IRQ) occurs, the microcontroller saves its current state, handles the interrupt event through an Interrupt Service Routine (ISR), and then returns to its previous task. In MicroPython, IRQs are used with Pin objects using the <code>irq()</code> method to handle events like button presses or sensor triggers.  The <code>irq()</code> method binds an event on a device like a button to a specific MicroPython function.</p>
+<p>See the <a href="../../basics/03-button/">Button Lab</a> for an full example of how IRQs are used to
+respond to a button press.</p>
+<p>Here is a sample of MicroPython</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># this function is called when a button is pressed</span>
+<span class="k">def</span> <span class="nf">button_pressed</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Button was pressed!&quot;</span><span class="p">)</span>
+
+<span class="c1"># this declares our button and the internal pull-up resistor</span>
+<span class="n">button</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
+<span class="c1"># this binds the button pin to the button_pressed function</span>
+<span class="n">button</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">button_pressed</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<ul>
+<li>also known as: IRQ</li>
+</ul>
 <h4 id="iteration">Iteration</h4>
 <p>The process of repeating a set of instructions until a specific condition is met. </p>
 <p>Understanding iteration is essential for MicroPython programs that need to work with
@@ -1995,9 +2058,6 @@ many similar items such as NeoPixels.  They are also used to continuously monito
 <h4 id="micropython">MicroPython</h4>
 <p>A set of Python libraries and tools developed specifically for microcontrollers.</p>
 <p>MicroPython was originally developed by Damien George and first released in 2014.  It includes many of the features of mainstream Python, while adding a range of new ones designed to take advantage of the facilities available on Raspberry Pi Pico and other microcontroller boards like the ESP32.</p>
-<ul>
-<li>See also: <a href="#circuitpython">CircuitPython</a></li>
-</ul>
 <h4 id="mpg-shell">MPG Shell</h4>
 <p>A simple MicroPython shell based file explorer for ESP8266 and WiPy MicroPython based devices.</p>
 <p>The shell is a helper for up/downloading files to the ESP8266 (over serial line and Websockets) and WiPy (serial line and telnet). It basically offers commands to list and upload/download files on the flash FS of the device.</p>
