@@ -1,11 +1,10 @@
 site_name: 'Learning MicroPython'
-site_description: 'Resources for teaching MicroPython to CoderDojo Twin Cities students.  All content licensed Creative Commons ShareAlike Attribution Noncommercial'
+site_description: 'Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.'
 repo_url: 'https://github.com/dmccreary/learning-micropython'
 site_url: 'https://dmccreary.github.io/learning-micropython/'
 site_author: 'Dan McCreary'
 repo_name: 'GitHub Repo'
 edit_uri: 'blob/master/docs'
-
 
 nav:
   - Home: index.md
@@ -213,6 +212,7 @@ nav:
   - Contributing: misc/contributing.md
   - Contact: misc/contact.md
   - Colophon: misc/30-colophon.md
+  - License: license.md
   # - Render Test: misc/mermaid-test.md
 
 # Dan McCreary's Microsite Standards from here down

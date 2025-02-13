@@ -2,7 +2,13 @@
 
 ![Micropython logo](img/banner.png)
 
-This website and GitHub repository are for sharing resources to teach MicroPython to students in 5th to 12th grades (10-18 years old).  The course assumes that either a mentor, teacher or students have access to at least one microcontroller such as the $4 Raspberry Pi Pico or the $10 ESP32.  Students should also have access to some low-cost sensors (buttons, potentiometers, ultrasonic distance sensor) and displays such as LEDs or OLED displays.
+This website and GitHub repository are resources for learning and teaching MicroPython.  Our initial audience was to students in 5th to 12th grades (10-18 years old).  However, we have found that people from around
+the world of all ages are interested in learning MicroPython.
+
+The course assumes that either a mentor, teacher or students have access to at least one microcontroller such as the $4 Raspberry Pi Pico or a ESP32 microcontroller.  The MicroController must have 16K RAM to run
+the MicroPython Interpreter.
+
+Students should also have access to some low-cost sensors (buttons, potentiometers, time-of-flight sensor) and displays such as LEDs or OLED displays.
 
 If you are looking for a specific topic, please remember to use the search function in the upper right of the website.  The website is best displayed on a wide screen to see the navigation bar on the left although the website also works on the small screens of mobile phones and tablets.
 
