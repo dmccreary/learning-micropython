@@ -61,6 +61,12 @@ The word "Castellated" means having grooves or slots on an edge and is derived f
 The Raspberry Pi Pico uses castellated edges so that it can be used with headers on a breadboard
 or soldered directly to a PC board.  This is the most flexible way to manufacturing boards today.
 
+#### Debugging Strategies
+
+Systematic approaches to finding and fixing errors in both software and hardware configurations, including using print statements, LED indicators, and serial monitoring.
+
+Our course uses the [Thonny](#thonny) Integrated Development Environment (IDE) which has extensive tools to help with debugging including the ability to set breakpoints and examine state variables.
+
 #### Decomposition
 
 The process of breaking down complex problems into smaller, more manageable parts that can be solved independently. 
@@ -86,7 +92,7 @@ Typical costs for the ESP32 is are around $10 US on eBay.
 
 * [Sample on eBay](https://www.ebay.com/itm/ESP32-ESP-32S-NodeMCU-Development-Board-2-4GHz-WiFi-Bluetooth-Dual-Mode-CP2102/392899357234) $5
 * [Sample on Amazon](https://www.amazon.com/HiLetgo-ESP-WROOM-32-Development-Microcontroller-Integrated/dp/B0718T232Z/ref=sr_1_1_sspa) $11
-* [Sample on Sparkfun](https://www.sparkfun.com/products/13907) $21
+* [Sample on SparkFun](https://www.sparkfun.com/products/13907) $21
 * [ESP32 Quick Reference](http://docs.micropython.org/en/latest/esp32/quickref.html)
 * [Sample eBay Search for ESP32 from $5 to $20](https://www.ebay.com/sch/i.html?_from=R40&_nkw=esp32&_sacat=175673&LH_TitleDesc=0&LH_BIN=1&_udhi=20&rt=nc&_udlo=5)
 
@@ -123,12 +129,37 @@ For a 128X64 monochrome display this would be 128 * 64 = 8,192 bits or 1,024 byt
 
 * [Wikipedia page on Framebuffer](https://en.wikipedia.org/wiki/Framebuffer)
 * [MicroPython Documentation on FrameBuffer](https://docs.micropython.org/en/latest/library/framebuf.html)
-]
 
 #### Interrupts
-A type of signal used to pause a program and execute a different program.  We
-use interrupts to pause our program and execute a different program when a
-button is pressed.
+
+A type of signal used to pause a program and execute a different program. 
+
+We use interrupts to pause our program and execute a different program when a
+button is pressed.  Interrupts are also known as [IRQs](#interrup-request) Interrupt ReQuest
+
+#### Interrupt ReQuest
+
+A hardware signal that interrupts the normal flow of program execution to handle a high-priority event. 
+
+When an Interrupt ReQuest (IRQ) occurs, the microcontroller saves its current state, handles the interrupt event through an Interrupt Service Routine (ISR), and then returns to its previous task. In MicroPython, IRQs are used with Pin objects using the ```irq()``` method to handle events like button presses or sensor triggers.  The ```irq()``` method binds an event on a device like a button to a specific MicroPython function.
+
+See the [Button Lab](../basics/03-button.md) for an full example of how IRQs are used to
+respond to a button press.
+
+Here is a sample of MicroPython
+
+```python
+# this function is called when a button is pressed
+def button_pressed(pin):
+    print("Button was pressed!")
+
+# this declares our button and the internal pull-up resistor
+button = Pin(16, Pin.IN, Pin.PULL_UP)
+# this binds the button pin to the button_pressed function
+button.irq(trigger=Pin.IRQ_FALLING, handler=button_pressed)
+```
+
+* also known as: IRQ
 
 #### Iteration
 
@@ -151,8 +182,6 @@ I2C is similar to SPI, it's a synchronous protocol because it uses a clock line.
 A set of Python libraries and tools developed specifically for microcontrollers.
 
 MicroPython was originally developed by Damien George and first released in 2014.  It includes many of the features of mainstream Python, while adding a range of new ones designed to take advantage of the facilities available on Raspberry Pi Pico and other microcontroller boards like the ESP32.
-
-* See also: [CircuitPython](#circuitpython)
 
 #### MPG Shell
 
