@@ -1,9 +1,10 @@
-# Micropython Glossary of Terms
+# Learning Micropython Glossary of Terms
+
 <!-- Link to this by using [TERM](glossary#term-id 
 The format is used to generate a concept graph for this course.
 
 Sample Prompt:
-Create a Glossy of Terms for a high school robotics class.
+Create a Glossy of Terms for a high school class.
 Return the results in alphabetical order using raw
 markdown format with each term being in a
 level 4 header and the definition text in the body.
@@ -14,13 +15,26 @@ DC motors, motor controllers, PWM, interrupts, and debugging.
 -->
 
 
+#### Abstraction
+
+A cognitive process of reducing complexity by focusing on the essential features of a concept, system, or problem while omitting unnecessary details.
+
+**Example:** In our example programs we hide the unnecessary details of the specific hardware
+configuration of a project by putting all the hardware pin numbers in a config.py file.
+
+#### Algorithms
+
+A step-by-step procedure or set of rules for solving a problem or accomplishing a task. 
+
+In MicroPython, this includes both software algorithms and the logic for controlling hardware components.
 
 #### Ampy
-An obsolete MicroPython support tool created by Adafruit but no longer supported.
 
-Check out other MicroPython tools like [rshell](#rshell) or mpfshell for more advanced interaction with boards.
+An obsolete MicroPython support tool created by Adafruit but no longer supported.  Please
+see the [mpremote](#mpremote) tool for the current best practice.
 
 #### Analog to Digital Converter
+
 A component that takes an analogue signal and changes it to a digital one.
 
 Every ADC has two parameters, its [resolution](#resolution), measured in digital bits, and its [channels](#channels), or how many analogue signals it can accept and convert at once.
@@ -43,6 +57,17 @@ Plated through holes or vias located in the edges of a printed circuit board tha
 ![](../img/castellated-edge.png)
 
 The word "Castellated" means having grooves or slots on an edge and is derived from the turrets of a castle.
+
+The Raspberry Pi Pico uses castellated edges so that it can be used with headers on a breadboard
+or soldered directly to a PC board.  This is the most flexible way to manufacturing boards today.
+
+#### Decomposition
+
+The process of breaking down complex problems into smaller, more manageable parts that can be solved independently. 
+
+**Example:** In a MicroPython program, this could involve separating hardware initialization, sensor reading, and display updating into distinct functions or modules.
+
+Decomposition is a fundamental skill for not just programmers, but also for [prompt engineers](../prompts/index.md) using generative AI models.  A good decomposition prompt is "Please break this project down into discrete steps."
 
 #### Dupont Connectors
 
@@ -105,7 +130,15 @@ A type of signal used to pause a program and execute a different program.  We
 use interrupts to pause our program and execute a different program when a
 button is pressed.
 
+#### Iteration
+
+The process of repeating a set of instructions until a specific condition is met. 
+
+Understanding iteration is essential for MicroPython programs that need to work with
+many similar items such as NeoPixels.  They are also used to continuously monitor sensors or update displays in a loop.
+
 #### I2C
+
 A communications protocol common in microcontroller-based systems, particularly for interfacing with sensors, memory devices and liquid crystal displays.
 
 I2C is similar to SPI, it's a synchronous protocol because it uses a clock line.
@@ -122,27 +155,56 @@ MicroPython was originally developed by Damien George and first released in 2014
 * See also: [CircuitPython](#circuitpython)
 
 #### MPG Shell
+
 A simple MicroPython shell based file explorer for ESP8266 and WiPy MicroPython based devices.
 
 The shell is a helper for up/downloading files to the ESP8266 (over serial line and Websockets) and WiPy (serial line and telnet). It basically offers commands to list and upload/download files on the flash FS of the device.
 
 [GitHub Repo for MPFShell](https://github.com/wendlers/mpfshell)
 
+## Mpremote
+
+A versatile MicroPython support tool that has become the recommended replacement for ampy and rshell. 
+
+mpremote is the preferred tools supported by the MicroPython runtime.
+
+mpremote offers an array of features, including:
+
+- Remote REPL access
+- Remote script execution
+- Mounting local directories
+
+This integration streamlines the development process by providing a unified interface for interacting with MicroPython devices. For detailed information and guidance on using mpremote, you can refer to the official MicroPython documentation.
+
 #### OLED Display
 
-OLED (Organic polymer light emitting diode) dispays are small but bright displays with high contrast, low power and a wide viewing angle.  We use these displays throughout our labs.  The small displays are around 1" (diagonal) and only cost around $4 to $5.  Larger 2.24" displays cost around $20.  These displays work both with 4-wire I2C and 7-wire SPI connections.
+OLED (Organic polymer light emitting diode) displays are small but bright displays with high contrast, low power and a wide viewing angle.  We use these displays throughout our labs.  The small displays are around 1" (diagonal) and only cost around $4 to $5.  Larger 2.24" displays cost around $20.  These displays work both with 4-wire I2C and 7-wire SPI connections.
 
 Typical chips that control the OLED include the SSD1306 driver chips.
 
 * See: [Graph Displays](../displays/graph/01-intro.md)
 
+#### Pattern Recognition
+
+The ability to identify similarities, differences, and patterns in problems or data. 
+
+This is particularly important in MicroPython when dealing with sensor data patterns or implementing repeated behaviors in similar physical computing projects.
+
 #### Raspberry Pi Foundation
+
 The company that builds the Raspberry Pi hardware and provides some software.
 
 #### Raspberry Pi Pico
 A microcontroller designed by the Raspberry Pi foundation for doing real-time control systems.
 
 The Pico was introduced in 2020 with a retail list price of $4.  It was a key development because it used a custom chip that had 100 times the RAM of an Arduino Nano.
+
+#### State Machine
+
+A programming model where a system can be in one of several "states," with rules governing transitions between states.
+
+State machines are particularly useful in MicroPython for managing device behavior and user interactions.  Many of our projects have "modes" that govern things like what pattern
+is being displayed on a NeoPixel Strip.
 
 #### Pico Pinout Diagram
 

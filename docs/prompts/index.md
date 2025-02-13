@@ -7,4 +7,12 @@ that this is a great way to learn MicroPython and we highly
 encourage you to use these tools.
 
 Central to getting good working code is "grounding" your generative AI model in the concepts used in this course.  Our goal is to teach computational thinking to students in a fun low-cost way.  Loading our [Learning Graph](../sims/learning-graph/index.md) into your generative AI project is a great way to anchor your responses and avoid hallucinations.  As of this writing (February 2025), both Anthropic Clause and OpenAI ChatGPT support projects.
-To use projects you can load our 
+To use projects you can load our [MicroPython Concepts](https://github.com/dmccreary/learning-micropython/blob/main/data/learning-micropython-concepts.csv) and [Glossary](../glossary.md) into your project area.
+
+## Telling Generative About Your Hardware Configuration
+
+The next step is to load your hardware configuration file into your Generative AI project.
+This can be easily done if your project supports our recommended config.py structure.
+Here is an example of this config.py file:
+
+```python config.py

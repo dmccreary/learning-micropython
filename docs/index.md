@@ -1,12 +1,14 @@
-# CoderDojo Twin Cities Micropython
+# Learning Micropython
 
 ![Micropython logo](img/banner.png)
 
-This website and GitHub repository are resources for learning and teaching MicroPython.  Our initial audience was to students in 5th to 12th grades (10-18 years old).  However, we have found that people from around
-the world of all ages are interested in learning MicroPython.
+!!! update
+    We now have added support for using generative AI to teach MicroPython.
+    See our [Prompts](./prompts/index.md) page for details.
 
-The course assumes that either a mentor, teacher or students have access to at least one microcontroller such as the $4 Raspberry Pi Pico or a ESP32 microcontroller.  The MicroController must have 16K RAM to run
-the MicroPython Interpreter.
+This website and GitHub repository are resources for learning and teaching MicroPython.  Our initial audience was to students in 5th to 12th grades (10-18 years old).  However, we have found that people from around the world of all ages are interested in learning MicroPython.
+
+The course assumes that either a mentor, teacher or students have access to at least one microcontroller such as the $4 Raspberry Pi Pico or a ESP32 microcontroller.  The MicroController must have 16K RAM to run the MicroPython Interpreter.
 
 Students should also have access to some low-cost sensors (buttons, potentiometers, time-of-flight sensor) and displays such as LEDs or OLED displays.
 
