@@ -221,7 +221,8 @@ nav:
 
 theme:
   name: material
-  logo: img/coderdojo-logo.png
+  logo: img/logo.png
+  favicon: img/favicon.ico
   icon:
     previous: fontawesome/solid/angle-left
     next: fontawesome/solid/angle-right
@@ -242,15 +243,18 @@ theme:
     - navigation.footer
 plugins:
   - search
-  # - mermaid2 - takes too long to build - use a screen image for now
 markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
   - attr_list
+  - md_in_html
   - pymdownx.highlight:
       linenums: true
-
+extra_css:
+  - css/extra.css
+extra_javascript:
+  - js/extra.js
 extra:
   analytics:
     provider: google
