@@ -34,6 +34,7 @@ while True:
     sleep(.2)
 ```
 
+<!-
 ```mermaid
 graph LR
 p[Pico]-->|ADC_VREF 36 row=6| pos(Positive)
@@ -43,6 +44,7 @@ p[Pico]-->|GP26 pin=26 ADC0 31 row=10| tap(Center Tap)
     neg(Negative) --- pot(Potentiometer)
     tap(Center Tap) --- pot(Potentiometer)
 ```
+-->
 
 Connect the positive to pin 35 ADC_REF (row 6 on the breadboard) and the negative to pin 33 AGND (row 8 on the breadboard).  The Pico has special noise reduction circuits to avoid power supply jitter on these reference pins.
 

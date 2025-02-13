@@ -34,6 +34,7 @@ nav:
     - Servo: basics/04-servo.md
     - NeoPixel: basics/05-neopixel.md
     - Wireless: basics/06-wireless.md
+    - Config: basics/10.config.md
   - Sensors:
     - Introduction: sensors/01-intro.md
     - Photosensor: sensors/02-photosensor.md
@@ -154,6 +155,8 @@ nav:
       - Debugging I2C: debugging/29a-debugging-i2c.md
       - Debugging SPI: debugging/29-debugging-spi.md
       - Debugging With Thonny: debugging/27-debugging-with-thonny.md
+      - Viewing the Stack: debugging/30-stack-view.md
+      - Viewing the Heap: debugging/31-heap.md
   - Project Kits:
     - Introduction: kits/01-intro.md
     - Maker Pi RP2040:
