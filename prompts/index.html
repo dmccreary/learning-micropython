@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/prompts/">
       
       
+        <link rel="prev" href="../sims/breadboard/">
+      
+      
+        <link rel="next" href="../misc/glossary/">
       
       
       <link rel="icon" href="../img/favicon.ico">
@@ -22,7 +26,7 @@
     
     
       
-        <title>Using Generative AI Prompts to Generate MicroPython Code - Learning MicroPython</title>
+        <title>Introduction - Learning MicroPython</title>
       
     
     
@@ -119,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Using Generative AI Prompts to Generate MicroPython Code
+              Introduction
             
           </span>
         </div>
@@ -836,10 +840,6 @@
       
         
       
-        
-      
-        
-      
     
     
     
@@ -1132,6 +1132,63 @@
       
   
   
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_16" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_16_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_16">
+            <span class="md-nav__icon md-icon"></span>
+            Prompts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
   
   
     <li class="md-nav__item">
@@ -1200,6 +1257,46 @@
   
   <span class="md-ellipsis">
     Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../misc/content-authoring-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authoring Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../misc/instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructors Guide
   </span>
   
 
@@ -1303,6 +1400,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#sample-config-file-for-cython-board" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Config File for Cython Board
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1333,7 +1439,63 @@ To use projects you can load our <a href="https://github.com/dmccreary/learning-
 <p>The next step is to load your hardware configuration file into your Generative AI project.
 This can be easily done if your project supports our recommended config.py structure.
 Here is an example of this config.py file:</p>
-<p>```python config.py</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NEOPIXEL_PIN</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">NUMBER_PIXELS</span> <span class="o">=</span> <span class="mi">30</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="sample-config-file-for-cython-board">Sample Config File for Cython Board</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Sample hardware configuration file for the Cytron Maker Pi RP2040 board</span>
+
+<span class="c1"># SPIN OLED Display Connections</span>
+<span class="c1"># VCC, GND Clock and Data are on Grove Port 2</span>
+<span class="n">SPI_CLK_PIN</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">SPI_SDA_PIN</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="c1"># We are using the servo data pins on the Cytron board</span>
+<span class="n">SPI_CS_PIN</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="n">SPI_DC_PIN</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">SPI_RESET_PIN</span> <span class="o">=</span> <span class="mi">15</span>
+
+<span class="c1"># I2C Connections for the Time of Flight Sensor on Grove Port 1</span>
+<span class="n">I2C_BUS</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">I2C_SDA_PIN</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># white Grove wire</span>
+<span class="n">I2C_SCL_PIN</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># yellow Grove wire</span>
+<span class="c1"># use the following line to create the I2C object</span>
+<span class="c1"># i2c=machine.I2C(I2C_BUS,sda=Pin(I2C_SDA_PIN), scl=Pin(I2C_SCL_PIN), freq=400000)</span>
+
+<span class="c1"># Speaker Pin</span>
+<span class="n">SPEAKER_PIN</span> <span class="o">=</span> <span class="mi">22</span>
+
+<span class="c1"># Motor Pins</span>
+<span class="n">MOTOR_RIGHT_FORWARD</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">MOTOR_RIGHT_BACKWARD</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">MOTOR_LEFT_FORWARD</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">MOTOR_LEFT_REVERSE</span> <span class="o">=</span> <span class="mi">9</span>
+</code></pre></div></td></tr></table></div>
 
 
 
@@ -1366,6 +1528,44 @@ Here is an example of this config.py file:</p>
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../sims/breadboard/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Breadboard">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Breadboard
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../misc/glossary/" class="md-footer__link md-footer__link--next" aria-label="Next: Glossary">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Glossary
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
