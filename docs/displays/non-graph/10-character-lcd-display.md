@@ -133,8 +133,10 @@ test_main()
 
 ## References
 
-[MFitzp article on OLED displays](https://www.mfitzp.com/article/oled-displays-i2c-micropython/)
+[Wokwi LCD Simulator](https://wokwi.com/projects/359400194112248833)
 
-[Adafruit SSD1306 Driver](https://github.com/adafruit/Adafruit_CircuitPython_SSD1306/blob/master/examples/ssd1306_stats.py)
+[ChatGPT response when asked how to use a 2-line LCD with MicroPython](https://chatgpt.com/share/67ba0326-b104-8001-891e-b6a8d2c99d20)
+
+[MFitzp article on OLED displays](https://www.mfitzp.com/article/oled-displays-i2c-micropython/)
 
 [Adafruit LCD Guide](https://learn.adafruit.com/character-lcds)
