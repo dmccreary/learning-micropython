@@ -135,6 +135,8 @@ test_main()
 
 [Wokwi LCD Simulator](https://wokwi.com/projects/359400194112248833)
 
+[Paul McWhorter Video on Using an LCD with a I2C Interface](https://www.youtube.com/watch?v=liwMc01LOIA&list=PLGs0VKk2DiYz8js1SJog21cDhkBqyAhC5&index=22
+)
 [ChatGPT response when asked how to use a 2-line LCD with MicroPython](https://chatgpt.com/share/67ba0326-b104-8001-891e-b6a8d2c99d20)
 
 [MFitzp article on OLED displays](https://www.mfitzp.com/article/oled-displays-i2c-micropython/)
