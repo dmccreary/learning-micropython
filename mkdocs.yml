@@ -54,6 +54,7 @@ nav:
     - Rotary Encoder: sensors/10-rotary-encoder.md
     - Compass: sensors/11-compass.md
     - Gesture: sensors/13-gesture.md
+    - Microphone INMP441: sensors/15-inmp441.md
 
   - Motors and Servos:
     - Introduction: motors/01-intro.md
