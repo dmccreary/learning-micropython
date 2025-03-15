@@ -9,13 +9,13 @@
 * FFT size: 512
 * Sample rate: 16,000 Hz
 * I am whistling a tone at 1,250 Hz
-
+* Microphone: [INMP445](../../sensors/15-inmp441.md)
 
 ## ChatGPT Prompt
 
-```linenums="0"
-I would like to create an audio spectrum analyzer using a Raspberry Pi Pico and a 128x64 OLED display using MicroPython. How would you suggest I go about this project. Break it down step-by-step.
-```
+!!! prompt
+    I would like to create an audio spectrum analyzer using a Raspberry Pi Pico 2 and a 128x64 OLED display using MicroPython. How would you suggest I go about this project. Break it down step-by-step.
+
 
 ## ChatGPT GPT-4 Response
 
