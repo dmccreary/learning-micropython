@@ -1,4 +1,3 @@
-import time
 from machine import Pin, SPI
 import ssd1322
 import config
