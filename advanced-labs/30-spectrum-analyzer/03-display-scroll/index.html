@@ -2170,8 +2170,10 @@
 
 <h1 id="display-scroll">Display Scroll</h1>
 <h2 id="prompt">Prompt</h2>
-<div class="highlight"><pre><span></span><code>The display is a bit slow. Can you rewrite the plot\_signal\_with\_gain function so that the scroll() function is used to move the display to the left by one pixel?
-</code></pre></div>
+<div class="admonition prompt">
+<p class="admonition-title">Prompt</p>
+<p>The display is a bit slow. Can you rewrite the plot_signal_with_gain function so that the scroll() function is used to move the display to the left by one pixel?</p>
+</div>
 <h3 id="chatgpt-gpt-4-response">ChatGPT GPT-4 Response</h3>
 <p>To make the display update faster and to create a scrolling effect that moves the waveform to the left by one pixel, you can modify the <code>plot_signal_with_gain</code> function to use the <code>scroll()</code> method of the SSD1306 library. This will shift the entire display content to the left by one pixel, and then you can plot the new data point at the right edge of the display. Here's how you can implement this:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>

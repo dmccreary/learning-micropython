@@ -1632,18 +1632,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prompt" class="md-nav__link">
+  <a href="#chatgpt-response" class="md-nav__link">
     <span class="md-ellipsis">
-      Prompt
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#chatgpt-" class="md-nav__link">
-    <span class="md-ellipsis">
-      ChatGPT-
+      ChatGPT Response
     </span>
   </a>
   
@@ -2121,18 +2112,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prompt" class="md-nav__link">
+  <a href="#chatgpt-response" class="md-nav__link">
     <span class="md-ellipsis">
-      Prompt
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#chatgpt-" class="md-nav__link">
-    <span class="md-ellipsis">
-      ChatGPT-
+      ChatGPT Response
     </span>
   </a>
   
@@ -2157,9 +2139,11 @@
 
 
 <h1 id="adding-a-gain-potentiometer">Adding A Gain Potentiometer.</h1>
-<h2 id="prompt">Prompt</h2>
+<div class="admonition prompt">
+<p class="admonition-title">Prompt</p>
 <p>The signal is very low on the display. I have added a Potentiometer on ADC1 which is on GPIO PIN 27. Can you please regenerate the entire program with sound on ADC0 and gain on ADC1. sound = ADC(Pin(26)) gain = ADC(Pin(27))</p>
-<h2 id="chatgpt-">ChatGPT-</h2>
+</div>
+<h2 id="chatgpt-response">ChatGPT Response</h2>
 <p>Certainly! To adjust the signal's amplitude on the display based on the gain from a potentiometer connected to ADC1 (GPIO PIN 27), you can modify the program as follows. This updated script will use the value from the potentiometer to scale the audio signal from the microphone, making the waveform larger or smaller on the OLED display according to the potentiometer's position.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>

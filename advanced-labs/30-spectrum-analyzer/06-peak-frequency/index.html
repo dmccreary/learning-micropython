@@ -1679,6 +1679,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Peak Frequency
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1688,6 +1699,34 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#full-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Program
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2066,6 +2105,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#full-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Program
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2092,8 +2148,8 @@
 <p>I've updated the display to show the peak frequency in the upper left corner instead of 0Hz, and I've removed the "Hz" label from both numbers as requested.</p>
 <p>Here's what the new code does:</p>
 <ol>
-<li>
-<p><strong>Finds the peak frequency:</strong>
+<li><strong>Finds the peak frequency:</strong></li>
+</ol>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2107,17 +2163,15 @@
     <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">magnitudes</span><span class="p">)</span> <span class="ow">and</span> <span class="n">magnitudes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">max_val</span><span class="p">:</span>
         <span class="n">max_val</span> <span class="o">=</span> <span class="n">magnitudes</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="n">max_idx</span> <span class="o">=</span> <span class="n">i</span>
-</code></pre></div></td></tr></table></div></p>
-</li>
-<li>
-<p><strong>Calculates the actual frequency in Hz:</strong>
-    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="err">`</span><span class="c1"># Calculate the peak frequency in Hzpeak_freq =int(max_idx * bin_freq_width)`</span>
-</code></pre></div></td></tr></table></div></p>
-</li>
-<li>
-<p><strong>Displays only the numbers without "Hz":</strong></p>
-</li>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li><strong>Calculates the actual frequency in Hz:</strong></li>
 </ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Calculate the peak frequency in Hz</span>
+<span class="n">peak_freq</span> <span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">max_idx</span> <span class="o">*</span> <span class="n">bin_freq_width</span><span class="p">)</span><span class="err">`</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="full-program">Full Program</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
 <span class="normal">  3</span>
