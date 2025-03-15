@@ -228,7 +228,7 @@ nav:
     - RFID RC522: kits/rfid-rc522/index.md
   # - Project Ideas: misc/projects.md
 
-  - Sims:
+  - MicroSims:
     - Introduction: sims/index.md
     - Learning Graph:
       - Introduction: sims/learning-graph/index.md
