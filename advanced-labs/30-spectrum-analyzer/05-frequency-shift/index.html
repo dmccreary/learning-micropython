@@ -1658,6 +1658,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Frequency Shift
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1667,6 +1678,34 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#possible-next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Possible Next Steps:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -2066,6 +2105,23 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#possible-next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Possible Next Steps:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2085,7 +2141,7 @@
 <h1 id="frequency-shift">Frequency Shift</h1>
 <div class="admonition prompt">
 <p class="admonition-title">Prompt</p>
-<p>This is working better.  I have one additional request.  To give demos of the FFT working I am whistelling into the microphone.  As I change my pitch I want to see the spike move.  But my whistling range is mostly on the left side of the display.  Can we change the display so that the lower frequencies are shifted to the right by about 1/3 the screen size.  I realize this will not show the higher frequencies to the right, but that is OK.</p>
+<p>This is working better.  I have one additional request.  To give demos of the FFT working I am whistling into the microphone.  As I change my pitch I want to see the spike move.  But my whistling range is mostly on the left side of the display.  Can we change the display so that the lower frequencies are shifted to the right by about 1/3 the screen size.  I realize this will not show the higher frequencies to the right, but that is OK.</p>
 </div>
 <p>That's a great request! Let me modify the code to focus on the lower frequencies by shifting the display. This will make your whistling demonstrations more effective by using more screen space for the frequencies you're actually working with.</p>
 <p>I've modified the code to focus on the lower frequencies where your whistling occurs. Here's what I changed:</p>
@@ -2094,25 +2150,27 @@
 <p>Instead of displaying the entire frequency spectrum, the display now shows only the <strong>first third</strong> of the frequency bins (where your whistling will be detected).</p>
 </li>
 <li>
-<p>The code computes:
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">lower_freq_focus</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">magnitudes</span><span class="p">)</span> <span class="o">//</span> <span class="mi">3</span>
-</code></pre></div></td></tr></table></div>
-   This means we're only using approximately the first 85 frequency bins (out of 256) and spreading them across the entire display width.</p>
-</li>
-<li>
-<p>The bin width calculation is updated to use only this lower frequency portion:
-   <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">bin_width</span> <span class="o">=</span> <span class="n">lower_freq_focus</span> <span class="o">//</span> <span class="n">num_bins</span>
-</code></pre></div></td></tr></table></div></p>
-</li>
-<li>
-<p>The main for-loop now limits the frequency analysis to this lower range.</p>
+<p>The code computes:</p>
 </li>
 </ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">lower_freq_focus</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">magnitudes</span><span class="p">)</span> <span class="o">//</span> <span class="mi">3</span>
+</code></pre></div></td></tr></table></div>
+<p>This means we're only using approximately the first 85 frequency bins (out of 256) and spreading them across the entire display width.</p>
+<ol>
+<li>The bin width calculation is updated to use only this lower frequency portion:</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">bin_width</span> <span class="o">=</span> <span class="n">lower_freq_focus</span> <span class="o">//</span> <span class="n">num_bins</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>The main for-loop now limits the frequency analysis to this lower range.</li>
+</ol>
 <p>This change will effectively "zoom in" on the lower frequency range where your whistling occurs, making the movement of peaks much more noticeable as you change pitch. The entire display width now represents only the first third of the frequency spectrum, giving you about 3 times more horizontal resolution for your demonstrations.</p>
-<p>Would you like me to make any additional adjustments? For example:
-- We could adjust the frequency range further (more or less than 1/3)
-- We could apply a logarithmic scale to the frequency display to better match human hearing perception
-- We could highlight the peaks more prominently</p>
+<h2 id="possible-next-steps">Possible Next Steps:</h2>
+<ul>
+<li>Adjust the frequency range further (more or less than 1/3)</li>
+<li>Aapply a logarithmic scale to the frequency display to better match human hearing perception</li>
+<li>Highlight the peaks more prominently and display the frequencies of the peaks</li>
+</ul>
 
 
 
