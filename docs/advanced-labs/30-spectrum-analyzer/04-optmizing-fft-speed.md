@@ -1,7 +1,7 @@
 # Optimizing FFT
 
 !!! prompt
-    Please consider the program 14-display-fft.py. Can we create any optimizations to make the FFT go faster?  Can we precompute any numbers to make the calculation more efficient?  I am running this on a Raspberry Pi Pico 2 with Free memory: 470.83 KB
+    Please consider the programs in [src/kits/fft](https://github.com/dmccreary/learning-micropython/tree/main/src/kits/fft). Can we create any optimizations to make the FFT go faster?  Can we precompute any numbers to make the calculation more efficient?  I am running this on a Raspberry Pi Pico 2 with Free memory: 470.83 KB
 
 I've analyzed your 14-display-fft.py code and can suggest several optimizations to make the FFT calculations faster on your Raspberry Pi Pico 2. The current implementation of the Cooley-Tukey FFT algorithm is recursive and creates many temporary lists, which is inefficient for microcontrollers with limited resources.
 

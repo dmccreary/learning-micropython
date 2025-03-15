@@ -2,9 +2,9 @@
 
 ## Prompt
 
-```linenums="0"
-The display is a bit slow. Can you rewrite the plot\_signal\_with\_gain function so that the scroll() function is used to move the display to the left by one pixel?
-```
+!!! prompt
+    The display is a bit slow. Can you rewrite the plot\_signal\_with\_gain function so that the scroll() function is used to move the display to the left by one pixel?
+
 
 ### ChatGPT GPT-4 Response
 

@@ -2,11 +2,10 @@
 
 ## Prompt
 
-```linenums="0"
-OK, I now have a Raspberry Pi Pico and the OLED display hooked up.  I also have a microphone hooked up to ADC0 on port GPIO26.  How can I test that the signal is coming into the ADC?  Can you write a MicroPython program that displays the audio signal on the OLED?
+!!! prompt
+    OK, I now have a Raspberry Pi Pico and the OLED display hooked up.  I also have a microphone hooked up to ADC0 on port GPIO26.  How can I test that the signal is coming into the ADC?  Can you write a MicroPython program that displays the audio signal on the OLED?
 
-I am using a ssd1306 and I use the following MicroPython:
-```
+    I am using a ssd1306 and I use the following MicroPython:
 
 ```python
 from machine import Pin
@@ -29,7 +28,7 @@ display.fill(0)
 display.line(0, 0, WIDTH, HEIGHT, 1)
 ```
 
-## GPT-4 Reponse
+## GPT-4 Response
 
 To test that the signal is coming into the ADC (Analog-to-Digital Converter) on the Raspberry Pi Pico via GPIO26, and to display the audio signal on your SSD1306 OLED, you can use the following MicroPython script. This script will read the analog values from the microphone connected to GPIO26 and plot these values in real-time on the OLED display, creating a simple waveform visualization.
 

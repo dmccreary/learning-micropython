@@ -1,10 +1,9 @@
 # Adding A Gain Potentiometer.
 
-## Prompt
-The signal is very low on the display. I have added a Potentiometer on ADC1 which is on GPIO PIN 27. Can you please regenerate the entire program with sound on ADC0 and gain on ADC1. sound = ADC(Pin(26)) gain = ADC(Pin(27))
+!!! Prompt
+    The signal is very low on the display. I have added a Potentiometer on ADC1 which is on GPIO PIN 27. Can you please regenerate the entire program with sound on ADC0 and gain on ADC1. sound = ADC(Pin(26)) gain = ADC(Pin(27))
 
-
-## ChatGPT-
+## ChatGPT Response
 
 Certainly! To adjust the signal's amplitude on the display based on the gain from a potentiometer connected to ADC1 (GPIO PIN 27), you can modify the program as follows. This updated script will use the value from the potentiometer to scale the audio signal from the microphone, making the waveform larger or smaller on the OLED display according to the potentiometer's position.
 

@@ -12,6 +12,7 @@ I've updated the display to show the peak frequency in the upper left corner ins
 Here's what the new code does:
 
 1.  **Finds the peak frequency:**
+
 ```python
 # Find the frequency bin with the highest magnitude
 max_idx = 0
@@ -22,15 +23,14 @@ for i in range(lower_freq_focus):
         max_idx = i
 ```
 
-2.  **Calculates the actual frequency in Hz:**
-    ```python
+2. **Calculates the actual frequency in Hz:**
 
+```python
+# Calculate the peak frequency in Hz
+peak_freq =int(max_idx * bin_freq_width)`
+```
 
-    `# Calculate the peak frequency in Hzpeak_freq =int(max_idx * bin_freq_width)`
-
-    ```
-
-3.  **Displays only the numbers without "Hz":**
+## Full Program
 
 ```python
 # Sound Spectrum Analyzer with FFT - Optimized for MicroPython
