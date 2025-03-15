@@ -30,5 +30,5 @@ This change will effectively "zoom in" on the lower frequency range where your w
 ## Possible Next Steps:
 
 - Adjust the frequency range further (more or less than 1/3)
-- Aapply a logarithmic scale to the frequency display to better match human hearing perception
+- Apply a logarithmic scale to the frequency display to better match human hearing perception
 - Highlight the peaks more prominently and display the frequencies of the peaks
