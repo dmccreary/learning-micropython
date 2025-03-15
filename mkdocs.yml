@@ -55,6 +55,7 @@ nav:
     - Compass: sensors/11-compass.md
     - Gesture: sensors/13-gesture.md
     - Microphone INMP441: sensors/15-inmp441.md
+    - BME280 Temp and Pressure: sensors/09-bme280.md
 
   - Motors and Servos:
     - Introduction: motors/01-intro.md
@@ -110,6 +111,13 @@ nav:
     - Eight Key Piano: sound/06-eight-key-piano.md
     - Playing Audio File: sound/07-play-audio-file.md
     - Converting Audio Files: sound/09-converting-mp3-to-wav.md
+    - sound/07a-test-audio-ports.md
+    - sound/08-i2s-standard.md
+    - sound/10-midi.md
+    - sound/11-sound-parts.md
+    - sound/20-i2s-bus.md
+    - Digital to Analog Converter: sound/dac/index.md
+    - sound/midi/index.md
 
   - Wireless:
     - Introduction: wireless/01-intro.md
@@ -167,11 +175,14 @@ nav:
     - Multi-Core Programming: advanced-labs/16-multi-core.md
     - File System: advanced-labs/17-file-system.md
     - Button Callback: advanced-labs/21-button-callback.md
-    #- Spectrum Analyzer: 
-    #  - Introduction: advanced-labs/30-spectrum-analyzer/index.md
-    #  - Test Incoming: advanced-labs/30-spectrum-analyzer/01-test-incoming-sound.md
-    #  - Gain Pot: advanced-labs/30-spectrum-analyzer/02-gain-pot.md
-    #  - Display Scroll:  advanced-labs/30-spectrum-analyzer/display-scroll.md
+    - Spectrum Analyzer: 
+      - advanced-labs/30-spectrum-analyzer/index.md
+      - advanced-labs/30-spectrum-analyzer/01-test-incoming-sound.md
+      - advanced-labs/30-spectrum-analyzer/02-gain-pot.md
+      - advanced-labs/30-spectrum-analyzer/03-display-scroll.md
+      - advanced-labs/30-spectrum-analyzer/04-optmizing-fft-speed.md
+      - advanced-labs/30-spectrum-analyzer/05-frequency-shift.md
+      - advanced-labs/30-spectrum-analyzer/06-peak-frequency.md
 
   - Project Kits:
     - Introduction: kits/01-intro.md
