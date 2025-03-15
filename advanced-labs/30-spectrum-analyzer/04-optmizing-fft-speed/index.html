@@ -2098,44 +2098,66 @@
 </ol>
 <p>The optimizations I've implemented in the code above include:</p>
 <ol>
-<li><strong>Precomputed Arrays</strong>:<ul>
-<li>Hanning window coefficients are calculated once at startup</li>
+<li>
+<p><strong>Precomputed Arrays</strong>:</p>
+</li>
+<li>
+<p>Hanning window coefficients are calculated once at startup</p>
+</li>
 <li>Bit-reversal table for the FFT reordering</li>
-<li>Twiddle factors (complex exponentials) are precomputed and stored</li>
-</ul>
+<li>
+<p>Twiddle factors (complex exponentials) are precomputed and stored</p>
 </li>
-<li><strong>In-place Iterative FFT</strong>:<ul>
-<li>Replaced the recursive algorithm with an iterative version</li>
+<li>
+<p><strong>In-place Iterative FFT</strong>:</p>
+</li>
+<li>
+<p>Replaced the recursive algorithm with an iterative version</p>
+</li>
 <li>Eliminates the need for temporary arrays during computation</li>
-<li>Uses in-place calculations to minimize memory usage</li>
-</ul>
+<li>
+<p>Uses in-place calculations to minimize memory usage</p>
 </li>
-<li><strong>Fast Magnitude Calculation</strong>:<ul>
-<li>Added a fast approximation for the magnitude calculation</li>
-<li>Uses |z| ≈ max(|Re(z)|, |Im(z)|) + 0.4 * min(|Re(z)|, |Im(z)|) instead of the more expensive square root</li>
-</ul>
+<li>
+<p><strong>Fast Magnitude Calculation</strong>:</p>
 </li>
-<li><strong>Memory Reuse</strong>:<ul>
-<li>Reuses the same arrays for FFT calculation across iterations</li>
-<li>Avoids memory fragmentation and garbage collection delays</li>
-</ul>
+<li>
+<p>Added a fast approximation for the magnitude calculation</p>
 </li>
-<li><strong>Efficient Data Structures</strong>:<ul>
-<li>Uses typed arrays (<code>array.array</code>) for all numerical data</li>
-<li>Provides better performance than regular Python lists</li>
-</ul>
+<li>
+<p>Uses |z| ≈ max(|Re(z)|, |Im(z)|) + 0.4 * min(|Re(z)|, |Im(z)|) instead of the more expensive square root</p>
 </li>
-<li><strong>Optimized Display Rendering</strong>:<ul>
-<li>Simplified the bin averaging logic</li>
+<li>
+<p><strong>Memory Reuse</strong>:</p>
+</li>
+<li>
+<p>Reuses the same arrays for FFT calculation across iterations</p>
+</li>
+<li>
+<p>Avoids memory fragmentation and garbage collection delays</p>
+</li>
+<li>
+<p><strong>Efficient Data Structures</strong>:</p>
+</li>
+<li>
+<p>Uses typed arrays (<code>array.array</code>) for all numerical data</p>
+</li>
+<li>
+<p>Provides better performance than regular Python lists</p>
+</li>
+<li>
+<p><strong>Optimized Display Rendering</strong>:</p>
+</li>
+<li>
+<p>Simplified the bin averaging logic</p>
+</li>
 <li>More efficient bounds checking</li>
-</ul>
-</li>
 </ol>
-<p>These optimizations should significantly improve the performance of your FFT calculations on the Raspberry Pi Pico 2. The precomputation step may use a bit of memory initially, but it will save substantial computation time during the main loop.</p>
+<p>These optimizations should significantly improve the performance of your FFT calculations on the Raspberry Pi Pico 2. The pre-computation step may use a bit of memory initially, but it will save substantial computation time during the main loop.</p>
 <p>A few additional notes:</p>
 <ul>
 <li>The code prioritizes speed over memory usage, which is appropriate given your available memory (470.83 KB)</li>
-<li>The bit-reversal precomputation will speed up the FFT initialization stage</li>
+<li>The bit-reversal pre-computation will speed up the FFT initialization stage</li>
 <li>If memory becomes an issue, you could reduce FFT_SIZE to 256, which would still provide reasonable frequency resolution</li>
 </ul>
 <p>I've fixed the MicroPython compatibility issue in the bit-reverse function. The previous version used string slicing with a negative step (<code>[::-1]</code>), which isn't supported in MicroPython. The new version uses bitwise operations instead:</p>
