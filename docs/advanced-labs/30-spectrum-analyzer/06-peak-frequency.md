@@ -6,10 +6,6 @@
 I'll modify the display to show the frequency with the highest value in the upper left instead of 0Hz, and remove the "Hz" from both labels to keep them clean and simple.
 
 Optimized FFT Implementation for MicroPython
-Edited
-
-Click to open code
-Tap to open
 
 I've updated the display to show the peak frequency in the upper left corner instead of 0Hz, and I've removed the "Hz" label from both numbers as requested.
 

@@ -1,12 +1,13 @@
 # Spectrum Analyzer
 
 ![](./oled-display-fft.jpg)
-* Upper left is peak frequency
+
+* Upper left is peak frequency 1,250 Hz
 * Right is max frequency
 * Frequency resolution: 31.25 Hz per bin
 * Display frequency range: 0 Hz to 2656 Hz
 * FFT size: 512
-* Sample rate: 16000 Hz
+* Sample rate: 16,000 Hz
 * I am whistling a tone at 1,250 Hz
 
 
