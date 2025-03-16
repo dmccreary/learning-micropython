@@ -875,6 +875,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#connections_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connections
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#i2s-data-interface" class="md-nav__link">
     <span class="md-ellipsis">
       I²S DATA INTERFACE
@@ -1958,6 +1967,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#connections_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connections
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#i2s-data-interface" class="md-nav__link">
     <span class="md-ellipsis">
       I²S DATA INTERFACE
@@ -2117,6 +2135,21 @@ power management, and an industry-standard 24-bit I²S interface.
 The I²S interface allows the INMP441 to connect directly to digital
 processors, such as DSPs and microcontrollers, without the need
 for an audio codec in the system.</p>
+<p>The INMP441 uses a digital MEMS (Micro-Electro-Mechanical System) microphone with an I2S interface. According to its specifications:</p>
+<p>The INMP441 has a relatively flat frequency response across the audible spectrum:
+- Frequency response range: 20 Hz to 20 kHz
+- Sensitivity: -26 dBFS (decibels relative to full scale)
+- Signal-to-Noise Ratio (SNR): 61 dBA
+- Omnidirectional pickup pattern</p>
+<p>The microphone has a relatively flat response in the mid-range frequencies, with some slight roll-off at the very low end (below 100 Hz) and high end (above 10 kHz). The flatness of the response in the crucial speech range (approximately 300 Hz to 3 kHz) makes it well-suited for voice applications.</p>
+<p>The INMP441 is popular for use with microcontrollers like the Raspberry Pi Pico (as seen in your code) because:</p>
+<ol>
+<li>It has a digital I2S output that can be directly connected to microcontrollers</li>
+<li>It has good noise performance for its size and cost</li>
+<li>It requires minimal external components to operate</li>
+</ol>
+<p>This is why it's a good choice for your sound spectrum analyzer project, as it provides reliable audio input across the frequency range you're visualizing (0-2500 Hz). The microphone should capture the frequencies in your target range with reasonable accuracy.</p>
+<h2 id="connections">Connections</h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The voltage is 1.62 MIN to 3.63 (MAX).  Do not use 5 volts!  Use the 3.3 volt power rail.</p>
@@ -2124,7 +2157,7 @@ for an audio codec in the system.</p>
 <p><img alt="" src="../15-inmp441-back.png" /></p>
 <p><img alt="" src=".15-inmp441-ebay-listing" />
 eBay listing for under $3 (USD).</p>
-<h2 id="connections">Connections</h2>
+<h2 id="connections_1">Connections</h2>
 <table>
 <thead>
 <tr>
