@@ -176,13 +176,14 @@ nav:
     - File System: advanced-labs/17-file-system.md
     - Button Callback: advanced-labs/21-button-callback.md
     - Spectrum Analyzer: 
-      - advanced-labs/30-spectrum-analyzer/index.md
+      - Introduction: advanced-labs/30-spectrum-analyzer/index.md
       - advanced-labs/30-spectrum-analyzer/01-test-incoming-sound.md
       - advanced-labs/30-spectrum-analyzer/02-gain-pot.md
       - advanced-labs/30-spectrum-analyzer/03-display-scroll.md
-      - advanced-labs/30-spectrum-analyzer/04-optmizing-fft-speed.md
+      - Optimization: advanced-labs/30-spectrum-analyzer/04-optimizing-fft-speed.md
       - advanced-labs/30-spectrum-analyzer/05-frequency-shift.md
       - advanced-labs/30-spectrum-analyzer/06-peak-frequency.md
+      - Further Speedups: advanced-labs/30-spectrum-analyzer/07-speedups.md
 
   - Project Kits:
     - Introduction: kits/01-intro.md

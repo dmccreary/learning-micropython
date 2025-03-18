@@ -59,8 +59,9 @@ Creating an audio spectrum analyzer with a Raspberry Pi Pico and a 128x64 OLED d
 
 ### Resources
 
--   **MicroPython Documentation**: Essential for understanding how to program the Raspberry Pi Pico.
--   **FFT Libraries**: Look for MicroPython libraries or examples of FFT implementations suitable for the Raspberry Pi Pico.
+-   [MicroPython Documentation](https://docs.micropython.org/en/latest/): Essential for understanding how to program the Raspberry Pi Pico.
+-   **MicroPython FFT Libraries**: Look for MicroPython libraries or examples of FFT implementations suitable for the Raspberry Pi Pico.  For example [Peter Hinch's FFT Libaray](https://github.com/peterhinch/micropython-fourier) on GitHub.  Peter has a Single precision FFT written in ARM assembler.
 -   **OLED Libraries**: Find libraries specific to your OLED display model for easier programming.
+- [ADC Sampling and FFT on Raspberry Pi Pico](https://www.hackster.io/AlexWulff/adc-sampling-and-fft-on-raspberry-pi-pico-f883dd) on Alex Wulff on hackster.io
 
 This project involves a mix of hardware setup, digital signal processing, and real-time data visualization. Take it step by step, and don't hesitate to seek out community forums and resources if you encounter challenges.

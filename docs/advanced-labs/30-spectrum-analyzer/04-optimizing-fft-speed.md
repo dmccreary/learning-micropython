@@ -1,4 +1,4 @@
-# Optimizing FFT
+# Optimizing FFT (Part 1)
 
 !!! prompt
     Please consider the programs in [src/kits/fft](https://github.com/dmccreary/learning-micropython/tree/main/src/kits/fft). Can we create any optimizations to make the FFT go faster?  Can we precompute any numbers to make the calculation more efficient?  I am running this on a Raspberry Pi Pico 2 with Free memory: 470.83 KB
