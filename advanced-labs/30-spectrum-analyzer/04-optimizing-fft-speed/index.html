@@ -12,7 +12,7 @@
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/advanced-labs/30-spectrum-analyzer/04-optmizing-fft-speed/">
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/advanced-labs/30-spectrum-analyzer/04-optimizing-fft-speed/">
       
       
         <link rel="prev" href="../03-display-scroll/">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Optimizing FFT - Learning MicroPython</title>
+        <title>Optimization - Learning MicroPython</title>
       
     
     
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#optimizing-fft" class="md-skip">
+        <a href="#optimizing-fft-part-1" class="md-skip">
           Skip to content
         </a>
       
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Optimizing FFT
+              Optimization
             
           </span>
         </div>
@@ -1518,6 +1518,8 @@
       
         
       
+        
+      
     
     
     
@@ -1641,7 +1643,7 @@
         
   
   <span class="md-ellipsis">
-    Optimizing FFT
+    Optimization
   </span>
   
 
@@ -1685,6 +1687,27 @@
   
   <span class="md-ellipsis">
     Peak Frequency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-speedups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Further Speedups
   </span>
   
 
@@ -2082,7 +2105,7 @@
   
 
 
-<h1 id="optimizing-fft">Optimizing FFT</h1>
+<h1 id="optimizing-fft-part-1">Optimizing FFT (Part 1)</h1>
 <div class="admonition prompt">
 <p class="admonition-title">Prompt</p>
 <p>Please consider the programs in <a href="https://github.com/dmccreary/learning-micropython/tree/main/src/kits/fft">src/kits/fft</a>. Can we create any optimizations to make the FFT go faster?  Can we precompute any numbers to make the calculation more efficient?  I am running this on a Raspberry Pi Pico 2 with Free memory: 470.83 KB</p>
