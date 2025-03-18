@@ -3,7 +3,7 @@
 !!! prompt
     The MicroPython frequency analyzer code in the file 20-fft-range-2600.py is working pretty well on the fast new Raspberry Pi Pico 2.  However, it has a noticeable lag between when a sound as a specific frequency is played and when the peak appears on the display.  The delay is a few seconds.  Can we lower the delay in any way?  Just look at the code and give me some options like using DMA or using a version of the FFT written in ARM assembly code.
 
-[20-fft-range-2600.py in GitKub src/kits/fft](https://github.com/dmccreary/learning-micropython/blob/main/src/kits/fft/20-fft-range-2600.py)
+    [20-fft-range-2600.py in GitHub src/kits/fft](https://github.com/dmccreary/learning-micropython/blob/main/src/kits/fft/20-fft-range-2600.py)
 
 ## Claude Sonnet 3.7 Response
 
