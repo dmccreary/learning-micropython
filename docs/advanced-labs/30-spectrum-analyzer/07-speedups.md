@@ -9,7 +9,7 @@
 
 I'll analyze the code to suggest ways to reduce the lag between sound input and display updates in your frequency analyzer. Here are several optimization options:
 
-## 1. Reduce Sample Size and Processing
+### 1. Reduce Sample Size and Processing
 
 The current FFT_SIZE of 512 provides good resolution but requires significant processing time. Consider:
 
@@ -20,7 +20,7 @@ FFT_SIZE = 256  # or even 128
 
 This would cut processing time significantly at the cost of some frequency resolution.
 
-## 2. Optimize Memory Usage
+### 2. Optimize Memory Usage
 
 The code creates new arrays frequently, which triggers garbage collection and slows things down:
 
@@ -28,7 +28,7 @@ The code creates new arrays frequently, which triggers garbage collection and sl
 - Eliminate redundant array allocations in `capture_audio_samples()` and `calculate_magnitudes()`
 - Use a single shared array for the magnitudes
 
-## 3. Simplify the Display Logic
+### 3. Simplify the Display Logic
 
 The display rendering is relatively complex:
 
@@ -36,7 +36,7 @@ The display rendering is relatively complex:
 - Simplify scaling calculations
 - Only update parts of the display that change, not the entire screen
 
-## 4. Hardware Acceleration Options
+### 4. Hardware Acceleration Options
 
 For more significant improvements:
 
@@ -90,7 +90,7 @@ def process_fft(samples):
     return armfft.compute(samples)
 ```
 
-## 5. Parallel Processing with Dual Cores
+### 5. Parallel Processing with Dual Cores
 
 The Pico has dual cores - you could dedicate one core to FFT processing and the other to display:
 
@@ -110,11 +110,11 @@ while True:
     # Update display
 ```
 
-## 6. Efficient Algorithm Implementation
+### 6. Efficient Algorithm Implementation
 
 Replace the current iterative FFT with a more optimized version like the split-radix FFT or use a fixed-point implementation that avoids floating-point operations.
 
-## Implementation Priority
+### Implementation Priority
 
 I recommend trying these options in this order:
 
@@ -125,7 +125,9 @@ I recommend trying these options in this order:
 
 Would you like more details on implementing any of these specific approaches?
 
-## Limited Frequency Analysis
+### Limited Frequency Analysis
+
+## Changing the FFT Size
 
 !!! prompt
     For demos, you can see we are only looking at the frequencies below 
@@ -175,6 +177,8 @@ For demo purposes where responsiveness is more important than precision, I'd rec
 
 If you're primarily interested in showing distinct tones (like whistling or musical notes) rather than detailed frequency analysis, even FFT_SIZE = 128 should be sufficient and provide very responsive updates.
 
+## Lower the Sample Rate
+
 !!! prompt
     Would it help to change the sample rate from 16K down to 8K?
 
@@ -183,22 +187,25 @@ Yes, reducing the sample rate from 16 kHz to 8 kHz would definitely help reduce 
 Let's analyze why:
 
 1. **Lower computational load**:
-   - Half the samples to process means roughly half the processing time
-   - The I2S data collection will require half the bandwidth
-   - Less memory needed for buffers
+
+- Half the samples to process means roughly half the processing time
+- The I2S data collection will require half the bandwidth
+- Less memory needed for buffers
 
 2. **Still sufficient for your frequency range**:
-   - With 8 kHz sample rate, your Nyquist frequency becomes 4 kHz
-   - Since you're only interested in frequencies below 2.6 kHz, this is perfectly adequate
-   - You're not losing any useful frequency information for your application
+
+- With 8 kHz sample rate, your Nyquist frequency becomes 4 kHz
+- Since you're only interested in frequencies below 2.6 kHz, this is perfectly adequate
+- You're not losing any useful frequency information for your application
 
 3. **Better frequency resolution trade-off**:
-   - With 8 kHz sample rate and FFT_SIZE = 256:
-     - Frequency resolution would be 31.25 Hz (8000/256 * 0.5)
-     - This is the same resolution as your current setup with FFT_SIZE = 512 at 16 kHz
-   - With 8 kHz sample rate and FFT_SIZE = 128:
-     - Frequency resolution would be 62.5 Hz
-     - Still quite reasonable for visualizing frequency components in your range
+
+- With 8 kHz sample rate and FFT_SIZE = 256:
+    - Frequency resolution would be 31.25 Hz (8000/256 * 0.5)
+    - This is the same resolution as your current setup with FFT_SIZE = 512 at 16 kHz
+- With 8 kHz sample rate and FFT_SIZE = 128:
+    - Frequency resolution would be 62.5 Hz
+    - Still quite reasonable for visualizing frequency components in your range
 
 By combining a lower sample rate (8 kHz) with a smaller FFT size (256 or 128), you could reduce the processing load by 75-87.5% compared to your current implementation, which should significantly reduce the lag between sound input and display updates.
 
@@ -215,6 +222,8 @@ FFT_SIZE = 256  # or 128 for even faster processing
 ```
 
 This would be one of the most straightforward optimizations with a substantial impact on responsiveness.
+
+## Using Assembly Version of FFT (ARM)
 
 !!! prompt
     I have found a person that claims to have written a single precision FFT written in ARM assembler that is callable from MicroPython.  The GitHub site implies that the Pico 2 could use this.  Is it possible this would work?
