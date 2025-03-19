@@ -90,3 +90,11 @@ This script continuously reads the analog signal from the microphone and plots a
 -   The display is updated with `display.show()` to visualize the waveform.
 
 This example provides a basic way to visualize audio signals. The resolution and quality of the visualization can be further enhanced or adjusted according to your requirements.
+
+## Generating a Sine Wave Tone
+
+You are run the following p5.js MicroSim to play a tone from 0 to 4K kHz:
+
+[MicroSim Tone Generator](https://editor.p5js.org/dmccreary/sketches/44a6QR2c6)
+
+As you move the slider, the image on the display should change.

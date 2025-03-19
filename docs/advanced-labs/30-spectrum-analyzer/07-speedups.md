@@ -274,3 +274,10 @@ def process_fft(real, imag):
 The speed improvement from using assembly-optimized code, combined with the other optimizations we discussed (reduced sample rate and smaller FFT size), could dramatically reduce the lag in your frequency analyzer.
 
 Given that Peter Hinch is a well-known contributor to the MicroPython ecosystem and his libraries are generally high quality, this is likely your best option for optimizing FFT performance on the Pico 2.
+
+!!! Challenges
+
+    - Try different window functions (like Hamming or Blackman windows instead of Hanning) for different spectral leakage characteristics
+    - Try Adjusting the scaling factor to get better visual representation of quiet sounds
+    - Try Creating different display modes (like a waterfall display or peak hold feature)
+
