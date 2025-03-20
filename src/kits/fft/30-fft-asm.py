@@ -6,7 +6,6 @@ import math
 import struct
 import time
 import array
-import micropython
 from lib.dftclass import DFT
 
 # Constants
@@ -28,21 +27,13 @@ i2s = I2S(0,
     ibuf=4096)
 
 # Initialize SPI for OLED
-spi_sck = Pin(2)    # SCK on pin 2
-spi_tx = Pin(3)     # MOSI on pin 3
-
-spi = SPI(0,
-    baudrate=100000,  # 100kHz
-    sck=spi_sck,
-    mosi=spi_tx)
-
-# OLED control pins
-RES = Pin(4)  # RES on pin 4
-DC = Pin(5)   # DC on pin 5
-CS = Pin(6)   # CS on pin 6
-
-# Initialize OLED display
-oled = SSD1306_SPI(DISPLAY_WIDTH, DISPLAY_HEIGHT, spi, DC, RES, CS)
+spi = SPI(1,
+    baudrate=1000000,
+    polarity=1,
+    phase=1,
+    sck=Pin(14),
+    mosi=Pin(13))
+oled = SSD1306_SPI(DISPLAY_WIDTH, DISPLAY_HEIGHT, spi, Pin(12), Pin(11), Pin(10))
 
 # Initialize DFT
 dft = DFT(FFT_SIZE)
