@@ -1,5 +1,7 @@
 # Spectrum Analyzer
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mszrdmg-LGs?si=CH0wDvMqMIrb2otL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ![](./oled-display-fft.jpg)
 
 * Upper left is peak frequency 1,250 Hz
@@ -16,6 +18,7 @@
 !!! prompt
     I would like to create an audio spectrum analyzer using a Raspberry Pi Pico 2 and a 128x64 OLED display using MicroPython. How would you suggest I go about this project. Break it down step-by-step.
 
+I started this project using a low-cost sound detection sensor but then I upgraded to the [INMP445](../../sensors/15-inmp441.md) on the I2S bus after seeing many problems with noise on the ADC.
 
 ## ChatGPT GPT-4 Response
 

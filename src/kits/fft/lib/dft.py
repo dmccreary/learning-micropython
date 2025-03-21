@@ -42,7 +42,7 @@ from uctypes import addressof
 # bit 0 if set specifies a Forward transform otherwise a Reverse transform
 
 @micropython.asm_thumb
-def fft(r0, r1):        # r0 adress of scratchpad, r1 = Control: see above
+def fft(r0, r1):        # r0 address of scratchpad, r1 = Control: see above
     b(ENTRY)            # Skip internal functions
 # Reverse an array in place
     label(ARRAY_REVERSE)
