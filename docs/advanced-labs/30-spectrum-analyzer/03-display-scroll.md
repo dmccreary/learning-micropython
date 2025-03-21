@@ -1,4 +1,4 @@
-# Display Scroll
+# Faster Display With Scroll
 
 ## Prompt
 
@@ -44,3 +44,8 @@ def plot_signal_with_gain():
 In this updated function, the display is scrolled left by one pixel at the beginning of each update cycle using `display.scroll(-1, 0)`. This creates room to draw the new data point at the far right edge (`WIDTH - 1`) of the display. The loop that clears the last column before drawing the new point is optional and can be adjusted or removed depending on the visual effect you're aiming for.
 
 Remember, while `scroll()` improves the visual fluidity by creating a continuous scrolling effect, the update rate can still be limited by the display's physical refresh rate and the speed at which your MicroPython script can run. Experiment with the `utime.sleep(0.1)` delay at the end of the main loop to find a balance between smoothness and speed that works for your specific application.
+
+## Problems
+
+On the SSD1306 driver, there was no speedup since the display.show() sent the entire frame buffer.
+This step was much slower then pixel updates in the frame buffer.

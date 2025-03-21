@@ -31,18 +31,18 @@ The optimizations I've implemented in the code above include:
 
 ### 3. Fast Magnitude Calculation
 
--   Added a fast approximation for the magnitude calculation
--   Uses |z| ≈ max(|Re(z)|, |Im(z)|) + 0.4 \* min(|Re(z)|, |Im(z)|) instead of the more expensive square root
+-  Added a fast approximation for the magnitude calculation
+-  Uses |z| ≈ max(|Re(z)|, |Im(z)|) + 0.4 \* min(|Re(z)|, |Im(z)|) instead of the more expensive square root
 
 ### 4. Memory Reuse
 
--   Reuses the same arrays for FFT calculation across iterations
--   Avoids memory fragmentation and garbage collection delays
+- Reuses the same arrays for FFT calculation across iterations
+-  Avoids memory fragmentation and garbage collection delays
 
 ### 5. Efficient Data Structures
 
--   Uses typed arrays (`array.array`) for all numerical data
--   Provides better performance than regular Python lists
+- Uses typed arrays (`array.array`) for all numerical data
+- Provides better performance than regular Python lists
 
 ### 6. Optimized Display Rendering
 

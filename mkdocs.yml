@@ -178,13 +178,16 @@ nav:
     
     - Spectrum Analyzer: 
       - Introduction: advanced-labs/30-spectrum-analyzer/index.md
-      - advanced-labs/30-spectrum-analyzer/01-test-incoming-sound.md
-      - advanced-labs/30-spectrum-analyzer/02-gain-pot.md
-      - advanced-labs/30-spectrum-analyzer/03-display-scroll.md
+      - Test Sound: advanced-labs/30-spectrum-analyzer/01-test-incoming-sound.md
+      # - advanced-labs/30-spectrum-analyzer/02-gain-pot.md
+      - Display Scroll: advanced-labs/30-spectrum-analyzer/03-display-scroll.md
       - Optimization: advanced-labs/30-spectrum-analyzer/04-optimizing-fft-speed.md
       - advanced-labs/30-spectrum-analyzer/05-frequency-shift.md
-      - advanced-labs/30-spectrum-analyzer/06-peak-frequency.md
+      - Peak Frequency: advanced-labs/30-spectrum-analyzer/06-peak-frequency.md
       - Further Speedups: advanced-labs/30-spectrum-analyzer/07-speedups.md
+      - Adding Timers: advanced-labs/30-spectrum-analyzer/08-adding-timers.md
+      - Assembler FFT: advanced-labs/30-spectrum-analyzer/09-assembler-function.md
+      - Future Work: advanced-labs/30-spectrum-analyzer/10-future-improvements.md
 
   - Project Kits:
     - Introduction: kits/01-intro.md
