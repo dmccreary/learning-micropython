@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/advanced-labs/30-spectrum-analyzer/03-display-scroll/">
       
       
-        <link rel="prev" href="../02-gain-pot/">
+        <link rel="prev" href="../01-test-incoming-sound/">
       
       
         <link rel="next" href="../04-optimizing-fft-speed/">
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#display-scroll" class="md-skip">
+        <a href="#faster-display-with-scroll" class="md-skip">
           Skip to content
         </a>
       
@@ -1520,6 +1520,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -1571,28 +1575,7 @@
         
   
   <span class="md-ellipsis">
-    Test Incoming Sound
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-gain-pot/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Adding A Gain Potentiometer.
+    Test Sound
   </span>
   
 
@@ -1675,6 +1658,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problems
+    </span>
+  </a>
   
 </li>
       
@@ -1762,6 +1754,69 @@
   
   <span class="md-ellipsis">
     Further Speedups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-adding-timers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding Timers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-assembler-function/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assembler FFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-future-improvements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Future Work
   </span>
   
 
@@ -2173,6 +2228,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problems
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2191,7 +2255,7 @@
   
 
 
-<h1 id="display-scroll">Display Scroll</h1>
+<h1 id="faster-display-with-scroll">Faster Display With Scroll</h1>
 <h2 id="prompt">Prompt</h2>
 <div class="admonition prompt">
 <p class="admonition-title">Prompt</p>
@@ -2257,6 +2321,9 @@
 </code></pre></div></td></tr></table></div>
 <p>In this updated function, the display is scrolled left by one pixel at the beginning of each update cycle using <code>display.scroll(-1, 0)</code>. This creates room to draw the new data point at the far right edge (<code>WIDTH - 1</code>) of the display. The loop that clears the last column before drawing the new point is optional and can be adjusted or removed depending on the visual effect you're aiming for.</p>
 <p>Remember, while <code>scroll()</code> improves the visual fluidity by creating a continuous scrolling effect, the update rate can still be limited by the display's physical refresh rate and the speed at which your MicroPython script can run. Experiment with the <code>utime.sleep(0.1)</code> delay at the end of the main loop to find a balance between smoothness and speed that works for your specific application.</p>
+<h2 id="problems">Problems</h2>
+<p>On the SSD1306 driver, there was no speedup since the display.show() sent the entire frame buffer.
+This step was much slower then pixel updates in the frame buffer.</p>
 
 
 
@@ -2294,7 +2361,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../02-gain-pot/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Adding A Gain Potentiometer.">
+          <a href="../01-test-incoming-sound/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Test Sound">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
@@ -2304,7 +2371,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Adding A Gain Potentiometer.
+                Test Sound
               </div>
             </div>
           </a>
