@@ -117,6 +117,7 @@ nav:
     - sound/11-sound-parts.md
     - sound/20-i2s-bus.md
     - Digital to Analog Converter: sound/dac/index.md
+    - Tone Generator: sound/12-tone-gen-pot.md
     - sound/midi/index.md
 
   - Wireless:

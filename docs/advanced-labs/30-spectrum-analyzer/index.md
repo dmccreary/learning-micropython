@@ -18,7 +18,9 @@
 !!! prompt
     I would like to create an audio spectrum analyzer using a Raspberry Pi Pico 2 and a 128x64 OLED display using MicroPython. How would you suggest I go about this project. Break it down step-by-step.
 
-I started this project using a low-cost sound detection sensor but then I upgraded to the [INMP445](../../sensors/15-inmp441.md) on the I2S bus after seeing many problems with noise on the ADC.
+I started this project using a low-cost sound sensor below, but then I upgraded to the [INMP445](../../sensors/15-inmp441.md) on the I2S bus after seeing many problems with noise on the ADC.
+
+![sound detection](../../img/sound-sensor.jpg) 
 
 ## ChatGPT GPT-4 Response
 

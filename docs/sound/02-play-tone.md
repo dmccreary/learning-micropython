@@ -12,7 +12,7 @@ Now, instead of putting ```utime.sleep(.5)``` we can just reference sleep direct
 sleep(.5)
 ```
 
-This will pause for 1/2 a second.  This is how long we wait for a tone to stay on or go off.  The nice thing about this menthod is that our code is a little smaller.  However, you can't run other functions in the utime library.  So if you want to add them later you will need to import them also, just like we did for the sleep function.
+This will pause for 1/2 a second.  This is how long we wait for a tone to stay on or go off.  The nice thing about this method is that our code is a little smaller.  However, you can't run other functions in the utime library.  So if you want to add them later you will need to import them also, just like we did for the sleep function.
 
 ## Lab 1: Play A Single Tone
 
@@ -25,8 +25,8 @@ SPEAKER_PIN = 16
 
 # create a Pulse Width Modulation Object on this pin
 speaker = PWM(Pin(SPEAKER_PIN))
-# set the duty cycle to be 50%
-speaker.duty_u16(1000)
+# set the duty cycle to be 50% - 32768 is 1/2 of 65535
+speaker.duty_u16(32768)
 speaker.freq(1000) # 50% on and off
 sleep(1) # wait a second
 speaker.duty_u16(0)
