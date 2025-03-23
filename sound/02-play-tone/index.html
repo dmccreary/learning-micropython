@@ -743,6 +743,8 @@
         
       
         
+      
+        
           
         
       
@@ -1108,6 +1110,27 @@
   
   <span class="md-ellipsis">
     Digital to Analog Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-tone-gen-pot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tone Generator
   </span>
   
 
@@ -1815,7 +1838,7 @@
 <p>Now, instead of putting <code>utime.sleep(.5)</code> we can just reference sleep directly like this:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">sleep</span><span class="p">(</span><span class="mf">.5</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>This will pause for 1/2 a second.  This is how long we wait for a tone to stay on or go off.  The nice thing about this menthod is that our code is a little smaller.  However, you can't run other functions in the utime library.  So if you want to add them later you will need to import them also, just like we did for the sleep function.</p>
+<p>This will pause for 1/2 a second.  This is how long we wait for a tone to stay on or go off.  The nice thing about this method is that our code is a little smaller.  However, you can't run other functions in the utime library.  So if you want to add them later you will need to import them also, just like we did for the sleep function.</p>
 <h2 id="lab-1-play-a-single-tone">Lab 1: Play A Single Tone</h2>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1839,8 +1862,8 @@
 
 <span class="c1"># create a Pulse Width Modulation Object on this pin</span>
 <span class="n">speaker</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">SPEAKER_PIN</span><span class="p">))</span>
-<span class="c1"># set the duty cycle to be 50%</span>
-<span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="c1"># set the duty cycle to be 50% - 32768 is 1/2 of 65535</span>
+<span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32768</span><span class="p">)</span>
 <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span> <span class="c1"># 50% on and off</span>
 <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># wait a second</span>
 <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>

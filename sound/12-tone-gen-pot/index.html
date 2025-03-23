@@ -12,13 +12,13 @@
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/debugging/29-debugging-spi/">
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/sound/12-tone-gen-pot/">
       
       
-        <link rel="prev" href="../29a-debugging-i2c/">
+        <link rel="prev" href="../dac/">
       
       
-        <link rel="next" href="../30-stack-view/">
+        <link rel="next" href="../midi/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Debugging SPI - Learning MicroPython</title>
+        <title>Tone Generator - Learning MicroPython</title>
       
     
     
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#debugging-spi" class="md-skip">
+        <a href="#tone-generator-with-a-potentiometer" class="md-skip">
           Skip to content
         </a>
       
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Debugging SPI
+              Tone Generator
             
           </span>
         </div>
@@ -703,6 +703,8 @@
       
   
   
+    
+  
   
   
     
@@ -750,29 +752,426 @@
     
     
       
-        
-        
-      
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
-  
-  
-    <a href="../../sound/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     Sound and Music
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Sound and Music
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-play-tone/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Playing a Tone
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-play-three-tones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Playing Three Tones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-play-scale/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Playing a Scale
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-play-mario/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Play Mario
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-eight-key-piano/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Eight Key Piano
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-play-audio-file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Playing Audio File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-converting-mp3-to-wav/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Converting Audio Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07a-test-audio-ports/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Audio Ports
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-i2s-standard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I2S Standard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-midi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MIDI with MicroPython
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-sound-parts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sound Parts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-i2s-bus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The I2S Bus
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dac/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Digital to Analog Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Tone Generator
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Tone Generator
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tone-generator-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tone Generator Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Explanation
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../midi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Index
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -900,8 +1299,6 @@
       
   
   
-    
-  
   
   
     
@@ -927,303 +1324,29 @@
     
     
       
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
+  
+  
+    <a href="../../debugging/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     Debugging
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_12" id="__nav_12_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_12">
-            <span class="md-nav__icon md-icon"></span>
-            Debugging
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../27-debugging-with-thonny/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Debugging With Thonny
-  </span>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
   
 
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../28-debugging-python/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Debugging Python
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../29a-debugging-i2c/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Debugging I2C
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Debugging SPI
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Debugging SPI
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#the-ssd1306-spi-oled-timing-diagram" class="md-nav__link">
-    <span class="md-ellipsis">
-      The SSD1306 SPI OLED Timing Diagram
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#oled-spi-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      OLED SPI settings
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#setting-up-a-logic-analyzer" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setting up a Logic Analyzer
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Setting up a Logic Analyzer">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#setup-spi-analyser" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setup SPI Analyser
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-spi-channel-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configure SPI Channel Settings
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#check-a-working-device" class="md-nav__link">
-    <span class="md-ellipsis">
-      Check a Working Device
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#viewing-data-clock-and-res" class="md-nav__link">
-    <span class="md-ellipsis">
-      Viewing Data Clock and RES
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Viewing Data Clock and RES">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#clock-period" class="md-nav__link">
-    <span class="md-ellipsis">
-      Clock Period
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../30-stack-view/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Viewing the Stack
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../31-heap/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Viewing the Heap
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -1682,93 +1805,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-ssd1306-spi-oled-timing-diagram" class="md-nav__link">
+  <a href="#setup" class="md-nav__link">
     <span class="md-ellipsis">
-      The SSD1306 SPI OLED Timing Diagram
+      Setup
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#oled-spi-settings" class="md-nav__link">
+  <a href="#tone-generator-code" class="md-nav__link">
     <span class="md-ellipsis">
-      OLED SPI settings
+      Tone Generator Code
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#setting-up-a-logic-analyzer" class="md-nav__link">
+  <a href="#code-explanation" class="md-nav__link">
     <span class="md-ellipsis">
-      Setting up a Logic Analyzer
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Setting up a Logic Analyzer">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#setup-spi-analyser" class="md-nav__link">
-    <span class="md-ellipsis">
-      Setup SPI Analyser
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-spi-channel-settings" class="md-nav__link">
-    <span class="md-ellipsis">
-      Configure SPI Channel Settings
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#check-a-working-device" class="md-nav__link">
-    <span class="md-ellipsis">
-      Check a Working Device
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#viewing-data-clock-and-res" class="md-nav__link">
-    <span class="md-ellipsis">
-      Viewing Data Clock and RES
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Viewing Data Clock and RES">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#clock-period" class="md-nav__link">
-    <span class="md-ellipsis">
-      Clock Period
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    <span class="md-ellipsis">
-      References
+      Code Explanation
     </span>
   </a>
   
@@ -1792,49 +1849,113 @@
   
 
 
-<h1 id="debugging-spi">Debugging SPI</h1>
-<p>In this lab we use a logic analyzer to debug the <a href="https://en.wikipedia.org/wiki/Serial_Peripheral_Interface">SPI</a> protocol being used to drive a sample OLED device. We will be using the the <a href="https://www.saleae.com/">8 port Saleae Logic Analyser</a>.  The retail cost is about $399.00 although there are lower cost logic analyzer available.</p>
-<h2 id="the-ssd1306-spi-oled-timing-diagram">The SSD1306 SPI OLED Timing Diagram</h2>
-<p>The OLED display is a read-only interface.  It does not send any data back to the microcontroller, so there is no MOSI connection.  The data is transmitted on the SDK line when the SCL line goes high.  The CS line must be low for the OLED to be active.</p>
-<p>For details, see section 8.1.3 MCU Serial Interface on page 21 of the <a href="https://cdn-shop.adafruit.com/product-files/2719/2719+DATA.pdf">SSD1305 132 x 64 Dot Matrix OLED/PLED Segment/Common Driver with Controller</a>.</p>
-<p><img alt="SSD1306 Timing Diagram" src="../../img/ssd1306-spi-timing-diagram.png" /></p>
-<h2 id="oled-spi-settings">OLED SPI settings</h2>
-<p>Our OLED device has seven wires.  In addition to power and ground there a five data connections we will be observing on our logic analyzer.</p>
-<p><img alt="SPI OLED Connections" src="../../img/oled-back-connections.png" /></p>
+<h1 id="tone-generator-with-a-potentiometer">Tone Generator with a Potentiometer</h1>
+<h2 id="setup">Setup</h2>
+<ul>
+<li>connect the tap of the potentiometer to ADC0 pin 26</li>
+<li>connect the ends of the potentiometer to GND and 3.3VREF</li>
+<li>make sure to use the GND pin that is isolated</li>
+<li>connect the speaker between GND and pin 15 in the lower left corner</li>
+</ul>
+<p>Then load and run the code</p>
+<h2 id="tone-generator-code">Tone Generator Code</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># Configure the potentiometer on ADC pin</span>
+<span class="c1"># Choose a suitable ADC pin - let&#39;s use pin 26</span>
+<span class="n">pot</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">ADC</span><span class="p">(</span><span class="mi">26</span><span class="p">)</span>
+
+<span class="c1"># Configure the PWM output for the speaker</span>
+<span class="c1"># Choose a suitable pin - let&#39;s use pin 15</span>
+<span class="n">speaker_pin</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">speaker_pwm</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">PWM</span><span class="p">(</span><span class="n">speaker_pin</span><span class="p">)</span>
+
+<span class="c1"># Enable the PWM</span>
+<span class="n">speaker_pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32768</span><span class="p">)</span>  <span class="c1"># 50% duty cycle (32768 is half of 65535)</span>
+
+<span class="c1"># Frequency range (in Hz)</span>
+<span class="n">MIN_FREQ</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">MAX_FREQ</span> <span class="o">=</span> <span class="mi">2000</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Read the potentiometer value (0-65535)</span>
+        <span class="n">pot_value</span> <span class="o">=</span> <span class="n">pot</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
+
+        <span class="c1"># Map potentiometer value to frequency range</span>
+        <span class="n">frequency</span> <span class="o">=</span> <span class="n">MIN_FREQ</span> <span class="o">+</span> <span class="p">(</span><span class="n">pot_value</span> <span class="o">/</span> <span class="mi">65535</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">MAX_FREQ</span> <span class="o">-</span> <span class="n">MIN_FREQ</span><span class="p">)</span>
+
+        <span class="c1"># Set the PWM frequency</span>
+        <span class="n">speaker_pwm</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">frequency</span><span class="p">))</span>
+
+        <span class="c1"># Small delay to prevent excessive updates</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="c1"># Clean up on exit</span>
+    <span class="n">speaker_pwm</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Program terminated&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Note that the try/except is key so that whn you stop the program the PWM signal does not continue to generate sound.</p>
+<h2 id="code-explanation">Code Explanation</h2>
 <ol>
-<li>CS - Chip Select pin 4</li>
-<li>DC - Data/Command - pin 5</li>
-<li>RES - Reset - pin 6</li>
-<li>SDA - Data - SPIO TX GP7 pin 10 (Data from the )</li>
-<li>SCL - Clock - Connect to SPIO SCK GP6 pin 9</li>
-<li>VCC - Connect to the 3.3V Out pin 36</li>
-<li>GND - pin 38 or 3 any other GND pin</li>
+<li>We set up an ADC pin to read the potentiometer value.</li>
+<li>We configure a PWM output pin connected to your speaker.</li>
+<li>We set a 50% duty cycle for the PWM, which creates a square wave.</li>
+<li>In the main loop, we:<ul>
+<li>Read the current value from the potentiometer</li>
+<li>Map this value to a frequency range (100Hz to 2000Hz, but you can adjust this)</li>
+<li>Update the PWM frequency</li>
+<li>Add a small delay to prevent excessive updates</li>
+</ul>
+</li>
 </ol>
-<h2 id="setting-up-a-logic-analyzer">Setting up a Logic Analyzer</h2>
-<h3 id="setup-spi-analyser">Setup SPI Analyser</h3>
-<p><img alt="SPI Logic Analyser Analysis Option" src="../../img/spi-logic-analyser.png" /></p>
-<h3 id="configure-spi-channel-settings">Configure SPI Channel Settings</h3>
-<p><img alt="SPI Logic Analyser Settings" src="../../img/spi-logic-analyser-settings.png" /><br/>
-Saleae Logic Analyser SPI Logic Analyser Settings</p>
-<h2 id="check-a-working-device">Check a Working Device</h2>
-<p>The first thing we want to see is what the signals to a working SPI OLED should be.  There are plenty of working drivers for the Arduino, so I hooked one up to the Logic analizer to see what they were.</p>
-<h2 id="viewing-data-clock-and-res">Viewing Data Clock and RES</h2>
-<p><img alt="SPI Clock" src="../../img/spi-logic-analyser-data-clock-reset.png" /></p>
-<p><img alt="SPI Clock FUll" src="../../img/spi-logic-analyser-full.png" /><br/>
-All five signals</p>
-<p><img alt="SPI Logic Analyser" src="../../img/spi-logic-analyser-dc-cs.png" /><br/>
-DC and CS signals have a larger period.</p>
-<p><img alt="" src="../../img/spi-logic-analyser-dc-cs-2.png" /></p>
+<p>When you turn the potentiometer, it changes the voltage at the ADC pin, which we read and convert to a frequency value for the PWM output.</p>
+<div class="admonition challenges">
+<p class="admonition-title">Challenges</p>
 <ol>
-<li>DC on was 3.668 milliseconds</li>
+<li>Try to change the maximum frequency to be 4000Hz.</li>
+<li>What is the highest frequency that you can hear?</li>
+<li>Hook a display up to provide a visual model of a sine wave that changes the frequency</li>
 </ol>
-<h3 id="clock-period">Clock Period</h3>
-<p>Our Clock (SCL) has 8 positive pulses with a width of .4167 microseconds.  This means that the positve/negative combined width has a period of 2 * .4167 = .8333 microseconds.  This can be converted into a frequency of 1.2 megahertz.</p>
-<p><img alt="" src="../../img/spi-logic-analyser-clock-period.png" /></p>
-<p><img alt="" src="../../img/spi-logic-analyser-clock-gap.png" /></p>
-<h2 id="references">References</h2>
-<p><a href="https://www.youtube.com/watch?v=WMV04hzPKuM">Video on how to use the Saleae Logic Analyzer</a></p>
-<p>https://www.youtube.com/watch?v=Ak9R4yxQPhs</p>
+</div>
 
 
 
@@ -1872,7 +1993,7 @@ DC and CS signals have a larger period.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../29a-debugging-i2c/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Debugging I2C">
+          <a href="../dac/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Digital to Analog Converter">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
@@ -1882,20 +2003,20 @@ DC and CS signals have a larger period.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Debugging I2C
+                Digital to Analog Converter
               </div>
             </div>
           </a>
         
         
           
-          <a href="../30-stack-view/" class="md-footer__link md-footer__link--next" aria-label="Next: Viewing the Stack">
+          <a href="../midi/" class="md-footer__link md-footer__link--next" aria-label="Next: Index">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Viewing the Stack
+                Index
               </div>
             </div>
             <div class="md-footer__button md-icon">
