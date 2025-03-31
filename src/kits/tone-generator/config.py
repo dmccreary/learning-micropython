@@ -9,3 +9,5 @@ BUILT_IN_LED_PIN = 25
 #i2c=machine.I2C(config.I2C_BUS, sda=sda, scl=scl, freq=config.I2C_BUS_FREQ)
 
 SPEAKER_PIN = 16
+
+POTENTIOMETER_PIN = 26
