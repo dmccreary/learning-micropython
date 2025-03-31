@@ -60,6 +60,7 @@
         "tinyml",
         "TTGO",
         "Tukey",
+        "uctypes",
         "urandom",
         "urequests",
         "usbmodem",
