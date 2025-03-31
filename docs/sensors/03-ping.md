@@ -50,3 +50,7 @@ If you have a small OLED screen, you can also display the results
 of the distance measurement directly on an OLED screen.
 
 See the OLED example here: [OLED Ping Example](../displays/graph/11-oled-ping.md)
+
+## References
+
+* [Roberto Sánchez Ping Library](https://github.com/rsc1975/micropython-hcsr04/blob/master/hcsr04.py)
