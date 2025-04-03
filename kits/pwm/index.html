@@ -18,7 +18,7 @@
         <link rel="prev" href="../01-intro/">
       
       
-        <link rel="next" href="lab-01-pot/">
+        <link rel="next" href="instructors-guide/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -1077,6 +1077,14 @@
         
       
         
+          
+        
+      
+        
+      
+        
+      
+        
       
         
       
@@ -1104,7 +1112,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../rfid-rc522/" class="md-nav__link ">
+            <a href="../spectrum-analyzer/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1172,6 +1180,8 @@
       
         
       
+        
+      
     
     
     
@@ -1211,6 +1221,28 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Raspberry Pi Pico OLED Display and PWM Lab Manual
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -1338,6 +1370,52 @@
     </li>
   
 
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maker-nano-rp2040/01-intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maker Pi Nano
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../neopixel/04-rotary-neopixel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NeoPixel Rotary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
               
             
               
@@ -1693,6 +1771,26 @@
               
             
               
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rfid-rc522/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RFID RC522
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
           </ul>
         </nav>
@@ -2008,6 +2106,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#instructors-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Instructors Guide
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Plan
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2026,7 +2159,206 @@
 
 
 <h1 id="pulse-width-modulation-stem-kit">Pulse Width Modulation STEM Kit</h1>
-<p>Code: </p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nNzxCF-I2EI?si=2i_snyAlxTA3Y1u-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<h2 id="instructors-guide">Instructors Guide</h2>
+<p><a href="instructors-guide/">Instructors Guide</a></p>
+<h2 id="code">Code</h2>
+<p><a href="https://github.com/dmccreary/learning-micropython/tree/main/src/kits/pwm-display">Source Code Folder on GitHub</a></p>
+<h2 id="lesson-plan">Lesson Plan</h2>
+<h1 id="pulse-width-modulation-pwm-stem-kit-9th-grade-lesson-plan">Pulse Width Modulation (PWM) STEM Kit: 9th Grade Lesson Plan</h1>
+<h2 id="lesson-overview">Lesson Overview</h2>
+<ul>
+<li><strong>Title</strong>: Exploring Pulse Width Modulation</li>
+<li><strong>Grade Level</strong>: 9th Grade</li>
+<li><strong>Duration</strong>: 90 minutes</li>
+<li><strong>Subject Areas</strong>: Electronics, Computer Science, Physics</li>
+</ul>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this lesson, students will be able to:</p>
+<ol>
+<li>Explain the concept of Pulse Width Modulation (PWM)</li>
+<li>Assemble a basic circuit on a breadboard</li>
+<li>Program a Raspberry Pi Pico microcontroller</li>
+<li>Understand the relationship between duty cycle and LED brightness</li>
+<li>Analyze how PWM is used in everyday technology</li>
+</ol>
+<h2 id="materials-needed">Materials Needed</h2>
+<ul>
+<li>PWM STEM Kit (per student or group):</li>
+<li>Raspberry Pi Pico ($4.00)</li>
+<li>Breadboard ($1.75)</li>
+<li>Potentiometer (20K ohm) ($0.50)</li>
+<li>LED ($0.05)</li>
+<li>128x64 OLED Display ($13.00)</li>
+<li>Jumper wires</li>
+<li>USB cable for Raspberry Pi Pico</li>
+<li>Computer with Thonny Python IDE installed</li>
+<li>Student worksheets</li>
+<li>Multimeter (optional)</li>
+</ul>
+<h2 id="prior-knowledge-required">Prior Knowledge Required</h2>
+<ul>
+<li>Basic understanding of circuits</li>
+<li>Introduction to programming concepts</li>
+<li>Familiarity with variables and functions</li>
+</ul>
+<h2 id="preparation">Preparation</h2>
+<ol>
+<li>Install Thonny Python IDE on classroom computers</li>
+<li>Test all components before class</li>
+<li>Prepare the Python code template for students</li>
+<li>Print student worksheets</li>
+</ol>
+<h2 id="introduction-15-minutes">Introduction (15 minutes)</h2>
+<ol>
+<li>Begin with a brief discussion: "What happens when you dim the lights in your home? How do you think electronic devices control power?"</li>
+<li>Introduce the concept of Pulse Width Modulation:</li>
+<li>Define PWM as a technique for controlling power delivery</li>
+<li>Explain duty cycle as the ratio of "on time" to total time</li>
+<li>Show examples of PWM in everyday devices (LED lights, motor speed control, audio synthesis)</li>
+<li>Demonstrate a completed PWM circuit to the class</li>
+</ol>
+<h2 id="circuit-assembly-20-minutes">Circuit Assembly (20 minutes)</h2>
+<ol>
+<li>Distribute the PWM STEM kits to students</li>
+<li>Guide students through the following assembly steps:</li>
+<li>Place the Raspberry Pi Pico on the breadboard</li>
+<li>Connect the potentiometer to an analog input pin</li>
+<li>Connect the LED to a PWM-capable pin (with appropriate resistor)</li>
+<li>Wire the OLED display using I2C connection</li>
+<li>Check each group's circuit before proceeding</li>
+</ol>
+<h2 id="programming-the-microcontroller-25-minutes">Programming the Microcontroller (25 minutes)</h2>
+<ol>
+<li>Provide students with the Python code template</li>
+<li>Explain key sections of the code:</li>
+<li>Setting up the PWM pin</li>
+<li>Reading the potentiometer value</li>
+<li>Converting analog reading to PWM duty cycle</li>
+<li>Updating the OLED display</li>
+<li>Have students complete sections of the code</li>
+<li>Assist with uploading the code to the Raspberry Pi Pico</li>
+</ol>
+<h2 id="experimentation-and-challenges-20-minutes">Experimentation and Challenges (20 minutes)</h2>
+<ol>
+<li>Have students run their completed circuits</li>
+<li>Direct students to complete the following challenges:</li>
+<li>Turn the knob to achieve exactly 25% duty cycle</li>
+<li>Find the point where pulse width equals spacing between pulses</li>
+<li>Create a pattern of gradually increasing then decreasing brightness</li>
+<li>Students should record observations in their worksheets</li>
+</ol>
+<h2 id="discussion-and-connection-to-real-world-applications-10-minutes">Discussion and Connection to Real-World Applications (10 minutes)</h2>
+<ol>
+<li>Discuss findings as a class</li>
+<li>Explore real-world applications of PWM:</li>
+<li>Motor speed control in drones and robots</li>
+<li>LED dimming in displays and lighting</li>
+<li>Audio synthesis in music production</li>
+<li>Power management in electronic devices</li>
+</ol>
+<h2 id="assessment-and-wrap-up-10-minutes">Assessment and Wrap-Up (10 minutes)</h2>
+<ol>
+<li>Quick quiz to check understanding of key concepts</li>
+<li>Have students explain how changing the duty cycle affects LED brightness</li>
+<li>Collect student worksheets</li>
+<li>Preview next lesson on advanced PWM applications</li>
+</ol>
+<h2 id="extensions-and-homework">Extensions and Homework</h2>
+<ol>
+<li>Research additional applications of PWM technology</li>
+<li>Modify the code to create a "breathing" LED effect</li>
+<li>Design a simple project that incorporates PWM control</li>
+</ol>
+<h2 id="appendix-sample-code">Appendix: Sample Code</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">I2C</span>
+<span class="kn">import</span> <span class="nn">ssd1306</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># Setup the PWM for the LED</span>
+<span class="n">led_pwm</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
+<span class="n">led_pwm</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>  <span class="c1"># Set PWM frequency to 1kHz</span>
+
+<span class="c1"># Setup the potentiometer</span>
+<span class="n">pot</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">26</span><span class="p">))</span>
+
+<span class="c1"># Setup the OLED display</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
+<span class="n">display</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_I2C</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">i2c</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># Read potentiometer value (0-65535)</span>
+    <span class="n">pot_value</span> <span class="o">=</span> <span class="n">pot</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
+
+    <span class="c1"># Convert to duty cycle (0-65535)</span>
+    <span class="n">duty</span> <span class="o">=</span> <span class="n">pot_value</span>
+
+    <span class="c1"># Set the PWM duty cycle</span>
+    <span class="n">led_pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty</span><span class="p">)</span>
+
+    <span class="c1"># Calculate duty cycle percentage (0-100%)</span>
+    <span class="n">duty_percent</span> <span class="o">=</span> <span class="n">duty</span> <span class="o">/</span> <span class="mi">65535</span> <span class="o">*</span> <span class="mi">100</span>
+
+    <span class="c1"># Update display</span>
+    <span class="n">display</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;PWM Control&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Duty: </span><span class="si">{:.1f}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">duty_percent</span><span class="p">),</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Draw the PWM signal representation</span>
+    <span class="n">pulse_width</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">duty_percent</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)</span>
+    <span class="n">display</span><span class="o">.</span><span class="n">rect</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">display</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="n">pulse_width</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">display</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="differentiation-strategies">Differentiation Strategies</h2>
+<ul>
+<li><strong>For advanced students</strong>: Challenge them to modify the code to implement multiple patterns or to control multiple LEDs with different effects</li>
+<li><strong>For struggling students</strong>: Provide additional guidance with circuit assembly and work with them in smaller groups on programming concepts</li>
+<li><strong>For visual learners</strong>: Include additional diagrams of circuit connections and PWM signals</li>
+<li><strong>For kinesthetic learners</strong>: Provide physical models or animations demonstrating duty cycle concepts</li>
+</ul>
 
 
 
@@ -2081,13 +2413,13 @@
         
         
           
-          <a href="lab-01-pot/" class="md-footer__link md-footer__link--next" aria-label="Next: Testing the Potentiometer">
+          <a href="instructors-guide/" class="md-footer__link md-footer__link--next" aria-label="Next: Raspberry Pi Pico OLED Display and PWM Lab Manual">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Testing the Potentiometer
+                Raspberry Pi Pico OLED Display and PWM Lab Manual
               </div>
             </div>
             <div class="md-footer__button md-icon">

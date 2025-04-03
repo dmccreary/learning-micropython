@@ -12,13 +12,13 @@
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/kits/neopixel/03-buttons/">
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/kits/pwm/instructors-guide/">
       
       
-        <link rel="prev" href="../02-simple-patterns/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../../microbit/">
+        <link rel="next" href="../lab-01-pot/">
       
       
       <link rel="icon" href="../../../img/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Buttons - Learning MicroPython</title>
+        <title>Raspberry Pi Pico OLED Display and PWM Lab Manual - Learning MicroPython</title>
       
     
     
@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#neopixel-button-lab" class="md-skip">
+        <a href="#raspberry-pi-pico-oled-display-and-pwm-lab-manual" class="md-skip">
           Skip to content
         </a>
       
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Buttons
+              Raspberry Pi Pico OLED Display and PWM Lab Manual
             
           </span>
         </div>
@@ -1163,6 +1163,8 @@
                 
   
   
+    
+  
   
   
     
@@ -1184,17 +1186,18 @@
     
     
       
-        
-        
-      
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
-  
-  
-    <a href="../../pwm/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     Pulse Width Modulation
@@ -1202,12 +1205,413 @@
   </span>
   
 
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_14_2" id="__nav_14_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_14_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_14_2">
+            <span class="md-nav__icon md-icon"></span>
+            Pulse Width Modulation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
       
-        <span class="md-nav__icon md-icon"></span>
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
-    </a>
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Raspberry Pi Pico OLED Display and PWM Lab Manual
+    
+  </span>
   
 
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Raspberry Pi Pico OLED Display and PWM Lab Manual
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pin-connections" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pin Connections
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pin Connections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oled-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      OLED Display
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab Exercises
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab Exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-blinking-the-onboard-led" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1: Blinking the Onboard LED
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-reading-analog-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2: Reading Analog Input
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-controlling-an-external-led" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3: Controlling an External LED
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-led-fading-with-pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4: LED Fading with PWM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5-basic-oled-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 5: Basic OLED Display
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-6-potentiometer-bar-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 6: Potentiometer Bar Graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-7-pwm-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 7: PWM Visualization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-8-led-dimmer-with-potentiometer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 8: LED Dimmer with Potentiometer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-9-complete-pwm-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 9: Complete PWM System
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#teaching-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Teaching Tips
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Teaching Tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#understanding-the-map-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the Map Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwm-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWM Concepts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oled-display-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      OLED Display Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understanding-the-draw-pulse-wave-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the Draw Pulse Wave Function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues and Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assessment-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment Ideas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extension-activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extension Activities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-01-pot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing the Potentiometer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-02-display/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing the Display
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-03-main/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PWM Main Program
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -1296,7 +1700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../04-rotary-neopixel/" class="md-nav__link">
+      <a href="../../neopixel/04-rotary-neopixel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1592,8 +1996,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1615,18 +2017,17 @@
     
     
       
+        
+        
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_14_12" checked>
-        
-          
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
+  
+  
+    <a href="../../neopixel/" class="md-nav__link">
+      
   
   <span class="md-ellipsis">
     NeoPixel
@@ -1634,209 +2035,12 @@
   </span>
   
 
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_14_12" id="__nav_14_12_label" tabindex="0">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_14_12_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_14_12">
-            <span class="md-nav__icon md-icon"></span>
-            NeoPixel
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01-getting-started/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Getting Started
-    
-  </span>
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
   
 
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-simple-patterns/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Simple Patterns
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Buttons
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Buttons
-    
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#review-of-button-basics" class="md-nav__link">
-    <span class="md-ellipsis">
-      Review of Button Basics
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#working-with-two-buttons" class="md-nav__link">
-    <span class="md-ellipsis">
-      Working with Two Buttons
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#changing-color-with-buttons" class="md-nav__link">
-    <span class="md-ellipsis">
-      Changing Color With Buttons
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#using-modes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Using Modes
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#changing-patterns-with-buttons" class="md-nav__link">
-    <span class="md-ellipsis">
-      Changing Patterns With Buttons
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#changing-color-and-pattern" class="md-nav__link">
-    <span class="md-ellipsis">
-      Changing Color and Pattern
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../projects/03-notary-neopixel.md" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Rotary Neopixel
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
       
     </li>
   
@@ -2208,54 +2412,258 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#review-of-button-basics" class="md-nav__link">
+  <a href="#introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      Review of Button Basics
+      Introduction
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#working-with-two-buttons" class="md-nav__link">
+  <a href="#hardware-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Working with Two Buttons
+      Hardware Requirements
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#changing-color-with-buttons" class="md-nav__link">
+  <a href="#software-requirements" class="md-nav__link">
     <span class="md-ellipsis">
-      Changing Color With Buttons
+      Software Requirements
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-modes" class="md-nav__link">
+  <a href="#pin-connections" class="md-nav__link">
     <span class="md-ellipsis">
-      Using Modes
+      Pin Connections
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pin Connections">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oled-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      OLED Display
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab Exercises
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab Exercises">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-blinking-the-onboard-led" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1: Blinking the Onboard LED
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-reading-analog-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2: Reading Analog Input
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-controlling-an-external-led" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3: Controlling an External LED
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-led-fading-with-pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4: LED Fading with PWM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5-basic-oled-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 5: Basic OLED Display
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-6-potentiometer-bar-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 6: Potentiometer Bar Graph
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-7-pwm-visualization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 7: PWM Visualization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-8-led-dimmer-with-potentiometer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 8: LED Dimmer with Potentiometer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-9-complete-pwm-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 9: Complete PWM System
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#teaching-tips" class="md-nav__link">
+    <span class="md-ellipsis">
+      Teaching Tips
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Teaching Tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#understanding-the-map-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the Map Function
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwm-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWM Concepts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oled-display-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      OLED Display Functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understanding-the-draw-pulse-wave-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the Draw Pulse Wave Function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues-and-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues and Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assessment-ideas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment Ideas
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#changing-patterns-with-buttons" class="md-nav__link">
+  <a href="#extension-activities" class="md-nav__link">
     <span class="md-ellipsis">
-      Changing Patterns With Buttons
+      Extension Activities
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#changing-color-and-pattern" class="md-nav__link">
+  <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
-      Changing Color and Pattern
+      Conclusion
     </span>
   </a>
   
@@ -2280,22 +2688,227 @@
   
 
 
-<h1 id="neopixel-button-lab">NeoPixel Button Lab</h1>
-<h2 id="review-of-button-basics">Review of Button Basics</h2>
-<p><a href="../../../basics/03-button/">Button Basics</a></p>
-<h2 id="working-with-two-buttons">Working with Two Buttons</h2>
-<h2 id="changing-color-with-buttons">Changing Color With Buttons</h2>
-<h2 id="using-modes">Using Modes</h2>
-<p>Our LED kit can run a single "main" loop forever.  But we often want to have the main loop run a different subprogram.  Each subprogram can be triggered by pressing a button.  The button will update a variable and the main loop will use this variable to redirect the main to the appropriate function.</p>
-<p>The <code>mode</code> variable is traditionally used to store the current subprogram being run.  You are not limited to a single mode.  You can also have modes within modes.</p>
-<p><img alt="Mode Cycle Diagram" src="../../../img/mode-cycle-diagram.png" /></p>
+<h1 id="raspberry-pi-pico-oled-display-and-pwm-lab-manual">Raspberry Pi Pico OLED Display and PWM Lab Manual</h1>
+<h2 id="introduction">Introduction</h2>
+<p>This lab manual guides instructors through a series of exercises using the Raspberry Pi Pico microcontroller, focusing on working with OLED displays and pulse-width modulation (PWM). These exercises are designed to teach fundamental concepts in embedded systems programming using MicroPython.</p>
+<h2 id="hardware-requirements">Hardware Requirements</h2>
+<ul>
+<li>Raspberry Pi Pico microcontroller</li>
+<li>128x64 OLED display (SSD1306)</li>
+<li>External LED</li>
+<li>Potentiometer</li>
+<li>Breadboard and jumper wires</li>
+<li>USB cable for programming the Pico</li>
+</ul>
+<h2 id="software-requirements">Software Requirements</h2>
+<ul>
+<li>MicroPython firmware installed on the Raspberry Pi Pico</li>
+<li>SSD1306 library for the OLED display</li>
+<li>Python IDE (Thonny recommended)</li>
+</ul>
+<h2 id="pin-connections">Pin Connections</h2>
+<p>Based on the code examples, here's the wiring configuration:</p>
+<h3 id="oled-display">OLED Display</h3>
+<ul>
+<li>Clock (SCK): GPIO 2</li>
+<li>Data (MOSI): GPIO 3</li>
+<li>Reset (RES): GPIO 4</li>
+<li>Data/Command (DC): GPIO 5</li>
+<li>Chip Select (CS): GPIO 6</li>
+</ul>
+<h3 id="external-components">External Components</h3>
+<ul>
+<li>External LED: GPIO 18 (for PWM examples)</li>
+<li>Potentiometer: ADC pin 26</li>
+</ul>
+<h2 id="lab-exercises">Lab Exercises</h2>
+<h3 id="exercise-1-blinking-the-onboard-led">Exercise 1: Blinking the Onboard LED</h3>
+<p><strong>File: 01-blink.py</strong></p>
+<p>This introductory exercise teaches students how to blink the Pico's onboard LED. This establishes a fundamental understanding of digital output pins.</p>
+<p><strong>Key Concepts:</strong>
+- Setting up a GPIO pin as output
+- Using toggle() function
+- Implementing timing with sleep()</p>
+<h3 id="exercise-2-reading-analog-input">Exercise 2: Reading Analog Input</h3>
+<p><strong>File: 01-pot-print.py</strong></p>
+<p>Students learn to read analog values from a potentiometer using the Pico's ADC.</p>
+<p><strong>Key Concepts:</strong>
+- Analog-to-Digital Conversion (ADC)
+- Reading analog input values
+- Serial output for debugging</p>
+<h3 id="exercise-3-controlling-an-external-led">Exercise 3: Controlling an External LED</h3>
+<p><strong>File: 02-external-blink.py</strong></p>
+<p>Building on Exercise 1, students connect and control an external LED.</p>
+<p><strong>Key Concepts:</strong>
+- External circuit connections
+- Digital output control</p>
+<h3 id="exercise-4-led-fading-with-pwm">Exercise 4: LED Fading with PWM</h3>
+<p><strong>File: 03-external-led-fader.py</strong></p>
+<p>Introduction to Pulse Width Modulation (PWM) to control LED brightness.</p>
+<p><strong>Key Concepts:</strong>
+- PWM basics
+- Duty cycle control
+- Creating fade effects</p>
+<h3 id="exercise-5-basic-oled-display">Exercise 5: Basic OLED Display</h3>
+<p><strong>File: display-test-47.py</strong></p>
+<p>Students learn to use the OLED display to show text.</p>
+<p><strong>Key Concepts:</strong>
+- SPI communication
+- Display initialization
+- Text rendering on OLED
+- Display refresh cycle</p>
+<h3 id="exercise-6-potentiometer-bar-graph">Exercise 6: Potentiometer Bar Graph</h3>
+<p><strong>File: 03-display-pot-bar.py</strong></p>
+<p>This exercise combines analog input with graphical output, displaying the potentiometer value as a horizontal bar.</p>
+<p><strong>Key Concepts:</strong>
+- Value mapping between ranges
+- Drawing shapes on OLED
+- Real-time visualization</p>
+<h3 id="exercise-7-pwm-visualization">Exercise 7: PWM Visualization</h3>
+<p><strong>File: display-pwm.py</strong></p>
+<p>Students create a visual representation of a PWM signal on the OLED display.</p>
+<p><strong>Key Concepts:</strong>
+- Square wave representation
+- Advanced drawing functions
+- Duty cycle visualization</p>
+<h3 id="exercise-8-led-dimmer-with-potentiometer">Exercise 8: LED Dimmer with Potentiometer</h3>
+<p><strong>File: 05-pot-led-dimmer.py</strong></p>
+<p>Control the brightness of an LED using a potentiometer.</p>
+<p><strong>Key Concepts:</strong>
+- Using potentiometer as a control input
+- Applying PWM for brightness control
+- Real-time adjustment</p>
+<h3 id="exercise-9-complete-pwm-system">Exercise 9: Complete PWM System</h3>
+<p><strong>File: main.py or 10-display-pwm-fade-led.py</strong></p>
+<p>The culminating exercise combines all previous concepts into a complete system that:
+- Reads potentiometer input
+- Controls LED brightness with PWM
+- Visualizes the duty cycle on the OLED display</p>
+<p><strong>Key Concepts:</strong>
+- System integration
+- Visual feedback
+- Hardware/software interaction</p>
+<h2 id="teaching-tips">Teaching Tips</h2>
+<h3 id="understanding-the-map-function">Understanding the Map Function</h3>
+<p>All projects using the potentiometer implement a <code>map()</code> function to convert values from one range to another. Make sure students understand this concept:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">istart</span><span class="p">,</span> <span class="n">istop</span><span class="p">,</span> <span class="n">ostart</span><span class="p">,</span> <span class="n">ostop</span><span class="p">):</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">istop</span> <span class="o">-</span> <span class="n">istart</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+      <span class="k">return</span> <span class="n">ostop</span>
+  <span class="k">else</span><span class="p">:</span>
+      <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">ostart</span> <span class="o">+</span> <span class="p">(</span><span class="n">ostop</span> <span class="o">-</span> <span class="n">ostart</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="n">value</span> <span class="o">-</span> <span class="n">istart</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">istop</span> <span class="o">-</span> <span class="n">istart</span><span class="p">)))</span>
+</code></pre></div></td></tr></table></div>
+<p>This function takes a value from one range (<code>istart</code> to <code>istop</code>) and maps it to a corresponding value in another range (<code>ostart</code> to <code>ostop</code>).</p>
+<h3 id="pwm-concepts">PWM Concepts</h3>
+<p>Ensure students understand that:
+- PWM frequency (<code>pwm.freq()</code>) determines how fast the signal cycles
+- Duty cycle (<code>pwm.duty_u16()</code>) controls the percentage of time the signal is high
+- The perceived LED brightness is proportional to the duty cycle</p>
+<h3 id="oled-display-functions">OLED Display Functions</h3>
+<p>Key display functions include:
+- <code>oled.fill(0)</code> - Clear the display buffer
+- <code>oled.text('string', x, y)</code> - Draw text at position (x,y)
+- <code>oled.fill_rect(x, y, width, height, color)</code> - Draw a filled rectangle
+- <code>oled.hline(x, y, width, color)</code> - Draw a horizontal line
+- <code>oled.vline(x, y, height, color)</code> - Draw a vertical line
+- <code>oled.show()</code> - Update the physical display with the buffer contents</p>
+<h3 id="understanding-the-draw-pulse-wave-function">Understanding the Draw Pulse Wave Function</h3>
+<p>The <code>draw_pulse_wave()</code> function in several examples creates a visual representation of a PWM signal:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">draw_pulse_wave</span><span class="p">(</span><span class="n">dutyCycle</span><span class="p">,</span> <span class="n">yOffset</span><span class="p">):</span>
+    <span class="n">pulses</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">square_wave_height</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">sq_wave_period</span> <span class="o">=</span> <span class="n">WIDTH</span> <span class="o">//</span> <span class="n">pulses</span>
+    <span class="n">high_length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">dutyCycle</span> <span class="o">*</span> <span class="n">sq_wave_period</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">pulses</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># top bar</span>
+        <span class="n">oled</span><span class="o">.</span><span class="n">hline</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">sq_wave_period</span><span class="p">,</span> <span class="n">yOffset</span><span class="o">-</span><span class="n">square_wave_height</span><span class="p">,</span> <span class="n">high_length</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># down line</span>
+        <span class="n">oled</span><span class="o">.</span><span class="n">vline</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">sq_wave_period</span> <span class="o">+</span> <span class="n">high_length</span><span class="p">,</span> <span class="n">yOffset</span><span class="o">-</span><span class="n">square_wave_height</span><span class="p">,</span> <span class="n">square_wave_height</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># up line</span>
+        <span class="n">oled</span><span class="o">.</span><span class="n">vline</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">sq_wave_period</span> <span class="o">+</span> <span class="n">yOffset</span><span class="o">-</span><span class="n">square_wave_height</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">yOffset</span><span class="o">-</span><span class="n">square_wave_height</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">square_wave_height</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># bottem bar </span>
+        <span class="n">oled</span><span class="o">.</span><span class="n">hline</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">sq_wave_period</span> <span class="o">-</span> <span class="p">(</span><span class="n">sq_wave_period</span> <span class="o">-</span> <span class="n">high_length</span><span class="p">),</span> <span class="n">yOffset</span><span class="p">,</span> <span class="n">sq_wave_period</span><span class="o">-</span><span class="n">high_length</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>This function:
+1. Calculates how many pulses to draw
+2. Determines the period of each square wave
+3. Calculates high time based on duty cycle
+4. Draws the square wave components</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues-and-solutions">Common Issues and Solutions</h3>
 <ol>
-<li>Using a buttons to advance a mode</li>
-<li>Using a two buttons to move to the next and previous mode</li>
-<li>Using two modes - one mode or each button</li>
+<li><strong>Display not showing anything</strong></li>
+<li>Check SPI connections</li>
+<li>Verify the correct pins are used</li>
+<li>
+<p>Ensure the display is powered properly</p>
+</li>
+<li>
+<p><strong>LED not responding to PWM</strong></p>
+</li>
+<li>Verify the LED is connected correctly with the right polarity</li>
+<li>Check that the correct GPIO pin is being used</li>
+<li>
+<p>Make sure the PWM frequency is appropriate</p>
+</li>
+<li>
+<p><strong>Potentiometer readings inconsistent</strong></p>
+</li>
+<li>Check for loose connections</li>
+<li>Ensure the potentiometer is connected to the correct ADC pin</li>
+<li>Verify the ground connection is secure</li>
 </ol>
-<h2 id="changing-patterns-with-buttons">Changing Patterns With Buttons</h2>
-<h2 id="changing-color-and-pattern">Changing Color and Pattern</h2>
+<h2 id="assessment-ideas">Assessment Ideas</h2>
+<ol>
+<li>Have students modify the code to add additional features:</li>
+<li>Add a second LED controlled by another potentiometer</li>
+<li>Display numerical values for potentiometer readings</li>
+<li>
+<p>Create custom animations on the OLED display</p>
+</li>
+<li>
+<p>Challenge students to optimize the code:</p>
+</li>
+<li>Improve the efficiency of the drawing functions</li>
+<li>Reduce power consumption with sleep modes</li>
+<li>
+<p>Implement interrupt-driven input instead of polling</p>
+</li>
+<li>
+<p>Integration project:</p>
+</li>
+<li>Create a simple oscilloscope using the potentiometer as input</li>
+<li>Build a reaction time game with the LED and OLED</li>
+<li>Design a digital thermostat with temperature sensor input and PWM control</li>
+</ol>
+<h2 id="extension-activities">Extension Activities</h2>
+<ol>
+<li>Add a second potentiometer to control PWM frequency</li>
+<li>Implement button inputs to switch between different display modes</li>
+<li>Create a data logger that stores and displays potentiometer readings over time</li>
+<li>Add a servo motor controlled by the potentiometer</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>This lab introduces students to fundamental concepts in embedded systems, including digital and analog I/O, PWM control, and graphical displays. The progressive nature of the exercises builds knowledge incrementally while reinforcing previous concepts.</p>
+<p>The combination of hardware control and visual feedback provides an engaging learning experience that bridges theoretical concepts with practical applications in the field of embedded systems programming.</p>
 
 
 
@@ -2333,7 +2946,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../02-simple-patterns/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Simple Patterns">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Intro">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
@@ -2343,20 +2956,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Simple Patterns
+                Intro
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../microbit/" class="md-footer__link md-footer__link--next" aria-label="Next: MicroBit">
+          <a href="../lab-01-pot/" class="md-footer__link md-footer__link--next" aria-label="Next: Testing the Potentiometer">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                MicroBit
+                Testing the Potentiometer
               </div>
             </div>
             <div class="md-footer__button md-icon">
