@@ -1,0 +1,14 @@
+# Lab 1: Configuration File
+
+```python
+I2C_BUS = 0
+I2C_SDA_PIN = 0
+I2C_SCL_PIN = 1
+I2C_BUS_FREQ = 1_000_000 # 1MHz
+
+BUILT_IN_LED_PIN = 25
+
+SPEAKER_PIN = 16
+
+POTENTIOMETER_PIN = 26
+```
