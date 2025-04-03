@@ -192,6 +192,11 @@ nav:
 
   - Project Kits:
     - Introduction: kits/01-intro.md
+    - Pulse Width Modulation:
+      - Intro: kits/pwm/index.md
+      - kits/pwm/lab-01-pot.md
+      - kits/pwm/lab-02-display.md
+      - kits/pwm/lab-03-main.md
     - Tone Generator:
       - Intro: kits/tone-generator/index.md
       - kits/tone-generator/lab-1-config.md
