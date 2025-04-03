@@ -194,10 +194,10 @@ nav:
     - Introduction: kits/01-intro.md
     - Pulse Width Modulation:
       - Intro: kits/pwm/index.md
-      - kits/pwm/instructors-guide.md
-      - kits/pwm/lab-01-pot.md
-      - kits/pwm/lab-02-display.md
-      - kits/pwm/lab-03-main.md
+      - Instructors Guide: kits/pwm/instructors-guide.md
+      - Testing the Potentiometer: kits/pwm/lab-01-pot.md
+      - Testing the Display: its/pwm/lab-02-display.md
+      - Full Kit: kits/pwm/lab-03-main.md
     - Tone Generator:
       - Intro: kits/tone-generator/index.md
       - kits/tone-generator/lab-1-config.md
@@ -235,7 +235,7 @@ nav:
       - Running Lights: kits/maker-pi-pico/02-running-lights.md
       - SD Card Reader: kits/maker-pi-pico/09-micro-sd-card-reader.md
     - Maker Nano RP2040:
-      - Intro: kits/kits/maker-nano-rp2040/01-intro.md
+      - Intro: kits/maker-nano-rp2040/01-intro.md
     - Larson Scanner:
       - kits/larson-scanner/01-intro.md
     - NeoPixel:

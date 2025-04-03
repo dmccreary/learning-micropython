@@ -48,6 +48,8 @@ There are several different ways that you can connect a sound device to you Micr
 
 ## References
 
-[](https://electronics.stackexchange.com/questions/288930/what-is-the-difference-between-a-buzzer-and-a-speaker-and-are-there-any-other-ba)
+1. [Buzzer vs Speaker](https://electronics.stackexchange.com/questions/288930/what-is-the-difference-between-a-buzzer-and-a-speaker-and-are-there-any-other-ba)
 
-1, [Juke Phone in C](https://github.com/TuriSc/Jukephone) - convert an old land-line telephone to an MP3-player Jukebox.  Although this is written in C, it could be converted into MicroPython.
+1. [Juke Phone in C](https://github.com/TuriSc/Jukephone) - convert an old land-line telephone to an MP3-player Jukebox.  Although this is written in C, it could be converted into MicroPython.
+
+1. [Mannbro Pico ChipSound Music Player](https://github.com/mannbro/PiPico_8-bit_ChipSound_Tracker_Async_MusicPlayer)
