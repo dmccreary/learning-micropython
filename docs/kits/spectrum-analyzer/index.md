@@ -2,6 +2,14 @@
 
 This kits will displays a frequency spectrum from microphone input on the OLED display. This will involve reading from the ADC, performing an FFT, and displaying the results.
 
+!!! Note
+    This kit has been promoted to be an entire
+    project with its own GitHub repository.
+
+    See the New Book Here:
+    
+    [https://dmccreary.github.io/spectrum-analyzer/](https://dmccreary.github.io/spectrum-analyzer/)
+
 ## Components
 
 1. Raspberry Pi Pico

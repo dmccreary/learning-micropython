@@ -194,6 +194,7 @@ nav:
     - Introduction: kits/01-intro.md
     - Pulse Width Modulation:
       - Intro: kits/pwm/index.md
+      - kits/pwm/instructors-guide.md
       - kits/pwm/lab-01-pot.md
       - kits/pwm/lab-02-display.md
       - kits/pwm/lab-03-main.md
@@ -202,6 +203,9 @@ nav:
       - kits/tone-generator/lab-1-config.md
       - kits/tone-generator/lab-2-pot.md
       - kits/tone-generator/lab-3-speaker.md
+    - Maker Pi Nano: kits/maker-nano-rp2040/01-intro.md
+    - NeoPixel Rotary: kits/neopixel/04-rotary-neopixel.md
+    - Spectrum Analyzer: kits/spectrum-analyzer/index.md
     - Maker Pi RP2040:
       - Introduction: kits/maker-pi-rp2040/index.md
       - Getting Started: kits/maker-pi-rp2040/01-getting-started.md
