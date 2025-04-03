@@ -192,6 +192,11 @@ nav:
 
   - Project Kits:
     - Introduction: kits/01-intro.md
+    - Tone Generator:
+      - Intro: kits/tone-generator/index.md
+      - kits/tone-generator/lab-1-config.md
+      - kits/tone-generator/lab-2-pot.md
+      - kits/tone-generator/lab-3-speaker.md
     - Maker Pi RP2040:
       - Introduction: kits/maker-pi-rp2040/index.md
       - Getting Started: kits/maker-pi-rp2040/01-getting-started.md
