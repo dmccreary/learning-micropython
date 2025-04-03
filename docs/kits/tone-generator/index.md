@@ -1,20 +1,28 @@
 # Tone Generator
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UjPiuIwZOPM?si=9B76kU9xEW-aH6qW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Components
 
-- Raspberry Pi Pico
-- Breadboard
-- Potentiometer (20K)
-- Speaker
-- 4-digit 7-segment Display
+- Raspberry Pi Pico ($4.00)
+- Breadboard ($1.75)
+- Potentiometer (20K ohm) ($0.50)
+- Piezoelectric Speaker (0.50)
+- 4-digit 7-segment Display ($2.00)
+
+The total cost for the parts is under $10.0
 
 ## Lab 1: Hardware Configuration
 
-[Lab 1](./lab-1.md)
+[Lab 1 Config File](./lab-1.md)
 
 ## Lab 2: Testing the Potentiometer
 
+[Lab 2: Pot](./lab-2-pot.md)
 
+## Lab 3: Testing the Speaker
+
+## Lab 4: Testing the Display
 
 ## Sample Code
 
