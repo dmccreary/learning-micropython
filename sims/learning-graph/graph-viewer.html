@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Graph for MicroPython</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <script src="graph-viewer.js" delay></script>
+    <style>
+        body {
+        font-family: Arial, Helvetica, sans-serif;
+        display: flex;
+        }
+
+        #sidebar {
+            width: auto; /* Automatically adjust width based on content in the table */
+            max-width: 300px; /* Set a maximum width to avoid excessive size */
+            padding: 5px; /* around the sidebar */
+            margin-right: 10px; /* Space between sidebar and main content */
+            box-sizing: border-box;
+        }
+
+        #main {
+            flex: 1; /* Takes up remaining space to the right */
+            padding: 10px;
+        }
+
+        #mynetwork {
+            width: 100%;
+            height: 700px;
+            background-color: aliceblue;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="sidebar-container">
+        <button id="toggle-button" onclick="toggleSidebar()">&#9776;</button>
+
+        <div id="sidebar">
+            <h3>Legend Sidebar</h3>
+            <table border="1">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Category Label</th>
+                    <th>Color</th>
+                    <th>Color Preview</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Computational Thinking Foundations</td>
+                    <td>red</td>
+                    <td style="background-color: red;"></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Programming Fundamentals</td>
+                    <td>orange</td>
+                    <td style="background-color: orange;"></td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>MicroPython Programming</td>
+                    <td>gold</td>
+                    <td style="background-color: gold;"></td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Hardware Components and Interfacing</td>
+                    <td>green</td>
+                    <td style="background-color: green;"></td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>Electronics Basics</td>
+                    <td>cyan</td>
+                    <td style="background-color: cyan;"></td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td>Sensor Integration</td>
+                    <td>blue</td>
+                    <td style="background-color: blue;"></td>
+                  </tr>
+                  <tr>
+                    <td>7</td>
+                    <td>Actuator Control</td>
+                    <td>purple</td>
+                    <td style="background-color: purple;"></td>
+                  </tr>
+                  <tr>
+                    <td>8</td>
+                    <td>Communication Protocols
+                    </td>
+                    <td>pink</td>
+                    <td style="background-color: pink;"></td>
+                  </tr>
+                  <tr>
+                    <td>9</td>
+                    <td>Internet of Things (IoT)</td>
+                    <td>brown</td>
+                    <td style="background-color: brown;"></td>
+                  </tr>
+                  <tr>
+                    <td>10</td>
+                    <td>Advanced Topics and Best Practices</td>
+                    <td>gray</td>
+                    <td style="background-color: gray;"></td>
+                  </tr>
+                </tbody>
+              </table>    
+            <!--
+            <h3>Graph Statistics</h3>
+            <ul>
+                <li><b>Nodes:</b> 100</li>
+                <li><b>Edges:</b> 200</li>
+                <li><b>Orphans:</b> 3</li>
+            </ul>
+            -->
+        </div>
+        
+    </div>
+    <div id="main">
+        <h4>Learning Concept Dependency Graph for Learning MicroPython</h4>
+
+        <div id="mynetwork"></div>
+
+        <a href=".">Return to docs</a>
+
+    </div>
+    <!-- Load the graph data and visualize it -->
+    <script>
+        window.onload = function() {
+            drawGraph();
+        };
+    </script>
+</body>
+</html>
