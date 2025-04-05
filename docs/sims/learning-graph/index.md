@@ -1,5 +1,7 @@
 # Learning Graphs
 
+[Run the Learning Graph MicroSim](./graph-viewer.html)
+
 A learning graph is a directed graph of the 
 main concepts used in the Learning MicroPython
 course.  We can generate a draft of these

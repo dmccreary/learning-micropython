@@ -1,0 +1,2330 @@
+{
+    "nodes": [
+        {
+            "id": 1,
+            "label": "Intro to Computational Thinking",
+            "group": 1
+        },
+        {
+            "id": 2,
+            "label": "Problem Decomposition",
+            "group": 1
+        },
+        {
+            "id": 3,
+            "label": "Pattern Recognition",
+            "group": 1
+        },
+        {
+            "id": 4,
+            "label": "Abstraction",
+            "group": 1
+        },
+        {
+            "id": 5,
+            "label": "Algorithm Design",
+            "group": 1
+        },
+        {
+            "id": 6,
+            "label": "Basic Programming Concepts",
+            "group": 2
+        },
+        {
+            "id": 7,
+            "label": "Variables in Programming",
+            "group": 2
+        },
+        {
+            "id": 8,
+            "label": "Data Types in Programming",
+            "group": 2
+        },
+        {
+            "id": 9,
+            "label": "Operators",
+            "group": 2
+        },
+        {
+            "id": 10,
+            "label": "Control Structures",
+            "group": 2
+        },
+        {
+            "id": 11,
+            "label": "Conditional Statements",
+            "group": 2
+        },
+        {
+            "id": 12,
+            "label": "Loops",
+            "group": 2
+        },
+        {
+            "id": 13,
+            "label": "Functions",
+            "group": 2
+        },
+        {
+            "id": 14,
+            "label": "Intro to MicroPython",
+            "group": 3
+        },
+        {
+            "id": 15,
+            "label": "MicroPython Thonny",
+            "group": 3
+        },
+        {
+            "id": 16,
+            "label": "Syntax in MicroPython",
+            "group": 3
+        },
+        {
+            "id": 17,
+            "label": "Function Parameters",
+            "group": 3
+        },
+        {
+            "id": 18,
+            "label": "Modules in MicroPython",
+            "group": 3
+        },
+        {
+            "id": 19,
+            "label": "Input and Output",
+            "group": 3
+        },
+        {
+            "id": 20,
+            "label": "Working with Strings",
+            "group": 3
+        },
+        {
+            "id": 21,
+            "label": "Working with Numbers",
+            "group": 3
+        },
+        {
+            "id": 22,
+            "label": "Lists",
+            "group": 3
+        },
+        {
+            "id": 23,
+            "label": "Tuples",
+            "group": 3
+        },
+        {
+            "id": 24,
+            "label": "Dictionaries",
+            "group": 3
+        },
+        {
+            "id": 25,
+            "label": "Exception Handling",
+            "group": 3
+        },
+        {
+            "id": 26,
+            "label": "Microcontroller Basics",
+            "group": 4
+        },
+        {
+            "id": 27,
+            "label": "The Raspberry Pi Pico",
+            "group": 4
+        },
+        {
+            "id": 28,
+            "label": "Understanding GPIO Pins",
+            "group": 4
+        },
+        {
+            "id": 29,
+            "label": "Solderless Breadboards",
+            "group": 4
+        },
+        {
+            "id": 30,
+            "label": "Breadboard Usage",
+            "group": 4
+        },
+        {
+            "id": 31,
+            "label": "Circuit Basics",
+            "group": 5
+        },
+        {
+            "id": 32,
+            "label": "Ohm's Law",
+            "group": 5
+        },
+        {
+            "id": 33,
+            "label": "Resistors",
+            "group": 5
+        },
+        {
+            "id": 34,
+            "label": "LEDs",
+            "group": 5
+        },
+        {
+            "id": 35,
+            "label": "Resistors and LEDs",
+            "group": 5
+        },
+        {
+            "id": 36,
+            "label": "Resistors Circuits",
+            "group": 5
+        },
+        {
+            "id": 37,
+            "label": "Connecting LEDs",
+            "group": 5
+        },
+        {
+            "id": 38,
+            "label": "Blinking an LED with MicroPython",
+            "group": 3
+        },
+        {
+            "id": 39,
+            "label": "Digital Output Signals",
+            "group": 4
+        },
+        {
+            "id": 40,
+            "label": "Digital Input Signals",
+            "group": 4
+        },
+        {
+            "id": 41,
+            "label": "Reading Button Inputs",
+            "group": 4
+        },
+        {
+            "id": 42,
+            "label": "Debouncing Switches",
+            "group": 3
+        },
+        {
+            "id": 43,
+            "label": "Pull-up and Pull-down Resistors",
+            "group": 5
+        },
+        {
+            "id": 44,
+            "label": "Controlling Multiple LEDs",
+            "group": 4
+        },
+        {
+            "id": 45,
+            "label": "Using Breadboard Jumpers",
+            "group": 4
+        },
+        {
+            "id": 46,
+            "label": "Potentiometers in Circuits",
+            "group": 5
+        },
+        {
+            "id": 47,
+            "label": "Reading Analog Inputs",
+            "group": 6
+        },
+        {
+            "id": 48,
+            "label": "Analog-to-Digital Conversion",
+            "group": 5
+        },
+        {
+            "id": 49,
+            "label": "Using ADC in MicroPython",
+            "group": 3
+        },
+        {
+            "id": 50,
+            "label": "Reading Potentiometer Values",
+            "group": 6
+        },
+        {
+            "id": 51,
+            "label": "Pulse Width Modulation Fundamentals",
+            "group": 7
+        },
+        {
+            "id": 52,
+            "label": "Implementing Pulse Width Modulation in MicroPython",
+            "group": 3
+        },
+        {
+            "id": 53,
+            "label": "LED Brightness with PWM",
+            "group": 7
+        },
+        {
+            "id": 54,
+            "label": "Fading LEDs Using PWM",
+            "group": 7
+        },
+        {
+            "id": 55,
+            "label": "Advanced Pulse Width Modulation Techniques",
+            "group": 7
+        },
+        {
+            "id": 56,
+            "label": "Servo Motors Overview",
+            "group": 7
+        },
+        {
+            "id": 57,
+            "label": "Controlling Servo Motors",
+            "group": 7
+        },
+        {
+            "id": 58,
+            "label": "DC Motors Overview",
+            "group": 7
+        },
+        {
+            "id": 59,
+            "label": "Transistors as Switches",
+            "group": 5
+        },
+        {
+            "id": 60,
+            "label": "Controlling Motors with Transistors",
+            "group": 7
+        },
+        {
+            "id": 61,
+            "label": "Transistor Biasing Resistors",
+            "group": 5
+        },
+        {
+            "id": 62,
+            "label": "Power Management with Transistors",
+            "group": 7
+        },
+        {
+            "id": 63,
+            "label": "Photocells",
+            "group": 6
+        },
+        {
+            "id": 64,
+            "label": "Making a Night Light",
+            "group": 6
+        },
+        {
+            "id": 65,
+            "label": "Voltage Dividers",
+            "group": 5
+        },
+        {
+            "id": 66,
+            "label": "Voltage Dividers and Sensors",
+            "group": 6
+        },
+        {
+            "id": 67,
+            "label": "Time-of-Flight Sensors",
+            "group": 6
+        },
+        {
+            "id": 68,
+            "label": "Interfacing ToF Sensors",
+            "group": 6
+        },
+        {
+            "id": 69,
+            "label": "I2C Protocol",
+            "group": 8
+        },
+        {
+            "id": 70,
+            "label": "SPI Protocol",
+            "group": 8
+        },
+        {
+            "id": 71,
+            "label": "Connecting I2C Devices",
+            "group": 8
+        },
+        {
+            "id": 72,
+            "label": "LED Displays Overview",
+            "group": 4
+        },
+        {
+            "id": 73,
+            "label": "OLED Displays",
+            "group": 4
+        },
+        {
+            "id": 74,
+            "label": "Display Drawing",
+            "group": 4
+        },
+        {
+            "id": 75,
+            "label": "Drawing Circles and Ellipses",
+            "group": 4
+        },
+        {
+            "id": 76,
+            "label": "Drawing Polygons",
+            "group": 4
+        },
+        {
+            "id": 77,
+            "label": "Changing Fonts",
+            "group": 4
+        },
+        {
+            "id": 78,
+            "label": "Advanced I2C",
+            "group": 8
+        },
+        {
+            "id": 79,
+            "label": "Advanced SPI",
+            "group": 8
+        },
+        {
+            "id": 80,
+            "label": "WS2812B LED Strips",
+            "group": 4
+        },
+        {
+            "id": 81,
+            "label": "LED Strip Code",
+            "group": 3
+        },
+        {
+            "id": 82,
+            "label": "Moving Pixels on LED Strips",
+            "group": 7
+        },
+        {
+            "id": 83,
+            "label": "LED Strip Patterns",
+            "group": 7
+        },
+        {
+            "id": 84,
+            "label": "LED Strip Button Demos",
+            "group": 7
+        },
+        {
+            "id": 85,
+            "label": "Sensors and Actuators",
+            "group": 6
+        },
+        {
+            "id": 86,
+            "label": "Integrating Multiple Sensors",
+            "group": 6
+        },
+        {
+            "id": 87,
+            "label": "Event-Driven Programming",
+            "group": 2
+        },
+        {
+            "id": 88,
+            "label": "Interrupts",
+            "group": 8
+        },
+        {
+            "id": 89,
+            "label": "Using Interrupts with GPIO Pins",
+            "group": 8
+        },
+        {
+            "id": 90,
+            "label": "Debouncing with Interrupts",
+            "group": 8
+        },
+        {
+            "id": 91,
+            "label": "Timers",
+            "group": 3
+        },
+        {
+            "id": 92,
+            "label": "Delays and Timing Functions",
+            "group": 3
+        },
+        {
+            "id": 93,
+            "label": "Using the Time Module",
+            "group": 3
+        },
+        {
+            "id": 94,
+            "label": "Data Logging with MicroPython",
+            "group": 3
+        },
+        {
+            "id": 95,
+            "label": "Storing Data on Raspberry Pi Pico",
+            "group": 4
+        },
+        {
+            "id": 96,
+            "label": "File Handling",
+            "group": 3
+        },
+        {
+            "id": 97,
+            "label": "USB Communication",
+            "group": 8
+        },
+        {
+            "id": 98,
+            "label": "UART Communication",
+            "group": 8
+        },
+        {
+            "id": 99,
+            "label": "Introduction to Sensors",
+            "group": 6
+        },
+        {
+            "id": 100,
+            "label": "Temperature Sensors",
+            "group": 6
+        },
+        {
+            "id": 101,
+            "label": "Interfacing Temperature Sensors",
+            "group": 6
+        },
+        {
+            "id": 102,
+            "label": "Humidity Sensors",
+            "group": 6
+        },
+        {
+            "id": 103,
+            "label": "Using DHT11 and DHT22 Sensors",
+            "group": 6
+        },
+        {
+            "id": 104,
+            "label": "Reading Sensor Data",
+            "group": 6
+        },
+        {
+            "id": 105,
+            "label": "Interpreting Sensor Data",
+            "group": 6
+        },
+        {
+            "id": 106,
+            "label": "Calibrating Sensors",
+            "group": 6
+        },
+        {
+            "id": 107,
+            "label": "Introduction to Actuators",
+            "group": 7
+        },
+        {
+            "id": 108,
+            "label": "Controlling Relays",
+            "group": 7
+        },
+        {
+            "id": 109,
+            "label": "Relays Overview",
+            "group": 7
+        },
+        {
+            "id": 110,
+            "label": "Relays Safety",
+            "group": 7
+        },
+        {
+            "id": 111,
+            "label": "DC Motors",
+            "group": 7
+        },
+        {
+            "id": 112,
+            "label": "Stepper Motors",
+            "group": 7
+        },
+        {
+            "id": 113,
+            "label": "Stepper Motor Drivers",
+            "group": 7
+        },
+        {
+            "id": 114,
+            "label": "Sound",
+            "group": 7
+        },
+        {
+            "id": 115,
+            "label": "Piezoelectric Buzzers",
+            "group": 7
+        },
+        {
+            "id": 116,
+            "label": "Tones and Melodies",
+            "group": 7
+        },
+        {
+            "id": 117,
+            "label": "Infrared Communication",
+            "group": 8
+        },
+        {
+            "id": 118,
+            "label": "Using Infrared Sensors",
+            "group": 8
+        },
+        {
+            "id": 119,
+            "label": "Infrared Remote Control",
+            "group": 8
+        },
+        {
+            "id": 120,
+            "label": "Ultrasonic Sensors",
+            "group": 6
+        },
+        {
+            "id": 121,
+            "label": "Serial Communication Protocols",
+            "group": 8
+        },
+        {
+            "id": 122,
+            "label": "I2C vs SPI vs UART",
+            "group": 8
+        },
+        {
+            "id": 123,
+            "label": "Data Communication Principles",
+            "group": 8
+        },
+        {
+            "id": 124,
+            "label": "Wireless Communication Basics",
+            "group": 8
+        },
+        {
+            "id": 125,
+            "label": "Bluetooth Low Energy",
+            "group": 9
+        },
+        {
+            "id": 126,
+            "label": "Wi-Fi Connectivity",
+            "group": 9
+        },
+        {
+            "id": 127,
+            "label": "Python Modules Overview",
+            "group": 2
+        },
+        {
+            "id": 128,
+            "label": "Internet of Things Concepts",
+            "group": 9
+        },
+        {
+            "id": 129,
+            "label": "Connecting to the Internet",
+            "group": 9
+        },
+        {
+            "id": 130,
+            "label": "Sending Data to Web Servers",
+            "group": 9
+        },
+        {
+            "id": 131,
+            "label": "Hypertext Transfer Protocol Basics",
+            "group": 9
+        },
+        {
+            "id": 132,
+            "label": "Message Queuing Telemetry Transport Protocol",
+            "group": 9
+        },
+        {
+            "id": 133,
+            "label": "IoT Applications",
+            "group": 9
+        },
+        {
+            "id": 134,
+            "label": "Cloud Services Integration",
+            "group": 9
+        },
+        {
+            "id": 135,
+            "label": "Data Visualization Tools",
+            "group": 9
+        },
+        {
+            "id": 136,
+            "label": "Programming Best Practices",
+            "group": 10
+        },
+        {
+            "id": 137,
+            "label": "Code Optimization Techniques",
+            "group": 10
+        },
+        {
+            "id": 138,
+            "label": "Debugging Techniques",
+            "group": 10
+        },
+        {
+            "id": 139,
+            "label": "Using Debugging Tools",
+            "group": 10
+        },
+        {
+            "id": 140,
+            "label": "Version Control Systems",
+            "group": 10
+        },
+        {
+            "id": 141,
+            "label": "Using Git for Code Management",
+            "group": 10
+        },
+        {
+            "id": 142,
+            "label": "Collaborative Coding Practices",
+            "group": 10
+        },
+        {
+            "id": 143,
+            "label": "Documentation Standards",
+            "group": 10
+        },
+        {
+            "id": 144,
+            "label": "Commenting Code Effectively",
+            "group": 10
+        },
+        {
+            "id": 145,
+            "label": "Advanced MicroPython Features",
+            "group": 3
+        },
+        {
+            "id": 146,
+            "label": "Object-Oriented Programming",
+            "group": 10
+        },
+        {
+            "id": 147,
+            "label": "Classes and Objects",
+            "group": 10
+        },
+        {
+            "id": 148,
+            "label": "Inheritance and Polymorphism",
+            "group": 10
+        },
+        {
+            "id": 149,
+            "label": "Encapsulation in Object-Oriented Programming",
+            "group": 10
+        },
+        {
+            "id": 150,
+            "label": "Designing Reusable Code",
+            "group": 10
+        },
+        {
+            "id": 151,
+            "label": "Memory Management",
+            "group": 10
+        },
+        {
+            "id": 152,
+            "label": "Managing Resources Efficiently",
+            "group": 10
+        },
+        {
+            "id": 153,
+            "label": "Energy Efficiency in Programming",
+            "group": 10
+        },
+        {
+            "id": 154,
+            "label": "Sleep Modes in Microcontrollers",
+            "group": 10
+        },
+        {
+            "id": 155,
+            "label": "Battery-Powered Projects",
+            "group": 10
+        },
+        {
+            "id": 156,
+            "label": "Power Management Techniques",
+            "group": 10
+        },
+        {
+            "id": 157,
+            "label": "Advanced Electronics Concepts",
+            "group": 5
+        },
+        {
+            "id": 158,
+            "label": "Capacitors in Circuits",
+            "group": 5
+        },
+        {
+            "id": 159,
+            "label": "Inductors and Coils",
+            "group": 5
+        },
+        {
+            "id": 160,
+            "label": "Diodes and Rectification",
+            "group": 5
+        },
+        {
+            "id": 161,
+            "label": "Voltage Regulation",
+            "group": 5
+        },
+        {
+            "id": 162,
+            "label": "Using Voltage Regulators",
+            "group": 5
+        },
+        {
+            "id": 163,
+            "label": "Building Power Supplies",
+            "group": 5
+        },
+        {
+            "id": 164,
+            "label": "Analog Signals vs Digital Signals",
+            "group": 5
+        },
+        {
+            "id": 165,
+            "label": "Signal Conditioning",
+            "group": 5
+        },
+        {
+            "id": 166,
+            "label": "Filtering Noise in Circuits",
+            "group": 5
+        },
+        {
+            "id": 167,
+            "label": "Interference and Shielding",
+            "group": 5
+        },
+        {
+            "id": 168,
+            "label": "Electromagnetic Compatibility",
+            "group": 5
+        },
+        {
+            "id": 169,
+            "label": "Circuit Design Principles",
+            "group": 5
+        },
+        {
+            "id": 170,
+            "label": "Using Simulation Tools",
+            "group": 5
+        },
+        {
+            "id": 171,
+            "label": "Prototyping Techniques",
+            "group": 5
+        },
+        {
+            "id": 172,
+            "label": "Schematic Diagram Reading",
+            "group": 5
+        },
+        {
+            "id": 173,
+            "label": "Understanding Datasheets",
+            "group": 5
+        },
+        {
+            "id": 174,
+            "label": "Component Specifications",
+            "group": 5
+        },
+        {
+            "id": 175,
+            "label": "Safety in Electronics",
+            "group": 5
+        },
+        {
+            "id": 176,
+            "label": "Electrostatic Discharge Precautions",
+            "group": 5
+        },
+        {
+            "id": 177,
+            "label": "Soldering Techniques",
+            "group": 5
+        },
+        {
+            "id": 178,
+            "label": "Printed Circuit Board Design",
+            "group": 5
+        },
+        {
+            "id": 179,
+            "label": "Using PCB Design Software",
+            "group": 5
+        },
+        {
+            "id": 180,
+            "label": "Fabricating Custom PCBs",
+            "group": 5
+        },
+        {
+            "id": 181,
+            "label": "Advanced Sensor Integration",
+            "group": 6
+        },
+        {
+            "id": 182,
+            "label": "Gesture Recognition Sensors",
+            "group": 6
+        },
+        {
+            "id": 183,
+            "label": "Touch Sensors",
+            "group": 6
+        },
+        {
+            "id": 184,
+            "label": "Environmental Monitoring",
+            "group": 6
+        },
+        {
+            "id": 185,
+            "label": "Robotics",
+            "group": 4
+        },
+        {
+            "id": 186,
+            "label": "Simple Robots",
+            "group": 4
+        },
+        {
+            "id": 187,
+            "label": "Line-Following Robots",
+            "group": 4
+        },
+        {
+            "id": 188,
+            "label": "Obstacle Avoidance Robots",
+            "group": 4
+        },
+        {
+            "id": 189,
+            "label": "Control Systems Basics",
+            "group": 10
+        },
+        {
+            "id": 190,
+            "label": "Feedback Mechanisms",
+            "group": 10
+        },
+        {
+            "id": 191,
+            "label": "PID Controllers",
+            "group": 10
+        },
+        {
+            "id": 192,
+            "label": "Machine Learning Concepts",
+            "group": 10
+        },
+        {
+            "id": 193,
+            "label": "MicroPython in AI",
+            "group": 10
+        },
+        {
+            "id": 194,
+            "label": "Edge Computing",
+            "group": 10
+        },
+        {
+            "id": 195,
+            "label": "Ethics in Technology",
+            "group": 10
+        },
+        {
+            "id": 196,
+            "label": "Future Trends in Computing",
+            "group": 10
+        },
+        {
+            "id": 197,
+            "label": "Pico W",
+            "group": 9
+        },
+        {
+            "id": 198,
+            "label": "Cytron Robotics Board",
+            "group": 4
+        },
+        {
+            "id": 199,
+            "label": "ToF Robot",
+            "group": 4
+        },
+        {
+            "id": 200,
+            "label": "Rainbow Robot",
+            "group": 4
+        }
+    ],
+    "edges": [
+        {
+            "from": 2,
+            "to": 1
+        },
+        {
+            "from": 3,
+            "to": 1
+        },
+        {
+            "from": 4,
+            "to": 1
+        },
+        {
+            "from": 5,
+            "to": 1
+        },
+        {
+            "from": 5,
+            "to": 2
+        },
+        {
+            "from": 5,
+            "to": 3
+        },
+        {
+            "from": 5,
+            "to": 4
+        },
+        {
+            "from": 6,
+            "to": 1
+        },
+        {
+            "from": 6,
+            "to": 5
+        },
+        {
+            "from": 7,
+            "to": 6
+        },
+        {
+            "from": 8,
+            "to": 6
+        },
+        {
+            "from": 8,
+            "to": 7
+        },
+        {
+            "from": 9,
+            "to": 6
+        },
+        {
+            "from": 9,
+            "to": 7
+        },
+        {
+            "from": 9,
+            "to": 8
+        },
+        {
+            "from": 10,
+            "to": 6
+        },
+        {
+            "from": 10,
+            "to": 7
+        },
+        {
+            "from": 10,
+            "to": 8
+        },
+        {
+            "from": 10,
+            "to": 9
+        },
+        {
+            "from": 11,
+            "to": 10
+        },
+        {
+            "from": 11,
+            "to": 9
+        },
+        {
+            "from": 12,
+            "to": 10
+        },
+        {
+            "from": 13,
+            "to": 6
+        },
+        {
+            "from": 13,
+            "to": 7
+        },
+        {
+            "from": 13,
+            "to": 8
+        },
+        {
+            "from": 13,
+            "to": 10
+        },
+        {
+            "from": 14,
+            "to": 6
+        },
+        {
+            "from": 15,
+            "to": 14
+        },
+        {
+            "from": 16,
+            "to": 14
+        },
+        {
+            "from": 16,
+            "to": 15
+        },
+        {
+            "from": 17,
+            "to": 13
+        },
+        {
+            "from": 17,
+            "to": 16
+        },
+        {
+            "from": 18,
+            "to": 16
+        },
+        {
+            "from": 18,
+            "to": 17
+        },
+        {
+            "from": 19,
+            "to": 16
+        },
+        {
+            "from": 19,
+            "to": 7
+        },
+        {
+            "from": 19,
+            "to": 8
+        },
+        {
+            "from": 20,
+            "to": 8
+        },
+        {
+            "from": 20,
+            "to": 16
+        },
+        {
+            "from": 21,
+            "to": 8
+        },
+        {
+            "from": 21,
+            "to": 16
+        },
+        {
+            "from": 22,
+            "to": 8
+        },
+        {
+            "from": 22,
+            "to": 16
+        },
+        {
+            "from": 23,
+            "to": 8
+        },
+        {
+            "from": 23,
+            "to": 16
+        },
+        {
+            "from": 24,
+            "to": 8
+        },
+        {
+            "from": 24,
+            "to": 16
+        },
+        {
+            "from": 25,
+            "to": 16
+        },
+        {
+            "from": 25,
+            "to": 10
+        },
+        {
+            "from": 27,
+            "to": 26
+        },
+        {
+            "from": 28,
+            "to": 26
+        },
+        {
+            "from": 28,
+            "to": 27
+        },
+        {
+            "from": 29,
+            "to": 32
+        },
+        {
+            "from": 30,
+            "to": 29
+        },
+        {
+            "from": 30,
+            "to": 32
+        },
+        {
+            "from": 32,
+            "to": 31
+        },
+        {
+            "from": 33,
+            "to": 31
+        },
+        {
+            "from": 33,
+            "to": 32
+        },
+        {
+            "from": 34,
+            "to": 31
+        },
+        {
+            "from": 35,
+            "to": 33
+        },
+        {
+            "from": 35,
+            "to": 34
+        },
+        {
+            "from": 35,
+            "to": 32
+        },
+        {
+            "from": 36,
+            "to": 33
+        },
+        {
+            "from": 36,
+            "to": 35
+        },
+        {
+            "from": 37,
+            "to": 34
+        },
+        {
+            "from": 37,
+            "to": 30
+        },
+        {
+            "from": 38,
+            "to": 37
+        },
+        {
+            "from": 38,
+            "to": 16
+        },
+        {
+            "from": 38,
+            "to": 28
+        },
+        {
+            "from": 39,
+            "to": 28
+        },
+        {
+            "from": 39,
+            "to": 16
+        },
+        {
+            "from": 40,
+            "to": 28
+        },
+        {
+            "from": 40,
+            "to": 16
+        },
+        {
+            "from": 41,
+            "to": 40
+        },
+        {
+            "from": 41,
+            "to": 30
+        },
+        {
+            "from": 42,
+            "to": 41
+        },
+        {
+            "from": 42,
+            "to": 10
+        },
+        {
+            "from": 43,
+            "to": 33
+        },
+        {
+            "from": 43,
+            "to": 41
+        },
+        {
+            "from": 44,
+            "to": 37
+        },
+        {
+            "from": 44,
+            "to": 38
+        },
+        {
+            "from": 44,
+            "to": 16
+        },
+        {
+            "from": 45,
+            "to": 30
+        },
+        {
+            "from": 46,
+            "to": 31
+        },
+        {
+            "from": 46,
+            "to": 33
+        },
+        {
+            "from": 47,
+            "to": 46
+        },
+        {
+            "from": 47,
+            "to": 28
+        },
+        {
+            "from": 48,
+            "to": 47
+        },
+        {
+            "from": 49,
+            "to": 48
+        },
+        {
+            "from": 49,
+            "to": 16
+        },
+        {
+            "from": 50,
+            "to": 49
+        },
+        {
+            "from": 50,
+            "to": 46
+        },
+        {
+            "from": 51,
+            "to": 6
+        },
+        {
+            "from": 51,
+            "to": 10
+        },
+        {
+            "from": 52,
+            "to": 51
+        },
+        {
+            "from": 52,
+            "to": 16
+        },
+        {
+            "from": 53,
+            "to": 52
+        },
+        {
+            "from": 53,
+            "to": 37
+        },
+        {
+            "from": 54,
+            "to": 53
+        },
+        {
+            "from": 54,
+            "to": 12
+        },
+        {
+            "from": 55,
+            "to": 54
+        },
+        {
+            "from": 55,
+            "to": 52
+        },
+        {
+            "from": 56,
+            "to": 31
+        },
+        {
+            "from": 57,
+            "to": 52
+        },
+        {
+            "from": 57,
+            "to": 28
+        },
+        {
+            "from": 57,
+            "to": 56
+        },
+        {
+            "from": 58,
+            "to": 31
+        },
+        {
+            "from": 59,
+            "to": 31
+        },
+        {
+            "from": 59,
+            "to": 33
+        },
+        {
+            "from": 60,
+            "to": 59
+        },
+        {
+            "from": 60,
+            "to": 58
+        },
+        {
+            "from": 61,
+            "to": 59
+        },
+        {
+            "from": 61,
+            "to": 33
+        },
+        {
+            "from": 62,
+            "to": 59
+        },
+        {
+            "from": 62,
+            "to": 61
+        },
+        {
+            "from": 63,
+            "to": 31
+        },
+        {
+            "from": 63,
+            "to": 33
+        },
+        {
+            "from": 64,
+            "to": 63
+        },
+        {
+            "from": 64,
+            "to": 28
+        },
+        {
+            "from": 64,
+            "to": 16
+        },
+        {
+            "from": 65,
+            "to": 33
+        },
+        {
+            "from": 65,
+            "to": 31
+        },
+        {
+            "from": 66,
+            "to": 65
+        },
+        {
+            "from": 66,
+            "to": 63
+        },
+        {
+            "from": 67,
+            "to": 31
+        },
+        {
+            "from": 67,
+            "to": 28
+        },
+        {
+            "from": 68,
+            "to": 67
+        },
+        {
+            "from": 68,
+            "to": 16
+        },
+        {
+            "from": 69,
+            "to": 70
+        },
+        {
+            "from": 69,
+            "to": 16
+        },
+        {
+            "from": 70,
+            "to": 28
+        },
+        {
+            "from": 70,
+            "to": 16
+        },
+        {
+            "from": 71,
+            "to": 69
+        },
+        {
+            "from": 71,
+            "to": 28
+        },
+        {
+            "from": 72,
+            "to": 34
+        },
+        {
+            "from": 72,
+            "to": 31
+        },
+        {
+            "from": 73,
+            "to": 72
+        },
+        {
+            "from": 74,
+            "to": 73
+        },
+        {
+            "from": 74,
+            "to": 16
+        },
+        {
+            "from": 75,
+            "to": 74
+        },
+        {
+            "from": 76,
+            "to": 74
+        },
+        {
+            "from": 77,
+            "to": 74
+        },
+        {
+            "from": 78,
+            "to": 69
+        },
+        {
+            "from": 78,
+            "to": 16
+        },
+        {
+            "from": 79,
+            "to": 70
+        },
+        {
+            "from": 79,
+            "to": 16
+        },
+        {
+            "from": 80,
+            "to": 34
+        },
+        {
+            "from": 80,
+            "to": 31
+        },
+        {
+            "from": 81,
+            "to": 80
+        },
+        {
+            "from": 81,
+            "to": 16
+        },
+        {
+            "from": 82,
+            "to": 81
+        },
+        {
+            "from": 82,
+            "to": 12
+        },
+        {
+            "from": 83,
+            "to": 81
+        },
+        {
+            "from": 83,
+            "to": 82
+        },
+        {
+            "from": 84,
+            "to": 83
+        },
+        {
+            "from": 84,
+            "to": 41
+        },
+        {
+            "from": 85,
+            "to": 31
+        },
+        {
+            "from": 85,
+            "to": 28
+        },
+        {
+            "from": 86,
+            "to": 85
+        },
+        {
+            "from": 86,
+            "to": 16
+        },
+        {
+            "from": 87,
+            "to": 6
+        },
+        {
+            "from": 87,
+            "to": 10
+        },
+        {
+            "from": 88,
+            "to": 28
+        },
+        {
+            "from": 88,
+            "to": 87
+        },
+        {
+            "from": 89,
+            "to": 88
+        },
+        {
+            "from": 89,
+            "to": 28
+        },
+        {
+            "from": 90,
+            "to": 89
+        },
+        {
+            "from": 90,
+            "to": 42
+        },
+        {
+            "from": 91,
+            "to": 6
+        },
+        {
+            "from": 91,
+            "to": 16
+        },
+        {
+            "from": 92,
+            "to": 91
+        },
+        {
+            "from": 92,
+            "to": 16
+        },
+        {
+            "from": 93,
+            "to": 92
+        },
+        {
+            "from": 93,
+            "to": 16
+        },
+        {
+            "from": 94,
+            "to": 16
+        },
+        {
+            "from": 94,
+            "to": 97
+        },
+        {
+            "from": 95,
+            "to": 94
+        },
+        {
+            "from": 95,
+            "to": 27
+        },
+        {
+            "from": 96,
+            "to": 16
+        },
+        {
+            "from": 96,
+            "to": 95
+        },
+        {
+            "from": 97,
+            "to": 27
+        },
+        {
+            "from": 97,
+            "to": 16
+        },
+        {
+            "from": 98,
+            "to": 27
+        },
+        {
+            "from": 98,
+            "to": 16
+        },
+        {
+            "from": 99,
+            "to": 31
+        },
+        {
+            "from": 100,
+            "to": 99
+        },
+        {
+            "from": 100,
+            "to": 28
+        },
+        {
+            "from": 101,
+            "to": 100
+        },
+        {
+            "from": 101,
+            "to": 16
+        },
+        {
+            "from": 102,
+            "to": 99
+        },
+        {
+            "from": 102,
+            "to": 28
+        },
+        {
+            "from": 103,
+            "to": 101
+        },
+        {
+            "from": 103,
+            "to": 102
+        },
+        {
+            "from": 104,
+            "to": 103
+        },
+        {
+            "from": 104,
+            "to": 16
+        },
+        {
+            "from": 105,
+            "to": 104
+        },
+        {
+            "from": 106,
+            "to": 105
+        },
+        {
+            "from": 107,
+            "to": 31
+        },
+        {
+            "from": 108,
+            "to": 107
+        },
+        {
+            "from": 108,
+            "to": 16
+        },
+        {
+            "from": 109,
+            "to": 107
+        },
+        {
+            "from": 110,
+            "to": 109
+        },
+        {
+            "from": 111,
+            "to": 31
+        },
+        {
+            "from": 112,
+            "to": 111
+        },
+        {
+            "from": 112,
+            "to": 16
+        },
+        {
+            "from": 113,
+            "to": 112
+        },
+        {
+            "from": 113,
+            "to": 28
+        },
+        {
+            "from": 114,
+            "to": 31
+        },
+        {
+            "from": 114,
+            "to": 28
+        },
+        {
+            "from": 115,
+            "to": 114
+        },
+        {
+            "from": 115,
+            "to": 16
+        },
+        {
+            "from": 116,
+            "to": 115
+        },
+        {
+            "from": 116,
+            "to": 12
+        },
+        {
+            "from": 117,
+            "to": 28
+        },
+        {
+            "from": 117,
+            "to": 16
+        },
+        {
+            "from": 118,
+            "to": 117
+        },
+        {
+            "from": 118,
+            "to": 31
+        },
+        {
+            "from": 119,
+            "to": 118
+        },
+        {
+            "from": 119,
+            "to": 16
+        },
+        {
+            "from": 120,
+            "to": 99
+        },
+        {
+            "from": 120,
+            "to": 28
+        },
+        {
+            "from": 121,
+            "to": 27
+        },
+        {
+            "from": 121,
+            "to": 16
+        },
+        {
+            "from": 122,
+            "to": 69
+        },
+        {
+            "from": 122,
+            "to": 70
+        },
+        {
+            "from": 122,
+            "to": 98
+        },
+        {
+            "from": 123,
+            "to": 121
+        },
+        {
+            "from": 124,
+            "to": 123
+        },
+        {
+            "from": 125,
+            "to": 124
+        },
+        {
+            "from": 125,
+            "to": 27
+        },
+        {
+            "from": 126,
+            "to": 124
+        },
+        {
+            "from": 126,
+            "to": 27
+        },
+        {
+            "from": 127,
+            "to": 16
+        },
+        {
+            "from": 128,
+            "to": 124
+        },
+        {
+            "from": 128,
+            "to": 27
+        },
+        {
+            "from": 129,
+            "to": 126
+        },
+        {
+            "from": 129,
+            "to": 16
+        },
+        {
+            "from": 130,
+            "to": 129
+        },
+        {
+            "from": 130,
+            "to": 16
+        },
+        {
+            "from": 131,
+            "to": 130
+        },
+        {
+            "from": 132,
+            "to": 130
+        },
+        {
+            "from": 133,
+            "to": 128
+        },
+        {
+            "from": 133,
+            "to": 130
+        },
+        {
+            "from": 134,
+            "to": 133
+        },
+        {
+            "from": 135,
+            "to": 134
+        },
+        {
+            "from": 136,
+            "to": 6
+        },
+        {
+            "from": 137,
+            "to": 136
+        },
+        {
+            "from": 138,
+            "to": 16
+        },
+        {
+            "from": 138,
+            "to": 136
+        },
+        {
+            "from": 139,
+            "to": 138
+        },
+        {
+            "from": 140,
+            "to": 6
+        },
+        {
+            "from": 141,
+            "to": 140
+        },
+        {
+            "from": 142,
+            "to": 141
+        },
+        {
+            "from": 143,
+            "to": 136
+        },
+        {
+            "from": 144,
+            "to": 136
+        },
+        {
+            "from": 145,
+            "to": 16
+        },
+        {
+            "from": 146,
+            "to": 6
+        },
+        {
+            "from": 146,
+            "to": 136
+        },
+        {
+            "from": 147,
+            "to": 146
+        },
+        {
+            "from": 148,
+            "to": 147
+        },
+        {
+            "from": 149,
+            "to": 147
+        },
+        {
+            "from": 150,
+            "to": 146
+        },
+        {
+            "from": 150,
+            "to": 149
+        },
+        {
+            "from": 151,
+            "to": 16
+        },
+        {
+            "from": 151,
+            "to": 136
+        },
+        {
+            "from": 152,
+            "to": 151
+        },
+        {
+            "from": 153,
+            "to": 152
+        },
+        {
+            "from": 154,
+            "to": 153
+        },
+        {
+            "from": 154,
+            "to": 27
+        },
+        {
+            "from": 155,
+            "to": 154
+        },
+        {
+            "from": 156,
+            "to": 155
+        },
+        {
+            "from": 157,
+            "to": 31
+        },
+        {
+            "from": 158,
+            "to": 157
+        },
+        {
+            "from": 159,
+            "to": 157
+        },
+        {
+            "from": 160,
+            "to": 157
+        },
+        {
+            "from": 161,
+            "to": 160
+        },
+        {
+            "from": 162,
+            "to": 161
+        },
+        {
+            "from": 163,
+            "to": 162
+        },
+        {
+            "from": 164,
+            "to": 31
+        },
+        {
+            "from": 164,
+            "to": 157
+        },
+        {
+            "from": 165,
+            "to": 164
+        },
+        {
+            "from": 165,
+            "to": 157
+        },
+        {
+            "from": 166,
+            "to": 165
+        },
+        {
+            "from": 167,
+            "to": 166
+        },
+        {
+            "from": 168,
+            "to": 167
+        },
+        {
+            "from": 169,
+            "to": 157
+        },
+        {
+            "from": 170,
+            "to": 169
+        },
+        {
+            "from": 171,
+            "to": 169
+        },
+        {
+            "from": 172,
+            "to": 169
+        },
+        {
+            "from": 173,
+            "to": 169
+        },
+        {
+            "from": 174,
+            "to": 173
+        },
+        {
+            "from": 175,
+            "to": 157
+        },
+        {
+            "from": 176,
+            "to": 175
+        },
+        {
+            "from": 177,
+            "to": 175
+        },
+        {
+            "from": 178,
+            "to": 169
+        },
+        {
+            "from": 179,
+            "to": 178
+        },
+        {
+            "from": 180,
+            "to": 179
+        },
+        {
+            "from": 181,
+            "to": 85
+        },
+        {
+            "from": 181,
+            "to": 157
+        },
+        {
+            "from": 182,
+            "to": 181
+        },
+        {
+            "from": 182,
+            "to": 28
+        },
+        {
+            "from": 183,
+            "to": 181
+        },
+        {
+            "from": 183,
+            "to": 28
+        },
+        {
+            "from": 184,
+            "to": 181
+        },
+        {
+            "from": 184,
+            "to": 105
+        },
+        {
+            "from": 185,
+            "to": 31
+        },
+        {
+            "from": 185,
+            "to": 157
+        },
+        {
+            "from": 186,
+            "to": 185
+        },
+        {
+            "from": 186,
+            "to": 16
+        },
+        {
+            "from": 187,
+            "to": 186
+        },
+        {
+            "from": 187,
+            "to": 83
+        },
+        {
+            "from": 188,
+            "to": 186
+        },
+        {
+            "from": 188,
+            "to": 120
+        },
+        {
+            "from": 189,
+            "to": 185
+        },
+        {
+            "from": 190,
+            "to": 189
+        },
+        {
+            "from": 191,
+            "to": 190
+        },
+        {
+            "from": 192,
+            "to": 6
+        },
+        {
+            "from": 192,
+            "to": 136
+        },
+        {
+            "from": 193,
+            "to": 192
+        },
+        {
+            "from": 193,
+            "to": 16
+        },
+        {
+            "from": 194,
+            "to": 193
+        },
+        {
+            "from": 194,
+            "to": 128
+        },
+        {
+            "from": 195,
+            "to": 6
+        },
+        {
+            "from": 196,
+            "to": 195
+        },
+        {
+            "from": 197,
+            "to": 124
+        },
+        {
+            "from": 198,
+            "to": 188
+        },
+        {
+            "from": 199,
+            "to": 198
+        },
+        {
+            "from": 199,
+            "to": 185
+        },
+        {
+            "from": 200,
+            "to": 198
+        },
+        {
+            "from": 200,
+            "to": 185
+        },
+        {
+            "from": 200,
+            "to": 80
+        }
+    ]
+}
