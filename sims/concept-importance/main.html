@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroPython Concept Graph Analysis</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f7fa;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        
+        h2 {
+            color: #4a4a4a;
+            border-bottom: 2px solid #6B73FF;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .metric-card {
+            flex: 1;
+            min-width: 200px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #6B73FF;
+            margin: 10px 0;
+        }
+        
+        .metric-label {
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        th {
+            background-color: #f8f9fa;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .rank-column {
+            width: 60px;
+            text-align: center;
+        }
+        
+        .id-column {
+            width: 80px;
+            text-align: center;
+        }
+        
+        .value-column {
+            width: 120px;
+            text-align: center;
+        }
+        
+        .chart-container {
+            margin: 40px 0;
+            height: 400px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .legend {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .legend h3 {
+            margin-top: 0;
+            color: #4a4a4a;
+        }
+        
+        .legend p {
+            margin: 10px 0;
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard {
+                flex-direction: column;
+            }
+            
+            .metric-card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MicroPython Concept Graph Analysis</h1>
+        <p>Analyzing the relationships and dependencies between MicroPython learning concepts</p>
+    </header>
+    
+    <section>
+        <h2>Overview</h2>
+        <div class="dashboard">
+            <div class="metric-card">
+                <div class="metric-label">Total Concepts</div>
+                <div class="metric-value" id="total-concepts">200</div>
+                <div class="metric-description">Concepts in the curriculum</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Total Dependencies</div>
+                <div class="metric-value" id="total-dependencies">0</div>
+                <div class="metric-description">Concept relationships</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-label">Avg. Dependencies</div>
+                <div class="metric-value" id="avg-dependencies">0</div>
+                <div class="metric-description">Per concept</div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <h2>Top Concepts by In-Degree</h2>
+        <p>These concepts have the most direct dependencies - other concepts that directly rely on them.</p>
+        <table id="indegree-table">
+            <thead>
+                <tr>
+                    <th class="rank-column">Rank</th>
+                    <th>Concept Name</th>
+                    <th class="id-column">ID</th>
+                    <th class="value-column">In-Degree</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table will be filled by JavaScript -->
+            </tbody>
+        </table>
+    </section>
+    
+    <section>
+        <h2>Top Concepts by PageRank</h2>
+        <p>PageRank measures the overall importance of each concept in the knowledge graph.</p>
+        <table id="pagerank-table">
+            <thead>
+                <tr>
+                    <th class="rank-column">Rank</th>
+                    <th>Concept Name</th>
+                    <th class="id-column">ID</th>
+                    <th class="value-column">PageRank</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table will be filled by JavaScript -->
+            </tbody>
+        </table>
+    </section>
+    
+    <section class="legend">
+        <h3>About the Analysis</h3>
+        <p><strong>In-Degree:</strong> The number of other concepts that directly depend on this concept. Higher in-degree means the concept is a prerequisite for more topics.</p>
+        <p><strong>PageRank:</strong> A measure of the importance of a node in a network. It considers not just direct dependencies, but the entire network structure.</p>
+        <p><strong>Interpretation:</strong> Concepts with high in-degree or PageRank are foundational to understanding MicroPython and should be mastered early in the learning process.</p>
+    </section>
+    
+    <footer>
+        <p>MicroPython Concept Graph Analysis | Generated on <span id="generation-date"></span></p>
+    </footer>
+
+    <script>
+        // Sample data from our previous analysis
+        const conceptAnalysis = {
+            totalConcepts: 200,
+            totalDependencies: 0, // We'll calculate this
+            
+            inDegree: [
+                { rank: 1, name: "Basic Programming Concepts", id: 6, value: 9 },
+                { rank: 2, name: "Circuit Basics", id: 31, value: 9 },
+                { rank: 3, name: "Syntax in MicroPython", id: 16, value: 7 },
+                { rank: 4, name: "Data Types in Programming", id: 8, value: 5 },
+                { rank: 5, name: "Understanding GPIO Pins", id: 28, value: 5 },
+                { rank: 6, name: "Resistors", id: 33, value: 4 },
+                { rank: 7, name: "The Raspberry Pi Pico", id: 27, value: 3 },
+                { rank: 8, name: "LEDs", id: 34, value: 3 },
+                { rank: 9, name: "Transistors as Switches", id: 59, value: 3 },
+                { rank: 10, name: "I2C Protocol", id: 69, value: 3 },
+                { rank: 11, name: "Introduction to Sensors", id: 99, value: 3 },
+                { rank: 12, name: "Wireless Communication Basics", id: 124, value: 3 },
+                { rank: 13, name: "Advanced Sensor Integration", id: 181, value: 3 },
+                { rank: 14, name: "Intro to Computational Thinking", id: 1, value: 2 },
+                { rank: 15, name: "Connecting LEDs", id: 37, value: 2 }
+            ],
+            
+            pageRank: [
+                { rank: 1, name: "Circuit Basics", id: 31, value: 0.059817 },
+                { rank: 2, name: "Basic Programming Concepts", id: 6, value: 0.050345 },
+                { rank: 3, name: "Intro to Computational Thinking", id: 1, value: 0.047446 },
+                { rank: 4, name: "Understanding GPIO Pins", id: 28, value: 0.031553 },
+                { rank: 5, name: "Microcontroller Basics", id: 26, value: 0.029335 },
+                { rank: 6, name: "Syntax in MicroPython", id: 16, value: 0.019295 },
+                { rank: 7, name: "Intro to MicroPython", id: 14, value: 0.018915 },
+                { rank: 8, name: "LEDs", id: 34, value: 0.018780 },
+                { rank: 9, name: "Wireless Communication Basics", id: 124, value: 0.014106 },
+                { rank: 10, name: "Introduction to Sensors", id: 99, value: 0.013601 },
+                { rank: 11, name: "Data Types in Programming", id: 8, value: 0.013203 },
+                { rank: 12, name: "Resistors", id: 33, value: 0.012882 },
+                { rank: 13, name: "Sensors and Actuators", id: 85, value: 0.012241 },
+                { rank: 14, name: "SPI Protocol", id: 70, value: 0.012241 },
+                { rank: 15, name: "Pulse Width Modulation Fundamentals", id: 51, value: 0.011143 }
+            ]
+        };
+
+        // Calculate total dependencies
+        let totalDeps = 0;
+        conceptAnalysis.inDegree.forEach(item => {
+            totalDeps += item.value;
+        });
+        conceptAnalysis.totalDependencies = totalDeps;
+
+        // Update dashboard metrics
+        document.getElementById('total-concepts').textContent = conceptAnalysis.totalConcepts;
+        document.getElementById('total-dependencies').textContent = conceptAnalysis.totalDependencies;
+        document.getElementById('avg-dependencies').textContent = (conceptAnalysis.totalDependencies / conceptAnalysis.totalConcepts).toFixed(2);
+
+        // Fill in-degree table
+        const inDegreeTable = document.getElementById('indegree-table').getElementsByTagName('tbody')[0];
+        conceptAnalysis.inDegree.forEach(item => {
+            const row = inDegreeTable.insertRow();
+            
+            const rankCell = row.insertCell(0);
+            rankCell.textContent = item.rank;
+            rankCell.className = 'rank-column';
+            
+            const nameCell = row.insertCell(1);
+            nameCell.textContent = item.name;
+            
+            const idCell = row.insertCell(2);
+            idCell.textContent = item.id;
+            idCell.className = 'id-column';
+            
+            const valueCell = row.insertCell(3);
+            valueCell.textContent = item.value;
+            valueCell.className = 'value-column';
+        });
+
+        // Fill PageRank table
+        const pageRankTable = document.getElementById('pagerank-table').getElementsByTagName('tbody')[0];
+        conceptAnalysis.pageRank.forEach(item => {
+            const row = pageRankTable.insertRow();
+            
+            const rankCell = row.insertCell(0);
+            rankCell.textContent = item.rank;
+            rankCell.className = 'rank-column';
+            
+            const nameCell = row.insertCell(1);
+            nameCell.textContent = item.name;
+            
+            const idCell = row.insertCell(2);
+            idCell.textContent = item.id;
+            idCell.className = 'id-column';
+            
+            const valueCell = row.insertCell(3);
+            valueCell.textContent = item.value.toFixed(6);
+            valueCell.className = 'value-column';
+        });
+
+        // Set generation date
+        const today = new Date();
+        document.getElementById('generation-date').textContent = today.toLocaleDateString();
+
+        // Initialize and fetch data
+        async function initialize() {
+            try {
+                // This would be where we'd fetch the CSV and analyze it in a real implementation
+                // For this demo, we're using the hardcoded data
+                console.log("Analysis page initialized with sample data");
+            } catch (error) {
+                console.error("Error initializing:", error);
+            }
+        }
+
+        initialize();
+    </script>
+</body>
+</html>
