@@ -257,6 +257,7 @@ nav:
       - Concept Taxonomy: sims/learning-graph/concept-taxonomy.md
       - Graph Demo: sims/learning-graph/graph/index.md
     - Breadboard: sims/breadboard/index.md
+    - Top Concepts: sims/concept-importance/index.md
   - Prompts:
     - Introduction: prompts/index.md
   - Glossary: misc/glossary.md
