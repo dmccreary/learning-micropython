@@ -22,6 +22,8 @@
         "Framebuffers",
         "Hanning",
         "Hinch",
+        "HSTX",
+        "indegree",
         "inmp",
         "localtime",
         "maxtries",
