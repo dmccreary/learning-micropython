@@ -101,6 +101,7 @@ nav:
     - Random Hearts: displays/graph/14-random-hearts.md
     - NeoPixel Matrix: displays/graph/18-neopixel-matrix.md
     - OLED References: displays/graph/40-oled-references.md
+    - HSTX Display Interface: displays/graph/50-hstx.md
 
   - Sound and Music:
     - Introduction: sound/index.md
