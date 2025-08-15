@@ -66,6 +66,7 @@ nav:
     - Controller Board: motors/05-controller-board.md
     - Servos: motors/06-servos.md
     - Stepper Motors: motors/07-stepper-motors.md
+    - DRV8833 Motor Driver: motors/08-drv8833.md
 
   - Displays - Non-Graphical:
     - Introduction: displays/non-graph/01-intro.md
