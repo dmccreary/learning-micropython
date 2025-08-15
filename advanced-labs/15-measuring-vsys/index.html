@@ -88,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#measuring-vsys" class="md-skip">
+        <a href="#measuring-vsys-input-voltage-on-raspberry-pi-pico" class="md-skip">
           Skip to content
         </a>
       
@@ -1093,6 +1093,8 @@
       
         
       
+        
+      
     
     
     
@@ -1542,6 +1544,19 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Measuring Battery Voltage
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1553,6 +1568,166 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-vsys" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is VSYS?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#theory-how-voltage-measurement-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory: How Voltage Measurement Works
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enhanced-example-with-data-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhanced Example with Data Logging
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts-explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Concepts Explained
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Concepts Explained">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adc-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      ADC Resolution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voltage-divider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Voltage Divider
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-voltage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference Voltage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Applications
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extension-activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extension Activities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#safety-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Safety Notes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1634,11 +1809,36 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../pio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Programmable Input Output Progamming
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
       
         
           
+        
+      
         
       
         
@@ -2106,6 +2306,155 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-vsys" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is VSYS?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#theory-how-voltage-measurement-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      Theory: How Voltage Measurement Works
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enhanced-example-with-data-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhanced Example with Data Logging
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts-explained" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Concepts Explained
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Concepts Explained">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#adc-resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      ADC Resolution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voltage-divider" class="md-nav__link">
+    <span class="md-ellipsis">
+      Voltage Divider
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-voltage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reference Voltage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#practical-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Applications
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extension-activities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extension Activities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#safety-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Safety Notes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -2123,29 +2472,383 @@
   
 
 
-<h1 id="measuring-vsys">Measuring VSys</h1>
+<h1 id="measuring-vsys-input-voltage-on-raspberry-pi-pico">Measuring VSYS Input Voltage on Raspberry Pi Pico</h1>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this lesson, students will be able to:</p>
+<ul>
+<li>Understand what VSYS is and why monitoring input voltage is important</li>
+<li>Use the Pico's built-in ADC to measure VSYS voltage</li>
+<li>Write MicroPython code to read and display voltage measurements</li>
+<li>Apply voltage divider concepts to interpret ADC readings</li>
+</ul>
+<h2 id="what-is-vsys">What is VSYS?</h2>
+<p><code>VSYS</code> is the main power input pin on the Raspberry Pi Pico. It accepts voltages from 1.8V to 5.5V and is the primary way to power your Pico when not using USB. Understanding the input voltage is crucial for:</p>
+<ul>
+<li>Battery monitoring in portable projects</li>
+<li>Ensuring stable operation</li>
+<li>Detecting power supply issues</li>
+<li>Implementing low-voltage warnings</li>
+</ul>
+<p><code>VSYS</code> typically comes from the positive battery as opposed to power from a USB cable (<code>VBUS</code>).</p>
+<p>Sometimes we need to be able to measure the voltage on VSYS to determine
+how much power our battery has left.</p>
 <p>You need to set GP25 to output and set it high and also set GP29 to input with no pull resistors before reading. 
 And don't forget that the input from VSYS to ADC is divided by 3, so you have to multiply your result to get real value. 
 When I do that I get around 4.7 V when powered from USB, so it definitely works.</p>
-<p>https://forums.raspberrypi.com/viewtopic.php?t=301152</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
+<h2 id="hardware-requirements">Hardware Requirements</h2>
+<ul>
+<li>Raspberry Pi Pico with MicroPython firmware</li>
+<li>USB cable for programming</li>
+<li>Optional: External power supply (battery pack, DC adapter)</li>
+</ul>
+<h2 id="theory-how-voltage-measurement-works">Theory: How Voltage Measurement Works</h2>
+<p>The Pico has a built-in voltage divider circuit that allows the ADC to safely measure VSYS. The internal circuit divides the VSYS voltage by 3, making it safe for the 3.3V ADC to read. This means:</p>
+<ul>
+<li>VSYS voltage range: 1.8V - 5.5V</li>
+<li>After division: 0.6V - 1.83V</li>
+<li>ADC can safely measure this range</li>
+</ul>
+<p>The voltage divider is connected to ADC channel 3 (ADC pin 29).</p>
+<h2 id="sample-code">Sample Code</h2>
+<p>Here's a complete example that measures and displays the VSYS voltage:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span> <span class="nn">time</span>
 
-<span class="c1"># Vsys = machine.ADC(3)</span>
-<span class="n">Vsys</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">ADC</span><span class="p">(</span><span class="mi">29</span><span class="p">)</span>
-<span class="n">conversion_factor</span> <span class="o">=</span> <span class="p">(</span><span class="mf">3.3</span> <span class="o">/</span> <span class="p">(</span><span class="mi">65535</span><span class="p">))</span> <span class="o">*</span> <span class="mi">3</span>
+<span class="c1"># Create ADC object for VSYS measurement</span>
+<span class="c1"># ADC(3) corresponds to the internal voltage divider for VSYS</span>
+<span class="n">vsys_adc</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 
-<span class="n">reading</span> <span class="o">=</span> <span class="n">Vsys</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span> <span class="o">*</span> <span class="n">conversion_factor</span>
+<span class="k">def</span> <span class="nf">read_vsys_voltage</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Read VSYS voltage using the internal voltage divider</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">reading</span><span class="p">)</span>
+<span class="sd">    The Pico has an internal voltage divider that divides VSYS by 3</span>
+<span class="sd">    This allows the 3.3V ADC to safely measure VSYS up to ~10V</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        float: VSYS voltage in volts</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Read raw ADC value (0-65535 for 16-bit ADC)</span>
+    <span class="n">adc_reading</span> <span class="o">=</span> <span class="n">vsys_adc</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
+
+    <span class="c1"># Convert to voltage (ADC reference is 3.3V)</span>
+    <span class="n">adc_voltage</span> <span class="o">=</span> <span class="p">(</span><span class="n">adc_reading</span> <span class="o">/</span> <span class="mi">65535</span><span class="p">)</span> <span class="o">*</span> <span class="mf">3.3</span>
+
+    <span class="c1"># Account for the voltage divider (multiply by 3)</span>
+    <span class="n">vsys_voltage</span> <span class="o">=</span> <span class="n">adc_voltage</span> <span class="o">*</span> <span class="mi">3</span>
+
+    <span class="k">return</span> <span class="n">vsys_voltage</span>
+
+<span class="k">def</span> <span class="nf">format_voltage</span><span class="p">(</span><span class="n">voltage</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Format voltage for display with appropriate precision&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">voltage</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">V&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;VSYS Voltage Monitor&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;===================&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Press Ctrl+C to stop&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Read the voltage</span>
+        <span class="n">voltage</span> <span class="o">=</span> <span class="n">read_vsys_voltage</span><span class="p">()</span>
+
+        <span class="c1"># Display the result</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;VSYS: </span><span class="si">{</span><span class="n">format_voltage</span><span class="p">(</span><span class="n">voltage</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Check for low voltage warning</span>
+        <span class="k">if</span> <span class="n">voltage</span> <span class="o">&lt;</span> <span class="mf">3.0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  ⚠️  LOW VOLTAGE WARNING!&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">voltage</span> <span class="o">&gt;</span> <span class="mf">5.0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  ⚠️  HIGH VOLTAGE WARNING!&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Wait before next reading</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Monitoring stopped&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+<h2 id="enhanced-example-with-data-logging">Enhanced Example with Data Logging</h2>
+<p>Here's a more advanced version that logs voltage data:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">RTC</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># Initialize components</span>
+<span class="n">vsys_adc</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">rtc</span> <span class="o">=</span> <span class="n">RTC</span><span class="p">()</span>
+
+<span class="c1"># Data storage</span>
+<span class="n">voltage_log</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">MAX_LOG_ENTRIES</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="k">def</span> <span class="nf">read_vsys_voltage</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Read VSYS voltage with improved accuracy&quot;&quot;&quot;</span>
+    <span class="c1"># Take multiple readings for better accuracy</span>
+    <span class="n">readings</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+        <span class="n">adc_reading</span> <span class="o">=</span> <span class="n">vsys_adc</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
+        <span class="n">adc_voltage</span> <span class="o">=</span> <span class="p">(</span><span class="n">adc_reading</span> <span class="o">/</span> <span class="mi">65535</span><span class="p">)</span> <span class="o">*</span> <span class="mf">3.3</span>
+        <span class="n">vsys_voltage</span> <span class="o">=</span> <span class="n">adc_voltage</span> <span class="o">*</span> <span class="mi">3</span>
+        <span class="n">readings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">vsys_voltage</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># Small delay between readings</span>
+
+    <span class="c1"># Return average of readings</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">readings</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">readings</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">log_voltage</span><span class="p">(</span><span class="n">voltage</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Log voltage with timestamp&quot;&quot;&quot;</span>
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">voltage_log</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">voltage</span><span class="p">))</span>
+
+    <span class="c1"># Keep only the most recent entries</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">voltage_log</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">MAX_LOG_ENTRIES</span><span class="p">:</span>
+        <span class="n">voltage_log</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_voltage_stats</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate voltage statistics&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">voltage_log</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="n">voltages</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">voltage_log</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s1">&#39;min&#39;</span><span class="p">:</span> <span class="nb">min</span><span class="p">(</span><span class="n">voltages</span><span class="p">),</span>
+        <span class="s1">&#39;max&#39;</span><span class="p">:</span> <span class="nb">max</span><span class="p">(</span><span class="n">voltages</span><span class="p">),</span>
+        <span class="s1">&#39;avg&#39;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">voltages</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">voltages</span><span class="p">),</span>
+        <span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">voltages</span><span class="p">)</span>
+    <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">display_status</span><span class="p">(</span><span class="n">voltage</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Display voltage with status indicators&quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;VSYS: </span><span class="si">{</span><span class="n">voltage</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">V&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">voltage</span> <span class="o">&lt;</span> <span class="mf">2.5</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; 🔴 CRITICAL&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">voltage</span> <span class="o">&lt;</span> <span class="mf">3.0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; 🟡 LOW&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">voltage</span> <span class="o">&gt;</span> <span class="mf">5.2</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; 🔴 HIGH&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; 🟢 OK&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enhanced VSYS Voltage Monitor&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;============================&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Read and log voltage</span>
+        <span class="n">voltage</span> <span class="o">=</span> <span class="n">read_vsys_voltage</span><span class="p">()</span>
+        <span class="n">log_voltage</span><span class="p">(</span><span class="n">voltage</span><span class="p">)</span>
+
+        <span class="c1"># Display current reading</span>
+        <span class="n">display_status</span><span class="p">(</span><span class="n">voltage</span><span class="p">)</span>
+
+        <span class="c1"># Show statistics every 10 readings</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">voltage_log</span><span class="p">)</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">stats</span> <span class="o">=</span> <span class="n">get_voltage_stats</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">stats</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Stats - Min: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">V, &quot;</span>
+                      <span class="sa">f</span><span class="s2">&quot;Max: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">V, &quot;</span>
+                      <span class="sa">f</span><span class="s2">&quot;Avg: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;avg&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">V &quot;</span>
+                      <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> readings)&quot;</span><span class="p">)</span>
+
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Final Statistics:&quot;</span><span class="p">)</span>
+    <span class="n">stats</span> <span class="o">=</span> <span class="n">get_voltage_stats</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">stats</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Min: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">V&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Max: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;max&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">V&quot;</span><span class="p">)</span> 
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;avg&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">V&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total readings: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Monitoring stopped&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="key-concepts-explained">Key Concepts Explained</h2>
+<h3 id="adc-resolution">ADC Resolution</h3>
+<p>The Pico's ADC provides 16-bit resolution (0-65535), giving precise voltage measurements.</p>
+<h3 id="voltage-divider">Voltage Divider</h3>
+<p>The internal voltage divider divides VSYS by 3, allowing measurement of voltages up to ~10V safely.</p>
+<h3 id="reference-voltage">Reference Voltage</h3>
+<p>The ADC uses 3.3V as its reference voltage, so the maximum measurable voltage at the ADC input is 3.3V.</p>
+<h2 id="practical-applications">Practical Applications</h2>
+<ul>
+<li><strong>Battery Monitoring</strong>: Track battery voltage in portable projects</li>
+<li><strong>Power Supply Validation</strong>: Ensure your power supply is delivering correct voltage</li>
+<li><strong>Low Battery Warnings</strong>: Implement automatic shutdown when voltage gets too low</li>
+<li><strong>Data Logging</strong>: Record voltage over time for analysis</li>
+</ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p><strong>Problem</strong>: Readings seem inaccurate
+<strong>Solution</strong>: Take multiple readings and average them, ensure good connections</p>
+<p><strong>Problem</strong>: Voltage reads 0V
+<strong>Solution</strong>: Check that VSYS is properly powered, verify code is using ADC(3)</p>
+<p><strong>Problem</strong>: Readings are noisy
+<strong>Solution</strong>: Add filtering (averaging multiple readings) or use a capacitor on VSYS</p>
+<h2 id="extension-activities">Extension Activities</h2>
+<ol>
+<li>Create a voltage alarm that lights an LED when voltage is too low</li>
+<li>Log voltage data to a file for later analysis</li>
+<li>Create a simple voltmeter display using an OLED screen</li>
+<li>Implement automatic power management based on voltage levels</li>
+</ol>
+<h2 id="safety-notes">Safety Notes</h2>
+<ul>
+<li>Never exceed 5.5V on VSYS</li>
+<li>Be careful when connecting external power supplies</li>
+<li>Always verify polarity before connecting power</li>
+<li>Use appropriate current limiting if needed</li>
+</ul>
+<p>This lesson provides a foundation for understanding power monitoring in embedded systems and demonstrates practical ADC usage in MicroPython.</p>
+<h2 id="references">References</h2>
+<p><a href="https://forums.raspberrypi.com/viewtopic.php?t=301152">VSYS on the Raspberry Pi Forum</a></p>
 
 
 
