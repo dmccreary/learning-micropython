@@ -2,24 +2,24 @@
 
 ## Prompt
 
-```
-Our next step is to create a fully connected dependency graph.
-In this step, for each line or concept on this list, 
-please create a new list of other concepts on which it depends.
-If a concept depends on a specific concept that is not listed,
-then we must add it as a new concept.
-This will help us determine the teaching order of the concepts.
+!!! prompt
+    Our next step is to create a fully connected dependency graph.
+    In this step, for each line or concept on this list, 
+    please create a new list of other concepts on which it depends.
+    If a concept depends on a specific concept that is not listed,
+    then we must add it as a new concept.
+    This will help us determine the teaching order of the concepts.
 
-Return the new list as a CSV file using the following format:
+    Return the new list as a CSV file using the following format:
 
-The first column is a numeric concept ID you assigned,  
-the second column is the concept name,
-and the third column is a pipe-delimited list of the concept IDs
-that the concept depends upon.
+    The first column is a numeric concept ID you assigned,  
+    the second column is the concept name,
+    and the third column is a pipe-delimited list of the concept IDs
+    that the concept depends upon.
 
-Check your results to make sure that all concepts are
-connected to at least one other concept.
-```
+    Check your results to make sure that all concepts are
+    connected to at least one other concept.
+
 
 ## Response
 
