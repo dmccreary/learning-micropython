@@ -2,11 +2,11 @@
 
 ## Prompt
 
-```linenums="0"
-I am very pleased with these results. Now, can you suggest a
-taxonomy to classify each of these learning concepts? Perhaps
-about 10 different classifications?
-```
+!!! prompt
+    I am very pleased with the results from the concept dependency query.
+    The results are stored in the file concept-graph.csv.  Now, can you suggest a
+    taxonomy to classify each of these learning concepts? Perhaps
+    about 12 different classifications?
 
 ## Response
 

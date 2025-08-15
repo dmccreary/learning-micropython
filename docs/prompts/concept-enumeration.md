@@ -2,23 +2,21 @@
 
 ## Prompt
 
-```linenums="0"
-Raspberry Pi Pico, and solderless breadboards.
-In our labs, we also use many parts such as photosensors, potentiometers, LEDs, resistors, transistors, time-0f-flight sensors, WS2812B LED strips, 128x64 OLED displays, motors, and the Cytron Maker Pi RP2040, which has the same RP2040 microcontroller.
+!!! prompt
+    Please create a list of the 250 most essential concepts in the book "Learning MicroPython on the Raspberry Pi Pico".
 
-We have a lot of material and lesson plans right now, but I would like an overall list of the 200 key concepts we need to cover in this course.
+    This course uses the Raspberry Pi Pico, Raspberry Pi Pico W, sensors, motors, wire and solderless breadboards to create fun STEM projects that teach computational thinking.
 
-For this course, please create a list of the core learning concepts that we need to present in this course and the order in which they should be taught.
+    In our labs, we also use many parts such as breadboards, wire, photosensors, potentiometers, LEDs, resistors, transistors, time-0f-flight sensors, WS2812B LED strips, 128x64 OLED displays, motors, speakers, and the Cytron Maker Pi RP2040, which has the same RP2040 microcontroller.
 
-Please create a list of the 200 most essential concepts
-in this course. 
-Return the concept's preferred label in a numbered list for each learning concept.
-Make sure that the concept names are distinct and not synonyms.  Don't repeat
+    For this course, please create a list of the core learning concepts that we need to present in this course and the order in which they should be taught.
 
-Start with the most basic foundational concepts and then
-proceed to the most complex concepts. Return just one concept label per line.
-Avoid using acronyms or abbreviations.
+    Return the concept's preferred label in a numbered list for each learning concept.
+    Make sure that the concept names are distinct and not synonyms.  Don't repeat concepts.
 
+    Start with the most basic foundational concepts and then
+    proceed to the most complex concepts. Return just one concept label per line.
+    Avoid using acronyms or abbreviations.
 
 
 ## Response

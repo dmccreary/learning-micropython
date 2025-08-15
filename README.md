@@ -12,7 +12,7 @@
 
 ## 🎯 About
 
-This repository contains **comprehensive educational resources** for learning MicroPython and physical computing with microcontrollers. Designed for students aged 10-18 but suitable for all ages, it provides hands-on programming experiences with real hardware including Raspberry Pi Pico, ESP32, sensors, displays, motors, and more.
+This book contains **comprehensive educational resources** for learning MicroPython and physical computing with microcontrollers. Designed for students aged 10-18 but suitable for all ages, it provides hands-on programming experiences with real hardware including the Raspberry Pi Pico, the Raspberry Pi Pico W (wireless), the ESP32, sensors, displays, motors, and more.
 
 ### 🏆 What Makes This Special
 

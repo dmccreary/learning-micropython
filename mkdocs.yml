@@ -8,6 +8,7 @@ edit_uri: 'blob/master/docs'
 
 nav:
   - Home: index.md
+  - About This Book: about.md
   - Introduction:
     - About This Site: intro/01-about.md
     - Physical Computing:  intro/02-physical-computing.md
@@ -27,8 +28,9 @@ nav:
     - MicroPython Libraries: getting-started/01b-libraries.md
 
   - Basic Examples:
-    - Introduction: basics/01-intro.md
-    - Blink: basics/03-blink.md
+    - Introduction: basics/index.md
+    - Blink: basics/01-blink.md
+    - Internal Temperature: basics/02-internal-temperature.md
     - Fade In and Out: basics/04-fade-in-and-out.md
     - Buttons: basics/03-button.md
     - Potentiometer: basics/03-potentiometer.md

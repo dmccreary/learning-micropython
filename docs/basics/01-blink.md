@@ -1,13 +1,16 @@
-# Blink in MicroPython
+# Blink the Onboard LED in MicroPython
 
 ![Blink GIF](../img/blink-on-board-led.gif)
 
 ## Overview
-In this lab, we will use MicroPython to make the green on-board LED on the Raspberry Pi Pico blink on and off every half second.  The only things you need to run this program are
+In this lab, we will use MicroPython to make the green on-board LED on the Raspberry Pi Pico blink 
+on and off every half second.  The only things you need to run this program are:
 
-1. a working IDE like [Thonny](../glossary#thonny)
+1. a working IDE like [Thonny](../glossary#thonny) running on your Mac, PC or Linux computer
 2. a USB cable
 3. a $4 Raspberry Pi Pico microcontroller
+
+That's it!  You don'e need any extra components.
 
 ## Blinking the Builtin LED
 
