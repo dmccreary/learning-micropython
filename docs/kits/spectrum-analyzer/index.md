@@ -4,7 +4,7 @@ This kits will displays a frequency spectrum from microphone input on the OLED d
 
 !!! Note
     This kit has been promoted to be an entire
-    project with its own GitHub repository.
+    project with its own GitHub repository!
 
     See the New Book Here:
     

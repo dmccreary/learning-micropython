@@ -183,7 +183,8 @@ nav:
     - Multi-Core Programming: advanced-labs/16-multi-core.md
     - File System: advanced-labs/17-file-system.md
     - Button Callback: advanced-labs/21-button-callback.md
-    
+    - advanced-labs/pio/index.md
+
     - Spectrum Analyzer: 
       - Introduction: advanced-labs/30-spectrum-analyzer/index.md
       - Test Sound: advanced-labs/30-spectrum-analyzer/01-test-incoming-sound.md
@@ -196,6 +197,8 @@ nav:
       - Adding Timers: advanced-labs/30-spectrum-analyzer/08-adding-timers.md
       - Assembler FFT: advanced-labs/30-spectrum-analyzer/09-assembler-function.md
       - Future Work: advanced-labs/30-spectrum-analyzer/10-future-improvements.md
+      - advanced-labs/30-spectrum-analyzer/02-gain-pot.md
+
 
   - Project Kits:
     - Introduction: kits/01-intro.md
