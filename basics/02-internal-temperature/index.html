@@ -1,0 +1,2780 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/basics/02-internal-temperature/">
+      
+      
+        <link rel="prev" href="../01-blink/">
+      
+      
+        <link rel="next" href="../04-fade-in-and-out/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Internal Temperature - Learning MicroPython</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-DS16K4YVRR"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-DS16K4YVRR",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-DS16K4YVRR",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#raspberry-pi-pico-internal-temperature-sensor" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Learning MicroPython" class="md-header__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning MicroPython
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Internal Temperature
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Learning MicroPython" class="md-nav__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Learning MicroPython
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About This Book
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../intro/01-about/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../getting-started/01-intro/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Basic Examples
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Basic Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-blink/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Blink
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Internal Temperature
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Internal Temperature
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#background-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background Information
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Background Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-internal-temperature-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the Internal Temperature Sensor?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Concepts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#materials-needed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Materials Needed
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-understanding-the-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Understanding the Hardware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-basic-temperature-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Basic Temperature Reading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-continuous-temperature-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Continuous Temperature Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-enhanced-version-with-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Enhanced Version with Statistics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the Code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#temperature-conversion-formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temperature Conversion Formula
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adc-reading-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      ADC Reading Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises-and-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercises and Extensions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercises and Extensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-temperature-alarm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1: Temperature Alarm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-data-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2: Data Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-temperature-trends" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3: Temperature Trends
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-multiple-temperature-units" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4: Multiple Temperature Units
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-world-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-World Applications
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-fade-in-and-out/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fade In and Out
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-button/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Buttons
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-potentiometer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Potentiometer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-motor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Motor
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-servo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Servo
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-neopixel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NeoPixel
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-wireless/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Wireless
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10.config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Config
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sensors/01-intro/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Sensors
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../motors/01-intro/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Motors and Servos
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../displays/non-graph/01-intro/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Displays - Non-Graphical
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../displays/graph/01-intro/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Displays Graphical
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sound/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Sound and Music
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../wireless/01-intro/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Wireless
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../robots/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Robots
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../debugging/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Debugging
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../advanced-labs/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Advanced Labs
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../kits/01-intro/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Project Kits
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    MicroSims
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    Prompts
+    
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    References
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contact
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/content-authoring-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authoring Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/instructors-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Instructors Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/acknowledgements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Acknowledgements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/30-colophon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Colophon
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Objectives
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#background-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Background Information
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Background Information">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-internal-temperature-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is the Internal Temperature Sensor?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Concepts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#materials-needed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Materials Needed
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lesson-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lesson Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lesson Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-understanding-the-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Understanding the Hardware
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-basic-temperature-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Basic Temperature Reading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-continuous-temperature-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3: Continuous Temperature Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-enhanced-version-with-statistics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Enhanced Version with Statistics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the Code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#temperature-conversion-formula" class="md-nav__link">
+    <span class="md-ellipsis">
+      Temperature Conversion Formula
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adc-reading-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      ADC Reading Process
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises-and-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercises and Extensions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercises and Extensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-temperature-alarm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1: Temperature Alarm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-data-logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2: Data Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-temperature-trends" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3: Temperature Trends
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-multiple-temperature-units" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4: Multiple Temperature Units
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-world-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-World Applications
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="raspberry-pi-pico-internal-temperature-sensor">Raspberry Pi Pico Internal Temperature Sensor</h1>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this lesson, students will be able to:</p>
+<ul>
+<li>Understand how the Raspberry Pi Pico's internal temperature sensor works</li>
+<li>Use the <code>machine</code> module to access the ADC (Analog to Digital Converter)</li>
+<li>Convert raw ADC readings to temperature values in Celsius and Fahrenheit</li>
+<li>Display temperature readings on the Thonny console</li>
+<li>Implement a continuous temperature monitoring loop</li>
+</ul>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Basic understanding of Python programming</li>
+<li>Familiarity with MicroPython on the Raspberry Pi Pico</li>
+<li>Thonny IDE installed and configured for the Pico</li>
+<li>Understanding of variables, loops, and basic math operations</li>
+</ul>
+<h2 id="background-information">Background Information</h2>
+<h3 id="what-is-the-internal-temperature-sensor">What is the Internal Temperature Sensor?</h3>
+<p>The Raspberry Pi Pico includes a built-in temperature sensor connected to the RP2040 chip's fourth ADC channel. This sensor measures the temperature of the chip itself, which is typically a few degrees warmer than the ambient (room) temperature.</p>
+<h3 id="key-concepts">Key Concepts</h3>
+<p><strong>ADC (Analog to Digital Converter)</strong>: A component that converts analog signals (like temperature) into digital values that the microcontroller can process.</p>
+<p><strong>Temperature Sensor</strong>: The Pico's internal sensor provides a voltage that changes with temperature. We need to convert this voltage reading into actual temperature values.</p>
+<p><strong>Voltage Reference</strong>: The Pico uses a 3.3V reference voltage for its ADC readings.</p>
+<h2 id="materials-needed">Materials Needed</h2>
+<ul>
+<li>Raspberry Pi Pico</li>
+<li>USB cable</li>
+<li>Computer with Thonny IDE</li>
+<li>MicroPython firmware installed on the Pico</li>
+</ul>
+<h2 id="lesson-steps">Lesson Steps</h2>
+<h3 id="step-1-understanding-the-hardware">Step 1: Understanding the Hardware</h3>
+<p>The internal temperature sensor is already built into the RP2040 chip. Unlike external sensors, we don't need to wire anything - we just need to access it through code using ADC channel 4.</p>
+<h3 id="step-2-basic-temperature-reading">Step 2: Basic Temperature Reading</h3>
+<p>Let's start with a simple program to read the temperature once:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># Create an ADC object for the internal temperature sensor</span>
+<span class="c1"># The internal temperature sensor is on ADC channel 4</span>
+<span class="n">temp_sensor</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">ADC</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Read the raw ADC value (0-65535)</span>
+<span class="n">raw_value</span> <span class="o">=</span> <span class="n">temp_sensor</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
+
+<span class="c1"># Convert to voltage (0-3.3V)</span>
+<span class="n">voltage</span> <span class="o">=</span> <span class="n">raw_value</span> <span class="o">*</span> <span class="p">(</span><span class="mf">3.3</span> <span class="o">/</span> <span class="mi">65535</span><span class="p">)</span>
+
+<span class="c1"># Convert voltage to temperature in Celsius</span>
+<span class="c1"># Formula from RP2040 datasheet</span>
+<span class="n">temp_celsius</span> <span class="o">=</span> <span class="mi">27</span> <span class="o">-</span> <span class="p">(</span><span class="n">voltage</span> <span class="o">-</span> <span class="mf">0.706</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.001721</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Raw ADC value: </span><span class="si">{</span><span class="n">raw_value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Voltage: </span><span class="si">{</span><span class="n">voltage</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">V&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperature: </span><span class="si">{</span><span class="n">temp_celsius</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="step-3-continuous-temperature-monitoring">Step 3: Continuous Temperature Monitoring</h3>
+<p>Now let's create a program that continuously monitors and displays the temperature:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">read_temperature</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Read the internal temperature sensor and return temperature in Celsius</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Create ADC object for internal temperature sensor</span>
+    <span class="n">temp_sensor</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">ADC</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+    <span class="c1"># Read raw ADC value</span>
+    <span class="n">raw_value</span> <span class="o">=</span> <span class="n">temp_sensor</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
+
+    <span class="c1"># Convert to voltage</span>
+    <span class="n">voltage</span> <span class="o">=</span> <span class="n">raw_value</span> <span class="o">*</span> <span class="p">(</span><span class="mf">3.3</span> <span class="o">/</span> <span class="mi">65535</span><span class="p">)</span>
+
+    <span class="c1"># Convert to temperature using RP2040 formula</span>
+    <span class="n">temp_celsius</span> <span class="o">=</span> <span class="mi">27</span> <span class="o">-</span> <span class="p">(</span><span class="n">voltage</span> <span class="o">-</span> <span class="mf">0.706</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.001721</span>
+
+    <span class="k">return</span> <span class="n">temp_celsius</span>
+
+<span class="k">def</span> <span class="nf">celsius_to_fahrenheit</span><span class="p">(</span><span class="n">celsius</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert Celsius to Fahrenheit</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">celsius</span> <span class="o">*</span> <span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">32</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Raspberry Pi Pico Internal Temperature Monitor&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Press Ctrl+C to stop&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Read temperature</span>
+        <span class="n">temp_c</span> <span class="o">=</span> <span class="n">read_temperature</span><span class="p">()</span>
+        <span class="n">temp_f</span> <span class="o">=</span> <span class="n">celsius_to_fahrenheit</span><span class="p">(</span><span class="n">temp_c</span><span class="p">)</span>
+
+        <span class="c1"># Display results</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperature: </span><span class="si">{</span><span class="n">temp_c</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C / </span><span class="si">{</span><span class="n">temp_f</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°F&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Wait 2 seconds before next reading</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">nTemperature monitoring stopped&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="step-4-enhanced-version-with-statistics">Step 4: Enhanced Version with Statistics</h3>
+<p>Let's create a more advanced version that tracks minimum, maximum, and average temperatures:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">class</span> <span class="nc">TemperatureMonitor</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temp_sensor</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">ADC</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">readings</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_temp</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_temp</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">read_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Read temperature in Celsius&quot;&quot;&quot;</span>
+        <span class="n">raw_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">temp_sensor</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
+        <span class="n">voltage</span> <span class="o">=</span> <span class="n">raw_value</span> <span class="o">*</span> <span class="p">(</span><span class="mf">3.3</span> <span class="o">/</span> <span class="mi">65535</span><span class="p">)</span>
+        <span class="n">temp_celsius</span> <span class="o">=</span> <span class="mi">27</span> <span class="o">-</span> <span class="p">(</span><span class="n">voltage</span> <span class="o">-</span> <span class="mf">0.706</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.001721</span>
+        <span class="k">return</span> <span class="n">temp_celsius</span>
+
+    <span class="k">def</span> <span class="nf">celsius_to_fahrenheit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">celsius</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert Celsius to Fahrenheit&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">celsius</span> <span class="o">*</span> <span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">32</span>
+
+    <span class="k">def</span> <span class="nf">update_statistics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temp</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Update min, max, and average temperature statistics&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">readings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+
+        <span class="c1"># Keep only the last 10 readings for moving average</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">readings</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">readings</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Update min and max</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_temp</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">temp</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_temp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">min_temp</span> <span class="o">=</span> <span class="n">temp</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_temp</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">temp</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_temp</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">max_temp</span> <span class="o">=</span> <span class="n">temp</span>
+
+    <span class="k">def</span> <span class="nf">get_average</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate average of recent readings&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">readings</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">readings</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">readings</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">display_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temp_c</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Display current temperature and statistics&quot;&quot;&quot;</span>
+        <span class="n">temp_f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">celsius_to_fahrenheit</span><span class="p">(</span><span class="n">temp_c</span><span class="p">)</span>
+        <span class="n">avg_temp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_average</span><span class="p">()</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Current: </span><span class="si">{</span><span class="n">temp_c</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C / </span><span class="si">{</span><span class="n">temp_f</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°F&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_temp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_temp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Min: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">min_temp</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C  Max: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">max_temp</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C  Avg: </span><span class="si">{</span><span class="n">avg_temp</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># Main program</span>
+<span class="n">monitor</span> <span class="o">=</span> <span class="n">TemperatureMonitor</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Enhanced Temperature Monitor&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tracking Min/Max/Average temperatures&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Press Ctrl+C to stop&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">reading_count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Read current temperature</span>
+        <span class="n">current_temp</span> <span class="o">=</span> <span class="n">monitor</span><span class="o">.</span><span class="n">read_temperature</span><span class="p">()</span>
+
+        <span class="c1"># Update statistics</span>
+        <span class="n">monitor</span><span class="o">.</span><span class="n">update_statistics</span><span class="p">(</span><span class="n">current_temp</span><span class="p">)</span>
+
+        <span class="c1"># Display every 3 seconds</span>
+        <span class="n">reading_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Reading #</span><span class="si">{</span><span class="n">reading_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">monitor</span><span class="o">.</span><span class="n">display_status</span><span class="p">(</span><span class="n">current_temp</span><span class="p">)</span>
+
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\\</span><span class="s2">nFinal Statistics:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total readings: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">monitor</span><span class="o">.</span><span class="n">readings</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">monitor</span><span class="o">.</span><span class="n">min_temp</span> <span class="ow">and</span> <span class="n">monitor</span><span class="o">.</span><span class="n">max_temp</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperature range: </span><span class="si">{</span><span class="n">monitor</span><span class="o">.</span><span class="n">min_temp</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C to </span><span class="si">{</span><span class="n">monitor</span><span class="o">.</span><span class="n">max_temp</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final average: </span><span class="si">{</span><span class="n">monitor</span><span class="o">.</span><span class="n">get_average</span><span class="p">()</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Temperature monitoring stopped&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="understanding-the-code">Understanding the Code</h2>
+<h3 id="temperature-conversion-formula">Temperature Conversion Formula</h3>
+<p>The formula <code>temp_celsius = 27 - (voltage - 0.706) / 0.001721</code> comes from the RP2040 datasheet. Here's what it means:</p>
+<ul>
+<li><code>27</code> is the reference temperature in Celsius</li>
+<li><code>0.706</code> is the reference voltage at 27°C</li>
+<li><code>0.001721</code> is the temperature coefficient (how much voltage changes per degree)</li>
+</ul>
+<h3 id="adc-reading-process">ADC Reading Process</h3>
+<ol>
+<li><strong>Raw Reading</strong>: <code>read_u16()</code> returns a 16-bit value (0-65535)</li>
+<li><strong>Voltage Conversion</strong>: Scale the raw value to actual voltage (0-3.3V)</li>
+<li><strong>Temperature Calculation</strong>: Use the RP2040 formula to convert voltage to temperature</li>
+</ol>
+<h2 id="exercises-and-extensions">Exercises and Extensions</h2>
+<h3 id="exercise-1-temperature-alarm">Exercise 1: Temperature Alarm</h3>
+<p>Modify the code to print a warning when the temperature exceeds a certain threshold (e.g., 35°C).</p>
+<h3 id="exercise-2-data-logging">Exercise 2: Data Logging</h3>
+<p>Save temperature readings to a file with timestamps.</p>
+<h3 id="exercise-3-temperature-trends">Exercise 3: Temperature Trends</h3>
+<p>Add code to detect if the temperature is rising, falling, or stable.</p>
+<h3 id="exercise-4-multiple-temperature-units">Exercise 4: Multiple Temperature Units</h3>
+<p>Add support for Kelvin temperature scale.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p><strong>Problem</strong>: Temperature readings seem too high
+<strong>Solution</strong>: Remember that this measures the chip temperature, which is typically warmer than room temperature due to the processor's heat.</p>
+<p><strong>Problem</strong>: Erratic readings
+<strong>Solution</strong>: Add a small delay between readings and consider averaging multiple samples.</p>
+<p><strong>Problem</strong>: Program won't stop with Ctrl+C
+<strong>Solution</strong>: Make sure you're using the correct exception handling with <code>KeyboardInterrupt</code>.</p>
+<h2 id="real-world-applications">Real-World Applications</h2>
+<ul>
+<li>Thermal monitoring of electronic devices</li>
+<li>Environmental data logging</li>
+<li>Overheating protection systems</li>
+<li>Climate control systems</li>
+<li>Scientific data collection</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>In this lesson, you learned how to:</p>
+<ul>
+<li>Access the Raspberry Pi Pico's internal temperature sensor</li>
+<li>Convert ADC readings to temperature values</li>
+<li>Create continuous monitoring programs</li>
+<li>Implement basic statistics tracking</li>
+<li>Handle user interrupts gracefully</li>
+</ul>
+<p>The internal temperature sensor is a valuable tool for monitoring your Pico's operating conditions and can be the foundation for more complex environmental monitoring projects.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../01-blink/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Blink">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Blink
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../04-fade-in-and-out/" class="md-footer__link md-footer__link--next" aria-label="Next: Fade In and Out">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Fade In and Out
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>
