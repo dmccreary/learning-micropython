@@ -17,7 +17,7 @@ did not have high quality instructional content on-line.
 This all changed in March 2021 when the Raspberry Pi Foundation [announced the Raspberry Pi Pico](https://www.raspberrypi.com/news/raspberry-pi-pico-vertical-innovation/).  This was a low-cost ($4 USD) system that came
 with 264K or RAM.  This was more than enough RAM to run MicroPython.
 
-## Goals of THis Book
+## Goals of This Book
 
 You might think we were crazy to put so much effort into build such a large collection of MicroPython code
 with many working examples.  These examples represent literally thousands of person-hours designing, building
