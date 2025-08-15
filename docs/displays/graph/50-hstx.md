@@ -33,3 +33,7 @@ Adafruit Feather RP2350 features a 22-pin HSTX port specifically designed for en
 
 
 Beyond displays, HSTX has other applications such as high-speed data acquisition. Steve Markgraf demonstrated this by combining a Raspberry Pi Pico 2 with a DVI Sock board and an HDMI to USB 3.0 video capture dongle, achieving data streaming rates of up to 75 MB/s. [CNX Software](https://www.cnx-software.com/2024/11/19/high-speed-data-acquisition-raspberry-pi-pico-2-hstx-interface-cheaper-hdmi-to-usb-3-0-video-capture-dongle/)
+
+## References
+
+[Sparkfun HSTX Breakout Board](https://www.sparkfun.com/sparkfun-hstx-pth-breakout.html) - $250

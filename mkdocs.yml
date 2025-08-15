@@ -54,6 +54,7 @@ nav:
     - Rotary Encoder: sensors/10-rotary-encoder.md
     - Compass: sensors/11-compass.md
     - Gesture: sensors/13-gesture.md
+    - Touch Sensor: sensors/14-touch-ttp223.md
     - Microphone INMP441: sensors/15-inmp441.md
     - BME280 Temp and Pressure: sensors/09-bme280.md
 
@@ -68,8 +69,10 @@ nav:
 
   - Displays - Non-Graphical:
     - Introduction: displays/non-graph/01-intro.md
+    - LED Button: displays/non-graph/02-led-button.md
     - 7 Segment Display: displays/non-graph/seven-segment.md
     - 10 Bar LEDs: displays/non-graph/03-10-bar-leds.md
+    - Level Meter: displays/non-graph/03a-10-bar-level.md
     - 8x8 LED Matrix: displays/non-graph/04-8x8-led-matrix.md
     - Character LCD: displays/non-graph/10-character-lcd-display.md
     - 4 Digit LED: displays/non-graph/05-4-digit.md
