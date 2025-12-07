@@ -312,11 +312,13 @@ theme:
 plugins:
   - search
 markdown_extensions:
-  - admonition
-  - pymdownx.details
-  - pymdownx.superfences
   - attr_list
   - md_in_html
+  - admonition
+  - meta
+  # always put detailed BEFORE superfences
+  - pymdownx.details
+  - pymdownx.superfences
   - pymdownx.highlight:
       linenums: true
 extra_css:
