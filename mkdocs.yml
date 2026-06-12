@@ -9,6 +9,9 @@ edit_uri: 'blob/master/docs'
 nav:
   - Home: index.md
   - About This Book: about.md
+  - Course Description: course-description.md
+  - Learning Graph:
+    - Course Description Assessment: learning-graph/course-description-assessment.md
   - Introduction:
     - About This Site: intro/01-about.md
     - Physical Computing:  intro/02-physical-computing.md
