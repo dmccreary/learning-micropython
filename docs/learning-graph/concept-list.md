@@ -172,7 +172,7 @@ Total concepts: 420
 ## Communication Protocols
 
 145. I2C Protocol
-146. I2C Bus (SDA, SCL)
+146. I2C Bus SDA and SCL
 147. I2C Address
 148. I2C Scanner
 149. machine.I2C Class
@@ -180,7 +180,7 @@ Total concepts: 420
 151. I2C.writeto() Method
 152. I2C.readfrom() Method
 153. SPI Protocol
-154. SPI Bus (MOSI, MISO, SCK, CS)
+154. SPI Bus Pins (MOSI MISO SCK CS)
 155. machine.SPI Class
 156. SPI.write() Method
 157. SPI.read() Method

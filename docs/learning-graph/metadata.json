@@ -1,0 +1,10 @@
+{
+  "title": "Learning MicroPython and Physical Computing",
+  "description": "A comprehensive learning graph for MicroPython and physical computing covering Python foundations, microcontroller hardware, sensors, displays, motors, robots, wireless IoT, and advanced topics. Designed for students aged 10-18 and suitable for all ages.",
+  "creator": "Dan McCreary",
+  "date": "2026-06-12",
+  "version": "1.0",
+  "format": "Learning Graph JSON v1.0",
+  "schema": "https://raw.githubusercontent.com/dmccreary/learning-graphs/refs/heads/main/src/schema/learning-graph-schema.json",
+  "license": "CC BY-NC-SA 4.0 DEED"
+}

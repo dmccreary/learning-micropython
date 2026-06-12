@@ -1,0 +1,486 @@
+ConceptID,ConceptLabel,Dependencies,TaxonomyID
+1,Computer Program,,FOUND
+2,Source Code,1,FOUND
+3,Variable,1|2,FOUND
+4,Data Type,3,FOUND
+5,Integer,4,FOUND
+6,Float,4,FOUND
+7,String,4,FOUND
+8,Boolean,4,FOUND
+9,List,4,FOUND
+10,Dictionary,4,FOUND
+11,Tuple,4,FOUND
+12,Conditional Statement,3|8,FOUND
+13,If-Else Statement,12,FOUND
+14,For Loop,3|9,FOUND
+15,While Loop,3|8,FOUND
+16,Function Definition,3|12|14,FOUND
+17,Function Call,16,FOUND
+18,Return Value,16,FOUND
+19,Module Import,1|2,FOUND
+20,Python Syntax,1,FOUND
+21,Indentation in Python,20,FOUND
+22,Comment in Code,2,FOUND
+23,Print Statement,1|7,FOUND
+24,Input Validation,3|7,FOUND
+25,Error and Exception,1|2,FOUND
+26,Try-Except Block,25,FOUND
+27,Arithmetic Operators,3|5|6,FOUND
+28,Comparison Operators,3|5|6|8,FOUND
+29,Logical Operators,8|12,FOUND
+30,Assignment Operators,3,FOUND
+31,MicroPython,1|19,UENV
+32,MicroPython REPL,31,UENV
+33,MicroPython Firmware,31,UENV
+34,Flashing Firmware,33,UENV
+35,Thonny IDE,31|34,UENV
+36,VS Code IDE,31|34,UENV
+37,Thonny File Manager,35,UENV
+38,mpremote Tool,31|34,UENV
+39,rshell Tool,31|34,UENV
+40,File Transfer to Pico,34|37|38,UENV
+41,MicroPython Interpreter,31|33,UENV
+42,Interactive Mode,32|41,UENV
+43,Script Mode,35|41,UENV
+44,Boot.py File,43|40,UENV
+45,Main.py File,43|40,UENV
+46,MicroPython Modules,19|31,UENV
+47,MicroPython Standard Library,46,UENV
+48,uos Module,47,UENV
+49,utime Module,47,UENV
+50,sys Module,47,UENV
+51,Microcontroller,1,MCU
+52,Raspberry Pi Pico,51,MCU
+53,Raspberry Pi Pico W,52,MCU
+54,RP2040 Chip,52,MCU
+55,ESP32 Microcontroller,51,MCU
+56,ESP8266 Microcontroller,51,MCU
+57,Cytron Maker Pi RP2040,52,MCU
+58,Maker Pi Pico,52,MCU
+59,Maker Nano RP2040,52,MCU
+60,Raspberry Pi 500 Keyboard,51,MCU
+61,Micro:bit,51,MCU
+62,GPIO Pin,51|52,MCU
+63,GPIO Numbering,62,MCU
+64,Pin Modes (Input/Output),62|63,MCU
+65,Pull-Up Resistor,64|87,MCU
+66,Pull-Down Resistor,64|87,MCU
+67,USB Connection,52|34,MCU
+68,USB Power,67,MCU
+69,3.3V Logic Level,52|79,MCU
+70,5V Logic Level,51|79,MCU
+71,Ground (GND),79|84,MCU
+72,VSYS Pin,52|69,MCU
+73,VBUS Pin,52|70,MCU
+74,Pico W Wireless Module,53,MCU
+75,RP2040 Dual Core,54,MCU
+76,RP2040 PIO (Programmable I/O),54,MCU
+77,Flash Memory on Pico,52,MCU
+78,RAM on Pico,52,MCU
+79,Voltage,1,ELEC
+80,Current,79,ELEC
+81,Resistance,79|80,ELEC
+82,Ohm's Law,79|80|81,ELEC
+83,Power (Watts),79|80,ELEC
+84,Series Circuit,79|80|81,ELEC
+85,Parallel Circuit,79|80|81,ELEC
+86,Short Circuit,80|84,ELEC
+87,Current-Limiting Resistor,80|81|82|90,ELEC
+88,Resistor Color Code,81,ELEC
+89,Capacitor,79|80,ELEC
+90,LED (Light Emitting Diode),79|80,ELEC
+91,LED Forward Voltage,90|79,ELEC
+92,LED Current Rating,90|80|82,ELEC
+93,Transistor,80|79,ELEC
+94,NPN Transistor,93,ELEC
+95,MOSFET,93,ELEC
+96,Diode,79|80,ELEC
+97,Breadboard,84,ELEC
+98,Breadboard Rails,97,ELEC
+99,Breadboard Rows,97,ELEC
+100,Jumper Wire,97,ELEC
+101,Multimeter,79|80|81,ELEC
+102,Continuity Test,101,ELEC
+103,Wiring Diagram,62|84,ELEC
+104,Schematic Symbol,90|93|96,ELEC
+105,Power Supply,79|80,ELEC
+106,Digital Output,62|64|110,IO
+107,Digital Input,62|64|110,IO
+108,HIGH and LOW States,69|70|71,IO
+109,machine.Pin Class,31|46|62,IO
+110,Pin.OUT Mode,109|64,IO
+111,Pin.IN Mode,109|64,IO
+112,Pin.value() Method,109|110|111,IO
+113,LED Blink Program,106|112|90|87|49,IO
+114,Button Input,107|65|66,IO
+115,Button Debouncing,114,IO
+116,Software Debouncing,115|49,IO
+117,Hardware Debouncing,115|89,IO
+118,Active High vs Active Low,108|64|65,IO
+119,Internal LED,52|106,IO
+120,External LED Circuit,90|87|97|106,IO
+121,Analog Signal,79,IO
+122,Digital Signal,108,IO
+123,Analog-to-Digital Converter (ADC),121|122,IO
+124,ADC Resolution (bits),123,IO
+125,machine.ADC Class,31|46|62|123,IO
+126,ADC.read_u16() Method,125,IO
+127,ADC Voltage Reference,69|123,IO
+128,Potentiometer,81|97,IO
+129,Potentiometer as Voltage Divider,128|130,IO
+130,Voltage Divider Circuit,79|81|84,IO
+131,Reading Analog Values,125|126,IO
+132,Scaling ADC Values,131|27,IO
+133,Light Sensor (Photoresistor),121|97,IO
+134,LDR (Light-Dependent Resistor),133|81,IO
+135,Pulse-Width Modulation (PWM),106|122,IO
+136,PWM Frequency,135,IO
+137,PWM Duty Cycle,135,IO
+138,machine.PWM Class,31|46|62|135,IO
+139,PWM.duty_u16() Method,138,IO
+140,LED Fade with PWM,90|138|139,IO
+141,Brightness Control,140|137,IO
+142,PWM for Servo Control,135|137|238,IO
+143,PWM for Motor Speed,135|137|226,IO
+144,Soft PWM,135|49,IO
+145,I2C Protocol,62|64,COMM
+146,I2C Bus SDA and SCL,145,COMM
+147,I2C Address,145,COMM
+148,I2C Scanner,145|147|149,COMM
+149,machine.I2C Class,31|46|145,COMM
+150,I2C.scan() Method,149|147,COMM
+151,I2C.writeto() Method,149,COMM
+152,I2C.readfrom() Method,149,COMM
+153,SPI Protocol,62|64,COMM
+154,SPI Bus Pins (MOSI MISO SCK CS),153,COMM
+155,machine.SPI Class,31|46|153,COMM
+156,SPI.write() Method,155,COMM
+157,SPI.read() Method,155,COMM
+158,UART Protocol,62|64,COMM
+159,machine.UART Class,31|46|158,COMM
+160,1-Wire Protocol,62,COMM
+161,I2S Protocol,62|64,COMM
+162,I2S for Audio,161|341,COMM
+163,machine.I2S Class,31|46|161,COMM
+164,Bus Frequency Setting,145|153,COMM
+165,DHT11 Sensor,107|49,STEMP
+166,DHT22 Sensor,107|49,STEMP
+167,dht Module in MicroPython,46|165,STEMP
+168,DHT.measure() Method,167,STEMP
+169,DHT.temperature() Method,168,STEMP
+170,DHT.humidity() Method,168,STEMP
+171,BME280 Sensor,145|149,STEMP
+172,BME280 Temperature Reading,171,STEMP
+173,BME280 Humidity Reading,171,STEMP
+174,BME280 Pressure Reading,171,STEMP
+175,BME280 I2C Driver,149|171,STEMP
+176,DS18B20 Temperature Sensor,160,STEMP
+177,DS18B20 1-Wire Interface,160|176,STEMP
+178,DS18B20 Multiple Sensors,177,STEMP
+179,onewire Module,46|160,STEMP
+180,ds18x20 Module,179|176,STEMP
+181,HC-SR04 Ultrasonic Sensor,106|107|49,SDIST
+182,HC-SR04 Trigger Pin,181|106,SDIST
+183,HC-SR04 Echo Pin,181|107,SDIST
+184,Speed of Sound Calculation,181,SDIST
+185,Ultrasonic Ranging Formula,184|49,SDIST
+186,VL53L0X Time-of-Flight Sensor,145|149,SDIST
+187,VL53L0X I2C Driver,149|186,SDIST
+188,VL53L0X.range Property,187,SDIST
+189,Time-of-Flight Measurement,186|188,SDIST
+190,IR Distance Sensor,106|107,SDIST
+191,IR Emitter and Detector,190,SDIST
+192,Collision Avoidance Logic,181|186|249,SDIST
+193,Photoresistor (LDR),121|97|134,SENS
+194,APDS9960 Gesture Sensor,145|149,SENS
+195,APDS9960 Color Detection,194,SENS
+196,APDS9960 Proximity Detection,194,SENS
+197,APDS9960 I2C Driver,149|194,SENS
+198,Color Sensing Principles,195,SENS
+199,Ambient Light Sensing,193|194,SENS
+200,Accelerometer,145|149,SMOT
+201,ADXL345 Accelerometer,200|149,SMOT
+202,MPU6050 Accelerometer/Gyroscope,200|149,SMOT
+203,Accelerometer X/Y/Z Axes,200,SMOT
+204,Tilt Detection,200|203,SMOT
+205,HMC5883L Compass Sensor,145|149,SMOT
+206,QMC5883L Compass Sensor,145|149,SMOT
+207,Compass Heading Calculation,205|206,SMOT
+208,Magnetic Field Sensing,205|206,SMOT
+209,Gyroscope,200,SMOT
+210,IMU (Inertial Measurement Unit),200|209,SMOT
+211,Rotary Encoder,107|383,SENS
+212,Rotary Encoder CLK and DT Pins,211|62,SENS
+213,Encoder Interrupt Handler,211|383,SENS
+214,Quadrature Encoding,211|213,SENS
+215,rotary Module,46|211,SENS
+216,Touch Sensor TTP223,107|64,SENS
+217,Capacitive Touch Sensing,216,SENS
+218,Touch.value() Method,216|112,SENS
+219,Microphone INMP441,161|163,SENS
+220,INMP441 I2S Interface,219|161,SENS
+221,Sound Level Detection,219|131,SENS
+222,Microphone Sensitivity,219,SENS
+223,Audio Sampling Rate,219|161,SENS
+224,Fast Fourier Transform (FFT),223,SENS
+225,Spectrum Analyzer Concept,224,SENS
+226,DC Motor,93|94,ACT
+227,Motor Direction Control,226|229,ACT
+228,Motor Speed Control,226|143,ACT
+229,H-Bridge Circuit,226|93,ACT
+230,L293D Motor Driver IC,229,ACT
+231,DRV8833 Motor Driver IC,229,ACT
+232,L298N Motor Driver IC,229,ACT
+233,Transistor Motor Control,93|94|226,ACT
+234,Motor Stall Current,226|80,ACT
+235,Motor Free-Run Current,226|80,ACT
+236,Back-EMF Protection,226|96,ACT
+237,Flyback Diode,96|226,ACT
+238,Servo Motor,135,ACT
+239,Servo Signal (50Hz PWM),238|136,ACT
+240,Servo Angle Control,238|139|239,ACT
+241,Servo Min/Max Pulse Width,239|240,ACT
+242,machine.PWM for Servo,138|239,ACT
+243,Continuous Rotation Servo,238|240,ACT
+244,Stepper Motor,226,ACT
+245,Stepper Motor Phases,244,ACT
+246,Half-Step vs Full-Step,245,ACT
+247,Stepper Driver (ULN2003),244|245,ACT
+248,Stepper Steps Per Revolution,244|245,ACT
+249,Robot Chassis,226|238,ROB
+250,Differential Drive,249|227,ROB
+251,Forward/Backward Motion,250|227,ROB
+252,Left/Right Turn Control,250|227,ROB
+253,Line Follower Robot,250|190|254,ROB
+254,Line Sensor (IR),190|191,ROB
+255,Collision Avoidance Robot,250|192,ROB
+256,Obstacle Detection,181|186|192,ROB
+257,Robot Calibration,250|228,ROB
+258,Motor Deadband,228|250,ROB
+259,Robot Speed Tuning,228|250,ROB
+260,Ping-Servo Scanner,238|181,ROB
+261,MicroSwitch Bumper Bot,249|107,ROB
+262,NeoPixel LED,106|49,NEO
+263,WS2812B Protocol,262,NEO
+264,NeoPixel Strip,262|263,NEO
+265,NeoPixel Matrix,264,NEO
+266,neopixel Module,46|262,NEO
+267,NeoPixel.fill() Method,266,NEO
+268,NeoPixel.show() Method,266,NEO
+269,RGB Color Model,262,NEO
+270,HSV Color Model,269,NEO
+271,Color Wheel Animation,269|270|14,NEO
+272,Rainbow Pattern,271|264,NEO
+273,Brightness Scaling,267|268|269,NEO
+274,LED Strip Wiring,264|97|71,NEO
+275,NeoPixel Power Requirements,264|80|83,NEO
+276,Level Shifter for NeoPixel,264|69|70,NEO
+277,LED as Output Indicator,90|87|106,DISP
+278,7-Segment Display,106,DISP
+279,7-Segment Digit Encoding,278,DISP
+280,10-Bar LED Array,106|277,DISP
+281,LED Level Meter,280|131,DISP
+282,8x8 LED Matrix,283|284,DISP
+283,MAX7219 LED Driver,153|155,DISP
+284,MAX7219 SPI Interface,153|154|283,DISP
+285,MAX7219 Intensity Control,283|137,DISP
+286,Character LCD Display,145|149,DISP
+287,LCD 16x2,286,DISP
+288,LCD PCF8574 I2C Backpack,149|286,DISP
+289,lcd_api Module,46|286,DISP
+290,LCD Cursor Control,289|287,DISP
+291,4-Digit 7-Segment Display,278,DISP
+292,TM1637 Display Driver,153|291,DISP
+293,OLED Display,145|149,OLED
+294,OLED SSD1306 Controller,293,OLED
+295,SSD1306 I2C Interface,149|294,OLED
+296,SSD1306 SPI Interface,153|294,OLED
+297,SSD1306 128x64 Resolution,294,OLED
+298,SSD1306 128x32 Resolution,294,OLED
+299,ssd1306 Module,46|294,OLED
+300,SSD1306_I2C Class,299|295,OLED
+301,SSD1306_SPI Class,299|296,OLED
+302,OLED SH1106 Controller,293,OLED
+303,SH1106 I2C Interface,149|302,OLED
+304,sh1106 Module,46|302,OLED
+305,OLED SSD1352 Controller,293|153,OLED
+306,OLED Framebuffer,293|326,OLED
+307,oled.text() Method,299|300,OLED
+308,oled.fill() Method,299|300,OLED
+309,oled.show() Method,299|300,OLED
+310,oled.pixel() Method,299|300,OLED
+311,oled.line() Method,299|300,OLED
+312,oled.rect() Method,299|300,OLED
+313,oled.fill_rect() Method,299|300,OLED
+314,OLED Bounce Animation,307|308|309|310|14,OLED
+315,OLED Pong Game,307|308|309|310|114,OLED
+316,OLED Real-Time Sensor Display,307|309|171|181,OLED
+317,TFT Display,153|329,TFT
+318,ILI9341 TFT Driver,153|317,TFT
+319,ILI9341 SPI Interface,153|154|318,TFT
+320,ILI9341 Color Depth (16-bit),318|329,TFT
+321,ST7789V Color LCD Driver,153|317,TFT
+322,ST7789V SPI Interface,153|154|321,TFT
+323,ST7789V Resolution,321,TFT
+324,Graphic LCD (CU1609C),145|149,TFT
+325,Waveshare LCD,145|153,TFT
+326,Framebuf Module,46,TFT
+327,framebuf.FrameBuffer Class,326,TFT
+328,framebuf.MONO_HLSB Format,326|327,TFT
+329,framebuf.RGB565 Format,326|327,TFT
+330,Bitmap Drawing,326|327|328,TFT
+331,Custom Drawing Functions,326|327,TFT
+332,Screen Coordinate System,293|317,TFT
+333,HSTX Display Interface,54|317,TFT
+334,Display Color Formats,329|328,TFT
+335,E-Paper Display,153,EPAP
+336,E-Ink Technology,335,EPAP
+337,E-Paper Refresh Rate,335,EPAP
+338,E-Paper Low Power,335,EPAP
+339,E-Paper SPI Interface,153|335,EPAP
+340,Waveshare E-Paper Driver,46|335|339,EPAP
+341,Passive Buzzer,135|136,SND
+342,Active Buzzer,106,SND
+343,Tone Generation,135|341|136,SND
+344,Musical Note Frequencies,343,SND
+345,Play a Scale,344|343|14,SND
+346,Play a Melody,344|343|9|14,SND
+347,Mario Theme Program,346,SND
+348,Eight-Key Piano Program,346|114|343,SND
+349,WAV Audio File,407,SND
+350,MP3 to WAV Conversion,349,SND
+351,Audio Playback,161|163|349,SND
+352,I2S Audio Output,161|163|351,SND
+353,I2S Standard,161,SND
+354,DAC (Digital-to-Analog Converter),121|122,SND
+355,MIDI Protocol,343,SND
+356,Sound Parts List,341|342,SND
+357,Audio Amplifier,354|80,SND
+358,Speaker Wiring,341|357|97,SND
+359,Wi-Fi Basics,53|55,WIFI
+360,SSID and Password,359,WIFI
+361,network Module,46|359,WIFI
+362,network.WLAN Class,361,WIFI
+363,WLAN.connect() Method,362|360,WIFI
+364,WLAN.isconnected() Method,362|363,WIFI
+365,IP Address,359|364,WIFI
+366,MAC Address,359,WIFI
+367,HTTP Protocol,359|365,WIFI
+368,HTTP GET Request,367|369,WIFI
+369,urequests Module,46|367,WIFI
+370,JSON Parsing,369|10|371,WIFI
+371,ujson Module,46|10,WIFI
+372,Web Server on Pico W,362|373|374,WIFI
+373,socket Module,46|365|367,WIFI
+374,socket.socket() Class,373,WIFI
+375,TCP vs UDP,367|373,WIFI
+376,REST API Basics,367|368|370,WIFI
+377,Weather API Integration,376|368|370,WIFI
+378,NTP Time Sync,367|365,WIFI
+379,WiFi Clock Project,378|307|309,WIFI
+380,Web Server NeoPixel Control,372|266|267,WIFI
+381,upip Package Manager,31|367,WIFI
+382,Over-the-Air Update Concept,381|372,WIFI
+383,Interrupt Handler,62,ADV
+384,IRQ (Interrupt Request),62|383,ADV
+385,Pin.irq() Method,109|383,ADV
+386,Timer Class,387,ADV
+387,machine.Timer,31|46,ADV
+388,Timer Callback,387|16,ADV
+389,Periodic vs One-Shot Timer,387|386,ADV
+390,Non-Blocking Programming,383|387,ADV
+391,Blocking vs Non-Blocking,390|49,ADV
+392,machine.time_pulse_us(),31|46|62,ADV
+393,utime.sleep(),49,ADV
+394,utime.ticks_ms(),49,ADV
+395,utime.ticks_diff(),394,ADV
+396,Multi-Core Programming,75|397,ADV
+397,_thread Module,46|75,ADV
+398,Core 0 and Core 1,75|396,ADV
+399,Shared Memory Between Cores,396|398,ADV
+400,Memory Management,31|78,ADV
+401,Garbage Collection,400|402,ADV
+402,gc Module,46|400,ADV
+403,Heap Memory,400|78,ADV
+404,Stack Memory,400|78,ADV
+405,MicroPython File System,31|48,FS
+406,open() Function,405,FS
+407,File Read and Write,406,FS
+408,os.listdir() Method,48|405,FS
+409,os.mkdir() Method,48|405,FS
+410,os.remove() Method,48|405,FS
+411,SD Card Reader,153|155,FS
+412,SPI SD Card Interface,153|154|411,FS
+413,uos Module,47|48,FS
+414,Persistent Storage,405|407,FS
+415,Debugging Strategy,25,DBG
+416,Print Debugging,23|415,DBG
+417,Error Message Reading,25|26,DBG
+418,Traceback Interpretation,417,DBG
+419,I2C Debugging,148|415,DBG
+420,SPI Debugging,153|415,DBG
+421,Debugging with Thonny,35|415,DBG
+422,Stack Trace Viewer,418|421,DBG
+423,Heap Viewer,403|421,DBG
+424,Minicom Serial Monitor,158,DBG
+425,Logic Probe,101|62,DBG
+426,Common Wiring Errors,103|415,DBG
+427,PIO (Programmable I/O) State Machine,76|54,HADV
+428,PIO Assembly Language,427,HADV
+429,PIO for WS2812B,427|263,HADV
+430,Assembler in MicroPython,428,HADV
+431,FFT Algorithm,224|14,HADV
+432,FFT Optimization,431,HADV
+433,DMA (Direct Memory Access),54|400,HADV
+434,Frame Buffer,326|327,HADV
+435,I2C Scanner Program,148|150,HADV
+436,String Formatting,7|23,HADV
+437,Conda Virtual Environment,31,HADV
+438,CircuitPython vs MicroPython,31,HADV
+439,mpremote File Commands,38,HADV
+440,Measuring Battery Voltage,72|125|126,HADV
+441,VSYS Voltage Measurement,72|440,HADV
+442,Watchdog Timer,387|31,HADV
+443,RTC (Real-Time Clock),387|378,HADV
+444,Low-Power Sleep Mode,387|400,HADV
+445,Generative AI for Coding,1|31,APP
+446,Prompt Engineering Basics,445,APP
+447,AI Code Generation,445|446,APP
+448,AI Code Review,447|415,APP
+449,Debugging with AI,448|415,APP
+450,AI Concept Explanation,445|446,APP
+451,AI Hardware Suggestion,445|51,APP
+452,Maker Pi RP2040 Kit,57|262|181,APP
+453,Maker Pi Pico Kit,58|106|114,APP
+454,Maker Nano RP2040 Kit,59|106,APP
+455,PWM Kit Project,57|128|293|135,APP
+456,Tone Generator Kit,128|341|343,APP
+457,Spectrum Analyzer Kit,219|224|265,APP
+458,NeoPixel Rotary Kit,264|211,APP
+459,Larson Scanner Kit,264|14,APP
+460,RFID RC522 Module,153,APP
+461,RFID RC522 SPI Interface,153|154|460,APP
+462,RFID Card Reading,461,APP
+463,Moving Rainbow Project,264|271|114,APP
+464,Decomposition,1,APP
+465,Pattern Recognition,14|464,APP
+466,Abstraction,16|464,APP
+467,Algorithm Design,16|464,APP
+468,Pseudocode,467,APP
+469,Flowchart,467|468,APP
+470,Loop Invariant,14|15|467,APP
+471,State Machine,12|467,APP
+472,Event-Driven Programming,383|471,APP
+473,Modular Programming,16|17|466,APP
+474,Project Requirements,467|464,APP
+475,Prototype Design,474|97,APP
+476,Breadboard Prototype,97|475,APP
+477,Wiring Diagram Creation,103|475,APP
+478,Component Selection,51|90|226|474,APP
+479,Bill of Materials (BOM),478,APP
+480,Solderless Assembly,97|98|99|100,APP
+481,Code Organization,16|473,APP
+482,Version Control Basics,2,APP
+483,Git Basics,482,APP
+484,README Documentation,482|7,APP
+485,Project Demonstration,474|476|481,APP
