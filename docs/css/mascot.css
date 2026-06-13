@@ -1,0 +1,171 @@
+/* ============================================================
+   Learning Mascot: Monty the MicroPython Snake
+   Pedagogical agent for Learning MicroPython and Physical Computing
+   ============================================================
+   Usage in markdown (attr_list + admonition extensions required):
+
+     !!! mascot-welcome "Welcome to Chapter 1"
+         ![Monty waves hello](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+         Body text flows to the right of the image automatically.
+
+   The mascot-admonition-img class floats the image LEFT of body text.
+   Images must be placed in the admonition BODY, never in the title bar.
+   ============================================================ */
+
+:root {
+  --mascot-primary:    #2e7d32;  /* Monty's dark emerald green         */
+  --mascot-secondary:  #5d4037;  /* warm brown (thinking/insight)       */
+  --mascot-bg:         #e8f5e9;  /* light green body background         */
+  --mascot-border:     #43a047;  /* medium green left border            */
+  --mascot-size:       90px;     /* mascot image width AND height       */
+}
+
+/* ---- Shared base: restore body font size (Material shrinks admonitions) ---- */
+.md-typeset .admonition.mascot-welcome,
+.md-typeset .admonition.mascot-thinking,
+.md-typeset .admonition.mascot-tip,
+.md-typeset .admonition.mascot-warning,
+.md-typeset .admonition.mascot-celebration,
+.md-typeset .admonition.mascot-encourage,
+.md-typeset .admonition.mascot-neutral,
+.md-typeset details.mascot-welcome,
+.md-typeset details.mascot-thinking,
+.md-typeset details.mascot-tip,
+.md-typeset details.mascot-warning,
+.md-typeset details.mascot-celebration,
+.md-typeset details.mascot-encourage,
+.md-typeset details.mascot-neutral {
+  font-size: inherit;
+}
+
+/* ---- Welcome (chapter openings) — Monty's emerald green ---- */
+.md-typeset .admonition.mascot-welcome,
+.md-typeset details.mascot-welcome {
+  border-color: var(--mascot-primary);
+  background-color: var(--mascot-bg);
+}
+.md-typeset .mascot-welcome > .admonition-title,
+.md-typeset .mascot-welcome > summary {
+  background-color: var(--mascot-primary);
+  color: white;
+}
+
+/* ---- Thinking (key concepts / insights) — warm brown ---- */
+.md-typeset .admonition.mascot-thinking,
+.md-typeset details.mascot-thinking {
+  border-color: var(--mascot-secondary);
+  background-color: #efebe9;
+}
+.md-typeset .mascot-thinking > .admonition-title,
+.md-typeset .mascot-thinking > summary {
+  background-color: var(--mascot-secondary);
+  color: white;
+}
+
+/* ---- Tip (hints and helpful guidance) — project accent teal ---- */
+.md-typeset .admonition.mascot-tip,
+.md-typeset details.mascot-tip {
+  border-color: #00838f;
+  background-color: #e0f7fa;
+}
+.md-typeset .mascot-tip > .admonition-title,
+.md-typeset .mascot-tip > summary {
+  background-color: #00838f;
+  color: white;
+}
+
+/* ---- Warning (common mistakes / pitfalls) — red ---- */
+.md-typeset .admonition.mascot-warning,
+.md-typeset details.mascot-warning {
+  border-color: #c62828;
+  background-color: #ffebee;
+}
+.md-typeset .mascot-warning > .admonition-title,
+.md-typeset .mascot-warning > summary {
+  background-color: #c62828;
+  color: white;
+}
+
+/* ---- Celebration (end of chapter / achievements) — deep purple ---- */
+/* Dark body so pale confetti sparkles on Monty's celebration pose remain visible. */
+.md-typeset .admonition.mascot-celebration,
+.md-typeset details.mascot-celebration {
+  border-color: #4a148c;
+  background-color: #311b4f;
+  color: #f3e5f5;
+}
+.md-typeset .mascot-celebration > .admonition-title,
+.md-typeset .mascot-celebration > summary {
+  background-color: #4a148c;
+  color: white;
+}
+
+/* ---- Encourage (difficult content — you can do this!) — blue ---- */
+.md-typeset .admonition.mascot-encourage,
+.md-typeset details.mascot-encourage {
+  border-color: #0277bd;
+  background-color: #e1f5fe;
+}
+.md-typeset .mascot-encourage > .admonition-title,
+.md-typeset .mascot-encourage > summary {
+  background-color: #0277bd;
+  color: white;
+}
+
+/* ---- Neutral (general sidebars / notes) — slate gray ---- */
+.md-typeset .admonition.mascot-neutral,
+.md-typeset details.mascot-neutral {
+  border-color: #546e7a;
+  background-color: #eceff1;
+}
+.md-typeset .mascot-neutral > .admonition-title,
+.md-typeset .mascot-neutral > summary {
+  background-color: #546e7a;
+  color: white;
+}
+
+/* ---- Title bar: left-align text, remove default MkDocs icon ---- */
+/* The default MkDocs Material admonition places a colored icon via ::before.
+   Mascot admonitions use the body image instead — hide the title icon entirely. */
+.md-typeset [class*="mascot-"] > .admonition-title,
+.md-typeset [class*="mascot-"] > summary {
+  text-align: left;
+  padding-left: 0.8rem;
+}
+.md-typeset [class*="mascot-"] > .admonition-title::before,
+.md-typeset [class*="mascot-"] > summary::before {
+  display: none;
+}
+
+/* ---- Mascot image: float LEFT of admonition body text ---- */
+/*
+  Place this class on the markdown image inside the admonition body:
+    ![Monty waving](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+
+  The image and body text must be in the SAME paragraph (no blank line
+  between the image line and the text) so the text wraps to the right
+  of the floated image within the admonition box.
+
+  To resize all mascot images at once, change --mascot-size in :root above.
+  90px is the recommended default; reduce to 70px for dense layouts,
+  increase to 110px if images feel too small after trimming padding.
+*/
+.mascot-admonition-img {
+  float: left;
+  width: var(--mascot-size);
+  height: var(--mascot-size);
+  /* margin order: top  right  bottom  left */
+  margin: 0 0.6em 0.2em 0;
+  object-fit: contain;
+  /* Prevent lightbox / GLightbox from treating mascot as a zoomable image */
+  pointer-events: none;
+}
+
+/* ---- Clear float at end of admonition body ---- */
+/* Prevents the float from bleeding into elements that follow the admonition. */
+.md-typeset [class*="mascot-"].admonition::after,
+.md-typeset [class*="mascot-"]details::after {
+  content: "";
+  display: table;
+  clear: both;
+}

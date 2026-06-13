@@ -10,6 +10,31 @@ nav:
   - Home: index.md
   - About This Book: about.md
   - Course Description: course-description.md
+  - Chapters:
+    - List of Chapters: chapters/index.md
+    - 1. Python Basics: chapters/01-python-basics/index.md
+    - 2. Control Flow and Functions: chapters/02-control-flow-functions/index.md
+    - 3. MicroPython Environment: chapters/03-micropython-environment/index.md
+    - 4. Microcontrollers and Hardware: chapters/04-microcontrollers-hardware/index.md
+    - 5. Electronics Fundamentals: chapters/05-electronics-fundamentals/index.md
+    - 6. Digital I/O and Interrupts: chapters/06-digital-io-interrupts/index.md
+    - 7. Analog Signals, ADC, and PWM: chapters/07-analog-adc-pwm/index.md
+    - 8. Communication Protocols: chapters/08-communication-protocols/index.md
+    - 9. Temperature and Distance Sensors: chapters/09-temp-distance-sensors/index.md
+    - 10. Motion and Light Sensors: chapters/10-motion-light-sensors/index.md
+    - 11. Encoders, Touch, and Audio: chapters/11-encoders-touch-audio/index.md
+    - 12. Motors, Servos, and Steppers: chapters/12-motors-servos-steppers/index.md
+    - 13. Robots and Mobile Systems: chapters/13-robots-mobile-systems/index.md
+    - 14. NeoPixels and Displays: chapters/14-neopixels-displays/index.md
+    - 15. OLED Setup: chapters/15-oled-setup/index.md
+    - 16. OLED Drawing and Animation: chapters/16-oled-drawing-animation/index.md
+    - 17. Color and E-Paper Displays: chapters/17-color-epaper-displays/index.md
+    - 18. Sound and Music: chapters/18-sound-music-audio/index.md
+    - 19. Wireless and IoT: chapters/19-wireless-iot/index.md
+    - 20. Timers and Multi-Core: chapters/20-timers-multicore/index.md
+    - 21. File Systems and Debugging: chapters/21-file-systems-debugging/index.md
+    - 22. Advanced Hardware and AI: chapters/22-advanced-hardware-ai/index.md
+    - 23. Applied Learning and Projects: chapters/23-applied-learning-projects/index.md
   - Learning Graph:
     - Introduction: learning-graph/index.md
     - Course Description Assessment: learning-graph/course-description-assessment.md
@@ -17,6 +42,7 @@ nav:
     - Graph Quality Analysis: learning-graph/quality-metrics.md
     - Concept Taxonomy: learning-graph/concept-taxonomy.md
     - Taxonomy Distribution Report: learning-graph/taxonomy-distribution.md
+    - Mascot Style Guide: learning-graph/mascot-test.md
   - Introduction:
     - About This Site: intro/01-about.md
     - Physical Computing:  intro/02-physical-computing.md
@@ -332,6 +358,7 @@ markdown_extensions:
       linenums: true
 extra_css:
   - css/extra.css
+  - css/mascot.css
 extra_javascript:
   - js/extra.js
 copyright: Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
