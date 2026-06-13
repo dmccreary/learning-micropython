@@ -1,0 +1,3051 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Reading varying voltages with the Pico's ADC, scaling 16-bit readings, using potentiometers and light sensors, and controlling brightness and speed with PWM.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/chapters/07-analog-adc-pwm/">
+      
+      
+        <link rel="prev" href="../06-digital-io-interrupts/">
+      
+      
+        <link rel="next" href="../08-communication-protocols/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Analog Signals, ADC, and Pulse-Width Modulation - Learning MicroPython</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-DS16K4YVRR"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-DS16K4YVRR",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-DS16K4YVRR",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#analog-signals-adc-and-pulse-width-modulation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Learning MicroPython" class="md-header__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning MicroPython
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Analog Signals, ADC, and Pulse-Width Modulation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Learning MicroPython" class="md-nav__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Learning MicroPython
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Book
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-python-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Python Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-control-flow-functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Control Flow and Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-micropython-environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. MicroPython Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-microcontrollers-hardware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Microcontrollers and Hardware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-electronics-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Electronics Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-digital-io-interrupts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Digital I/O and Interrupts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    7. Analog Signals, ADC, and PWM
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    7. Analog Signals, ADC, and PWM
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analog-vs-digital-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analog vs Digital Signals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-adc-turning-voltage-into-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      The ADC — Turning Voltage into Numbers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The ADC — Turning Voltage into Numbers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-machineadc-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      The machine.ADC Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adcread_u16-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      ADC.read_u16() Method
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#potentiometers-variable-resistors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Potentiometers — Variable Resistors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Potentiometers — Variable Resistors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scaling-adc-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scaling ADC Values
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#light-sensors-photoresistors-and-ldrs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Light Sensors — Photoresistors and LDRs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Light Sensors — Photoresistors and LDRs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-adc-and-potentiometer-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: ADC and Potentiometer Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pulse-width-modulation-pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pulse-Width Modulation (PWM)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pulse-Width Modulation (PWM)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-machinepwm-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      The machine.PWM Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwmduty_u16-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWM.duty_u16() Method
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#led-fade-with-pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      LED Fade with PWM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LED Fade with PWM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pwm-for-servo-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWM for Servo Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwm-for-motor-speed" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWM for Motor Speed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-communication-protocols/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Communication Protocols
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-temp-distance-sensors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Temperature and Distance Sensors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-motion-light-sensors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Motion and Light Sensors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-encoders-touch-audio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Encoders, Touch, and Audio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-motors-servos-steppers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Motors, Servos, and Steppers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-robots-mobile-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Robots and Mobile Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-neopixels-displays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. NeoPixels and Displays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-oled-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. OLED Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-oled-drawing-animation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. OLED Drawing and Animation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-color-epaper-displays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Color and E-Paper Displays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-sound-music-audio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Sound and Music
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-wireless-iot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Wireless and IoT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-timers-multicore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. Timers and Multi-Core
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-file-systems-debugging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. File Systems and Debugging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-advanced-hardware-ai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. Advanced Hardware and AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-applied-learning-projects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Applied Learning and Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../intro/01-about/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../getting-started/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../basics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Basic Examples
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sensors/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sensors
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../motors/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Motors and Servos
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../displays/non-graph/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Displays - Non-Graphical
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../displays/graph/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Displays Graphical
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sound/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sound and Music
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../wireless/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Wireless
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../robots/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Robots
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../debugging/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Debugging
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../advanced-labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Advanced Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../kits/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/content-authoring-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authoring Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructors Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/acknowledgements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acknowledgements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/30-colophon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Colophon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#analog-vs-digital-signals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Analog vs Digital Signals
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-adc-turning-voltage-into-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      The ADC — Turning Voltage into Numbers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The ADC — Turning Voltage into Numbers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-machineadc-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      The machine.ADC Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adcread_u16-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      ADC.read_u16() Method
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#potentiometers-variable-resistors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Potentiometers — Variable Resistors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Potentiometers — Variable Resistors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scaling-adc-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scaling ADC Values
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#light-sensors-photoresistors-and-ldrs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Light Sensors — Photoresistors and LDRs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Light Sensors — Photoresistors and LDRs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-adc-and-potentiometer-explorer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: ADC and Potentiometer Explorer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pulse-width-modulation-pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pulse-Width Modulation (PWM)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pulse-Width Modulation (PWM)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-machinepwm-class" class="md-nav__link">
+    <span class="md-ellipsis">
+      The machine.PWM Class
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwmduty_u16-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWM.duty_u16() Method
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#led-fade-with-pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      LED Fade with PWM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LED Fade with PWM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pwm-for-servo-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWM for Servo Control
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwm-for-motor-speed" class="md-nav__link">
+    <span class="md-ellipsis">
+      PWM for Motor Speed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="analog-signals-adc-and-pulse-width-modulation">Analog Signals, ADC, and Pulse-Width Modulation</h1>
+<h2 id="summary">Summary</h2>
+<p>Not everything in the physical world is simply on or off — sensors produce varying voltages, and lights can glow at any brightness. This chapter explains how the Pico's analog-to-digital converter (ADC) reads continuous voltages from potentiometers and light sensors, and how to scale those raw 16-bit readings into useful numbers. You will also learn pulse-width modulation (PWM), a clever technique that uses rapid on/off switching to simulate variable voltages — enabling LED fading, brightness control, and the motor and servo control skills used in later chapters.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 24 concepts from the learning graph:</p>
+<ol>
+<li>Analog Signal</li>
+<li>Digital Signal</li>
+<li>Analog-to-Digital Converter (ADC)</li>
+<li>ADC Resolution (bits)</li>
+<li>machine.ADC Class</li>
+<li>ADC.read_u16() Method</li>
+<li>ADC Voltage Reference</li>
+<li>Potentiometer</li>
+<li>Potentiometer as Voltage Divider</li>
+<li>Voltage Divider Circuit</li>
+<li>Reading Analog Values</li>
+<li>Scaling ADC Values</li>
+<li>Light Sensor (Photoresistor)</li>
+<li>LDR (Light-Dependent Resistor)</li>
+<li>Pulse-Width Modulation (PWM)</li>
+<li>PWM Frequency</li>
+<li>PWM Duty Cycle</li>
+<li>machine.PWM Class</li>
+<li>PWM.duty_u16() Method</li>
+<li>LED Fade with PWM</li>
+<li>Brightness Control</li>
+<li>PWM for Servo Control</li>
+<li>PWM for Motor Speed</li>
+<li>Soft PWM</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../06-digital-io-interrupts/">Chapter 6: Digital Input, Output, and Interrupts</a></li>
+</ul>
+<hr />
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome to Chapter 7</p>
+<p><img alt="Monty waves hello" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+The real world is not made of just ones and zeros — it has shades of brightness, degrees of warmth, and gradients of everything in between. In this chapter you will read that continuous world with the Pico's ADC, and control it smoothly with PWM. By the end you will be fading LEDs and setting up the concepts that drive motors and servos in later chapters!</p>
+</div>
+<h2 id="analog-vs-digital-signals">Analog vs Digital Signals</h2>
+<p>A <strong>digital signal</strong> has exactly two states: HIGH (3.3 V) or LOW (0 V). That is what you worked with in Chapter 6.</p>
+<p>An <strong>analog signal</strong> can take any value between 0 V and 3.3 V. A potentiometer turned halfway gives 1.65 V. A light sensor in a dim room might give 0.8 V; in sunlight, 3.0 V. Temperature sensors, microphones, and joysticks all produce analog signals.</p>
+<p>To use an analog signal in a Python program, you must convert it to a number. That is the job of the <strong>analog-to-digital converter (ADC)</strong>.</p>
+<h2 id="the-adc-turning-voltage-into-numbers">The ADC — Turning Voltage into Numbers</h2>
+<p>An <strong>ADC</strong> samples the voltage on a pin and converts it to a whole number. The Pico's ADC has <strong>12-bit resolution</strong> internally, but MicroPython reports values as 16-bit unsigned integers (0–65535) to maintain compatibility across different hardware.</p>
+<p><strong>ADC resolution</strong> tells you how finely the converter can measure:
+- 16-bit: 65,536 possible values between 0 V and 3.3 V
+- Each step = 3.3 V ÷ 65,535 ≈ 0.00005 V (50 µV per step)</p>
+<p>The <strong>ADC voltage reference</strong> is the maximum voltage the ADC can read. On the Pico it is 3.3 V — do not apply more than 3.3 V to an ADC pin.</p>
+<p>The Pico has three ADC-capable pins: <strong>GP26 (ADC0)</strong>, <strong>GP27 (ADC1)</strong>, and <strong>GP28 (ADC2)</strong>. There is also a built-in temperature sensor on ADC channel 4.</p>
+<h3 id="the-machineadc-class">The machine.ADC Class</h3>
+<p>Import <code>ADC</code> from <code>machine</code>, then create an ADC object using the GPIO pin number:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span>
+
+<span class="n">pot</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">26</span><span class="p">)</span>   <span class="c1"># potentiometer on GP26 (ADC channel 0)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="adcread_u16-method">ADC.read_u16() Method</h3>
+<p>The <strong><code>ADC.read_u16()</code> method</strong> reads the current voltage and returns an integer from 0 to 65535.</p>
+<ul>
+<li><code>0</code> means 0 V (GND)</li>
+<li><code>65535</code> means 3.3 V (full scale)</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">raw</span> <span class="o">=</span> <span class="n">pot</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>   <span class="c1"># e.g., 32768 when the potentiometer is at 50%</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="potentiometers-variable-resistors">Potentiometers — Variable Resistors</h2>
+<p>A <strong>potentiometer</strong> (pot) is a three-terminal resistor with a sliding wiper. As you turn the knob, the wiper moves, changing how much resistance is between each terminal and the wiper.</p>
+<p>When wired with one end to 3.3 V, the other end to GND, and the wiper to an ADC pin, the potentiometer acts as a <strong>voltage divider</strong>. A <strong>voltage divider circuit</strong> takes an input voltage and outputs a fraction of it, set by the ratio of two resistances.</p>
+<p>As you turn the pot:
+- Fully counterclockwise: wiper at GND → ADC reads ~0
+- Fully clockwise: wiper at 3.3 V → ADC reads ~65535
+- Middle: wiper at 1.65 V → ADC reads ~32768</p>
+<h3 id="scaling-adc-values">Scaling ADC Values</h3>
+<p>Raw ADC values (0–65535) are not usually the most useful form. <strong>Scaling</strong> maps them to a range that makes sense for your application.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span>
+
+<span class="n">pot</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">26</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">raw</span> <span class="o">=</span> <span class="n">pot</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
+
+    <span class="c1"># Scale to a percentage (0–100)</span>
+    <span class="n">percent</span> <span class="o">=</span> <span class="n">raw</span> <span class="o">/</span> <span class="mi">65535</span> <span class="o">*</span> <span class="mi">100</span>
+
+    <span class="c1"># Scale to a voltage (0.0–3.3 V)</span>
+    <span class="n">voltage</span> <span class="o">=</span> <span class="n">raw</span> <span class="o">/</span> <span class="mi">65535</span> <span class="o">*</span> <span class="mf">3.3</span>
+
+    <span class="c1"># Scale to an angle (0–180 degrees, for a servo)</span>
+    <span class="n">angle</span> <span class="o">=</span> <span class="n">raw</span> <span class="o">/</span> <span class="mi">65535</span> <span class="o">*</span> <span class="mi">180</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Raw: </span><span class="si">{</span><span class="n">raw</span><span class="si">}</span><span class="s2">  %: </span><span class="si">{</span><span class="n">percent</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">  V: </span><span class="si">{</span><span class="n">voltage</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  Angle: </span><span class="si">{</span><span class="n">angle</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="light-sensors-photoresistors-and-ldrs">Light Sensors — Photoresistors and LDRs</h2>
+<p>A <strong>photoresistor</strong> (also called a <strong>light-dependent resistor</strong> or <strong>LDR</strong>) changes its resistance based on the amount of light hitting it. In bright light, resistance is low (a few hundred ohms). In darkness, resistance is high (a few megaohms).</p>
+<p>Wire an LDR and a fixed resistor (10 kΩ) as a voltage divider between 3.3 V and GND, with the ADC pin in the middle. As light changes, the ADC reading changes.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span>
+
+<span class="n">ldr</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>     <span class="c1"># LDR voltage divider on GP27</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">reading</span> <span class="o">=</span> <span class="n">ldr</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
+    <span class="c1"># Higher reading = more light (with LDR on top, fixed resistor on bottom)</span>
+    <span class="k">if</span> <span class="n">reading</span> <span class="o">&gt;</span> <span class="mi">40000</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bright&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">reading</span> <span class="o">&gt;</span> <span class="mi">20000</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dim&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dark&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="diagram-adc-and-potentiometer-explorer">Diagram: ADC and Potentiometer Explorer</h4>
+<iframe src="../../sims/adc-potentiometer-explorer/main.html" width="100%" height="440px" scrolling="no"></iframe>
+
+<details>
+<summary>ADC and Potentiometer Explorer MicroSim</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> adc-potentiometer-explorer<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Apply (L3)
+Bloom Verb: calculate
+Learning Objective: Students can read a potentiometer value, interpret the raw ADC reading, and scale it to volts, percent, and a target range.</p>
+<p>Canvas layout:
+- Left 40%: a rotary knob (drag to turn) representing the potentiometer
+- Center 30%: four labeled readouts — raw (0–65535), voltage (V), percent (%), and a user-defined target range slider
+- Right 30%: a bar graph showing the scaled value in the chosen range</p>
+<p>Visual elements:
+- Rotary knob drawn with an arc indicating position; draggable
+- Waveform line below the knob showing the last 2 seconds of readings
+- Readouts update every 50 ms to simulate a real ADC sample</p>
+<p>Interactive controls:
+- Drag knob left/right to change value
+- createSlider() for "Target range min" (0–1000) and "Target range max" (0–1000)
+- Result formula shown: <code>scaled = raw / 65535 × (max - min) + min</code></p>
+<p>Instructional Rationale: Connecting the physical knob action to the live readout and scaling formula makes the abstract conversion concrete and interactive.</p>
+<p>Implementation: p5.js. Knob as an arc; mouse drag changes value; three createSlider() for min, max, update rate; formula displayed dynamically.</p>
+</details>
+<h2 id="pulse-width-modulation-pwm">Pulse-Width Modulation (PWM)</h2>
+<p>A GPIO pin can only be HIGH or LOW — it cannot output 1.65 V. So how do you control LED brightness smoothly, or set a motor to half speed?</p>
+<p>The answer is <strong>pulse-width modulation (PWM)</strong>. PWM rapidly switches the pin HIGH and LOW thousands of times per second. By changing the fraction of time it is HIGH, you control the <em>average</em> voltage the device receives.</p>
+<p>Two parameters define a PWM signal:</p>
+<ul>
+<li><strong>PWM frequency</strong> — how many complete on/off cycles happen per second, measured in hertz (Hz). For LEDs: 50–1,000 Hz is typical (faster prevents flicker). For servos: 50 Hz is required. For motors: 10–20 kHz is common.</li>
+<li><strong>PWM duty cycle</strong> — the fraction of each cycle that the pin is HIGH. A 0% duty cycle is always off. A 100% duty cycle is always on. A 50% duty cycle means the pin is on for half of each cycle.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>Duty cycle 10%:   ▌   ▌   ▌   (LED barely glows)
+Duty cycle 50%:   ▌▌▌  ▌▌▌  ▌▌▌   (LED at half brightness)
+Duty cycle 90%:   ▌▌▌▌▌▌▌▌▌  ▌  (LED nearly full brightness)
+</code></pre></div></td></tr></table></div>
+<h3 id="the-machinepwm-class">The machine.PWM Class</h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+
+<span class="c1"># Wrap an output pin in a PWM object</span>
+<span class="n">pwm_led</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
+
+<span class="c1"># Set frequency (1,000 Hz for an LED)</span>
+<span class="n">pwm_led</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Set duty cycle: 0 = always off, 65535 = always on</span>
+<span class="n">pwm_led</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32768</span><span class="p">)</span>   <span class="c1"># 50% — half brightness</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="pwmduty_u16-method">PWM.duty_u16() Method</h3>
+<p><strong><code>PWM.duty_u16(value)</code></strong> sets the duty cycle as a number from 0 to 65535. The scale matches <code>ADC.read_u16()</code> output — this makes it convenient to connect a potentiometer directly to PWM brightness:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">PWM</span>
+
+<span class="n">pot</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">26</span><span class="p">)</span>
+<span class="n">led</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
+<span class="n">led</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">duty</span> <span class="o">=</span> <span class="n">pot</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>   <span class="c1"># 0–65535 from the potentiometer</span>
+    <span class="n">led</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty</span><span class="p">)</span>      <span class="c1"># directly controls brightness!</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="led-fade-with-pwm">LED Fade with PWM</h2>
+<p>The classic <strong>LED fade</strong> gradually increases the duty cycle from 0 to full, then decreases it back to 0, creating a breathing effect:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">import</span> <span class="nn">utime</span>
+
+<span class="n">led</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>   <span class="c1"># onboard LED</span>
+<span class="n">led</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">duty</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">65536</span><span class="p">,</span> <span class="mi">512</span><span class="p">):</span>   <span class="c1"># ramp up</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty</span><span class="p">)</span>
+        <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">duty</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">65535</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">512</span><span class="p">):</span> <span class="c1"># ramp down</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty</span><span class="p">)</span>
+        <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="pwm-for-servo-control">PWM for Servo Control</h3>
+<p>Servo motors require a very specific PWM signal: <strong>50 Hz frequency</strong> and a pulse width between 1 ms (0°) and 2 ms (180°). At 50 Hz, each cycle is 20 ms, so:</p>
+<ul>
+<li>1 ms pulse = 1/20 = 5% duty cycle = <code>0.05 × 65535 ≈ 3277</code></li>
+<li>2 ms pulse = 2/20 = 10% duty cycle = <code>0.10 × 65535 ≈ 6554</code></li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+
+<span class="n">servo</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+<span class="n">servo</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>    <span class="c1"># MUST be 50 Hz for servos</span>
+
+<span class="k">def</span> <span class="nf">set_angle</span><span class="p">(</span><span class="n">degrees</span><span class="p">):</span>
+    <span class="n">min_duty</span> <span class="o">=</span> <span class="mi">3277</span>   <span class="c1"># 1 ms pulse = 0 degrees</span>
+    <span class="n">max_duty</span> <span class="o">=</span> <span class="mi">6554</span>   <span class="c1"># 2 ms pulse = 180 degrees</span>
+    <span class="n">duty</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">min_duty</span> <span class="o">+</span> <span class="p">(</span><span class="n">max_duty</span> <span class="o">-</span> <span class="n">min_duty</span><span class="p">)</span> <span class="o">*</span> <span class="n">degrees</span> <span class="o">/</span> <span class="mi">180</span><span class="p">)</span>
+    <span class="n">servo</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty</span><span class="p">)</span>
+
+<span class="n">set_angle</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>   <span class="c1"># center position</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="pwm-for-motor-speed">PWM for Motor Speed</h3>
+<p>DC motors respond to the average voltage — higher duty cycle means faster rotation. You typically pair PWM with a motor driver chip (Chapter 12), but the PWM concept is the same:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">motor</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">17</span><span class="p">))</span>
+<span class="n">motor</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>       <span class="c1"># 10 kHz — above audible range, no motor whine</span>
+<span class="n">motor</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32768</span><span class="p">)</span>   <span class="c1"># 50% speed</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">What Is Soft PWM?</p>
+<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+<strong>Soft PWM</strong> (software PWM) generates a PWM-like signal using the CPU itself — switching a pin HIGH and LOW with <code>utime.sleep_us()</code> loops. It works on any GPIO pin but is imprecise because the CPU can be interrupted. Hardware PWM uses dedicated silicon that runs independently of your code. Always use hardware PWM when you can. Soft PWM is only for quick experiments on pins that do not have hardware PWM support.</p>
+</div>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>Analog signals</strong> have continuous voltage levels; <strong>digital signals</strong> are only HIGH or LOW.</li>
+<li>The Pico's <strong>ADC</strong> on GP26–GP28 reads 0–3.3 V and returns 0–65535 (16-bit).</li>
+<li><code>ADC.read_u16()</code> reads the current value; scale with <code>value / 65535 × target_range</code>.</li>
+<li>A <strong>potentiometer</strong> wired as a voltage divider provides a variable 0–3.3 V to the ADC.</li>
+<li>An <strong>LDR</strong> changes resistance with light; use a voltage divider to make it readable by the ADC.</li>
+<li><strong>PWM</strong> rapidly switches a pin to simulate a variable average voltage.</li>
+<li><strong>PWM frequency</strong> sets how fast; <strong>duty cycle</strong> (0–65535) sets how much on-time.</li>
+<li>Servos need 50 Hz; LEDs work at 500–1,000 Hz; motors work well at 10–20 kHz.</li>
+</ul>
+<details class="question">
+<summary>Quick Check: What duty_u16 value gives 25% brightness? (Click to reveal)</summary>
+<p><strong>16,383</strong> (or 16384) — 25% of 65,535 is 16,383.75, so <code>65535 × 0.25 ≈ 16384</code>.</p>
+</details>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Analog and PWM Mastered!</p>
+<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+You can now read the analog world and control devices with smooth PWM signals. A potentiometer controls an LED's brightness, and the same concept drives servos and motors. In Chapter 8 you will learn the communication protocols — I2C, SPI, and UART — that let the Pico talk to sensors, displays, and other chips. The sensor library chapters are almost in reach!</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../06-digital-io-interrupts/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 6. Digital I/O and Interrupts">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                6. Digital I/O and Interrupts
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../08-communication-protocols/" class="md-footer__link md-footer__link--next" aria-label="Next: 8. Communication Protocols">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                8. Communication Protocols
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

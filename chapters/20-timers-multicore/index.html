@@ -1,0 +1,2914 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Hardware timers and callbacks, periodic vs one-shot, non-blocking timing with ticks_ms/ticks_diff, RP2040 dual-core with _thread module, shared memory, and garbage collection.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/chapters/20-timers-multicore/">
+      
+      
+        <link rel="prev" href="../19-wireless-iot/">
+      
+      
+        <link rel="next" href="../21-file-systems-debugging/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Timers, Timing Functions, and Multi-Core Programming - Learning MicroPython</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-DS16K4YVRR"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-DS16K4YVRR",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-DS16K4YVRR",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#timers-timing-functions-and-multi-core-programming" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Learning MicroPython" class="md-header__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning MicroPython
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Timers, Timing Functions, and Multi-Core Programming
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Learning MicroPython" class="md-nav__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Learning MicroPython
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Book
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-python-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Python Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-control-flow-functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Control Flow and Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-micropython-environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. MicroPython Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-microcontrollers-hardware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Microcontrollers and Hardware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-electronics-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Electronics Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-digital-io-interrupts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Digital I/O and Interrupts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-analog-adc-pwm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Analog Signals, ADC, and PWM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-communication-protocols/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Communication Protocols
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-temp-distance-sensors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Temperature and Distance Sensors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-motion-light-sensors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Motion and Light Sensors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-encoders-touch-audio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Encoders, Touch, and Audio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-motors-servos-steppers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Motors, Servos, and Steppers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-robots-mobile-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Robots and Mobile Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-neopixels-displays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. NeoPixels and Displays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-oled-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. OLED Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-oled-drawing-animation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. OLED Drawing and Animation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-color-epaper-displays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Color and E-Paper Displays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-sound-music-audio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    18. Sound and Music
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-wireless-iot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Wireless and IoT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    20. Timers and Multi-Core
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    20. Timers and Multi-Core
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-problem-blocking-vs-non-blocking-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Problem: Blocking vs Non-Blocking Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-blocking-timing-with-ticks_ms-and-ticks_diff" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Blocking Timing with ticks_ms and ticks_diff
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Non-Blocking Timing with ticks_ms and ticks_diff">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#machinetime_pulse_us" class="md-nav__link">
+    <span class="md-ellipsis">
+      machine.time_pulse_us()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-timers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Timers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware Timers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-blocking-vs-non-blocking-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Blocking vs Non-Blocking Timeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-core-programming-with-_thread" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Core Programming with _thread
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-Core Programming with _thread">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shared-memory-between-cores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shared Memory Between Cores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-management-heap-stack-and-garbage-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Management — Heap, Stack, and Garbage Collection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-file-systems-debugging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. File Systems and Debugging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-advanced-hardware-ai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. Advanced Hardware and AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-applied-learning-projects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Applied Learning and Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../intro/01-about/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../getting-started/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../basics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Basic Examples
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sensors/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sensors
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../motors/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Motors and Servos
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../displays/non-graph/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Displays - Non-Graphical
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../displays/graph/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Displays Graphical
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sound/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sound and Music
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../wireless/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Wireless
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../robots/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Robots
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../debugging/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Debugging
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../advanced-labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Advanced Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../kits/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/content-authoring-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authoring Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructors Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/acknowledgements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acknowledgements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/30-colophon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Colophon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-problem-blocking-vs-non-blocking-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Problem: Blocking vs Non-Blocking Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#non-blocking-timing-with-ticks_ms-and-ticks_diff" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Blocking Timing with ticks_ms and ticks_diff
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Non-Blocking Timing with ticks_ms and ticks_diff">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#machinetime_pulse_us" class="md-nav__link">
+    <span class="md-ellipsis">
+      machine.time_pulse_us()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-timers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware Timers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware Timers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-blocking-vs-non-blocking-timeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Blocking vs Non-Blocking Timeline
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-core-programming-with-_thread" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Core Programming with _thread
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multi-Core Programming with _thread">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shared-memory-between-cores" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shared Memory Between Cores
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memory-management-heap-stack-and-garbage-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Management — Heap, Stack, and Garbage Collection
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="timers-timing-functions-and-multi-core-programming">Timers, Timing Functions, and Multi-Core Programming</h1>
+<h2 id="summary">Summary</h2>
+<p>Many real projects need to do several things at once — blink an LED while reading a sensor, or update a display while checking for button presses. This chapter introduces three approaches to concurrent-feeling programs: hardware timers that fire callback functions at regular intervals, non-blocking timing with <code>utime.ticks_ms()</code> and <code>ticks_diff()</code>, and true parallel execution using the RP2040's second processor core and the <code>_thread</code> module. You will learn when to use each technique, how to avoid the timing bugs that plague beginners, and how to share data safely between two cores.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 19 concepts from the learning graph:</p>
+<ol>
+<li>Timer Class</li>
+<li>machine.Timer</li>
+<li>Timer Callback</li>
+<li>Periodic vs One-Shot Timer</li>
+<li>Non-Blocking Programming</li>
+<li>Blocking vs Non-Blocking</li>
+<li>machine.time_pulse_us()</li>
+<li>utime.sleep()</li>
+<li>utime.ticks_ms()</li>
+<li>utime.ticks_diff()</li>
+<li>Multi-Core Programming</li>
+<li>_thread Module</li>
+<li>Core 0 and Core 1</li>
+<li>Shared Memory Between Cores</li>
+<li>Memory Management</li>
+<li>Garbage Collection</li>
+<li>gc Module</li>
+<li>Heap Memory</li>
+<li>Stack Memory</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../03-micropython-environment/">Chapter 3: MicroPython Environment and Development Tools</a></li>
+</ul>
+<hr />
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome to Chapter 20</p>
+<p><img alt="Monty waves hello" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+Real projects need to juggle multiple tasks at once. In this chapter you will learn three powerful techniques: hardware timers that fire automatically, non-blocking timing so your main loop keeps running, and true two-core parallel execution unique to the RP2040. By the end, your Pico will genuinely do two things at the same time!</p>
+</div>
+<h2 id="the-problem-blocking-vs-non-blocking-code">The Problem: Blocking vs Non-Blocking Code</h2>
+<p><strong>Blocking</strong> code pauses the entire program until the current operation finishes. <code>utime.sleep(5)</code> is the most common example — the Pico sits frozen for 5 seconds and cannot respond to anything.</p>
+<p><strong>Non-blocking</strong> code returns immediately and lets the main loop continue. Instead of sleeping, non-blocking code checks whether enough time has passed and only performs the action when it has.</p>
+<p>Here is the same "blink every second" task written both ways:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># BLOCKING — main loop cannot do anything else while sleeping</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
+    <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>      <span class="c1"># program is frozen here for 1 second</span>
+
+<span class="c1"># NON-BLOCKING — main loop runs freely</span>
+<span class="kn">import</span> <span class="nn">utime</span>
+<span class="n">last_blink</span> <span class="o">=</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_diff</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">last_blink</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1000</span><span class="p">:</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
+        <span class="n">last_blink</span> <span class="o">=</span> <span class="n">now</span>
+    <span class="c1"># ... other tasks run here without delay</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="non-blocking-timing-with-ticks_ms-and-ticks_diff">Non-Blocking Timing with ticks_ms and ticks_diff</h2>
+<p>The <strong><code>utime.ticks_ms()</code></strong> function returns the number of milliseconds since the Pico last reset (or overflows). It is a simple, fast counter.</p>
+<p>The <strong><code>utime.ticks_diff(newer, older)</code></strong> function calculates the difference between two ticks values correctly, even if the counter has overflowed (wrapped around). Always use <code>ticks_diff</code> instead of simple subtraction (<code>newer - older</code>) to handle overflow safely.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">utime</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
+<span class="c1"># ... do some work ...</span>
+<span class="n">elapsed</span> <span class="o">=</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_diff</span><span class="p">(</span><span class="n">utime</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">(),</span> <span class="n">start</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elapsed: </span><span class="si">{</span><span class="n">elapsed</span><span class="si">}</span><span class="s2"> ms&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The non-blocking pattern scales cleanly. You can maintain multiple independent timers in one loop:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">last_led</span>  <span class="o">=</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
+<span class="n">last_read</span> <span class="o">=</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_diff</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">last_led</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">500</span><span class="p">:</span>      <span class="c1"># every 500 ms</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
+        <span class="n">last_led</span> <span class="o">=</span> <span class="n">now</span>
+
+    <span class="k">if</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_diff</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">last_read</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2000</span><span class="p">:</span>    <span class="c1"># every 2 s</span>
+        <span class="n">sensor</span><span class="o">.</span><span class="n">measure</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">sensor</span><span class="o">.</span><span class="n">temperature</span><span class="p">())</span>
+        <span class="n">last_read</span> <span class="o">=</span> <span class="n">now</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="machinetime_pulse_us">machine.time_pulse_us()</h3>
+<p><strong><code>machine.time_pulse_us(pin, pulse_level, timeout_us)</code></strong> measures the duration of a pulse on a pin in microseconds. This is used internally by the HC-SR04 ultrasonic sensor code from Chapter 9. You specify which pin to watch, which level to time (HIGH or LOW), and a timeout if no pulse arrives.</p>
+<h2 id="hardware-timers">Hardware Timers</h2>
+<p>A <strong>hardware timer</strong> is a silicon counter that counts independently of your program. When it reaches a preset value, it fires a <strong>timer callback</strong> function. The callback runs briefly (like an interrupt handler), then your main program continues.</p>
+<p><strong><code>machine.Timer</code></strong> is the MicroPython class for hardware timers.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Timer</span>
+
+<span class="k">def</span> <span class="nf">blink_callback</span><span class="p">(</span><span class="n">timer</span><span class="p">):</span>
+    <span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>   <span class="c1"># called automatically every 500 ms</span>
+
+<span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">()</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">Timer</span><span class="o">.</span><span class="n">PERIODIC</span><span class="p">,</span>       <span class="c1"># fire repeatedly</span>
+           <span class="n">period</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span>                <span class="c1"># every 500 ms</span>
+           <span class="n">callback</span><span class="o">=</span><span class="n">blink_callback</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>Periodic vs one-shot timer</strong>:
+- <code>Timer.PERIODIC</code> — fires the callback repeatedly at the given period.
+- <code>Timer.ONE_SHOT</code> — fires once after the delay and stops.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># One-shot: turn off after 3 seconds</span>
+<span class="k">def</span> <span class="nf">turn_off</span><span class="p">(</span><span class="n">timer</span><span class="p">):</span>
+    <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">()</span>
+<span class="n">timer</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">Timer</span><span class="o">.</span><span class="n">ONE_SHOT</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mi">3000</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">turn_off</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Keep Timer Callbacks Short!</p>
+<p><img alt="Monty warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+Timer callbacks run at interrupt priority — the same rules as <code>Pin.irq()</code> handlers apply. Do NOT call <code>utime.sleep()</code>, print over serial, or perform lengthy operations inside a timer callback. Set a flag or toggle a pin, then return. The main loop handles the heavy work.</p>
+</div>
+<h4 id="diagram-blocking-vs-non-blocking-timeline">Diagram: Blocking vs Non-Blocking Timeline</h4>
+<iframe src="../../sims/blocking-vs-nonblocking/main.html" width="100%" height="430px" scrolling="no"></iframe>
+
+<details>
+<summary>Blocking vs Non-Blocking Timeline MicroSim</summary>
+<p>Type: diagram
+<strong>sim-id:</strong> blocking-vs-nonblocking<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Understand (L2)
+Bloom Verb: compare
+Learning Objective: Students can explain why blocking code misses events and predict whether a non-blocking pattern will detect a button press during a timing gap.</p>
+<p>Canvas layout:
+- Left timeline: "Blocking" program — long gray blocks (sleep) alternating with short action blocks
+- Right timeline: "Non-blocking" program — continuous green loop tick marks; action blocks at the right intervals
+- Below timelines: a button press event marker that the user can drag left/right</p>
+<p>Visual elements:
+- Blocking: button press during a sleep block is shown as "MISSED" in red
+- Non-blocking: button press between tick marks is detected within one loop cycle
+- Comparison stat: max response latency shown for each approach</p>
+<p>Interactive controls:
+- createSlider() for "sleep duration" (100–2000 ms)
+- createSlider() for "button press time" (drag to set when the button fires)
+- "Play animation" button runs a 5-second simulation</p>
+<p>Instructional Rationale: Seeing a missed button press in the blocking timeline makes the problem visceral rather than theoretical, motivating the non-blocking approach.</p>
+<p>Implementation: p5.js. Two timeline tracks drawn as horizontal strips; sleep periods as gray rectangles; button press as a vertical arrow the user can drag.</p>
+</details>
+<h2 id="multi-core-programming-with-_thread">Multi-Core Programming with _thread</h2>
+<p>The RP2040 chip inside your Pico has two identical ARM Cortex-M0+ processor cores: <strong>Core 0</strong> and <strong>Core 1</strong>. Normally MicroPython runs only on Core 0. The <strong><code>_thread</code> module</strong> lets you launch code on Core 1 simultaneously.</p>
+<p>This is <strong>true parallelism</strong> — both cores execute code at the same time. Core 0 handles your main program; Core 1 handles a background task.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">_thread</span>
+<span class="kn">import</span> <span class="nn">utime</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+
+<span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">blink_task</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;This function runs on Core 1, continuously.&quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
+        <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Launch blink_task on Core 1</span>
+<span class="n">_thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">blink_task</span><span class="p">,</span> <span class="p">())</span>
+
+<span class="c1"># Core 0 continues here — both run simultaneously!</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Core 0 is running...&quot;</span><span class="p">)</span>
+    <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p><code>_thread.start_new_thread(function, args)</code> launches <code>function</code> on Core 1 with the given arguments tuple. The function runs independently until it returns or the Pico resets.</p>
+<h3 id="shared-memory-between-cores">Shared Memory Between Cores</h3>
+<p>Both cores access the same RAM. This is convenient but dangerous. If Core 0 is writing a variable at the same moment Core 1 is reading it, the read may get a partially-written value — a <strong>race condition</strong>.</p>
+<p>For simple cases (sharing a single integer), the risk is low because integer writes are atomic on the RP2040. For more complex data, use a flag pattern:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">_thread</span>
+
+<span class="n">data_ready</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">shared_value</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">def</span> <span class="nf">producer</span><span class="p">():</span>
+    <span class="k">global</span> <span class="n">shared_value</span><span class="p">,</span> <span class="n">data_ready</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">shared_value</span> <span class="o">=</span> <span class="n">read_sensor</span><span class="p">()</span>    <span class="c1"># Core 1 writes</span>
+        <span class="n">data_ready</span> <span class="o">=</span> <span class="kc">True</span>               <span class="c1"># signal Core 0</span>
+
+<span class="n">_thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">producer</span><span class="p">,</span> <span class="p">())</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>                            <span class="c1"># Core 0 reads</span>
+    <span class="k">if</span> <span class="n">data_ready</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">shared_value</span><span class="p">)</span>
+        <span class="n">data_ready</span> <span class="o">=</span> <span class="kc">False</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="memory-management-heap-stack-and-garbage-collection">Memory Management — Heap, Stack, and Garbage Collection</h2>
+<p>The Pico has <strong>264 KB of RAM</strong>, split between <strong>heap memory</strong> and <strong>stack memory</strong>.</p>
+<ul>
+<li><strong>Stack memory</strong> stores local variables and function call frames. It is fast and automatically managed — when a function returns, its stack frame is gone.</li>
+<li><strong>Heap memory</strong> stores objects created with constructors (<code>bytearray()</code>, <code>list()</code>, string concatenation, etc.). Objects remain on the heap until nothing refers to them.</li>
+</ul>
+<p><strong>Garbage collection (GC)</strong> is the automatic process of finding heap objects that nothing refers to anymore and freeing their memory. MicroPython runs GC automatically, but you can trigger it manually:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">gc</span>
+
+<span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>                    <span class="c1"># run garbage collection now</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gc</span><span class="o">.</span><span class="n">mem_free</span><span class="p">())</span>            <span class="c1"># bytes of heap memory available</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gc</span><span class="o">.</span><span class="n">mem_alloc</span><span class="p">())</span>           <span class="c1"># bytes currently allocated on heap</span>
+</code></pre></div></td></tr></table></div>
+<p>In long-running programs, especially those that create many temporary strings or lists, GC pauses can cause occasional timing glitches. To reduce this:</p>
+<ul>
+<li>Reuse buffers (<code>bytearray</code>, <code>array</code>) instead of creating new ones.</li>
+<li>Avoid string concatenation in loops — use <code>format()</code> or pre-allocated buffers.</li>
+<li>Call <code>gc.collect()</code> proactively during non-time-critical parts of your loop.</li>
+</ul>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">When to Use Each Concurrency Approach</p>
+<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+Use <strong>non-blocking timing</strong> (ticks_ms/ticks_diff) when you want the main loop to juggle multiple tasks with different timing intervals — it is the simplest approach and handles most cases. Use <strong>hardware timers</strong> when you need precise, jitter-free periodic callbacks independent of main loop timing. Use <strong><code>_thread</code></strong> (dual-core) when you have a task that genuinely needs to run continuously and cannot be interrupted — like streaming audio on Core 1 while Core 0 handles the user interface.</p>
+</div>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>Blocking code</strong> (<code>utime.sleep()</code>) freezes the program — no button reads, sensor reads, or display updates during the sleep.</li>
+<li><strong>Non-blocking timing</strong> uses <code>ticks_ms()</code> + <code>ticks_diff()</code> to check elapsed time without pausing.</li>
+<li><code>utime.ticks_diff(newer, older)</code> handles counter overflow correctly; do not use plain subtraction.</li>
+<li><code>machine.Timer(PERIODIC)</code> fires a callback every N milliseconds — keep callbacks short.</li>
+<li>The RP2040 has <strong>two cores</strong>; <code>_thread.start_new_thread(fn, ())</code> runs <code>fn</code> on Core 1 simultaneously with Core 0.</li>
+<li>Both cores share the same RAM — use flag variables to communicate safely between cores.</li>
+<li><strong>Heap memory</strong> holds Python objects; <strong>garbage collection</strong> frees unused objects; call <code>gc.collect()</code> to avoid GC pauses in time-critical loops.</li>
+</ul>
+<details class="question">
+<summary>Quick Check: Why use ticks_diff(a, b) instead of (a - b) for measuring elapsed time? (Click to reveal)</summary>
+<p>Because <code>ticks_ms()</code> is a 30-bit counter that <strong>wraps around</strong> (overflows back to zero). After about 12 days of uptime, the counter resets. <code>ticks_diff()</code> handles this overflow correctly; plain subtraction <code>a - b</code> would give a wrong large negative number after the counter wraps.</p>
+</details>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Two Cores, All Power!</p>
+<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+Non-blocking patterns, hardware timers, and genuine dual-core parallelism — your concurrency toolkit is complete! Chapter 21 explores the Pico's file system, audio file storage, and systematic debugging techniques. You are in the home stretch of the course!</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../19-wireless-iot/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 19. Wireless and IoT">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                19. Wireless and IoT
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../21-file-systems-debugging/" class="md-footer__link md-footer__link--next" aria-label="Next: 21. File Systems and Debugging">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                21. File Systems and Debugging
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

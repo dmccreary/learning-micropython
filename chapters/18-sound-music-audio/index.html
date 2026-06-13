@@ -1,0 +1,2994 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Passive and active buzzers, PWM tone generation, musical note frequencies, playing scales and melodies, DAC, I2S audio, MIDI protocol, amplifiers, and speaker wiring.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/chapters/18-sound-music-audio/">
+      
+      
+        <link rel="prev" href="../17-color-epaper-displays/">
+      
+      
+        <link rel="next" href="../19-wireless-iot/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Sound, Music, and Audio Generation - Learning MicroPython</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-DS16K4YVRR"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-DS16K4YVRR",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-DS16K4YVRR",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sound-music-and-audio-generation" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Learning MicroPython" class="md-header__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning MicroPython
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sound, Music, and Audio Generation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Learning MicroPython" class="md-nav__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Learning MicroPython
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Book
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Chapters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-python-basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    1. Python Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-control-flow-functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2. Control Flow and Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-micropython-environment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3. MicroPython Environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-microcontrollers-hardware/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4. Microcontrollers and Hardware
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-electronics-fundamentals/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5. Electronics Fundamentals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-digital-io-interrupts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Digital I/O and Interrupts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-analog-adc-pwm/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7. Analog Signals, ADC, and PWM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-communication-protocols/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8. Communication Protocols
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-temp-distance-sensors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    9. Temperature and Distance Sensors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-motion-light-sensors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10. Motion and Light Sensors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-encoders-touch-audio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    11. Encoders, Touch, and Audio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-motors-servos-steppers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    12. Motors, Servos, and Steppers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-robots-mobile-systems/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    13. Robots and Mobile Systems
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-neopixels-displays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    14. NeoPixels and Displays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../15-oled-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    15. OLED Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../16-oled-drawing-animation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    16. OLED Drawing and Animation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../17-color-epaper-displays/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    17. Color and E-Paper Displays
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    18. Sound and Music
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    18. Sound and Music
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buzzers-the-simplest-sound-makers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buzzers — The Simplest Sound Makers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tone-generation-musical-note-frequencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tone Generation — Musical Note Frequencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#playing-a-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Playing a Scale
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#playing-a-melody-super-mario-theme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Playing a Melody — Super Mario Theme
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eight-key-piano-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eight-Key Piano Program
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eight-Key Piano Program">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-piano-keyboard-tone-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Piano Keyboard Tone Generator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#digital-to-analog-converter-dac" class="md-nav__link">
+    <span class="md-ellipsis">
+      Digital-to-Analog Converter (DAC)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i2s-for-audio-higher-quality-sound" class="md-nav__link">
+    <span class="md-ellipsis">
+      I2S for Audio — Higher Quality Sound
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#midi-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      MIDI Protocol
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audio-amplifier-and-speaker-wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audio Amplifier and Speaker Wiring
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-wireless-iot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    19. Wireless and IoT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../20-timers-multicore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    20. Timers and Multi-Core
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../21-file-systems-debugging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    21. File Systems and Debugging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../22-advanced-hardware-ai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    22. Advanced Hardware and AI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../23-applied-learning-projects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    23. Applied Learning and Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../intro/01-about/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../getting-started/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../basics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Basic Examples
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sensors/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sensors
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../motors/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Motors and Servos
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../displays/non-graph/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Displays - Non-Graphical
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../displays/graph/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Displays Graphical
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sound/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sound and Music
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../wireless/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Wireless
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../robots/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Robots
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../debugging/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Debugging
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../advanced-labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Advanced Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../kits/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/content-authoring-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authoring Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructors Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/acknowledgements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acknowledgements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/30-colophon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Colophon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-covered" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concepts Covered
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buzzers-the-simplest-sound-makers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buzzers — The Simplest Sound Makers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tone-generation-musical-note-frequencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tone Generation — Musical Note Frequencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#playing-a-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Playing a Scale
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#playing-a-melody-super-mario-theme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Playing a Melody — Super Mario Theme
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eight-key-piano-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eight-Key Piano Program
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eight-Key Piano Program">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#diagram-piano-keyboard-tone-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diagram: Piano Keyboard Tone Generator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#digital-to-analog-converter-dac" class="md-nav__link">
+    <span class="md-ellipsis">
+      Digital-to-Analog Converter (DAC)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i2s-for-audio-higher-quality-sound" class="md-nav__link">
+    <span class="md-ellipsis">
+      I2S for Audio — Higher Quality Sound
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#midi-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      MIDI Protocol
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audio-amplifier-and-speaker-wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audio Amplifier and Speaker Wiring
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="sound-music-and-audio-generation">Sound, Music, and Audio Generation</h1>
+<h2 id="summary">Summary</h2>
+<p>Making your projects beep, sing, and play music is one of the most satisfying things you can do with a microcontroller. This chapter starts with the simplest sound maker — a passive buzzer driven by PWM — and builds up through tone generation, musical note frequencies, scales, and complete melodies including the Super Mario theme. You will also learn about the digital-to-analog converter (DAC) for smoother audio output, the I2S protocol for connecting external audio hardware, the MIDI standard for music data, and how to wire an audio amplifier and speaker for louder sound.</p>
+<h2 id="concepts-covered">Concepts Covered</h2>
+<p>This chapter covers the following 15 concepts from the learning graph:</p>
+<ol>
+<li>Passive Buzzer</li>
+<li>Active Buzzer</li>
+<li>Tone Generation</li>
+<li>Musical Note Frequencies</li>
+<li>Play a Scale</li>
+<li>Play a Melody</li>
+<li>Mario Theme Program</li>
+<li>Eight-Key Piano Program</li>
+<li>I2S for Audio</li>
+<li>I2S Standard</li>
+<li>DAC (Digital-to-Analog Converter)</li>
+<li>MIDI Protocol</li>
+<li>Sound Parts List</li>
+<li>Audio Amplifier</li>
+<li>Speaker Wiring</li>
+</ol>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>This chapter builds on concepts from:</p>
+<ul>
+<li><a href="../07-analog-adc-pwm/">Chapter 7: Analog Signals, ADC, and PWM</a></li>
+<li><a href="../08-communication-protocols/">Chapter 8: Communication Protocols: I2C, SPI, and UART</a></li>
+</ul>
+<hr />
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome to Chapter 18</p>
+<p><img alt="Monty waves hello" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+It is time to make some noise! A passive buzzer, a few PWM commands, and the right frequencies — and your Pico will play the Super Mario theme. By the end of this chapter you will have a working musical instrument. Let's get sonic!</p>
+</div>
+<h2 id="buzzers-the-simplest-sound-makers">Buzzers — The Simplest Sound Makers</h2>
+<p>Two types of buzzers exist, and they work very differently.</p>
+<p>An <strong>active buzzer</strong> has its own oscillator circuit inside. Apply 3.3 V to the positive pin and GND to the negative pin and it beeps at a fixed frequency. It is the simplest possible sound output — just turn it on and off. However, you cannot change its pitch.</p>
+<p>A <strong>passive buzzer</strong> has no internal oscillator. It is just a tiny speaker coil. To make sound, you must drive it with a rapidly alternating signal — which is exactly what PWM does. By changing the PWM frequency, you change the pitch. This is the buzzer used for music.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+
+<span class="c1"># Passive buzzer on GP16</span>
+<span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">play_tone</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">duration_ms</span><span class="p">):</span>
+    <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>
+    <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32768</span><span class="p">)</span>      <span class="c1"># 50% duty cycle = maximum volume</span>
+    <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="n">duration_ms</span><span class="p">)</span>
+    <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>          <span class="c1"># silence</span>
+    <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>          <span class="c1"># brief gap between notes</span>
+
+<span class="n">play_tone</span><span class="p">(</span><span class="mi">440</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>    <span class="c1"># play A4 for 500 ms</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="tone-generation-musical-note-frequencies">Tone Generation — Musical Note Frequencies</h2>
+<p>Sound is vibration. The <strong>frequency</strong> of a musical note is how many times per second the sound wave vibrates, measured in hertz (Hz). The musical note A4 (the A above middle C) is defined as exactly <strong>440 Hz</strong>. Each octave doubles the frequency.</p>
+<p>The following table shows standard note frequencies for the 4th octave (C4 = middle C):</p>
+<table>
+<thead>
+<tr>
+<th>Note</th>
+<th>Frequency (Hz)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C4</td>
+<td>261.6</td>
+</tr>
+<tr>
+<td>D4</td>
+<td>293.7</td>
+</tr>
+<tr>
+<td>E4</td>
+<td>329.6</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>349.2</td>
+</tr>
+<tr>
+<td>G4</td>
+<td>392.0</td>
+</tr>
+<tr>
+<td>A4</td>
+<td>440.0</td>
+</tr>
+<tr>
+<td>B4</td>
+<td>493.9</td>
+</tr>
+<tr>
+<td>C5</td>
+<td>523.3</td>
+</tr>
+</tbody>
+</table>
+<p>Store these in a dictionary for easy access:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">NOTES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;C4&quot;</span><span class="p">:</span> <span class="mi">262</span><span class="p">,</span> <span class="s2">&quot;D4&quot;</span><span class="p">:</span> <span class="mi">294</span><span class="p">,</span> <span class="s2">&quot;E4&quot;</span><span class="p">:</span> <span class="mi">330</span><span class="p">,</span> <span class="s2">&quot;F4&quot;</span><span class="p">:</span> <span class="mi">349</span><span class="p">,</span>
+    <span class="s2">&quot;G4&quot;</span><span class="p">:</span> <span class="mi">392</span><span class="p">,</span> <span class="s2">&quot;A4&quot;</span><span class="p">:</span> <span class="mi">440</span><span class="p">,</span> <span class="s2">&quot;B4&quot;</span><span class="p">:</span> <span class="mi">494</span><span class="p">,</span> <span class="s2">&quot;C5&quot;</span><span class="p">:</span> <span class="mi">523</span><span class="p">,</span>
+    <span class="s2">&quot;C3&quot;</span><span class="p">:</span> <span class="mi">131</span><span class="p">,</span> <span class="s2">&quot;D3&quot;</span><span class="p">:</span> <span class="mi">147</span><span class="p">,</span> <span class="s2">&quot;E3&quot;</span><span class="p">:</span> <span class="mi">165</span><span class="p">,</span> <span class="s2">&quot;G3&quot;</span><span class="p">:</span> <span class="mi">196</span><span class="p">,</span>
+    <span class="s2">&quot;REST&quot;</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="playing-a-scale">Playing a Scale</h2>
+<p>A <strong>scale</strong> is a sequence of notes in ascending or descending pitch order. Playing all seven notes (C, D, E, F, G, A, B) and back down is a <strong>major scale</strong>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">utime</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+
+<span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+
+<span class="n">NOTES</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;C4&quot;</span><span class="p">:</span> <span class="mi">262</span><span class="p">,</span> <span class="s2">&quot;D4&quot;</span><span class="p">:</span> <span class="mi">294</span><span class="p">,</span> <span class="s2">&quot;E4&quot;</span><span class="p">:</span> <span class="mi">330</span><span class="p">,</span> <span class="s2">&quot;F4&quot;</span><span class="p">:</span> <span class="mi">349</span><span class="p">,</span>
+         <span class="s2">&quot;G4&quot;</span><span class="p">:</span> <span class="mi">392</span><span class="p">,</span> <span class="s2">&quot;A4&quot;</span><span class="p">:</span> <span class="mi">440</span><span class="p">,</span> <span class="s2">&quot;B4&quot;</span><span class="p">:</span> <span class="mi">494</span><span class="p">,</span> <span class="s2">&quot;C5&quot;</span><span class="p">:</span> <span class="mi">523</span><span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">play_note</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
+    <span class="n">freq</span> <span class="o">=</span> <span class="n">NOTES</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">freq</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span>
+        <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32768</span><span class="p">)</span>
+    <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="n">ms</span><span class="p">)</span>
+    <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="n">scale</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;C4&quot;</span><span class="p">,</span> <span class="s2">&quot;D4&quot;</span><span class="p">,</span> <span class="s2">&quot;E4&quot;</span><span class="p">,</span> <span class="s2">&quot;F4&quot;</span><span class="p">,</span> <span class="s2">&quot;G4&quot;</span><span class="p">,</span> <span class="s2">&quot;A4&quot;</span><span class="p">,</span> <span class="s2">&quot;B4&quot;</span><span class="p">,</span> <span class="s2">&quot;C5&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">note</span> <span class="ow">in</span> <span class="n">scale</span><span class="p">:</span>
+    <span class="n">play_note</span><span class="p">(</span><span class="n">note</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="playing-a-melody-super-mario-theme">Playing a Melody — Super Mario Theme</h2>
+<p>A <strong>melody</strong> is a sequence of notes and their durations. In music, note length is expressed as fractions of a <strong>beat</strong> (quarter note = 1 beat, eighth note = 0.5 beat, etc.). At 120 BPM (beats per minute), one beat = 500 ms.</p>
+<p>Here is the opening phrase of the Super Mario Bros. theme:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># BPM = 120, one beat = 500 ms, eighth note = 250 ms</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="mi">250</span>   <span class="c1"># quarter note in ms (at 120 BPM, half the usual so it feels right at tempo)</span>
+<span class="n">E</span> <span class="o">=</span> <span class="mi">125</span>   <span class="c1"># eighth note</span>
+<span class="n">H</span> <span class="o">=</span> <span class="mi">500</span>   <span class="c1"># half note</span>
+
+<span class="n">MARIO</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">&quot;E5&quot;</span><span class="p">,</span> <span class="n">E</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;E5&quot;</span><span class="p">,</span> <span class="n">E</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;REST&quot;</span><span class="p">,</span> <span class="n">E</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;E5&quot;</span><span class="p">,</span> <span class="n">E</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;REST&quot;</span><span class="p">,</span> <span class="n">E</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;C5&quot;</span><span class="p">,</span> <span class="n">E</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;E5&quot;</span><span class="p">,</span> <span class="n">Q</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;G5&quot;</span><span class="p">,</span> <span class="n">Q</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;REST&quot;</span><span class="p">,</span> <span class="n">Q</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;G4&quot;</span><span class="p">,</span> <span class="n">Q</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="n">NOTES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;C4&quot;</span><span class="p">:</span> <span class="mi">262</span><span class="p">,</span> <span class="s2">&quot;E4&quot;</span><span class="p">:</span> <span class="mi">330</span><span class="p">,</span> <span class="s2">&quot;G4&quot;</span><span class="p">:</span> <span class="mi">392</span><span class="p">,</span> <span class="s2">&quot;C5&quot;</span><span class="p">:</span> <span class="mi">523</span><span class="p">,</span>
+    <span class="s2">&quot;E5&quot;</span><span class="p">:</span> <span class="mi">659</span><span class="p">,</span> <span class="s2">&quot;G5&quot;</span><span class="p">:</span> <span class="mi">784</span><span class="p">,</span> <span class="s2">&quot;REST&quot;</span><span class="p">:</span> <span class="mi">0</span>
+<span class="p">}</span>
+
+<span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">note</span><span class="p">,</span> <span class="n">duration</span> <span class="ow">in</span> <span class="n">MARIO</span><span class="p">:</span>
+    <span class="n">freq</span> <span class="o">=</span> <span class="n">NOTES</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">note</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">freq</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span>
+        <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32768</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+    <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="eight-key-piano-program">Eight-Key Piano Program</h2>
+<p>An <strong>eight-key piano</strong> turns eight buttons into a one-octave piano. Each button plays a different note of the C major scale when pressed.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">import</span> <span class="nn">utime</span>
+
+<span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+<span class="n">SCALE</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">262</span><span class="p">,</span> <span class="mi">294</span><span class="p">,</span> <span class="mi">330</span><span class="p">,</span> <span class="mi">349</span><span class="p">,</span> <span class="mi">392</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">494</span><span class="p">,</span> <span class="mi">523</span><span class="p">]</span>   <span class="c1"># C4 through C5</span>
+<span class="n">button_pins</span> <span class="o">=</span> <span class="p">[</span><span class="n">Pin</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">14</span><span class="p">)]</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">btn</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">button_pins</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">btn</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>             <span class="c1"># active LOW — button pressed</span>
+            <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">SCALE</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32768</span><span class="p">)</span>
+            <span class="k">break</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>               <span class="c1"># no button pressed → silence</span>
+    <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Use Wires Instead of Eight Buttons</p>
+<p><img alt="Monty giving a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+Eight tactile buttons can be hard to wire cleanly on a breadboard. For the piano demo, try using eight short jumper wires. Touch the free end of each wire to GND and the note plays. It feels surprisingly like a real capacitive touch instrument!</p>
+</div>
+<h4 id="diagram-piano-keyboard-tone-generator">Diagram: Piano Keyboard Tone Generator</h4>
+<iframe src="../../sims/piano-tone-generator/main.html" width="100%" height="420px" scrolling="no"></iframe>
+
+<details>
+<summary>Piano Keyboard Tone Generator MicroSim</summary>
+<p>Type: microsim
+<strong>sim-id:</strong> piano-tone-generator<br/>
+<strong>Library:</strong> p5.js<br/>
+<strong>Status:</strong> Specified</p>
+<p>Bloom Level: Apply (L3)
+Bloom Verb: play
+Learning Objective: Students can play notes on a virtual keyboard and observe the corresponding frequency values used in MicroPython code.</p>
+<p>Canvas layout:
+- Center: an 8-key piano keyboard (C4 through C5) drawn with white and black keys
+- Below: a frequency display showing the current note and Hz value
+- Code panel: shows the <code>buzzer.freq(XXX)</code> line that would play the clicked note</p>
+<p>Visual elements:
+- White keys: C D E F G A B C
+- Black keys: C# D# F# G# A#
+- Active key highlighted yellow when clicked; oscilloscope waveform animates at the note's frequency</p>
+<p>Interactive controls:
+- Click a key to play the tone using the Web Audio API (oscillator node)
+- Keyboard keyboard shortcuts: a-s-d-f-g-h-j-k for C-D-E-F-G-A-B-C</p>
+<p>Instructional Rationale: Playing notes with visual and auditory feedback while seeing the frequency value and code builds the frequency→note→code connection that students need before writing melody programs.</p>
+<p>Implementation: p5.js + Web Audio API. Each key click creates an OscillatorNode at the correct frequency; draws waveform animation using sin function.</p>
+</details>
+<h2 id="digital-to-analog-converter-dac">Digital-to-Analog Converter (DAC)</h2>
+<p>A <strong>DAC</strong> (Digital-to-Analog Converter) is the opposite of an ADC — it converts a digital number into an analog voltage. This allows the Pico to output smooth audio waveforms rather than the on/off square waves produced by PWM.</p>
+<p>The Raspberry Pi Pico does not have a built-in DAC. External DAC chips (like the MCP4725 over I2C, or PCM5102 over I2S) provide smooth audio output. For simple buzzer music, PWM is adequate. For playing recorded sounds or high-quality audio, use I2S with an external DAC.</p>
+<h2 id="i2s-for-audio-higher-quality-sound">I2S for Audio — Higher Quality Sound</h2>
+<p>The <strong>I2S standard</strong> (Inter-IC Sound) is a digital audio bus designed for transferring PCM (Pulse Code Modulation) audio data between chips. Using I2S, the Pico can:</p>
+<ul>
+<li>Play WAV or raw PCM audio files through an I2S DAC module.</li>
+<li>Record audio from an I2S digital microphone (Chapter 11).</li>
+</ul>
+<p><strong>I2S for audio output</strong> requires an external I2S DAC chip (such as MAX98357A or PCM5102A), a small speaker, and the <code>machine.I2S</code> class:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">audio</span> <span class="o">=</span> <span class="n">I2S</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">ws</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">11</span><span class="p">),</span> <span class="n">sd</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span>
+            <span class="n">mode</span><span class="o">=</span><span class="n">I2S</span><span class="o">.</span><span class="n">TX</span><span class="p">,</span> <span class="n">bits</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">I2S</span><span class="o">.</span><span class="n">STEREO</span><span class="p">,</span>
+            <span class="n">rate</span><span class="o">=</span><span class="mi">22050</span><span class="p">,</span> <span class="n">ibuf</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+
+<span class="c1"># Read WAV data from Pico flash and stream to speaker</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;sound.wav&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">44</span><span class="p">)</span>   <span class="c1"># skip WAV header (44 bytes for standard PCM WAV)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">audio</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="midi-protocol">MIDI Protocol</h2>
+<p><strong>MIDI</strong> (Musical Instrument Digital Interface) is a standard for sending music control messages between electronic instruments and computers. A MIDI message says "play note 60 (middle C) at velocity 80" — it does not contain audio data, just instructions.</p>
+<p>The Pico can receive MIDI over UART (standard MIDI at 31,250 baud) or USB MIDI, parse the messages, and play the corresponding tones on a buzzer or I2S speaker.</p>
+<p>MIDI note numbers map linearly to frequencies:</p>
+<p>[ f = 440 \times 2^{(n-69)/12} ]</p>
+<p>where <code>n</code> is the MIDI note number (60 = middle C, 69 = A4 at 440 Hz).</p>
+<h2 id="audio-amplifier-and-speaker-wiring">Audio Amplifier and Speaker Wiring</h2>
+<p>A passive buzzer works for simple tones, but it is quiet. For louder sound, wire a small speaker (4 Ω or 8 Ω) through an <strong>audio amplifier</strong> module.</p>
+<p>The <strong>MAX98357A</strong> is a simple I2S amplifier breakout that provides 3W output power. Connect its I2S input to the Pico and its output directly to a speaker:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>Pico GP9  → MAX98357A DIN
+Pico GP10 → MAX98357A BCLK
+Pico GP11 → MAX98357A LRC
+MAX98357A VIN → 3.3V or 5V
+MAX98357A GND → GND
+MAX98357A + → Speaker +
+MAX98357A - → Speaker -
+</code></pre></div></td></tr></table></div>
+<p><strong>Sound parts list</strong> for a complete audio system:</p>
+<ul>
+<li>Passive buzzer (for simple tones, very inexpensive)</li>
+<li>OR I2S DAC module (MAX98357A, PCM5102A) for WAV playback</li>
+<li>4 Ω or 8 Ω small speaker (0.5 W to 3 W)</li>
+<li>10 µF electrolytic capacitor across the speaker to block DC offset</li>
+<li>Optional: 3.5 mm audio jack breakout for headphone output</li>
+</ul>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li><strong>Passive buzzers</strong> use PWM frequency to set pitch; change <code>buzzer.freq()</code> to change the note.</li>
+<li><strong>Active buzzers</strong> make a fixed-pitch beep with a constant voltage — no frequency control.</li>
+<li>Musical notes have specific Hz values: A4 = 440 Hz; each octave doubles the frequency.</li>
+<li>Store notes in a dictionary <code>{name: frequency}</code> and durations in tuples for clean melody code.</li>
+<li>A <strong>DAC</strong> converts digital numbers to smooth analog voltages — the Pico needs an external DAC for high-quality audio.</li>
+<li><strong>I2S</strong> carries digital PCM audio; the Pico uses <code>I2S.TX</code> to play WAV files through an I2S DAC.</li>
+<li><strong>MIDI</strong> sends note-on/note-off messages (not audio data) over UART at 31,250 baud.</li>
+<li>For loud sound, pair an I2S DAC with a <strong>MAX98357A</strong> amplifier and a small speaker.</li>
+</ul>
+<details class="question">
+<summary>Quick Check: How do you play a REST (silence) for 250 ms with a passive buzzer? (Click to reveal)</summary>
+<p><strong>Set <code>buzzer.duty_u16(0)</code></strong> to silence the buzzer output, then <code>utime.sleep_ms(250)</code>. Setting duty to 0 stops all PWM output. Do NOT set the frequency to 0 — that would cause an error. Just kill the duty cycle.</p>
+</details>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Your Pico Can Sing!</p>
+<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+From a simple beep to full melodies to I2S audio — your Pico now has a voice! Chapter 19 connects it to the internet with Wi-Fi and MQTT for IoT projects. Data in, data out, around the world. Let's go wireless!</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../17-color-epaper-displays/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 17. Color and E-Paper Displays">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                17. Color and E-Paper Displays
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../19-wireless-iot/" class="md-footer__link md-footer__link--next" aria-label="Next: 19. Wireless and IoT">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                19. Wireless and IoT
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>

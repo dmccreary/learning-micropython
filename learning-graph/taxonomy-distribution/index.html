@@ -1,0 +1,4700 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/learning-graph/taxonomy-distribution/">
+      
+      
+        <link rel="prev" href="../concept-taxonomy/">
+      
+      
+        <link rel="next" href="../mascot-test/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Taxonomy Distribution Report - Learning MicroPython</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-DS16K4YVRR"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-DS16K4YVRR",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-DS16K4YVRR",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#taxonomy-distribution-report" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Learning MicroPython" class="md-header__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning MicroPython
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Taxonomy Distribution Report
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Learning MicroPython" class="md-nav__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Learning MicroPython
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Book
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Learning Graph
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../course-description-assessment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description Assessment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concept-list/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concept Enumeration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quality-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Graph Quality Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concept-taxonomy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Concept Taxonomy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Taxonomy Distribution Report
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Taxonomy Distribution Report
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distribution-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribution Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visual-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual Distribution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#balance-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Balance Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Balance Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-over-represented-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ No Over-Represented Categories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-under-represented-categories-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ℹ️ Under-Represented Categories (&lt;3%)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#category-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Category Details
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Category Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#app-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      APP (APP)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      IO (IO)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foundation-concepts-prerequisites-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      Foundation Concepts - Prerequisites (FOUND)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mcu-mcu" class="md-nav__link">
+    <span class="md-ellipsis">
+      MCU (MCU)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elec-elec" class="md-nav__link">
+    <span class="md-ellipsis">
+      ELEC (ELEC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oled-oled" class="md-nav__link">
+    <span class="md-ellipsis">
+      OLED (OLED)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wifi-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      WIFI (WIFI)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#act-act" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACT (ACT)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sens-sens" class="md-nav__link">
+    <span class="md-ellipsis">
+      SENS (SENS)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-topics-adv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Topics (ADV)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uenv-uenv" class="md-nav__link">
+    <span class="md-ellipsis">
+      UENV (UENV)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comm-comm" class="md-nav__link">
+    <span class="md-ellipsis">
+      COMM (COMM)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tft-tft" class="md-nav__link">
+    <span class="md-ellipsis">
+      TFT (TFT)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snd-snd" class="md-nav__link">
+    <span class="md-ellipsis">
+      SND (SND)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hadv-hadv" class="md-nav__link">
+    <span class="md-ellipsis">
+      HADV (HADV)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stemp-stemp" class="md-nav__link">
+    <span class="md-ellipsis">
+      STEMP (STEMP)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disp-disp" class="md-nav__link">
+    <span class="md-ellipsis">
+      DISP (DISP)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neo-neo" class="md-nav__link">
+    <span class="md-ellipsis">
+      NEO (NEO)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rob-rob" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROB (ROB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdist-sdist" class="md-nav__link">
+    <span class="md-ellipsis">
+      SDIST (SDIST)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbg-dbg" class="md-nav__link">
+    <span class="md-ellipsis">
+      DBG (DBG)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smot-smot" class="md-nav__link">
+    <span class="md-ellipsis">
+      SMOT (SMOT)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fs-fs" class="md-nav__link">
+    <span class="md-ellipsis">
+      FS (FS)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#epap-epap" class="md-nav__link">
+    <span class="md-ellipsis">
+      EPAP (EPAP)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommendations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommendations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#educational-use-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Educational Use Recommendations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mascot-test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mascot Style Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../intro/01-about/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../getting-started/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../basics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Basic Examples
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sensors/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sensors
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../motors/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Motors and Servos
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../displays/non-graph/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Displays - Non-Graphical
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../displays/graph/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Displays Graphical
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sound/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sound and Music
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../wireless/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Wireless
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../robots/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Robots
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../debugging/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Debugging
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../advanced-labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Advanced Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../kits/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/content-authoring-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authoring Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructors Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/acknowledgements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acknowledgements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/30-colophon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Colophon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#distribution-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribution Summary
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#visual-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Visual Distribution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#balance-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Balance Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Balance Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-over-represented-categories" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ No Over-Represented Categories
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-under-represented-categories-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      ℹ️ Under-Represented Categories (&lt;3%)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#category-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Category Details
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Category Details">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#app-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      APP (APP)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      IO (IO)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#foundation-concepts-prerequisites-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      Foundation Concepts - Prerequisites (FOUND)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mcu-mcu" class="md-nav__link">
+    <span class="md-ellipsis">
+      MCU (MCU)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elec-elec" class="md-nav__link">
+    <span class="md-ellipsis">
+      ELEC (ELEC)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oled-oled" class="md-nav__link">
+    <span class="md-ellipsis">
+      OLED (OLED)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wifi-wifi" class="md-nav__link">
+    <span class="md-ellipsis">
+      WIFI (WIFI)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#act-act" class="md-nav__link">
+    <span class="md-ellipsis">
+      ACT (ACT)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sens-sens" class="md-nav__link">
+    <span class="md-ellipsis">
+      SENS (SENS)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-topics-adv" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Topics (ADV)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uenv-uenv" class="md-nav__link">
+    <span class="md-ellipsis">
+      UENV (UENV)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comm-comm" class="md-nav__link">
+    <span class="md-ellipsis">
+      COMM (COMM)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tft-tft" class="md-nav__link">
+    <span class="md-ellipsis">
+      TFT (TFT)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#snd-snd" class="md-nav__link">
+    <span class="md-ellipsis">
+      SND (SND)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hadv-hadv" class="md-nav__link">
+    <span class="md-ellipsis">
+      HADV (HADV)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stemp-stemp" class="md-nav__link">
+    <span class="md-ellipsis">
+      STEMP (STEMP)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disp-disp" class="md-nav__link">
+    <span class="md-ellipsis">
+      DISP (DISP)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neo-neo" class="md-nav__link">
+    <span class="md-ellipsis">
+      NEO (NEO)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rob-rob" class="md-nav__link">
+    <span class="md-ellipsis">
+      ROB (ROB)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sdist-sdist" class="md-nav__link">
+    <span class="md-ellipsis">
+      SDIST (SDIST)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dbg-dbg" class="md-nav__link">
+    <span class="md-ellipsis">
+      DBG (DBG)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smot-smot" class="md-nav__link">
+    <span class="md-ellipsis">
+      SMOT (SMOT)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fs-fs" class="md-nav__link">
+    <span class="md-ellipsis">
+      FS (FS)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#epap-epap" class="md-nav__link">
+    <span class="md-ellipsis">
+      EPAP (EPAP)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommendations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Recommendations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#educational-use-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Educational Use Recommendations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="taxonomy-distribution-report">Taxonomy Distribution Report</h1>
+<h2 id="overview">Overview</h2>
+<ul>
+<li><strong>Total Concepts</strong>: 485</li>
+<li><strong>Number of Taxonomies</strong>: 24</li>
+<li><strong>Average Concepts per Taxonomy</strong>: 20.2</li>
+</ul>
+<h2 id="distribution-summary">Distribution Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>TaxonomyID</th>
+<th>Count</th>
+<th>Percentage</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>APP</td>
+<td>APP</td>
+<td>41</td>
+<td>8.5%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>IO</td>
+<td>IO</td>
+<td>39</td>
+<td>8.0%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Foundation Concepts - Prerequisites</td>
+<td>FOUND</td>
+<td>30</td>
+<td>6.2%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>MCU</td>
+<td>MCU</td>
+<td>28</td>
+<td>5.8%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>ELEC</td>
+<td>ELEC</td>
+<td>27</td>
+<td>5.6%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>OLED</td>
+<td>OLED</td>
+<td>24</td>
+<td>4.9%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>WIFI</td>
+<td>WIFI</td>
+<td>24</td>
+<td>4.9%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>ACT</td>
+<td>ACT</td>
+<td>23</td>
+<td>4.7%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>SENS</td>
+<td>SENS</td>
+<td>22</td>
+<td>4.5%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Advanced Topics</td>
+<td>ADV</td>
+<td>22</td>
+<td>4.5%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>UENV</td>
+<td>UENV</td>
+<td>20</td>
+<td>4.1%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>COMM</td>
+<td>COMM</td>
+<td>20</td>
+<td>4.1%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>TFT</td>
+<td>TFT</td>
+<td>18</td>
+<td>3.7%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>SND</td>
+<td>SND</td>
+<td>18</td>
+<td>3.7%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>HADV</td>
+<td>HADV</td>
+<td>18</td>
+<td>3.7%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>STEMP</td>
+<td>STEMP</td>
+<td>16</td>
+<td>3.3%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>DISP</td>
+<td>DISP</td>
+<td>16</td>
+<td>3.3%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>NEO</td>
+<td>NEO</td>
+<td>15</td>
+<td>3.1%</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>ROB</td>
+<td>ROB</td>
+<td>13</td>
+<td>2.7%</td>
+<td>ℹ️ Under</td>
+</tr>
+<tr>
+<td>SDIST</td>
+<td>SDIST</td>
+<td>12</td>
+<td>2.5%</td>
+<td>ℹ️ Under</td>
+</tr>
+<tr>
+<td>DBG</td>
+<td>DBG</td>
+<td>12</td>
+<td>2.5%</td>
+<td>ℹ️ Under</td>
+</tr>
+<tr>
+<td>SMOT</td>
+<td>SMOT</td>
+<td>11</td>
+<td>2.3%</td>
+<td>ℹ️ Under</td>
+</tr>
+<tr>
+<td>FS</td>
+<td>FS</td>
+<td>10</td>
+<td>2.1%</td>
+<td>ℹ️ Under</td>
+</tr>
+<tr>
+<td>EPAP</td>
+<td>EPAP</td>
+<td>6</td>
+<td>1.2%</td>
+<td>ℹ️ Under</td>
+</tr>
+</tbody>
+</table>
+<h2 id="visual-distribution">Visual Distribution</h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code>APP                       ████  41 (  8.5%)
+IO                        ████  39 (  8.0%)
+Foundation Concepts - Pre ███  30 (  6.2%)
+MCU                       ██  28 (  5.8%)
+ELEC                      ██  27 (  5.6%)
+OLED                      ██  24 (  4.9%)
+WIFI                      ██  24 (  4.9%)
+ACT                       ██  23 (  4.7%)
+SENS                      ██  22 (  4.5%)
+Advanced Topics           ██  22 (  4.5%)
+UENV                      ██  20 (  4.1%)
+COMM                      ██  20 (  4.1%)
+TFT                       █  18 (  3.7%)
+SND                       █  18 (  3.7%)
+HADV                      █  18 (  3.7%)
+STEMP                     █  16 (  3.3%)
+DISP                      █  16 (  3.3%)
+NEO                       █  15 (  3.1%)
+ROB                       █  13 (  2.7%)
+SDIST                     █  12 (  2.5%)
+DBG                       █  12 (  2.5%)
+SMOT                      █  11 (  2.3%)
+FS                        █  10 (  2.1%)
+EPAP                         6 (  1.2%)
+</code></pre></div></td></tr></table></div>
+<h2 id="balance-analysis">Balance Analysis</h2>
+<h3 id="no-over-represented-categories">✅ No Over-Represented Categories</h3>
+<p>All categories are under the 30% threshold. Good balance!</p>
+<h3 id="i-under-represented-categories-3">ℹ️ Under-Represented Categories (&lt;3%)</h3>
+<ul>
+<li><strong>ROB</strong> (ROB): 13 concepts (2.7%)</li>
+<li><em>Note</em>: Small categories are acceptable for specialized topics</li>
+<li><strong>SDIST</strong> (SDIST): 12 concepts (2.5%)</li>
+<li><em>Note</em>: Small categories are acceptable for specialized topics</li>
+<li><strong>DBG</strong> (DBG): 12 concepts (2.5%)</li>
+<li><em>Note</em>: Small categories are acceptable for specialized topics</li>
+<li><strong>SMOT</strong> (SMOT): 11 concepts (2.3%)</li>
+<li><em>Note</em>: Small categories are acceptable for specialized topics</li>
+<li><strong>FS</strong> (FS): 10 concepts (2.1%)</li>
+<li><em>Note</em>: Small categories are acceptable for specialized topics</li>
+<li><strong>EPAP</strong> (EPAP): 6 concepts (1.2%)</li>
+<li><em>Note</em>: Small categories are acceptable for specialized topics</li>
+</ul>
+<h2 id="category-details">Category Details</h2>
+<h3 id="app-app">APP (APP)</h3>
+<p><strong>Count</strong>: 41 concepts (8.5%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Generative AI for Coding</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Prompt Engineering Basics</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>AI Code Generation</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>AI Code Review</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Debugging with AI</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>AI Concept Explanation</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>AI Hardware Suggestion</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Maker Pi RP2040 Kit</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Maker Pi Pico Kit</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Maker Nano RP2040 Kit</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>PWM Kit Project</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Tone Generator Kit</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Spectrum Analyzer Kit</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>NeoPixel Rotary Kit</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Larson Scanner Kit</li>
+</ol>
+</li>
+<li><em>...and 26 more</em></li>
+</ul>
+<h3 id="io-io">IO (IO)</h3>
+<p><strong>Count</strong>: 39 concepts (8.0%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Digital Output</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Digital Input</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>HIGH and LOW States</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>machine.Pin Class</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Pin.OUT Mode</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Pin.IN Mode</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Pin.value() Method</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>LED Blink Program</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Button Input</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Button Debouncing</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Software Debouncing</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Hardware Debouncing</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Active High vs Active Low</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Internal LED</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>External LED Circuit</li>
+</ol>
+</li>
+<li><em>...and 24 more</em></li>
+</ul>
+<h3 id="foundation-concepts-prerequisites-found">Foundation Concepts - Prerequisites (FOUND)</h3>
+<p><strong>Count</strong>: 30 concepts (6.2%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Computer Program</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Source Code</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Variable</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Data Type</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Integer</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Float</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>String</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Boolean</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>List</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Dictionary</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Tuple</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Conditional Statement</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>If-Else Statement</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>For Loop</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>While Loop</li>
+</ol>
+</li>
+<li><em>...and 15 more</em></li>
+</ul>
+<h3 id="mcu-mcu">MCU (MCU)</h3>
+<p><strong>Count</strong>: 28 concepts (5.8%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Microcontroller</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Raspberry Pi Pico</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Raspberry Pi Pico W</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>RP2040 Chip</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>ESP32 Microcontroller</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>ESP8266 Microcontroller</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Cytron Maker Pi RP2040</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Maker Pi Pico</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Maker Nano RP2040</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Raspberry Pi 500 Keyboard</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Micro:bit</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>GPIO Pin</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>GPIO Numbering</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Pin Modes (Input/Output)</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Pull-Up Resistor</li>
+</ol>
+</li>
+<li><em>...and 13 more</em></li>
+</ul>
+<h3 id="elec-elec">ELEC (ELEC)</h3>
+<p><strong>Count</strong>: 27 concepts (5.6%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Voltage</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Current</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Resistance</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Ohm's Law</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Power (Watts)</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Series Circuit</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Parallel Circuit</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Short Circuit</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Current-Limiting Resistor</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Resistor Color Code</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Capacitor</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>LED (Light Emitting Diode)</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>LED Forward Voltage</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>LED Current Rating</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Transistor</li>
+</ol>
+</li>
+<li><em>...and 12 more</em></li>
+</ul>
+<h3 id="oled-oled">OLED (OLED)</h3>
+<p><strong>Count</strong>: 24 concepts (4.9%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>OLED Display</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>OLED SSD1306 Controller</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>SSD1306 I2C Interface</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>SSD1306 SPI Interface</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>SSD1306 128x64 Resolution</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>SSD1306 128x32 Resolution</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>ssd1306 Module</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>SSD1306_I2C Class</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>SSD1306_SPI Class</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>OLED SH1106 Controller</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>SH1106 I2C Interface</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>sh1106 Module</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>OLED SSD1352 Controller</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>OLED Framebuffer</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>oled.text() Method</li>
+</ol>
+</li>
+<li><em>...and 9 more</em></li>
+</ul>
+<h3 id="wifi-wifi">WIFI (WIFI)</h3>
+<p><strong>Count</strong>: 24 concepts (4.9%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Wi-Fi Basics</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>SSID and Password</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>network Module</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>network.WLAN Class</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>WLAN.connect() Method</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>WLAN.isconnected() Method</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>IP Address</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>MAC Address</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>HTTP Protocol</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>HTTP GET Request</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>urequests Module</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>JSON Parsing</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>ujson Module</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Web Server on Pico W</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>socket Module</li>
+</ol>
+</li>
+<li><em>...and 9 more</em></li>
+</ul>
+<h3 id="act-act">ACT (ACT)</h3>
+<p><strong>Count</strong>: 23 concepts (4.7%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>DC Motor</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Motor Direction Control</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Motor Speed Control</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>H-Bridge Circuit</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>L293D Motor Driver IC</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>DRV8833 Motor Driver IC</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>L298N Motor Driver IC</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Transistor Motor Control</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Motor Stall Current</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Motor Free-Run Current</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Back-EMF Protection</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Flyback Diode</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Servo Motor</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Servo Signal (50Hz PWM)</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Servo Angle Control</li>
+</ol>
+</li>
+<li><em>...and 8 more</em></li>
+</ul>
+<h3 id="sens-sens">SENS (SENS)</h3>
+<p><strong>Count</strong>: 22 concepts (4.5%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Photoresistor (LDR)</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>APDS9960 Gesture Sensor</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>APDS9960 Color Detection</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>APDS9960 Proximity Detection</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>APDS9960 I2C Driver</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Color Sensing Principles</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Ambient Light Sensing</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Rotary Encoder</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Rotary Encoder CLK and DT Pins</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Encoder Interrupt Handler</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Quadrature Encoding</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>rotary Module</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Touch Sensor TTP223</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Capacitive Touch Sensing</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Touch.value() Method</li>
+</ol>
+</li>
+<li><em>...and 7 more</em></li>
+</ul>
+<h3 id="advanced-topics-adv">Advanced Topics (ADV)</h3>
+<p><strong>Count</strong>: 22 concepts (4.5%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Interrupt Handler</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>IRQ (Interrupt Request)</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Pin.irq() Method</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Timer Class</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>machine.Timer</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Timer Callback</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Periodic vs One-Shot Timer</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Non-Blocking Programming</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Blocking vs Non-Blocking</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>machine.time_pulse_us()</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>utime.sleep()</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>utime.ticks_ms()</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>utime.ticks_diff()</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Multi-Core Programming</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>_thread Module</li>
+</ol>
+</li>
+<li><em>...and 7 more</em></li>
+</ul>
+<h3 id="uenv-uenv">UENV (UENV)</h3>
+<p><strong>Count</strong>: 20 concepts (4.1%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>MicroPython</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>MicroPython REPL</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>MicroPython Firmware</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Flashing Firmware</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Thonny IDE</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>VS Code IDE</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Thonny File Manager</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>mpremote Tool</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>rshell Tool</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>File Transfer to Pico</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>MicroPython Interpreter</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Interactive Mode</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Script Mode</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Boot.py File</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Main.py File</li>
+</ol>
+</li>
+<li><em>...and 5 more</em></li>
+</ul>
+<h3 id="comm-comm">COMM (COMM)</h3>
+<p><strong>Count</strong>: 20 concepts (4.1%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>I2C Protocol</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>I2C Bus SDA and SCL</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>I2C Address</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>I2C Scanner</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>machine.I2C Class</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>I2C.scan() Method</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>I2C.writeto() Method</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>I2C.readfrom() Method</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>SPI Protocol</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>SPI Bus Pins (MOSI MISO SCK CS)</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>machine.SPI Class</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>SPI.write() Method</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>SPI.read() Method</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>UART Protocol</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>machine.UART Class</li>
+</ol>
+</li>
+<li><em>...and 5 more</em></li>
+</ul>
+<h3 id="tft-tft">TFT (TFT)</h3>
+<p><strong>Count</strong>: 18 concepts (3.7%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>TFT Display</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>ILI9341 TFT Driver</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>ILI9341 SPI Interface</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>ILI9341 Color Depth (16-bit)</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>ST7789V Color LCD Driver</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>ST7789V SPI Interface</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>ST7789V Resolution</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Graphic LCD (CU1609C)</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Waveshare LCD</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Framebuf Module</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>framebuf.FrameBuffer Class</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>framebuf.MONO_HLSB Format</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>framebuf.RGB565 Format</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Bitmap Drawing</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Custom Drawing Functions</li>
+</ol>
+</li>
+<li><em>...and 3 more</em></li>
+</ul>
+<h3 id="snd-snd">SND (SND)</h3>
+<p><strong>Count</strong>: 18 concepts (3.7%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Passive Buzzer</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Active Buzzer</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Tone Generation</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Musical Note Frequencies</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Play a Scale</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Play a Melody</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Mario Theme Program</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Eight-Key Piano Program</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>WAV Audio File</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>MP3 to WAV Conversion</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Audio Playback</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>I2S Audio Output</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>I2S Standard</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>DAC (Digital-to-Analog Converter)</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>MIDI Protocol</li>
+</ol>
+</li>
+<li><em>...and 3 more</em></li>
+</ul>
+<h3 id="hadv-hadv">HADV (HADV)</h3>
+<p><strong>Count</strong>: 18 concepts (3.7%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>PIO (Programmable I/O) State Machine</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>PIO Assembly Language</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>PIO for WS2812B</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Assembler in MicroPython</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>FFT Algorithm</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>FFT Optimization</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>DMA (Direct Memory Access)</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Frame Buffer</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>I2C Scanner Program</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>String Formatting</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Conda Virtual Environment</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>CircuitPython vs MicroPython</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>mpremote File Commands</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Measuring Battery Voltage</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>VSYS Voltage Measurement</li>
+</ol>
+</li>
+<li><em>...and 3 more</em></li>
+</ul>
+<h3 id="stemp-stemp">STEMP (STEMP)</h3>
+<p><strong>Count</strong>: 16 concepts (3.3%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>DHT11 Sensor</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>DHT22 Sensor</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>dht Module in MicroPython</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>DHT.measure() Method</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>DHT.temperature() Method</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>DHT.humidity() Method</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>BME280 Sensor</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>BME280 Temperature Reading</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>BME280 Humidity Reading</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>BME280 Pressure Reading</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>BME280 I2C Driver</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>DS18B20 Temperature Sensor</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>DS18B20 1-Wire Interface</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>DS18B20 Multiple Sensors</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>onewire Module</li>
+</ol>
+</li>
+<li><em>...and 1 more</em></li>
+</ul>
+<h3 id="disp-disp">DISP (DISP)</h3>
+<p><strong>Count</strong>: 16 concepts (3.3%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>LED as Output Indicator</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>7-Segment Display</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>7-Segment Digit Encoding</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>10-Bar LED Array</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>LED Level Meter</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>8x8 LED Matrix</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>MAX7219 LED Driver</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>MAX7219 SPI Interface</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>MAX7219 Intensity Control</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Character LCD Display</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>LCD 16x2</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>LCD PCF8574 I2C Backpack</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>lcd_api Module</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>LCD Cursor Control</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>4-Digit 7-Segment Display</li>
+</ol>
+</li>
+<li><em>...and 1 more</em></li>
+</ul>
+<h3 id="neo-neo">NEO (NEO)</h3>
+<p><strong>Count</strong>: 15 concepts (3.1%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>NeoPixel LED</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>WS2812B Protocol</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>NeoPixel Strip</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>NeoPixel Matrix</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>neopixel Module</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>NeoPixel.fill() Method</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>NeoPixel.show() Method</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>RGB Color Model</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>HSV Color Model</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Color Wheel Animation</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Rainbow Pattern</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Brightness Scaling</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>LED Strip Wiring</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>NeoPixel Power Requirements</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Level Shifter for NeoPixel</li>
+</ol>
+</li>
+</ul>
+<h3 id="rob-rob">ROB (ROB)</h3>
+<p><strong>Count</strong>: 13 concepts (2.7%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Robot Chassis</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Differential Drive</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Forward/Backward Motion</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Left/Right Turn Control</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Line Follower Robot</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Line Sensor (IR)</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Collision Avoidance Robot</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Obstacle Detection</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Robot Calibration</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Motor Deadband</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Robot Speed Tuning</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Ping-Servo Scanner</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>MicroSwitch Bumper Bot</li>
+</ol>
+</li>
+</ul>
+<h3 id="sdist-sdist">SDIST (SDIST)</h3>
+<p><strong>Count</strong>: 12 concepts (2.5%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>HC-SR04 Ultrasonic Sensor</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>HC-SR04 Trigger Pin</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>HC-SR04 Echo Pin</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Speed of Sound Calculation</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Ultrasonic Ranging Formula</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>VL53L0X Time-of-Flight Sensor</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>VL53L0X I2C Driver</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>VL53L0X.range Property</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Time-of-Flight Measurement</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>IR Distance Sensor</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>IR Emitter and Detector</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Collision Avoidance Logic</li>
+</ol>
+</li>
+</ul>
+<h3 id="dbg-dbg">DBG (DBG)</h3>
+<p><strong>Count</strong>: 12 concepts (2.5%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Debugging Strategy</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Print Debugging</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Error Message Reading</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Traceback Interpretation</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>I2C Debugging</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>SPI Debugging</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Debugging with Thonny</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Stack Trace Viewer</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Heap Viewer</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Minicom Serial Monitor</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Logic Probe</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Common Wiring Errors</li>
+</ol>
+</li>
+</ul>
+<h3 id="smot-smot">SMOT (SMOT)</h3>
+<p><strong>Count</strong>: 11 concepts (2.3%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>Accelerometer</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>ADXL345 Accelerometer</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>MPU6050 Accelerometer/Gyroscope</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Accelerometer X/Y/Z Axes</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Tilt Detection</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>HMC5883L Compass Sensor</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>QMC5883L Compass Sensor</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Compass Heading Calculation</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Magnetic Field Sensing</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Gyroscope</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>IMU (Inertial Measurement Unit)</li>
+</ol>
+</li>
+</ul>
+<h3 id="fs-fs">FS (FS)</h3>
+<p><strong>Count</strong>: 10 concepts (2.1%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>MicroPython File System</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>open() Function</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>File Read and Write</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>os.listdir() Method</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>os.mkdir() Method</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>os.remove() Method</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>SD Card Reader</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>SPI SD Card Interface</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>uos Module</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Persistent Storage</li>
+</ol>
+</li>
+</ul>
+<h3 id="epap-epap">EPAP (EPAP)</h3>
+<p><strong>Count</strong>: 6 concepts (1.2%)</p>
+<p><strong>Concepts</strong>:</p>
+<ul>
+<li>
+<ol>
+<li>E-Paper Display</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>E-Ink Technology</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>E-Paper Refresh Rate</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>E-Paper Low Power</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>E-Paper SPI Interface</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Waveshare E-Paper Driver</li>
+</ol>
+</li>
+</ul>
+<h2 id="recommendations">Recommendations</h2>
+<ul>
+<li>✅ <strong>Excellent balance</strong>: Categories are evenly distributed (spread: 7.2%)</li>
+<li>✅ <strong>MISC category minimal</strong>: Good categorization specificity</li>
+</ul>
+<h3 id="educational-use-recommendations">Educational Use Recommendations</h3>
+<ul>
+<li>Use taxonomy categories for color-coding in graph visualizations</li>
+<li>Design curriculum modules based on taxonomy groupings</li>
+<li>Create filtered views for focused learning paths</li>
+<li>Use categories for assessment organization</li>
+<li>Enable navigation by topic area in interactive tools</li>
+</ul>
+<hr />
+<p><em>Report generated by learning-graph-reports/taxonomy_distribution.py</em></p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../concept-taxonomy/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Concept Taxonomy">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Concept Taxonomy
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../mascot-test/" class="md-footer__link md-footer__link--next" aria-label="Next: Mascot Style Guide">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Mascot Style Guide
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>
