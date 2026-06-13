@@ -11,7 +11,12 @@ nav:
   - About This Book: about.md
   - Course Description: course-description.md
   - Learning Graph:
+    - Introduction: learning-graph/index.md
     - Course Description Assessment: learning-graph/course-description-assessment.md
+    - Concept Enumeration: learning-graph/concept-list.md
+    - Graph Quality Analysis: learning-graph/quality-metrics.md
+    - Concept Taxonomy: learning-graph/concept-taxonomy.md
+    - Taxonomy Distribution Report: learning-graph/taxonomy-distribution.md
   - Introduction:
     - About This Site: intro/01-about.md
     - Physical Computing:  intro/02-physical-computing.md
@@ -263,6 +268,7 @@ nav:
 
   - MicroSims:
     - Introduction: sims/index.md
+    - Learning Graph Viewer: sims/graph-viewer/index.md
     - Learning Graph:
       - Introduction: sims/learning-graph/index.md
       - Concept Enumeration: sims/learning-graph/concept-enumeration.md
@@ -292,7 +298,7 @@ nav:
 
 theme:
   name: material
-  logo: img/logo.png
+  logo: img/mascot/neutral.png
   favicon: img/favicon.ico
   icon:
     previous: fontawesome/solid/angle-left
