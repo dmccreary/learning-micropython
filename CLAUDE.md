@@ -153,6 +153,20 @@ Key tools from `requirements.txt`:
 - `numpy==1.24.2`: Data analysis and visualization
 - `plotly==5.13.0`: Interactive plotting for sensor data
 
+## Student-Facing Content
+
+Before generating chapters, quizzes, glossary entries, FAQ answers, or any
+other text a student will read, read the
+[`CONTENT-GENERATION-GUIDELINES.md`](CONTENT-GENERATION-GUIDELINES.md) file.
+
+It defines the target reading level (primary audience: 10-year-olds), mascot
+usage rules for Monty the MicroPython Snake, admonition formats, placement
+limits, voice characteristics, and code-example standards.
+
+Instructor-facing content (teacher guides, lesson plans for educators) does
+not need to follow the mascot rules but should still follow the audience and
+reading-level rules.
+
 ## Contributing Guidelines
 
 - All hardware examples must include wiring diagrams
