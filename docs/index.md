@@ -1,6 +1,20 @@
-# Learning Micropython
+---
+title: Learning MicroPython
+description: A hands-on intelligent textbook for learning MicroPython and physical computing with the Raspberry Pi Pico, ESP32, sensors, displays, motors, and robots — written for students aged 10–18 and curious learners of all ages.
+image: img/cover.png
+og:image: img/cover.png
+twitter:image: img/cover.png
+hide:
+  - toc
+---
 
-![Micropython logo](img/banner.png)
+# Learning MicroPython
+
+![Learning MicroPython cover image](./img/cover.png)
+
+## Learning Map
+
+![MicroPython Learning Path Banner](img/banner.png)
 
 !!! update
     We now have added support for using generative AI to teach MicroPython.
@@ -17,6 +31,38 @@ If you are looking for a specific topic, please remember to use the search funct
 ## Course Outline
 
 You can use the navigation area on the left side panel to navigate to different parts of the website.  Here is a high-level overview of the main sections of the site.
+
+## Chapters
+
+The book is organized into 23 chapters that build on one another, covering 485 concepts across Python programming, electronics, sensors, displays, motors, robots, wireless networking, and project design. Chapters 1–5 give you the Python and electronics foundation you need; from Chapter 6 onward, every chapter includes working MicroPython programs you can run on a Raspberry Pi Pico. Each chapter also has its own quiz and annotated references. See the [full chapter list](chapters/index.md) for details.
+
+1. [Python Basics — Programs, Variables, Data Types, and Operators](chapters/01-python-basics/index.md) — The fundamental building blocks of every Python program: variables, data types, operators, syntax, and print statements.
+2. [Collections, Control Flow, Functions, and Error Handling](chapters/02-control-flow-functions/index.md) — Lists, dictionaries, loops, conditionals, functions, modules, and how to handle errors gracefully.
+3. [MicroPython Environment and Development Tools](chapters/03-micropython-environment/index.md) — Setting up Thonny, flashing firmware, using the REPL, transferring files, and the MicroPython standard library.
+4. [Microcontrollers and Hardware Platforms](chapters/04-microcontrollers-hardware/index.md) — The Raspberry Pi Pico, RP2040, Pico W, ESP32, GPIO pins, power, logic levels, and onboard memory.
+5. [Electronics Fundamentals](chapters/05-electronics-fundamentals/index.md) — Voltage, current, resistance, Ohm's law, LEDs, transistors, diodes, capacitors, breadboards, and wiring.
+6. [Digital Input, Output, and Interrupts](chapters/06-digital-io-interrupts/index.md) — Controlling LEDs, reading buttons, debouncing, active-high/low logic, and interrupt service routines.
+7. [Analog Signals, ADC, and Pulse-Width Modulation](chapters/07-analog-adc-pwm/index.md) — Analog signals, the ADC, potentiometers, light sensors, and PWM for fading LEDs and driving motors.
+8. [Communication Protocols: I2C, SPI, and UART](chapters/08-communication-protocols/index.md) — The I2C, SPI, UART, 1-Wire, and I2S digital buses and MicroPython's machine classes for peripherals.
+9. [Temperature, Humidity, and Distance Sensors](chapters/09-temp-distance-sensors/index.md) — DHT11, DHT22, BME280, DS18B20, HC-SR04 ultrasonic, VL53L0X time-of-flight, and IR distance sensors.
+10. [Motion, Orientation, and Light Sensors](chapters/10-motion-light-sensors/index.md) — Accelerometers, gyroscopes, compass sensors, photoresistors, and gesture/color sensors using I2C.
+11. [Rotary Encoders, Touch Sensors, and Audio Input](chapters/11-encoders-touch-audio/index.md) — Quadrature rotary encoders, capacitive touch sensors, digital microphones, and FFT concepts for audio.
+12. [Motors, Servos, and Stepper Motor Control](chapters/12-motors-servos-steppers/index.md) — DC motors, H-bridge ICs, motor speed and direction with PWM, servo angle control, and stepper motors.
+13. [Robots and Mobile Systems](chapters/13-robots-mobile-systems/index.md) — Differential-drive robots, line-following, collision avoidance, obstacle detection, and robot calibration.
+14. [NeoPixels and Non-Graphical Displays](chapters/14-neopixels-displays/index.md) — WS2812B NeoPixel strips and matrices, RGB/HSV color models, 7-segment displays, LED arrays, and character LCDs.
+15. [OLED Display Setup and Configuration](chapters/15-oled-setup/index.md) — OLED hardware, SSD1306 and SH1106 controllers, I2C/SPI interfaces, resolution options, and driver modules.
+16. [OLED Drawing Methods, Framebuffer, and Animation](chapters/16-oled-drawing-animation/index.md) — OLED drawing APIs, the framebuf module, and animated projects like OLED Bounce and Pong.
+17. [Color Displays and E-Paper Screens](chapters/17-color-epaper-displays/index.md) — Full-color TFT LCDs (ILI9341, ST7789V), color depth, custom drawing, and low-power e-paper displays.
+18. [Sound, Music, and Audio Generation](chapters/18-sound-music-audio/index.md) — Buzzers, tone generation with PWM, musical note frequencies, melody playback, MIDI, DAC, and I2S audio.
+19. [Wireless Connectivity and the Internet of Things](chapters/19-wireless-iot/index.md) — Wi-Fi, HTTP, web servers, REST APIs, JSON, weather data, NTP time sync, and OTA updates.
+20. [Timers, Timing Functions, and Multi-Core Programming](chapters/20-timers-multicore/index.md) — machine.Timer, non-blocking programming with ticks, precise timing, and RP2040 dual-core with _thread.
+21. [File Systems, Audio Files, and Debugging](chapters/21-file-systems-debugging/index.md) — MicroPython file I/O, SD cards, WAV playback, I2S audio output, and systematic debugging strategies.
+22. [Advanced Hardware Topics and AI-Assisted Coding](chapters/22-advanced-hardware-ai/index.md) — PIO state machines, FFT algorithms, DMA, watchdog timers, RTC, sleep modes, and AI prompt engineering.
+23. [Applied Learning and Capstone Projects](chapters/23-applied-learning-projects/index.md) — Complete kit projects, computational thinking pillars, project design methodology, and a student capstone project.
+
+## Hands-on Labs
+
+In addition to the structured chapters above, the site includes a large collection of original step-by-step lab tutorials grouped by topic. These labs are a great place to jump straight to a specific part or project.
 
 ### Section 1: Introduction to Physical Computing
 
@@ -89,6 +135,10 @@ who have mastered many of our programming labs and want more challenging project
 ### Glossary of Terms
 
 [Glossary of MicroPython Terms](misc/glossary.md)
+
+### FAQ
+
+[](./faq.md)
 
 ### References
 

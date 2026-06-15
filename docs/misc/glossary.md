@@ -3,6 +3,9 @@
 <!-- Each term is a level-4 header for concept-graph linking.
      Link to a term with [TERM](../misc/glossary.md#term-id) -->
 
+This glossary contains 510 terms used in our Learning MicroPython course.  Each term has a precise, concise definition and an example
+of how the term is used.
+
 #### Abstraction
 
 A cognitive process of reducing complexity by focusing on the essential features of a concept, system, or problem while omitting unnecessary details.
