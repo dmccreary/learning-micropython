@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/chapters/20-timers-multicore/">
       
       
-        <link rel="prev" href="../19-wireless-iot/quiz/">
+        <link rel="prev" href="../19-wireless-iot/references/">
       
       
         <link rel="next" href="quiz/">
@@ -73,7 +73,16 @@
     
     
     
-  </head>
+    <meta property="og:type" content="website">
+  <meta property="og:title" content="Timers, Timing Functions, and Multi-Core Programming">
+  <meta property="og:description" content="Hardware timers and callbacks, periodic vs one-shot, non-blocking timing with ticks_ms/ticks_diff, RP2040 dual-core with _thread module, shared memory, and garbage collection.">
+  <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/chapters/20-timers-multicore/">
+  <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/img/cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Timers, Timing Functions, and Multi-Core Programming">
+  <meta name="twitter:description" content="Hardware timers and callbacks, periodic vs one-shot, non-blocking timing with ticks_ms/ticks_diff, RP2040 dual-core with _thread module, shared memory, and garbage collection.">
+  <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/img/cover.png">
+</head>
   
   
     
@@ -410,6 +419,8 @@
       
         
       
+        
+      
     
     
     
@@ -454,6 +465,8 @@
       
         
           
+        
+      
         
       
         
@@ -506,6 +519,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +565,8 @@
       
         
           
+        
+      
         
       
         
@@ -602,6 +619,8 @@
       
         
       
+        
+      
     
     
     
@@ -646,6 +665,8 @@
       
         
           
+        
+      
         
       
         
@@ -698,6 +719,8 @@
       
         
       
+        
+      
     
     
     
@@ -742,6 +765,8 @@
       
         
           
+        
+      
         
       
         
@@ -794,6 +819,8 @@
       
         
       
+        
+      
     
     
     
@@ -838,6 +865,8 @@
       
         
           
+        
+      
         
       
         
@@ -890,6 +919,8 @@
       
         
       
+        
+      
     
     
     
@@ -934,6 +965,8 @@
       
         
           
+        
+      
         
       
         
@@ -986,6 +1019,8 @@
       
         
       
+        
+      
     
     
     
@@ -1030,6 +1065,8 @@
       
         
           
+        
+      
         
       
         
@@ -1082,6 +1119,8 @@
       
         
       
+        
+      
     
     
     
@@ -1126,6 +1165,8 @@
       
         
           
+        
+      
         
       
         
@@ -1178,6 +1219,8 @@
       
         
       
+        
+      
     
     
     
@@ -1222,6 +1265,8 @@
       
         
           
+        
+      
         
       
         
@@ -1274,6 +1319,8 @@
       
         
       
+        
+      
     
     
     
@@ -1320,6 +1367,8 @@
       
         
           
+        
+      
         
       
         
@@ -1385,6 +1434,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotated References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1404,6 +1474,8 @@
       
         
           
+        
+      
         
       
         
@@ -1456,6 +1528,8 @@
       
         
       
+        
+      
     
     
     
@@ -1500,6 +1574,8 @@
       
         
           
+        
+      
         
       
         
@@ -1760,6 +1836,100 @@
         
       
         
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
       
         
           
@@ -1898,7 +2068,7 @@
       
   
   <span class="md-ellipsis">
-    Prompts
+    Sample AI Prompts
   </span>
   
 
@@ -2265,6 +2435,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2442,7 +2621,7 @@ Real projects need to juggle multiple tasks at once. In this chapter you will le
 Timer callbacks run at interrupt priority — the same rules as <code>Pin.irq()</code> handlers apply. Do NOT call <code>utime.sleep()</code>, print over serial, or perform lengthy operations inside a timer callback. Set a flag or toggle a pin, then return. The main loop handles the heavy work.</p>
 </div>
 <h4 id="diagram-blocking-vs-non-blocking-timeline">Diagram: Blocking vs Non-Blocking Timeline</h4>
-<iframe src="../../sims/blocking-vs-nonblocking/main.html" width="100%" height="430px" scrolling="no"></iframe>
+<iframe src="../../sims/blocking-vs-nonblocking/main.html" width="100%" height="497px" scrolling="no"></iframe>
 
 <details>
 <summary>Blocking vs Non-Blocking Timeline MicroSim</summary>
@@ -2594,6 +2773,8 @@ Use <strong>non-blocking timing</strong> (ticks_ms/ticks_diff) when you want the
 <p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
 Non-blocking patterns, hardware timers, and genuine dual-core parallelism — your concurrency toolkit is complete! Chapter 21 explores the Pico's file system, audio file storage, and systematic debugging techniques. You are in the home stretch of the course!</p>
 </div>
+<h2 id="references">References</h2>
+<p><a href="references/">See the Annotated References for this chapter</a></p>
 
 
 
@@ -2634,7 +2815,7 @@ Non-blocking patterns, hardware timers, and genuine dual-core parallelism — yo
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../19-wireless-iot/quiz/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Quiz">
+          <a href="../19-wireless-iot/references/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Annotated References">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
@@ -2644,7 +2825,7 @@ Non-blocking patterns, hardware timers, and genuine dual-core parallelism — yo
                 Previous
               </span>
               <div class="md-ellipsis">
-                Quiz
+                Annotated References
               </div>
             </div>
           </a>

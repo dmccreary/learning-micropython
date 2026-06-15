@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/chapters/21-file-systems-debugging/">
       
       
-        <link rel="prev" href="../20-timers-multicore/quiz/">
+        <link rel="prev" href="../20-timers-multicore/references/">
       
       
         <link rel="next" href="quiz/">
@@ -73,7 +73,16 @@
     
     
     
-  </head>
+    <meta property="og:type" content="website">
+  <meta property="og:title" content="File Systems, Audio Files, and Debugging">
+  <meta property="og:description" content="Pico file system with open(), uos, SD card via SPI, WAV audio playback over I2S, systematic debugging strategies, traceback reading, Thonny&#x27;s heap viewer, and common wiring errors.">
+  <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/chapters/21-file-systems-debugging/">
+  <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/img/cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="File Systems, Audio Files, and Debugging">
+  <meta name="twitter:description" content="Pico file system with open(), uos, SD card via SPI, WAV audio playback over I2S, systematic debugging strategies, traceback reading, Thonny&#x27;s heap viewer, and common wiring errors.">
+  <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/img/cover.png">
+</head>
   
   
     
@@ -410,6 +419,8 @@
       
         
       
+        
+      
     
     
     
@@ -454,6 +465,8 @@
       
         
           
+        
+      
         
       
         
@@ -506,6 +519,8 @@
       
         
       
+        
+      
     
     
     
@@ -550,6 +565,8 @@
       
         
           
+        
+      
         
       
         
@@ -602,6 +619,8 @@
       
         
       
+        
+      
     
     
     
@@ -646,6 +665,8 @@
       
         
           
+        
+      
         
       
         
@@ -698,6 +719,8 @@
       
         
       
+        
+      
     
     
     
@@ -742,6 +765,8 @@
       
         
           
+        
+      
         
       
         
@@ -794,6 +819,8 @@
       
         
       
+        
+      
     
     
     
@@ -838,6 +865,8 @@
       
         
           
+        
+      
         
       
         
@@ -890,6 +919,8 @@
       
         
       
+        
+      
     
     
     
@@ -934,6 +965,8 @@
       
         
           
+        
+      
         
       
         
@@ -986,6 +1019,8 @@
       
         
       
+        
+      
     
     
     
@@ -1030,6 +1065,8 @@
       
         
           
+        
+      
         
       
         
@@ -1082,6 +1119,8 @@
       
         
       
+        
+      
     
     
     
@@ -1126,6 +1165,8 @@
       
         
           
+        
+      
         
       
         
@@ -1178,6 +1219,8 @@
       
         
       
+        
+      
     
     
     
@@ -1222,6 +1265,8 @@
       
         
           
+        
+      
         
       
         
@@ -1274,6 +1319,8 @@
       
         
       
+        
+      
     
     
     
@@ -1318,6 +1365,8 @@
       
         
           
+        
+      
         
       
         
@@ -1368,6 +1417,8 @@
       
         
           
+        
+      
         
       
         
@@ -1433,6 +1484,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotated References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1452,6 +1524,8 @@
       
         
           
+        
+      
         
       
         
@@ -1500,6 +1574,8 @@
       
         
           
+        
+      
         
       
         
@@ -1760,6 +1836,100 @@
         
       
         
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
       
         
           
@@ -1898,7 +2068,7 @@
       
   
   <span class="md-ellipsis">
-    Prompts
+    Sample AI Prompts
   </span>
   
 
@@ -2319,6 +2489,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2682,6 +2861,8 @@ Change <strong>one thing at a time</strong> when debugging hardware. If you swap
 <p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
 File systems, audio playback, and a complete debugging toolkit — you now have the skills to build and fix serious projects. Chapter 22 ventures into the most advanced Pico features: PIO state machines, AI-assisted coding, and the tools that push the hardware to its absolute limits. Almost at the finish line!</p>
 </div>
+<h2 id="references">References</h2>
+<p><a href="references/">See the Annotated References for this chapter</a></p>
 
 
 
@@ -2722,7 +2903,7 @@ File systems, audio playback, and a complete debugging toolkit — you now have 
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../20-timers-multicore/quiz/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Quiz">
+          <a href="../20-timers-multicore/references/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Annotated References">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
@@ -2732,7 +2913,7 @@ File systems, audio playback, and a complete debugging toolkit — you now have 
                 Previous
               </span>
               <div class="md-ellipsis">
-                Quiz
+                Annotated References
               </div>
             </div>
           </a>

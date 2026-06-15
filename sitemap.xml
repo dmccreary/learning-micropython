@@ -213,11 +213,19 @@
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/01-python-basics/references/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/02-control-flow-functions/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/02-control-flow-functions/quiz/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/02-control-flow-functions/references/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
@@ -229,11 +237,19 @@
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/03-micropython-environment/references/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/04-microcontrollers-hardware/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/04-microcontrollers-hardware/quiz/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/04-microcontrollers-hardware/references/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
@@ -245,11 +261,19 @@
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/05-electronics-fundamentals/references/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/06-digital-io-interrupts/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/06-digital-io-interrupts/quiz/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/06-digital-io-interrupts/references/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
@@ -261,11 +285,19 @@
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/07-analog-adc-pwm/references/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/08-communication-protocols/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/08-communication-protocols/quiz/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/08-communication-protocols/references/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
@@ -281,11 +313,19 @@
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/09-temp-distance-sensors/references/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/10-motion-light-sensors/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/10-motion-light-sensors/quiz/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/10-motion-light-sensors/references/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
@@ -297,11 +337,19 @@
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/11-encoders-touch-audio/references/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/12-motors-servos-steppers/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/12-motors-servos-steppers/quiz/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/12-motors-servos-steppers/references/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
@@ -313,11 +361,19 @@
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/13-robots-mobile-systems/references/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/14-neopixels-displays/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/14-neopixels-displays/quiz/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/14-neopixels-displays/references/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
@@ -329,11 +385,19 @@
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/15-oled-setup/references/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/16-oled-drawing-animation/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/16-oled-drawing-animation/quiz/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/16-oled-drawing-animation/references/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
@@ -345,11 +409,19 @@
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/17-color-epaper-displays/references/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/18-sound-music-audio/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/18-sound-music-audio/quiz/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/18-sound-music-audio/references/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
@@ -361,11 +433,19 @@
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/19-wireless-iot/references/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/20-timers-multicore/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/20-timers-multicore/quiz/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/20-timers-multicore/references/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
@@ -377,6 +457,10 @@
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/21-file-systems-debugging/references/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/22-advanced-hardware-ai/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
@@ -385,11 +469,19 @@
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/22-advanced-hardware-ai/references/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/23-applied-learning-projects/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/learning-micropython/chapters/23-applied-learning-projects/quiz/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/learning-micropython/chapters/23-applied-learning-projects/references/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
@@ -606,6 +698,10 @@
     </url>
     <url>
          <loc>https://dmccreary.github.io/learning-micropython/getting-started/10-displays/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/learning-micropython/img/cover-image-prompt/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
@@ -966,6 +1062,10 @@
     </url>
     <url>
          <loc>https://dmccreary.github.io/learning-micropython/prompts/concept-taxonomy/</loc>
+         <lastmod>2026-06-15</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/learning-micropython/prompts/convert-circuitpython-to-micropython/</loc>
          <lastmod>2026-06-15</lastmod>
     </url>
     <url>
