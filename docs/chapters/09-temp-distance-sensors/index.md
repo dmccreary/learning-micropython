@@ -58,6 +58,8 @@ This chapter builds on concepts from:
 
 ## Temperature and Humidity Sensors
 
+![Temperature Sensors Infographic](../09-temp-distance-sensors/temp-sensors-infographic.png)
+
 Temperature and humidity sensors are among the most common components in beginner projects. They tell your Pico how warm and how moist the surrounding air is.
 
 ### DHT11 and DHT22 Sensors
@@ -139,7 +141,32 @@ for rom in roms:
 
 **DS18B20 multiple sensors**: Because each DS18B20 has a unique 64-bit ROM code, you can connect many sensors to the same wire. `ds.scan()` returns a list of ROM codes, and `ds.read_temp(rom)` reads from a specific sensor.
 
-## HC-SR04 — Ultrasonic Distance Sensor
+## Distance Sensors
+
+![Distance Sensors Infographic](./distance-sensors-infographic.png)
+
+### IR Distance Sensors
+
+An **IR distance sensor** (infrared distance sensor) combines an **IR emitter** (an LED that shines invisible infrared light) and an **IR detector** (a phototransistor that detects reflections). When the sensor is close to a surface, more reflected light hits the detector; when far away, less light returns.
+
+Most IR distance sensors return a simple **digital output**: HIGH when no obstacle is close, LOW when an obstacle is detected within range (typically 2–30 cm). Some analog IR sensors return a voltage that varies with distance.
+
+```python
+from machine import Pin
+
+ir = Pin(16, Pin.IN)   # digital IR sensor output
+
+while True:
+    if ir.value() == 0:    # obstacle detected (active LOW output)
+        print("Obstacle detected!")
+    else:
+        print("Clear")
+    utime.sleep(0.1)
+```
+
+IR sensors are the most common sensor for **line-following robots**: a pair of IR sensors aimed at the floor detects the contrast between dark tape (low reflectance) and white floor (high reflectance), letting the robot follow a path.
+
+### HC-SR04 — Ultrasonic Distance Sensor
 
 The **HC-SR04** measures the distance to an object using sound waves — the same principle as bat echolocation and parking sensors.
 
@@ -221,7 +248,7 @@ Instructional Rationale: Animating the ultrasonic pulse as a traveling wave make
 Implementation: p5.js. Wall position → duration → animate wave at `343 + 0.6*(T-20)` m/s; arc animation using frameCount.
 </details>
 
-## VL53L0X — Time-of-Flight Laser Distance Sensor
+### VL53L0X — Time-of-Flight Laser Distance Sensor
 
 The **VL53L0X** measures distance using a tiny infrared laser. It emits a laser pulse and measures the exact time for the light to bounce back — **time-of-flight measurement**. Because light travels at about 300,000 km/s, even a journey of 1 meter takes only about 6 nanoseconds. The VL53L0X's internal hardware handles this timing with picosecond precision.
 
@@ -244,26 +271,6 @@ while True:
 
 The **`VL53L0X.range` property** returns the current distance in millimeters. If the reading is 8,190 or 65,535, it means no object was detected within range.
 
-## IR Distance Sensors
-
-An **IR distance sensor** (infrared distance sensor) combines an **IR emitter** (an LED that shines invisible infrared light) and an **IR detector** (a phototransistor that detects reflections). When the sensor is close to a surface, more reflected light hits the detector; when far away, less light returns.
-
-Most IR distance sensors return a simple **digital output**: HIGH when no obstacle is close, LOW when an obstacle is detected within range (typically 2–30 cm). Some analog IR sensors return a voltage that varies with distance.
-
-```python
-from machine import Pin
-
-ir = Pin(16, Pin.IN)   # digital IR sensor output
-
-while True:
-    if ir.value() == 0:    # obstacle detected (active LOW output)
-        print("Obstacle detected!")
-    else:
-        print("Clear")
-    utime.sleep(0.1)
-```
-
-IR sensors are the most common sensor for **line-following robots**: a pair of IR sensors aimed at the floor detects the contrast between dark tape (low reflectance) and white floor (high reflectance), letting the robot follow a path.
 
 ## Comparing Distance Sensors
 

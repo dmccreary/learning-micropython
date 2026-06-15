@@ -81,157 +81,150 @@ nav:
     - 23. Applied Learning and Projects:
       - Content: chapters/23-applied-learning-projects/index.md
       - Quiz: chapters/23-applied-learning-projects/quiz.md
-  - Learning Graph:
-    - Introduction: learning-graph/index.md
-    - Course Description Assessment: learning-graph/course-description-assessment.md
-    - Concept Enumeration: learning-graph/concept-list.md
-    - Graph Quality Analysis: learning-graph/quality-metrics.md
-    - Concept Taxonomy: learning-graph/concept-taxonomy.md
-    - Taxonomy Distribution Report: learning-graph/taxonomy-distribution.md
-    - Mascot Style Guide: learning-graph/mascot-test.md
-    - FAQ Quality Report: learning-graph/faq-quality-report.md
-    - Quiz Generation Report: learning-graph/quiz-generation-report.md
-  - Introduction:
-    - About This Site: intro/01-about.md
-    - Physical Computing:  intro/02-physical-computing.md
-    - Microcontrollers:  intro/03-microcontrollers.md
 
-  - Getting Started:
-    - Introduction: getting-started/01-intro.md
-    - Solderless Breadboards: getting-started/02-breadboards.md
-    - Boards: getting-started/02-boards.md
-    - Displays: getting-started/10-displays.md
-    - Sourcing Parts: getting-started/03-suggested-parts.md
-    - Raspberry Pi Pico: getting-started/02-pi-pico.md
-    - ESP32: getting-started/02-esp32.md
-    - Powering Your Projects: getting-started/04-power.md
-    - Thonny IDE: getting-started/02c-thonny.md
-    - VS Code IDE: getting-started/02d-vscode.md
-    - MicroPython Libraries: getting-started/01b-libraries.md
+  - Hands-On Labs:
+    - Introduction:
+      - About This Site: intro/01-about.md
+      - Physical Computing:  intro/02-physical-computing.md
+      - Microcontrollers:  intro/03-microcontrollers.md
 
-  - Basic Examples:
-    - Introduction: basics/index.md
-    - Blink: basics/01-blink.md
-    - Internal Temperature: basics/02-internal-temperature.md
-    - Fade In and Out: basics/04-fade-in-and-out.md
-    - Buttons: basics/03-button.md
-    - Potentiometer: basics/03-potentiometer.md
-    - Motor: basics/04-motor.md
-    - Servo: basics/04-servo.md
-    - NeoPixel: basics/05-neopixel.md
-    - Wireless: basics/06-wireless.md
-    - Config: basics/10.config.md
+    - Getting Started:
+      - Introduction: getting-started/01-intro.md
+      - Solderless Breadboards: getting-started/02-breadboards.md
+      - Boards: getting-started/02-boards.md
+      - Displays: getting-started/10-displays.md
+      - Sourcing Parts: getting-started/03-suggested-parts.md
+      - Raspberry Pi Pico: getting-started/02-pi-pico.md
+      - ESP32: getting-started/02-esp32.md
+      - YD-RP2040: getting-started/06-yd-2040.md
+      - Powering Your Projects: getting-started/04-power.md
+      - Thonny IDE: getting-started/02c-thonny.md
+      - VS Code IDE: getting-started/02d-vscode.md
+      - MicroPython Libraries: getting-started/01b-libraries.md
 
-  - Sensors:
-    - Introduction: sensors/01-intro.md
-    - Photosensor: sensors/02-photosensor.md
-    - Ping Distance: sensors/03-ping.md
-    - IR Distance Sensor: sensors/08-ir-distance-sensor.md
-    - Temp and Humidity: sensors/04-temp-dht11.md
-    - Temperature: sensors/05-temp-dsb20.md
-    - Temp, Humidity, Pres: sensors/06-bme280.md
-    - DH11 Temp and Humidity: sensors/dht11-temp-humidity.md
-    - Potentiometer: sensors/02-pot.md
-    - Environmental Sensor: sensors/06-bme280.md
-    - Accelerometer Compass: sensors/06-accelerometer-compass.md
-    - Time of Flight Distance: sensors/07-VL53L0X_GY.md
-    - Rotary Encoder: sensors/10-rotary-encoder.md
-    - Compass: sensors/11-compass.md
-    - Gesture: sensors/13-gesture.md
-    - Touch Sensor: sensors/14-touch-ttp223.md
-    - Microphone INMP441: sensors/15-inmp441.md
-    - BME280 Temp and Pressure: sensors/09-bme280.md
+    - Basic Examples:
+      - Introduction: basics/index.md
+      - Blink: basics/01-blink.md
+      - Internal Temperature: basics/02-internal-temperature.md
+      - Fade In and Out: basics/04-fade-in-and-out.md
+      - Buttons: basics/03-button.md
+      - Potentiometer: basics/03-potentiometer.md
+      - Motor: basics/04-motor.md
+      - Servo: basics/04-servo.md
+      - NeoPixel: basics/05-neopixel.md
+      - Wireless: basics/06-wireless.md
+      - Config: basics/10.config.md
 
-  - Motors and Servos:
-    - Introduction: motors/01-intro.md
-    - Transistor Lab: motors/02-transistor.md
-    - H-Bridge: motors/03-h-bridge.md
-    - L293D Chip: motors/04-l293d.md
-    - Controller Board: motors/05-controller-board.md
-    - Servos: motors/06-servos.md
-    - Stepper Motors: motors/07-stepper-motors.md
-    - DRV8833 Motor Driver: motors/08-drv8833.md
+    - Sensors:
+      - Introduction: sensors/01-intro.md
+      - Photosensor: sensors/02-photosensor.md
+      - Ping Distance: sensors/03-ping.md
+      - IR Distance Sensor: sensors/08-ir-distance-sensor.md
+      - Temp and Humidity: sensors/04-temp-dht11.md
+      - Temperature: sensors/05-temp-dsb20.md
+      - Temp, Humidity, Pres: sensors/06-bme280.md
+      - DH11 Temp and Humidity: sensors/dht11-temp-humidity.md
+      - Potentiometer: sensors/02-pot.md
+      - Accelerometer Compass: sensors/06-accelerometer-compass.md
+      - Time of Flight Distance: sensors/07-VL53L0X_GY.md
+      - Rotary Encoder: sensors/10-rotary-encoder.md
+      - Compass: sensors/11-compass.md
+      - Gesture: sensors/13-gesture.md
+      - Touch Sensor: sensors/14-touch-ttp223.md
+      - Microphone INMP441: sensors/15-inmp441.md
+      - BME280 Temp and Pressure: sensors/09-bme280.md
 
-  - Displays - Non-Graphical:
-    - Introduction: displays/non-graph/01-intro.md
-    - LED Button: displays/non-graph/02-led-button.md
-    - 7 Segment Display: displays/non-graph/seven-segment.md
-    - 10 Bar LEDs: displays/non-graph/03-10-bar-leds.md
-    - Level Meter: displays/non-graph/03a-10-bar-level.md
-    - 8x8 LED Matrix: displays/non-graph/04-8x8-led-matrix.md
-    - Character LCD: displays/non-graph/10-character-lcd-display.md
-    - 4 Digit LED: displays/non-graph/05-4-digit.md
+    - Motors and Servos:
+      - Introduction: motors/01-intro.md
+      - Transistor Lab: motors/02-transistor.md
+      - H-Bridge: motors/03-h-bridge.md
+      - L293D Chip: motors/04-l293d.md
+      - Controller Board: motors/05-controller-board.md
+      - Servos: motors/06-servos.md
+      - Stepper Motors: motors/07-stepper-motors.md
+      - DRV8833 Motor Driver: motors/08-drv8833.md
 
-  - Displays Graphical:
-    - Introduction: displays/graph/01-intro.md
-    - Wiring Harness: displays/graph/19-wiring-harness.md
-    - Graphic LCD: displays/graph/15-cu1609c-led.md
-    - Basic Drawing: displays/graph/03-basic-drawing.md
-    - Drawing with Bitmaps: displays/graph/03-bitmaps.md
-    - Custom Drawing Functions: displays/graph/04-extended-drawing-functions.md
-    - Color LCD ST7789V: displays/graph/14-lcd-st7789V.md
-    - Timing Draw Speed: displays/graph/05-timing-draw-speed.md
-    - TFT ILI9341: displays/graph/16-tft-ili9341.md
-    - LCD Waveshare: displays/graph/11-lcd-waveshare.md
-    - E-Paper: displays/graph/12-e-paper-display.md
-    - OLED Setup: displays/graph/02-oled-setup.md
-    - OLED SSD1306 I2C: displays/graph/11-oled-ssd1306-i2c.md
-    - OLED SSD1306 SPI V1: displays/graph/12-oled-ssd1306-spi-v1.md
-    - OLED SSD1306 SPI V2: displays/graph/11-oled-ssd1306-spi.md
-    - OLED SH1106 I2C Example: displays/graph/11-oled-sh1106-i2c.md
-    - OLED SSD 1352: displays/graph/17-ssd1352.md
-    - OLED Bounce: displays/graph/10-oled-bounce.md
-    - OLED Pot: displays/graph/12-oled-pot.md
-    - OLED Ping: displays/graph/11-oled-ping.md
-    - OLED Pong: displays/graph/11-pong.md
-    - OLED Pixel Draw: displays/graph/13-pixel-draw.md
-    - OLED Patterns: displays/graph/15-oled-patterns.md
-    - Random Hearts: displays/graph/14-random-hearts.md
-    - NeoPixel Matrix: displays/graph/18-neopixel-matrix.md
-    - OLED References: displays/graph/40-oled-references.md
-    - HSTX Display Interface: displays/graph/50-hstx.md
+    - Displays - Non-Graphical:
+      - Introduction: displays/non-graph/01-intro.md
+      - LED Button: displays/non-graph/02-led-button.md
+      - 7 Segment Display: displays/non-graph/seven-segment.md
+      - 10 Bar LEDs: displays/non-graph/03-10-bar-leds.md
+      - Level Meter: displays/non-graph/03a-10-bar-level.md
+      - 8x8 LED Matrix: displays/non-graph/04-8x8-led-matrix.md
+      - Character LCD: displays/non-graph/10-character-lcd-display.md
+      - 4 Digit LED: displays/non-graph/05-4-digit.md
 
-  - Sound and Music:
-    - Introduction: sound/index.md
-    - Playing a Tone: sound/02-play-tone.md
-    - Playing Three Tones: sound/03-play-three-tones.md
-    - Playing a Scale: sound/04-play-scale.md
-    - Play Mario: sound/05-play-mario.md
-    - Eight Key Piano: sound/06-eight-key-piano.md
-    - Playing Audio File: sound/07-play-audio-file.md
-    - Converting Audio Files: sound/09-converting-mp3-to-wav.md
-    - sound/07a-test-audio-ports.md
-    - sound/08-i2s-standard.md
-    - sound/10-midi.md
-    - sound/11-sound-parts.md
-    - sound/20-i2s-bus.md
-    - Digital to Analog Converter: sound/dac/index.md
-    - Tone Generator: sound/12-tone-gen-pot.md
-    - sound/midi/index.md
+    - Displays Graphical:
+      - Introduction: displays/graph/01-intro.md
+      - Wiring Harness: displays/graph/19-wiring-harness.md
+      - Graphic LCD: displays/graph/15-cu1609c-led.md
+      - Basic Drawing: displays/graph/03-basic-drawing.md
+      - Drawing with Bitmaps: displays/graph/03-bitmaps.md
+      - Custom Drawing Functions: displays/graph/04-extended-drawing-functions.md
+      - Color LCD ST7789V: displays/graph/14-lcd-st7789V.md
+      - Timing Draw Speed: displays/graph/05-timing-draw-speed.md
+      - TFT ILI9341: displays/graph/16-tft-ili9341.md
+      - LCD Waveshare: displays/graph/11-lcd-waveshare.md
+      - E-Paper: displays/graph/12-e-paper-display.md
+      - OLED Setup: displays/graph/02-oled-setup.md
+      - OLED SSD1306 I2C: displays/graph/11-oled-ssd1306-i2c.md
+      - OLED SSD1306 SPI V1: displays/graph/12-oled-ssd1306-spi-v1.md
+      - OLED SSD1306 SPI V2: displays/graph/11-oled-ssd1306-spi.md
+      - OLED SH1106 I2C Example: displays/graph/11-oled-sh1106-i2c.md
+      - OLED SSD 1352: displays/graph/17-ssd1352.md
+      - OLED Bounce: displays/graph/10-oled-bounce.md
+      - OLED Pot: displays/graph/12-oled-pot.md
+      - OLED Ping: displays/graph/11-oled-ping.md
+      - OLED Pong: displays/graph/11-pong.md
+      - OLED Pixel Draw: displays/graph/13-pixel-draw.md
+      - OLED Patterns: displays/graph/15-oled-patterns.md
+      - Random Hearts: displays/graph/14-random-hearts.md
+      - NeoPixel Matrix: displays/graph/18-neopixel-matrix.md
+      - OLED References: displays/graph/40-oled-references.md
+      - HSTX Display Interface: displays/graph/50-hstx.md
 
-  - Wireless:
-    - Introduction: wireless/01-intro.md
-    - Connecting to WiFi: wireless/02-connecting-to-wifi.md
-    - HTTP GET: wireless/03-http-get.md
-    - Web Server: wireless/04-web-server.md
-    - Web Server NeoPixel: wireless/07-web-server-rgb-neopixels.md
-    - MAC Address: wireless/05-mac-address.md
-    - UPIP: wireless/06-upip.md
-    - Get Weather Forecast: wireless/08-get-weather.md
-    - Display Forecast on OLED: wireless/09-get-weather-display.md
-    - WiFi Clock: wireless/10-wifi-clock.md
-    - Advanced Labs: wireless/11-advanced-labs.md
-    - With Display: wireless/20-display.md
+    - Sound and Music:
+      - Introduction: sound/index.md
+      - Playing a Tone: sound/02-play-tone.md
+      - Playing Three Tones: sound/03-play-three-tones.md
+      - Playing a Scale: sound/04-play-scale.md
+      - Play Mario: sound/05-play-mario.md
+      - Eight Key Piano: sound/06-eight-key-piano.md
+      - Playing Audio File: sound/07-play-audio-file.md
+      - Converting Audio Files: sound/09-converting-mp3-to-wav.md
+      - Testing Audio Ports: sound/07a-test-audio-ports.md
+      - I2S Standard: sound/08-i2s-standard.md
+      - MIDI Basics: sound/10-midi.md
+      - Sound Parts: sound/11-sound-parts.md
+      - The I2S Bus: sound/20-i2s-bus.md
+      - Digital to Analog Converter: sound/dac/index.md
+      - Tone Generator: sound/12-tone-gen-pot.md
+      - MIDI Projects: sound/midi/index.md
 
-  - Robots:
-    - Introduction: robots/index.md
-    - Base Bot: robots/02-base-bot.md
-    # - Rainbow Bot: robots/03-rainbow-bot.md
-    - Face Bot: robots/04-face-bot.md
-    # - Ajusta Bot: robots/05-ajusta-bot.md
-    # - Servo Bot: robots/05-servo-bot.md
-    - IR Sensor Bot: robots/03-ir-sensor-bot.md
-    - FAQs: robots/20-faqs.md
+    - Wireless:
+      - Introduction: wireless/01-intro.md
+      - Connecting to WiFi: wireless/02-connecting-to-wifi.md
+      - HTTP GET: wireless/03-http-get.md
+      - Web Server: wireless/04-web-server.md
+      - Web Server NeoPixel: wireless/07-web-server-rgb-neopixels.md
+      - MAC Address: wireless/05-mac-address.md
+      - UPIP: wireless/06-upip.md
+      - Get Weather Forecast: wireless/08-get-weather.md
+      - Display Forecast on OLED: wireless/09-get-weather-display.md
+      - WiFi Clock: wireless/10-wifi-clock.md
+      - Display Clock: wireless/12-display-clock.md
+      - Advanced Labs: wireless/11-advanced-labs.md
+      - With Display: wireless/20-display.md
+
+    - Robots:
+      - Introduction: robots/index.md
+      - Base Bot: robots/02-base-bot.md
+      # - Rainbow Bot: robots/03-rainbow-bot.md
+      - Face Bot: robots/04-face-bot.md
+      # - Ajusta Bot: robots/05-ajusta-bot.md
+      # - Servo Bot: robots/05-servo-bot.md
+      - IR Sensor Bot: robots/03-ir-sensor-bot.md
+      - FAQs: robots/20-faqs.md
 
   - Debugging:
     - Introduction: debugging/index.md
@@ -242,44 +235,44 @@ nav:
     - Viewing the Stack: debugging/30-stack-view.md
     - Viewing the Heap: debugging/31-heap.md
 
-  - Advanced Labs:
-    - Introduction: advanced-labs/index.md
-    - Internal Temperature: advanced-labs/03-internal-temperature.md
-    - Interrupt Handlers: advanced-labs/02-interrupt-handlers.md
-    - Timing Functions: advanced-labs/03-timing-functions.md
-    - Conda Environment Setup: advanced-labs/04-conda-env.md
-    - OS Functions: advanced-labs/05-os-functions.md
-    - I2C Scanner: advanced-labs/06-i2c.md
-    - Frame Buffer: advanced-labs/07-framebuffer.md
-    - Minicom: advanced-labs/08-minicom.md
-    - SD Card Reader: advanced-labs/09-micro-sd-card-reader.md
-    - Converting CircuitPython: advanced-labs/10-converting-circuitpython-to-micropython.md
-    - MicroPython Remote: advanced-labs/11-mpremote.md
-    - Rshell: advanced-labs/11-rshell.md
-    - Timers: advanced-labs/13-timers.md
-    - Memory Management: advanced-labs/14-memory-management.md
-    - TinyML: advanced-labs/20-tinyml.md
-    - String Formatting: advanced-labs/12-string-formatting.md
-    - Operating System: advanced-labs/11-os.md
-    - Measuring Battery Voltage: advanced-labs/15-measuring-vsys.md
-    - Multi-Core Programming: advanced-labs/16-multi-core.md
-    - File System: advanced-labs/17-file-system.md
-    - Button Callback: advanced-labs/21-button-callback.md
-    - advanced-labs/pio/index.md
+    - Advanced Labs:
+      - Introduction: advanced-labs/index.md
+      - Internal Temperature: advanced-labs/03-internal-temperature.md
+      - Interrupt Handlers: advanced-labs/02-interrupt-handlers.md
+      - Timing Functions: advanced-labs/03-timing-functions.md
+      - Conda Environment Setup: advanced-labs/04-conda-env.md
+      - OS Functions: advanced-labs/05-os-functions.md
+      - I2C Scanner: advanced-labs/06-i2c.md
+      - Frame Buffer: advanced-labs/07-framebuffer.md
+      - Minicom: advanced-labs/08-minicom.md
+      - SD Card Reader: advanced-labs/09-micro-sd-card-reader.md
+      - Converting CircuitPython: advanced-labs/10-converting-circuitpython-to-micropython.md
+      - MicroPython Remote: advanced-labs/11-mpremote.md
+      - Rshell: advanced-labs/11-rshell.md
+      - Timers: advanced-labs/13-timers.md
+      - Memory Management: advanced-labs/14-memory-management.md
+      - TinyML: advanced-labs/20-tinyml.md
+      - String Formatting: advanced-labs/12-string-formatting.md
+      - Operating System: advanced-labs/11-os.md
+      - Measuring Battery Voltage: advanced-labs/15-measuring-vsys.md
+      - Multi-Core Programming: advanced-labs/16-multi-core.md
+      - File System: advanced-labs/17-file-system.md
+      - Button Callback: advanced-labs/21-button-callback.md
+      - advanced-labs/pio/index.md
 
-    - Spectrum Analyzer: 
-      - Introduction: advanced-labs/30-spectrum-analyzer/index.md
-      - Test Sound: advanced-labs/30-spectrum-analyzer/01-test-incoming-sound.md
-      # - advanced-labs/30-spectrum-analyzer/02-gain-pot.md
-      - Display Scroll: advanced-labs/30-spectrum-analyzer/03-display-scroll.md
-      - Optimization: advanced-labs/30-spectrum-analyzer/04-optimizing-fft-speed.md
-      - advanced-labs/30-spectrum-analyzer/05-frequency-shift.md
-      - Peak Frequency: advanced-labs/30-spectrum-analyzer/06-peak-frequency.md
-      - Further Speedups: advanced-labs/30-spectrum-analyzer/07-speedups.md
-      - Adding Timers: advanced-labs/30-spectrum-analyzer/08-adding-timers.md
-      - Assembler FFT: advanced-labs/30-spectrum-analyzer/09-assembler-function.md
-      - Future Work: advanced-labs/30-spectrum-analyzer/10-future-improvements.md
-      - advanced-labs/30-spectrum-analyzer/02-gain-pot.md
+      - Spectrum Analyzer: 
+        - Introduction: advanced-labs/30-spectrum-analyzer/index.md
+        - Test Sound: advanced-labs/30-spectrum-analyzer/01-test-incoming-sound.md
+        # - advanced-labs/30-spectrum-analyzer/02-gain-pot.md
+        - Display Scroll: advanced-labs/30-spectrum-analyzer/03-display-scroll.md
+        - Optimization: advanced-labs/30-spectrum-analyzer/04-optimizing-fft-speed.md
+        - advanced-labs/30-spectrum-analyzer/05-frequency-shift.md
+        - Peak Frequency: advanced-labs/30-spectrum-analyzer/06-peak-frequency.md
+        - Further Speedups: advanced-labs/30-spectrum-analyzer/07-speedups.md
+        - Adding Timers: advanced-labs/30-spectrum-analyzer/08-adding-timers.md
+        - Assembler FFT: advanced-labs/30-spectrum-analyzer/09-assembler-function.md
+        - Future Work: advanced-labs/30-spectrum-analyzer/10-future-improvements.md
+        - advanced-labs/30-spectrum-analyzer/02-gain-pot.md
 
 
   - Project Kits:
@@ -288,7 +281,7 @@ nav:
       - Intro: kits/pwm/index.md
       - Instructors Guide: kits/pwm/instructors-guide.md
       - Testing the Potentiometer: kits/pwm/lab-01-pot.md
-      - Testing the Display: its/pwm/lab-02-display.md
+      - Testing the Display: kits/pwm/lab-02-display.md
       - Full Kit: kits/pwm/lab-03-main.md
     - Tone Generator:
       - Intro: kits/tone-generator/index.md
@@ -351,6 +344,19 @@ nav:
       - Graph Demo: sims/learning-graph/graph/index.md
     - Breadboard: sims/breadboard/index.md
     - Top Concepts: sims/concept-importance/index.md
+
+  - Learning Graph:
+    - Introduction: learning-graph/index.md
+    - Course Description Assessment: learning-graph/course-description-assessment.md
+    - Concept Enumeration: learning-graph/concept-list.md
+    - Graph Quality Analysis: learning-graph/quality-metrics.md
+    - Concept Taxonomy: learning-graph/concept-taxonomy.md
+    - Taxonomy Distribution Report: learning-graph/taxonomy-distribution.md
+    - Mascot Style Guide: learning-graph/mascot-test.md
+    - FAQ Quality Report: learning-graph/faq-quality-report.md
+    - Quiz Generation Report: learning-graph/quiz-generation-report.md
+
+
   - Prompts:
     - Introduction: prompts/index.md
     - Concept Enumeration: prompts/concept-enumeration.md

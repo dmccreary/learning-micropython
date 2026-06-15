@@ -1,9 +1,8 @@
 # MIDI with MicroPython
 
-!!! Warnining
-    I am not an expert on MIDI and I don't have any MIDI gear.  This is
-    mostly a collection of material I have for students that want
-    to use MicroPython to generate music.
+!!! note
+    This page is an introductory reference. For more detailed MIDI projects,
+    see the [MIDI Projects](midi/index.md) section.
 
 
 
