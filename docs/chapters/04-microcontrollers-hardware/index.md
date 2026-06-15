@@ -120,7 +120,7 @@ button  = Pin(14, Pin.IN)    # GP14 as input  (external button)
 
 #### Diagram: Pico Pinout Explorer
 
-<iframe src="../../sims/pico-pinout-explorer/main.html" width="100%" height="500px" scrolling="no"></iframe>
+<iframe src="../../sims/pico-pinout-explorer/main.html" width="100%" height="657px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Pico Pinout Explorer Interactive Diagram</summary>
@@ -226,3 +226,7 @@ Two features of the RP2040 deserve special attention because they unlock capabil
 !!! mascot-celebration "Hardware Expert in Training!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     You now know your way around the Pico's hardware. You understand pins, power rails, logic levels, and the special capabilities of the RP2040. In Chapter 5 you will learn the electronics fundamentals — voltage, current, resistance, and Ohm's Law — that explain why circuits work the way they do. You're on a roll, maker!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

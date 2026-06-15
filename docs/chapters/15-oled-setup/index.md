@@ -198,7 +198,7 @@ Before testing drawing commands, verify the display is working:
 
 #### Diagram: OLED Wiring Configuration
 
-<iframe src="../../sims/oled-wiring-guide/main.html" width="100%" height="430px" scrolling="no"></iframe>
+<iframe src="../../sims/oled-wiring-guide/main.html" width="100%" height="472px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>OLED Wiring Configuration Guide MicroSim</summary>
@@ -246,3 +246,7 @@ Implementation: p5.js. OLED and Pico drawn as labeled rectangles; lines drawn be
 !!! mascot-celebration "Display Online!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     Your OLED is initialized, powered on, and showing text — hardware setup complete! Chapter 16 is where the real graphic fun begins: lines, rectangles, circles, custom fonts, animations, and the framebuffer model. Your screen is ready. Let's draw!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

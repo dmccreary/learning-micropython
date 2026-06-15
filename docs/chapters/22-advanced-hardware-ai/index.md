@@ -262,7 +262,7 @@ Describe your project requirements and ask for hardware suggestions: "I need to 
 
 #### Diagram: Prompt Engineering Workshop
 
-<iframe src="../../sims/prompt-engineering-workshop/main.html" width="100%" height="430px" scrolling="no"></iframe>
+<iframe src="../../sims/prompt-engineering-workshop/main.html" width="100%" height="442px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Prompt Engineering Workshop MicroSim</summary>
@@ -313,3 +313,7 @@ Implementation: p5.js with createInput() for the text area; keyword detection fo
 !!! mascot-celebration "You've Reached the Advanced Level!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     PIO, DMA, watchdog timers, low-power sleep, and AI-assisted coding — you now command the Pico's deepest capabilities. One chapter remains: Chapter 23, the capstone projects. Everything you have learned comes together into complete, polished projects that you can build, customize, and show the world!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

@@ -50,11 +50,13 @@ This chapter builds on concepts from:
 
 ## Why Communication Protocols?
 
+![Communication Protocols Infographic](./communication-protocols-infographic.png)
+
 Sensors, displays, and peripheral chips generate data as electrical signals. To transfer that data to a microcontroller reliably, both sides must agree on a set of rules: which wire carries data, which carries timing, how fast data travels, and how to signal the start and end of a message. These rules are a **communication protocol**.
 
 Instead of a different wiring scheme for every sensor, a small number of standard protocols cover almost every device you will connect. The Pico supports four: **I2C**, **SPI**, **UART**, and **1-Wire**, plus **I2S** for audio.
 
-## I2C — Two Wires, Many Devices
+### I2C — Two Wires, Many Devices
 
 **I2C** (pronounced "I-squared-C", short for Inter-Integrated Circuit) is the most common protocol for connecting sensors and displays to a microcontroller. It uses exactly two wires:
 
@@ -67,7 +69,7 @@ On the Pico, the default I2C pins are:
 - I2C bus 0: SDA = GP0, SCL = GP1
 - I2C bus 1: SDA = GP2, SCL = GP3 (or other pin pairs — check the pinout)
 
-### The machine.I2C Class
+#### The machine.I2C Class
 
 Create an I2C object by specifying the bus ID and pin numbers:
 
@@ -80,7 +82,7 @@ i2c = I2C(0, scl=Pin(1), sda=Pin(0), freq=400000)
 
 The `freq` argument sets the **bus frequency** — how fast bits are sent. Standard I2C is 100 kHz; fast mode is 400 kHz. Most sensors support 400 kHz. Some slow sensors need 100 kHz.
 
-### I2C.scan() — The I2C Scanner
+#### I2C.scan() — The I2C Scanner
 
 Before you can use a device, you need to know its address. The **`I2C.scan()` method** sends a probe to every possible address and returns a list of addresses that responded.
 
@@ -96,7 +98,7 @@ Running the scanner is always the first step when connecting a new I2C device. A
     ![Monty giving a tip](../../img/mascot/tip.png){ class="mascot-admonition-img" }
     Run the I2C scanner whenever a sensor does not respond. Wrong address is one of the top three causes of I2C failures. The other two are: wrong pin assignment (SDA and SCL swapped) and missing pull-up resistors (I2C lines need 4.7 kΩ pull-ups to 3.3 V; many breakout boards include them).
 
-### I2C.writeto() and I2C.readfrom()
+#### I2C.writeto() and I2C.readfrom()
 
 The two fundamental I2C operations are:
 
@@ -114,7 +116,7 @@ print(data)   # e.g., b'\x65\x40'
 
 In practice you rarely call these directly — driver libraries (like `ssd1306.py`) wrap them for you.
 
-## SPI — Four Wires, Maximum Speed
+### SPI — Four Wires, Maximum Speed
 
 **SPI** (Serial Peripheral Interface) is faster than I2C but requires more wires. It is common for displays and SD card modules that need high data throughput. SPI uses four wires:
 
@@ -125,7 +127,7 @@ In practice you rarely call these directly — driver libraries (like `ssd1306.p
 
 Because CS wires are separate per device, SPI does not use addresses. You select a device by pulling its CS line LOW before sending data.
 
-### The machine.SPI Class
+#### The machine.SPI Class
 
 ```python
 from machine import SPI, Pin
@@ -144,7 +146,11 @@ data = spi.read(2)        # read 2 bytes response
 cs.value(1)               # deselect device
 ```
 
-## UART — Serial Communication
+## Specialized Communication Protocols
+
+![Specialized Communication Protocols Infographic](specialized-communication-protocols-infographic.png)
+
+### UART — Serial Communication
 
 **UART** (Universal Asynchronous Receiver/Transmitter) is the oldest and simplest protocol. It uses just two wires — **TX** (transmit) and **RX** (receive) — and is used for GPS modules, Bluetooth adapters, and the USB-serial connection from your Pico to Thonny.
 
@@ -163,13 +169,19 @@ if uart.any():
 
 Common baud rates: 9600, 115200. GPS modules typically use 9600; Bluetooth adapters often use 115200.
 
-## 1-Wire — One Wire for Temperature Sensors
+### 1-Wire — One Wire for Temperature Sensors
 
 The **1-Wire protocol** is unusual: it carries both data and power on a single wire (plus GND). It is almost exclusively used for the **DS18B20** waterproof temperature sensor, which is common in robotics and weather projects.
 
 MicroPython includes a `onewire` module and a `ds18x20` module for these sensors. You will use 1-Wire in Chapter 9.
 
-## I2S — Digital Audio
+### Addressable LED Protocol (NeoPixels)
+
+For communicating with WS-2812B Addressable there is a custom protocol that sends the light
+levels for red, green and blue LEDs on a single data wire.  We will cover these under our NeoPixel labs.
+See [Chapter 14](../14-neopixels-displays/index.md) which is dedicated to NeoPixel Displays.
+
+### I2S — Digital Audio
 
 **I2S** (Inter-IC Sound) is a protocol for transferring digital audio data between chips. It is used to connect the Pico to digital microphones (MEMS mics) and audio DACs (digital-to-analog converters) for playing WAV files.
 
@@ -186,7 +198,7 @@ You will use I2S in Chapter 18 (Sound and Audio).
 
 #### Diagram: Protocol Comparison Explorer
 
-<iframe src="../../sims/protocol-comparison/main.html" width="100%" height="420px" scrolling="no"></iframe>
+<iframe src="../../sims/protocol-comparison/main.html" width="100%" height="512px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Communication Protocol Comparison MicroSim</summary>
@@ -258,3 +270,7 @@ Before the summary table, here is how to reason about protocol selection:
 !!! mascot-celebration "You Speak the Language of Electronics!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     I2C, SPI, and UART are the three handshakes that unlock almost every sensor and display on the market. In Chapter 9 you will use these protocols for real — reading temperature, humidity, and distance from physical sensors. The world is about to tell your Pico many interesting things!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

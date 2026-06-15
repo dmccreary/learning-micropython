@@ -90,7 +90,7 @@ A GPIO pin at 3.3 V and 12 mA delivers: \(P = 3.3 \times 0.012 = 0.04\text{ W}\)
 
 #### Diagram: Ohm's Law Interactive Calculator
 
-<iframe src="../../sims/ohms-law-calculator/main.html" width="100%" height="420px" scrolling="no"></iframe>
+<iframe src="../../sims/ohms-law-calculator/main.html" width="100%" height="517px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Ohm's Law Interactive Calculator MicroSim</summary>
@@ -231,3 +231,7 @@ A **schematic** uses standardized **schematic symbols** to show the same circuit
 !!! mascot-celebration "You Understand Electricity!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     You now have the electronics knowledge to build safe, working circuits. Voltage, current, resistance, LEDs, resistors, and breadboards — these are the building blocks of every project ahead. In Chapter 6 you will write your first real hardware program: blinking an LED and reading a button press. The physical world is waiting — let's go!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

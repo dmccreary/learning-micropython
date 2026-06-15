@@ -161,7 +161,7 @@ if not is_connected:
 
 #### Diagram: Interactive Conditional Flowchart
 
-<iframe src="../../sims/conditional-flowchart/main.html" width="100%" height="440px" scrolling="no"></iframe>
+<iframe src="../../sims/conditional-flowchart/main.html" width="100%" height="502px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Interactive Conditional Flowchart MicroSim</summary>
@@ -386,3 +386,7 @@ except ValueError:
 !!! mascot-celebration "Excellent Work, Maker!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     You now have the full Python toolkit: collections, decisions, loops, functions, modules, and error handling. Every MicroPython program in this course is built from exactly these pieces. In Chapter 3 you will install the tools that let you run your code on a real Pico. You are a coder!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

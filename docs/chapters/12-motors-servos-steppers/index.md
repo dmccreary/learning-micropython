@@ -180,7 +180,7 @@ A **continuous rotation servo** has been modified to spin continuously instead o
 
 #### Diagram: Servo PWM Signal Explorer
 
-<iframe src="../../sims/servo-pwm-explorer/main.html" width="100%" height="430px" scrolling="no"></iframe>
+<iframe src="../../sims/servo-pwm-explorer/main.html" width="100%" height="497px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Servo PWM Signal Explorer MicroSim</summary>
@@ -295,3 +295,7 @@ rotate_degrees(90)    # turn 90° clockwise
 !!! mascot-celebration "Your Pico Has Muscles!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     Motors, servos, and steppers — your Pico can now move the physical world! Chapter 13 puts all of this together into a complete robot: wheels, sensors, and a brain that navigates autonomously. You are one chapter away from your first real robot!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

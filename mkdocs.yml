@@ -15,72 +15,95 @@ nav:
     - 1. Python Basics:
       - Content: chapters/01-python-basics/index.md
       - Quiz: chapters/01-python-basics/quiz.md
+      - Annotated References: chapters/01-python-basics/references.md
     - 2. Control Flow and Functions:
       - Content: chapters/02-control-flow-functions/index.md
       - Quiz: chapters/02-control-flow-functions/quiz.md
+      - Annotated References: chapters/02-control-flow-functions/references.md
     - 3. MicroPython Environment:
       - Content: chapters/03-micropython-environment/index.md
       - Quiz: chapters/03-micropython-environment/quiz.md
+      - Annotated References: chapters/03-micropython-environment/references.md
     - 4. Microcontrollers and Hardware:
       - Content: chapters/04-microcontrollers-hardware/index.md
       - Quiz: chapters/04-microcontrollers-hardware/quiz.md
+      - Annotated References: chapters/04-microcontrollers-hardware/references.md
     - 5. Electronics Fundamentals:
       - Content: chapters/05-electronics-fundamentals/index.md
       - Quiz: chapters/05-electronics-fundamentals/quiz.md
+      - Annotated References: chapters/05-electronics-fundamentals/references.md
     - 6. Digital I/O and Interrupts:
       - Content: chapters/06-digital-io-interrupts/index.md
       - Quiz: chapters/06-digital-io-interrupts/quiz.md
+      - Annotated References: chapters/06-digital-io-interrupts/references.md
     - 7. Analog Signals, ADC, and PWM:
       - Content: chapters/07-analog-adc-pwm/index.md
       - Quiz: chapters/07-analog-adc-pwm/quiz.md
+      - Annotated References: chapters/07-analog-adc-pwm/references.md
     - 8. Communication Protocols:
       - Content: chapters/08-communication-protocols/index.md
       - Quiz: chapters/08-communication-protocols/quiz.md
+      - Annotated References: chapters/08-communication-protocols/references.md
     - 9. Temperature and Distance Sensors:
       - Content: chapters/09-temp-distance-sensors/index.md
       - Quiz: chapters/09-temp-distance-sensors/quiz.md
+      - Annotated References: chapters/09-temp-distance-sensors/references.md
     - 10. Motion and Light Sensors:
       - Content: chapters/10-motion-light-sensors/index.md
       - Quiz: chapters/10-motion-light-sensors/quiz.md
+      - Annotated References: chapters/10-motion-light-sensors/references.md
     - 11. Encoders, Touch, and Audio:
       - Content: chapters/11-encoders-touch-audio/index.md
       - Quiz: chapters/11-encoders-touch-audio/quiz.md
+      - Annotated References: chapters/11-encoders-touch-audio/references.md
     - 12. Motors, Servos, and Steppers:
       - Content: chapters/12-motors-servos-steppers/index.md
       - Quiz: chapters/12-motors-servos-steppers/quiz.md
+      - Annotated References: chapters/12-motors-servos-steppers/references.md
     - 13. Robots and Mobile Systems:
       - Content: chapters/13-robots-mobile-systems/index.md
       - Quiz: chapters/13-robots-mobile-systems/quiz.md
+      - Annotated References: chapters/13-robots-mobile-systems/references.md
     - 14. NeoPixels and Displays:
       - Content: chapters/14-neopixels-displays/index.md
       - Quiz: chapters/14-neopixels-displays/quiz.md
+      - Annotated References: chapters/14-neopixels-displays/references.md
     - 15. OLED Setup:
       - Content: chapters/15-oled-setup/index.md
       - Quiz: chapters/15-oled-setup/quiz.md
+      - Annotated References: chapters/15-oled-setup/references.md
     - 16. OLED Drawing and Animation:
       - Content: chapters/16-oled-drawing-animation/index.md
       - Quiz: chapters/16-oled-drawing-animation/quiz.md
+      - Annotated References: chapters/16-oled-drawing-animation/references.md
     - 17. Color and E-Paper Displays:
       - Content: chapters/17-color-epaper-displays/index.md
       - Quiz: chapters/17-color-epaper-displays/quiz.md
+      - Annotated References: chapters/17-color-epaper-displays/references.md
     - 18. Sound and Music:
       - Content: chapters/18-sound-music-audio/index.md
       - Quiz: chapters/18-sound-music-audio/quiz.md
+      - Annotated References: chapters/18-sound-music-audio/references.md
     - 19. Wireless and IoT:
       - Content: chapters/19-wireless-iot/index.md
       - Quiz: chapters/19-wireless-iot/quiz.md
+      - Annotated References: chapters/19-wireless-iot/references.md
     - 20. Timers and Multi-Core:
       - Content: chapters/20-timers-multicore/index.md
       - Quiz: chapters/20-timers-multicore/quiz.md
+      - Annotated References: chapters/20-timers-multicore/references.md
     - 21. File Systems and Debugging:
       - Content: chapters/21-file-systems-debugging/index.md
       - Quiz: chapters/21-file-systems-debugging/quiz.md
+      - Annotated References: chapters/21-file-systems-debugging/references.md
     - 22. Advanced Hardware and AI:
       - Content: chapters/22-advanced-hardware-ai/index.md
       - Quiz: chapters/22-advanced-hardware-ai/quiz.md
+      - Annotated References: chapters/22-advanced-hardware-ai/references.md
     - 23. Applied Learning and Projects:
       - Content: chapters/23-applied-learning-projects/index.md
       - Quiz: chapters/23-applied-learning-projects/quiz.md
+      - Annotated References: chapters/23-applied-learning-projects/references.md
 
   - Hands-On Labs:
     - Introduction:
@@ -334,16 +357,36 @@ nav:
   # - Project Ideas: misc/projects.md
 
   - MicroSims:
-    - Introduction: sims/index.md
+    - List of MicroSims: sims/index.md
+    - Accelerometer Axes Explorer: sims/accelerometer-axes/index.md
+    - ADC and Potentiometer Explorer: sims/adc-potentiometer-explorer/index.md
+    - Arithmetic Operator Explorer: sims/arithmetic-operator-explorer/index.md
+    - Blocking vs Non-Blocking Timeline: sims/blocking-vs-nonblocking/index.md
+    - Breadboard Simulator: sims/breadboard/index.md
+    - Collision Avoidance Logic Flowchart: sims/collision-avoidance-flowchart/index.md
+    - Concept Importance: sims/concept-importance/index.md
+    - Digital I/O Explorer: sims/digital-io-explorer/index.md
+    - E-Paper vs TFT vs OLED Comparison: sims/display-technology-comparison/index.md
+    - Interactive Conditional Flowchart: sims/conditional-flowchart/index.md
+    - IoT Data Flow Explorer: sims/iot-data-flow/index.md
     - Learning Graph Viewer: sims/graph-viewer/index.md
-    - Learning Graph:
-      - Introduction: sims/learning-graph/index.md
-      - Concept Enumeration: sims/learning-graph/concept-enumeration.md
-      - Concept Dependency: sims/learning-graph/concept-dependency.md
-      - Concept Taxonomy: sims/learning-graph/concept-taxonomy.md
-      - Graph Demo: sims/learning-graph/graph/index.md
-    - Breadboard: sims/breadboard/index.md
-    - Top Concepts: sims/concept-importance/index.md
+    - Learning Graphs: sims/learning-graph/index.md
+    - NeoPixel Color Mixer: sims/neopixel-color-mixer/index.md
+    - Ohm's Law Interactive Calculator: sims/ohms-law-calculator/index.md
+    - OLED Drawing Coordinate System: sims/oled-coordinate-system/index.md
+    - OLED Wiring Configuration: sims/oled-wiring-guide/index.md
+    - Piano Keyboard Tone Generator: sims/piano-tone-generator/index.md
+    - Pico Pinout Explorer: sims/pico-pinout-explorer/index.md
+    - Project Design Process Flowchart: sims/project-design-process/index.md
+    - Prompt Engineering Workshop: sims/prompt-engineering-workshop/index.md
+    - Protocol Comparison Explorer: sims/protocol-comparison/index.md
+    - Python Data Type Explorer: sims/python-data-type-explorer/index.md
+    - REPL Workflow Diagram: sims/repl-workflow/index.md
+    - Servo PWM Signal Explorer: sims/servo-pwm-explorer/index.md
+    - Spectrum Analyzer Concept: sims/spectrum-analyzer-concept/index.md
+    - Ultrasonic Ranging Explorer: sims/ultrasonic-ranging/index.md
+
+
 
   - Learning Graph:
     - Introduction: learning-graph/index.md
@@ -357,7 +400,7 @@ nav:
     - Quiz Generation Report: learning-graph/quiz-generation-report.md
 
 
-  - Prompts:
+  - Sample AI Prompts:
     - Introduction: prompts/index.md
     - Concept Enumeration: prompts/concept-enumeration.md
     - Concept Dependency: prompts/concept-dependency.md

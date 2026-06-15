@@ -149,7 +149,7 @@ timer.init(mode=Timer.ONE_SHOT, period=3000, callback=turn_off)
 
 #### Diagram: Blocking vs Non-Blocking Timeline
 
-<iframe src="../../sims/blocking-vs-nonblocking/main.html" width="100%" height="430px" scrolling="no"></iframe>
+<iframe src="../../sims/blocking-vs-nonblocking/main.html" width="100%" height="497px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Blocking vs Non-Blocking Timeline MicroSim</summary>
@@ -281,3 +281,7 @@ In long-running programs, especially those that create many temporary strings or
 !!! mascot-celebration "Two Cores, All Power!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     Non-blocking patterns, hardware timers, and genuine dual-core parallelism — your concurrency toolkit is complete! Chapter 21 explores the Pico's file system, audio file storage, and systematic debugging techniques. You are in the home stretch of the course!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

@@ -1,0 +1,14 @@
+{
+  "sim_id": "ultrasonic-ranging",
+  "diagram_name": "Ultrasonic Ranging Explorer",
+  "chapter_number": 9,
+  "chapter_title": "Temperature, Humidity, and Distance Sensors",
+  "chapter_dir": "09-temp-distance-sensors",
+  "library": "p5.js",
+  "bloom_level": "Apply (L3)",
+  "bloom_verb": "calculate",
+  "learning_objective": "Students can calculate the distance to an object from the echo duration using the speed-of-sound formula.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: microsim\n**sim-id:** ultrasonic-ranging<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Apply (L3)\nBloom Verb: calculate\nLearning Objective: Students can calculate the distance to an object from the echo duration using the speed-of-sound formula.\n\nCanvas layout:\n- Left: HC-SR04 sensor icon emitting a semicircular pulse wave animation\n- Center: a sliding \"wall\" object that can be dragged closer or farther\n- Right panel: displays echo duration in µs and calculated distance in cm; shows the formula\n\nVisual elements:\n- Pulse wave animation: concentric arcs traveling from the sensor, bouncing off the wall, returning\n- Wall is a vertical rectangle that the student drags left/right on the canvas\n- As the wall moves, echo duration updates and the return wave animates at the right speed\n\nInteractive controls:\n- Drag wall to change distance\n- createSlider() for \"Air temperature\" (0–40 °C) — changes speed of sound\n- Formula display: `distance = duration / 58` updates live with current values\n\nInstructional Rationale: Animating the ultrasonic pulse as a traveling wave makes the timing concept physical rather than abstract, and the temperature slider hints at a real limitation.\n\nImplementation: p5.js. Wall position → duration → animate wave at `343 + 0.6*(T-20)` m/s; arc animation using frameCount."
+}

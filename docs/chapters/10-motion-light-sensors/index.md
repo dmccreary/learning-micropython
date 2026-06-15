@@ -139,7 +139,7 @@ An **IMU** (Inertial Measurement Unit) is any device that combines accelerometer
 
 #### Diagram: Accelerometer Axes Explorer
 
-<iframe src="../../sims/accelerometer-axes/main.html" width="100%" height="430px" scrolling="no"></iframe>
+<iframe src="../../sims/accelerometer-axes/main.html" width="100%" height="482px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Accelerometer Axes Explorer MicroSim</summary>
@@ -232,3 +232,7 @@ print(f"Heading: {heading:.1f}°")
 !!! mascot-celebration "Your Pico Can Feel the World!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     Color, tilt, compass heading, proximity — your Pico now has motion and light senses that rival many smartphones. Chapter 11 adds rotary encoders, touch sensors, and audio input, rounding out your sensor toolkit before you dive into motors and displays. Keep going!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

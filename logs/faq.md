@@ -80,9 +80,40 @@
 
 ---
 
-## Recommended Next Steps
+## 2026-06-15 Update — 13 Questions Added from Quality Report
 
-1. Run `/glossary-generator` to expand the glossary from ~25 to 100+ terms. This will enable better technical FAQ questions in the next iteration.
-2. Add code examples to more answers (currently 21%, target 40%).
-3. Add Analyze-level questions comparing I2C vs SPI, HC-SR04 vs VL53L0X, etc.
-4. Consider FAQ pages within the Robots and Wireless sections (both already have substantial content).
+User reported glossary now has 500+ terms. All suggestions from `faq-quality-report.md` were implemented.
+
+### New Questions Added
+
+| Section | Question | Bloom's |
+|---------|----------|---------|
+| Core Concepts | What is the difference between I2C and SPI, and when should I use each? | Analyze |
+| Core Concepts | What are the trade-offs between the HC-SR04 and VL53L0X distance sensors? | Analyze |
+| Core Concepts | How do I make patterns on a NeoPixel strip? | Apply |
+| Technical Details | What are PIO state machines and what can they do? | Analyze |
+| Technical Details | How do I install the SSD1306 OLED driver? | Apply |
+| Best Practices | How does blocking timing with sleep() differ from non-blocking timing? | Analyze |
+| Best Practices | Which microcontroller should I choose for a wireless sensor project? | Evaluate |
+| Best Practices | How do I decide between using a servo and a DC motor? | Evaluate |
+| Advanced Topics | How do I send sensor data to a web server? | Apply |
+| Advanced Topics | What is the Maker Pi RP2040 kit? | Remember |
+| Advanced Topics | How does a line-following robot work? | Analyze |
+| Advanced Topics | What are MicroSims? | Remember |
+
+### Updated Stats
+
+| Metric | Before | After |
+|--------|--------|-------|
+| Total questions | 66 | 79 |
+| Overall quality score | 84/100 | 88/100 |
+| Bloom's score | 15/25 | 20/25 |
+| Analyze-level % | 5% | 10% |
+| Evaluate-level % | 3% | 4% |
+| Answers with code examples | 21% | 24% |
+
+## Remaining Next Steps
+
+1. Update `faq-chatbot-training.json` to include the 13 new questions.
+2. Continue adding code examples to reach the 40% target.
+3. Add I2S audio, UART, stepper motor, memory management, and SD card FAQ questions (see quality report for details).

@@ -190,7 +190,7 @@ while True:
 
 #### Diagram: Piano Keyboard Tone Generator
 
-<iframe src="../../sims/piano-tone-generator/main.html" width="100%" height="420px" scrolling="no"></iframe>
+<iframe src="../../sims/piano-tone-generator/main.html" width="100%" height="452px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Piano Keyboard Tone Generator MicroSim</summary>
@@ -308,3 +308,7 @@ MAX98357A - → Speaker -
 !!! mascot-celebration "Your Pico Can Sing!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     From a simple beep to full melodies to I2S audio — your Pico now has a voice! Chapter 19 connects it to the internet with Wi-Fi and MQTT for IoT projects. Data in, data out, around the world. Let's go wireless!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

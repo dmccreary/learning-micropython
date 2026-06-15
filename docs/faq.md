@@ -333,6 +333,74 @@ Every lab in this course includes a wiring diagram so you know exactly where to 
 
 ---
 
+### What is the difference between I2C and SPI, and when should I use each?
+
+Both I2C and SPI are ways for your Pico to talk to sensors and displays, but they make different trade-offs:
+
+| Feature | I2C | SPI |
+|---------|-----|-----|
+| Wires needed | 2 (SDA + SCL) | 4 (MOSI, MISO, SCK, CS) |
+| Speed | Slower (up to 400 kHz typical) | Faster (up to 40 MHz) |
+| Devices on one bus | Many (each has a unique address) | One at a time per CS pin |
+| Wiring complexity | Simple | More wires, one CS pin per device |
+
+**Use I2C** when you have many devices (sensors, displays) to connect and speed is not critical. Most OLED displays and environmental sensors use I2C.
+
+**Use SPI** when you need fast data transfer — for example, a color TFT display that redraws the full screen many times per second.
+
+See [Advanced Labs: I2C Scanner](advanced-labs/06-i2c.md) and [Displays Graphical](displays/graph/01-intro.md) for side-by-side examples of both protocols in use.
+
+---
+
+### What are the trade-offs between the HC-SR04 and VL53L0X distance sensors?
+
+Both sensors measure distance, but they work differently and suit different projects:
+
+| Feature | HC-SR04 (Ultrasonic) | VL53L0X (Time-of-Flight Laser) |
+|---------|----------------------|-------------------------------|
+| Technology | Sound pulse | Infrared laser |
+| Range | 2 cm – 400 cm | 3 cm – 120 cm |
+| Accuracy | ±3 mm typical | ±1 mm typical |
+| Cost | ~$1–$2 | ~$5–$8 |
+| Interface | Two digital pins (Trigger + Echo) | I2C |
+| Works on dark surfaces? | Yes | Yes |
+| Works on soft/angled surfaces? | Less reliable | More reliable |
+
+**Choose the HC-SR04** for budget robot collision avoidance where rough distance measurements are enough. It needs 5 V power and two GPIO pins.
+
+**Choose the VL53L0X** when you need more accurate readings in a smaller package, or when you are already using I2C for other sensors and want to keep wiring simple.
+
+See [Sensors: Ping Distance](sensors/03-ping.md) and [Sensors: Time of Flight Distance](sensors/07-VL53L0X_GY.md) for code examples for each.
+
+---
+
+### How do I make patterns on a NeoPixel strip?
+
+NeoPixel patterns work by setting each pixel to a color inside a loop, then calling `np.write()` to send all the colors to the strip at once. Here is a simple "chase" pattern:
+
+```python
+import neopixel
+from machine import Pin
+import utime
+
+NUM_PIXELS = 8
+np = neopixel.NeoPixel(Pin(0), NUM_PIXELS)  # data on GP0
+
+def chase(color, wait_ms=50):
+    for i in range(NUM_PIXELS):
+        np.fill((0, 0, 0))        # turn all pixels off
+        np[i] = color             # light up just pixel i
+        np.write()                # send to the strip
+        utime.sleep_ms(wait_ms)
+
+chase((255, 0, 0))   # red chase
+chase((0, 255, 0))   # green chase
+```
+
+You can build rainbow effects by cycling through hue values, or meter effects by lighting a number of pixels based on a sensor reading. See [Basic Examples: NeoPixel](basics/05-neopixel.md) and the [NeoPixel Kit](kits/neopixel/index.md) labs for more pattern ideas.
+
+---
+
 ## Technical Detail Questions
 
 ### What is the RP2040 chip?
@@ -495,6 +563,45 @@ OLED stands for **Organic Light-Emitting Diode**. An OLED display is a small, br
 OLED displays connect over I2C or SPI and use the `SSD1306` or `SH1106` driver chip. MicroPython has a driver for both. You can draw pixels, lines, rectangles, and text onto the display.
 
 See [Displays Graphical: OLED Setup](displays/graph/02-oled-setup.md) to get started.
+
+---
+
+### What are PIO state machines and what can they do?
+
+PIO stands for **Programmable I/O**. The RP2040 chip inside the Pico has 8 PIO state machines — tiny programmable processors that run independently from the main CPU. They are designed to handle precise, high-speed input/output tasks that would be too fast or too timing-sensitive for regular MicroPython code.
+
+PIO state machines can:
+
+- Generate **WS2812B NeoPixel signals** at exactly the right timing (MicroPython's built-in `neopixel` module uses PIO under the hood)
+- Drive **stepper motors** with exact pulse timing
+- Emulate communication protocols not natively supported by the hardware
+- Read **quadrature encoders** at high speed without CPU interrupts
+
+You program PIO state machines using a small assembly-like language called PIO assembly. This is an advanced topic — most projects use drivers that already handle PIO for you. See the [PIO Labs](advanced-labs/pio/index.md) section for an introduction.
+
+---
+
+### How do I install the SSD1306 OLED driver?
+
+The SSD1306 is the chip that controls most 128×64 OLED displays. MicroPython does not include the driver by default on all boards, so you may need to copy it to your Pico manually.
+
+**Option 1 — Use the built-in driver (Pico)**
+
+On the Raspberry Pi Pico, MicroPython includes `ssd1306` as a built-in module. Just import it:
+
+```python
+from ssd1306 import SSD1306_I2C
+```
+
+If you get an `ImportError`, use Option 2.
+
+**Option 2 — Copy the driver file**
+
+1. Download `ssd1306.py` from the MicroPython GitHub repository.
+2. In Thonny, open the Files panel, find `ssd1306.py` on your computer, right-click it, and choose **Upload to /**.
+3. Now `from ssd1306 import SSD1306_I2C` will work.
+
+See [Displays Graphical: OLED Setup](displays/graph/02-oled-setup.md) for the full wiring diagram and first drawing program.
 
 ---
 
@@ -730,6 +837,70 @@ You can also contribute to this course by submitting a pull request. See [About 
 
 ---
 
+### How does blocking timing with `sleep()` differ from non-blocking timing?
+
+**Blocking timing** uses `utime.sleep()`. While the Pico is sleeping, it cannot do anything else — it is frozen. This is fine for simple programs that only do one thing at a time:
+
+```python
+while True:
+    read_sensor()
+    utime.sleep(1)  # blocks for 1 second — nothing else can happen
+```
+
+**Non-blocking timing** uses `utime.ticks_ms()` to check how much time has passed without stopping the program. Your loop keeps running and can do other work:
+
+```python
+last_check = utime.ticks_ms()
+
+while True:
+    if utime.ticks_diff(utime.ticks_ms(), last_check) >= 1000:
+        read_sensor()
+        last_check = utime.ticks_ms()
+    update_display()   # this runs every loop, not just every second
+```
+
+**Rule of thumb:** use `sleep()` when your program only does one thing. Use `ticks_ms()` (or a Timer) when you need to keep doing other work between readings, like updating a display while also polling buttons.
+
+See [Advanced Labs: Timers](advanced-labs/13-timers.md) for timer-based non-blocking patterns.
+
+---
+
+### Which microcontroller should I choose for a wireless sensor project?
+
+For a project that needs to send sensor data over Wi-Fi, you have two main options:
+
+| Board | Cost | Wi-Fi | Setup difficulty | Best for |
+|-------|------|-------|-----------------|---------|
+| Raspberry Pi Pico W | ~$6 | Built-in | Easy | Beginners, MicroPython projects |
+| ESP32 | ~$5–$10 | Built-in | Easy | Beginners, wider community resources |
+| Raspberry Pi Pico (original) | $4 | None | N/A — no wireless | Wired projects only |
+
+Both the **Pico W** and the **ESP32** are excellent choices. The Pico W uses the same RP2040 chip as the rest of this course, so your existing code needs fewer changes. The ESP32 has a larger online community and more code examples for IoT projects.
+
+If you are already comfortable with the Pico, start with the Pico W. See [Wireless: Connecting to Wi-Fi](wireless/02-connecting-to-wifi.md) for a Pico W setup guide, or [Getting Started with ESP32](getting-started/02-esp32.md) for the ESP32 path.
+
+---
+
+### How do I decide between using a servo and a DC motor?
+
+Both move things, but they are designed for different jobs:
+
+| Feature | Servo Motor | DC Motor |
+|---------|-------------|----------|
+| Motion type | Precise angle (0°–180°) | Continuous spinning |
+| Speed control | Limited (position only) | Full range with PWM |
+| Direction control | Implicit (set angle) | Needs H-bridge |
+| Cost | ~$3–$5 | ~$1–$3 |
+| Best for | Arms, tilts, steering | Wheels, fans, conveyor belts |
+
+**Choose a servo** when you need to move something to a specific position and hold it there — a robot arm, a sensor pan-and-tilt mount, or a steering mechanism.
+
+**Choose a DC motor** when you need continuous spinning — robot drive wheels, a fan, or a winch. Pair it with an H-bridge driver (like the DRV8833) to control speed and direction.
+
+Some projects use both: DC motors for the wheels and servos for the arm or camera mount. See [Basic Examples: Servo](basics/04-servo.md) and [Motors: H-Bridge](motors/03-h-bridge.md) for hands-on code for each type.
+
+---
+
 ## Advanced Topic Questions
 
 ### How do I connect my Pico W to Wi-Fi?
@@ -835,3 +1006,92 @@ After finishing the core labs, there are several related sites with more advance
 - [Beginning Electronics](https://dmccreary.github.io/beginning-electronics/) — deeper electronics theory to complement your MicroPython skills
 
 When you are ready to step beyond the Pico, the [AI Racing League](https://www.coderdojotc.org/ai-racing-league/) moves on to full Python, machine learning, and computer vision on Raspberry Pi single-board computers.
+
+---
+
+### How do I send sensor data to a web server?
+
+Once your Pico W is connected to Wi-Fi, you can send sensor readings to a web server using HTTP. The simplest approach is to run a tiny web server on the Pico itself, so any browser on your network can see the data:
+
+```python
+import network
+import socket
+import dht
+from machine import Pin
+
+# Connect to Wi-Fi first (see wireless section)
+# ...
+
+sensor = dht.DHT11(Pin(16))
+
+def read_sensor():
+    sensor.measure()
+    return sensor.temperature(), sensor.humidity()
+
+addr = socket.getaddrinfo("0.0.0.0", 80)[0][-1]
+s = socket.socket()
+s.bind(addr)
+s.listen(1)
+
+while True:
+    cl, _ = s.accept()
+    temp, humidity = read_sensor()
+    response = f"Temperature: {temp}C  Humidity: {humidity}%"
+    cl.send("HTTP/1.0 200 OK\r\n\r\n" + response)
+    cl.close()
+```
+
+Open a browser on your phone or computer, type in the Pico's IP address, and you will see the live sensor reading. For a more complete example with a proper HTML page, see [Wireless: Web Server](wireless/04-web-server.md) and [Wireless: Display Forecast on OLED](wireless/09-get-weather-display.md).
+
+---
+
+### What is the Maker Pi RP2040 kit?
+
+The **Cytron Maker Pi RP2040** is a $10 robotics board that packs everything you need to build a robot into one board. It uses the same RP2040 chip as the Raspberry Pi Pico and is designed to make robotics as easy as possible.
+
+What is built in:
+
+- **Two motor drivers** — drive two DC motors directly, no separate H-bridge needed
+- **13 blue status LEDs** — one per GPIO pin, so you can see your program's state at a glance
+- **2 NeoPixel RGB LEDs** — for color indicators
+- **Piezo buzzer** — for sounds and tones
+- **4 servo connectors** — plug servos straight in
+- **7 Grove connectors** — connect sensors with a single cable, no breadboard needed
+- **4 motor test buttons** — test motors without writing any code
+
+The kit is ideal for building collision-avoidance and line-following robots quickly. See the [Maker Pi RP2040 Kit](kits/maker-pi-rp2040/index.md) and the [Maker Pi RP2040 Robot](kits/maker-pi-rp2040-robot/index.md) sections for labs and assembly instructions.
+
+---
+
+### How does a line-following robot work?
+
+A line-following robot uses **IR (infrared) sensors** mounted on the bottom of the chassis to detect whether the robot is over a line or off it. Each IR sensor shines infrared light downward and measures how much bounces back:
+
+- **Dark line on light floor** → sensor reads `0` (line detected)
+- **Light floor** → sensor reads `1` (no line)
+
+The robot's program reads two sensors — one on the left and one on the right — and adjusts the motors to keep both sensors near the edge of the line:
+
+- Both sensors off the line → go straight
+- Left sensor on the line → turn left (slow down left motor)
+- Right sensor on the line → turn right (slow down right motor)
+
+This is a classic example of a **feedback control loop** — the sensor output continuously corrects the motor output to follow the path. Getting it working requires carefully adjusting the IR sensor sensitivity trim potentiometers and tuning motor speeds for your surface.
+
+A basic kit costs about $20. See [Kits: Line Follower](kits/maker-pi-rp2040-robot/25-line-follower.md) for the complete parts list, wiring, and MicroPython code.
+
+---
+
+### What are MicroSims?
+
+MicroSims are small interactive simulations that run in your web browser. They let you explore MicroPython and electronics concepts without needing any hardware. You can adjust sliders, press buttons, and see results instantly.
+
+This course includes MicroSims for:
+
+- **The Learning Graph** — explore how concepts connect and depend on each other
+- **Breadboard simulation** — practice wiring before touching real hardware
+- **Concept importance** — see which concepts are most central to the course
+
+MicroSims are also available on [Wokwi](https://wokwi.com/micropython) — a free online MicroPython emulator where you can write and run code for a virtual Pico without any physical board.
+
+See the [MicroSims section](sims/index.md) to explore all the interactive tools in this course.

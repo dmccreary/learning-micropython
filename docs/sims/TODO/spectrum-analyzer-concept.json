@@ -1,0 +1,14 @@
+{
+  "sim_id": "spectrum-analyzer-concept",
+  "diagram_name": "Spectrum Analyzer Concept",
+  "chapter_number": 11,
+  "chapter_title": "Rotary Encoders, Touch Sensors, and Audio Input",
+  "chapter_dir": "11-encoders-touch-audio",
+  "library": "p5.js",
+  "bloom_level": "Understand (L2)",
+  "bloom_verb": "explain",
+  "learning_objective": "Students can explain how an FFT converts a time-domain audio signal into a frequency-domain spectrum and identify what the bars in a spectrum analyzer represent.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: diagram\n**sim-id:** spectrum-analyzer-concept<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Understand (L2)\nBloom Verb: explain\nLearning Objective: Students can explain how an FFT converts a time-domain audio signal into a frequency-domain spectrum and identify what the bars in a spectrum analyzer represent.\n\nCanvas layout:\n- Top half: a time-domain waveform display (like an oscilloscope)\n- Bottom half: frequency-domain bar graph (spectrum analyzer display)\n\nVisual elements:\n- Top: a sine wave or composite waveform; a \"Frequency\" slider adds harmonics\n- Bottom: color-coded bars (bass = red, mid = green, treble = blue) updating live\n- Arrow from top to bottom labeled \"FFT\"\n\nInteractive controls:\n- createSlider() for adding a low-frequency component (50–200 Hz)\n- createSlider() for adding a high-frequency component (2,000–8,000 Hz)\n- createSlider() for \"Noise\" level (0–50%)\n- Bars in the spectrum update to show the energy in each frequency band\n\nInstructional Rationale: Seeing the waveform in the top half transform into bars in the bottom half with a labeled FFT arrow makes the abstract transform concrete — students see cause and effect directly.\n\nImplementation: p5.js. Generate composite sine wave from slider values; compute analytical FFT bins from component frequencies; draw bars."
+}

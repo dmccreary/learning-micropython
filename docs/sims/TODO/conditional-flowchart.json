@@ -1,0 +1,14 @@
+{
+  "sim_id": "conditional-flowchart",
+  "diagram_name": "Interactive Conditional Flowchart",
+  "chapter_number": 2,
+  "chapter_title": "Collections, Control Flow, Functions, and Error Handling",
+  "chapter_dir": "02-control-flow-functions",
+  "library": "p5.js",
+  "bloom_level": "Understand (L2)",
+  "bloom_verb": "explain",
+  "learning_objective": "Students can trace the execution path of an if-elif-else chain for a given input value.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: microsim\n**sim-id:** conditional-flowchart<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Understand (L2)\nBloom Verb: explain\nLearning Objective: Students can trace the execution path of an if-elif-else chain for a given input value.\n\nCanvas layout:\n- Left 65%: flowchart with four decision diamonds and four output rectangles\n- Right 35%: slider for the input value and a result display\n\nVisual elements:\n- Diamonds: \"reading < 10000?\", \"reading < 30000?\", \"reading < 50000?\"\n- Rectangle outputs: \"Very dark\", \"Dim\", \"Bright\", \"Very bright\"\n- Active path highlighted in green; inactive paths in gray\n\nInteractive controls:\n- Slider: \"Sensor reading\" (0–65535, default 512). As the slider moves, the active path animates.\n- Hover any diamond for a tooltip showing the Python condition and its True/False result.\n\nData Visibility Requirements:\n- Show current value, condition checked, result (True/False), and which output fires.\n\nInstructional Rationale: Live slider lets students see routing through an if-elif-else chain as a directed path rather than a code listing, making control flow concrete.\n\nImplementation: p5.js. Diamonds/rectangles drawn with quad/rect; active path redrawn on slider change; createSlider() for input."
+}

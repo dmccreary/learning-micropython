@@ -215,7 +215,7 @@ The HC-SR04 works well between 2 cm and 400 cm. Objects closer than 2 cm may be 
 
 #### Diagram: Ultrasonic Ranging Explorer
 
-<iframe src="../../sims/ultrasonic-ranging/main.html" width="100%" height="420px" scrolling="no"></iframe>
+<iframe src="../../sims/ultrasonic-ranging/main.html" width="100%" height="452px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Ultrasonic Ranging Explorer MicroSim</summary>
@@ -301,3 +301,7 @@ Before wiring a distance sensor, choose the right one for your project:
 !!! mascot-celebration "Sensors Connected — Data Flowing!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     Your Pico can now feel temperature, humidity, pressure, and distance. That is a weather station plus a robot proximity sensor right there. Chapter 10 expands your sensor library further — motion detection, orientation from an accelerometer/gyroscope, and ambient light sensing. You are building real physical computing skills!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

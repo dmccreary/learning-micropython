@@ -1,0 +1,14 @@
+{
+  "sim_id": "collision-avoidance-flowchart",
+  "diagram_name": "Collision Avoidance Logic Flowchart",
+  "chapter_number": 13,
+  "chapter_title": "Robots and Mobile Systems",
+  "chapter_dir": "13-robots-mobile-systems",
+  "library": "p5.js",
+  "bloom_level": "Analyze (L4)",
+  "bloom_verb": "trace",
+  "learning_objective": "Students can trace the control flow of a collision avoidance algorithm and predict the robot's behavior given a set of sensor inputs.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: diagram\n**sim-id:** collision-avoidance-flowchart<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Analyze (L4)\nBloom Verb: trace\nLearning Objective: Students can trace the control flow of a collision avoidance algorithm and predict the robot's behavior given a set of sensor inputs.\n\nCanvas layout:\n- Top: distance sensor reading display (draggable slider)\n- Center: animated flowchart: Read distance → Compare to threshold → Forward or Stop+Turn\n- Bottom: top-down robot animation showing the chosen action\n\nVisual elements:\n- Flowchart diamonds and rectangles; active path highlighted in green\n- Robot icon at bottom responds to the decision (moves forward, backs up, turns)\n\nInteractive controls:\n- createSlider() for \"Distance reading\" (0–100 cm); threshold line at 20 cm\n- Robot animation plays the corresponding movement automatically\n- Speed slider controls how fast the robot moves in the animation\n\nInstructional Rationale: Connecting the sensor value to the active flowchart path and the robot's visible movement gives students a clear cause-effect understanding of the control loop.\n\nImplementation: p5.js. Flowchart static; active path redrawn based on slider; robot drawn as a circle with a direction arrow, animated with translate/rotate."
+}

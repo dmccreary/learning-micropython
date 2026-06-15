@@ -1,0 +1,59 @@
+{
+  "title": "Pico Pinout Explorer",
+  "creator": "Dan McCreary",
+  "subject": "MicroPython and Physical Computing",
+  "description": "Students can identify the function of each pin on the Raspberry Pi Pico by name and number.",
+  "date": "2026-06-15",
+  "type": "Interactive Simulation",
+  "format": "text/html",
+  "language": "en-US",
+  "rights": "CC BY-NC-SA 4.0",
+  "identifier": "pico-pinout-explorer",
+  "educational": {
+    "gradeLevel": [
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science / Physical Computing",
+    "topic": "Microcontrollers and Hardware Platforms",
+    "learningObjectives": [
+      "Students can identify the function of each pin on the Raspberry Pi Pico by name and number."
+    ],
+    "bloomsTaxonomy": "Remember (L1)",
+    "bloomVerb": "identify",
+    "duration": "10-15 minutes",
+    "prerequisites": [],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 450
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 1.11.10"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Interactive exploration",
+    "keyQuestions": [],
+    "commonMisconceptions": [],
+    "assessmentOpportunities": []
+  },
+  "chapter_number": 4,
+  "chapter_title": "Microcontrollers and Hardware Platforms",
+  "chapter_dir": "04-microcontrollers-hardware"
+}

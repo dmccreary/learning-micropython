@@ -1,0 +1,14 @@
+{
+  "sim_id": "adc-potentiometer-explorer",
+  "diagram_name": "ADC and Potentiometer Explorer",
+  "chapter_number": 7,
+  "chapter_title": "Analog Signals, ADC, and Pulse-Width Modulation",
+  "chapter_dir": "07-analog-adc-pwm",
+  "library": "p5.js",
+  "bloom_level": "Apply (L3)",
+  "bloom_verb": "calculate",
+  "learning_objective": "Students can read a potentiometer value, interpret the raw ADC reading, and scale it to volts, percent, and a target range.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: microsim\n**sim-id:** adc-potentiometer-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Apply (L3)\nBloom Verb: calculate\nLearning Objective: Students can read a potentiometer value, interpret the raw ADC reading, and scale it to volts, percent, and a target range.\n\nCanvas layout:\n- Left 40%: a rotary knob (drag to turn) representing the potentiometer\n- Center 30%: four labeled readouts — raw (0–65535), voltage (V), percent (%), and a user-defined target range slider\n- Right 30%: a bar graph showing the scaled value in the chosen range\n\nVisual elements:\n- Rotary knob drawn with an arc indicating position; draggable\n- Waveform line below the knob showing the last 2 seconds of readings\n- Readouts update every 50 ms to simulate a real ADC sample\n\nInteractive controls:\n- Drag knob left/right to change value\n- createSlider() for \"Target range min\" (0–1000) and \"Target range max\" (0–1000)\n- Result formula shown: `scaled = raw / 65535 × (max - min) + min`\n\nInstructional Rationale: Connecting the physical knob action to the live readout and scaling formula makes the abstract conversion concrete and interactive.\n\nImplementation: p5.js. Knob as an arc; mouse drag changes value; three createSlider() for min, max, update rate; formula displayed dynamically."
+}

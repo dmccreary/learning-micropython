@@ -1,0 +1,14 @@
+{
+  "sim_id": "oled-wiring-guide",
+  "diagram_name": "OLED Wiring Configuration",
+  "chapter_number": 15,
+  "chapter_title": "OLED Display Setup and Configuration",
+  "chapter_dir": "15-oled-setup",
+  "library": "p5.js",
+  "bloom_level": "Apply (L3)",
+  "bloom_verb": "connect",
+  "learning_objective": "Students can correctly identify which OLED pin connects to which Pico pin for both I2C and SPI configurations.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: diagram\n**sim-id:** oled-wiring-guide<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Apply (L3)\nBloom Verb: connect\nLearning Objective: Students can correctly identify which OLED pin connects to which Pico pin for both I2C and SPI configurations.\n\nCanvas layout:\n- Left: stylized OLED module with labeled pins (VCC, GND, SDA/SCL or SPI pins)\n- Center: breadboard with connecting wires color-coded by function (red=power, black=GND, yellow=data, blue=clock)\n- Right: stylized Pico top-down view with labeled GPIO pins\n\nVisual elements:\n- Wire colors: red=VCC, black=GND, yellow=SDA/MOSI, blue=SCL/CLK\n- Toggle at the top switches between I2C wiring and SPI wiring\n- Moused-over wire lights up and shows a tooltip: \"SDA → GP0 (I2C SDA)\"\n\nInteractive controls:\n- createButton() toggle: \"I2C mode\" / \"SPI mode\" — updates the wiring diagram\n- Click any wire to see the connection label in a pop-up\n\nInstructional Rationale: Seeing the actual wiring with color-coded wires reduces physical assembly errors, one of the most common beginner frustrations.\n\nImplementation: p5.js. OLED and Pico drawn as labeled rectangles; lines drawn between them; mouse hover detection via dist() to wire endpoints."
+}

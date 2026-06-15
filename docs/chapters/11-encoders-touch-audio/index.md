@@ -213,7 +213,7 @@ Each bin in the `magnitudes` array corresponds to a frequency band. Bin 0 is DC 
 
 #### Diagram: Spectrum Analyzer Concept
 
-<iframe src="../../sims/spectrum-analyzer-concept/main.html" width="100%" height="420px" scrolling="no"></iframe>
+<iframe src="../../sims/spectrum-analyzer-concept/main.html" width="100%" height="537px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Spectrum Analyzer Concept MicroSim</summary>
@@ -262,3 +262,7 @@ Implementation: p5.js. Generate composite sine wave from slider values; compute 
 !!! mascot-celebration "Input Toolkit Complete!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     Knobs, touch, and sound — you now have an impressive input toolkit! Chapter 12 shifts to outputs with teeth: DC motors, servo motors, and stepper motors. Your Pico is about to move things in the physical world. Get ready to build something that actually drives around!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

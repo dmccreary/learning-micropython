@@ -206,7 +206,7 @@ epd.sleep()                      # put e-paper chip to sleep (saves power)
 
 #### Diagram: E-Paper vs TFT vs OLED Comparison
 
-<iframe src="../../sims/display-technology-comparison/main.html" width="100%" height="430px" scrolling="no"></iframe>
+<iframe src="../../sims/display-technology-comparison/main.html" width="100%" height="482px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Display Technology Comparison MicroSim</summary>
@@ -254,3 +254,7 @@ Implementation: p5.js. Grid layout; createCheckbox() for requirements; recommend
 !!! mascot-celebration "Color and E-Paper Complete!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     Full-color TFT and zero-power e-paper — you now command the full spectrum of display technology. Chapter 18 takes a sonic detour: generating tones, playing melodies, and creating audio output from your Pico. Get ready to make some noise!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

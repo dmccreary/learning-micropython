@@ -159,7 +159,7 @@ np[0] = scale((255, 165, 0), 0.5)   # half-brightness orange
 
 #### Diagram: NeoPixel Color Mixer
 
-<iframe src="../../sims/neopixel-color-mixer/main.html" width="100%" height="440px" scrolling="no"></iframe>
+<iframe src="../../sims/neopixel-color-mixer/main.html" width="100%" height="477px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>NeoPixel Color Mixer MicroSim</summary>
@@ -292,3 +292,7 @@ lcd.putstr("MicroPython")
 !!! mascot-celebration "Glowing with Success!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     From 16 million NeoPixel colors to a scrolling LED matrix to a character LCD — your Pico has a dazzling display toolkit. Chapter 15 takes you deeper into graphic display territory with OLED setup and configuration. Pixels and graphics await!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

@@ -163,7 +163,7 @@ Now try classifying values yourself. The MicroSim below gives you a mystery valu
 
 #### Diagram: Python Data Type Explorer
 
-<iframe src="../../sims/python-data-type-explorer/main.html" width="100%" height="420px" scrolling="no"></iframe>
+<iframe src="../../sims/python-data-type-explorer/main.html" width="100%" height="482px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Python Data Type Explorer MicroSim</summary>
@@ -314,7 +314,7 @@ Try changing the numbers yourself using the MicroSim below. Adjust the two slide
 
 #### Diagram: Arithmetic Operator Explorer
 
-<iframe src="../../sims/arithmetic-operator-explorer/main.html" width="100%" height="400px" scrolling="no"></iframe>
+<iframe src="../../sims/arithmetic-operator-explorer/main.html" width="100%" height="497px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Arithmetic Operator Explorer MicroSim</summary>
@@ -467,3 +467,7 @@ Before you move on to Chapter 2, make sure you can answer each of these question
 !!! mascot-celebration "Great Work, Maker!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     You just learned the foundation of every Python program — variables, data types, syntax, comments, print, and operators. These are the building blocks you will use in every single project in this course. In Chapter 2, you will put them to work with `if` statements and loops so your programs can make decisions and repeat actions. You've got this, coder!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

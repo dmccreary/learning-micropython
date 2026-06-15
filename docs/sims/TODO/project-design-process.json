@@ -1,0 +1,14 @@
+{
+  "sim_id": "project-design-process",
+  "diagram_name": "Project Design Process Flowchart",
+  "chapter_number": 23,
+  "chapter_title": "Applied Learning and Capstone Projects",
+  "chapter_dir": "23-applied-learning-projects",
+  "library": "p5.js",
+  "bloom_level": "Create (L6)",
+  "bloom_verb": "design",
+  "learning_objective": "Students can apply the seven-step project design process to plan an original capstone project, identifying requirements, components, and code structure before building.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: diagram\n**sim-id:** project-design-process<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Create (L6)\nBloom Verb: design\nLearning Objective: Students can apply the seven-step project design process to plan an original capstone project, identifying requirements, components, and code structure before building.\n\nCanvas layout:\n- Seven labeled boxes in a flowchart: Requirements → Components → BOM → Prototype → Wiring Diagram → Code Organization → Documentation\n- Arrows between boxes; each box clickable to reveal a checklist\n\nVisual elements:\n- Active step highlighted in green when clicked\n- Each step's checklist appears in a right-side panel with checkboxes the student can tick\n- Progress bar at the top showing completion (steps ticked ÷ total steps)\n\nInteractive controls:\n- Click any step box to see its checklist\n- Checkboxes are persistent for the session\n- \"Print checklist\" button opens a text summary of all checked items\n\nInstructional Rationale: An interactive checklist version of the design process gives students a concrete scaffold for capstone planning rather than an abstract description.\n\nImplementation: p5.js with seven clickable rect boxes; createCheckbox() for each checklist item; JSON data structure for all checklist items by step."
+}

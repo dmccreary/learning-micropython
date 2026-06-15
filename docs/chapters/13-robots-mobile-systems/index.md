@@ -227,7 +227,7 @@ while True:
 
 #### Diagram: Collision Avoidance Logic Flowchart
 
-<iframe src="../../sims/collision-avoidance-flowchart/main.html" width="100%" height="440px" scrolling="no"></iframe>
+<iframe src="../../sims/collision-avoidance-flowchart/main.html" width="100%" height="512px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Collision Avoidance Logic Flowchart MicroSim</summary>
@@ -276,3 +276,7 @@ Implementation: p5.js. Flowchart static; active path redrawn based on slider; ro
 !!! mascot-celebration "Your Robot Lives!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     You have built a robot that can follow a line, dodge walls, and scan its environment — entirely in MicroPython. Next, Chapter 14 lights things up brilliantly with NeoPixels and non-graphical displays. Your projects are about to become a lot more colorful!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

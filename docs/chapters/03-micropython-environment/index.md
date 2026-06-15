@@ -106,7 +106,7 @@ Interactive mode is great for testing ideas and exploring what the hardware can 
 
 #### Diagram: REPL Workflow Diagram
 
-<iframe src="../../sims/repl-workflow/main.html" width="100%" height="380px" scrolling="no"></iframe>
+<iframe src="../../sims/repl-workflow/main.html" width="100%" height="512px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>REPL Workflow Interactive Diagram</summary>
@@ -288,3 +288,7 @@ The following table summarizes the three standard library modules:
 !!! mascot-celebration "Your First Real Hardware Step!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     You have set up your tools, flashed your Pico, and run code on real hardware. That is a huge milestone — welcome to the world of physical computing! In Chapter 4 you will learn all about the microcontroller hardware itself: pins, power, memory, and the amazing features of the RP2040 chip inside your Pico. You've got this, maker!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

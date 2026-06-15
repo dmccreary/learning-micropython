@@ -246,7 +246,7 @@ while True:
 
 #### Diagram: OLED Drawing Coordinate System
 
-<iframe src="../../sims/oled-coordinate-system/main.html" width="100%" height="420px" scrolling="no"></iframe>
+<iframe src="../../sims/oled-coordinate-system/main.html" width="100%" height="432px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>OLED Drawing Coordinate System MicroSim</summary>
@@ -295,3 +295,7 @@ Implementation: p5.js. 128×64 array stores pixel state; mouse position mapped t
 !!! mascot-celebration "Graphics Master!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     Text, lines, rectangles, animations, and custom functions — your OLED can now show anything you can imagine. Chapter 17 takes you into the world of color: full-color TFT displays and e-paper screens that hold their image without any power at all. Onward!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

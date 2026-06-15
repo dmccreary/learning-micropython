@@ -213,7 +213,7 @@ The **web server NeoPixel control** project extends the basic web server to acce
 
 #### Diagram: IoT Data Flow Explorer
 
-<iframe src="../../sims/iot-data-flow/main.html" width="100%" height="440px" scrolling="no"></iframe>
+<iframe src="../../sims/iot-data-flow/main.html" width="100%" height="482px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>IoT Data Flow Explorer MicroSim</summary>
@@ -285,3 +285,7 @@ For most web projects you will use TCP automatically through HTTP and the socket
 !!! mascot-celebration "Your Pico Is on the Internet!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     Weather data, synchronized time, browser-controlled LEDs — your Pico W is a fully connected IoT device! Chapter 20 digs deeper into the Pico's timing system: hardware timers, multi-core programming, and the tricks that let two processors run truly simultaneously. Two cores are better than one!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

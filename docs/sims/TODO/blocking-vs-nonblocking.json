@@ -1,0 +1,14 @@
+{
+  "sim_id": "blocking-vs-nonblocking",
+  "diagram_name": "Blocking vs Non-Blocking Timeline",
+  "chapter_number": 20,
+  "chapter_title": "Timers, Timing Functions, and Multi-Core Programming",
+  "chapter_dir": "20-timers-multicore",
+  "library": "p5.js",
+  "bloom_level": "Understand (L2)",
+  "bloom_verb": "compare",
+  "learning_objective": "Students can explain why blocking code misses events and predict whether a non-blocking pattern will detect a button press during a timing gap.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: diagram\n**sim-id:** blocking-vs-nonblocking<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Understand (L2)\nBloom Verb: compare\nLearning Objective: Students can explain why blocking code misses events and predict whether a non-blocking pattern will detect a button press during a timing gap.\n\nCanvas layout:\n- Left timeline: \"Blocking\" program — long gray blocks (sleep) alternating with short action blocks\n- Right timeline: \"Non-blocking\" program — continuous green loop tick marks; action blocks at the right intervals\n- Below timelines: a button press event marker that the user can drag left/right\n\nVisual elements:\n- Blocking: button press during a sleep block is shown as \"MISSED\" in red\n- Non-blocking: button press between tick marks is detected within one loop cycle\n- Comparison stat: max response latency shown for each approach\n\nInteractive controls:\n- createSlider() for \"sleep duration\" (100–2000 ms)\n- createSlider() for \"button press time\" (drag to set when the button fires)\n- \"Play animation\" button runs a 5-second simulation\n\nInstructional Rationale: Seeing a missed button press in the blocking timeline makes the problem visceral rather than theoretical, motivating the non-blocking approach.\n\nImplementation: p5.js. Two timeline tracks drawn as horizontal strips; sleep periods as gray rectangles; button press as a vertical arrow the user can drag."
+}

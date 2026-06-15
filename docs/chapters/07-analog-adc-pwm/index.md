@@ -154,7 +154,7 @@ while True:
 
 #### Diagram: ADC and Potentiometer Explorer
 
-<iframe src="../../sims/adc-potentiometer-explorer/main.html" width="100%" height="440px" scrolling="no"></iframe>
+<iframe src="../../sims/adc-potentiometer-explorer/main.html" width="100%" height="482px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>ADC and Potentiometer Explorer MicroSim</summary>
@@ -308,3 +308,7 @@ motor.duty_u16(32768)   # 50% speed
 !!! mascot-celebration "Analog and PWM Mastered!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     You can now read the analog world and control devices with smooth PWM signals. A potentiometer controls an LED's brightness, and the same concept drives servos and motors. In Chapter 8 you will learn the communication protocols — I2C, SPI, and UART — that let the Pico talk to sensors, displays, and other chips. The sensor library chapters are almost in reach!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

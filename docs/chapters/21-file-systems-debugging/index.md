@@ -287,3 +287,7 @@ These mistakes account for the majority of beginner hardware bugs:
 !!! mascot-celebration "Debugging Skills Unlocked!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     File systems, audio playback, and a complete debugging toolkit — you now have the skills to build and fix serious projects. Chapter 22 ventures into the most advanced Pico features: PIO state machines, AI-assisted coding, and the tools that push the hardware to its absolute limits. Almost at the finish line!
+
+## References
+
+[See the Annotated References for this chapter](references.md)

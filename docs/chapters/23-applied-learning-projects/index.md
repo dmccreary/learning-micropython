@@ -289,7 +289,7 @@ A **README** document describes what your project does, what hardware it uses, h
 
 #### Diagram: Project Design Process Flowchart
 
-<iframe src="../../sims/project-design-process/main.html" width="100%" height="450px" scrolling="no"></iframe>
+<iframe src="../../sims/project-design-process/main.html" width="100%" height="492px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Project Design Process Flowchart MicroSim</summary>
@@ -386,3 +386,7 @@ A **state machine** is a model where the system is always in exactly one of a fi
 ---
 
 *"The best way to predict the future is to invent it." — Alan Kay*
+
+## References
+
+[See the Annotated References for this chapter](references.md)

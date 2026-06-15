@@ -20,7 +20,7 @@ NEOPIXEL_PIN = 0
 NUMBER_PIXELS = 30
 ```
 
-## Sample Config File for Cython Board
+### Sample Config File for Cytron Board
 
 ```python
 # Sample hardware configuration file for the Cytron Maker Pi RP2040 board
@@ -50,3 +50,12 @@ MOTOR_RIGHT_BACKWARD = 10
 MOTOR_LEFT_FORWARD = 8
 MOTOR_LEFT_REVERSE = 9
 ```
+
+## Converting CircuitPython to MicroPython
+
+We sometimes come across an older form of Python created by Adafruit.
+This form is rarely used outside of Adafruit so it is not
+covered by this book.  We suggest you convert the code to MicroPython
+using a Generative AI tool.
+
+[Converting CircuitPython to MicroPython](convert-circuitpython-to-micropython.md)

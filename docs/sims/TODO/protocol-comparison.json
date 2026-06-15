@@ -1,0 +1,14 @@
+{
+  "sim_id": "protocol-comparison",
+  "diagram_name": "Protocol Comparison Explorer",
+  "chapter_number": 8,
+  "chapter_title": "Communication Protocols — I2C, SPI, and UART",
+  "chapter_dir": "08-communication-protocols",
+  "library": "p5.js",
+  "bloom_level": "Understand (L2)",
+  "bloom_verb": "compare",
+  "learning_objective": "Students can select the appropriate protocol (I2C, SPI, UART, 1-Wire) for a given sensor or peripheral based on its wire count, speed, and use case.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: diagram\n**sim-id:** protocol-comparison<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Understand (L2)\nBloom Verb: compare\nLearning Objective: Students can select the appropriate protocol (I2C, SPI, UART, 1-Wire) for a given sensor or peripheral based on its wire count, speed, and use case.\n\nCanvas layout:\n- Top: protocol selector tabs: I2C | SPI | UART | 1-Wire | I2S\n- Center: animated waveform showing the selected protocol's bus signals\n- Bottom: summary panel: wire count, typical speed, max devices, best for\n\nVisual elements:\n- I2C: two waveforms (SDA, SCL); address byte highlighted in purple; data bytes in blue\n- SPI: four waveforms (SCK, MOSI, MISO, CS); CS pulse visible\n- UART: two waveforms (TX, RX); start/stop bits highlighted\n- 1-Wire: single waveform with presence pulse animation\n\nInteractive controls:\n- Tab buttons to switch protocol\n- A \"Send data\" button triggers a one-shot waveform animation\n- Bottom panel updates automatically with: Wires, Speed, Addressing, Best use\n\nInstructional Rationale: Side-by-side animated waveforms with a clear summary panel give students a mental model to match protocols to real devices before they wire anything.\n\nImplementation: p5.js. Each protocol stored as an array of timed state changes; draw() animates the waveform; createButton() for tab switching."
+}

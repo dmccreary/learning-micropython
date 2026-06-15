@@ -211,7 +211,7 @@ For most beginners, software debouncing is easier. Hardware debouncing is faster
 
 #### Diagram: Digital I/O Explorer
 
-<iframe src="../../sims/digital-io-explorer/main.html" width="100%" height="440px" scrolling="no"></iframe>
+<iframe src="../../sims/digital-io-explorer/main.html" width="100%" height="462px" scrolling="no"></iframe>
 
 <details markdown="1">
 <summary>Digital I/O Explorer MicroSim</summary>
@@ -334,3 +334,7 @@ This pattern — main loop doing steady work, interrupt handler reacting to even
 !!! mascot-celebration "You Control the Physical World!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     Congratulations — your Python program can now blink LEDs, read buttons, debounce contacts, and react instantly with interrupts. Chapter 7 takes this further into the analog world: reading varying voltages from potentiometers and sensors, and controlling motor speed with PWM signals. You are well on your way to building real projects!
+
+## References
+
+[See the Annotated References for this chapter](references.md)
