@@ -1,0 +1,14 @@
+{
+  "sim_id": "prompt-engineering-workshop",
+  "diagram_name": "Prompt Engineering Workshop",
+  "chapter_number": 22,
+  "chapter_title": "Advanced Hardware Topics and AI-Assisted Coding",
+  "chapter_dir": "22-advanced-hardware-ai",
+  "library": "p5.js",
+  "bloom_level": "Evaluate (L5)",
+  "bloom_verb": "critique",
+  "learning_objective": "Students can evaluate a given AI prompt for MicroPython coding and identify what details are missing to produce accurate, hardware-specific code.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: interactive\n**sim-id:** prompt-engineering-workshop<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Evaluate (L5)\nBloom Verb: critique\nLearning Objective: Students can evaluate a given AI prompt for MicroPython coding and identify what details are missing to produce accurate, hardware-specific code.\n\nCanvas layout:\n- Top: a text area showing a sample prompt (editable)\n- Center: a checklist of prompt quality criteria (hardware specified? pins specified? behavior described? error handling requested?)\n- Bottom: a \"Prompt quality score\" (0–10) updating live\n\nVisual elements:\n- Checklist items light up green when the prompt satisfies the criterion\n- Score updates live with color (red <5, yellow 5–7, green 8–10)\n- Example \"bad\" and \"good\" prompts selectable from a dropdown\n\nInteractive controls:\n- Editable text area for the prompt\n- \"Check prompt\" button evaluates against criteria\n- Dropdown: \"Load example prompt\" (bad, medium, good)\n\nInstructional Rationale: Interactive prompt evaluation gives students a framework for writing effective AI prompts rather than abstract rules, building the habit of specificity.\n\nImplementation: p5.js with createInput() for the text area; keyword detection for each criterion; score calculated from criteria count."
+}

@@ -1,0 +1,14 @@
+{
+  "sim_id": "python-data-type-explorer",
+  "diagram_name": "Python Data Type Explorer",
+  "chapter_number": 1,
+  "chapter_title": "Python Basics — Programs, Variables, Data Types, and Operators",
+  "chapter_dir": "01-python-basics",
+  "library": "p5.js",
+  "bloom_level": "Understand (L2)",
+  "bloom_verb": "classify",
+  "learning_objective": "Students can classify a given Python value as integer, float, string, or boolean by examining its form.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: microsim\n**sim-id:** python-data-type-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Understand (L2)\nBloom Verb: classify\nLearning Objective: Students can classify a given Python value as integer, float, string, or boolean by examining its form.\n\nCanvas layout:\n- Top row: four labeled colored boxes representing the four data types (Integer = blue, Float = green, String = orange, Boolean = purple). Each box shows the type name and a one-line description.\n- Center: a large \"mystery value\" card showing a Python literal in large monospace font.\n- Bottom: a feedback message area and a \"Next Value\" button.\n\nVisual elements:\n- Integer box (blue): label \"Integer\", description \"Whole number — no decimal\"\n- Float box (green): label \"Float\", description \"Number with a decimal point\"\n- String box (orange): label \"String\", description \"Text inside quotation marks\"\n- Boolean box (purple): label \"Boolean\", description \"Only True or False\"\n- Mystery value card: shows values like `42`, `3.14`, `\"hello\"`, `True`, `-7`, `'Pico'`, `False`, `0.5`, `\"GP15\"`, `-2.71`\n\nInteractive controls:\n- Four clickable type boxes. On correct click: the box glows and a message says \"Correct! [value] is an integer because it has no decimal point.\"\n- On incorrect click: the box shakes gently and a message says \"Not quite — look for quotation marks, a decimal point, or True/False.\"\n- Button: \"Next Value\" — loads a new mystery value from the randomized list.\n- Running score display: \"X correct out of Y attempts.\"\n\nData Visibility Requirements:\n- Stage 1: Mystery value shown in large font.\n- Stage 2: After student clicks, show the correct type name and a one-sentence reason.\n- Stage 3: Show running score.\n\nInstructional Rationale: A classify interaction at Understand level is appropriate because students must distinguish four mutually exclusive categories. Immediate corrective feedback builds the mental model without passive animation.\n\nValues to cycle through (randomized): `42`, `3.14`, `\"hello\"`, `True`, `-7`, `'Pico'`, `False`, `0.5`, `100`, `\"GP15\"`, `False`, `-2.71`\n\nImplementation: p5.js. Four clickable rectangles for classification. createButton() for \"Next Value\". Feedback text rendered below the boxes. Score tracked in a variable."
+}

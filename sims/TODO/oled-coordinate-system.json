@@ -1,0 +1,14 @@
+{
+  "sim_id": "oled-coordinate-system",
+  "diagram_name": "OLED Drawing Coordinate System",
+  "chapter_number": 16,
+  "chapter_title": "OLED Drawing Methods, Framebuffer, and Animation",
+  "chapter_dir": "16-oled-drawing-animation",
+  "library": "p5.js",
+  "bloom_level": "Remember (L1)",
+  "bloom_verb": "identify",
+  "learning_objective": "Students can identify any (x, y) coordinate on a 128×64 OLED display and predict which pixel will be affected by a drawing command.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: diagram\n**sim-id:** oled-coordinate-system<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Remember (L1)\nBloom Verb: identify\nLearning Objective: Students can identify any (x, y) coordinate on a 128×64 OLED display and predict which pixel will be affected by a drawing command.\n\nCanvas layout:\n- Center: a scaled-up 128×64 grid representing the OLED display\n- Hover crosshairs show the current (x, y) coordinate\n- Right panel: the MicroPython command that would draw at the hovered position\n\nVisual elements:\n- Gray grid lines every 8 pixels (matching the text character grid)\n- Axis labels: 0 at top-left; 127 at top-right; 63 at bottom-left\n- Live crosshair follows the mouse with (x,y) shown in a tooltip\n\nInteractive controls:\n- Click to \"draw\" a pixel — it stays lit\n- createButton() \"Clear\" resets all drawn pixels\n- Dropdown to select drawing mode: pixel, text, line, rect\n\nInstructional Rationale: A large interactive grid makes the abstract coordinate system concrete. Students can click to place pixels and see the code before writing any hardware programs.\n\nImplementation: p5.js. 128×64 array stores pixel state; mouse position mapped to grid coords; code snippet updates in right panel."
+}

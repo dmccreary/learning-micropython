@@ -1,0 +1,14 @@
+{
+  "sim_id": "repl-workflow",
+  "diagram_name": "REPL Workflow Diagram",
+  "chapter_number": 3,
+  "chapter_title": "MicroPython Environment and Development Tools",
+  "chapter_dir": "03-micropython-environment",
+  "library": "p5.js",
+  "bloom_level": "Understand (L2)",
+  "bloom_verb": "explain",
+  "learning_objective": "Students can describe the Read-Evaluate-Print Loop cycle and distinguish interactive mode from script mode.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: diagram\n**sim-id:** repl-workflow<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Understand (L2)\nBloom Verb: explain\nLearning Objective: Students can describe the Read-Evaluate-Print Loop cycle and distinguish interactive mode from script mode.\n\nCanvas layout:\n- Center: four labeled boxes arranged in a cycle: \"Read\" → \"Evaluate\" → \"Print\" → \"Loop back to Read\"\n- Below the cycle: two side-by-side columns: \"Interactive Mode\" vs \"Script Mode\"\n- Each box is clickable\n\nVisual elements:\n- Four rounded rectangles in a circular arrangement with arrows between them\n- \"Read\": \"You type a Python line and press Enter\"\n- \"Evaluate\": \"The MicroPython interpreter runs the code\"\n- \"Print\": \"The result appears on the >>> prompt\"\n- \"Loop\": \"The prompt reappears, waiting for the next command\"\n- Color: active step highlighted in teal; others gray\n\nInteractive controls:\n- Clicking any box reveals a pop-up with a concrete example (e.g., clicking \"Read\" shows `>>> 2 + 2`)\n- A \"Next Step\" button cycles through the four stages with highlighting\n- Two toggle buttons: \"Interactive Mode\" and \"Script Mode\" — each shows a brief description in a side panel\n\nInstructional Rationale: The four-step cycle with click-to-reveal makes the REPL loop concrete. Toggling between modes clarifies the difference between one-shot commands and stored programs.\n\nImplementation: p5.js with four clickable rounded rects; state machine cycles through steps; createButton() for Next Step and mode toggles."
+}

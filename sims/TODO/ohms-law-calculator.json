@@ -1,0 +1,14 @@
+{
+  "sim_id": "ohms-law-calculator",
+  "diagram_name": "Ohm's Law Interactive Calculator",
+  "chapter_number": 5,
+  "chapter_title": "Electronics Fundamentals",
+  "chapter_dir": "05-electronics-fundamentals",
+  "library": "p5.js",
+  "bloom_level": "Apply (L3)",
+  "bloom_verb": "calculate",
+  "learning_objective": "Students can apply Ohm's Law to calculate the required current-limiting resistor value for an LED circuit.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: microsim\n**sim-id:** ohms-law-calculator<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Apply (L3)\nBloom Verb: calculate\nLearning Objective: Students can apply Ohm's Law to calculate the required current-limiting resistor value for an LED circuit.\n\nCanvas layout:\n- Left 50%: a simple circuit diagram: 3.3V supply → resistor → LED → GND. Animated current arrows flow along the wire.\n- Right 50%: three sliders: \"Supply Voltage\" (1–5 V), \"LED Forward Voltage\" (1.5–3.5 V), \"LED Current\" (5–30 mA). Below the sliders: calculated R value in a large result box; also shows power in mW.\n\nVisual elements:\n- Circuit diagram with labeled supply voltage, resistor, LED (triangle+bar schematic symbol)\n- Resistor value displayed on the resistor body in the diagram (updates live)\n- Arrows animate along the wire at a speed proportional to current\n\nInteractive controls:\n- Three createSlider() controls. All values update live.\n- Result box: \"Required resistor: 68 Ω (standard value)\" — snaps to nearest E12 series value\n\nData Visibility Requirements:\n- Show: supply V, LED forward V, voltage drop across resistor, current, calculated R, standard R, power dissipated\n\nInstructional Rationale: Real-time calculation with animated circuit gives immediate feedback on how changing one variable affects the others, making the formula physical rather than abstract.\n\nImplementation: p5.js with three sliders; R = (V_supply - V_led) / I_led; round to nearest E12 standard value; wire-flow animation with particle objects."
+}

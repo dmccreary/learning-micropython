@@ -1,0 +1,14 @@
+{
+  "sim_id": "iot-data-flow",
+  "diagram_name": "IoT Data Flow Explorer",
+  "chapter_number": 19,
+  "chapter_title": "Wireless Connectivity and Internet of Things",
+  "chapter_dir": "19-wireless-iot",
+  "library": "p5.js",
+  "bloom_level": "Understand (L2)",
+  "bloom_verb": "trace",
+  "learning_objective": "Students can trace the path of an HTTP GET request from the Pico W through the router to an API server and back as JSON.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: diagram\n**sim-id:** iot-data-flow<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Understand (L2)\nBloom Verb: trace\nLearning Objective: Students can trace the path of an HTTP GET request from the Pico W through the router to an API server and back as JSON.\n\nCanvas layout:\n- Left to right: Pico W icon → Router icon → Internet cloud → API server icon\n- Below: response flow with JSON arrow returning\n- Bottom panel: the request URL and JSON response side by side\n\nVisual elements:\n- Animated packet (moving dot) travels from Pico W to server and back\n- Hovering over each hop reveals: \"TCP port 80\", \"DNS lookup\", \"JSON parse\"\n- Status indicators: Wi-Fi strength bar on Pico W; HTTP status code on server\n\nInteractive controls:\n- \"Send Request\" button triggers the animation\n- Input fields: \"Latitude\" and \"Longitude\" — updates the URL shown at the bottom\n- Toggle: \"GET (fetch data)\" vs \"POST (send data)\"\n\nInstructional Rationale: Animating the round trip from device to internet and back makes the abstract HTTP request cycle tangible for students who have only used web APIs as end users.\n\nImplementation: p5.js. Animated circle moves along Bezier path from Pico to server; JSON response displayed in a monospace box at the bottom."
+}

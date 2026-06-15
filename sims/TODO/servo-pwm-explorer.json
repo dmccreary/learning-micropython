@@ -1,0 +1,14 @@
+{
+  "sim_id": "servo-pwm-explorer",
+  "diagram_name": "Servo PWM Signal Explorer",
+  "chapter_number": 12,
+  "chapter_title": "Motors, Servos, and Stepper Motor Control",
+  "chapter_dir": "12-motors-servos-steppers",
+  "library": "p5.js",
+  "bloom_level": "Apply (L3)",
+  "bloom_verb": "calculate",
+  "learning_objective": "Students can convert a desired servo angle to the correct PWM duty cycle value for `servo.duty_u16()`.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: microsim\n**sim-id:** servo-pwm-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Apply (L3)\nBloom Verb: calculate\nLearning Objective: Students can convert a desired servo angle to the correct PWM duty cycle value for `servo.duty_u16()`.\n\nCanvas layout:\n- Left 40%: an animated servo arm graphic that rotates to the selected angle\n- Center 30%: a PWM waveform showing the 20 ms period and the highlighted pulse width\n- Right 30%: numeric display of angle, pulse width in µs, and duty_u16 value\n\nVisual elements:\n- Servo body drawn as a gray rectangle; arm as a line rotating from center\n- PWM waveform: horizontal axis = time (0–20 ms), vertical = HIGH/LOW; pulse width highlighted in yellow\n- Labels: \"Period = 20 ms (50 Hz)\", \"Pulse = X µs\", \"duty_u16 = Y\"\n\nInteractive controls:\n- createSlider() for \"Angle\" (0–180°) — updates everything live\n- Two extra sliders: \"Min pulse (µs)\" and \"Max pulse (µs)\" for calibration practice\n\nInstructional Rationale: Linking the physical arm rotation to the waveform pulse width and the code number gives students a complete mental model for servo control.\n\nImplementation: p5.js. Servo arm rotates using `rotate()`; waveform drawn with line() calls; live formula recalculates on slider change."
+}

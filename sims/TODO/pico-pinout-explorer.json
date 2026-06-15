@@ -1,0 +1,14 @@
+{
+  "sim_id": "pico-pinout-explorer",
+  "diagram_name": "Pico Pinout Explorer",
+  "chapter_number": 4,
+  "chapter_title": "Microcontrollers and Hardware Platforms",
+  "chapter_dir": "04-microcontrollers-hardware",
+  "library": "p5.js",
+  "bloom_level": "Remember (L1)",
+  "bloom_verb": "identify",
+  "learning_objective": "Students can identify the function of each pin on the Raspberry Pi Pico by name and number.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: diagram\n**sim-id:** pico-pinout-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Remember (L1)\nBloom Verb: identify\nLearning Objective: Students can identify the function of each pin on the Raspberry Pi Pico by name and number.\n\nCanvas layout:\n- Center: a scaled top-down illustration of the Pico PCB (40 pin pads, two rows of 20)\n- Left and right margins: pin labels that align with the corresponding pad\n- Bottom: an info panel that shows pin details when a pad is hovered or clicked\n\nVisual elements:\n- 40 pin pads color-coded by function:\n  - Green: GPIO (GP0–GP28)\n  - Red: 3.3V power\n  - Black: Ground (GND)\n  - Orange: ADC-capable pins (GP26–GP28)\n  - Blue: I2C/SPI/UART pins\n  - Yellow: VSYS, VBUS, RUN\n- Pin label next to each pad: e.g., \"GP0 / SDA0 / UART0 TX\"\n\nInteractive controls:\n- Hover a pin pad: tooltip shows pin number, GPIO name, and alternate functions\n- Click a pin pad: info panel updates with full description, voltage, and a usage example\n- A legend in the corner explains the color coding\n- Filter buttons: \"Show GPIO only\", \"Show Power only\", \"Show I2C pins\"\n\nInstructional Rationale: Color-coded interactive pinout with click-to-reveal lets students explore the Pico layout at their own pace, building spatial memory of pin locations.\n\nImplementation: p5.js. Pin pads as small ellipses; color from function lookup; createButton() for filters; info panel as a rectangle with text."
+}

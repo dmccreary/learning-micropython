@@ -1,0 +1,14 @@
+{
+  "sim_id": "accelerometer-axes",
+  "diagram_name": "Accelerometer Axes Explorer",
+  "chapter_number": 10,
+  "chapter_title": "Motion, Orientation, and Light Sensors",
+  "chapter_dir": "10-motion-light-sensors",
+  "library": "p5.js",
+  "bloom_level": "Understand (L2)",
+  "bloom_verb": "explain",
+  "learning_objective": "Students can describe how gravity's 1 g vector distributes across X, Y, and Z axes as the board tilts, and use this to infer tilt angle.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: diagram\n**sim-id:** accelerometer-axes<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Understand (L2)\nBloom Verb: explain\nLearning Objective: Students can describe how gravity's 1 g vector distributes across X, Y, and Z axes as the board tilts, and use this to infer tilt angle.\n\nCanvas layout:\n- Left: a 3D-looking rectangle representing the PCB, with X/Y/Z axis arrows\n- Right: three horizontal bar gauges showing X, Y, Z acceleration in g units\n- Bottom: numeric readouts and a simple tilt-angle estimate\n\nVisual elements:\n- PCB rectangle tilts as the student drags the rotation sliders\n- Axis arrows labeled (X=red, Y=green, Z=blue)\n- Bar gauges fill proportionally; Z shows 1.0 when flat\n\nInteractive controls:\n- createSlider() for \"Tilt forward/back\" (−90 to 90°) and \"Tilt left/right\" (−90 to 90°)\n- Live formula: `angle = atan2(X, Z)` displayed below gauges\n\nInstructional Rationale: Visualizing how gravity distributes across axes as the board tilts replaces the abstract formula with a spatial mental model.\n\nImplementation: p5.js. PCB drawn as a rotated parallelogram; axis gauges as filled rectangles; trig computed live from slider values."
+}

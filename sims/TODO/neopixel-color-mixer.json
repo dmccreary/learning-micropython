@@ -1,0 +1,14 @@
+{
+  "sim_id": "neopixel-color-mixer",
+  "diagram_name": "NeoPixel Color Mixer",
+  "chapter_number": 14,
+  "chapter_title": "NeoPixels and Non-Graphical Displays",
+  "chapter_dir": "14-neopixels-displays",
+  "library": "p5.js",
+  "bloom_level": "Apply (L3)",
+  "bloom_verb": "construct",
+  "learning_objective": "Students can construct a target NeoPixel color by adjusting R, G, B sliders and predict the resulting code.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: microsim\n**sim-id:** neopixel-color-mixer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Apply (L3)\nBloom Verb: construct\nLearning Objective: Students can construct a target NeoPixel color by adjusting R, G, B sliders and predict the resulting code.\n\nCanvas layout:\n- Left 50%: three vertical sliders labeled R, G, B (0–255 each) with colored fill\n- Center 25%: a large circle showing the mixed color (the NeoPixel preview)\n- Right 25%: the MicroPython code snippet: `np[0] = (R, G, B)` updated live\n\nVisual elements:\n- Sliders filled with the corresponding color (R slider is red-tinted, etc.)\n- Circle glows with the blended color; brightness dims when all channels are low\n- Code snippet updates live with current R, G, B values\n\nInteractive controls:\n- Three createSlider() controls (0–255 each)\n- \"Add random target color\" button sets a random color as a target swatch; students try to match it\n\nInstructional Rationale: Hands-on color mixing makes the RGB model tactile and memorable, and seeing the code update live reinforces the mapping between sliders and code.\n\nImplementation: p5.js. Three sliders; background(r, g, b) applied to circle; code text drawn in monospace font."
+}

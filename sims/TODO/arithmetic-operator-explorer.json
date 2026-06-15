@@ -1,0 +1,14 @@
+{
+  "sim_id": "arithmetic-operator-explorer",
+  "diagram_name": "Arithmetic Operator Explorer",
+  "chapter_number": 1,
+  "chapter_title": "Python Basics — Programs, Variables, Data Types, and Operators",
+  "chapter_dir": "01-python-basics",
+  "library": "p5.js",
+  "bloom_level": "Apply (L3)",
+  "bloom_verb": "calculate",
+  "learning_objective": "Students can apply the six Python arithmetic operators to compute results and predict outputs for given inputs.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: microsim\n**sim-id:** arithmetic-operator-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Apply (L3)\nBloom Verb: calculate\nLearning Objective: Students can apply the six Python arithmetic operators to compute results and predict outputs for given inputs.\n\nCanvas layout:\n- Top area: Two sliders labeled \"Number A\" (range 0–20, default 10) and \"Number B\" (range 1–20, default 3, minimum 1 to prevent division by zero).\n- Middle area: A 2×3 grid of six operator buttons: `+`, `-`, `*`, `/`, `//`, `%`. The currently selected operator is highlighted in a bright accent color.\n- Bottom area: A result card showing the full Python expression and computed result in large monospace font. Below the result: a one-sentence plain-English explanation of the operator. For `//` and `%`, also show a pizza-sharing analogy: \"10 pizza slices shared by 3 people: each person gets 3 slices (//), with 1 left over (%).\"\n\nInteractive controls:\n- createSlider() for Number A and Number B. Values update live as sliders move.\n- createButton() for each operator. Clicking selects that operator and recalculates immediately.\n\nDefault state: A = 10, B = 3, operator = `+`, showing `10 + 3 = 13`.\n\nData Visibility Requirements:\n- Stage 1: Show A, B, and the selected operator.\n- Stage 2: Show the full Python expression: `A op B = result`.\n- Stage 3: Show a plain-English explanation and (for `//`/`%`) the pizza analogy.\n\nInstructional Rationale: Slider-driven Apply-level exploration lets students verify mental predictions immediately. Showing the expression alongside the plain-English explanation bridges symbolic notation and meaning. The pizza analogy makes floor division and modulo concrete for 10-year-olds.\n\nImplementation: p5.js with createSlider() and createButton(). Result displayed as large centered text with explanation below. Operator buttons styled as colored rounded rectangles; selected one gets a distinct border highlight."
+}

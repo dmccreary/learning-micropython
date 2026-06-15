@@ -1,0 +1,14 @@
+{
+  "sim_id": "digital-io-explorer",
+  "diagram_name": "Digital I/O Explorer",
+  "chapter_number": 6,
+  "chapter_title": "Digital Input, Output, and Interrupts",
+  "chapter_dir": "06-digital-io-interrupts",
+  "library": "p5.js",
+  "bloom_level": "Apply (L3)",
+  "bloom_verb": "demonstrate",
+  "learning_objective": "Students can trace the signal path from a button press through debouncing logic to an LED output, and predict the output state from a given input sequence.",
+  "completion_status": "specified",
+  "extracted_date": "2026-06-15",
+  "specification": "Type: microsim\n**sim-id:** digital-io-explorer<br/>\n**Library:** p5.js<br/>\n**Status:** Specified\n\nBloom Level: Apply (L3)\nBloom Verb: demonstrate\nLearning Objective: Students can trace the signal path from a button press through debouncing logic to an LED output, and predict the output state from a given input sequence.\n\nCanvas layout:\n- Left column: animated button (click to toggle) with bounce waveform shown below it\n- Center: software debounce logic block with timer countdown\n- Right column: LED indicator showing the debounced output state\n\nVisual elements:\n- Button click generates a noisy bouncing signal shown as a jittery waveform\n- A 30 ms timer bar in the center fills as the debounce delay runs\n- After the timer, the output LED changes state cleanly\n- Bounces that occur before the timer resets the timer\n\nInteractive controls:\n- Click button: generates a simulated bounce (random count 3–8 bounces in 5 ms)\n- Slider: \"Debounce time\" (10–100 ms)\n- Toggle: \"Software\" vs \"Hardware\" mode (hardware shows a smoothed RC waveform instead of the bounce pattern)\n\nInstructional Rationale: Seeing the bounce as an animation and watching the debounce timer absorb it makes the problem and solution vivid in a way that text alone cannot.\n\nImplementation: p5.js. Use createSlider() for debounce time; button click starts a bounce animation (sinusoidal noise added to signal); debounce timer is a visual progress bar."
+}
