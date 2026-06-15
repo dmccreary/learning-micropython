@@ -4,7 +4,7 @@
 }
 .md-header__button.md-logo img, .md-header__button.md-logo svg {
     height: 55px;
-    width: 70px;
+    width: auto;
 }
 
 /* Custom styling for Prompt Admonition */

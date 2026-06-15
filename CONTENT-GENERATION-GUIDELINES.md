@@ -202,6 +202,40 @@ renders at `chapters/NN-name/index.html`), use `../../img/mascot/POSE.png`.
 
 ---
 
+## Currency and Math Formatting
+
+### Dollar Amounts (Prices)
+
+Write prices using a plain `$` sign followed by the number — no escaping needed:
+
+```markdown
+The Raspberry Pi Pico costs about $4.
+An ESP32 typically costs $5–$10.
+A starter kit is under $20.
+```
+
+**Do not** escape dollar signs (e.g., `\$4`) or wrap them in backticks just
+for prices. The site is configured to leave plain dollar signs in prose alone.
+
+### Math Formulas
+
+If you ever need to write a mathematical formula, use `\(...\)` for inline
+math and `\[...\]` for display (block) math — **not** `$...$`:
+
+```markdown
+The duty cycle formula is \( \text{duty} = \frac{t_{on}}{T} \times 100\% \).
+
+\[
+f = \frac{1}{T}
+\]
+```
+
+The site deliberately does **not** recognize `$...$` as math delimiters
+because dollar signs appear throughout the course as currency. Using
+`$...$` for formulas would break price text like `$5–$10`.
+
+---
+
 ## Code Examples
 
 - All code must run on a Raspberry Pi Pico or Pico W with MicroPython.
