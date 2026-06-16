@@ -48,6 +48,8 @@ This chapter builds on concepts from:
     ![Monty waves hello](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
     Motion, orientation, color — your Pico is about to gain almost human-like senses! An accelerometer feels tilt the way your inner ear does. A compass finds north like a migrating bird. The APDS9960 detects both color and the distance of your hand above it. Let's wire them in!
 
+![Motion and Light Sensors Infographic](./motion-and-light-sensors-infographic.png)
+
 ## Light Sensing with Photoresistors
 
 You met the **photoresistor (LDR)** briefly in Chapter 7. To review: an LDR changes resistance based on light level. Wired as a voltage divider with a fixed resistor (10 kΩ) between 3.3 V and GND, it provides an analog voltage to the ADC. More light → lower LDR resistance → higher voltage → higher ADC reading.

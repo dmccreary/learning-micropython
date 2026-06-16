@@ -51,6 +51,9 @@ This chapter assumes only the prerequisites listed in the [course description](.
 
     That's it. If I'm not doing one of those six things, I'm not in the chapter. Let's build something amazing!
 
+<!-- TODO: introduce this infographic described in @docs/posters/python-vs-micropython.md -->
+![](./python-vs-micropython-infographic.png)
+
 ## What Is a Computer Program?
 
 A **computer program** is a list of instructions for a computer to follow. Think of it like a recipe. A recipe tells a chef exactly what to do, step by step. A computer program tells a computer exactly what to do, one instruction at a time.

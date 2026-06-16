@@ -3,6 +3,8 @@
 Audience: students selecting motors for robotics and automation projects.
 Chapter: 12 — Motors, Servos & Steppers
 
+![](../chapters/12-motors-servos-steppers/motor-comparison-infographic.png)
+
 ## Image Prompt
 
 !!! prompt

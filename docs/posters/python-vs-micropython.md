@@ -3,6 +3,8 @@
 Audience: students transitioning from desktop Python to embedded MicroPython.
 Chapter: 1 — Python Basics / Chapter 3 — MicroPython Environment
 
+![](../chapters/01-python-basics/python-vs-micropython-infographic.png)
+
 ## Image Prompt
 
 !!! prompt

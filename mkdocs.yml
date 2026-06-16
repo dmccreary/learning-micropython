@@ -382,9 +382,12 @@ nav:
     - Protocol Comparison Explorer: sims/protocol-comparison/index.md
     - Python Data Type Explorer: sims/python-data-type-explorer/index.md
     - REPL Workflow Diagram: sims/repl-workflow/index.md
+    - Resistor Color Code Calculator: sims/resistor-color-code-calculator/index.md
     - Servo PWM Signal Explorer: sims/servo-pwm-explorer/index.md
     - Spectrum Analyzer Concept: sims/spectrum-analyzer-concept/index.md
     - Ultrasonic Ranging Explorer: sims/ultrasonic-ranging/index.md
+
+
 
   - Infographic Posters:
     - List of Infographic Posters: posters/index.md

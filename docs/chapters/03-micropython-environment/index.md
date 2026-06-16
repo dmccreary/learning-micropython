@@ -56,6 +56,21 @@ This chapter builds on concepts from:
 
 MicroPython includes a **MicroPython interpreter** — the program that reads your Python source code and runs it directly on the microcontroller. You interact with it in two ways: **interactive mode** (one command at a time) and **script mode** (a complete program stored as a file).
 
+## What Is an IDE?
+
+An **IDE** (Integrated Development Environment) is a software application that combines everything you need to write, run, and debug code in one place. Instead of juggling a separate text editor, a compiler, and a terminal window, an IDE wraps them together in a single graphical interface so you can focus on writing code rather than managing tools.
+
+For MicroPython, a good IDE connects to your microcontroller over USB, lets you write and save programs, opens a REPL window for quick experiments, and helps you copy files to the board. Four tools are widely used for MicroPython development:
+
+- **Thonny** — the best choice for beginners; one-click setup and a built-in MicroPython REPL, no configuration needed.
+- **VS Code + MicroPico** — a professional-grade editor with Git integration; best for growing projects.
+- **Mu Editor** — a clean, uncluttered editor with a built-in serial plotter for visualizing sensor data.
+- **Wokwi Simulator** — runs entirely in a browser; lets you simulate circuits and MicroPython code without any physical hardware.
+
+The infographic below compares all four side by side across cost, skill level, operating system support, MicroPython features, debugger capability, and best use cases.
+
+![MicroPython IDE Comparison Infographic](./ide-comparison-infographic.png)
+
 ## Setting Up Thonny IDE
 
 **Thonny** is the recommended editor for this course. It was designed specifically for learning Python, and it has built-in support for MicroPython and the Pico. Download it free from [thonny.org](https://thonny.org) and install it on your computer.

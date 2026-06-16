@@ -3,6 +3,8 @@
 Audience: beginners choosing a coding environment for the first time.
 Chapter: 3 — MicroPython Environment
 
+![](../chapters/03-micropython-environment/ide-comparison-infographic.png)
+
 ## Image Prompt
 
 !!! prompt

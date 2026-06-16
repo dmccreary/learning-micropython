@@ -3,6 +3,8 @@
 Audience: beginners learning to read resistor values from color bands.
 Chapter: 5 — Electronics Fundamentals
 
+![](../chapters/05-electronics-fundamentals/resistor-color-codes-infographic.png)
+
 ## Image Prompt
 
 !!! prompt

@@ -1,7 +1,9 @@
-# Motion & Light Sensors
+# Motion and Light Sensors
 
 Audience: students adding environmental awareness to their MicroPython projects.
 Chapter: 10 — Motion & Light Sensors
+
+![Motion and Light Sensors Comparison Infographic](../chapters/10-motion-light-sensors/motion-and-light-sensors-infographic.png)
 
 ## Image Prompt
 

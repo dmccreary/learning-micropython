@@ -3,6 +3,8 @@
 Audience: beginners learning to identify and use fundamental components.
 Chapter: 5 — Electronics Fundamentals
 
+![](../chapters/05-electronics-fundamentals/electrical-components-infographic.png)
+
 ## Image Prompt
 
 !!! prompt
