@@ -55,6 +55,17 @@ to build and to play with.  Our focus is a direct-hands on experience.  The clos
 are to the machine, the faster you will see the results.  This short-feedback loop is
 critical to a high velocity of learning.
 
+## Related Interactive Intelligent Textbooks
+
+1. [Computer Science with Python](https://dmccreary.github.io/computer-science/)
+1. [Beginning Electronics](https://dmccreary.github.io/beginning-electronics/)
+1. [Moving Rainbow](https://dmccreary.github.io/moving-rainbow/)
+1. [STEM Robots](https://dmccreary.github.io/stem-robots/)
+1. [Circuits](https://dmccreary.github.io/circuits/)
+1. [Robot Day](https://dmccreary.github.io/robot-day/)
+1. [Python](https://dmccreary.github.io/python/)
+1. [Spectrum Analyzer](https://dmccreary.github.io/spectrum-analyzer/)
+
 ## Summary
 
 Putting MicroPython at the core of your STEM education can help your students transform the way they
