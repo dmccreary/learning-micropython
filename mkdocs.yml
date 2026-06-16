@@ -386,6 +386,13 @@ nav:
     - Spectrum Analyzer Concept: sims/spectrum-analyzer-concept/index.md
     - Ultrasonic Ranging Explorer: sims/ultrasonic-ranging/index.md
 
+  - Infographic Posters:
+    - List of Infographic Posters: posters/index.md
+    - Microcontrollers: posters/microcontrollers.md
+    - Common Communication Protocols: posters/communication-protocols.md
+    - Specialized Communication Protocols: posters/specialized-communication-protocols.md
+    - Temperature and Distance Sensors: posters/temperature-distance-sensors.md
+    - Distance Sensors: posters/distance-sensors.md
 
   - Learning Graph:
     - Introduction: learning-graph/index.md
@@ -443,6 +450,38 @@ theme:
     - navigation.footer
 plugins:
   - search
+  # Generates per-page Open Graph / Twitter Card images and emits og:title,
+  # og:description, og:url, twitter:card, etc. Requires the imaging extra
+  # (mkdocs-material[imaging]) plus system Cairo + freetype, which are
+  # installed here. Card background matches the theme primary color.
+  - social:
+      cards_layout_options:
+        background_color: '#642580'
+  # Click any chapter image to open it fullscreen in a zoomable lightbox.
+  # skip_classes keeps mascot poses out of the lightbox gallery -- without it
+  # every Monty image is indexed and shows up in the prev/next arrows.
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: true
+      auto_caption: false
+      caption_position: bottom
+      skip_classes:
+        - mascot-admonition-img
+
+# Hooks -- loaded as raw Python modules, not plugins (avoids name collisions).
+# `plugins/social_override.py` overrides og:image and twitter:image with the
+# page's `image:` frontmatter value when present. Pages without `image:` are
+# untouched -- mkdocs-material's default meta tags (and the social plugin's
+# generated card, if enabled) pass through.
+hooks:
+  - plugins/social_override.py
+
 markdown_extensions:
   - attr_list
   - md_in_html

@@ -2,8 +2,6 @@
 title: Learning MicroPython
 description: A hands-on intelligent textbook for learning MicroPython and physical computing with the Raspberry Pi Pico, ESP32, sensors, displays, motors, and robots — written for students aged 10–18 and curious learners of all ages.
 image: img/cover.png
-og:image: img/cover.png
-twitter:image: img/cover.png
 hide:
   - toc
 ---
@@ -138,11 +136,12 @@ who have mastered many of our programming labs and want more challenging project
 
 ### FAQ
 
-[](./faq.md)
+[Frequently Asked Questions](./faq.md)
 
 ### References
 
 This is an annotated list of other on-line resources to help you learn MicroPython and use microcontrollers.
+Each chapter includes detailed annotated references.  We also have a list of general references for the entire textbook.
 
 [Micropython References](misc/references.md) - links to other useful sites.
 

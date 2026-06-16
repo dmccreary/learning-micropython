@@ -1,5 +1,6 @@
 certifi==2021.5.30
 click==8.0.1
+mkdocs-glightbox==0.5.2
 numpy==1.24.2
 plotly==5.13.0
 pyserial==3.5
