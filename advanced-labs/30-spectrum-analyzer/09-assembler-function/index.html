@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -73,33 +70,43 @@
     
     
       
-        <meta  property="og:type"  content="website" >
+        <meta property="og:type" content="website">
       
-        <meta  property="og:title"  content="Assembler FFT - Learning MicroPython" >
+        <meta property="og:title" content="Assembler FFT - Learning MicroPython">
       
-        <meta  property="og:description"  content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython." >
+        <meta property="og:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/advanced-labs/30-spectrum-analyzer/09-assembler-function.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/advanced-labs/30-spectrum-analyzer/09-assembler-function.png">
       
-        <meta  property="og:image:type"  content="image/png" >
+        <meta property="og:image:type" content="image/png">
       
-        <meta  property="og:image:width"  content="1200" >
+        <meta property="og:image:width" content="1200">
       
-        <meta  property="og:image:height"  content="630" >
+        <meta property="og:image:height" content="630">
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/learning-micropython/advanced-labs/30-spectrum-analyzer/09-assembler-function/" >
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/advanced-labs/30-spectrum-analyzer/09-assembler-function/">
       
-        <meta  name="twitter:card"  content="summary_large_image" >
+        <meta name="twitter:card" content="summary_large_image">
       
-        <meta  name="twitter:title"  content="Assembler FFT - Learning MicroPython" >
+        <meta name="twitter:title" content="Assembler FFT - Learning MicroPython">
       
-        <meta  name="twitter:description"  content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython." >
+        <meta name="twitter:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/advanced-labs/30-spectrum-analyzer/09-assembler-function.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/advanced-labs/30-spectrum-analyzer/09-assembler-function.png">
       
     
     
-  </head>
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -139,7 +146,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -165,7 +172,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -174,15 +181,15 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -205,7 +212,7 @@
         <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -229,7 +236,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -250,7 +257,7 @@
       <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -1797,6 +1804,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -1815,6 +1826,97 @@
   
   <span class="md-ellipsis">
     MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
   </span>
   
 
@@ -2149,7 +2251,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2204,19 +2306,19 @@
 
 
 <h1 id="using-an-assembler-version-of-the-fft">Using an Assembler Version of the FFT</h1>
-<p><img alt="FFT 2K Demo" src="../fft-2k-demo.png" /></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../fft-2k-demo.png" data-desc-position="bottom"><img alt="FFT 2K Demo" src="../fft-2k-demo.png"></a></p>
 <p>In many signal processing applications, transforming time
 series data into the frequency domain is a CPU intensive operation.
 For many systems, having a very fast FFT in assembler is critical.</p>
 <p>In October 2015, Peter Hinch posted a version of the FFT algorithm on <a href="https://github.com/peterhinch/micropython-fourier/blob/master/dft.py">his GitHub Repo</a> written in ARM assembly.  We can use this
 function to increase the speed of our FFT by a factor of 7x or more.  This <code>dft.py</code> program should be uploaded to the <code>/lib</code> directory and then call it like this:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Run the FFT with the assembler function</span>
 <span class="n">dft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">ctrl</span><span class="p">,</span> <span class="n">FORWARD</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>From Peter's README.me:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Raspberry Pi Pico 2 uses the dual-core ARM Cortex-M33 clocked at 150MHz CPU. ARM Thumb V7 instruction set with an FPU (Floating Point Unit).  The ARM FPU is so fast that integer code offers no speed advantage.
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Raspberry Pi Pico 2 uses the dual-core ARM Cortex-M33 clocked at 150MHz CPU. ARM Thumb V7 instruction set with an FPU (Floating Point Unit).  The ARM FPU is so fast that integer code offers no speed advantage.
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="pico-2-rp2350-signal-processing-hardware">Pico 2 RP2350 Signal Processing Hardware</h2>
 <p>The ARM Cortex-M33 on the Pico 2 is very different from the original Pico.  It has faster single precision floating point and specialized DSP extensions specifically added to increase the performance of signal processing.  Specifically the Pico 2 has:</p>
 <ul>
@@ -2229,7 +2331,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
 <h2 id="full-main-code-for-calling-assembler">Full Main Code for Calling Assembler</h2>
 <p><a href="https://github.com/dmccreary/learning-micropython/blob/main/src/kits/fft/56-fft-asm.py">Source Code</a></p>
 <p>Here is sample <code>main.py</code> code for running your spectrum analyzer.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
 <span class="normal">  3</span>
 <span class="normal">  4</span>
@@ -2623,13 +2725,13 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">array</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Importing FFT modules...&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Importing FFT modules..."</span><span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="c1"># Try to import the direct assembler FFT function</span>
     <span class="kn">import</span> <span class="nn">dft</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;FFT module imported successfully&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"FFT module imported successfully"</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Could not import FFT module: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Could not import FFT module: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="c1"># OLED Display configuration</span>
 <span class="n">SCL</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># SPI Clock</span>
@@ -2639,7 +2741,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
 <span class="n">CS</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>   <span class="c1"># Chip Select</span>
 
 <span class="c1"># Initialize SPI and OLED</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Initializing OLED display...&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Initializing OLED display..."</span><span class="p">)</span>
 <span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">SCL</span><span class="p">,</span> <span class="n">mosi</span><span class="o">=</span><span class="n">SDA</span><span class="p">)</span>
 <span class="n">oled</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_SPI</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">DC</span><span class="p">,</span> <span class="n">RES</span><span class="p">,</span> <span class="n">CS</span><span class="p">)</span>
 
@@ -2656,7 +2758,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
 <span class="n">BUFFER_LENGTH_IN_BYTES</span> <span class="o">=</span> <span class="mi">40000</span>
 
 <span class="c1"># Initialize I2S for microphone</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Initializing I2S microphone...&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Initializing I2S microphone..."</span><span class="p">)</span>
 <span class="n">audio_in</span> <span class="o">=</span> <span class="n">I2S</span><span class="p">(</span>
     <span class="n">I2S_ID</span><span class="p">,</span>
     <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">SCK_PIN</span><span class="p">),</span>
@@ -2677,15 +2779,15 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
     <span class="k">return</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="p">(</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
 
 <span class="c1"># Check if we have the direct FFT assembler function</span>
-<span class="n">have_asm_fft</span> <span class="o">=</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dft</span><span class="p">,</span> <span class="s1">&#39;fft&#39;</span><span class="p">)</span>
+<span class="n">have_asm_fft</span> <span class="o">=</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">dft</span><span class="p">,</span> <span class="s1">'fft'</span><span class="p">)</span>
 
 <span class="c1"># Create the control structure for the FFT assembler function</span>
 <span class="k">if</span> <span class="n">have_asm_fft</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setting up direct assembler FFT...&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Setting up direct assembler FFT..."</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># Create arrays for real and imaginary data</span>
-        <span class="n">fft_re</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">FFT_SIZE</span><span class="p">)</span>
-        <span class="n">fft_im</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">FFT_SIZE</span><span class="p">)</span>
+        <span class="n">fft_re</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'f'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">FFT_SIZE</span><span class="p">)</span>
+        <span class="n">fft_im</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'f'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">FFT_SIZE</span><span class="p">)</span>
 
         <span class="c1"># Calculate bits for FFT size</span>
         <span class="n">bits</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">FFT_SIZE</span><span class="p">))</span>
@@ -2698,7 +2800,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
         <span class="c1"># ctrl[4] = Byte Offset into entry 0 of complex roots of unity</span>
         <span class="c1"># ctrl[5] = Address of scratchpad for use by fft code</span>
         <span class="kn">from</span> <span class="nn">uctypes</span> <span class="kn">import</span> <span class="n">addressof</span>
-        <span class="n">ctrl</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span>
+        <span class="n">ctrl</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'i'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span>
         <span class="n">ctrl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">FFT_SIZE</span>
         <span class="n">ctrl</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">bits</span>
         <span class="n">ctrl</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">addressof</span><span class="p">(</span><span class="n">fft_re</span><span class="p">)</span>
@@ -2707,7 +2809,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
         <span class="c1"># Create complex scratchpad and roots of unity</span>
         <span class="n">COMPLEX_NOS</span> <span class="o">=</span> <span class="mi">7</span>
         <span class="n">ROOTSOFFSET</span> <span class="o">=</span> <span class="n">COMPLEX_NOS</span> <span class="o">*</span> <span class="mi">2</span>
-        <span class="n">cmplx</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="p">((</span><span class="n">bits</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">COMPLEX_NOS</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="n">cmplx</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'f'</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="p">((</span><span class="n">bits</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">COMPLEX_NOS</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span>
         <span class="n">ctrl</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">COMPLEX_NOS</span> <span class="o">*</span> <span class="mi">8</span>  <span class="c1"># Byte offset</span>
         <span class="n">ctrl</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">addressof</span><span class="p">(</span><span class="n">cmplx</span><span class="p">)</span>
 
@@ -2734,10 +2836,10 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
             <span class="n">cmplx</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">cimag</span>
             <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span>
 
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Direct assembler FFT setup successful&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Direct assembler FFT setup successful"</span><span class="p">)</span>
         <span class="n">using_asm_fft</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error setting up direct assembler FFT: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error setting up direct assembler FFT: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="n">have_asm_fft</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">using_asm_fft</span> <span class="o">=</span> <span class="kc">False</span>
 
@@ -2747,7 +2849,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
 
 <span class="c1"># Convert to polar coordinates</span>
 <span class="k">def</span> <span class="nf">to_polar</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert complex values to polar (magnitude, phase)&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Convert complex values to polar (magnitude, phase)"""</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">real</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="n">magnitude</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">real</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">real</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">imag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">imag</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
@@ -2765,7 +2867,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
 <span class="n">cycle_count</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="k">def</span> <span class="nf">capture_audio_samples</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Capture audio samples and populate the FFT input arrays&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Capture audio samples and populate the FFT input arrays"""</span>
     <span class="k">global</span> <span class="n">total_capture_time</span>
 
     <span class="k">try</span><span class="p">:</span>
@@ -2779,7 +2881,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
 
         <span class="c1"># Process raw samples</span>
         <span class="n">samples_count</span> <span class="o">=</span> <span class="n">num_bytes_read</span> <span class="o">//</span> <span class="mi">4</span>
-        <span class="n">format_str</span> <span class="o">=</span> <span class="s2">&quot;&lt;</span><span class="si">{}</span><span class="s2">i&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">samples_count</span><span class="p">)</span>
+        <span class="n">format_str</span> <span class="o">=</span> <span class="s2">"&lt;</span><span class="si">{}</span><span class="s2">i"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">samples_count</span><span class="p">)</span>
         <span class="n">samples</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="n">format_str</span><span class="p">,</span> <span class="n">raw_samples</span><span class="p">[:</span><span class="n">num_bytes_read</span><span class="p">])</span>
 
         <span class="c1"># Clear arrays</span>
@@ -2793,7 +2895,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
             <span class="c1"># Apply Hanning window</span>
             <span class="n">fft_re</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">samples</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">*</span> <span class="n">hanning</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">FFT_SIZE</span><span class="p">)</span>
 
-        <span class="c1"># Zero-pad if we didn&#39;t fill the array</span>
+        <span class="c1"># Zero-pad if we didn't fill the array</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sample_count</span><span class="p">,</span> <span class="n">FFT_SIZE</span><span class="p">):</span>
             <span class="n">fft_re</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
 
@@ -2803,11 +2905,11 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
 
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error in capture_audio_samples: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error in capture_audio_samples: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
 
 <span class="k">def</span> <span class="nf">process_fft</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Process the FFT with appropriate implementation&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Process the FFT with appropriate implementation"""</span>
     <span class="k">global</span> <span class="n">total_fft_time</span>
 
     <span class="k">try</span><span class="p">:</span>
@@ -2825,11 +2927,11 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
 
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error in process_fft: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error in process_fft: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
 
 <span class="k">def</span> <span class="nf">draw_spectrum</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Draw the frequency spectrum on the OLED display&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Draw the frequency spectrum on the OLED display"""</span>
     <span class="k">global</span> <span class="n">total_display_time</span>
 
     <span class="k">try</span><span class="p">:</span>
@@ -2847,7 +2949,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
         <span class="n">freq_end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bin_freq_width</span> <span class="o">*</span> <span class="p">(</span><span class="n">FFT_SIZE</span> <span class="o">//</span> <span class="mi">2</span><span class="p">))</span>
 
         <span class="c1"># Combine frequency bins to fit display</span>
-        <span class="n">display_bins</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_bins</span><span class="p">)</span>
+        <span class="n">display_bins</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'f'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_bins</span><span class="p">)</span>
         <span class="n">bin_width</span> <span class="o">=</span> <span class="p">(</span><span class="n">FFT_SIZE</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span> <span class="o">//</span> <span class="n">num_bins</span>
 
         <span class="c1"># Simple averaging of bins, focusing on lower frequencies</span>
@@ -2887,8 +2989,8 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
         <span class="n">peak_freq</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_idx</span> <span class="o">*</span> <span class="n">bin_freq_width</span><span class="p">)</span>
 
         <span class="c1"># Display peak frequency on the left and max range on the right</span>
-        <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">peak_freq</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">end_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">freq_end</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">peak_freq</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">end_text</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">freq_end</span><span class="si">}</span><span class="s2">"</span>
         <span class="c1"># Position end frequency text right-aligned</span>
         <span class="n">end_x</span> <span class="o">=</span> <span class="mi">128</span> <span class="o">-</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">end_text</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span><span class="p">)</span>  <span class="c1"># Each character is ~8 pixels wide</span>
         <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">end_text</span><span class="p">,</span> <span class="n">end_x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -2903,7 +3005,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
             <span class="c1"># Draw vertical bar</span>
             <span class="n">x</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">2</span>  <span class="c1"># Each bar is 2 pixels wide</span>
             <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">baseline</span><span class="p">,</span> <span class="n">baseline</span> <span class="o">-</span> <span class="n">height</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-                <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="n">top_margin</span><span class="p">:</span>  <span class="c1"># Ensure we don&#39;t write over the frequency text</span>
+                <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="n">top_margin</span><span class="p">:</span>  <span class="c1"># Ensure we don't write over the frequency text</span>
                     <span class="n">oled</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
                     <span class="n">oled</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Make bars 2 pixels wide</span>
 
@@ -2919,11 +3021,11 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
 
         <span class="k">return</span> <span class="kc">True</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error in draw_spectrum: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error in draw_spectrum: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="c1"># Try to show error on display</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-            <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;FFT Error&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"FFT Error"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
             <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)[:</span><span class="mi">16</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
             <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
         <span class="k">except</span><span class="p">:</span>
@@ -2931,15 +3033,15 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
         <span class="k">return</span> <span class="kc">False</span>
 
 <span class="k">try</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sound Spectrum Analyzer&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">"="</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Sound Spectrum Analyzer"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"="</span><span class="o">*</span><span class="mi">40</span><span class="p">)</span>
 
     <span class="c1"># Welcome message on OLED</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;FFT Analyzer&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Using ASM FFT&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Starting...&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"FFT Analyzer"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"Using ASM FFT"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"Starting..."</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
@@ -2948,14 +3050,14 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
     <span class="n">bin_freq_width</span> <span class="o">=</span> <span class="n">nyquist_freq</span> <span class="o">/</span> <span class="p">(</span><span class="n">FFT_SIZE</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">max_freq</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">bin_freq_width</span> <span class="o">*</span> <span class="p">(</span><span class="n">FFT_SIZE</span> <span class="o">//</span> <span class="mi">2</span><span class="p">))</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Analyzer configuration:&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Using assembler FFT: </span><span class="si">{</span><span class="n">using_asm_fft</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Frequency resolution: </span><span class="si">{</span><span class="n">bin_freq_width</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Hz per bin&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Display frequency range: 0 Hz to </span><span class="si">{</span><span class="n">max_freq</span><span class="si">}</span><span class="s2"> Hz&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- FFT size: </span><span class="si">{</span><span class="n">FFT_SIZE</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Sample rate: </span><span class="si">{</span><span class="n">SAMPLE_RATE</span><span class="si">}</span><span class="s2"> Hz&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Starting main loop...&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Performance statistics will be displayed every 100 cycles&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Analyzer configuration:"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"- Using assembler FFT: </span><span class="si">{</span><span class="n">using_asm_fft</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"- Frequency resolution: </span><span class="si">{</span><span class="n">bin_freq_width</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> Hz per bin"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"- Display frequency range: 0 Hz to </span><span class="si">{</span><span class="n">max_freq</span><span class="si">}</span><span class="s2"> Hz"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"- FFT size: </span><span class="si">{</span><span class="n">FFT_SIZE</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"- Sample rate: </span><span class="si">{</span><span class="n">SAMPLE_RATE</span><span class="si">}</span><span class="s2"> Hz"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Starting main loop..."</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Performance statistics will be displayed every 100 cycles"</span><span class="p">)</span>
 
     <span class="c1"># Main processing loop</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -2976,12 +3078,12 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
                     <span class="n">total_time</span> <span class="o">=</span> <span class="n">avg_capture</span> <span class="o">+</span> <span class="n">avg_fft</span> <span class="o">+</span> <span class="n">avg_display</span>
 
                     <span class="c1"># Print performance statistics</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Performance Statistics (average over 100 cycles):&quot;</span><span class="p">)</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Audio capture time: </span><span class="si">{</span><span class="n">avg_capture</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> ms (</span><span class="si">{</span><span class="p">(</span><span class="n">avg_capture</span><span class="o">/</span><span class="n">total_time</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">)</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- FFT processing time: </span><span class="si">{</span><span class="n">avg_fft</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> ms (</span><span class="si">{</span><span class="p">(</span><span class="n">avg_fft</span><span class="o">/</span><span class="n">total_time</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">)</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Display update time: </span><span class="si">{</span><span class="n">avg_display</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> ms (</span><span class="si">{</span><span class="p">(</span><span class="n">avg_display</span><span class="o">/</span><span class="n">total_time</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%)&quot;</span><span class="p">)</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Total cycle time: </span><span class="si">{</span><span class="n">total_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> ms&quot;</span><span class="p">)</span>
-                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;- Theoretical max FPS: </span><span class="si">{</span><span class="mi">1000</span><span class="o">/</span><span class="n">total_time</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Performance Statistics (average over 100 cycles):"</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"- Audio capture time: </span><span class="si">{</span><span class="n">avg_capture</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> ms (</span><span class="si">{</span><span class="p">(</span><span class="n">avg_capture</span><span class="o">/</span><span class="n">total_time</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%)"</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"- FFT processing time: </span><span class="si">{</span><span class="n">avg_fft</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> ms (</span><span class="si">{</span><span class="p">(</span><span class="n">avg_fft</span><span class="o">/</span><span class="n">total_time</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%)"</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"- Display update time: </span><span class="si">{</span><span class="n">avg_display</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> ms (</span><span class="si">{</span><span class="p">(</span><span class="n">avg_display</span><span class="o">/</span><span class="n">total_time</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%)"</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"- Total cycle time: </span><span class="si">{</span><span class="n">total_time</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> ms"</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"- Theoretical max FPS: </span><span class="si">{</span><span class="mi">1000</span><span class="o">/</span><span class="n">total_time</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
                     <span class="c1"># Reset counters</span>
                     <span class="n">total_capture_time</span> <span class="o">=</span> <span class="mi">0</span>
@@ -2990,17 +3092,17 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
                     <span class="n">cycle_count</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Monitoring stopped by user&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Monitoring stopped by user"</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fatal error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Fatal error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="k">finally</span><span class="p">:</span>
     <span class="c1"># Clean up</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">audio_in</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="k">pass</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Program terminated&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Program terminated"</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
 
 
 
@@ -3028,7 +3130,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -3038,13 +3140,13 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../08-adding-timers/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Adding Timers">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -3069,7 +3171,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
             </div>
           </a>
         
@@ -3081,7 +3183,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -3109,5 +3211,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

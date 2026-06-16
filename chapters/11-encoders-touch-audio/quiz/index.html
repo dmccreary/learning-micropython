@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -73,33 +70,43 @@
     
     
       
-        <meta  property="og:type"  content="website" >
+        <meta property="og:type" content="website">
       
-        <meta  property="og:title"  content="Quiz - Learning MicroPython" >
+        <meta property="og:title" content="Quiz - Learning MicroPython">
       
-        <meta  property="og:description"  content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython." >
+        <meta property="og:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/11-encoders-touch-audio/quiz.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/11-encoders-touch-audio/quiz.png">
       
-        <meta  property="og:image:type"  content="image/png" >
+        <meta property="og:image:type" content="image/png">
       
-        <meta  property="og:image:width"  content="1200" >
+        <meta property="og:image:width" content="1200">
       
-        <meta  property="og:image:height"  content="630" >
+        <meta property="og:image:height" content="630">
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/learning-micropython/chapters/11-encoders-touch-audio/quiz/" >
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/chapters/11-encoders-touch-audio/quiz/">
       
-        <meta  name="twitter:card"  content="summary_large_image" >
+        <meta name="twitter:card" content="summary_large_image">
       
-        <meta  name="twitter:title"  content="Quiz - Learning MicroPython" >
+        <meta name="twitter:title" content="Quiz - Learning MicroPython">
       
-        <meta  name="twitter:description"  content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython." >
+        <meta name="twitter:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/11-encoders-touch-audio/quiz.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/11-encoders-touch-audio/quiz.png">
       
     
     
-  </head>
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -139,7 +146,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -165,7 +172,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -174,15 +181,15 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -205,7 +212,7 @@
         <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -229,7 +236,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -250,7 +257,7 @@
       <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -2086,6 +2093,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -2104,6 +2115,97 @@
   
   <span class="md-ellipsis">
     MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
   </span>
   
 
@@ -2438,7 +2540,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2566,7 +2668,7 @@
 
 <h1 id="quiz-rotary-encoders-touch-sensors-and-audio-input">Quiz: Rotary Encoders, Touch Sensors, and Audio Input</h1>
 <p>Test your understanding of quadrature encoders, capacitive touch, digital microphones, and FFT with these questions.</p>
-<hr />
+<hr>
 <h4 id="1-what-makes-a-rotary-encoder-different-from-a-potentiometer">1. What makes a rotary encoder different from a potentiometer?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2581,7 +2683,7 @@
 <p>The correct answer is <strong>B</strong>. A potentiometer has physical stops that limit rotation to about 270°, and its resistance changes from one end to the other. A rotary encoder can spin continuously in either direction with no stops — it generates pulses as it turns, and you count those pulses to track position. This makes encoders ideal for volume controls and menus without limits.</p>
 <p><strong>Concept Tested:</strong> Rotary Encoder</p>
 </details>
-<hr />
+<hr>
 <h4 id="2-what-is-quadrature-encoding">2. What is quadrature encoding?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2596,7 +2698,7 @@
 <p>The correct answer is <strong>B</strong>. Quadrature encoding uses two output pins (CLK and DT) that generate overlapping square wave pulses 90° out of phase with each other. The phase relationship reveals direction: if DT is different from CLK when CLK changes, the encoder rotates clockwise; if DT is the same as CLK, it rotates counter-clockwise.</p>
 <p><strong>Concept Tested:</strong> Quadrature Encoding</p>
 </details>
-<hr />
+<hr>
 <h4 id="3-why-do-rotary-encoders-use-interrupt-handlers-instead-of-polling-in-a-simple-while-loop">3. Why do rotary encoders use interrupt handlers instead of polling in a simple <code>while</code> loop?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2611,7 +2713,7 @@
 <p>The correct answer is <strong>B</strong>. Encoder pulses happen at the speed you turn the knob — potentially several times per millisecond. If the main loop is doing other work (updating a display, reading a sensor), it might not check the encoder pins between pulses, missing rotations entirely. An interrupt fires immediately when the CLK pin changes, regardless of what the main loop is doing.</p>
 <p><strong>Concept Tested:</strong> Encoder Interrupt Handler</p>
 </details>
-<hr />
+<hr>
 <h4 id="4-the-ttp223-capacitive-touch-sensor-output-goes-high-when-your-finger-touches-it-how-should-you-wire-and-read-it-in-micropython">4. The TTP223 capacitive touch sensor output goes HIGH when your finger touches it. How should you wire and read it in MicroPython?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2626,7 +2728,7 @@
 <p>The correct answer is <strong>B</strong>. The TTP223 outputs a simple digital HIGH (1) when touched and LOW (0) when not touched — exactly like a digital button. Connect the I/O pin to any GPIO input pin and read it with <code>pin.value()</code>. Check for <code>1</code> to detect a touch. You can also attach an interrupt on <code>Pin.IRQ_RISING</code> for immediate response.</p>
 <p><strong>Concept Tested:</strong> Touch Sensor TTP223 / Touch.value() Method</p>
 </details>
-<hr />
+<hr>
 <h4 id="5-what-type-of-microphone-is-the-inmp441-and-which-interface-does-it-use">5. What type of microphone is the INMP441, and which interface does it use?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2641,7 +2743,7 @@
 <p>The correct answer is <strong>C</strong>. The INMP441 is a MEMS (Micro-Electro-Mechanical System) omnidirectional digital microphone. Unlike analog microphones that output a varying voltage, it digitizes audio internally and outputs a stream of binary data over the I2S bus. This digital output is more immune to noise and connects directly to the Pico's <code>machine.I2S</code> peripheral.</p>
 <p><strong>Concept Tested:</strong> Microphone INMP441 / INMP441 I2S Interface</p>
 </details>
-<hr />
+<hr>
 <h4 id="6-an-audio-system-uses-a-16000-hz-sampling-rate-what-is-the-highest-frequency-it-can-accurately-capture">6. An audio system uses a 16,000 Hz sampling rate. What is the highest frequency it can accurately capture?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2656,7 +2758,7 @@
 <p>The correct answer is <strong>C</strong>. The Nyquist theorem states that the maximum accurately captured frequency is exactly half the sampling rate — called the Nyquist limit. At 16,000 Hz sampling, you can capture audio up to 8,000 Hz. This is sufficient for clear speech recognition but not for high-quality music (which needs at least 20,000 Hz).</p>
 <p><strong>Concept Tested:</strong> Audio Sampling Rate</p>
 </details>
-<hr />
+<hr>
 <h4 id="7-what-does-a-fast-fourier-transform-fft-do-to-an-audio-signal">7. What does a Fast Fourier Transform (FFT) do to an audio signal?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2671,7 +2773,7 @@
 <p>The correct answer is <strong>B</strong>. An FFT transforms an array of audio samples (a time-domain signal showing pressure over time) into a frequency spectrum (showing how much energy is present at each frequency). Bass notes appear in the low-frequency bins; treble appears in the high bins. The FFT is the math behind spectrum analyzers, equalizers, and pitch detection.</p>
 <p><strong>Concept Tested:</strong> Fast Fourier Transform (FFT) / Spectrum Analyzer Concept</p>
 </details>
-<hr />
+<hr>
 <h4 id="8-a-rotary-encoder-clk-fires-an-interrupt-and-at-that-moment-dt-reads-high-while-clk-just-went-low-which-direction-is-the-encoder-turning">8. A rotary encoder CLK fires an interrupt, and at that moment DT reads HIGH while CLK just went LOW. Which direction is the encoder turning?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2686,7 +2788,7 @@
 <p>The correct answer is <strong>A</strong>. In quadrature encoding: when CLK goes LOW and DT is different from CLK (DT is HIGH, CLK is LOW), the encoder is turning clockwise. When DT is the same as CLK (both LOW), it is counter-clockwise. This phase comparison of the two signals is the fundamental way quadrature encoding detects direction.</p>
 <p><strong>Concept Tested:</strong> Quadrature Encoding / Encoder Interrupt Handler</p>
 </details>
-<hr />
+<hr>
 <h4 id="9-what-unit-is-used-to-measure-microphone-sensitivity-and-what-does-a-value-of-26-dbfs-mean-in-practice">9. What unit is used to measure microphone sensitivity, and what does a value of −26 dBFS mean in practice?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2701,7 +2803,7 @@
 <p>The correct answer is <strong>B</strong>. dBFS (decibels relative to full scale) describes where a reference sound (94 dB SPL) lands in the microphone's digital output range. A sensitivity of −26 dBFS means the reference sound produces a signal 26 dB below the maximum digital value. Lower dBFS numbers (more negative) mean a quieter microphone that requires more amplification.</p>
 <p><strong>Concept Tested:</strong> Microphone Sensitivity / Sound Level Detection</p>
 </details>
-<hr />
+<hr>
 <h4 id="10-you-want-to-add-a-smooth-bounded-volume-control-to-a-music-player-which-input-device-is-most-appropriate">10. You want to add a smooth, bounded volume control to a music player. Which input device is most appropriate?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2716,7 +2818,7 @@
 <p>The correct answer is <strong>C</strong>. A rotary encoder with the <code>rotary</code> module configured for <code>min_val=0, max_val=100</code> and <code>RANGE_BOUNDED</code> mode creates a perfect volume knob: turning clockwise increases the value, counter-clockwise decreases it, and the value clamps between 0 and 100. A TTP223 is just on/off. A button press is on/off. A microphone reads environmental sound, not user intent.</p>
 <p><strong>Concept Tested:</strong> rotary Module / Rotary Encoder</p>
 </details>
-<hr />
+<hr>
 
 
 
@@ -2744,7 +2846,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -2754,13 +2856,13 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Content">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -2785,7 +2887,7 @@
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
             </div>
           </a>
         
@@ -2797,7 +2899,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -2825,5 +2927,7 @@
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

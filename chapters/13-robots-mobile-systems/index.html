@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -73,33 +70,43 @@
     
     
       
-        <meta  property="og:type"  content="website" >
+        <meta property="og:type" content="website">
       
-        <meta  property="og:title"  content="Robots and Mobile Systems - Learning MicroPython" >
+        <meta property="og:title" content="Robots and Mobile Systems - Learning MicroPython">
       
-        <meta  property="og:description"  content="Differential-drive chassis, forward/backward/turn motion, line following with IR sensors, collision avoidance, motor deadband calibration, and ping-servo obstacle scanning." >
+        <meta property="og:description" content="Differential-drive chassis, forward/backward/turn motion, line following with IR sensors, collision avoidance, motor deadband calibration, and ping-servo obstacle scanning.">
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/13-robots-mobile-systems/index.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/13-robots-mobile-systems/index.png">
       
-        <meta  property="og:image:type"  content="image/png" >
+        <meta property="og:image:type" content="image/png">
       
-        <meta  property="og:image:width"  content="1200" >
+        <meta property="og:image:width" content="1200">
       
-        <meta  property="og:image:height"  content="630" >
+        <meta property="og:image:height" content="630">
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/learning-micropython/chapters/13-robots-mobile-systems/" >
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/chapters/13-robots-mobile-systems/">
       
-        <meta  name="twitter:card"  content="summary_large_image" >
+        <meta name="twitter:card" content="summary_large_image">
       
-        <meta  name="twitter:title"  content="Robots and Mobile Systems - Learning MicroPython" >
+        <meta name="twitter:title" content="Robots and Mobile Systems - Learning MicroPython">
       
-        <meta  name="twitter:description"  content="Differential-drive chassis, forward/backward/turn motion, line following with IR sensors, collision avoidance, motor deadband calibration, and ping-servo obstacle scanning." >
+        <meta name="twitter:description" content="Differential-drive chassis, forward/backward/turn motion, line following with IR sensors, collision avoidance, motor deadband calibration, and ping-servo obstacle scanning.">
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/13-robots-mobile-systems/index.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/13-robots-mobile-systems/index.png">
       
     
     
-  </head>
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -139,7 +146,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -165,7 +172,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -174,15 +181,15 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -205,7 +212,7 @@
         <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -229,7 +236,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -250,7 +257,7 @@
       <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -1956,6 +1963,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -1974,6 +1985,97 @@
   
   <span class="md-ellipsis">
     MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
   </span>
   
 
@@ -2308,7 +2410,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2500,10 +2602,10 @@
 <li><a href="../09-temp-distance-sensors/">Chapter 9: Temperature, Humidity, and Distance Sensors</a></li>
 <li><a href="../12-motors-servos-steppers/">Chapter 12: Motors, Servos, and Stepper Motor Control</a></li>
 </ul>
-<hr />
+<hr>
 <div class="admonition mascot-welcome">
 <p class="admonition-title">Welcome to Chapter 13</p>
-<p><img alt="Monty waves hello" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+<p><img alt="Monty waves hello" class="mascot-admonition-img" src="../../img/mascot/welcome.png">
 Every concept you have learned so far comes together in this chapter. Motors, sensors, PWM, interrupts, and control logic combine to create a robot that navigates on its own. Whether you build a line follower, a wall avoider, or a bumper bot — you are about to make something that moves through the world by itself. This is one of the most exciting chapters in the entire course!</p>
 </div>
 <h2 id="the-robot-chassis-differential-drive">The Robot Chassis — Differential Drive</h2>
@@ -2553,7 +2655,7 @@ Every concept you have learned so far comes together in this chapter. Motors, se
 <p>A small castor wheel or ball bearing at the front (or back) provides stability without adding a third driven wheel.</p>
 <h3 id="wiring-two-motors">Wiring Two Motors</h3>
 <p>Using a DRV8833 dual-channel motor driver (Chapter 12), connect each motor to one H-bridge channel:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2591,7 +2693,7 @@ Every concept you have learned so far comes together in this chapter. Motors, se
 <span class="n">r_pwm</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">12</span><span class="p">));</span> <span class="n">r_pwm</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 
 <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="n">left_speed</span><span class="p">,</span> <span class="n">right_speed</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Speed: -65535 (full reverse) to 65535 (full forward).&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Speed: -65535 (full reverse) to 65535 (full forward)."""</span>
     <span class="k">for</span> <span class="n">speed</span><span class="p">,</span> <span class="n">in1</span><span class="p">,</span> <span class="n">in2</span><span class="p">,</span> <span class="n">pwm</span> <span class="ow">in</span> <span class="p">[</span>
         <span class="p">(</span><span class="n">left_speed</span><span class="p">,</span>  <span class="n">l_in1</span><span class="p">,</span> <span class="n">l_in2</span><span class="p">,</span> <span class="n">l_pwm</span><span class="p">),</span>
         <span class="p">(</span><span class="n">right_speed</span><span class="p">,</span> <span class="n">r_in1</span><span class="p">,</span> <span class="n">r_in2</span><span class="p">,</span> <span class="n">r_pwm</span><span class="p">)</span>
@@ -2604,7 +2706,7 @@ Every concept you have learned so far comes together in this chapter. Motors, se
             <span class="n">in1</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">in2</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span> <span class="n">pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">move</span><span class="p">(</span><span class="mi">40000</span><span class="p">,</span> <span class="mi">40000</span><span class="p">)</span>   <span class="c1"># forward at ~60% speed</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="motor-calibration-making-the-robot-go-straight">Motor Calibration — Making the Robot Go Straight</h2>
 <p>Real DC motors are not perfectly identical. Even motors from the same batch spin at slightly different speeds with the same PWM duty cycle. Without calibration, your robot veers to one side.</p>
 <p><strong>Robot calibration</strong> compensates for this difference by measuring how far each side drifts and adjusting the duty cycle of the faster motor downward.</p>
@@ -2617,10 +2719,10 @@ Every concept you have learned so far comes together in this chapter. Motors, se
 <li>Reduce the faster motor's duty cycle by 5% and repeat.</li>
 <li>When the robot reliably drives straight, record the calibration values.</li>
 </ol>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">CALIBRATION</span> <span class="o">=</span> <span class="mf">0.92</span>   <span class="c1"># right motor is 8% faster than left — apply this factor</span>
 <span class="n">right_duty</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">base_duty</span> <span class="o">*</span> <span class="n">CALIBRATION</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="line-follower-robot">Line Follower Robot</h2>
 <p>A <strong>line follower robot</strong> uses one or more <strong>IR line sensors</strong> (Chapter 11) to detect the contrast between a dark line and a light floor. The sensor array feeds back information to the robot's control loop, which steers the robot to stay on the line.</p>
 <p>A two-sensor line follower uses a simple if-elif logic:</p>
@@ -2630,7 +2732,7 @@ Every concept you have learned so far comes together in this chapter. Motors, se
 <li>Right sensor sees line, left sees floor → line is to the right → turn right.</li>
 <li>Both sensors see line → on a junction → continue straight.</li>
 </ul>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2659,16 +2761,16 @@ Every concept you have learned so far comes together in this chapter. Motors, se
         <span class="n">move</span><span class="p">(</span><span class="mi">40000</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>                     <span class="c1"># both on line (junction)</span>
         <span class="n">move</span><span class="p">(</span><span class="mi">40000</span><span class="p">,</span> <span class="mi">40000</span><span class="p">)</span>    <span class="c1"># continue straight</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <div class="admonition mascot-tip">
 <p class="admonition-title">Monty's Tip</p>
-<p><img alt="Monty giving a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+<p><img alt="Monty giving a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png">
 The line follower logic above is simple but jerky — it swings from full left to full right. For smoother following, try a proportional controller: measure how far off the line you are (the "error") and turn proportionally to the error. A PID controller (Proportional-Integral-Derivative) is the professional version of this idea and is used in everything from thermostats to self-driving cars.</p>
 </div>
 <h2 id="collision-avoidance-robot">Collision Avoidance Robot</h2>
 <p>A <strong>collision avoidance robot</strong> uses a distance sensor to detect walls and objects, then steers around them. This is the foundation of autonomous vacuum cleaners, warehouse robots, and self-driving cars.</p>
 <p><strong>Obstacle detection</strong> is the process of determining that something is in the robot's path. Using an HC-SR04 ultrasonic sensor mounted on the front:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2689,7 +2791,7 @@ The line follower logic above is simple but jerky — it swings from full left t
         <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
         <span class="n">move</span><span class="p">(</span><span class="o">-</span><span class="mi">30000</span><span class="p">,</span> <span class="mi">30000</span><span class="p">)</span>         <span class="c1"># spin right to avoid obstacle</span>
         <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p><strong>Collision avoidance logic</strong> for a more capable robot includes:</p>
 <ol>
 <li>Stop when an obstacle is detected within threshold distance.</li>
@@ -2700,7 +2802,7 @@ The line follower logic above is simple but jerky — it swings from full left t
 </ol>
 <h2 id="ping-servo-scanner">Ping-Servo Scanner</h2>
 <p>A <strong>ping-servo scanner</strong> mounts a distance sensor on a servo motor. The servo sweeps the sensor from side to side, and the robot records the distance at each angle — building a map of nearby obstacles.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2736,11 +2838,11 @@ The line follower logic above is simple but jerky — it swings from full left t
 <span class="n">scan_data</span> <span class="o">=</span> <span class="n">scan</span><span class="p">()</span>
 <span class="c1"># Find the direction with the most open space</span>
 <span class="n">best_angle</span><span class="p">,</span> <span class="n">best_dist</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">scan_data</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Most open: </span><span class="si">{</span><span class="n">best_angle</span><span class="si">}</span><span class="s2">° at </span><span class="si">{</span><span class="n">best_dist</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> cm&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Most open: </span><span class="si">{</span><span class="n">best_angle</span><span class="si">}</span><span class="s2">° at </span><span class="si">{</span><span class="n">best_dist</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> cm"</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="microswitch-bumper-bot">MicroSwitch Bumper Bot</h2>
 <p>A <strong>MicroSwitch bumper bot</strong> uses physical bump switches instead of (or in addition to) distance sensors. When the robot runs into an object, the switch triggers, the robot backs up and turns. Bumper bots are robust — they work in darkness, with reflective or transparent objects, and with any surface that a distance sensor might miss.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2771,15 +2873,15 @@ The line follower logic above is simple but jerky — it swings from full left t
         <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">move</span><span class="p">(</span><span class="mi">40000</span><span class="p">,</span> <span class="mi">40000</span><span class="p">)</span>         <span class="c1"># forward</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h4 id="diagram-collision-avoidance-logic-flowchart">Diagram: Collision Avoidance Logic Flowchart</h4>
 <iframe src="../../sims/collision-avoidance-flowchart/main.html" width="100%" height="512px" scrolling="no"></iframe>
 
 <details>
 <summary>Collision Avoidance Logic Flowchart MicroSim</summary>
 <p>Type: diagram
-<strong>sim-id:</strong> collision-avoidance-flowchart<br/>
-<strong>Library:</strong> p5.js<br/>
+<strong>sim-id:</strong> collision-avoidance-flowchart<br>
+<strong>Library:</strong> p5.js<br>
 <strong>Status:</strong> Specified</p>
 <p>Bloom Level: Analyze (L4)
 Bloom Verb: trace
@@ -2815,7 +2917,7 @@ Learning Objective: Students can trace the control flow of a collision avoidance
 </details>
 <div class="admonition mascot-celebration">
 <p class="admonition-title">Your Robot Lives!</p>
-<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png">
 You have built a robot that can follow a line, dodge walls, and scan its environment — entirely in MicroPython. Next, Chapter 14 lights things up brilliantly with NeoPixels and non-graphical displays. Your projects are about to become a lot more colorful!</p>
 </div>
 <h2 id="references">References</h2>
@@ -2847,7 +2949,7 @@ You have built a robot that can follow a line, dodge walls, and scan its environ
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -2857,13 +2959,13 @@ You have built a robot that can follow a line, dodge walls, and scan its environ
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../12-motors-servos-steppers/references/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Annotated References">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -2888,7 +2990,7 @@ You have built a robot that can follow a line, dodge walls, and scan its environ
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
             </div>
           </a>
         
@@ -2900,7 +3002,7 @@ You have built a robot that can follow a line, dodge walls, and scan its environ
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -2928,5 +3030,7 @@ You have built a robot that can follow a line, dodge walls, and scan its environ
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

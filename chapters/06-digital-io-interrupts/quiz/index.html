@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -73,33 +70,43 @@
     
     
       
-        <meta  property="og:type"  content="website" >
+        <meta property="og:type" content="website">
       
-        <meta  property="og:title"  content="Quiz - Learning MicroPython" >
+        <meta property="og:title" content="Quiz - Learning MicroPython">
       
-        <meta  property="og:description"  content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython." >
+        <meta property="og:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/06-digital-io-interrupts/quiz.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/06-digital-io-interrupts/quiz.png">
       
-        <meta  property="og:image:type"  content="image/png" >
+        <meta property="og:image:type" content="image/png">
       
-        <meta  property="og:image:width"  content="1200" >
+        <meta property="og:image:width" content="1200">
       
-        <meta  property="og:image:height"  content="630" >
+        <meta property="og:image:height" content="630">
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/learning-micropython/chapters/06-digital-io-interrupts/quiz/" >
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/chapters/06-digital-io-interrupts/quiz/">
       
-        <meta  name="twitter:card"  content="summary_large_image" >
+        <meta name="twitter:card" content="summary_large_image">
       
-        <meta  name="twitter:title"  content="Quiz - Learning MicroPython" >
+        <meta name="twitter:title" content="Quiz - Learning MicroPython">
       
-        <meta  name="twitter:description"  content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython." >
+        <meta name="twitter:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/06-digital-io-interrupts/quiz.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/06-digital-io-interrupts/quiz.png">
       
     
     
-  </head>
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -139,7 +146,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -165,7 +172,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -174,15 +181,15 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -205,7 +212,7 @@
         <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -229,7 +236,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -250,7 +257,7 @@
       <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -2086,6 +2093,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -2104,6 +2115,97 @@
   
   <span class="md-ellipsis">
     MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
   </span>
   
 
@@ -2438,7 +2540,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2566,7 +2668,7 @@
 
 <h1 id="quiz-digital-input-output-and-interrupts">Quiz: Digital Input, Output, and Interrupts</h1>
 <p>Test your understanding of GPIO control, button reading, debouncing, and interrupt handlers with these questions.</p>
-<hr />
+<hr>
 <h4 id="1-what-are-the-only-two-possible-states-for-a-gpio-pin-in-digital-mode">1. What are the only two possible states for a GPIO pin in digital mode?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2581,7 +2683,7 @@
 <p>The correct answer is <strong>B</strong>. In digital electronics, a GPIO pin is either HIGH (at or near 3.3 V on the Pico) or LOW (at or near 0 V / GND). There are no in-between states in digital mode. This binary language of HIGH and LOW is how every LED, button, switch, and digital sensor communicates with the Pico.</p>
 <p><strong>Concept Tested:</strong> HIGH and LOW States / Digital Signal</p>
 </details>
-<hr />
+<hr>
 <h4 id="2-which-micropython-code-creates-a-gpio-output-pin-on-gp15">2. Which MicroPython code creates a GPIO output pin on GP15?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2596,7 +2698,7 @@
 <p>The correct answer is <strong>C</strong>. <code>Pin(15, Pin.OUT)</code> creates a <code>Pin</code> object for GPIO 15 in output mode. The first argument is the GPIO number, and <code>Pin.OUT</code> sets the direction as output so your code can drive the pin HIGH or LOW. <code>Pin.IN</code> would make it an input for reading, not controlling.</p>
 <p><strong>Concept Tested:</strong> machine.Pin Class / Pin.OUT Mode</p>
 </details>
-<hr />
+<hr>
 <h4 id="3-what-does-ledtoggle-do">3. What does <code>led.toggle()</code> do?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2611,7 +2713,7 @@
 <p>The correct answer is <strong>A</strong>. <code>pin.toggle()</code> flips the current output state — if the pin is HIGH it becomes LOW, and if it is LOW it becomes HIGH. This is useful in blinking loops where you do not need to track the current state — just call <code>toggle()</code> and the LED switches between on and off each time.</p>
 <p><strong>Concept Tested:</strong> Pin.value() Method / LED Blink Program</p>
 </details>
-<hr />
+<hr>
 <h4 id="4-a-button-is-wired-between-gp14-and-gnd-with-pinpull_up-active-what-does-buttonvalue-return-when-the-button-is-not-pressed">4. A button is wired between GP14 and GND with <code>Pin.PULL_UP</code> active. What does <code>button.value()</code> return when the button is NOT pressed?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2626,7 +2728,7 @@
 <p>The correct answer is <strong>B</strong>. With <code>Pin.PULL_UP</code>, the internal pull-up resistor connects the pin to 3.3 V. When the button is not pressed, no other connection exists, so the pull-up holds the pin at 3.3 V, and <code>button.value()</code> returns <code>1</code> (HIGH). When the button is pressed, it connects the pin to GND, overcoming the pull-up and pulling the reading to <code>0</code> (LOW).</p>
 <p><strong>Concept Tested:</strong> Button Input / Pull-Up Resistor</p>
 </details>
-<hr />
+<hr>
 <h4 id="5-what-is-contact-bounce-and-why-is-it-a-problem">5. What is contact bounce, and why is it a problem?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2641,7 +2743,7 @@
 <p>The correct answer is <strong>B</strong>. When you press a mechanical button, the metal contacts physically bounce before settling, creating dozens of rapid HIGH/LOW transitions in just a few milliseconds. The Pico reads all of these as separate presses. Without debouncing, one button press can register as many button presses, causing unpredictable behavior.</p>
 <p><strong>Concept Tested:</strong> Button Debouncing</p>
 </details>
-<hr />
+<hr>
 <h4 id="6-how-does-software-debouncing-work">6. How does software debouncing work?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2656,7 +2758,7 @@
 <p>The correct answer is <strong>B</strong>. Software debouncing adds a short delay (typically 20–50 ms) after detecting a button state change. Then it reads the button again. If the button is still pressed after the delay, the press is considered real. This gives the contacts time to stop bouncing before accepting the input as valid.</p>
 <p><strong>Concept Tested:</strong> Software Debouncing / Button Debouncing</p>
 </details>
-<hr />
+<hr>
 <h4 id="7-what-is-the-difference-between-active-high-and-active-low-button-wiring">7. What is the difference between active HIGH and active LOW button wiring?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2671,7 +2773,7 @@
 <p>The correct answer is <strong>B</strong>. Active HIGH: the input reads HIGH (1) when the event occurs, typically using <code>Pin.PULL_DOWN</code>. Active LOW: the input reads LOW (0) when the event occurs, typically using <code>Pin.PULL_UP</code> with the button connecting the pin to GND. Most buttons in this course use active LOW wiring, which is why checking for <code>button.value() == 0</code> means "pressed."</p>
 <p><strong>Concept Tested:</strong> Active High vs Active Low</p>
 </details>
-<hr />
+<hr>
 <h4 id="8-what-is-an-interrupt-handler-interrupt-service-routine">8. What is an interrupt handler (interrupt service routine)?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2686,7 +2788,7 @@
 <p>The correct answer is <strong>B</strong>. An interrupt handler is a function that runs automatically when a hardware event (like a pin going HIGH or LOW) occurs. When the interrupt fires, the main program pauses, the handler runs, and then the main program continues exactly where it left off. This allows the Pico to react instantly to events without constantly checking in a loop.</p>
 <p><strong>Concept Tested:</strong> Interrupt Handler / IRQ (Interrupt Request)</p>
 </details>
-<hr />
+<hr>
 <h4 id="9-which-pinirq-trigger-fires-when-an-active-low-button-is-pressed">9. Which <code>Pin.irq()</code> trigger fires when an active LOW button is pressed?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2701,7 +2803,7 @@
 <p>The correct answer is <strong>D</strong>. With an active LOW button (using <code>PULL_UP</code>), pressing the button connects the pin to GND, causing the voltage to fall from 3.3 V (HIGH) to 0 V (LOW). This HIGH-to-LOW transition is called a falling edge, so you use <code>Pin.IRQ_FALLING</code>. For release detection, use <code>Pin.IRQ_RISING</code>.</p>
 <p><strong>Concept Tested:</strong> Pin.irq() Method / IRQ</p>
 </details>
-<hr />
+<hr>
 <h4 id="10-why-should-interrupt-handler-functions-be-kept-very-short">10. Why should interrupt handler functions be kept very short?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2716,7 +2818,7 @@
 <p>The correct answer is <strong>C</strong>. Interrupt handlers run at interrupt priority, pausing the entire main program. If the handler is long — for example, calling <code>sleep()</code>, printing over serial, or doing heavy math — the main program stays paused for that entire time, potentially missing other events. Best practice: set a flag or increment a counter in the handler, then let the main loop do the real work.</p>
 <p><strong>Concept Tested:</strong> Interrupt Handler / IRQ</p>
 </details>
-<hr />
+<hr>
 
 
 
@@ -2744,7 +2846,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -2754,13 +2856,13 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Content">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -2785,7 +2887,7 @@
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
             </div>
           </a>
         
@@ -2797,7 +2899,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -2825,5 +2927,7 @@
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

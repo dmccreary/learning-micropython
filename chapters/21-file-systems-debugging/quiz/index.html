@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -73,33 +70,43 @@
     
     
       
-        <meta  property="og:type"  content="website" >
+        <meta property="og:type" content="website">
       
-        <meta  property="og:title"  content="Quiz - Learning MicroPython" >
+        <meta property="og:title" content="Quiz - Learning MicroPython">
       
-        <meta  property="og:description"  content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython." >
+        <meta property="og:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/21-file-systems-debugging/quiz.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/21-file-systems-debugging/quiz.png">
       
-        <meta  property="og:image:type"  content="image/png" >
+        <meta property="og:image:type" content="image/png">
       
-        <meta  property="og:image:width"  content="1200" >
+        <meta property="og:image:width" content="1200">
       
-        <meta  property="og:image:height"  content="630" >
+        <meta property="og:image:height" content="630">
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/learning-micropython/chapters/21-file-systems-debugging/quiz/" >
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/chapters/21-file-systems-debugging/quiz/">
       
-        <meta  name="twitter:card"  content="summary_large_image" >
+        <meta name="twitter:card" content="summary_large_image">
       
-        <meta  name="twitter:title"  content="Quiz - Learning MicroPython" >
+        <meta name="twitter:title" content="Quiz - Learning MicroPython">
       
-        <meta  name="twitter:description"  content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython." >
+        <meta name="twitter:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/21-file-systems-debugging/quiz.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/21-file-systems-debugging/quiz.png">
       
     
     
-  </head>
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -139,7 +146,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -165,7 +172,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -174,15 +181,15 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -205,7 +212,7 @@
         <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -229,7 +236,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -250,7 +257,7 @@
       <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -2086,6 +2093,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -2104,6 +2115,97 @@
   
   <span class="md-ellipsis">
     MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
   </span>
   
 
@@ -2438,7 +2540,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2566,7 +2668,7 @@
 
 <h1 id="quiz-file-systems-audio-files-and-debugging">Quiz: File Systems, Audio Files, and Debugging</h1>
 <p>Test your understanding of MicroPython file I/O, SD cards, WAV playback, and debugging strategies with these questions.</p>
-<hr />
+<hr>
 <h4 id="1-which-function-lists-the-files-and-folders-on-the-picos-flash-file-system">1. Which function lists the files and folders on the Pico's flash file system?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2581,12 +2683,12 @@
 <p>The correct answer is <strong>A</strong>. <code>uos.listdir("/")</code> returns a list of filenames and directory names at the root of the Pico's file system. You can also pass a subdirectory path like <code>uos.listdir("/data")</code>. Import it with <code>import uos</code> in MicroPython. The equivalent in standard Python is <code>os.listdir("/")</code>.</p>
 <p><strong>Concept Tested:</strong> uos.listdir() / MicroPython File System</p>
 </details>
-<hr />
+<hr>
 <h4 id="2-what-does-the-following-code-do">2. What does the following code do?</h4>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;log.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Reading: 22.5</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"log.txt"</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"Reading: 22.5</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
 <div class="upper-alpha">
 <ol>
 <li>Reads the file "log.txt" and prints each line that contains the word "Reading"</li>
@@ -2600,7 +2702,7 @@
 <p>The correct answer is <strong>B</strong>. Opening a file with mode <code>"a"</code> (append) adds new content to the end of the file without erasing what is already there. Mode <code>"w"</code> would overwrite. Mode <code>"r"</code> would read. The <code>with</code> statement ensures the file is properly closed after writing, even if an error occurs. The <code>\n</code> adds a newline so each log entry appears on its own line.</p>
 <p><strong>Concept Tested:</strong> File Write / File Append Mode</p>
 </details>
-<hr />
+<hr>
 <h4 id="3-a-traceback-error-ends-with-valueerror-invalid-literal-for-int-with-base-10-abc-where-should-you-look-first-to-fix-the-bug">3. A traceback error ends with <code>ValueError: invalid literal for int() with base 10: 'abc'</code>. Where should you look first to fix the bug?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2615,7 +2717,7 @@
 <p>The correct answer is <strong>B</strong>. Python tracebacks show a call chain from top (oldest call) to bottom (newest/most recent). The bottom line is the exact line that crashed. In this case, <code>int('abc')</code> was called somewhere with a string that cannot be converted to an integer. Find that line, then check where the string <code>'abc'</code> came from — perhaps a sensor returned unexpected text data.</p>
 <p><strong>Concept Tested:</strong> Reading Tracebacks / Python Error Messages</p>
 </details>
-<hr />
+<hr>
 <h4 id="4-why-is-an-sd-card-more-useful-than-the-picos-built-in-flash-storage-for-data-logging-projects">4. Why is an SD card more useful than the Pico's built-in flash storage for data logging projects?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2630,7 +2732,7 @@
 <p>The correct answer is <strong>B</strong>. The Pico has about 2 MB of total flash, and after MicroPython firmware and your code, only a fraction is available for data files. A 32 GB SD card provides roughly 16,000 times more storage. SD cards also allow easy data retrieval: remove the card, insert it into a computer, and open the CSV files in a spreadsheet — no USB cable or special tools needed.</p>
 <p><strong>Concept Tested:</strong> SD Card vs Flash Storage</p>
 </details>
-<hr />
+<hr>
 <h4 id="5-when-reading-a-wav-file-for-i2s-playback-what-does-the-chunk-size-parameter-control">5. When reading a WAV file for I2S playback, what does the chunk size parameter control?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2645,7 +2747,7 @@
 <p>The correct answer is <strong>B</strong>. The chunk size (e.g., 1024 or 4096 bytes) determines how many audio samples are loaded into RAM at once before being sent to the I2S peripheral. A very small chunk size causes frequent file reads that may stutter; a very large chunk size wastes scarce RAM. The chunk size does not affect sample rate or channel count — those are set by the I2S configuration.</p>
 <p><strong>Concept Tested:</strong> WAV Audio Playback / I2S Audio Buffer</p>
 </details>
-<hr />
+<hr>
 <h4 id="6-a-students-code-prints-sensor-values-that-look-correct-but-the-oled-display-shows-nothing-what-is-the-most-logical-first-debugging-step">6. A student's code prints sensor values that look correct but the OLED display shows nothing. What is the most logical first debugging step?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2660,7 +2762,7 @@
 <p>The correct answer is <strong>B</strong>. Before replacing hardware or changing settings, confirm the software can communicate with the device at all. <code>i2c.scan()</code> returns a list of responding I2C addresses. If the list is empty or does not include <code>0x3C</code>, the problem is in the physical wiring — wrong pins, loose connection, or power issue. This is faster and more informative than any other first step.</p>
 <p><strong>Concept Tested:</strong> I2C Debugging / i2c.scan() Troubleshooting</p>
 </details>
-<hr />
+<hr>
 <h4 id="7-what-does-the-thonny-heap-viewer-show-and-why-is-it-useful-for-embedded-projects">7. What does the Thonny heap viewer show, and why is it useful for embedded projects?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2675,7 +2777,7 @@
 <p>The correct answer is <strong>A</strong>. Thonny's heap viewer displays a color-coded map of the Pico's RAM, showing which blocks are in use and which are free. This is valuable for embedded projects because the Pico has only 264 KB of RAM total. If the heap is nearly full and shrinking over time, your program has a memory leak — objects are being created but not garbage-collected. Run <code>gc.collect()</code> and check if free memory increases.</p>
 <p><strong>Concept Tested:</strong> Thonny Heap Viewer / Memory Management</p>
 </details>
-<hr />
+<hr>
 <h4 id="8-a-student-wrote-a-data-logger-but-finds-the-flash-file-system-has-become-corrupted-after-unexpected-power-loss-during-a-write-what-strategy-prevents-this">8. A student wrote a data logger but finds the flash file system has become corrupted after unexpected power loss during a write. What strategy prevents this?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2690,7 +2792,7 @@
 <p>The correct answer is <strong>B</strong>. Atomic write patterns minimize corruption risk: write new data to a temporary file (e.g., <code>log_tmp.txt</code>), close it successfully, then use <code>uos.rename("log_tmp.txt", "log.txt")</code> to replace the old file. The rename operation is much faster than a full write, so the window for power-loss corruption is tiny. Option D is also reasonable but loses data if power fails before the shutdown signal arrives.</p>
 <p><strong>Concept Tested:</strong> File System Reliability / Data Logging</p>
 </details>
-<hr />
+<hr>
 <h4 id="9-evaluate-this-debugging-approach-a-student-adds-printftemptemp-humidhumid-statements-throughout-their-sensor-code-what-is-the-advantage-and-limitation-of-this-approach">9. Evaluate this debugging approach: a student adds <code>print(f"temp={temp}, humid={humid}")</code> statements throughout their sensor code. What is the advantage and limitation of this approach?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2705,7 +2807,7 @@
 <p>The correct answer is <strong>A</strong>. Print debugging is fast, requires no extra tools, and works in any environment — making it the most commonly used first debugging step. The limitations are real but manageable: each print takes a small amount of time (usually under 1 ms over USB serial) which rarely matters; and print statements should be commented out or wrapped in a debug flag before final deployment to keep output clean.</p>
 <p><strong>Concept Tested:</strong> Print Debugging / Debugging Strategy</p>
 </details>
-<hr />
+<hr>
 <h4 id="10-a-students-wav-playback-code-works-perfectly-when-tested-alone-but-stutters-when-combined-with-sensor-reading-code-what-is-the-most-likely-cause-and-best-solution">10. A student's WAV playback code works perfectly when tested alone, but stutters when combined with sensor-reading code. What is the most likely cause and best solution?</h4>
 <div class="upper-alpha">
 <ol>
@@ -2720,7 +2822,7 @@
 <p>The correct answer is <strong>B</strong>. Audio playback requires the CPU to refill the I2S buffer every few milliseconds. If sensor code (especially blocking calls like DHT read delays or HC-SR04 echo timing) takes longer than the buffer duration, the I2S peripheral runs out of data and produces a glitch. Moving sensor reading to Core 1 gives Core 0 dedicated time to keep the I2S buffer full, eliminating the stutter.</p>
 <p><strong>Concept Tested:</strong> Multi-Core Audio / WAV Audio Playback / Debugging Strategy</p>
 </details>
-<hr />
+<hr>
 
 
 
@@ -2748,7 +2850,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -2758,13 +2860,13 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Content">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -2789,7 +2891,7 @@
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
             </div>
           </a>
         
@@ -2801,7 +2903,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -2829,5 +2931,7 @@
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

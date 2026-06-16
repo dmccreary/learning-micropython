@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -73,33 +70,43 @@
     
     
       
-        <meta  property="og:type"  content="website" >
+        <meta property="og:type" content="website">
       
-        <meta  property="og:title"  content="Analog Signals, ADC, and Pulse-Width Modulation - Learning MicroPython" >
+        <meta property="og:title" content="Analog Signals, ADC, and Pulse-Width Modulation - Learning MicroPython">
       
-        <meta  property="og:description"  content="Reading varying voltages with the Pico's ADC, scaling 16-bit readings, using potentiometers and light sensors, and controlling brightness and speed with PWM." >
+        <meta property="og:description" content="Reading varying voltages with the Pico's ADC, scaling 16-bit readings, using potentiometers and light sensors, and controlling brightness and speed with PWM.">
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/07-analog-adc-pwm/index.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/07-analog-adc-pwm/index.png">
       
-        <meta  property="og:image:type"  content="image/png" >
+        <meta property="og:image:type" content="image/png">
       
-        <meta  property="og:image:width"  content="1200" >
+        <meta property="og:image:width" content="1200">
       
-        <meta  property="og:image:height"  content="630" >
+        <meta property="og:image:height" content="630">
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/learning-micropython/chapters/07-analog-adc-pwm/" >
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/chapters/07-analog-adc-pwm/">
       
-        <meta  name="twitter:card"  content="summary_large_image" >
+        <meta name="twitter:card" content="summary_large_image">
       
-        <meta  name="twitter:title"  content="Analog Signals, ADC, and Pulse-Width Modulation - Learning MicroPython" >
+        <meta name="twitter:title" content="Analog Signals, ADC, and Pulse-Width Modulation - Learning MicroPython">
       
-        <meta  name="twitter:description"  content="Reading varying voltages with the Pico's ADC, scaling 16-bit readings, using potentiometers and light sensors, and controlling brightness and speed with PWM." >
+        <meta name="twitter:description" content="Reading varying voltages with the Pico's ADC, scaling 16-bit readings, using potentiometers and light sensors, and controlling brightness and speed with PWM.">
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/07-analog-adc-pwm/index.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/07-analog-adc-pwm/index.png">
       
     
     
-  </head>
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -139,7 +146,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -165,7 +172,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -174,15 +181,15 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -205,7 +212,7 @@
         <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -229,7 +236,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -250,7 +257,7 @@
       <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -1956,6 +1963,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -1974,6 +1985,97 @@
   
   <span class="md-ellipsis">
     MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
   </span>
   
 
@@ -2308,7 +2410,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2581,10 +2683,10 @@
 <ul>
 <li><a href="../06-digital-io-interrupts/">Chapter 6: Digital Input, Output, and Interrupts</a></li>
 </ul>
-<hr />
+<hr>
 <div class="admonition mascot-welcome">
 <p class="admonition-title">Welcome to Chapter 7</p>
-<p><img alt="Monty waves hello" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+<p><img alt="Monty waves hello" class="mascot-admonition-img" src="../../img/mascot/welcome.png">
 The real world is not made of just ones and zeros — it has shades of brightness, degrees of warmth, and gradients of everything in between. In this chapter you will read that continuous world with the Pico's ADC, and control it smoothly with PWM. By the end you will be fading LEDs and setting up the concepts that drive motors and servos in later chapters!</p>
 </div>
 <h2 id="analog-vs-digital-signals">Analog vs Digital Signals</h2>
@@ -2600,22 +2702,22 @@ The real world is not made of just ones and zeros — it has shades of brightnes
 <p>The Pico has three ADC-capable pins: <strong>GP26 (ADC0)</strong>, <strong>GP27 (ADC1)</strong>, and <strong>GP28 (ADC2)</strong>. There is also a built-in temperature sensor on ADC channel 4.</p>
 <h3 id="the-machineadc-class">The machine.ADC Class</h3>
 <p>Import <code>ADC</code> from <code>machine</code>, then create an ADC object using the GPIO pin number:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span>
 
 <span class="n">pot</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">26</span><span class="p">)</span>   <span class="c1"># potentiometer on GP26 (ADC channel 0)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="adcread_u16-method">ADC.read_u16() Method</h3>
 <p>The <strong><code>ADC.read_u16()</code> method</strong> reads the current voltage and returns an integer from 0 to 65535.</p>
 <ul>
 <li><code>0</code> means 0 V (GND)</li>
 <li><code>65535</code> means 3.3 V (full scale)</li>
 </ul>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">raw</span> <span class="o">=</span> <span class="n">pot</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>   <span class="c1"># e.g., 32768 when the potentiometer is at 50%</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="potentiometers-variable-resistors">Potentiometers — Variable Resistors</h2>
 <p>A <strong>potentiometer</strong> (pot) is a three-terminal resistor with a sliding wiper. As you turn the knob, the wiper moves, changing how much resistance is between each terminal and the wiper.</p>
 <p>When wired with one end to 3.3 V, the other end to GND, and the wiper to an ADC pin, the potentiometer acts as a <strong>voltage divider</strong>. A <strong>voltage divider circuit</strong> takes an input voltage and outputs a fraction of it, set by the ratio of two resistances.</p>
@@ -2625,7 +2727,7 @@ The real world is not made of just ones and zeros — it has shades of brightnes
 - Middle: wiper at 1.65 V → ADC reads ~32768</p>
 <h3 id="scaling-adc-values">Scaling ADC Values</h3>
 <p>Raw ADC values (0–65535) are not usually the most useful form. <strong>Scaling</strong> maps them to a range that makes sense for your application.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2657,12 +2759,12 @@ The real world is not made of just ones and zeros — it has shades of brightnes
     <span class="c1"># Scale to an angle (0–180 degrees, for a servo)</span>
     <span class="n">angle</span> <span class="o">=</span> <span class="n">raw</span> <span class="o">/</span> <span class="mi">65535</span> <span class="o">*</span> <span class="mi">180</span>
 
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Raw: </span><span class="si">{</span><span class="n">raw</span><span class="si">}</span><span class="s2">  %: </span><span class="si">{</span><span class="n">percent</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">  V: </span><span class="si">{</span><span class="n">voltage</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  Angle: </span><span class="si">{</span><span class="n">angle</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Raw: </span><span class="si">{</span><span class="n">raw</span><span class="si">}</span><span class="s2">  %: </span><span class="si">{</span><span class="n">percent</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">  V: </span><span class="si">{</span><span class="n">voltage</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  Angle: </span><span class="si">{</span><span class="n">angle</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="light-sensors-photoresistors-and-ldrs">Light Sensors — Photoresistors and LDRs</h2>
 <p>A <strong>photoresistor</strong> (also called a <strong>light-dependent resistor</strong> or <strong>LDR</strong>) changes its resistance based on the amount of light hitting it. In bright light, resistance is low (a few hundred ohms). In darkness, resistance is high (a few megaohms).</p>
 <p>Wire an LDR and a fixed resistor (10 kΩ) as a voltage divider between 3.3 V and GND, with the ADC pin in the middle. As light changes, the ADC reading changes.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2682,20 +2784,20 @@ The real world is not made of just ones and zeros — it has shades of brightnes
     <span class="n">reading</span> <span class="o">=</span> <span class="n">ldr</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
     <span class="c1"># Higher reading = more light (with LDR on top, fixed resistor on bottom)</span>
     <span class="k">if</span> <span class="n">reading</span> <span class="o">&gt;</span> <span class="mi">40000</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bright&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Bright"</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">reading</span> <span class="o">&gt;</span> <span class="mi">20000</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dim&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Dim"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dark&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Dark"</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
 <h4 id="diagram-adc-and-potentiometer-explorer">Diagram: ADC and Potentiometer Explorer</h4>
 <iframe src="../../sims/adc-potentiometer-explorer/main.html" width="100%" height="482px" scrolling="no"></iframe>
 
 <details>
 <summary>ADC and Potentiometer Explorer MicroSim</summary>
 <p>Type: microsim
-<strong>sim-id:</strong> adc-potentiometer-explorer<br/>
-<strong>Library:</strong> p5.js<br/>
+<strong>sim-id:</strong> adc-potentiometer-explorer<br>
+<strong>Library:</strong> p5.js<br>
 <strong>Status:</strong> Specified</p>
 <p>Bloom Level: Apply (L3)
 Bloom Verb: calculate
@@ -2723,14 +2825,14 @@ Learning Objective: Students can read a potentiometer value, interpret the raw A
 <li><strong>PWM frequency</strong> — how many complete on/off cycles happen per second, measured in hertz (Hz). For LEDs: 50–1,000 Hz is typical (faster prevents flicker). For servos: 50 Hz is required. For motors: 10–20 kHz is common.</li>
 <li><strong>PWM duty cycle</strong> — the fraction of each cycle that the pin is HIGH. A 0% duty cycle is always off. A 100% duty cycle is always on. A 50% duty cycle means the pin is on for half of each cycle.</li>
 </ul>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>Duty cycle 10%:   ▌   ▌   ▌   (LED barely glows)
 Duty cycle 50%:   ▌▌▌  ▌▌▌  ▌▌▌   (LED at half brightness)
 Duty cycle 90%:   ▌▌▌▌▌▌▌▌▌  ▌  (LED nearly full brightness)
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="the-machinepwm-class">The machine.PWM Class</h3>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2749,10 +2851,10 @@ Duty cycle 90%:   ▌▌▌▌▌▌▌▌▌  ▌  (LED nearly full brightness)
 
 <span class="c1"># Set duty cycle: 0 = always off, 65535 = always on</span>
 <span class="n">pwm_led</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32768</span><span class="p">)</span>   <span class="c1"># 50% — half brightness</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="pwmduty_u16-method">PWM.duty_u16() Method</h3>
 <p><strong><code>PWM.duty_u16(value)</code></strong> sets the duty cycle as a number from 0 to 65535. The scale matches <code>ADC.read_u16()</code> output — this makes it convenient to connect a potentiometer directly to PWM brightness:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2769,10 +2871,10 @@ Duty cycle 90%:   ▌▌▌▌▌▌▌▌▌  ▌  (LED nearly full brightness)
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">duty</span> <span class="o">=</span> <span class="n">pot</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>   <span class="c1"># 0–65535 from the potentiometer</span>
     <span class="n">led</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty</span><span class="p">)</span>      <span class="c1"># directly controls brightness!</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="led-fade-with-pwm">LED Fade with PWM</h2>
 <p>The classic <strong>LED fade</strong> gradually increases the duty cycle from 0 to full, then decreases it back to 0, creating a breathing effect:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2797,14 +2899,14 @@ Duty cycle 90%:   ▌▌▌▌▌▌▌▌▌  ▌  (LED nearly full brightness)
     <span class="k">for</span> <span class="n">duty</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">65535</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">512</span><span class="p">):</span> <span class="c1"># ramp down</span>
         <span class="n">led</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty</span><span class="p">)</span>
         <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="pwm-for-servo-control">PWM for Servo Control</h3>
 <p>Servo motors require a very specific PWM signal: <strong>50 Hz frequency</strong> and a pulse width between 1 ms (0°) and 2 ms (180°). At 50 Hz, each cycle is 20 ms, so:</p>
 <ul>
 <li>1 ms pulse = 1/20 = 5% duty cycle = <code>0.05 × 65535 ≈ 3277</code></li>
 <li>2 ms pulse = 2/20 = 10% duty cycle = <code>0.10 × 65535 ≈ 6554</code></li>
 </ul>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2827,18 +2929,18 @@ Duty cycle 90%:   ▌▌▌▌▌▌▌▌▌  ▌  (LED nearly full brightness)
     <span class="n">servo</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty</span><span class="p">)</span>
 
 <span class="n">set_angle</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>   <span class="c1"># center position</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="pwm-for-motor-speed">PWM for Motor Speed</h3>
 <p>DC motors respond to the average voltage — higher duty cycle means faster rotation. You typically pair PWM with a motor driver chip (Chapter 12), but the PWM concept is the same:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">motor</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">17</span><span class="p">))</span>
 <span class="n">motor</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>       <span class="c1"># 10 kHz — above audible range, no motor whine</span>
 <span class="n">motor</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32768</span><span class="p">)</span>   <span class="c1"># 50% speed</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <div class="admonition mascot-thinking">
 <p class="admonition-title">What Is Soft PWM?</p>
-<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png">
 <strong>Soft PWM</strong> (software PWM) generates a PWM-like signal using the CPU itself — switching a pin HIGH and LOW with <code>utime.sleep_us()</code> loops. It works on any GPIO pin but is imprecise because the CPU can be interrupted. Hardware PWM uses dedicated silicon that runs independently of your code. Always use hardware PWM when you can. Soft PWM is only for quick experiments on pins that do not have hardware PWM support.</p>
 </div>
 <h2 id="key-takeaways">Key Takeaways</h2>
@@ -2858,7 +2960,7 @@ Duty cycle 90%:   ▌▌▌▌▌▌▌▌▌  ▌  (LED nearly full brightness)
 </details>
 <div class="admonition mascot-celebration">
 <p class="admonition-title">Analog and PWM Mastered!</p>
-<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png">
 You can now read the analog world and control devices with smooth PWM signals. A potentiometer controls an LED's brightness, and the same concept drives servos and motors. In Chapter 8 you will learn the communication protocols — I2C, SPI, and UART — that let the Pico talk to sensors, displays, and other chips. The sensor library chapters are almost in reach!</p>
 </div>
 <h2 id="references">References</h2>
@@ -2890,7 +2992,7 @@ You can now read the analog world and control devices with smooth PWM signals. A
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -2900,13 +3002,13 @@ You can now read the analog world and control devices with smooth PWM signals. A
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../06-digital-io-interrupts/references/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Annotated References">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -2931,7 +3033,7 @@ You can now read the analog world and control devices with smooth PWM signals. A
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
             </div>
           </a>
         
@@ -2943,7 +3045,7 @@ You can now read the analog world and control devices with smooth PWM signals. A
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -2971,5 +3073,7 @@ You can now read the analog world and control devices with smooth PWM signals. A
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

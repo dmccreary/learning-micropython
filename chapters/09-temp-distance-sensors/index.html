@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -73,33 +70,43 @@
     
     
       
-        <meta  property="og:type"  content="website" >
+        <meta property="og:type" content="website">
       
-        <meta  property="og:title"  content="Temperature, Humidity, and Distance Sensors - Learning MicroPython" >
+        <meta property="og:title" content="Temperature, Humidity, and Distance Sensors - Learning MicroPython">
       
-        <meta  property="og:description"  content="DHT11/DHT22/BME280 temperature and humidity, DS18B20 1-Wire, HC-SR04 ultrasonic distance, VL53L0X time-of-flight laser ranging, and IR distance sensing with MicroPython." >
+        <meta property="og:description" content="DHT11/DHT22/BME280 temperature and humidity, DS18B20 1-Wire, HC-SR04 ultrasonic distance, VL53L0X time-of-flight laser ranging, and IR distance sensing with MicroPython.">
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/09-temp-distance-sensors/index.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/09-temp-distance-sensors/index.png">
       
-        <meta  property="og:image:type"  content="image/png" >
+        <meta property="og:image:type" content="image/png">
       
-        <meta  property="og:image:width"  content="1200" >
+        <meta property="og:image:width" content="1200">
       
-        <meta  property="og:image:height"  content="630" >
+        <meta property="og:image:height" content="630">
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/learning-micropython/chapters/09-temp-distance-sensors/" >
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/chapters/09-temp-distance-sensors/">
       
-        <meta  name="twitter:card"  content="summary_large_image" >
+        <meta name="twitter:card" content="summary_large_image">
       
-        <meta  name="twitter:title"  content="Temperature, Humidity, and Distance Sensors - Learning MicroPython" >
+        <meta name="twitter:title" content="Temperature, Humidity, and Distance Sensors - Learning MicroPython">
       
-        <meta  name="twitter:description"  content="DHT11/DHT22/BME280 temperature and humidity, DS18B20 1-Wire, HC-SR04 ultrasonic distance, VL53L0X time-of-flight laser ranging, and IR distance sensing with MicroPython." >
+        <meta name="twitter:description" content="DHT11/DHT22/BME280 temperature and humidity, DS18B20 1-Wire, HC-SR04 ultrasonic distance, VL53L0X time-of-flight laser ranging, and IR distance sensing with MicroPython.">
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/09-temp-distance-sensors/index.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/09-temp-distance-sensors/index.png">
       
     
     
-  </head>
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -139,7 +146,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -165,7 +172,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -174,15 +181,15 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -205,7 +212,7 @@
         <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -229,7 +236,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -250,7 +257,7 @@
       <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -1956,6 +1963,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -1974,6 +1985,97 @@
   
   <span class="md-ellipsis">
     MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
   </span>
   
 
@@ -2308,7 +2410,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2536,20 +2638,20 @@
 <ul>
 <li><a href="../08-communication-protocols/">Chapter 8: Communication Protocols: I2C, SPI, and UART</a></li>
 </ul>
-<hr />
+<hr>
 <div class="admonition mascot-welcome">
 <p class="admonition-title">Welcome to Chapter 9</p>
-<p><img alt="Monty waves hello" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+<p><img alt="Monty waves hello" class="mascot-admonition-img" src="../../img/mascot/welcome.png">
 Your Pico is about to feel the world around it — temperature, humidity, air pressure, and distance. These are the sensors that make weather stations, robots, and smart devices. Each one has its own personality: DHT11 is the budget-friendly classic, BME280 is the precision all-rounder, HC-SR04 sounds its way through space. Let's meet them all!</p>
 </div>
 <h2 id="temperature-and-humidity-sensors">Temperature and Humidity Sensors</h2>
-<p><img alt="Temperature Sensors Infographic" src="temp-sensors-infographic.png" /></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="temp-sensors-infographic.png" data-desc-position="bottom"><img alt="Temperature Sensors Infographic" src="temp-sensors-infographic.png"></a></p>
 <p>Temperature and humidity sensors are among the most common components in beginner projects. They tell your Pico how warm and how moist the surrounding air is.</p>
 <h3 id="dht11-and-dht22-sensors">DHT11 and DHT22 Sensors</h3>
 <p>The <strong>DHT11</strong> is an inexpensive sensor that measures temperature (0–50 °C, ±2 °C accuracy) and relative humidity (20–80%, ±5%). It uses a simple single-wire protocol. The <strong>DHT22</strong> is the higher-accuracy version: temperature range −40 to 80 °C (±0.5 °C) and humidity 0–100% (±2%). Both look identical from the outside — four pins with the leftmost connecting to 3.3 V.</p>
 <p>Wire the DHT data pin to any GPIO pin, for example GP22. Add a 10 kΩ pull-up resistor from the data pin to 3.3 V (many breakout boards include this).</p>
 <p>MicroPython includes a built-in <strong><code>dht</code> module</strong> for both sensors:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2567,8 +2669,8 @@ Your Pico is about to feel the world around it — temperature, humidity, air pr
 <span class="n">temp</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">temperature</span><span class="p">()</span>           <span class="c1"># Celsius</span>
 <span class="n">humidity</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">humidity</span><span class="p">()</span>          <span class="c1"># percent</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperature: </span><span class="si">{</span><span class="n">temp</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C  Humidity: </span><span class="si">{</span><span class="n">humidity</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Temperature: </span><span class="si">{</span><span class="n">temp</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">°C  Humidity: </span><span class="si">{</span><span class="n">humidity</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
 <p>Three methods do all the work:</p>
 <ul>
 <li><strong><code>DHT.measure()</code></strong> — sends the trigger signal to start a reading. Wait at least 2 seconds between calls; the DHT sensor needs time to stabilize.</li>
@@ -2577,13 +2679,13 @@ Your Pico is about to feel the world around it — temperature, humidity, air pr
 </ul>
 <div class="admonition mascot-warning">
 <p class="admonition-title">Wait Between DHT Readings!</p>
-<p><img alt="Monty warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+<p><img alt="Monty warning" class="mascot-admonition-img" src="../../img/mascot/warning.png">
 The DHT11 and DHT22 need at least 1–2 seconds between measurements. Calling <code>measure()</code> faster than this returns stale or invalid data. Use <code>utime.sleep(2)</code> in your loop. Wrap the call in a try-except — a bad connection returns an <code>OSError</code>.</p>
 </div>
 <h3 id="bme280-temperature-humidity-and-air-pressure">BME280 — Temperature, Humidity, and Air Pressure</h3>
 <p>The <strong>BME280</strong> is a precision environmental sensor from Bosch that measures three things at once: temperature (−40 to 85 °C, ±1 °C), relative humidity (0–100%, ±3%), and atmospheric pressure (300–1,100 hPa, ±1 hPa). It uses I2C (address <code>0x76</code> or <code>0x77</code>) or SPI.</p>
 <p>The BME280 is popular in weather stations because its pressure reading lets you calculate altitude above sea level.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2597,16 +2699,16 @@ The DHT11 and DHT22 need at least 1–2 seconds between measurements. Calling <c
 <span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
 <span class="n">bme</span> <span class="o">=</span> <span class="n">BME280</span><span class="p">(</span><span class="n">i2c</span><span class="o">=</span><span class="n">i2c</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">bme</span><span class="o">.</span><span class="n">temperature</span><span class="p">)</span>   <span class="c1"># e.g., &quot;23.45 C&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">bme</span><span class="o">.</span><span class="n">humidity</span><span class="p">)</span>      <span class="c1"># e.g., &quot;62.50 %&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">bme</span><span class="o">.</span><span class="n">pressure</span><span class="p">)</span>      <span class="c1"># e.g., &quot;1013.25 hPa&quot;</span>
-</code></pre></div></td></tr></table></div>
+<span class="nb">print</span><span class="p">(</span><span class="n">bme</span><span class="o">.</span><span class="n">temperature</span><span class="p">)</span>   <span class="c1"># e.g., "23.45 C"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bme</span><span class="o">.</span><span class="n">humidity</span><span class="p">)</span>      <span class="c1"># e.g., "62.50 %"</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bme</span><span class="o">.</span><span class="n">pressure</span><span class="p">)</span>      <span class="c1"># e.g., "1013.25 hPa"</span>
+</code></pre></div></td></tr></tbody></table></div>
 <p>The <strong>BME280 I2C driver</strong> (<code>bme280.py</code>) is not built into MicroPython — you must copy the driver file to your Pico before using it. Driver files for the projects in this course are in the <code>src/drivers/</code> directory.</p>
 <h2 id="ds18b20-waterproof-1-wire-temperature-sensor">DS18B20 — Waterproof 1-Wire Temperature Sensor</h2>
 <p>The <strong>DS18B20</strong> is a waterproof probe-style temperature sensor with ±0.5 °C accuracy over −55 to 125 °C. Because it is in a sealed metal tube, it can measure liquid temperatures — useful for pool monitoring, sous-vide cooking, or outdoor weather stations.</p>
 <p>The DS18B20 uses the <strong>1-Wire interface</strong>: one data wire (plus GND), with a 4.7 kΩ pull-up resistor from data to 3.3 V.</p>
 <p>MicroPython includes the <strong><code>onewire</code></strong> and <strong><code>ds18x20</code></strong> modules:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2629,20 +2731,20 @@ The DHT11 and DHT22 need at least 1–2 seconds between measurements. Calling <c
 <span class="n">ds</span> <span class="o">=</span> <span class="n">ds18x20</span><span class="o">.</span><span class="n">DS18X20</span><span class="p">(</span><span class="n">ow</span><span class="p">)</span>          <span class="c1"># create DS18B20 manager</span>
 
 <span class="n">roms</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>                   <span class="c1"># find all DS18B20 sensors on bus</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Found sensors:&quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">roms</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Found sensors:"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">roms</span><span class="p">))</span>
 
 <span class="n">ds</span><span class="o">.</span><span class="n">convert_temp</span><span class="p">()</span>                  <span class="c1"># start conversion (takes ~750 ms)</span>
 <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">750</span><span class="p">)</span>                <span class="c1"># MUST wait for conversion to complete</span>
 <span class="k">for</span> <span class="n">rom</span> <span class="ow">in</span> <span class="n">roms</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temp: </span><span class="si">{</span><span class="n">ds</span><span class="o">.</span><span class="n">read_temp</span><span class="p">(</span><span class="n">rom</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> °C&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Temp: </span><span class="si">{</span><span class="n">ds</span><span class="o">.</span><span class="n">read_temp</span><span class="p">(</span><span class="n">rom</span><span class="p">)</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> °C"</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
 <p><strong>DS18B20 multiple sensors</strong>: Because each DS18B20 has a unique 64-bit ROM code, you can connect many sensors to the same wire. <code>ds.scan()</code> returns a list of ROM codes, and <code>ds.read_temp(rom)</code> reads from a specific sensor.</p>
 <h2 id="distance-sensors">Distance Sensors</h2>
-<p><img alt="Distance Sensors Infographic" src="distance-sensors-infographic.png" /></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="distance-sensors-infographic.png" data-desc-position="bottom"><img alt="Distance Sensors Infographic" src="distance-sensors-infographic.png"></a></p>
 <h3 id="ir-distance-sensors">IR Distance Sensors</h3>
 <p>An <strong>IR distance sensor</strong> (infrared distance sensor) combines an <strong>IR emitter</strong> (an LED that shines invisible infrared light) and an <strong>IR detector</strong> (a phototransistor that detects reflections). When the sensor is close to a surface, more reflected light hits the detector; when far away, less light returns.</p>
 <p>Most IR distance sensors return a simple <strong>digital output</strong>: HIGH when no obstacle is close, LOW when an obstacle is detected within range (typically 2–30 cm). Some analog IR sensors return a voltage that varies with distance.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2657,11 +2759,11 @@ The DHT11 and DHT22 need at least 1–2 seconds between measurements. Calling <c
 
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">ir</span><span class="o">.</span><span class="n">value</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>    <span class="c1"># obstacle detected (active LOW output)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Obstacle detected!&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Obstacle detected!"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Clear&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Clear"</span><span class="p">)</span>
     <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>IR sensors are the most common sensor for <strong>line-following robots</strong>: a pair of IR sensors aimed at the floor detects the contrast between dark tape (low reflectance) and white floor (high reflectance), letting the robot follow a path.</p>
 <h3 id="hc-sr04-ultrasonic-distance-sensor">HC-SR04 — Ultrasonic Distance Sensor</h3>
 <p>The <strong>HC-SR04</strong> measures the distance to an object using sound waves — the same principle as bat echolocation and parking sensors.</p>
@@ -2671,7 +2773,7 @@ The DHT11 and DHT22 need at least 1–2 seconds between measurements. Calling <c
 <p>The time between sending and receiving the echo tells you the distance: sound travels at approximately 343 m/s (at 20 °C). The formula is:</p>
 <div class="arithmatex">\[ \text{distance (cm)} = \frac{\text{echo time (µs)}}{58} \]</div>
 <p>The denominator 58 comes from the round-trip: sound travels to the object and back, so you divide the speed of sound by 2, then convert units.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2724,9 +2826,9 @@ The DHT11 and DHT22 need at least 1–2 seconds between measurements. Calling <c
 
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">dist</span> <span class="o">=</span> <span class="n">read_distance</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance: </span><span class="si">{</span><span class="n">dist</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> cm&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Distance: </span><span class="si">{</span><span class="n">dist</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> cm"</span><span class="p">)</span>
     <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>The HC-SR04 works well between 2 cm and 400 cm. Objects closer than 2 cm may be missed. Soft or angled surfaces absorb or deflect the sound, reducing accuracy.</p>
 <h4 id="diagram-ultrasonic-ranging-explorer">Diagram: Ultrasonic Ranging Explorer</h4>
 <iframe src="../../sims/ultrasonic-ranging/main.html" width="100%" height="452px" scrolling="no"></iframe>
@@ -2734,8 +2836,8 @@ The DHT11 and DHT22 need at least 1–2 seconds between measurements. Calling <c
 <details>
 <summary>Ultrasonic Ranging Explorer MicroSim</summary>
 <p>Type: microsim
-<strong>sim-id:</strong> ultrasonic-ranging<br/>
-<strong>Library:</strong> p5.js<br/>
+<strong>sim-id:</strong> ultrasonic-ranging<br>
+<strong>Library:</strong> p5.js<br>
 <strong>Status:</strong> Specified</p>
 <p>Bloom Level: Apply (L3)
 Bloom Verb: calculate
@@ -2759,7 +2861,7 @@ Learning Objective: Students can calculate the distance to an object from the ec
 <p>The <strong>VL53L0X</strong> measures distance using a tiny infrared laser. It emits a laser pulse and measures the exact time for the light to bounce back — <strong>time-of-flight measurement</strong>. Because light travels at about 300,000 km/s, even a journey of 1 meter takes only about 6 nanoseconds. The VL53L0X's internal hardware handles this timing with picosecond precision.</p>
 <p>The VL53L0X is more accurate than ultrasonic (±3%) and works on all surfaces, including glass and fabric that scatter sound. Range is 30–1,200 mm.</p>
 <p>It uses I2C (default address <code>0x29</code>). The <strong>VL53L0X I2C driver</strong> is available in <code>src/drivers/VL53L0X.py</code>:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2776,9 +2878,9 @@ Learning Objective: Students can calculate the distance to an object from the ec
 
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">distance_mm</span> <span class="o">=</span> <span class="n">tof</span><span class="o">.</span><span class="n">range</span>   <span class="c1"># read in millimeters</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distance: </span><span class="si">{</span><span class="n">distance_mm</span><span class="si">}</span><span class="s2"> mm  (</span><span class="si">{</span><span class="n">distance_mm</span><span class="o">/</span><span class="mi">10</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> cm)&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Distance: </span><span class="si">{</span><span class="n">distance_mm</span><span class="si">}</span><span class="s2"> mm  (</span><span class="si">{</span><span class="n">distance_mm</span><span class="o">/</span><span class="mi">10</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> cm)"</span><span class="p">)</span>
     <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>The <strong><code>VL53L0X.range</code> property</strong> returns the current distance in millimeters. If the reading is 8,190 or 65,535, it means no object was detected within range.</p>
 <h2 id="comparing-distance-sensors">Comparing Distance Sensors</h2>
 <p>Before wiring a distance sensor, choose the right one for your project:</p>
@@ -2818,7 +2920,7 @@ Learning Objective: Students can calculate the distance to an object from the ec
 </table>
 <div class="admonition mascot-thinking">
 <p class="admonition-title">When to Use Which Distance Sensor</p>
-<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png">
 Use the <strong>HC-SR04</strong> for most robot obstacle avoidance — it is inexpensive and has long range. Use the <strong>VL53L0X</strong> when you need millimeter accuracy or when your target surface absorbs sound (fabric, foam). Use the <strong>IR sensor</strong> when you only need to know "obstacle yes or no" within a few centimeters, like a line-following robot.</p>
 </div>
 <h2 id="key-takeaways">Key Takeaways</h2>
@@ -2836,7 +2938,7 @@ Use the <strong>HC-SR04</strong> for most robot obstacle avoidance — it is ine
 </details>
 <div class="admonition mascot-celebration">
 <p class="admonition-title">Sensors Connected — Data Flowing!</p>
-<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png">
 Your Pico can now feel temperature, humidity, pressure, and distance. That is a weather station plus a robot proximity sensor right there. Chapter 10 expands your sensor library further — motion detection, orientation from an accelerometer/gyroscope, and ambient light sensing. You are building real physical computing skills!</p>
 </div>
 <h2 id="references">References</h2>
@@ -2868,7 +2970,7 @@ Your Pico can now feel temperature, humidity, pressure, and distance. That is a 
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -2878,13 +2980,13 @@ Your Pico can now feel temperature, humidity, pressure, and distance. That is a 
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../08-communication-protocols/references/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Annotated References">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -2909,7 +3011,7 @@ Your Pico can now feel temperature, humidity, pressure, and distance. That is a 
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
             </div>
           </a>
         
@@ -2921,7 +3023,7 @@ Your Pico can now feel temperature, humidity, pressure, and distance. That is a 
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -2949,5 +3051,7 @@ Your Pico can now feel temperature, humidity, pressure, and distance. That is a 
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -73,33 +70,43 @@
     
     
       
-        <meta  property="og:type"  content="website" >
+        <meta property="og:type" content="website">
       
-        <meta  property="og:title"  content="Advanced Hardware Topics and AI-Assisted Coding - Learning MicroPython" >
+        <meta property="og:title" content="Advanced Hardware Topics and AI-Assisted Coding - Learning MicroPython">
       
-        <meta  property="og:description"  content="PIO state machines for NeoPixels, FFT for audio analysis, DMA, watchdog timer, RTC, low-power sleep modes, CircuitPython vs MicroPython, and using AI as a coding assistant." >
+        <meta property="og:description" content="PIO state machines for NeoPixels, FFT for audio analysis, DMA, watchdog timer, RTC, low-power sleep modes, CircuitPython vs MicroPython, and using AI as a coding assistant.">
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/22-advanced-hardware-ai/index.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/22-advanced-hardware-ai/index.png">
       
-        <meta  property="og:image:type"  content="image/png" >
+        <meta property="og:image:type" content="image/png">
       
-        <meta  property="og:image:width"  content="1200" >
+        <meta property="og:image:width" content="1200">
       
-        <meta  property="og:image:height"  content="630" >
+        <meta property="og:image:height" content="630">
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/learning-micropython/chapters/22-advanced-hardware-ai/" >
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/chapters/22-advanced-hardware-ai/">
       
-        <meta  name="twitter:card"  content="summary_large_image" >
+        <meta name="twitter:card" content="summary_large_image">
       
-        <meta  name="twitter:title"  content="Advanced Hardware Topics and AI-Assisted Coding - Learning MicroPython" >
+        <meta name="twitter:title" content="Advanced Hardware Topics and AI-Assisted Coding - Learning MicroPython">
       
-        <meta  name="twitter:description"  content="PIO state machines for NeoPixels, FFT for audio analysis, DMA, watchdog timer, RTC, low-power sleep modes, CircuitPython vs MicroPython, and using AI as a coding assistant." >
+        <meta name="twitter:description" content="PIO state machines for NeoPixels, FFT for audio analysis, DMA, watchdog timer, RTC, low-power sleep modes, CircuitPython vs MicroPython, and using AI as a coding assistant.">
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/22-advanced-hardware-ai/index.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/22-advanced-hardware-ai/index.png">
       
     
     
-  </head>
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -139,7 +146,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -165,7 +172,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -174,15 +181,15 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -205,7 +212,7 @@
         <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -229,7 +236,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -250,7 +257,7 @@
       <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -1956,6 +1963,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -1974,6 +1985,97 @@
   
   <span class="md-ellipsis">
     MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
   </span>
   
 
@@ -2308,7 +2410,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2590,10 +2692,10 @@
 <li><a href="../20-timers-multicore/">Chapter 20: Timers, Timing Functions, and Multi-Core Programming</a></li>
 <li><a href="../21-file-systems-debugging/">Chapter 21: File Systems, Audio Files, and Debugging</a></li>
 </ul>
-<hr />
+<hr>
 <div class="admonition mascot-welcome">
 <p class="admonition-title">Welcome to Chapter 22</p>
-<p><img alt="Monty waves hello" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+<p><img alt="Monty waves hello" class="mascot-admonition-img" src="../../img/mascot/welcome.png">
 This is the advanced chapter — the one where the Pico reveals its most impressive tricks. PIO state machines, DMA transfers, FFT audio analysis, watchdog timers, and low-power sleep modes: these are the tools that professional embedded engineers use every day. And then we talk about AI — a new kind of coding partner that every programmer should know how to use effectively. Let's go deep!</p>
 </div>
 <h2 id="pio-programmable-io-state-machines">PIO — Programmable I/O State Machines</h2>
@@ -2601,7 +2703,7 @@ This is the advanced chapter — the one where the Pico reveals its most impress
 <p>Why does this matter? Some protocols (like the WS2812B NeoPixel timing) require bit-level precision to within hundreds of nanoseconds. On a busy main CPU, other tasks cause timing jitter. PIO runs autonomously in hardware, completely unaffected by what the main cores are doing.</p>
 <h3 id="pio-assembly-language">PIO Assembly Language</h3>
 <p>PIO programs are written in a simple assembly language with only nine instructions. You write them in Python using the <code>@rp2.asm_pio</code> decorator. Here is the PIO program that drives WS2812B NeoPixels:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2629,18 +2731,18 @@ This is the advanced chapter — the one where the Pico reveals its most impress
     <span class="n">T2</span> <span class="o">=</span> <span class="mi">5</span>
     <span class="n">T3</span> <span class="o">=</span> <span class="mi">3</span>
     <span class="n">wrap_target</span><span class="p">()</span>
-    <span class="n">label</span><span class="p">(</span><span class="s2">&quot;bitloop&quot;</span><span class="p">)</span>
+    <span class="n">label</span><span class="p">(</span><span class="s2">"bitloop"</span><span class="p">)</span>
     <span class="n">out</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>               <span class="o">.</span><span class="n">side</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">[</span><span class="n">T3</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="n">jmp</span><span class="p">(</span><span class="n">not_x</span><span class="p">,</span> <span class="s2">&quot;do_zero&quot;</span><span class="p">)</span>   <span class="o">.</span><span class="n">side</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">[</span><span class="n">T1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="n">jmp</span><span class="p">(</span><span class="s2">&quot;bitloop&quot;</span><span class="p">)</span>           <span class="o">.</span><span class="n">side</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">[</span><span class="n">T2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="n">label</span><span class="p">(</span><span class="s2">&quot;do_zero&quot;</span><span class="p">)</span>
+    <span class="n">jmp</span><span class="p">(</span><span class="n">not_x</span><span class="p">,</span> <span class="s2">"do_zero"</span><span class="p">)</span>   <span class="o">.</span><span class="n">side</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">[</span><span class="n">T1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">jmp</span><span class="p">(</span><span class="s2">"bitloop"</span><span class="p">)</span>           <span class="o">.</span><span class="n">side</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="p">[</span><span class="n">T2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">label</span><span class="p">(</span><span class="s2">"do_zero"</span><span class="p">)</span>
     <span class="n">nop</span><span class="p">()</span>                    <span class="o">.</span><span class="n">side</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">[</span><span class="n">T2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">wrap</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>This PIO program generates WS2812B-compatible pulses without ANY involvement from the main core. Once started, it pulls 24-bit color data automatically.</p>
 <h3 id="pio-for-ws2812b">PIO for WS2812B</h3>
 <p>MicroPython's <code>neopixel</code> module uses exactly this PIO approach under the hood. The <code>rp2.StateMachine</code> class gives you direct PIO access:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2648,16 +2750,16 @@ This is the advanced chapter — the one where the Pico reveals its most impress
 <span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">sm</span> <span class="o">=</span> <span class="n">rp2</span><span class="o">.</span><span class="n">StateMachine</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ws2812</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">8_000_000</span><span class="p">,</span> <span class="n">sideset_base</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
 <span class="n">sm</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">ar</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s2">&quot;I&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>   <span class="c1"># 30 NeoPixels as 32-bit integers</span>
+<span class="n">ar</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s2">"I"</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">30</span><span class="p">)</span>   <span class="c1"># 30 NeoPixels as 32-bit integers</span>
 <span class="n">ar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span>                 <span class="c1"># first LED green (GRB format for WS2812B)</span>
 <span class="n">sm</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">ar</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>                      <span class="c1"># send to PIO state machine</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p><strong>Assembler in MicroPython</strong>: The <code>@rp2.asm_pio</code> decorator compiles the assembly instructions to PIO binary code at Python import time. This happens once; the state machine then runs indefinitely from that binary.</p>
 <h2 id="fft-algorithm-frequency-analysis">FFT Algorithm — Frequency Analysis</h2>
 <p>An <strong>FFT (Fast Fourier Transform)</strong> is an efficient algorithm for computing the Discrete Fourier Transform — converting a time-series signal (like audio samples) into a frequency spectrum (how much energy at each frequency).</p>
 <p>The FFT is fundamental to digital signal processing. Without it, a spectrum analyzer would require O(N²) multiplications; FFT reduces this to O(N log N) — making real-time analysis possible on a microcontroller.</p>
 <p><strong>FFT optimization</strong> on the Pico uses the <code>ulab</code> library — a numerical Python library for MicroPython inspired by NumPy:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2683,8 +2785,8 @@ This is the advanced chapter — the one where the Pico reveals its most impress
 <span class="n">bin_width</span> <span class="o">=</span> <span class="mi">16000</span> <span class="o">/</span> <span class="mi">512</span>   <span class="c1"># Hz per bin at 16 kHz, 512 samples</span>
 <span class="n">dominant_bin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">magnitudes</span><span class="p">)</span>
 <span class="n">dominant_hz</span> <span class="o">=</span> <span class="n">dominant_bin</span> <span class="o">*</span> <span class="n">bin_width</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dominant frequency: </span><span class="si">{</span><span class="n">dominant_hz</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> Hz&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Dominant frequency: </span><span class="si">{</span><span class="n">dominant_hz</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> Hz"</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="dma-direct-memory-access">DMA — Direct Memory Access</h2>
 <p><strong>DMA (Direct Memory Access)</strong> allows hardware peripherals to transfer data to or from RAM without involving the CPU. For audio, this means the I2S peripheral can fill an audio buffer from the ADC and play it through the DAC — all without any CPU instructions per byte. The CPU is free to do other work.</p>
 <p>The RP2040 has 12 DMA channels. MicroPython exposes DMA primarily through the I2S and SPI peripherals automatically. At the Python level, <code>i2s.readinto(buf)</code> and <code>i2s.write(buf)</code> use DMA internally.</p>
@@ -2692,7 +2794,7 @@ This is the advanced chapter — the one where the Pico reveals its most impress
 <h2 id="battery-voltage-measurement">Battery Voltage Measurement</h2>
 <p>For battery-powered projects, you need to know when the battery is running low. The Pico can measure its own supply voltage.</p>
 <p>The <strong>VSYS voltage</strong> (the supply voltage from the battery or USB) can be read through a 3:1 voltage divider connected to ADC channel 3 (not an external GPIO — it is internal to the Pico):</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2702,13 +2804,13 @@ This is the advanced chapter — the one where the Pico reveals its most impress
 <span class="n">vsys</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">29</span><span class="p">)</span>                       <span class="c1"># ADC channel 29 = VSYS sense (internal)</span>
 <span class="n">raw</span>  <span class="o">=</span> <span class="n">vsys</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
 <span class="n">vsys_voltage</span> <span class="o">=</span> <span class="n">raw</span> <span class="o">/</span> <span class="mi">65535</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">*</span> <span class="mf">3.3</span>  <span class="c1"># ×3 for the 1/3 divider</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;VSYS: </span><span class="si">{</span><span class="n">vsys_voltage</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> V&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"VSYS: </span><span class="si">{</span><span class="n">vsys_voltage</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> V"</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
 <p>A fully charged LiPo cell = 4.2 V; a discharged cell = 3.0 V. USB power = 5.0 V through the VSYS regulator.</p>
 <h2 id="watchdog-timer">Watchdog Timer</h2>
 <p>A <strong>watchdog timer</strong> is a hardware counter that resets the Pico if your program stops responding. The program must "pet" (reset) the watchdog counter regularly. If the program hangs or crashes, the counter runs out and the Pico reboots automatically.</p>
 <p>Watchdog timers are essential for unattended IoT devices — if the Wi-Fi connection hangs, the device reboots and reconnects rather than staying frozen forever.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2725,10 +2827,10 @@ This is the advanced chapter — the one where the Pico reveals its most impress
     <span class="c1"># ... do work ...</span>
     <span class="n">wdt</span><span class="o">.</span><span class="n">feed</span><span class="p">()</span>              <span class="c1"># reset the watchdog counter (pet the dog)</span>
     <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="real-time-clock-rtc">Real-Time Clock (RTC)</h2>
 <p>A <strong>real-time clock (RTC)</strong> keeps the current date and time. The RP2040 has a built-in RTC that runs as long as the Pico has power (it resets if unplugged, unless you add a coin-cell-backed external RTC module like the DS3231 over I2C).</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2740,12 +2842,12 @@ This is the advanced chapter — the one where the Pico reveals its most impress
 <span class="n">rtc</span><span class="o">.</span><span class="n">datetime</span><span class="p">((</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>   <span class="c1"># (year,month,day,weekday,hr,min,sec,subsec)</span>
 
 <span class="n">t</span> <span class="o">=</span> <span class="n">rtc</span><span class="o">.</span><span class="n">datetime</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
 <p>Combined with <code>ntptime.settime()</code> (Chapter 19), you can set the RTC from a time server and then keep accurate time even without Wi-Fi.</p>
 <h2 id="low-power-sleep-mode">Low-Power Sleep Mode</h2>
 <p>The Pico draws about 25 mA when running at full speed. Battery-powered sensors that only need to read and transmit data once per minute can dramatically extend battery life by sleeping between readings.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2758,7 +2860,7 @@ This is the advanced chapter — the one where the Pico reveals its most impress
 
 <span class="c1"># Deep sleep — saves 20+ mA; boots fresh when timer fires</span>
 <span class="n">machine</span><span class="o">.</span><span class="n">deepsleep</span><span class="p">(</span><span class="mi">60000</span><span class="p">)</span>    <span class="c1"># sleep for 60 s, then reboot (runs main.py again)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p><strong>Low-power sleep modes</strong>:
 - <code>lightsleep()</code> — pauses the CPU clock; peripherals and GPIO continue; wakes on timer or interrupt.
 - <code>deepsleep()</code> — powers off everything except the RTC; wakes on timer or external interrupt; then reboots (runs <code>boot.py</code> and <code>main.py</code> again).</p>
@@ -2833,7 +2935,7 @@ This is the advanced chapter — the one where the Pico reveals its most impress
 <p>Describe your project requirements and ask for hardware suggestions: "I need to measure temperature from -20 to 80 °C with ±0.5 °C accuracy, waterproof, using a single wire. What sensor do you recommend for MicroPython on a Pico?" The AI can suggest the DS18B20 and explain why it fits the requirements.</p>
 <div class="admonition mascot-encourage">
 <p class="admonition-title">AI Is a Tool, Not a Teacher</p>
-<p><img alt="Monty encouraging" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+<p><img alt="Monty encouraging" class="mascot-admonition-img" src="../../img/mascot/encouraging.png">
 AI assistants are powerful tools, but they can generate wrong or outdated code confidently. Use AI to explore ideas and generate starting points, but always read the code, test it on your hardware, and understand what each line does. You become a better programmer by understanding the code — not just by running what the AI outputs. The concepts in this course are yours to keep, long after any particular AI tool changes.</p>
 </div>
 <h4 id="diagram-prompt-engineering-workshop">Diagram: Prompt Engineering Workshop</h4>
@@ -2842,8 +2944,8 @@ AI assistants are powerful tools, but they can generate wrong or outdated code c
 <details>
 <summary>Prompt Engineering Workshop MicroSim</summary>
 <p>Type: interactive
-<strong>sim-id:</strong> prompt-engineering-workshop<br/>
-<strong>Library:</strong> p5.js<br/>
+<strong>sim-id:</strong> prompt-engineering-workshop<br>
+<strong>Library:</strong> p5.js<br>
 <strong>Status:</strong> Specified</p>
 <p>Bloom Level: Evaluate (L5)
 Bloom Verb: critique
@@ -2881,7 +2983,7 @@ Learning Objective: Students can evaluate a given AI prompt for MicroPython codi
 </details>
 <div class="admonition mascot-celebration">
 <p class="admonition-title">You've Reached the Advanced Level!</p>
-<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png">
 PIO, DMA, watchdog timers, low-power sleep, and AI-assisted coding — you now command the Pico's deepest capabilities. One chapter remains: Chapter 23, the capstone projects. Everything you have learned comes together into complete, polished projects that you can build, customize, and show the world!</p>
 </div>
 <h2 id="references">References</h2>
@@ -2913,7 +3015,7 @@ PIO, DMA, watchdog timers, low-power sleep, and AI-assisted coding — you now c
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -2923,13 +3025,13 @@ PIO, DMA, watchdog timers, low-power sleep, and AI-assisted coding — you now c
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../21-file-systems-debugging/references/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Annotated References">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -2954,7 +3056,7 @@ PIO, DMA, watchdog timers, low-power sleep, and AI-assisted coding — you now c
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
             </div>
           </a>
         
@@ -2966,7 +3068,7 @@ PIO, DMA, watchdog timers, low-power sleep, and AI-assisted coding — you now c
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -2994,5 +3096,7 @@ PIO, DMA, watchdog timers, low-power sleep, and AI-assisted coding — you now c
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

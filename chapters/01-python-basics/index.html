@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -73,33 +70,43 @@
     
     
       
-        <meta  property="og:type"  content="website" >
+        <meta property="og:type" content="website">
       
-        <meta  property="og:title"  content="Python Basics — Programs, Variables, Data Types, and Operators - Learning MicroPython" >
+        <meta property="og:title" content="Python Basics — Programs, Variables, Data Types, and Operators - Learning MicroPython">
       
-        <meta  property="og:description"  content="An introduction to computer programs, variables, data types, and Python operators for beginning MicroPython programmers." >
+        <meta property="og:description" content="An introduction to computer programs, variables, data types, and Python operators for beginning MicroPython programmers.">
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/01-python-basics/index.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/01-python-basics/index.png">
       
-        <meta  property="og:image:type"  content="image/png" >
+        <meta property="og:image:type" content="image/png">
       
-        <meta  property="og:image:width"  content="1200" >
+        <meta property="og:image:width" content="1200">
       
-        <meta  property="og:image:height"  content="630" >
+        <meta property="og:image:height" content="630">
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/learning-micropython/chapters/01-python-basics/" >
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/chapters/01-python-basics/">
       
-        <meta  name="twitter:card"  content="summary_large_image" >
+        <meta name="twitter:card" content="summary_large_image">
       
-        <meta  name="twitter:title"  content="Python Basics — Programs, Variables, Data Types, and Operators - Learning MicroPython" >
+        <meta name="twitter:title" content="Python Basics — Programs, Variables, Data Types, and Operators - Learning MicroPython">
       
-        <meta  name="twitter:description"  content="An introduction to computer programs, variables, data types, and Python operators for beginning MicroPython programmers." >
+        <meta name="twitter:description" content="An introduction to computer programs, variables, data types, and Python operators for beginning MicroPython programmers.">
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/01-python-basics/index.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/01-python-basics/index.png">
       
     
     
-  </head>
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -139,7 +146,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -165,7 +172,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -174,15 +181,15 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -205,7 +212,7 @@
         <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -229,7 +236,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -250,7 +257,7 @@
       <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -1956,6 +1963,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -1974,6 +1985,97 @@
   
   <span class="md-ellipsis">
     MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
   </span>
   
 
@@ -2308,7 +2410,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2605,10 +2707,10 @@
 </ol>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>This chapter assumes only the prerequisites listed in the <a href="../../course-description/">course description</a>.</p>
-<hr />
+<hr>
 <div class="admonition mascot-welcome">
 <p class="admonition-title">Hi! I'm Monty.</p>
-<p><img alt="Monty waves hello" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+<p><img alt="Monty waves hello" class="mascot-admonition-img" src="../../img/mascot/welcome.png">
 Welcome to <strong>Learning MicroPython and Physical Computing</strong>! I'm <strong>Monty</strong>, a cheerful Python snake who loves building things with code. I wear little round glasses and carry a tiny Raspberry Pi Pico badge on my chest — because that little computer is what this whole course is about. I'll be popping into every chapter to help you along, but I don't show up randomly. I have exactly <strong>six jobs</strong>, and you'll learn to recognize me by which one I'm doing:</p>
 <ol>
 <li><strong>Welcome you</strong> at the start of every chapter — just like I'm doing right now.</li>
@@ -2620,18 +2722,20 @@ Welcome to <strong>Learning MicroPython and Physical Computing</strong>! I'm <st
 </ol>
 <p>That's it. If I'm not doing one of those six things, I'm not in the chapter. Let's build something amazing!</p>
 </div>
+<!-- TODO: introduce this infographic described in @docs/posters/python-vs-micropython.md -->
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="python-vs-micropython-infographic.png" data-desc-position="bottom"><img alt="" src="python-vs-micropython-infographic.png"></a></p>
 <h2 id="what-is-a-computer-program">What Is a Computer Program?</h2>
 <p>A <strong>computer program</strong> is a list of instructions for a computer to follow. Think of it like a recipe. A recipe tells a chef exactly what to do, step by step. A computer program tells a computer exactly what to do, one instruction at a time.</p>
 <p>Every program you write starts as <strong>source code</strong> — the text you type in a code editor. The computer reads your source code and carries out each instruction. In this course, you will write source code in a language called <strong>MicroPython</strong>. MicroPython is a version of Python designed to run on tiny computers called microcontrollers.</p>
 <p>The microcontroller we use is the <strong>Raspberry Pi Pico</strong>. It costs about four dollars and fits in the palm of your hand. When you load your source code onto the Pico, it follows your instructions instantly.</p>
 <p>Here is the simplest MicroPython program you can write:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># This program says hello to the world</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">)</span>   <span class="c1"># print() shows text on the screen</span>
-</code></pre></div></td></tr></table></div>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, world!"</span><span class="p">)</span>   <span class="c1"># print() shows text on the screen</span>
+</code></pre></div></td></tr></tbody></table></div>
 <p>When you run this program, it shows:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Hello, world!
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>Hello, world!
+</code></pre></div></td></tr></tbody></table></div>
 <p>Here is what each part does:</p>
 <ol>
 <li><code># This program says hello to the world</code> — a comment. Python ignores this line. It is a note for you to read.</li>
@@ -2643,54 +2747,54 @@ Welcome to <strong>Learning MicroPython and Physical Computing</strong>! I'm <st
 <p>A <strong>variable</strong> is a place in the computer's memory where you can store a piece of information. You give it a name so you can find it later. Think of it like a labeled box. You write a name on the outside of the box, and you put something inside.</p>
 <div class="admonition mascot-thinking">
 <p class="admonition-title">Key Idea: Variables Are Like Labeled Boxes</p>
-<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png">
 Imagine a physical box with the word "age" written on the side. Right now the box holds the number 12. Later you can open the box, take out 12, and put in 13. The box — the variable — stays the same, but the value inside changes. That is exactly how variables work in Python.</p>
 </div>
 <p>In Python, you create a variable by choosing a name and then using the <code>=</code> sign to put a value inside it. The <code>=</code> sign in Python does not mean "equals" the way it does in math — it means "store this value in this variable."</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">student_name</span> <span class="o">=</span> <span class="s2">&quot;Alex&quot;</span>    <span class="c1"># store the text &quot;Alex&quot; in a variable called student_name</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">student_name</span> <span class="o">=</span> <span class="s2">"Alex"</span>    <span class="c1"># store the text "Alex" in a variable called student_name</span>
 <span class="n">age</span> <span class="o">=</span> <span class="mi">12</span>                 <span class="c1"># store the number 12 in a variable called age</span>
 <span class="n">temperature</span> <span class="o">=</span> <span class="mf">23.5</span>       <span class="c1"># store the number 23.5 in a variable called temperature</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>Variable names should describe what they hold. <code>age</code> is a much better name than <code>a</code>. Anyone reading your code will immediately know what the variable is for.</p>
 <p>You can change the value in a variable at any time:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">age</span> <span class="o">=</span> <span class="mi">12</span>     <span class="c1"># age now holds 12</span>
 <span class="n">age</span> <span class="o">=</span> <span class="mi">13</span>     <span class="c1"># age now holds 13 — the old value is replaced</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="data-types-what-kind-of-information">Data Types — What Kind of Information?</h2>
 <p>Every variable holds a specific <strong>data type</strong> — the kind of information stored inside. Python has four basic data types you will use in nearly every program.</p>
 <h3 id="integer-whole-numbers">Integer — Whole Numbers</h3>
 <p>An <strong>integer</strong> is a whole number with no decimal point. Integers can be positive, negative, or zero.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">pico_cost</span> <span class="o">=</span> <span class="mi">4</span>          <span class="c1"># the Pico costs $4 — a whole number</span>
 <span class="n">num_leds</span> <span class="o">=</span> <span class="mi">8</span>           <span class="c1"># we have 8 LEDs on our breadboard</span>
 <span class="n">temperature_c</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>     <span class="c1"># temperature is 5 degrees below zero</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="float-decimal-numbers">Float — Decimal Numbers</h3>
 <p>A <strong>float</strong> is a number that has a decimal point. The name comes from the idea that the decimal point can "float" to different positions in the number.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">voltage</span> <span class="o">=</span> <span class="mf">3.3</span>          <span class="c1"># the Pico runs on 3.3 volts</span>
 <span class="n">sensor_reading</span> <span class="o">=</span> <span class="mf">24.7</span>  <span class="c1"># a temperature sensor reading in degrees Celsius</span>
 <span class="n">pi_value</span> <span class="o">=</span> <span class="mf">3.14159</span>     <span class="c1"># the mathematical constant pi</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="string-text">String — Text</h3>
 <p>A <strong>string</strong> is a sequence of characters — letters, numbers, spaces, and symbols. You always put strings inside quotation marks. Single quotes and double quotes both work.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">greeting</span> <span class="o">=</span> <span class="s2">&quot;Hello, maker!&quot;</span>      <span class="c1"># a string using double quotes</span>
-<span class="n">board_name</span> <span class="o">=</span> <span class="s1">&#39;Raspberry Pi Pico&#39;</span> <span class="c1"># a string using single quotes</span>
-<span class="n">pin_label</span> <span class="o">=</span> <span class="s2">&quot;GP15&quot;</span>              <span class="c1"># strings can contain letters AND numbers</span>
-</code></pre></div></td></tr></table></div>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">greeting</span> <span class="o">=</span> <span class="s2">"Hello, maker!"</span>      <span class="c1"># a string using double quotes</span>
+<span class="n">board_name</span> <span class="o">=</span> <span class="s1">'Raspberry Pi Pico'</span> <span class="c1"># a string using single quotes</span>
+<span class="n">pin_label</span> <span class="o">=</span> <span class="s2">"GP15"</span>              <span class="c1"># strings can contain letters AND numbers</span>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="boolean-true-or-false">Boolean — True or False</h3>
 <p>A <strong>boolean</strong> is either <code>True</code> or <code>False</code> — nothing else. Booleans are useful when you want to track whether something is on or off, yes or no.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">led_is_on</span> <span class="o">=</span> <span class="kc">True</span>       <span class="c1"># the LED is currently turned on</span>
 <span class="n">button_pressed</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1"># the button has not been pressed yet</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>Notice that <code>True</code> and <code>False</code> start with capital letters. Python is strict about this. Writing <code>true</code> in all lowercase will give you an error.</p>
 <p>The following table summarizes all four basic data types:</p>
 <table>
@@ -2736,8 +2840,8 @@ Imagine a physical box with the word "age" written on the side. Right now the bo
 <details>
 <summary>Python Data Type Explorer MicroSim</summary>
 <p>Type: microsim
-<strong>sim-id:</strong> python-data-type-explorer<br/>
-<strong>Library:</strong> p5.js<br/>
+<strong>sim-id:</strong> python-data-type-explorer<br>
+<strong>Library:</strong> p5.js<br>
 <strong>Status:</strong> Specified</p>
 <p>Bloom Level: Understand (L2)
 Bloom Verb: classify
@@ -2767,7 +2871,7 @@ Learning Objective: Students can classify a given Python value as integer, float
 </details>
 <div class="admonition mascot-tip">
 <p class="admonition-title">Monty's Tip</p>
-<p><img alt="Monty giving a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+<p><img alt="Monty giving a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png">
 Not sure whether to use a float or an integer? Ask yourself: "Will this number ever have a decimal?" If the answer is yes — even sometimes — use a float. The Pico's voltage is always 3.3, never exactly 3, so <code>voltage = 3.3</code> is the right choice.</p>
 </div>
 <h2 id="python-syntax-the-rules-of-the-language">Python Syntax — The Rules of the Language</h2>
@@ -2782,41 +2886,41 @@ Not sure whether to use a float or an integer? Ask yourself: "Will this number e
 </ul>
 <h3 id="comments">Comments</h3>
 <p>A <strong>comment</strong> is a note you write in your code for yourself and other readers. Python ignores comments completely — they do not affect how your program runs. You create a comment by putting a <code>#</code> (hash symbol) at the start of the note.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># This is a comment — Python skips this line entirely</span>
 <span class="n">temperature</span> <span class="o">=</span> <span class="mf">23.5</span>   <span class="c1"># you can also add a comment at the end of a line</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>Good comments explain WHY the code does something, not just WHAT it does. Get into the habit of writing comments now. Your future self will thank you.</p>
 <h3 id="indentation">Indentation</h3>
 <p><strong>Indentation</strong> means adding spaces at the beginning of a line to show that it belongs inside a group of code. Python uses indentation to understand your program's structure. This is different from most other programming languages.</p>
 <p>Most code editors — including Thonny, the one we recommend — add four spaces automatically when you press the <strong>Tab</strong> key.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># You will see indentation more in Chapter 2 — here is a preview</span>
 <span class="k">if</span> <span class="n">temperature</span> <span class="o">&gt;</span> <span class="mi">30</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;It is hot!&quot;</span><span class="p">)</span>    <span class="c1"># indented 4 spaces — inside the if block</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Stay cool!&quot;</span><span class="p">)</span>    <span class="c1"># also inside the if block</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All done.&quot;</span><span class="p">)</span>         <span class="c1"># NOT indented — outside the if block</span>
-</code></pre></div></td></tr></table></div>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"It is hot!"</span><span class="p">)</span>    <span class="c1"># indented 4 spaces — inside the if block</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Stay cool!"</span><span class="p">)</span>    <span class="c1"># also inside the if block</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"All done."</span><span class="p">)</span>         <span class="c1"># NOT indented — outside the if block</span>
+</code></pre></div></td></tr></tbody></table></div>
 <div class="admonition mascot-warning">
 <p class="admonition-title">Watch Out for Indentation Errors!</p>
-<p><img alt="Monty warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+<p><img alt="Monty warning" class="mascot-admonition-img" src="../../img/mascot/warning.png">
 Python is very particular about indentation. If you mix spaces and tabs, or use the wrong number of spaces, you will get an <code>IndentationError</code>. Always use four spaces — or press Tab once in Thonny. Never mix tabs and spaces on the same line level.</p>
 </div>
 <h2 id="the-print-statement">The <code>print()</code> Statement</h2>
 <p>The <strong>print statement</strong> (<code>print()</code>) is how you tell Python to show output on the screen. Put whatever you want to display inside the parentheses. You can print text, numbers, variables, or a mix of all three.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, maker!&quot;</span><span class="p">)</span>          <span class="c1"># prints text (a string)</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">"Hello, maker!"</span><span class="p">)</span>          <span class="c1"># prints text (a string)</span>
 <span class="nb">print</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>                       <span class="c1"># prints an integer</span>
 <span class="nb">print</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>                     <span class="c1"># prints a float</span>
 <span class="nb">print</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>                     <span class="c1"># prints a boolean</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;My age is&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>          <span class="c1"># prints text and a number together</span>
-</code></pre></div></td></tr></table></div>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"My age is"</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>          <span class="c1"># prints text and a number together</span>
+</code></pre></div></td></tr></tbody></table></div>
 <p>Here is what each line above displays:</p>
 <table>
 <thead>
@@ -2849,14 +2953,14 @@ Python is very particular about indentation. If you mix spaces and tabs, or use 
 </tbody>
 </table>
 <p>You can also print the value stored in a variable:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">student_name</span> <span class="o">=</span> <span class="s2">&quot;Alex&quot;</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">student_name</span> <span class="o">=</span> <span class="s2">"Alex"</span>
 <span class="n">age</span> <span class="o">=</span> <span class="mi">12</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Name:&quot;</span><span class="p">,</span> <span class="n">student_name</span><span class="p">)</span>   <span class="c1"># prints: Name: Alex</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Age:&quot;</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>             <span class="c1"># prints: Age: 12</span>
-</code></pre></div></td></tr></table></div>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Name:"</span><span class="p">,</span> <span class="n">student_name</span><span class="p">)</span>   <span class="c1"># prints: Name: Alex</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Age:"</span><span class="p">,</span> <span class="n">age</span><span class="p">)</span>             <span class="c1"># prints: Age: 12</span>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="operators-performing-actions-on-values">Operators — Performing Actions on Values</h2>
 <p>An <strong>operator</strong> is a symbol that performs an action on one or more values. Python has three groups of operators you will use in almost every program.</p>
 <h3 id="arithmetic-operators">Arithmetic Operators</h3>
@@ -2910,7 +3014,7 @@ Python is very particular about indentation. If you mix spaces and tabs, or use 
 </tbody>
 </table>
 <p>Here is a practical example using floor division and modulo. Imagine you have 24 LEDs and you want to arrange them in rows of 8:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2919,9 +3023,9 @@ Python is very particular about indentation. If you mix spaces and tabs, or use 
 <span class="n">leds_per_row</span> <span class="o">=</span> <span class="mi">8</span>
 <span class="n">num_rows</span> <span class="o">=</span> <span class="n">total_leds</span> <span class="o">//</span> <span class="n">leds_per_row</span>   <span class="c1"># 24 // 8 = 3 complete rows</span>
 <span class="n">leftover</span> <span class="o">=</span> <span class="n">total_leds</span> <span class="o">%</span> <span class="n">leds_per_row</span>    <span class="c1"># 24 % 8 = 0 leftover LEDs</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rows:&quot;</span><span class="p">,</span> <span class="n">num_rows</span><span class="p">)</span>                <span class="c1"># prints: Rows: 3</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Leftover LEDs:&quot;</span><span class="p">,</span> <span class="n">leftover</span><span class="p">)</span>       <span class="c1"># prints: Leftover LEDs: 0</span>
-</code></pre></div></td></tr></table></div>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Rows:"</span><span class="p">,</span> <span class="n">num_rows</span><span class="p">)</span>                <span class="c1"># prints: Rows: 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Leftover LEDs:"</span><span class="p">,</span> <span class="n">leftover</span><span class="p">)</span>       <span class="c1"># prints: Leftover LEDs: 0</span>
+</code></pre></div></td></tr></tbody></table></div>
 <p>Try changing the numbers yourself using the MicroSim below. Adjust the two sliders and click an operator to see the result instantly.</p>
 <h4 id="diagram-arithmetic-operator-explorer">Diagram: Arithmetic Operator Explorer</h4>
 <iframe src="../../sims/arithmetic-operator-explorer/main.html" width="100%" height="497px" scrolling="no"></iframe>
@@ -2929,8 +3033,8 @@ Python is very particular about indentation. If you mix spaces and tabs, or use 
 <details>
 <summary>Arithmetic Operator Explorer MicroSim</summary>
 <p>Type: microsim
-<strong>sim-id:</strong> arithmetic-operator-explorer<br/>
-<strong>Library:</strong> p5.js<br/>
+<strong>sim-id:</strong> arithmetic-operator-explorer<br>
+<strong>Library:</strong> p5.js<br>
 <strong>Status:</strong> Specified</p>
 <p>Bloom Level: Apply (L3)
 Bloom Verb: calculate
@@ -3003,10 +3107,10 @@ Learning Objective: Students can apply the six Python arithmetic operators to co
 </table>
 <div class="admonition mascot-encourage">
 <p class="admonition-title">You Can Do This!</p>
-<p><img alt="Monty encouraging" class="mascot-admonition-img" src="../../img/mascot/encouraging.png" />
+<p><img alt="Monty encouraging" class="mascot-admonition-img" src="../../img/mascot/encouraging.png">
 The <code>==</code> operator trips up almost every beginner at least once. Remember: a single <code>=</code> stores a value in a variable (assignment), and a double <code>==</code> checks whether two values are equal (comparison). One equals sign stores; two equals signs compares. You'll get this, coder!</p>
 </div>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -3015,7 +3119,7 @@ The <code>==</code> operator trips up almost every beginner at least once. Remem
 <span class="n">is_freezing</span> <span class="o">=</span> <span class="n">temperature</span> <span class="o">&lt;</span> <span class="mi">0</span>  <span class="c1"># is 28 less than 0? No → False</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">is_hot</span><span class="p">)</span>                  <span class="c1"># prints: True</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">is_freezing</span><span class="p">)</span>             <span class="c1"># prints: False</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h3 id="assignment-operators">Assignment Operators</h3>
 <p>You have already used the basic <strong>assignment operator</strong> (<code>=</code>) to store values in variables. Python also has a set of shortcut assignment operators that update a variable's value in place.</p>
 <table>
@@ -3061,18 +3165,18 @@ The <code>==</code> operator trips up almost every beginner at least once. Remem
 </tbody>
 </table>
 <p>These shortcuts are used constantly in hardware projects. For example, counting how many times a button has been pressed:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">button_count</span> <span class="o">=</span> <span class="mi">0</span>        <span class="c1"># start the counter at zero</span>
 <span class="n">button_count</span> <span class="o">+=</span> <span class="mi">1</span>       <span class="c1"># button was pressed — add 1</span>
 <span class="n">button_count</span> <span class="o">+=</span> <span class="mi">1</span>       <span class="c1"># button was pressed again — add 1 more</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">button_count</span><span class="p">)</span>     <span class="c1"># prints: 2</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>Using <code>button_count += 1</code> is shorter and easier to read than writing <code>button_count = button_count + 1</code> every time.</p>
 <h2 id="putting-it-all-together">Putting It All Together</h2>
 <p>Here is a short program that uses all 15 concepts from this chapter. Read each comment before you type it in — the comments are there to help you understand what every line does.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -3102,7 +3206,7 @@ The <code>==</code> operator trips up almost every beginner at least once. Remem
 <span class="c1"># This program stores microcontroller info and prints a report.</span>
 
 <span class="c1"># --- Variables and data types ---</span>
-<span class="n">board_name</span> <span class="o">=</span> <span class="s2">&quot;Raspberry Pi Pico&quot;</span>   <span class="c1"># string: name of our microcontroller</span>
+<span class="n">board_name</span> <span class="o">=</span> <span class="s2">"Raspberry Pi Pico"</span>   <span class="c1"># string: name of our microcontroller</span>
 <span class="n">pin_number</span> <span class="o">=</span> <span class="mi">26</span>                    <span class="c1"># integer: which pin we are reading</span>
 <span class="n">voltage</span> <span class="o">=</span> <span class="mf">3.3</span>                      <span class="c1"># float: operating voltage</span>
 <span class="n">is_connected</span> <span class="o">=</span> <span class="kc">True</span>                <span class="c1"># boolean: is the board plugged in?</span>
@@ -3113,21 +3217,21 @@ The <code>==</code> operator trips up almost every beginner at least once. Remem
 <span class="n">percent</span> <span class="o">=</span> <span class="n">reading</span> <span class="o">/</span> <span class="n">max_reading</span> <span class="o">*</span> <span class="mi">100</span>  <span class="c1"># calculate how full the range is</span>
 
 <span class="c1"># --- print() statement ---</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Board:&quot;</span><span class="p">,</span> <span class="n">board_name</span><span class="p">)</span>         <span class="c1"># string variable</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pin: GP&quot;</span><span class="p">,</span> <span class="n">pin_number</span><span class="p">)</span>        <span class="c1"># integer variable</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Voltage:&quot;</span><span class="p">,</span> <span class="n">voltage</span><span class="p">,</span> <span class="s2">&quot;V&quot;</span><span class="p">)</span>     <span class="c1"># float variable</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Connected:&quot;</span><span class="p">,</span> <span class="n">is_connected</span><span class="p">)</span>   <span class="c1"># boolean variable</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reading:&quot;</span><span class="p">,</span> <span class="n">reading</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Percentage:&quot;</span><span class="p">,</span> <span class="n">percent</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Board:"</span><span class="p">,</span> <span class="n">board_name</span><span class="p">)</span>         <span class="c1"># string variable</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Pin: GP"</span><span class="p">,</span> <span class="n">pin_number</span><span class="p">)</span>        <span class="c1"># integer variable</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Voltage:"</span><span class="p">,</span> <span class="n">voltage</span><span class="p">,</span> <span class="s2">"V"</span><span class="p">)</span>     <span class="c1"># float variable</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Connected:"</span><span class="p">,</span> <span class="n">is_connected</span><span class="p">)</span>   <span class="c1"># boolean variable</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Reading:"</span><span class="p">,</span> <span class="n">reading</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Percentage:"</span><span class="p">,</span> <span class="n">percent</span><span class="p">)</span>
 
 <span class="c1"># --- Comparison and assignment operators ---</span>
 <span class="n">is_high</span> <span class="o">=</span> <span class="n">reading</span> <span class="o">&gt;</span> <span class="mi">32767</span>           <span class="c1"># is the reading above the halfway point?</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Above halfway:&quot;</span><span class="p">,</span> <span class="n">is_high</span><span class="p">)</span>    <span class="c1"># prints: False (512 &lt; 32767)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Above halfway:"</span><span class="p">,</span> <span class="n">is_high</span><span class="p">)</span>    <span class="c1"># prints: False (512 &lt; 32767)</span>
 <span class="n">reading</span> <span class="o">+=</span> <span class="mi">100</span>                      <span class="c1"># add 100 to the reading using +=</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;New reading:&quot;</span><span class="p">,</span> <span class="n">reading</span><span class="p">)</span>      <span class="c1"># prints: New reading: 612</span>
-</code></pre></div></td></tr></table></div>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"New reading:"</span><span class="p">,</span> <span class="n">reading</span><span class="p">)</span>      <span class="c1"># prints: New reading: 612</span>
+</code></pre></div></td></tr></tbody></table></div>
 <p>When you run this program, you will see:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -3142,7 +3246,7 @@ Reading: 512
 Percentage: 0.781...
 Above halfway: False
 New reading: 612
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="key-takeaways">Key Takeaways</h2>
 <p>Before you move on to Chapter 2, make sure you can answer each of these questions:</p>
 <ul>
@@ -3166,7 +3270,7 @@ New reading: 612
 </details>
 <div class="admonition mascot-celebration">
 <p class="admonition-title">Great Work, Maker!</p>
-<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png">
 You just learned the foundation of every Python program — variables, data types, syntax, comments, print, and operators. These are the building blocks you will use in every single project in this course. In Chapter 2, you will put them to work with <code>if</code> statements and loops so your programs can make decisions and repeat actions. You've got this, coder!</p>
 </div>
 <h2 id="references">References</h2>
@@ -3198,7 +3302,7 @@ You just learned the foundation of every Python program — variables, data type
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -3208,13 +3312,13 @@ You just learned the foundation of every Python program — variables, data type
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: List of Chapters">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -3239,7 +3343,7 @@ You just learned the foundation of every Python program — variables, data type
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
             </div>
           </a>
         
@@ -3251,7 +3355,7 @@ You just learned the foundation of every Python program — variables, data type
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -3279,5 +3383,7 @@ You just learned the foundation of every Python program — variables, data type
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

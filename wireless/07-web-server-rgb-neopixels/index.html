@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -73,33 +70,43 @@
     
     
       
-        <meta  property="og:type"  content="website" >
+        <meta property="og:type" content="website">
       
-        <meta  property="og:title"  content="Web Server NeoPixel - Learning MicroPython" >
+        <meta property="og:title" content="Web Server NeoPixel - Learning MicroPython">
       
-        <meta  property="og:description"  content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython." >
+        <meta property="og:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/wireless/07-web-server-rgb-neopixels.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/wireless/07-web-server-rgb-neopixels.png">
       
-        <meta  property="og:image:type"  content="image/png" >
+        <meta property="og:image:type" content="image/png">
       
-        <meta  property="og:image:width"  content="1200" >
+        <meta property="og:image:width" content="1200">
       
-        <meta  property="og:image:height"  content="630" >
+        <meta property="og:image:height" content="630">
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/learning-micropython/wireless/07-web-server-rgb-neopixels/" >
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/wireless/07-web-server-rgb-neopixels/">
       
-        <meta  name="twitter:card"  content="summary_large_image" >
+        <meta name="twitter:card" content="summary_large_image">
       
-        <meta  name="twitter:title"  content="Web Server NeoPixel - Learning MicroPython" >
+        <meta name="twitter:title" content="Web Server NeoPixel - Learning MicroPython">
       
-        <meta  name="twitter:description"  content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython." >
+        <meta name="twitter:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/wireless/07-web-server-rgb-neopixels.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/wireless/07-web-server-rgb-neopixels.png">
       
     
     
-  </head>
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -139,7 +146,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -165,7 +172,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -174,15 +181,15 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -205,7 +212,7 @@
         <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -229,7 +236,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -250,7 +257,7 @@
       <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -1740,6 +1747,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -1758,6 +1769,97 @@
   
   <span class="md-ellipsis">
     MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
   </span>
   
 
@@ -2092,7 +2194,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2147,9 +2249,9 @@
 
 
 <h1 id="web-server-neopixel-rgb">Web Server NeoPixel RGB</h1>
-<p><img alt="" src="../../img/wireless-rgb-web-controller.png" /></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../img/wireless-rgb-web-controller.png" data-desc-position="bottom"><img alt="" src="../../img/wireless-rgb-web-controller.png"></a></p>
 <h2 id="sample-code-with-css">Sample Code with CSS</h2>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
 <span class="normal">  2</span>
 <span class="normal">  3</span>
 <span class="normal">  4</span>
@@ -2379,21 +2481,21 @@
         <span class="n">strip</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
 
 <span class="c1"># Select the onboard LED</span>
-<span class="n">led</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="s2">&quot;LED&quot;</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+<span class="n">led</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="s2">"LED"</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
 
 <span class="n">wlan</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>
 <span class="n">wlan</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">wlan</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">SSID</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">PASSWORD</span><span class="p">)</span>
-<span class="n">stateis</span> <span class="o">=</span> <span class="s2">&quot;LED is OFF&quot;</span>
+<span class="n">stateis</span> <span class="o">=</span> <span class="s2">"LED is OFF"</span>
 
-<span class="n">html</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;&lt;!DOCTYPE html&gt;</span>
+<span class="n">html</span> <span class="o">=</span> <span class="s2">"""&lt;!DOCTYPE html&gt;</span>
 <span class="s2">&lt;html&gt;</span>
 <span class="s2">   &lt;head&gt;</span>
 <span class="s2">     &lt;title&gt;Web Server On Pico W &lt;/title&gt;</span>
 <span class="s2">     &lt;style&gt;</span>
 <span class="s2">        body {</span>
 <span class="s2">            font-size:24px;</span>
-<span class="s2">            font-family:&#39;Helvetica&#39;</span>
+<span class="s2">            font-family:'Helvetica'</span>
 <span class="s2">        }</span>
 
 <span class="s2">        .button-row {</span>
@@ -2430,32 +2532,32 @@
 <span class="s2">      &lt;p&gt;Onboard LED State: </span><span class="si">%s</span><span class="s2">&lt;/p&gt;</span>
 
 
-<span class="s2">      &lt;div class=&quot;buttons&quot;&gt;</span>
+<span class="s2">      &lt;div class="buttons"&gt;</span>
 
-<span class="s2">          &lt;span class=&quot;button-row&quot; style=&quot;background-color:gray&quot;&gt;</span>
-<span class="s2">              &lt;a href=&quot;/light/on&quot; class=&quot;button&quot;&gt;Turn Onboard LED On&lt;/a&gt;</span>
-<span class="s2">              &lt;a href=&quot;/light/off&quot; class=&quot;button&quot;&gt;Turn Onboard LED Off&lt;/a&gt;</span>
+<span class="s2">          &lt;span class="button-row" style="background-color:gray"&gt;</span>
+<span class="s2">              &lt;a href="/light/on" class="button"&gt;Turn Onboard LED On&lt;/a&gt;</span>
+<span class="s2">              &lt;a href="/light/off" class="button"&gt;Turn Onboard LED Off&lt;/a&gt;</span>
 <span class="s2">          &lt;/span&gt;&lt;br/&gt;</span>
 
-<span class="s2">          &lt;span class=&quot;button-row&quot; style=&quot;background-color:red&quot;&gt;</span>
-<span class="s2">             &lt;a href=&quot;/led/red/on&quot; class=&quot;button&quot;&gt;Red LED On&lt;/a&gt;</span>
-<span class="s2">             &lt;a href=&quot;/led/red/off&quot; class=&quot;button&quot;&gt;Red LED Off&lt;/a&gt;</span>
+<span class="s2">          &lt;span class="button-row" style="background-color:red"&gt;</span>
+<span class="s2">             &lt;a href="/led/red/on" class="button"&gt;Red LED On&lt;/a&gt;</span>
+<span class="s2">             &lt;a href="/led/red/off" class="button"&gt;Red LED Off&lt;/a&gt;</span>
 <span class="s2">          &lt;/span&gt;&lt;br/&gt;</span>
 
-<span class="s2">          &lt;span class=&quot;button-row&quot; style=&quot;background-color:green&quot;&gt;</span>
-<span class="s2">              &lt;a href=&quot;/led/green/on&quot; class=&quot;button&quot;&gt;Green LED On&lt;/a&gt;</span>
-<span class="s2">              &lt;a href=&quot;/led/green/off&quot; class=&quot;button&quot;&gt;Green LED Off&lt;/a&gt;</span>
+<span class="s2">          &lt;span class="button-row" style="background-color:green"&gt;</span>
+<span class="s2">              &lt;a href="/led/green/on" class="button"&gt;Green LED On&lt;/a&gt;</span>
+<span class="s2">              &lt;a href="/led/green/off" class="button"&gt;Green LED Off&lt;/a&gt;</span>
 <span class="s2">          &lt;/span&gt;&lt;br/&gt;</span>
 
-<span class="s2">          &lt;span class=&quot;button-row&quot; style=&quot;background-color:blue&quot;&gt;</span>
-<span class="s2">              &lt;a href=&quot;/led/blue/on&quot; class=&quot;button&quot;&gt;Blue LED On&lt;/a&gt;</span>
-<span class="s2">              &lt;a href=&quot;/led/blue/off&quot; class=&quot;button&quot;&gt;Blue LED Off&lt;/a&gt;</span>
+<span class="s2">          &lt;span class="button-row" style="background-color:blue"&gt;</span>
+<span class="s2">              &lt;a href="/led/blue/on" class="button"&gt;Blue LED On&lt;/a&gt;</span>
+<span class="s2">              &lt;a href="/led/blue/off" class="button"&gt;Blue LED Off&lt;/a&gt;</span>
 <span class="s2">          &lt;/span&gt;</span>
 
 <span class="s2">        &lt;/div&gt;</span>
 <span class="s2">  &lt;/body&gt;</span>
 <span class="s2">&lt;/html&gt;</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
 <span class="c1"># Wait for connect or fail</span>
 <span class="n">max_wait</span> <span class="o">=</span> <span class="mi">10</span>
@@ -2463,106 +2565,106 @@
   <span class="k">if</span> <span class="n">wlan</span><span class="o">.</span><span class="n">status</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">wlan</span><span class="o">.</span><span class="n">status</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>
     <span class="k">break</span>
   <span class="n">max_wait</span> <span class="o">-=</span> <span class="mi">1</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;waiting for connection...&#39;</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'waiting for connection...'</span><span class="p">)</span>
   <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
   <span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
 
 <span class="c1"># Handle connection error</span>
 <span class="k">if</span> <span class="n">wlan</span><span class="o">.</span><span class="n">status</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
-  <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;network connection failed&#39;</span><span class="p">)</span>
+  <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">'network connection failed'</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;We are connected to WiFI access point:&#39;</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">SSID</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">'We are connected to WiFI access point:'</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">SSID</span><span class="p">)</span>
   <span class="n">status</span> <span class="o">=</span> <span class="n">wlan</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">()</span>
-  <span class="nb">print</span><span class="p">(</span> <span class="s1">&#39;The IP address of the pico W is:&#39;</span><span class="p">,</span> <span class="n">status</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span> <span class="s1">'The IP address of the pico W is:'</span><span class="p">,</span> <span class="n">status</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
 
 <span class="c1"># Open socket</span>
-<span class="n">addr</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span> <span class="mi">80</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="c1"># print(&#39;addr:&#39;, addr)</span>
+<span class="n">addr</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="s1">'0.0.0.0'</span><span class="p">,</span> <span class="mi">80</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1"># print('addr:', addr)</span>
 
 <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>
-<span class="c1"># this prevents the &quot;OSError: [Errno 98] EADDRINUSE&quot; error for repeated tests</span>
+<span class="c1"># this prevents the "OSError: [Errno 98] EADDRINUSE" error for repeated tests</span>
 <span class="n">s</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="c1"># print(&#39;Got a sockert.  s:&#39;, s)</span>
+<span class="c1"># print('Got a sockert.  s:', s)</span>
 
 <span class="c1">#if not addr:</span>
 
-<span class="c1"># print(&#39;going to run bind to addr on the socket&#39;)</span>
+<span class="c1"># print('going to run bind to addr on the socket')</span>
 <span class="n">s</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">addr</span><span class="p">)</span>
 
-<span class="c1"># print(&#39;going to run listen(1) on socket&#39;)</span>
+<span class="c1"># print('going to run listen(1) on socket')</span>
 <span class="n">s</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="c1"># print(&#39;listening on&#39;, addr)</span>
+<span class="c1"># print('listening on', addr)</span>
 
 <span class="c1"># Listen for connections</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
   <span class="k">try</span><span class="p">:</span>
     <span class="n">cl</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
-    <span class="c1"># print(&#39;client connected from&#39;, addr)</span>
+    <span class="c1"># print('client connected from', addr)</span>
     <span class="n">request</span> <span class="o">=</span> <span class="n">cl</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">1024</span><span class="p">)</span>
     <span class="c1"># print(request)</span>
     <span class="n">request</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
-    <span class="n">led_on</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/light/on&#39;</span><span class="p">)</span>
-    <span class="n">led_off</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/light/off&#39;</span><span class="p">)</span>
+    <span class="n">led_on</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'/light/on'</span><span class="p">)</span>
+    <span class="n">led_off</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'/light/off'</span><span class="p">)</span>
 
-    <span class="n">red_on</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/led/red/on&#39;</span><span class="p">)</span>
-    <span class="n">red_off</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/led/red/off&#39;</span><span class="p">)</span>
+    <span class="n">red_on</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'/led/red/on'</span><span class="p">)</span>
+    <span class="n">red_off</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'/led/red/off'</span><span class="p">)</span>
 
-    <span class="n">green_on</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/led/green/on&#39;</span><span class="p">)</span>
-    <span class="n">green_off</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/led/green/off&#39;</span><span class="p">)</span>
+    <span class="n">green_on</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'/led/green/on'</span><span class="p">)</span>
+    <span class="n">green_off</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'/led/green/off'</span><span class="p">)</span>
 
-    <span class="n">blue_on</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/led/blue/on&#39;</span><span class="p">)</span>
-    <span class="n">blue_off</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/led/blue/off&#39;</span><span class="p">)</span>
+    <span class="n">blue_on</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'/led/blue/on'</span><span class="p">)</span>
+    <span class="n">blue_off</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">'/led/blue/off'</span><span class="p">)</span>
 
-    <span class="c1"># print( &#39;led on = &#39; + str(led_on))</span>
-    <span class="c1"># print( &#39;led off = &#39; + str(led_off))</span>
+    <span class="c1"># print( 'led on = ' + str(led_on))</span>
+    <span class="c1"># print( 'led off = ' + str(led_off))</span>
 
     <span class="k">if</span> <span class="n">led_on</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
-      <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;led on&quot;</span><span class="p">)</span>
+      <span class="nb">print</span><span class="p">(</span><span class="s2">"led on"</span><span class="p">)</span>
       <span class="n">led</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
-      <span class="n">stateis</span> <span class="o">=</span> <span class="s2">&quot;LED is ON&quot;</span>
+      <span class="n">stateis</span> <span class="o">=</span> <span class="s2">"LED is ON"</span>
 
     <span class="k">if</span> <span class="n">led_off</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;led off&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"led off"</span><span class="p">)</span>
         <span class="n">led</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
-        <span class="n">stateis</span> <span class="o">=</span> <span class="s2">&quot;LED is OFF&quot;</span>
+        <span class="n">stateis</span> <span class="o">=</span> <span class="s2">"LED is OFF"</span>
 
     <span class="k">if</span> <span class="n">red_on</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;red on&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"red on"</span><span class="p">)</span>
         <span class="n">set_color</span><span class="p">(</span><span class="n">red</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">red_off</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;red off&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"red off"</span><span class="p">)</span>
         <span class="n">set_color</span><span class="p">(</span><span class="n">off</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">green_on</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;green on&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"green on"</span><span class="p">)</span>
         <span class="n">set_color</span><span class="p">(</span><span class="n">green</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">green_off</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;green off&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"green off"</span><span class="p">)</span>
         <span class="n">set_color</span><span class="p">(</span><span class="n">off</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">blue_on</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;blue on&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"blue on"</span><span class="p">)</span>
         <span class="n">set_color</span><span class="p">(</span><span class="n">blue</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">blue_off</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;blue off&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"blue off"</span><span class="p">)</span>
         <span class="n">set_color</span><span class="p">(</span><span class="n">off</span><span class="p">)</span>
 
     <span class="c1"># generate the we page with the stateis as a parameter</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">html</span> <span class="o">%</span> <span class="n">stateis</span>
-    <span class="n">cl</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">&#39;HTTP/1.0 200 OK</span><span class="se">\r\n</span><span class="s1">Content-type: text/html</span><span class="se">\r\n\r\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">cl</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s1">'HTTP/1.0 200 OK</span><span class="se">\r\n</span><span class="s1">Content-type: text/html</span><span class="se">\r\n\r\n</span><span class="s1">'</span><span class="p">)</span>
     <span class="n">cl</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
     <span class="n">cl</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
   <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="n">cl</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;connection closed&#39;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'connection closed'</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="references">References</h2>
 <p>Clear Fix Floating Boxes Example</p>
 <p>https://www.w3schools.com/css/tryit.asp?filename=trycss_float_boxes</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2604,7 +2706,7 @@
 <span class="p">}</span>
 
 <span class="p">.</span><span class="nc">clearfix</span><span class="p">::</span><span class="nd">after</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">content</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="k">content</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">;</span>
 <span class="w">  </span><span class="k">clear</span><span class="p">:</span><span class="w"> </span><span class="kc">both</span><span class="p">;</span>
 <span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">table</span><span class="p">;</span>
 <span class="p">}</span>
@@ -2615,15 +2717,15 @@
   <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Grid of Boxes<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Float boxes side by side:<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
 
-  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;clearfix&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;box&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-color:silver&quot;</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"clearfix"</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"box"</span> <span class="na">style</span><span class="o">=</span><span class="s">"background-color:silver"</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Some text inside the box.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;box&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-color:gray&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">"box"</span> <span class="na">style</span><span class="o">=</span><span class="s">"background-color:gray"</span><span class="p">&gt;</span>
     <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Some text inside the box.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
     <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
   <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 
 
 
@@ -2651,7 +2753,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -2661,13 +2763,13 @@
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../04-web-server/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Web Server">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -2692,7 +2794,7 @@
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
             </div>
           </a>
         
@@ -2704,7 +2806,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -2732,5 +2834,7 @@
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

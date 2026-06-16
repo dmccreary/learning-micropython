@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -73,33 +70,43 @@
     
     
       
-        <meta  property="og:type"  content="website" >
+        <meta property="og:type" content="website">
       
-        <meta  property="og:title"  content="File Systems, Audio Files, and Debugging - Learning MicroPython" >
+        <meta property="og:title" content="File Systems, Audio Files, and Debugging - Learning MicroPython">
       
-        <meta  property="og:description"  content="Pico file system with open(), uos, SD card via SPI, WAV audio playback over I2S, systematic debugging strategies, traceback reading, Thonny's heap viewer, and common wiring errors." >
+        <meta property="og:description" content="Pico file system with open(), uos, SD card via SPI, WAV audio playback over I2S, systematic debugging strategies, traceback reading, Thonny's heap viewer, and common wiring errors.">
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/21-file-systems-debugging/index.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/21-file-systems-debugging/index.png">
       
-        <meta  property="og:image:type"  content="image/png" >
+        <meta property="og:image:type" content="image/png">
       
-        <meta  property="og:image:width"  content="1200" >
+        <meta property="og:image:width" content="1200">
       
-        <meta  property="og:image:height"  content="630" >
+        <meta property="og:image:height" content="630">
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/learning-micropython/chapters/21-file-systems-debugging/" >
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/chapters/21-file-systems-debugging/">
       
-        <meta  name="twitter:card"  content="summary_large_image" >
+        <meta name="twitter:card" content="summary_large_image">
       
-        <meta  name="twitter:title"  content="File Systems, Audio Files, and Debugging - Learning MicroPython" >
+        <meta name="twitter:title" content="File Systems, Audio Files, and Debugging - Learning MicroPython">
       
-        <meta  name="twitter:description"  content="Pico file system with open(), uos, SD card via SPI, WAV audio playback over I2S, systematic debugging strategies, traceback reading, Thonny's heap viewer, and common wiring errors." >
+        <meta name="twitter:description" content="Pico file system with open(), uos, SD card via SPI, WAV audio playback over I2S, systematic debugging strategies, traceback reading, Thonny's heap viewer, and common wiring errors.">
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/21-file-systems-debugging/index.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/21-file-systems-debugging/index.png">
       
     
     
-  </head>
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -139,7 +146,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -165,7 +172,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -174,15 +181,15 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -205,7 +212,7 @@
         <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -229,7 +236,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -250,7 +257,7 @@
       <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -1956,6 +1963,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -1974,6 +1985,97 @@
   
   <span class="md-ellipsis">
     MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
   </span>
   
 
@@ -2308,7 +2410,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2573,10 +2675,10 @@
 <li><a href="../08-communication-protocols/">Chapter 8: Communication Protocols: I2C, SPI, and UART</a></li>
 <li><a href="../18-sound-music-audio/">Chapter 18: Sound, Music, and Audio Generation</a></li>
 </ul>
-<hr />
+<hr>
 <div class="admonition mascot-welcome">
 <p class="admonition-title">Welcome to Chapter 21</p>
-<p><img alt="Monty waves hello" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+<p><img alt="Monty waves hello" class="mascot-admonition-img" src="../../img/mascot/welcome.png">
 Every serious project stores and loads data. Every programmer hits bugs. This chapter arms you with both: a complete file system toolkit for the Pico and a systematic debugging strategy that will save you hours of frustration. By the end you will be reading logs, playing audio files, and diagnosing problems like a professional. Let's build the skills that make every other skill better!</p>
 </div>
 <h2 id="the-micropython-file-system">The MicroPython File System</h2>
@@ -2584,7 +2686,7 @@ Every serious project stores and loads data. Every programmer hits bugs. This ch
 <p><strong>Persistent storage</strong> means data that survives a power cycle. Variables in RAM are cleared when the Pico resets; files on the flash file system remain until you delete them. This is essential for logging sensor data, storing configuration, and caching downloaded content.</p>
 <h3 id="open-reading-and-writing-files">open() — Reading and Writing Files</h3>
 <p>Python's standard <strong><code>open()</code> function</strong> works in MicroPython just as it does on a desktop computer:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2602,28 +2704,28 @@ Every serious project stores and loads data. Every programmer hits bugs. This ch
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Writing a file</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;log.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>   <span class="c1"># &quot;w&quot; = write (creates or overwrites)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Temp: 23.5 C</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Humidity: 64%</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"log.txt"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>   <span class="c1"># "w" = write (creates or overwrites)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"Temp: 23.5 C</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"Humidity: 64%</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="c1"># Appending to an existing file</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;log.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>   <span class="c1"># &quot;a&quot; = append (adds to end)</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Temp: 24.1 C</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"log.txt"</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>   <span class="c1"># "a" = append (adds to end)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"Temp: 24.1 C</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="c1"># Reading a file</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;log.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>   <span class="c1"># &quot;r&quot; = read</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"log.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>   <span class="c1"># "r" = read</span>
     <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
 
 <span class="c1"># Reading line by line</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;log.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"log.txt"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>For binary files (images, audio, raw data), use <code>"rb"</code> (read binary) or <code>"wb"</code> (write binary).</p>
 <h3 id="the-uos-module-directory-operations">The uos Module — Directory Operations</h3>
 <p>The <strong><code>uos</code> module</strong> manages directories and file listings. The three most useful methods are:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2638,20 +2740,20 @@ Every serious project stores and loads data. Every programmer hits bugs. This ch
 <span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">uos</span>
 
 <span class="c1"># List files in the root directory</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">uos</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">))</span>        <span class="c1"># e.g., [&#39;boot.py&#39;, &#39;main.py&#39;, &#39;log.txt&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">uos</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">"/"</span><span class="p">))</span>        <span class="c1"># e.g., ['boot.py', 'main.py', 'log.txt']</span>
 
 <span class="c1"># Create a directory</span>
-<span class="n">uos</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">&quot;/data&quot;</span><span class="p">)</span>             <span class="c1"># creates a /data folder</span>
+<span class="n">uos</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">"/data"</span><span class="p">)</span>             <span class="c1"># creates a /data folder</span>
 
 <span class="c1"># Remove a file</span>
-<span class="n">uos</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;/data/old.txt&quot;</span><span class="p">)</span>    <span class="c1"># deletes the file permanently</span>
+<span class="n">uos</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">"/data/old.txt"</span><span class="p">)</span>    <span class="c1"># deletes the file permanently</span>
 
 <span class="c1"># Remove a directory (must be empty first)</span>
-<span class="n">uos</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="s2">&quot;/data&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+<span class="n">uos</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="s2">"/data"</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="extending-storage-with-an-sd-card">Extending Storage with an SD Card</h2>
 <p>The Pico's 2 MB flash fills quickly with audio samples or sensor logs. A <strong>microSD card</strong> provides gigabytes of additional storage. Connect it over SPI:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2662,9 +2764,9 @@ SD card MISO → Pico GP4 (SPI0 MISO)
 SD card SCK  → Pico GP2 (SPI0 SCK)
 SD card VCC  → Pico 3V3
 SD card GND  → Pico GND
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>The <strong>SPI SD card interface</strong> requires a driver. Copy <code>sdcard.py</code> from <code>src/drivers/</code> to your Pico, then mount the SD card:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2682,24 +2784,24 @@ SD card GND  → Pico GND
 <span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">miso</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">sd</span>  <span class="o">=</span> <span class="n">sdcard</span><span class="o">.</span><span class="n">SDCard</span><span class="p">(</span><span class="n">spi</span><span class="p">,</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">vfs</span> <span class="o">=</span> <span class="n">uos</span><span class="o">.</span><span class="n">VfsFat</span><span class="p">(</span><span class="n">sd</span><span class="p">)</span>
-<span class="n">uos</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="n">vfs</span><span class="p">,</span> <span class="s2">&quot;/sd&quot;</span><span class="p">)</span>                  <span class="c1"># mount at /sd</span>
+<span class="n">uos</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="n">vfs</span><span class="p">,</span> <span class="s2">"/sd"</span><span class="p">)</span>                  <span class="c1"># mount at /sd</span>
 
 <span class="c1"># Now access SD card files with /sd/ prefix</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/sd/data.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;time,temp,humid</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"/sd/data.csv"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">"time,temp,humid</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">uos</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;/sd&quot;</span><span class="p">))</span>
-</code></pre></div></td></tr></table></div>
+<span class="nb">print</span><span class="p">(</span><span class="n">uos</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">"/sd"</span><span class="p">))</span>
+</code></pre></div></td></tr></tbody></table></div>
 <h2 id="wav-audio-files-and-playback">WAV Audio Files and Playback</h2>
 <p>A <strong>WAV audio file</strong> (Waveform Audio File Format) is the simplest audio format for microcontrollers — it contains raw PCM audio samples with a 44-byte header. No decoding is needed; you read the bytes and stream them to I2S.</p>
 <p><strong>MP3 to WAV conversion</strong> is how you prepare audio for the Pico. MP3 files are compressed and require a decoder chip or significant CPU power. WAV files are uncompressed and can stream directly from flash or SD card to the I2S bus.</p>
 <p>To convert: use Audacity (free) or a command-line tool:
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mp3<span class="w"> </span>-ar<span class="w"> </span><span class="m">22050</span><span class="w"> </span>-ac<span class="w"> </span><span class="m">1</span><span class="w"> </span>-acodec<span class="w"> </span>pcm_s16le<span class="w"> </span>output.wav
-</code></pre></div></td></tr></table></div>
-Options: <code>-ar 22050</code> = 22,050 Hz sample rate; <code>-ac 1</code> = mono; <code>-acodec pcm_s16le</code> = 16-bit signed.</p>
+</p><div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.mp3<span class="w"> </span>-ar<span class="w"> </span><span class="m">22050</span><span class="w"> </span>-ac<span class="w"> </span><span class="m">1</span><span class="w"> </span>-acodec<span class="w"> </span>pcm_s16le<span class="w"> </span>output.wav
+</code></pre></div></td></tr></tbody></table></div>
+Options: <code>-ar 22050</code> = 22,050 Hz sample rate; <code>-ac 1</code> = mono; <code>-acodec pcm_s16le</code> = 16-bit signed.<p></p>
 <h3 id="i2s-audio-output-playing-a-wav-file">I2S Audio Output — Playing a WAV File</h3>
 <p>Connect an I2S DAC (MAX98357A or PCM5102A) as described in Chapter 18, then stream the WAV file:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2725,14 +2827,14 @@ Options: <code>-ar 22050</code> = 22,050 Hz sample rate; <code>-ac 1</code> = mo
 <span class="n">BUF_SIZE</span> <span class="o">=</span> <span class="mi">1024</span>
 <span class="n">buf</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="n">BUF_SIZE</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/sd/sound.wav&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">wav</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"/sd/sound.wav"</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">wav</span><span class="p">:</span>
     <span class="n">wav</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">44</span><span class="p">)</span>                     <span class="c1"># skip WAV header</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">n</span> <span class="o">=</span> <span class="n">wav</span><span class="o">.</span><span class="n">readinto</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>        <span class="c1"># fill buffer from file</span>
         <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">break</span>                    <span class="c1"># end of file</span>
         <span class="n">audio</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">buf</span><span class="p">[:</span><span class="n">n</span><span class="p">])</span>         <span class="c1"># stream to I2S DAC</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p><strong>Audio playback</strong> at 22,050 Hz mono uses about 44 KB/s — a 10-second clip fits in about 440 KB, well within a 2 GB SD card.</p>
 <h2 id="debugging-strategy-finding-bugs-systematically">Debugging Strategy — Finding Bugs Systematically</h2>
 <p>Even experienced programmers spend significant time debugging. The key is a <strong>systematic approach</strong> rather than random changes.</p>
@@ -2746,31 +2848,31 @@ Options: <code>-ar 22050</code> = 22,050 Hz sample rate; <code>-ac 1</code> = mo
 </ol>
 <h3 id="print-debugging-the-first-tool">Print Debugging — The First Tool</h3>
 <p><strong>Print debugging</strong> is the simplest technique: insert <code>print()</code> statements to show the value of variables at key points.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">read_sensor</span><span class="p">():</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">adc</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DEBUG: raw ADC = </span><span class="si">{</span><span class="n">raw</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>      <span class="c1"># add this line temporarily</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"DEBUG: raw ADC = </span><span class="si">{</span><span class="n">raw</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>      <span class="c1"># add this line temporarily</span>
     <span class="n">temp</span> <span class="o">=</span> <span class="p">(</span><span class="n">raw</span> <span class="o">/</span> <span class="mi">65535</span><span class="p">)</span> <span class="o">*</span> <span class="mf">3.3</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">-</span> <span class="mf">273.15</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;DEBUG: temp = </span><span class="si">{</span><span class="n">temp</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>    <span class="c1"># and this one</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"DEBUG: temp = </span><span class="si">{</span><span class="n">temp</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>    <span class="c1"># and this one</span>
     <span class="k">return</span> <span class="n">temp</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p>Delete or comment out debug prints before finishing your project.</p>
 <h3 id="reading-error-messages-and-tracebacks">Reading Error Messages and Tracebacks</h3>
 <p>When your program crashes, MicroPython displays a <strong>traceback</strong> — a trail showing which functions were active when the error occurred. Read tracebacks from the bottom up: the last line is the actual error; the lines above show the call chain.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>Traceback (most recent call last):
-  File &quot;main.py&quot;, line 45, in &lt;module&gt;
-  File &quot;main.py&quot;, line 23, in read_temperature
-  File &quot;main.py&quot;, line 12, in setup_sensor
-AttributeError: &#39;NoneType&#39; object has no attribute &#39;read&#39;
-</code></pre></div></td></tr></table></div>
+  File "main.py", line 45, in &lt;module&gt;
+  File "main.py", line 23, in read_temperature
+  File "main.py", line 12, in setup_sensor
+AttributeError: 'NoneType' object has no attribute 'read'
+</code></pre></div></td></tr></tbody></table></div>
 <p>Reading this: line 12 (<code>setup_sensor</code>) called something that returned <code>None</code>, and line 23 then tried to call <code>.read()</code> on that <code>None</code>. The fix: <code>setup_sensor</code> should check its return value before passing it to <code>read_temperature</code>.</p>
 <h3 id="i2c-debugging">I2C Debugging</h3>
 <p>The most common I2C problems and their solutions:</p>
@@ -2809,8 +2911,8 @@ AttributeError: &#39;NoneType&#39; object has no attribute &#39;read&#39;
 </ul>
 <h3 id="minicom-serial-monitor">Minicom Serial Monitor</h3>
 <p><strong>Minicom</strong> is a terminal program that connects to the Pico's serial port from a Linux/Mac command line:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>minicom<span class="w"> </span>-D<span class="w"> </span>/dev/tty.usbmodem0001<span class="w"> </span>-b<span class="w"> </span><span class="m">115200</span>
-</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>minicom<span class="w"> </span>-D<span class="w"> </span>/dev/tty.usbmodem0001<span class="w"> </span>-b<span class="w"> </span><span class="m">115200</span>
+</code></pre></div></td></tr></tbody></table></div>
 <p>Use it when Thonny is not connected — it shows all <code>print()</code> output in real time.</p>
 <h3 id="logic-probe">Logic Probe</h3>
 <p>A <strong>logic probe</strong> (or logic analyzer) is a debugging tool that visualizes digital signals on multiple pins at once. Connect it to your I2C, SPI, or UART pins and see the actual waveforms in software. Popular choices are the Saleae Logic or a cheap clone. Essential when you suspect a timing issue or a corrupted signal.</p>
@@ -2854,7 +2956,7 @@ AttributeError: &#39;NoneType&#39; object has no attribute &#39;read&#39;
 </table>
 <div class="admonition mascot-tip">
 <p class="admonition-title">Monty's Debugging Golden Rule</p>
-<p><img alt="Monty giving a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png" />
+<p><img alt="Monty giving a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png">
 Change <strong>one thing at a time</strong> when debugging hardware. If you swap two wires and update the code in the same step, you cannot know which change fixed the problem. Fix hardware first, verify the device appears in <code>i2c.scan()</code>, then fix the code. One variable at a time.</p>
 </div>
 <h2 id="key-takeaways">Key Takeaways</h2>
@@ -2875,7 +2977,7 @@ Change <strong>one thing at a time</strong> when debugging hardware. If you swap
 </details>
 <div class="admonition mascot-celebration">
 <p class="admonition-title">Debugging Skills Unlocked!</p>
-<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png">
 File systems, audio playback, and a complete debugging toolkit — you now have the skills to build and fix serious projects. Chapter 22 ventures into the most advanced Pico features: PIO state machines, AI-assisted coding, and the tools that push the hardware to its absolute limits. Almost at the finish line!</p>
 </div>
 <h2 id="references">References</h2>
@@ -2907,7 +3009,7 @@ File systems, audio playback, and a complete debugging toolkit — you now have 
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -2917,13 +3019,13 @@ File systems, audio playback, and a complete debugging toolkit — you now have 
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../20-timers-multicore/references/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Annotated References">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -2948,7 +3050,7 @@ File systems, audio playback, and a complete debugging toolkit — you now have 
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
             </div>
           </a>
         
@@ -2960,7 +3062,7 @@ File systems, audio playback, and a complete debugging toolkit — you now have 
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -2988,5 +3090,7 @@ File systems, audio playback, and a complete debugging toolkit — you now have 
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

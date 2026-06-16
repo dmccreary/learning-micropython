@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -47,7 +44,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -73,33 +70,43 @@
     
     
       
-        <meta  property="og:type"  content="website" >
+        <meta property="og:type" content="website">
       
-        <meta  property="og:title"  content="Color Displays and E-Paper Screens - Learning MicroPython" >
+        <meta property="og:title" content="Color Displays and E-Paper Screens - Learning MicroPython">
       
-        <meta  property="og:description"  content="ILI9341 and ST7789V full-color TFT displays over SPI, RGB565 color depth, screen coordinate systems, e-paper e-ink technology, refresh rate, low-power design, and Waveshare drivers." >
+        <meta property="og:description" content="ILI9341 and ST7789V full-color TFT displays over SPI, RGB565 color depth, screen coordinate systems, e-paper e-ink technology, refresh rate, low-power design, and Waveshare drivers.">
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/17-color-epaper-displays/index.png" >
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/17-color-epaper-displays/index.png">
       
-        <meta  property="og:image:type"  content="image/png" >
+        <meta property="og:image:type" content="image/png">
       
-        <meta  property="og:image:width"  content="1200" >
+        <meta property="og:image:width" content="1200">
       
-        <meta  property="og:image:height"  content="630" >
+        <meta property="og:image:height" content="630">
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/learning-micropython/chapters/17-color-epaper-displays/" >
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/chapters/17-color-epaper-displays/">
       
-        <meta  name="twitter:card"  content="summary_large_image" >
+        <meta name="twitter:card" content="summary_large_image">
       
-        <meta  name="twitter:title"  content="Color Displays and E-Paper Screens - Learning MicroPython" >
+        <meta name="twitter:title" content="Color Displays and E-Paper Screens - Learning MicroPython">
       
-        <meta  name="twitter:description"  content="ILI9341 and ST7789V full-color TFT displays over SPI, RGB565 color depth, screen coordinate systems, e-paper e-ink technology, refresh rate, low-power design, and Waveshare drivers." >
+        <meta name="twitter:description" content="ILI9341 and ST7789V full-color TFT displays over SPI, RGB565 color depth, screen coordinate systems, e-paper e-ink technology, refresh rate, low-power design, and Waveshare drivers.">
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/17-color-epaper-displays/index.png" >
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/chapters/17-color-epaper-displays/index.png">
       
     
     
-  </head>
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -139,7 +146,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -165,7 +172,7 @@
     
       <label class="md-header__button md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
       </label>
       <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -174,15 +181,15 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -205,7 +212,7 @@
         <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -229,7 +236,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -250,7 +257,7 @@
       <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
   </div>
   <div class="md-source__repository">
     GitHub Repo
@@ -1956,6 +1963,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -1974,6 +1985,97 @@
   
   <span class="md-ellipsis">
     MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
   </span>
   
 
@@ -2308,7 +2410,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2537,10 +2639,10 @@
 <li><a href="../08-communication-protocols/">Chapter 8: Communication Protocols: I2C, SPI, and UART</a></li>
 <li><a href="../16-oled-drawing-animation/">Chapter 16: OLED Drawing Methods, Framebuffer, and Animation</a></li>
 </ul>
-<hr />
+<hr>
 <div class="admonition mascot-welcome">
 <p class="admonition-title">Welcome to Chapter 17</p>
-<p><img alt="Monty waves hello" class="mascot-admonition-img" src="../../img/mascot/welcome.png" />
+<p><img alt="Monty waves hello" class="mascot-admonition-img" src="../../img/mascot/welcome.png">
 Black and white is so Chapter 16! In this chapter your Pico drives a full-color screen — every pixel can be any of 65,536 colors. Then we explore the other extreme: e-paper displays that use almost no power and look like printed ink on paper. Two very different technologies, both extremely useful!</p>
 </div>
 <h2 id="tft-displays-full-color-over-spi">TFT Displays — Full Color Over SPI</h2>
@@ -2555,7 +2657,7 @@ Black and white is so Chapter 16! In this chapter your Pico drives a full-color 
 - 5 bits for blue (0–31)</p>
 <p>Total: 16 bits = 65,536 possible colors per pixel. The green channel gets one extra bit because the human eye is more sensitive to green.</p>
 <p>To create an RGB565 color value:</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2567,7 +2669,7 @@ Black and white is so Chapter 16! In this chapter your Pico drives a full-color 
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">rgb565</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert 8-bit RGB (0–255 each) to 16-bit RGB565.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Convert 8-bit RGB (0–255 each) to 16-bit RGB565."""</span>
     <span class="n">r5</span> <span class="o">=</span> <span class="n">r</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span>          <span class="c1"># top 5 bits of red</span>
     <span class="n">g6</span> <span class="o">=</span> <span class="n">g</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span>          <span class="c1"># top 6 bits of green</span>
     <span class="n">b5</span> <span class="o">=</span> <span class="n">b</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span>          <span class="c1"># top 5 bits of blue</span>
@@ -2578,7 +2680,7 @@ Black and white is so Chapter 16! In this chapter your Pico drives a full-color 
 <span class="n">BLUE</span>  <span class="o">=</span> <span class="n">rgb565</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>      <span class="c1"># 0x001F</span>
 <span class="n">WHITE</span> <span class="o">=</span> <span class="n">rgb565</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>  <span class="c1"># 0xFFFF</span>
 <span class="n">BLACK</span> <span class="o">=</span> <span class="mh">0x0000</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <p><strong>Display color formats</strong> summary:
 | Format | Bits/pixel | Colors | Used by |
 |--------|-----------|--------|---------|
@@ -2590,7 +2692,7 @@ Black and white is so Chapter 16! In this chapter your Pico drives a full-color 
 <p>TFT drivers support <strong>rotation</strong> — you can orient the display in 0°, 90°, 180°, or 270° positions. Changing rotation also swaps width and height in software so your code does not need to change.</p>
 <h3 id="ili9341-tft-driver-240320-pixels">ILI9341 TFT Driver — 240×320 Pixels</h3>
 <p>The <strong>ILI9341</strong> drives a 240×320 pixel TFT display — much larger than a typical OLED. At 3.3V it connects over <strong>SPI</strong> with several control pins: DC (data/command), RST (reset), CS (chip select), and BL (backlight).</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2616,13 +2718,13 @@ Black and white is so Chapter 16! In this chapter your Pico drives a full-color 
 <span class="n">bl</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># turn on backlight</span>
 
 <span class="n">display</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">BLACK</span><span class="p">)</span>
-<span class="n">display</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Hello Color!&quot;</span><span class="p">,</span> <span class="n">ili9341</span><span class="o">.</span><span class="n">color565</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">165</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-</code></pre></div></td></tr></table></div>
+<span class="n">display</span><span class="o">.</span><span class="n">draw_text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"Hello Color!"</span><span class="p">,</span> <span class="n">ili9341</span><span class="o">.</span><span class="n">color565</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">165</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</code></pre></div></td></tr></tbody></table></div>
 <p>The <strong>ILI9341 SPI interface</strong> runs at up to 40 MHz for read and write operations. At 240×320 pixels × 2 bytes/pixel = 153,600 bytes per full-screen refresh — even at 40 MHz that takes about 30 ms. For smooth animation, only redraw regions that change.</p>
 <p><strong>ILI9341 color depth (16-bit)</strong>: all color values passed to the driver use 16-bit RGB565 encoding (described above).</p>
 <h3 id="st7789v-color-lcd-driver-240240-pixels">ST7789V Color LCD Driver — 240×240 Pixels</h3>
 <p>The <strong>ST7789V</strong> is a popular driver for square 240×240 pixel displays and round 240×240 GC9A01 displays. It also runs at 3.3V over SPI and uses the same pin set as the ILI9341.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -2638,8 +2740,8 @@ Black and white is so Chapter 16! In this chapter your Pico drives a full-color 
                      <span class="n">cs</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span> <span class="n">dc</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">))</span>
 <span class="n">tft</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
 <span class="n">tft</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">st7789</span><span class="o">.</span><span class="n">BLACK</span><span class="p">)</span>
-<span class="n">tft</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;MicroPython&quot;</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="n">st7789</span><span class="o">.</span><span class="n">WHITE</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
+<span class="n">tft</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"MicroPython"</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">110</span><span class="p">,</span> <span class="n">st7789</span><span class="o">.</span><span class="n">WHITE</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
 <p><strong>ST7789V resolution</strong>: the 240×240 square format is common for wristwatch-style displays. The wider <strong>Waveshare LCD</strong> modules (such as 2.8-inch 320×240) often use the ILI9341 instead.</p>
 <h3 id="other-display-options">Other Display Options</h3>
 <ul>
@@ -2649,7 +2751,7 @@ Black and white is so Chapter 16! In this chapter your Pico drives a full-color 
 </ul>
 <div class="admonition mascot-thinking">
 <p class="admonition-title">SPI Speed Matters for TFT Displays</p>
-<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png" />
+<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png">
 A 240×320 TFT has 240 × 320 × 2 = 153,600 bytes per frame. At 10 MHz SPI that takes 120 ms — too slow for animation. At 40 MHz it takes 30 ms — workable but still slow. Design your animated sections to redraw only the changed regions, not the whole screen. Black out and redraw only the number that changed, not the surrounding text.</p>
 </div>
 <h2 id="e-paper-displays-power-off-image-stays">E-Paper Displays — Power Off, Image Stays</h2>
@@ -2668,7 +2770,7 @@ A 240×320 TFT has 240 × 320 × 2 = 153,600 bytes per frame. At 10 MHz SPI that
 <p>For a project running on AA batteries that updates once per hour, the e-paper display is essentially free from a power perspective.</p>
 <h3 id="e-paper-spi-interface-and-waveshare-driver">E-Paper SPI Interface and Waveshare Driver</h3>
 <p>Most e-paper modules use a 4-wire SPI interface plus several control pins (DC, RST, BUSY). The <strong>Waveshare E-Paper Driver</strong> library (available in <code>src/drivers/</code>) includes support for Waveshare's 1.54", 2.9", and 4.2" modules.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -2702,15 +2804,15 @@ A 240×320 TFT has 240 × 320 × 2 = 153,600 bytes per frame. At 10 MHz SPI that
 <span class="n">fb</span>  <span class="o">=</span> <span class="n">framebuf</span><span class="o">.</span><span class="n">FrameBuffer</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">epd</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">epd</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">framebuf</span><span class="o">.</span><span class="n">MONO_HLSB</span><span class="p">)</span>
 
 <span class="n">fb</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mh">0xFF</span><span class="p">)</span>                    <span class="c1"># white background (0xFF = all off = white)</span>
-<span class="n">fb</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Weather: Sunny&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">)</span>   <span class="c1"># black text</span>
-<span class="n">fb</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Temp: 22 C&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">)</span>
+<span class="n">fb</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"Weather: Sunny"</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">)</span>   <span class="c1"># black text</span>
+<span class="n">fb</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"Temp: 22 C"</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mh">0x00</span><span class="p">)</span>
 
 <span class="n">epd</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>                 <span class="c1"># push to e-paper (takes ~2 seconds)</span>
 <span class="n">epd</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>                      <span class="c1"># put e-paper chip to sleep (saves power)</span>
-</code></pre></div></td></tr></table></div>
+</code></pre></div></td></tr></tbody></table></div>
 <div class="admonition mascot-warning">
 <p class="admonition-title">Never Refresh E-Paper Faster Than Specified!</p>
-<p><img alt="Monty warning" class="mascot-admonition-img" src="../../img/mascot/warning.png" />
+<p><img alt="Monty warning" class="mascot-admonition-img" src="../../img/mascot/warning.png">
 E-paper displays can be damaged by rapid repeated refreshes. The electrophoretic particles need time to fully settle. Follow the manufacturer's minimum refresh interval (typically 3–5 seconds for full refresh, 0.3–1 second for partial refresh). Continuous rapid refreshing shortens the display's lifespan dramatically.</p>
 </div>
 <h4 id="diagram-e-paper-vs-tft-vs-oled-comparison">Diagram: E-Paper vs TFT vs OLED Comparison</h4>
@@ -2719,8 +2821,8 @@ E-paper displays can be damaged by rapid repeated refreshes. The electrophoretic
 <details>
 <summary>Display Technology Comparison MicroSim</summary>
 <p>Type: diagram
-<strong>sim-id:</strong> display-technology-comparison<br/>
-<strong>Library:</strong> p5.js<br/>
+<strong>sim-id:</strong> display-technology-comparison<br>
+<strong>Library:</strong> p5.js<br>
 <strong>Status:</strong> Specified</p>
 <p>Bloom Level: Analyze (L4)
 Bloom Verb: compare
@@ -2755,7 +2857,7 @@ Learning Objective: Students can select the appropriate display technology (OLED
 </details>
 <div class="admonition mascot-celebration">
 <p class="admonition-title">Color and E-Paper Complete!</p>
-<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png" />
+<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png">
 Full-color TFT and zero-power e-paper — you now command the full spectrum of display technology. Chapter 18 takes a sonic detour: generating tones, playing melodies, and creating audio output from your Pico. Get ready to make some noise!</p>
 </div>
 <h2 id="references">References</h2>
@@ -2787,7 +2889,7 @@ Full-color TFT and zero-power e-paper — you now command the full spectrum of d
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -2797,13 +2899,13 @@ Full-color TFT and zero-power e-paper — you now command the full spectrum of d
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../16-oled-drawing-animation/references/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Annotated References">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -2828,7 +2930,7 @@ Full-color TFT and zero-power e-paper — you now command the full spectrum of d
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
             </div>
           </a>
         
@@ -2840,7 +2942,7 @@ Full-color TFT and zero-power e-paper — you now command the full spectrum of d
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
     </div>
   
   
@@ -2868,5 +2970,7 @@ Full-color TFT and zero-power e-paper — you now command the full spectrum of d
         <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
