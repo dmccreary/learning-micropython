@@ -388,11 +388,29 @@ nav:
 
   - Infographic Posters:
     - List of Infographic Posters: posters/index.md
-    - Microcontrollers: posters/microcontrollers.md
-    - Common Communication Protocols: posters/communication-protocols.md
-    - Specialized Communication Protocols: posters/specialized-communication-protocols.md
-    - Temperature and Distance Sensors: posters/temperature-distance-sensors.md
-    - Distance Sensors: posters/distance-sensors.md
+    - Python vs. MicroPython: posters/python-vs-micropython.md
+    - MicroPython IDEs: posters/ides.md
+    - Microcontroller Boards: posters/microncontrollers.md
+    - Electronic Components: posters/electronic-components.md
+    - Resistor Color Codes: posters/resistor-color-codes.md
+    - GPIO Pin Functions: posters/gpio-functions.md
+    - Digital vs. Analog Signals: posters/digital-vs-analog.md
+    - Serial Protocols (I2C/SPI/UART): posters/serial-protocols.md
+    - Communication Protocols Overview: posters/communication-protocols.md
+    - Temperature & Distance Sensors: posters/sensors.md
+    - Motion & Light Sensors: posters/motion-light-sensors.md
+    - Motor Types: posters/motor-types.md
+    - Motor Driver ICs: posters/motor-drivers.md
+    - Robot Drive Configurations: posters/robot-configurations.md
+    - LED Types: posters/led-types.md
+    - Display Technologies: posters/display-technologies.md
+    - Sound Output Methods: posters/sound-output.md
+    - Wireless Technologies: posters/wireless-technologies.md
+    - IoT Architecture Layers: posters/iot-architecture.md
+    - Memory Types: posters/memory-types.md
+    - Input Devices: posters/input-devices.md
+    - Common MicroPython Errors: posters/micropython-errors.md
+    - Edge AI on Microcontrollers: posters/edge-ai.md
 
   - Learning Graph:
     - Introduction: learning-graph/index.md

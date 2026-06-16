@@ -52,6 +52,8 @@ This chapter builds on concepts from:
     ![Monty waves hello](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
     This is the chapter where your project starts moving! DC motors, servos, and steppers each have a different personality: DC motors spin freely at variable speed, servos lock to a precise angle, and steppers count their way through exact rotations. By the end you will have everything you need to drive a robot. Let's put the Pico to work!
 
+![Motor Comparison Infographic](motor-comparison-infographic.png)
+
 ## DC Motors — The Free Spinners
 
 A **DC motor** converts electrical current into continuous rotation. Feed it positive voltage on one terminal and GND on the other, and it spins. Swap the wires, and it spins the other direction.

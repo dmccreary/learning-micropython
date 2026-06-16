@@ -59,6 +59,8 @@ This chapter builds on concepts from:
 
 ## What Is a Microcontroller?
 
+![Microcontroller Comparison Infographic](./microcontroller-infographic-v2.png)
+
 A **microcontroller** is a tiny computer on a single chip. Unlike your laptop, a microcontroller has its processor, memory, and input/output connections all on one piece of silicon. It is designed to do one job reliably, often for years, without a screen or keyboard.
 
 Microcontrollers are everywhere: in your microwave, your car's airbag system, your TV remote, and traffic lights. The ones we use in this course are inexpensive (under $10), programmable in Python, and powerful enough to control motors, read sensors, and connect to the internet.
