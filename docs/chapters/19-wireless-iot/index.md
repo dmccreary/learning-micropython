@@ -53,6 +53,8 @@ This chapter builds on concepts from:
     ![Monty waves hello](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
     Your Pico W has a Wi-Fi radio built in — and that means the entire internet is one import away. Today you will fetch real weather data, sync the time from a global server, and let anyone on your local network control your NeoPixels from a browser. The Internet of Things starts here!
 
+![](./iot-architecture-infographic.png)
+
 ## Wi-Fi Basics
 
 **Wi-Fi** is a wireless networking standard that lets devices communicate over radio waves. Two key pieces of information connect your Pico W to a network:

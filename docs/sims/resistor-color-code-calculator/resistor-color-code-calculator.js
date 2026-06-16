@@ -5,48 +5,49 @@
 
 // Canvas dimensions - responsive width, fixed height
 let canvasWidth = 400;          // Initial width (reset to container width each frame)
-let drawHeight = 180;           // Drawing area: resistor + value readout (top ~33%)
-let controlHeight = 360;        // Control area: four radio-button bands (bottom ~67%)
+let drawHeight = 210;           // Drawing area: resistor + value readout (top ~39%)
+let controlHeight = 330;        // Control area: four radio-button bands (bottom ~61%)
 let canvasHeight = drawHeight + controlHeight;
 let margin = 20;
 let defaultTextSize = 16;
 
 // --- Color reference tables ----------------------------------------------
-// digit: the number the color represents (bands 1 and 2)
-// mult:  the power-of-ten multiplier (band 3)
-// tol:   the tolerance percentage (band 4)
-// css:   a named CSS color used both for the canvas band and the HTML swatch
+// digit:      the number the color represents (bands 1 and 2)
+// multiplier: the power-of-ten multiplier (band 3)
+// tol:        the tolerance percentage (band 4)
+// css:        a named CSS color used both for the canvas band and the HTML swatch
+// label:      the text shown on the radio option (value-first, e.g. "0 - Black")
 
 const DIGIT_COLORS = [
-  { name: 'Black',  digit: 0, css: 'black' },
-  { name: 'Brown',  digit: 1, css: 'saddlebrown' },
-  { name: 'Red',    digit: 2, css: 'red' },
-  { name: 'Orange', digit: 3, css: 'orange' },
-  { name: 'Yellow', digit: 4, css: 'yellow' },
-  { name: 'Green',  digit: 5, css: 'green' },
-  { name: 'Blue',   digit: 6, css: 'blue' },
-  { name: 'Violet', digit: 7, css: 'darkviolet' },
-  { name: 'Gray',   digit: 8, css: 'gray' },
-  { name: 'White',  digit: 9, css: 'white' }
+  { name: 'Black',  digit: 0, css: 'black',      label: '0 - Black' },
+  { name: 'Brown',  digit: 1, css: 'saddlebrown', label: '1 - Brown' },
+  { name: 'Red',    digit: 2, css: 'red',        label: '2 - Red' },
+  { name: 'Orange', digit: 3, css: 'orange',     label: '3 - Orange' },
+  { name: 'Yellow', digit: 4, css: 'yellow',     label: '4 - Yellow' },
+  { name: 'Green',  digit: 5, css: 'green',      label: '5 - Green' },
+  { name: 'Blue',   digit: 6, css: 'blue',       label: '6 - Blue' },
+  { name: 'Violet', digit: 7, css: 'darkviolet', label: '7 - Violet' },
+  { name: 'Gray',   digit: 8, css: 'gray',       label: '8 - Gray' },
+  { name: 'White',  digit: 9, css: 'white',      label: '9 - White' }
 ];
 
 const MULT_COLORS = [
-  { name: 'Black',  mult: 1,       css: 'black' },
-  { name: 'Brown',  mult: 10,      css: 'saddlebrown' },
-  { name: 'Red',    mult: 100,     css: 'red' },
-  { name: 'Orange', mult: 1000,    css: 'orange' },
-  { name: 'Yellow', mult: 10000,   css: 'yellow' },
-  { name: 'Green',  mult: 100000,  css: 'green' },
-  { name: 'Blue',   mult: 1000000, css: 'blue' },
-  { name: 'Gold',   mult: 0.1,     css: 'gold' },
-  { name: 'Silver', mult: 0.01,    css: 'silver' }
+  { name: 'Black',  multiplier: 1,       css: 'black',      label: '×1 - Black' },
+  { name: 'Brown',  multiplier: 10,      css: 'saddlebrown', label: '×10 - Brown' },
+  { name: 'Red',    multiplier: 100,     css: 'red',        label: '×100 - Red' },
+  { name: 'Orange', multiplier: 1000,    css: 'orange',     label: '×1k - Orange' },
+  { name: 'Yellow', multiplier: 10000,   css: 'yellow',     label: '×10k - Yellow' },
+  { name: 'Green',  multiplier: 100000,  css: 'green',      label: '×100k - Green' },
+  { name: 'Blue',   multiplier: 1000000, css: 'blue',       label: '×1M - Blue' },
+  { name: 'Gold',   multiplier: 0.1,     css: 'gold',       label: '×0.1 - Gold' },
+  { name: 'Silver', multiplier: 0.01,    css: 'silver',     label: '×0.01 - Silver' }
 ];
 
 const TOL_COLORS = [
-  { name: 'Brown',  tol: 1,  css: 'saddlebrown' },
-  { name: 'Red',    tol: 2,  css: 'red' },
-  { name: 'Gold',   tol: 5,  css: 'gold' },
-  { name: 'Silver', tol: 10, css: 'silver' }
+  { name: 'Brown',  tol: 1,  css: 'saddlebrown', label: '±1% - Brown' },
+  { name: 'Red',    tol: 2,  css: 'red',         label: '±2% - Red' },
+  { name: 'Gold',   tol: 5,  css: 'gold',        label: '±5% - Gold' },
+  { name: 'Silver', tol: 10, css: 'silver',      label: '±10% - Silver' }
 ];
 
 // Radio controls for the four bands
@@ -75,7 +76,7 @@ function setup() {
 function buildBandRadio(colorList, defaultName) {
   let r = createRadio();
   for (let c of colorList) {
-    r.option(c.name);
+    r.option(c.name, c.label);   // value stays the color name; label shows the value first
   }
   r.selected(defaultName);
 
@@ -132,12 +133,12 @@ function draw() {
   // Read the current band selections
   let d1 = lookup(DIGIT_COLORS, band1Radio.value(), 'digit');
   let d2 = lookup(DIGIT_COLORS, band2Radio.value(), 'digit');
-  let mult = lookup(MULT_COLORS, band3Radio.value(), 'mult');
+  let multiplier = lookup(MULT_COLORS, band3Radio.value(), 'multiplier');
   let tol = lookup(TOL_COLORS, band4Radio.value(), 'tol');
-  let ohms = (d1 * 10 + d2) * mult;
+  let ohms = (d1 * 10 + d2) * multiplier;
 
   // Draw the resistor with the four selected band colors
-  drawResistor(canvasWidth / 2, 70,
+  drawResistor(canvasWidth / 2, 80,
     colorCss(DIGIT_COLORS, band1Radio.value()),
     colorCss(DIGIT_COLORS, band2Radio.value()),
     colorCss(MULT_COLORS, band3Radio.value()),
@@ -149,13 +150,13 @@ function draw() {
   noStroke();
   fill('black');
   textSize(28);
-  text(v.big, canvasWidth / 2, 108);
+  text(v.big, canvasWidth / 2, 130);
   textSize(16);
   fill('navy');
-  text(v.full, canvasWidth / 2, 142);
+  text(v.full, canvasWidth / 2, 164);
   textSize(15);
   fill('dimgray');
-  text(v.raw + ' ohms  ·  ±' + tol + '% tolerance', canvasWidth / 2, 162);
+  text(v.raw + ' ohms  ·  ±' + tol + '% tolerance', canvasWidth / 2, 184);
 
   // Column headers for the control region
   drawColumnHeaders();
@@ -168,13 +169,13 @@ function draw() {
 // Draw a horizontal resistor centered at (cx, cy) with four band colors.
 function drawResistor(cx, cy, c1, c2, c3, c4) {
   let bodyW = min(canvasWidth * 0.5, 320);
-  let bodyH = 44;
+  let bodyH = 88;
   let bodyX = cx - bodyW / 2;
   let bodyY = cy - bodyH / 2;
 
   // Leads (wires) extending to the left and right
   stroke('gray');
-  strokeWeight(4);
+  strokeWeight(5);
   line(margin, cy, bodyX + 6, cy);
   line(bodyX + bodyW - 6, cy, canvasWidth - margin, cy);
   strokeWeight(1);
@@ -223,7 +224,7 @@ function drawColumnHeaders() {
 
 // --- Helpers --------------------------------------------------------------
 
-// Look up a numeric property (digit/mult/tol) for a color name in a table.
+// Look up a numeric property (digit/multiplier/tol) for a color name in a table.
 function lookup(table, name, prop) {
   for (let c of table) {
     if (c.name === name) return c[prop];

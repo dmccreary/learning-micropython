@@ -61,6 +61,8 @@ This chapter builds on concepts from:
     ![Monty waves hello](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
     Light up the world with 16 million colors! NeoPixels are one of the most satisfying components in all of physical computing — you write three numbers and a single LED glows any color you can imagine. Then we will explore the simpler but practical world of 7-segment displays, LED matrices, and character LCDs. Let's make your projects glow!
 
+![LED Types Infographic](./led-types-infographic.png)
+
 ## NeoPixel LEDs — One Wire, 16 Million Colors
 
 A **NeoPixel LED** (manufacturer name: WS2812B) is a full-color RGB LED with a tiny control chip built into its package. Each pixel contains red, green, and blue sub-LEDs, each controllable from 0 to 255. That gives 256 × 256 × 256 = 16.7 million possible colors.

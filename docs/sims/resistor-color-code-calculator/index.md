@@ -15,7 +15,7 @@ quality_score: 0
 
 [Run the Resistor Color Code Calculator MicroSim Fullscreen](./main.html){ .md-button .md-button--primary }
 <br/>
-[Edit in the p5.js Editor](https://editor.p5js.org/)
+[Edit in the Resistor Color Code Calculator MicroSim Using the p5.js Editor](https://editor.p5js.org/dmccreary/sketches/M1WMd5GZF)
 
 ## About This MicroSim
 

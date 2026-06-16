@@ -48,6 +48,12 @@ This chapter builds on concepts from:
     ![Monty waves hello](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
     This is the chapter where your programs reach out and touch the real world. You will blink an LED from a Python command, read a button press, and — by the end of the chapter — have your Pico react to a button press instantly using interrupts. Grab your breadboard and let's go!
 
+## Pinout Diagram
+
+![](../../img/pi-pico-pinout.png)
+
+![](./pico-pin-infographic.png)
+
 ## Digital Signals: HIGH and LOW
 
 In the physical world, a GPIO pin has exactly two possible states:

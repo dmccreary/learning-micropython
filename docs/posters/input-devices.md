@@ -3,6 +3,8 @@
 Audience: students choosing how to accept user input in their MicroPython projects.
 Chapters: 6 — Digital I/O · 7 — Analog & ADC · 11 — Encoders, Touch & Audio
 
+![](../chapters/06-digital-io-interrupts/input-devices-infographic.png)
+
 ## Image Prompt
 
 !!! prompt
