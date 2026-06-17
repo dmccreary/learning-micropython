@@ -3,6 +3,8 @@
 Audience: students choosing a display for their MicroPython project.
 Chapters: 15 — OLED Setup · 16 — OLED Drawing · 17 — Color & ePaper Displays
 
+![](../chapters/15-oled-setup/display-technologies-infographic.png)
+
 ## Image Prompt
 
 !!! prompt

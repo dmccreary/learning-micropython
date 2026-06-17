@@ -3,6 +3,8 @@
 Audience: students designing their first mobile robot chassis.
 Chapter: 13 — Robots & Mobile Systems
 
+![](../chapters/13-robots-mobile-systems/robot-drive-configurations.png)
+
 ## Image Prompt
 
 !!! prompt

@@ -3,6 +3,10 @@
 Audience: students choosing a communication protocol for sensors and peripherals.
 Chapter: 8 — Communication Protocols
 
+![](../chapters/08-communication-protocols/communication-protocols-infographic.png)
+
+![](../chapters/08-communication-protocols/specialized-communication-protocols-infographic.png)
+
 ## Image Prompt
 
 !!! prompt

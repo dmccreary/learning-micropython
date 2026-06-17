@@ -3,6 +3,8 @@
 Audience: students debugging MemoryError and planning data storage for their projects.
 Chapter: 20 — Timers & Multicore / Chapter 21 — File Systems & Debugging
 
+![](../chapters/20-timers-multicore/memeory-types-infographic.png)
+
 ## Image Prompt
 
 !!! prompt

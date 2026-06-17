@@ -3,6 +3,8 @@
 Audience: advanced students exploring machine learning on tiny hardware.
 Chapter: 22 — Advanced Hardware & AI
 
+![](../chapters/22-advanced-hardware-ai/edge-ai-software-stack.png)
+
 ## Image Prompt
 
 !!! prompt

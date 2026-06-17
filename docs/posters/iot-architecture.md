@@ -3,6 +3,8 @@
 Audience: students building their first connected IoT project.
 Chapter: 19 — Wireless & IoT
 
+![](../chapters/19-wireless-iot/iot-architecture-infographic.png)
+
 ## Image Prompt
 
 !!! prompt

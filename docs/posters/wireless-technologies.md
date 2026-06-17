@@ -3,6 +3,7 @@
 Audience: students building connected IoT projects with MicroPython.
 Chapter: 19 — Wireless & IoT
 
+![](../chapters/19-wireless-iot/wireless-types-infographics.png)
 ## Image Prompt
 
 !!! prompt

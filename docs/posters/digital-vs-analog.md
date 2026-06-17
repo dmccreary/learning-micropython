@@ -3,6 +3,8 @@
 Audience: students learning signal types before working with ADC and PWM.
 Chapter: 7 — Analog, ADC & PWM
 
+![](../chapters/07-analog-adc-pwm/analog-adc-pwm-infographic.png)
+
 ## Image Prompt
 
 !!! prompt

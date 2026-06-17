@@ -3,6 +3,8 @@
 Audience: students learning what each GPIO pin can do on the RP2040.
 Chapter: 6 — Digital I/O & Interrupts
 
+![](../chapters/06-digital-io-interrupts/pico-pin-infographic.png)
+
 ## Image Prompt
 
 !!! prompt

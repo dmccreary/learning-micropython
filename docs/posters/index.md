@@ -1,11 +1,14 @@
+---
+hide:
+  toc
+---
 # Infographic Posters for Learning MicroPython
 
-These posters are designed for classroom display, science fairs, and textbook reference.
-We use the `/verified-infographic-generator` skill to generate the image descriptions and then use OpenAI ChatGPT to render the infographics.
+These comparison infographic posters are designed for classroom display, science fairs, and textbook reference.
+We use the `/verified-infographic-generator` skill to generate the image descriptions and then use 
+OpenAI ChatGPT to render the infographics.
 
 Each poster follows the same visual style: landscape 16:9, flat-design, off-white background (#F7F9FC), dark slate (#2A2E3A) text, and a palette of four accent colors drawn from the series palette below.
-
----
 
 ## Series Color Palette
 
@@ -20,82 +23,144 @@ Each poster follows the same visual style: landscape 16:9, flat-design, off-whit
 
 ---
 
-## Chapter 1 — Python Basics
+<div class="grid cards" markdown style="grid-template-columns: repeat(2, 1fr);">
 
-1. [Python vs. MicroPython](./python-vs-micropython.md) — Side-by-side feature comparison for students switching from desktop Python
+-   [![Python vs. MicroPython](../chapters/01-python-basics/python-vs-micropython-infographic.png)](python-vs-micropython/)
 
-## Chapter 3 — MicroPython Environment
+    **[Python vs. MicroPython](python-vs-micropython/)**
 
-2. [MicroPython IDEs Compared](./ides.md) — Thonny, VS Code, Mu Editor, and Wokwi Simulator
+    Side-by-side feature comparison for students switching from desktop Python.
 
-## Chapter 4 — Microcontrollers & Hardware
+-   [![MicroPython IDEs Compared](../chapters/03-micropython-environment/ide-comparison-infographic.png)](ides/)
 
-3. [Microcontroller Boards Compared](./microncontrollers.md) — Pico, Pico W, Pico 2, ESP32
+    **[MicroPython IDEs Compared](ides/)**
 
-## Chapter 5 — Electronics Fundamentals
+    Thonny, VS Code, Mu Editor, and Wokwi Simulator.
 
-4. [Common Electronic Components](./electronic-components.md) — Visual ID guide to resistors, LEDs, capacitors, buttons, transistors, and potentiometers
-5. [Resistor Color Codes](./resistor-color-codes.md) — 4-band color chart with mnemonic
+-   [![Microcontroller Boards Compared](../chapters/04-microcontrollers-hardware/microcontroller-infographic-v2.png)](microncontrollers/)
 
-## Chapter 6 — Digital I/O & Interrupts
+    **[Microcontroller Boards Compared](microncontrollers/)**
 
-6. [GPIO Pin Functions on the Pico](./gpio-functions.md) — Digital I/O, PWM, ADC, I2C, SPI, UART capabilities per pin type
+    Pico, Pico W, Pico 2, and ESP32 side by side.
 
-## Chapter 7 — Analog, ADC & PWM
+-   [![Common Electronic Components](../chapters/05-electronics-fundamentals/electrical-components-infographic.png)](electronic-components/)
 
-7. [Digital vs. Analog Signals](./digital-vs-analog.md) — Signal types, PWM as a bridge, and ADC conversion
+    **[Common Electronic Components](electronic-components/)**
 
-## Chapter 8 — Communication Protocols
+    Visual ID guide to resistors, LEDs, capacitors, buttons, transistors, and potentiometers.
 
-8. [Serial Protocols Compared: I2C vs. SPI vs. UART](./serial-protocols.md) — Wires, speed, addressing, full-duplex, and typical devices
-9. [Communication Protocols Overview](./communication-protocols.md) — General-purpose and specialized protocols
+-   [![Resistor Color Codes](../chapters/05-electronics-fundamentals/resistor-color-codes-infographic.png)](resistor-color-codes/)
 
-## Chapter 9 — Temperature & Distance Sensors
+    **[Resistor Color Codes](resistor-color-codes/)**
 
-10. [Temperature & Distance Sensors](./sensors.md) — DHT11/DHT22/BMP280 and HC-SR04/VL53L0X
+    4-band color chart with mnemonic.
 
-## Chapter 10 — Motion & Light Sensors
+-   [![GPIO Pin Functions on the Pico](../chapters/06-digital-io-interrupts/pico-pin-infographic.png)](gpio-functions/)
 
-11. [Motion & Light Sensors](./motion-light-sensors.md) — PIR, MPU-6050, LDR photoresistor, APDS-9960
+    **[GPIO Pin Functions on the Pico](gpio-functions/)**
 
-## Chapter 12 — Motors, Servos & Steppers
+    Digital I/O, PWM, ADC, I2C, SPI, and UART capabilities per pin type.
 
-12. [Motor Types Compared](./motor-types.md) — DC motor, servo motor, stepper motor
-13. [Motor Driver ICs Compared](./motor-drivers.md) — L293D, DRV8833, TB6612FNG
+-   [![Digital vs. Analog Signals](../chapters/07-analog-adc-pwm/analog-adc-pwm-infographic.png)](digital-vs-analog/)
 
-## Chapter 13 — Robots & Mobile Systems
+    **[Digital vs. Analog Signals](digital-vs-analog/)**
 
-14. [Robot Drive Configurations](./robot-configurations.md) — Differential, 4WD, tricycle/Ackermann, mecanum, legged
+    Signal types, PWM as a bridge, and ADC conversion.
 
-## Chapter 14 — NeoPixels & Displays
+-   [![Serial Protocols Compared: I2C vs. SPI vs. UART](../chapters/08-communication-protocols/specialized-communication-protocols-infographic.png)](serial-protocols/)
 
-15. [LED Types Compared](./led-types.md) — Single LED, RGB LED, NeoPixel/WS2812B, LED Matrix
+    **[Serial Protocols Compared: I2C vs. SPI vs. UART](serial-protocols/)**
 
-## Chapters 15–17 — Displays
+    Wires, speed, addressing, full-duplex, and typical devices.
 
-16. [Display Technologies Compared](./display-technologies.md) — OLED (SSD1306), TFT Color LCD (ILI9341), ePaper (SSD1680)
+-   [![Communication Protocols Overview](../chapters/08-communication-protocols/communication-protocols-infographic.png)](communication-protocols/)
 
-## Chapter 18 — Sound, Music & Audio
+    **[Communication Protocols Overview](communication-protocols/)**
 
-17. [Sound Output Methods](./sound-output.md) — Passive buzzer, active buzzer, speaker+PWM, I2S DAC+amp
+    General-purpose and specialized protocols compared.
 
-## Chapter 19 — Wireless & IoT
+-   [![Temperature & Distance Sensors](../chapters/09-temp-distance-sensors/temp-sensors-infographic.png)](sensors/)
 
-18. [Wireless Technologies Compared](./wireless-technologies.md) — WiFi 802.11n, Bluetooth BLE 5.x, LoRa, Zigbee
-19. [IoT Architecture Layers](./iot-architecture.md) — Perception → Network → Edge → Cloud → Application
+    **[Temperature & Distance Sensors](sensors/)**
 
-## Chapter 20 — Timers & Multicore
+    DHT11/DHT22/BMP280 and HC-SR04/VL53L0X.
 
-20. [MicroPython Memory Types](./memory-types.md) — Internal flash, SRAM, microSD card, I2C EEPROM
+-   [![Motion & Light Sensors](../chapters/10-motion-light-sensors/motion-and-light-sensors-infographic.png)](motion-light-sensors/)
 
-## Chapter 21 — File Systems & Debugging
+    **[Motion & Light Sensors](motion-light-sensors/)**
 
-21. [Common MicroPython Errors](./micropython-errors.md) — Eight frequent exceptions with causes and fixes
+    PIR, MPU-6050, LDR photoresistor, and APDS-9960.
 
-## Chapter 6/11 — Input Devices
+-   [![Motor Types Compared](../chapters/12-motors-servos-steppers/motor-comparison-infographic.png)](motor-types/)
 
-22. [Input Device Comparison](./input-devices.md) — Push button, potentiometer, rotary encoder, capacitive touch, keypad, joystick
+    **[Motor Types Compared](motor-types/)**
 
-## Chapter 22 — Advanced Hardware & AI
+    DC motor, servo motor, and stepper motor.
 
-23. [Edge AI on Microcontrollers](./edge-ai.md) — MicroPython + TensorFlow Lite Micro + Edge Impulse comparison
+-   [![Motor Driver ICs Compared](../chapters/12-motors-servos-steppers/motor-drivers-infographic.png)](motor-drivers/)
+
+    **[Motor Driver ICs Compared](motor-drivers/)**
+
+    L293D, DRV8833, and TB6612FNG.
+
+-   [![Robot Drive Configurations](../chapters/13-robots-mobile-systems/robot-drive-configurations.png)](robot-configurations/)
+
+    **[Robot Drive Configurations](robot-configurations/)**
+
+    Differential, 4WD, tricycle/Ackermann, mecanum, and legged.
+
+-   [![LED Types Compared](../chapters/14-neopixels-displays/led-types-infographic.png)](led-types/)
+
+    **[LED Types Compared](led-types/)**
+
+    Single LED, RGB LED, NeoPixel/WS2812B, and LED Matrix.
+
+-   [![Display Technologies Compared](../chapters/15-oled-setup/display-technologies-infographic.png)](display-technologies/)
+
+    **[Display Technologies Compared](display-technologies/)**
+
+    OLED (SSD1306), TFT Color LCD (ILI9341), and ePaper (SSD1680).
+
+-   [![Sound Output Methods](../chapters/18-sound-music-audio/sound-output-infographic.png)](sound-output/)
+
+    **[Sound Output Methods](sound-output/)**
+
+    Passive buzzer, active buzzer, speaker+PWM, and I2S DAC+amp.
+
+-   [![Wireless Technologies Compared](../chapters/19-wireless-iot/wireless-types-infographics.png)](wireless-technologies/)
+
+    **[Wireless Technologies Compared](wireless-technologies/)**
+
+    WiFi 802.11n, Bluetooth BLE 5.x, LoRa, and Zigbee.
+
+-   [![IoT Architecture Layers](../chapters/19-wireless-iot/iot-architecture-infographic.png)](iot-architecture/)
+
+    **[IoT Architecture Layers](iot-architecture/)**
+
+    Perception → Network → Edge → Cloud → Application.
+
+-   [![MicroPython Memory Types](../chapters/20-timers-multicore/memeory-types-infographic.png)](memory-types/)
+
+    **[MicroPython Memory Types](memory-types/)**
+
+    Internal flash, SRAM, microSD card, and I2C EEPROM.
+
+-   [![Common MicroPython Errors](../chapters/21-file-systems-debugging/common-micropython-errors.png)](micropython-errors/)
+
+    **[Common MicroPython Errors](micropython-errors/)**
+
+    Eight frequent exceptions with causes and fixes.
+
+-   [![Input Device Comparison](../chapters/06-digital-io-interrupts/input-devices-infographic.png)](input-devices/)
+
+    **[Input Device Comparison](input-devices/)**
+
+    Push button, potentiometer, rotary encoder, capacitive touch, keypad, and joystick.
+
+-   [![Edge AI on Microcontrollers](../chapters/22-advanced-hardware-ai/edge-ai-software-stack.png)](edge-ai/)
+
+    **[Edge AI on Microcontrollers](edge-ai/)**
+
+    MicroPython + TensorFlow Lite Micro + Edge Impulse comparison.
+
+</div>

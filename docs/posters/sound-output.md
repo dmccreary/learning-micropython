@@ -3,6 +3,8 @@
 Audience: students adding audio feedback or music to their MicroPython projects.
 Chapter: 18 — Sound, Music & Audio
 
+![](../chapters/18-sound-music-audio/sound-output-infographic.png)
+
 ## Image Prompt
 
 !!! prompt
