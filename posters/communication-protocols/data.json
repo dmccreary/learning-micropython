@@ -1,0 +1,66 @@
+{
+  "title": "I2C vs SPI Communication Protocols",
+  "image": "communication-protocols-infographic.png",
+  "layout": "grid",
+  "palette": ["#C7164E", "#1389A6"],
+  "zones": [
+    {
+      "id": "i2c",
+      "label": "I2C (Inter-Integrated Circuit)",
+      "color": "#C7164E",
+      "x1": 4, "y1": 13, "x2": 49, "y2": 88,
+      "summary": "Two-wire serial bus with multi-master, multi-slave support",
+      "facts": [
+        "Uses 2 signal wires: SDA (Serial Data) and SCL (Serial Clock)",
+        "Multi-master and multi-slave on one shared bus",
+        "Each slave has a unique 7-bit (or 10-bit) address",
+        "Half-duplex communication",
+        "Speeds: Standard 100 kbps, Fast 400 kbps, Fast Plus 1 Mbps, High Speed 3.4 Mbps",
+        "Pull-up resistors required on SDA and SCL",
+        "Simple wiring: fewer pins on the MCU",
+        "Best for: sensors, RTCs, EEPROMs, and displays",
+        "Connectors: Grove (4-pin), JST-PH (4-pin), Qwiic / STEMMA QT (4-pin)"
+      ]
+    },
+    {
+      "id": "spi",
+      "label": "SPI (Serial Peripheral Interface)",
+      "color": "#1389A6",
+      "x1": 51, "y1": 13, "x2": 96, "y2": 88,
+      "summary": "High-speed, full-duplex serial communication for master-slave devices",
+      "facts": [
+        "Uses 4 signal wires: SCK, MOSI, MISO, and CS / SS",
+        "Single master; multiple slaves, each with its own CS line",
+        "Full-duplex communication",
+        "Very high speed: typically up to 10-50 MHz",
+        "No pull-up resistors required",
+        "More pins required on the MCU",
+        "No addresses; select a device by pulling its CS line LOW",
+        "Best for: displays, SD cards, ADCs, and fast high-speed devices",
+        "Connectors: Grove (5/6-pin), JST-PH (6-pin), Dupont / Header (6-pin)"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which protocol uses only two wires (SDA and SCL) and gives each device a unique address?",
+      "correct_zone": "i2c",
+      "explanation": "I2C uses just two wires — SDA (data) and SCL (clock). Every device shares the same two wires and is identified by a unique 7-bit (or 10-bit) address, so up to 127 devices can share one bus."
+    },
+    {
+      "question": "Which protocol is full-duplex and can run the fastest, often at 10-50 MHz?",
+      "correct_zone": "spi",
+      "explanation": "SPI is full-duplex (it can send and receive at the same time) and runs much faster than I2C — typically 10-50 MHz — which is why it is used for displays and SD cards that need high throughput."
+    },
+    {
+      "question": "Which protocol requires pull-up resistors on its signal lines?",
+      "correct_zone": "i2c",
+      "explanation": "I2C lines are open-drain, so SDA and SCL each need a pull-up resistor to 3.3 V. SPI uses push-pull signals and needs no pull-up resistors."
+    },
+    {
+      "question": "Which protocol selects a device by pulling its CS line LOW instead of using an address?",
+      "correct_zone": "spi",
+      "explanation": "SPI gives every slave its own Chip Select (CS) wire. You activate a device by driving its CS line LOW, so SPI does not use addresses the way I2C does."
+    }
+  ]
+}

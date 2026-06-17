@@ -1,0 +1,107 @@
+{
+  "title": "Memory Types in MicroPython",
+  "image": "memeory-types-infographic.png",
+  "layout": "grid",
+  "palette": ["#C7164E", "#1389A6", "#2D8A4E", "#6A3FB5"],
+  "zones": [
+    {
+      "id": "internal-flash",
+      "label": "Internal Flash",
+      "color": "#C7164E",
+      "x1": 15.5, "y1": 13, "x2": 34.5, "y2": 88,
+      "summary": "Non-volatile program storage built into the board",
+      "facts": [
+        "Size (Pico): 2 MB QSPI NOR flash (Pico 2: 4 MB)",
+        "Volatile: No — data survives power-off and resets",
+        "Read speed: ~400 kB/s via XIP (execute in place; cached for code)",
+        "Write speed: ~100 kB/s in 4 KB erase sectors; ~100,000 write cycles",
+        "File system: LittleFS (default MicroPython) or FAT",
+        "Used for: .py source, compiled .mpy bytecode, boot.py, main.py",
+        "Accessed via: os.listdir('/'); open('/myfile.txt', 'w')",
+        "Cost: included in board price",
+        "Best for: storing your program, config files, small data logs"
+      ]
+    },
+    {
+      "id": "sram",
+      "label": "SRAM (Internal RAM)",
+      "color": "#1389A6",
+      "x1": 34.8, "y1": 13, "x2": 54, "y2": 88,
+      "summary": "Fast volatile working memory for running code",
+      "facts": [
+        "Size (Pico): 264 KB total SRAM — 6 banks on RP2040",
+        "Volatile: Yes — all data lost on reset or power-off",
+        "Read/write speed: ~133 MHz access (single-cycle via bus fabric)",
+        "MicroPython heap: ~170–200 KB available to Python objects",
+        "File system: N/A — RAM is not a file system",
+        "Used for: variables, lists, dicts, bytearray and network buffers",
+        "Accessed via: normal Python variables",
+        "Monitor: micropython.mem_info() shows free heap",
+        "Best for: all runtime data — free memory is the #1 constraint"
+      ]
+    },
+    {
+      "id": "microsd-card",
+      "label": "microSD Card (SPI)",
+      "color": "#2D8A4E",
+      "x1": 54.5, "y1": 13, "x2": 76.5, "y2": 88,
+      "summary": "Large external storage read over the SPI bus",
+      "facts": [
+        "Capacity: 1 GB–32 GB (FAT32); up to 2 TB (exFAT)",
+        "Volatile: No — data survives power-off",
+        "Read speed: 0.5–4 MB/s via SPI (less than native SDIO)",
+        "Write speed: 0.3–2 MB/s via SPI",
+        "File system: FAT16 / FAT32 / exFAT (works with PCs)",
+        "Used for: CSV logs, audio samples, large datasets, images",
+        "Accessed via: sdcard.py driver; mounts as /sd",
+        "Cost: $1–$5 card + $1–$3 SPI breakout",
+        "Best for: long-term logging, audio storage, moving data to a PC"
+      ]
+    },
+    {
+      "id": "i2c-eeprom",
+      "label": "I2C EEPROM",
+      "color": "#6A3FB5",
+      "x1": 77, "y1": 13, "x2": 99, "y2": 88,
+      "summary": "Tiny byte-addressable non-volatile config storage",
+      "facts": [
+        "Capacity: 4 KB (AT24C32) · 32 KB (AT24C256) · 512 KB (AT24CM02)",
+        "Volatile: No — retains data for 100+ years (spec)",
+        "Read speed: ~100 kbps (I2C standard mode)",
+        "Write speed: ~100 kbps; 5 ms write cycle per page (8–64 bytes)",
+        "Write endurance: up to 1,000,000 write cycles per byte address",
+        "Used for: device config, calibration constants, serial numbers, counters",
+        "Accessed via: i2c.writeto_mem(addr, reg, data); i2c.readfrom_mem(...)",
+        "Cost: $0.50–$2.00 (breakout board)",
+        "Best for: small settings that must survive power loss"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which memory loses all of its data the moment the board loses power?",
+      "correct_zone": "sram",
+      "explanation": "SRAM is volatile — variables, lists, and buffers all live here while the program runs, but everything disappears on reset or power-off. The other three keep their data without power."
+    },
+    {
+      "question": "Where do your .py files, boot.py, and compiled .mpy bytecode actually live?",
+      "correct_zone": "internal-flash",
+      "explanation": "Internal flash is the non-volatile program storage built into the board. MicroPython stores your source files and compiled bytecode here using the LittleFS file system."
+    },
+    {
+      "question": "Which storage holds gigabytes and uses a standard FAT file system you can read on a PC?",
+      "correct_zone": "microsd-card",
+      "explanation": "A microSD card connected over SPI offers 1 GB to 2 TB of FAT16/FAT32/exFAT storage — ideal for big CSV data logs and audio files you also want to open on a computer."
+    },
+    {
+      "question": "You need to save a few calibration constants that survive power loss and update them up to a million times. Which chip fits best?",
+      "correct_zone": "i2c-eeprom",
+      "explanation": "An I2C EEPROM is byte-addressable, keeps data for 100+ years, and tolerates up to 1,000,000 write cycles per address — perfect for small settings and counters that must survive a reboot."
+    },
+    {
+      "question": "When you hit a MemoryError, which limited resource have you run out of?",
+      "correct_zone": "sram",
+      "explanation": "MemoryError means the MicroPython heap in SRAM is full. Only about 170–200 KB of the 264 KB SRAM is free for Python objects, so runtime memory is the #1 constraint on embedded Python."
+    }
+  ]
+}

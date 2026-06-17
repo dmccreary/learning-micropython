@@ -1,0 +1,131 @@
+{
+  "title": "Common MicroPython Errors",
+  "image": "common-micropython-errors.png",
+  "layout": "grid",
+  "palette": ["#C7164E", "#E5398A", "#6A3FB5", "#1389A6", "#2D8A4E", "#E07B39", "#2A2E3A"],
+  "zones": [
+    {
+      "id": "memory-error",
+      "label": "MemoryError",
+      "color": "#C7164E",
+      "x1": 1, "y1": 11, "x2": 25, "y2": 46,
+      "summary": "The heap is full — too many large objects loaded into RAM at once",
+      "facts": [
+        "Example: MemoryError: memory allocation failed, allocating 4096 bytes",
+        "Cause: The heap is full — too many large objects loaded into RAM at once",
+        "Fix: Delete unused objects with del x; collect garbage with import gc; gc.collect(); avoid large lists and bytearrays."
+      ]
+    },
+    {
+      "id": "oserror-enoent",
+      "label": "OSError (ENOENT)",
+      "color": "#E07B39",
+      "x1": 25.5, "y1": 11, "x2": 50, "y2": 46,
+      "summary": "File or directory not found at the path you specified",
+      "facts": [
+        "Example: OSError: [Errno 2] ENOENT",
+        "Cause: File or directory not found at the path you specified",
+        "Fix: Check the filename spelling; run import os; os.listdir('/') to see what is on the board."
+      ]
+    },
+    {
+      "id": "oserror-enodev",
+      "label": "OSError (ENODEV)",
+      "color": "#2D8A4E",
+      "x1": 50.5, "y1": 11, "x2": 75, "y2": 46,
+      "summary": "I2C or SPI device is not responding — not connected, wrong address, or wrong voltage",
+      "facts": [
+        "Example: OSError: [Errno 19] ENODEV",
+        "Cause: I2C or SPI device is not responding — not connected, wrong address, or wrong voltage",
+        "Fix: Check wiring; confirm 3.3 V on VCC; scan the I2C bus with i2c.scan() to find connected devices."
+      ]
+    },
+    {
+      "id": "import-error",
+      "label": "ImportError",
+      "color": "#1389A6",
+      "x1": 75.5, "y1": 11, "x2": 99, "y2": 46,
+      "summary": "The .py library file has not been copied to the Pico's flash storage",
+      "facts": [
+        "Example: ImportError: no module named 'ssd1306'",
+        "Cause: The .py library file has not been copied to the Pico's flash storage",
+        "Fix: Copy the driver file (e.g., ssd1306.py) to the Pico root folder using Thonny File → Save As or rshell."
+      ]
+    },
+    {
+      "id": "attribute-error",
+      "label": "AttributeError",
+      "color": "#6A3FB5",
+      "x1": 1, "y1": 48, "x2": 25, "y2": 83,
+      "summary": "Trying to use a class or function that doesn't exist in MicroPython's version of the module",
+      "facts": [
+        "Example: AttributeError: 'module' object has no attribute 'Pin'",
+        "Cause: Trying to use a class or function that doesn't exist in MicroPython's version of the module",
+        "Fix: Check MicroPython documentation; run import machine; dir(machine) to see available names."
+      ]
+    },
+    {
+      "id": "syntax-error",
+      "label": "SyntaxError",
+      "color": "#E5398A",
+      "x1": 25.5, "y1": 48, "x2": 50, "y2": 83,
+      "summary": "A typo, missing colon, unmatched bracket, or wrong indentation in your code",
+      "facts": [
+        "Example: SyntaxError: invalid syntax",
+        "Cause: A typo, missing colon, unmatched bracket, or wrong indentation in your code",
+        "Fix: Look at the line number in the traceback; check for missing : after if/for/def, unclosed ( or ', or mixed tabs and spaces."
+      ]
+    },
+    {
+      "id": "type-error",
+      "label": "TypeError",
+      "color": "#2D8A4E",
+      "x1": 50.5, "y1": 48, "x2": 75, "y2": 83,
+      "summary": "You passed the wrong data type to a function (e.g., passed a number where a string was expected)",
+      "facts": [
+        "Example: TypeError: can't convert 'int' object to str implicitly",
+        "Cause: You passed the wrong data type to a function (e.g., passed a number where a string was expected)",
+        "Fix: Convert explicitly: str(n) to make a string, int(s) to make an integer, float(n) for a decimal."
+      ]
+    },
+    {
+      "id": "value-error",
+      "label": "ValueError",
+      "color": "#C7164E",
+      "x1": 75.5, "y1": 48, "x2": 99, "y2": 83,
+      "summary": "The right type was passed but the value is out of the allowed range or format",
+      "facts": [
+        "Example: ValueError: invalid argument",
+        "Cause: The right type was passed but the value is out of the allowed range or format",
+        "Fix: Read the function's documentation for valid input ranges; check that pin numbers and frequency values are within bounds."
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which error appears when the heap is full because too many large objects are loaded into RAM at once?",
+      "correct_zone": "memory-error",
+      "explanation": "A MemoryError means memory allocation failed. The heap is full from too many large objects. Free RAM by deleting unused objects with del x and running import gc; gc.collect(), and avoid huge lists and bytearrays."
+    },
+    {
+      "question": "Which error means a .py library file (like ssd1306.py) has not been copied to the Pico's flash storage?",
+      "correct_zone": "import-error",
+      "explanation": "An ImportError such as 'no module named ssd1306' means the driver file is not on the board. Copy the .py file to the Pico's root folder using Thonny File → Save As or rshell."
+    },
+    {
+      "question": "Which error is caused by a missing colon, an unmatched bracket, or wrong indentation in your code?",
+      "correct_zone": "syntax-error",
+      "explanation": "A SyntaxError: invalid syntax comes from a typo, a missing : after if/for/def, an unclosed ( or quote, or mixed tabs and spaces. Check the line number shown in the traceback."
+    },
+    {
+      "question": "Which error appears when an I2C or SPI device is not responding because it is unconnected, at the wrong address, or on the wrong voltage?",
+      "correct_zone": "oserror-enodev",
+      "explanation": "OSError: [Errno 19] ENODEV means the I2C or SPI device did not respond. Check the wiring, confirm 3.3 V on VCC, and run i2c.scan() to list the devices that are actually connected."
+    },
+    {
+      "question": "Which error happens when you pass the wrong data type to a function, such as a number where a string was expected?",
+      "correct_zone": "type-error",
+      "explanation": "A TypeError like \"can't convert 'int' object to str implicitly\" means a value of the wrong type was passed. Convert explicitly with str(n), int(s), or float(n) before calling the function."
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "title": "Sound Output Methods Compared",
+  "image": "sound-output-infographic.png",
+  "layout": "grid",
+  "palette": ["#1389A6", "#E07B39", "#6A3FB5", "#C7164E"],
+  "zones": [
+    {
+      "id": "passive-buzzer",
+      "label": "Passive Buzzer",
+      "color": "#1389A6",
+      "x1": 14.5, "y1": 13, "x2": 34, "y2": 88,
+      "summary": "Membrane vibrates at the PWM frequency you set — plays any note",
+      "facts": [
+        "Sound: membrane vibrates at the PWM frequency you set",
+        "Frequency range: ~20 Hz – 20 kHz; typical use 100 Hz – 10 kHz",
+        "Volume: low — approx. 60–70 dB at 10 cm",
+        "Tone: full melody — any note frequency is possible",
+        "Wiring: signal pin → buzzer → GND (2 connections total)",
+        "Power: driven directly from 3.3 V GPIO PWM pin",
+        "MicroPython: pwm = PWM(pin); pwm.freq(440); pwm.duty_u16(32768)",
+        "Cost: $0.20–$0.50",
+        "Best for: melodies, alerts, game sound effects, Morse code"
+      ]
+    },
+    {
+      "id": "active-buzzer",
+      "label": "Active Buzzer",
+      "color": "#E07B39",
+      "x1": 34.5, "y1": 13, "x2": 54, "y2": 88,
+      "summary": "Internal oscillator makes one fixed beep tone — on/off only",
+      "facts": [
+        "Sound: internal oscillator generates a fixed-frequency tone",
+        "Frequency range: fixed internal tone — typically ~2 kHz",
+        "Volume: medium–loud — approx. 70–85 dB at 10 cm",
+        "Tone: on/off only — single fixed beep tone",
+        "Wiring: VCC (5 V) → + pin; − pin → GND (or switch with transistor)",
+        "Power: 5 V recommended (louder than 3.3 V); uses ~30 mA",
+        "MicroPython: Pin(n, Pin.OUT).value(1) to beep; value(0) to stop",
+        "Cost: $0.20–$0.50",
+        "Best for: simple alarms, button-press beeps, low-code feedback"
+      ]
+    },
+    {
+      "id": "speaker-pwm",
+      "label": "Small Speaker + PWM",
+      "color": "#6A3FB5",
+      "x1": 54.5, "y1": 13, "x2": 74, "y2": 88,
+      "summary": "Voice coil driven by a PWM square wave — needs an amplifier",
+      "facts": [
+        "Sound: voice coil moves cone — driven by PWM square wave from GPIO",
+        "Frequency range: 20 Hz – 20 kHz (wider range than a buzzer)",
+        "Volume: very low without an amplifier — needs transistor or op-amp",
+        "Tone: full melody with better tonal quality than passive buzzer",
+        "Wiring: GPIO → transistor base → speaker; collector to V+; emitter to GND",
+        "Power: PWM signal through NPN transistor (2N2222) or small amp IC",
+        "MicroPython: PWM(pin) — vary freq() for notes; can play simple tunes",
+        "Cost: $0.50–$2.00 speaker + ~$0.10 transistor",
+        "Best for: better-sounding tones; adding volume with a small amp IC"
+      ]
+    },
+    {
+      "id": "i2s-dac",
+      "label": "I2S DAC + Amplifier",
+      "color": "#C7164E",
+      "x1": 74.5, "y1": 13, "x2": 99, "y2": 88,
+      "summary": "Digital audio decoded by a DAC and amplified — true music playback",
+      "facts": [
+        "Sound: digital audio stream decoded by DAC, amplified to speaker",
+        "Frequency range: 20 Hz – 20 kHz; 24-bit depth at up to 96 kHz sample rate",
+        "Volume: loud — MAX98357A outputs up to 3.2 W into a 4 Ω speaker",
+        "Tone: full digital audio — WAV, PCM; tone synthesis, voice output",
+        "Wiring: 3 I2S bus pins (BCLK, LRCLK, DIN) + 5 V power + speaker",
+        "Power: 5 V supply to I2S amp module; I2S signal at 3.3 V",
+        "MicroPython: machine.I2S(id, sck, ws, sd, mode=I2S.TX, bits=16, rate=44100)",
+        "Cost: $3–$8 for MAX98357A breakout module + speaker",
+        "Best for: music playback, voice output, high-quality audio"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which method can play full music files like WAV and PCM with loud, high-quality sound?",
+      "correct_zone": "i2s-dac",
+      "explanation": "An I2S DAC + amplifier (such as the MAX98357A) decodes a digital audio stream and amplifies it up to 3.2 W into a 4 Ω speaker — true music and voice playback, far beyond what a buzzer can do."
+    },
+    {
+      "question": "Which method can only make a single fixed beep tone using just Pin.value(1)?",
+      "correct_zone": "active-buzzer",
+      "explanation": "An active buzzer has an internal oscillator that produces one fixed ~2 kHz tone. You just turn it on with Pin(n, Pin.OUT).value(1) and off with value(0) — no PWM and no choice of notes."
+    },
+    {
+      "question": "Which method plays any note with PWM, wires up with only 2 connections, and runs straight off a 3.3 V GPIO pin?",
+      "correct_zone": "passive-buzzer",
+      "explanation": "A passive buzzer's membrane vibrates at whatever PWM frequency you set, so it can play full melodies. It needs only a signal pin and GND and is driven directly from a 3.3 V GPIO PWM pin."
+    },
+    {
+      "question": "Which method needs an NPN transistor (like a 2N2222) before it makes a useful amount of sound?",
+      "correct_zone": "speaker-pwm",
+      "explanation": "A small 8 Ω speaker driven by PWM is very quiet on its own. Routing the GPIO signal through an NPN transistor (2N2222) or a small amp IC is what gives it useful volume."
+    },
+    {
+      "question": "Which method gives the loudest output, reaching up to 3.2 W into a 4 Ω speaker?",
+      "correct_zone": "i2s-dac",
+      "explanation": "The MAX98357A I2S amplifier outputs up to 3.2 W into a 4 Ω speaker, making it the loudest option here — buzzers top out around 85 dB and a bare speaker is very quiet without an amp."
+    }
+  ]
+}

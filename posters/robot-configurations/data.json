@@ -1,0 +1,110 @@
+{
+  "title": "Robot Drive Configurations",
+  "image": "robot-drive-configurations.png",
+  "layout": "grid",
+  "palette": ["#C7164E", "#E5398A", "#6A3FB5", "#1389A6", "#2D8A4E", "#E07B39", "#2A2E3A"],
+  "zones": [
+    {
+      "id": "differential-drive",
+      "label": "Differential Drive (2WD)",
+      "color": "#C7164E",
+      "x1": 9.7, "y1": 11, "x2": 27.4, "y2": 95,
+      "summary": "Two driven wheels plus a caster — the classic first-robot drive",
+      "facts": [
+        "Wheels: 2 driven wheels + 1 passive caster (or ball caster)",
+        "Motors needed: 2",
+        "Turning method: Spin one wheel faster or in reverse — skid-steer",
+        "Pros: Simple; only 2 motors; easy to code; low cost",
+        "Cons: Slides sideways on turns; no smooth arc without encoder feedback",
+        "Difficulty: Beginner",
+        "Best for: First robot projects; line following; maze solving"
+      ]
+    },
+    {
+      "id": "four-wheel-drive",
+      "label": "Four-Wheel Drive (4WD)",
+      "color": "#E07B39",
+      "x1": 27.4, "y1": 11, "x2": 45.5, "y2": 95,
+      "summary": "Four driven wheels for extra grip on rough ground",
+      "facts": [
+        "Wheels: 4 driven wheels (2 per side linked together)",
+        "Motors needed: 2 (or 4 with individual control)",
+        "Turning method: Skid-steer — same as 2WD but more grip",
+        "Pros: Better traction on rough surfaces; stable platform",
+        "Cons: Same skid-turn limitation as 2WD; higher current draw",
+        "Difficulty: Beginner–Intermediate",
+        "Best for: Outdoor robots; rough terrain; heavier payloads"
+      ]
+    },
+    {
+      "id": "tricycle-ackermann",
+      "label": "Tricycle / Ackermann",
+      "color": "#6A3FB5",
+      "x1": 45.5, "y1": 11, "x2": 61.7, "y2": 95,
+      "summary": "A steered front wheel gives a smooth, car-like turning arc",
+      "facts": [
+        "Wheels: 2 rear driven wheels + 1 front steered wheel",
+        "Motors needed: 1 DC motor (drive) + 1 servo (steer)",
+        "Turning method: Servo rotates front wheel — natural arc like a car",
+        "Pros: Smooth turning arc; realistic car-like kinematics; no skidding",
+        "Cons: Minimum turning radius limited; more mechanical complexity",
+        "Difficulty: Intermediate",
+        "Best for: RC-car style robots; path-following; realistic vehicle simulations"
+      ]
+    },
+    {
+      "id": "mecanum-holonomic",
+      "label": "Mecanum / Holonomic",
+      "color": "#1389A6",
+      "x1": 61.7, "y1": 11, "x2": 79.7, "y2": 95,
+      "summary": "Four angled-roller wheels move the robot in any direction",
+      "facts": [
+        "Wheels: 4 mecanum wheels (each has 45° rollers)",
+        "Motors needed: 4 (each independently controlled)",
+        "Turning method: Vector sum of all four wheel speeds — moves in any direction",
+        "Pros: Full omnidirectional motion — forward, sideways, diagonal, rotate in place",
+        "Cons: Expensive wheels ($20–$50/set); complex control math; 4 motor drivers",
+        "Difficulty: Advanced",
+        "Best for: Warehouse robots; competition; tight-space navigation"
+      ]
+    },
+    {
+      "id": "quadruped",
+      "label": "Quadruped (4 Legs)",
+      "color": "#2D8A4E",
+      "x1": 79.7, "y1": 11, "x2": 98.5, "y2": 95,
+      "summary": "Four legs walk over terrain that wheels cannot cross",
+      "facts": [
+        "Legs: 4 legs × 2 servos each = 8 servos total",
+        "Motors needed: 8 servo motors (minimum)",
+        "Turning method: Gait patterns — alternating leg sequence (trot, crawl, bound)",
+        "Pros: Can navigate uneven terrain, steps, grass; impressive appearance",
+        "Cons: Complex servo coordination; 8 PWM channels needed; high power",
+        "Difficulty: Advanced",
+        "Best for: Rough terrain; showcase/competition robots; learning about gait control"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which drive can move sideways and diagonally without turning the robot first?",
+      "correct_zone": "mecanum-holonomic",
+      "explanation": "Mecanum / Holonomic wheels each have 45° rollers. By combining the four wheel speeds (a vector sum), the robot gets full omnidirectional motion — it can slide forward, sideways, or diagonally, and even rotate in place."
+    },
+    {
+      "question": "You are building your very first robot and want the simplest, lowest-cost drive that uses only two motors. Which one should you choose?",
+      "correct_zone": "differential-drive",
+      "explanation": "Differential Drive (2WD) uses just 2 driven wheels and 1 passive caster, needs only 2 motors, and is easy to code — making it the classic, low-cost choice for first robot projects, line following, and maze solving."
+    },
+    {
+      "question": "Which configuration steers with a servo on a front wheel to make a smooth, car-like arc with no skidding?",
+      "correct_zone": "tricycle-ackermann",
+      "explanation": "The Tricycle / Ackermann drive uses 1 DC motor for the two rear wheels plus 1 servo that rotates the front wheel. Steering the front wheel produces a natural turning arc like a real car, with no skidding."
+    },
+    {
+      "question": "Which configuration needs at least 8 servo motors and uses gait patterns to walk over steps and uneven terrain?",
+      "correct_zone": "quadruped",
+      "explanation": "A Quadruped has 4 legs with 2 servos each (8 servos total). Instead of rolling, it uses gait patterns — alternating leg sequences like trot, crawl, and bound — to climb steps and cross uneven terrain that wheels cannot handle."
+    }
+  ]
+}

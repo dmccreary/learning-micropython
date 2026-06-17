@@ -1,0 +1,128 @@
+{
+  "title": "GPIO Functions on the Raspberry Pi Pico (RP2040)",
+  "image": "pico-pin-infographic.png",
+  "layout": "grid",
+  "palette": ["#C7164E", "#E5398A", "#6A3FB5", "#1389A6", "#2D8A4E", "#E07B39", "#2A2E3A"],
+  "zones": [
+    {
+      "id": "digital-out",
+      "label": "Digital Output",
+      "color": "#C7164E",
+      "x1": 0, "y1": 15, "x2": 62, "y2": 27,
+      "summary": "Drive pins HIGH (3.3 V) or LOW (0 V) — all 26 GPIO",
+      "facts": [
+        "Available on all 26 GPIO pins (GP0–GP28)",
+        "MicroPython: Pin(n, Pin.OUT)",
+        "3.3 V logic; can toggle up to ~80 MHz via PIO (Programmable I/O)",
+        "Typical uses: LEDs, relays, H-bridge direction signals, transistor switches"
+      ]
+    },
+    {
+      "id": "digital-in",
+      "label": "Digital Input",
+      "color": "#E5398A",
+      "x1": 0, "y1": 27, "x2": 62, "y2": 39,
+      "summary": "Read HIGH or LOW from external signals — all 26 GPIO",
+      "facts": [
+        "Available on all 26 GPIO pins (GP0–GP28)",
+        "MicroPython: Pin(n, Pin.IN, Pin.PULL_UP)",
+        "Built-in 50 kΩ pull-up or pull-down resistors (software configurable)",
+        "Typical uses: buttons, switches, encoder signals, digital sensors"
+      ]
+    },
+    {
+      "id": "pwm",
+      "label": "PWM",
+      "color": "#6A3FB5",
+      "x1": 0, "y1": 39, "x2": 62, "y2": 51,
+      "summary": "Pulse Width Modulation — analog-like output on any GPIO",
+      "facts": [
+        "Available on all 26 GPIO pins via 8 PWM slices × 2 channels = 16 unique channels",
+        "MicroPython: PWM(Pin(n))",
+        "Frequency range: 8 Hz to 62.5 MHz",
+        "Duty cycle: 16-bit resolution (0–65,535) for smooth control",
+        "Typical uses: LED brightness dimming, servo position, motor speed, buzzer tones"
+      ]
+    },
+    {
+      "id": "adc",
+      "label": "ADC",
+      "color": "#1389A6",
+      "x1": 0, "y1": 51, "x2": 62, "y2": 63,
+      "summary": "Analog-to-Digital Converter — only 3 external pins",
+      "facts": [
+        "Only 3 external ADC-capable pins: GP26, GP27, GP28",
+        "Plus an internal temperature sensor on ADC4 (not a physical pin)",
+        "MicroPython: ADC(Pin(26)) — read() returns 0–65,535",
+        "12-bit SAR ADC; input range 0–3.3 V; sample rate ~500 kSps",
+        "Typical uses: potentiometers, LDR light sensors, microphone, thermistor"
+      ]
+    },
+    {
+      "id": "i2c",
+      "label": "I2C",
+      "color": "#2D8A4E",
+      "x1": 0, "y1": 63, "x2": 62, "y2": 75,
+      "summary": "2-wire serial bus — any GPIO, hardware blocks I2C0 and I2C1",
+      "facts": [
+        "Can be mapped to any 2 GPIO pins; two hardware I2C blocks (I2C0, I2C1)",
+        "MicroPython: I2C(0, scl=Pin(1), sda=Pin(0), freq=400_000)",
+        "Standard 100 kbps · Fast 400 kbps · Fast+ 1 Mbps",
+        "Typical devices: OLED displays (SSD1306), BMP280, MPU-6050, RTC modules"
+      ]
+    },
+    {
+      "id": "spi",
+      "label": "SPI",
+      "color": "#E07B39",
+      "x1": 0, "y1": 75, "x2": 62, "y2": 87,
+      "summary": "4-wire full-duplex bus — any GPIO, hardware blocks SPI0 and SPI1",
+      "facts": [
+        "Can be mapped to any 4 GPIO pins; two hardware SPI blocks (SPI0, SPI1)",
+        "MicroPython: SPI(0, baudrate=1_000_000, sck=Pin(6), mosi=Pin(7), miso=Pin(4))",
+        "Up to 62.5 MHz (full-duplex)",
+        "Typical devices: SD cards, TFT color displays (ILI9341), ADC chips, NOR flash"
+      ]
+    },
+    {
+      "id": "uart",
+      "label": "UART",
+      "color": "#2A2E3A",
+      "x1": 0, "y1": 87, "x2": 62, "y2": 96,
+      "summary": "Async serial link — any GPIO, hardware blocks UART0 and UART1",
+      "facts": [
+        "Can be mapped to any 2 GPIO pins; two hardware UART blocks (UART0, UART1)",
+        "MicroPython: UART(0, baudrate=9600, tx=Pin(0), rx=Pin(1))",
+        "Up to 921,600 baud (configurable)",
+        "Typical devices: GPS modules, HC-05 Bluetooth, serial debug REPL console"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which GPIO function is limited to only 3 external pins on the Pico (GP26, GP27, GP28)?",
+      "correct_zone": "adc",
+      "explanation": "The RP2040 has only 3 ADC-capable GPIO pins (GP26, GP27, GP28) plus one internal channel for the temperature sensor. All other functions are available on any of the 26 GPIO pins."
+    },
+    {
+      "question": "Which function provides a 16-bit resolution output for smooth control of LEDs, servos, and motors?",
+      "correct_zone": "pwm",
+      "explanation": "PWM (Pulse Width Modulation) gives 16-bit duty-cycle control (0–65,535 steps) on any GPIO pin, which is fine enough for smooth LED dimming and precise servo positioning."
+    },
+    {
+      "question": "Which GPIO function lets you read the voltage level of a potentiometer or light sensor?",
+      "correct_zone": "adc",
+      "explanation": "ADC (Analog-to-Digital Converter) converts a continuous 0–3.3 V input to a 12-bit number. Potentiometers, LDRs, and microphones all produce analog voltages that need an ADC pin."
+    },
+    {
+      "question": "Which function is used to turn an LED on, control a relay, or set the direction of an H-bridge?",
+      "correct_zone": "digital-out",
+      "explanation": "Digital Output drives a pin to 3.3 V (HIGH) or 0 V (LOW), making it perfect for LEDs, relays, and H-bridge direction signals. Use Pin(n, Pin.OUT) in MicroPython."
+    },
+    {
+      "question": "Which GPIO function lets you connect to OLED displays and sensors like the BMP280 on a shared 2-wire bus?",
+      "correct_zone": "i2c",
+      "explanation": "I2C uses just 2 wires (SCL and SDA) and allows up to 127 devices on the same bus. The SSD1306 OLED and BMP280 sensor both use I2C with unique 7-bit addresses."
+    }
+  ]
+}

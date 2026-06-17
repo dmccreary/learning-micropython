@@ -1,0 +1,119 @@
+{
+  "title": "Common Electronic Components",
+  "image": "electrical-components-infographic.png",
+  "layout": "grid",
+  "palette": ["#C7164E", "#E5398A", "#6A3FB5", "#1389A6", "#2D8A4E", "#E07B39"],
+  "zones": [
+    {
+      "id": "resistor",
+      "label": "Resistor",
+      "color": "#C7164E",
+      "x1": 1, "y1": 14, "x2": 33.5, "y2": 53,
+      "summary": "Limits the current flowing in a circuit",
+      "facts": [
+        "Limits current in a circuit",
+        "Unit: Ohms (Ω)",
+        "Common values: 220 Ω, 1 kΩ, 10 kΩ",
+        "Tip: Use one in series with every LED to prevent burnout",
+        "Symbol: rectangle with two lines"
+      ]
+    },
+    {
+      "id": "led",
+      "label": "LED (Light-Emitting Diode)",
+      "color": "#E07B39",
+      "x1": 34, "y1": 14, "x2": 66, "y2": 53,
+      "summary": "Emits light when current flows from anode to cathode",
+      "facts": [
+        "Emits light when current flows (anode → cathode)",
+        "Forward voltage: ~2.0 V (red) – 3.3 V (blue/white)",
+        "Typical current: 20 mA maximum",
+        "Tip: Always pair with a 220 Ω–470 Ω resistor from a 3.3 V GPIO pin",
+        "Symbol: triangle with a bar and two light-ray arrows"
+      ]
+    },
+    {
+      "id": "capacitor",
+      "label": "Capacitor",
+      "color": "#2D8A4E",
+      "x1": 66.5, "y1": 14, "x2": 99, "y2": 53,
+      "summary": "Stores and releases electrical charge",
+      "facts": [
+        "Stores and releases electrical charge",
+        "Unit: Farads (F); common: 100 µF electrolytic, 0.1 µF ceramic",
+        "Uses: Smooth power supply; filter noise; bypass capacitor",
+        "Tip: Electrolytic caps have polarity — match + and – markings",
+        "Symbol: two parallel lines (one curved for electrolytic)"
+      ]
+    },
+    {
+      "id": "push-button",
+      "label": "Push Button",
+      "color": "#1389A6",
+      "x1": 1, "y1": 55, "x2": 33.5, "y2": 95,
+      "summary": "A momentary switch — connected only while pressed",
+      "facts": [
+        "Momentary switch — connected only while pressed",
+        "Configuration: Connect one side to GPIO, other to GND; enable internal pull-up",
+        "Debounce: Add 10 µF cap or software delay to avoid false triggers",
+        "Tip: Use Pin.PULL_UP in MicroPython for reliable readings",
+        "Symbol: two lines with a diagonal bridging bar (normally open)"
+      ]
+    },
+    {
+      "id": "transistor",
+      "label": "Transistor (NPN BJT, e.g., 2N2222)",
+      "color": "#6A3FB5",
+      "x1": 34, "y1": 55, "x2": 66, "y2": 95,
+      "summary": "An electronic switch — small base current controls a large collector current",
+      "facts": [
+        "Acts as an electronic switch: small base current controls large collector current",
+        "GPIO → 1 kΩ resistor → Base; load connects Collector to V+; Emitter to GND",
+        "Gain (hFE): ~100–300 (2N2222)",
+        "Tip: Use to drive motors, buzzers, or LEDs that need more than 20 mA",
+        "Three leads: Base (B), Collector (C), Emitter (E)"
+      ]
+    },
+    {
+      "id": "potentiometer",
+      "label": "Potentiometer (10 kΩ)",
+      "color": "#E5398A",
+      "x1": 66.5, "y1": 55, "x2": 99, "y2": 95,
+      "summary": "A variable resistor — turning the knob changes resistance",
+      "facts": [
+        "Variable resistor — turning the knob changes resistance 0 Ω → 10 kΩ",
+        "Connect: Left pin to 3.3 V, Right pin to GND, Wiper pin to ADC input",
+        "Output voltage at wiper: 0 V to 3.3 V (reads 0–65535 in MicroPython read_u16())",
+        "Tip: Use for volume control, angle setting, brightness dimmer",
+        "Symbol: rectangle with an arrow pointing to the middle"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which component should you always place in series with an LED to prevent it from burning out?",
+      "correct_zone": "resistor",
+      "explanation": "A resistor limits current in a circuit. Pair a 220 Ω–470 Ω resistor in series with every LED from a 3.3 V GPIO pin so the LED never draws more than its 20 mA maximum."
+    },
+    {
+      "question": "Which component acts as an electronic switch where a small base current controls a larger collector current?",
+      "correct_zone": "transistor",
+      "explanation": "An NPN BJT transistor (e.g., 2N2222) lets a small base current control a large collector current. Wire GPIO → 1 kΩ resistor → Base to drive motors, buzzers, or high-current LEDs."
+    },
+    {
+      "question": "Which component is a variable resistor you connect to an ADC pin to read a value from 0 to 65535?",
+      "correct_zone": "potentiometer",
+      "explanation": "A 10 kΩ potentiometer is a variable resistor. Wire its left pin to 3.3 V, right pin to GND, and the wiper to an ADC input — read_u16() returns 0–65535 as you turn the knob."
+    },
+    {
+      "question": "Which component stores and releases electrical charge and is measured in Farads?",
+      "correct_zone": "capacitor",
+      "explanation": "A capacitor stores and releases electrical charge and is measured in Farads (F). Common values are 100 µF electrolytic and 0.1 µF ceramic, used to smooth power and filter noise."
+    },
+    {
+      "question": "Which component is a momentary switch that connects only while it is pressed?",
+      "correct_zone": "push-button",
+      "explanation": "A push button is a momentary switch — it conducts only while held down. Connect one side to a GPIO pin and the other to GND, then enable Pin.PULL_UP in MicroPython for reliable readings."
+    }
+  ]
+}

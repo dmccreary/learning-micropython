@@ -1,0 +1,86 @@
+{
+  "title": "Motor Types Compared: DC · Servo · Stepper",
+  "image": "motor-comparison-infographic.png",
+  "layout": "grid",
+  "palette": ["#C7164E", "#6A3FB5", "#1389A6"],
+  "zones": [
+    {
+      "id": "dc-motor",
+      "label": "DC Motor",
+      "color": "#C7164E",
+      "x1": 15.5, "y1": 12, "x2": 43, "y2": 92,
+      "summary": "Spins continuously — the simplest, cheapest motor",
+      "facts": [
+        "Operating principle: electromagnetic — current through brushes rotates the armature",
+        "Control method: H-bridge for direction; PWM duty cycle for speed",
+        "Position control: none — spins freely; needs an encoder for position feedback",
+        "Rotation: continuous 360° in either direction",
+        "Typical speed: 100–30,000 RPM (depends on voltage and load)",
+        "Operating voltage: 3 V–12 V DC; cost $1–$5",
+        "MicroPython: two GPIO pins (direction) + one PWM pin via a motor-driver IC",
+        "Best for: robot wheels, fans, propellers, any continuous-rotation task"
+      ]
+    },
+    {
+      "id": "servo",
+      "label": "Servo Motor",
+      "color": "#6A3FB5",
+      "x1": 43, "y1": 12, "x2": 70, "y2": 92,
+      "summary": "Holds a precise angle using PWM pulse width",
+      "facts": [
+        "Operating principle: DC motor + gear reduction + potentiometer position feedback",
+        "Control method: PWM pulse width — 1 ms = 0°, 1.5 ms = 90°, 2 ms = 180°, at 50 Hz",
+        "Position control: yes — holds a target angle with ±1° precision",
+        "Rotation: 0°–180° standard; 360° continuous-rotation servos also available",
+        "Typical torque: 1.8 kg·cm (SG90) up to 15 kg·cm (MG996R)",
+        "Operating voltage: 4.8 V–6 V; cost $2–$10",
+        "MicroPython: one PWM pin — duty_u16() maps 0° → ~2000, 180° → ~8000",
+        "Best for: robot arm joints, camera pan/tilt, RC steering, door latches"
+      ]
+    },
+    {
+      "id": "stepper",
+      "label": "Stepper Motor",
+      "color": "#1389A6",
+      "x1": 70, "y1": 12, "x2": 98, "y2": 92,
+      "summary": "Moves in exact steps for precise positioning",
+      "facts": [
+        "Operating principle: coils energized in sequence to rotate the shaft in precise steps",
+        "Control method: step-and-direction pulses sent to a driver IC (A4988, DRV8825)",
+        "Position control: yes — each step is a fixed angle, no encoder needed (open-loop)",
+        "Rotation: continuous; standard step = 1.8° (200 steps per revolution)",
+        "Typical torque: high and held at rest (2.0 kg·cm NEMA 14 to 40 kg·cm NEMA 23)",
+        "Operating voltage: 4 V–12 V (bipolar, coil-rated); cost $3–$15 + driver board",
+        "MicroPython: two GPIO pins (STEP, DIR) + driver IC; step by toggling the STEP pin",
+        "Best for: 3D printers, CNC machines, camera sliders, precision positioning"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which motor holds a precise angle like 90° using the width of a PWM pulse?",
+      "correct_zone": "servo",
+      "explanation": "A servo reads the PWM pulse width (1 ms = 0°, 1.5 ms = 90°, 2 ms = 180°) and uses its internal potentiometer to hold that exact angle. DC and stepper motors do not work this way."
+    },
+    {
+      "question": "Which motor spins freely with no built-in way to know its position?",
+      "correct_zone": "dc-motor",
+      "explanation": "A plain DC motor just spins — it has no position feedback. You must add an encoder to know where it is. Servos and steppers both have built-in position control."
+    },
+    {
+      "question": "Which motor moves in exact fixed steps (1.8° each) and is used in 3D printers?",
+      "correct_zone": "stepper",
+      "explanation": "A stepper motor rotates one fixed step (typically 1.8°, or 200 steps per revolution) per pulse, giving open-loop precision without an encoder — perfect for 3D printers and CNC machines."
+    },
+    {
+      "question": "Which motor is the best and cheapest choice for driving robot wheels?",
+      "correct_zone": "dc-motor",
+      "explanation": "DC motors are the simplest and cheapest ($1–$5) and spin continuously in either direction, making them ideal for robot wheels, fans, and propellers."
+    },
+    {
+      "question": "Which motor needs a driver IC like the A4988 and step/direction pulses?",
+      "correct_zone": "stepper",
+      "explanation": "Stepper motors are driven by step-and-direction signals sent to a dedicated driver IC such as the A4988 or DRV8825, which energizes the coils in the correct sequence."
+    }
+  ]
+}

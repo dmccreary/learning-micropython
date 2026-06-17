@@ -2015,47 +2015,99 @@
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
+          
+        
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
         
       
     
@@ -2645,7 +2697,8 @@
 Your Pico is about to feel the world around it — temperature, humidity, air pressure, and distance. These are the sensors that make weather stations, robots, and smart devices. Each one has its own personality: DHT11 is the budget-friendly classic, BME280 is the precision all-rounder, HC-SR04 sounds its way through space. Let's meet them all!</p>
 </div>
 <h2 id="temperature-and-humidity-sensors">Temperature and Humidity Sensors</h2>
-<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="temp-sensors-infographic.png" data-desc-position="bottom"><img alt="Temperature Sensors Infographic" src="temp-sensors-infographic.png"></a></p>
+<iframe src="../../posters/temperature-sensors/main.html" width="100%" height="800" scrolling="no"></iframe>
+
 <p>Temperature and humidity sensors are among the most common components in beginner projects. They tell your Pico how warm and how moist the surrounding air is.</p>
 <h3 id="dht11-and-dht22-sensors">DHT11 and DHT22 Sensors</h3>
 <p>The <strong>DHT11</strong> is an inexpensive sensor that measures temperature (0–50 °C, ±2 °C accuracy) and relative humidity (20–80%, ±5%). It uses a simple single-wire protocol. The <strong>DHT22</strong> is the higher-accuracy version: temperature range −40 to 80 °C (±0.5 °C) and humidity 0–100% (±2%). Both look identical from the outside — four pins with the leftmost connecting to 3.3 V.</p>
@@ -2740,7 +2793,8 @@ The DHT11 and DHT22 need at least 1–2 seconds between measurements. Calling <c
 </code></pre></div></td></tr></tbody></table></div>
 <p><strong>DS18B20 multiple sensors</strong>: Because each DS18B20 has a unique 64-bit ROM code, you can connect many sensors to the same wire. <code>ds.scan()</code> returns a list of ROM codes, and <code>ds.read_temp(rom)</code> reads from a specific sensor.</p>
 <h2 id="distance-sensors">Distance Sensors</h2>
-<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="distance-sensors-infographic.png" data-desc-position="bottom"><img alt="Distance Sensors Infographic" src="distance-sensors-infographic.png"></a></p>
+<iframe src="../../posters/distance-sensors/main.html" width="100%" height="800" scrolling="no"></iframe>
+
 <h3 id="ir-distance-sensors">IR Distance Sensors</h3>
 <p>An <strong>IR distance sensor</strong> (infrared distance sensor) combines an <strong>IR emitter</strong> (an LED that shines invisible infrared light) and an <strong>IR detector</strong> (a phototransistor that detects reflections). When the sensor is close to a surface, more reflected light hits the detector; when far away, less light returns.</p>
 <p>Most IR distance sensors return a simple <strong>digital output</strong>: HIGH when no obstacle is close, LOW when an obstacle is detected within range (typically 2–30 cm). Some analog IR sensors return a voltage that varies with distance.</p>

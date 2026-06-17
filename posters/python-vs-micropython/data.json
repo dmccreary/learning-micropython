@@ -1,0 +1,64 @@
+{
+  "title": "Python vs. MicroPython",
+  "image": "python-vs-micropython-infographic.png",
+  "layout": "grid",
+  "palette": ["#1E4DB7", "#1389A6"],
+  "zones": [
+    {
+      "id": "python3",
+      "label": "Python 3",
+      "color": "#1E4DB7",
+      "x1": 14, "y1": 12, "x2": 56, "y2": 88,
+      "summary": "Full Python runtime for desktop, server, and data science",
+      "facts": [
+        "Runs on desktop and server computers: Windows, macOS, Linux",
+        "Minimum RAM: ~50 MB for the interpreter alone",
+        "Full standard library: json, re, socket, os, math, threading, and thousands more",
+        "Package manager: pip — access to 500,000+ packages on PyPI",
+        "File storage: native OS file system (HDD, SSD, NVMe)",
+        "Hardware access: via third-party libraries like RPi.GPIO or pyserial",
+        "Startup time: 50–200 ms (interpreter must launch)",
+        "Typical uses: web servers, data science, automation scripts, desktop apps"
+      ]
+    },
+    {
+      "id": "micropython",
+      "label": "MicroPython",
+      "color": "#1389A6",
+      "x1": 56, "y1": 12, "x2": 100, "y2": 88,
+      "summary": "Lean Python implementation for microcontrollers",
+      "facts": [
+        "Runs on microcontrollers: RP2040, RP2350, ESP32, STM32",
+        "Minimum RAM: ~32 KB — fits in 256 KB–520 KB on typical boards",
+        "Subset standard library: ujson, ure, uos, math — no threading module",
+        "Package manager: mip (small curated set) or manual file copy to board",
+        "File storage: on-board flash (LittleFS or FAT, typically 2–16 MB)",
+        "Hardware access: built-in machine module — Pin, I2C, SPI, ADC, PWM, UART",
+        "Startup time: < 1 ms — instant boot from flash",
+        "Typical uses: sensors, motors, displays, wireless IoT, robotics"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which platform starts up in under 1 millisecond?",
+      "correct_zone": "micropython",
+      "explanation": "MicroPython boots from flash memory in under 1 ms with no OS to load. Python 3 on a desktop takes 50–200 ms just to launch the interpreter."
+    },
+    {
+      "question": "Which platform gives you access to over 500,000 third-party packages via pip?",
+      "correct_zone": "python3",
+      "explanation": "Python 3 uses pip to install packages from PyPI, which hosts 500,000+ packages. MicroPython uses mip for a small curated set, or you copy files manually to the board."
+    },
+    {
+      "question": "Which platform uses the built-in machine module for direct hardware control?",
+      "correct_zone": "micropython",
+      "explanation": "MicroPython's machine module provides Pin, I2C, SPI, ADC, PWM, and UART directly — no extra libraries needed. Python 3 requires third-party libraries like RPi.GPIO or pyserial."
+    },
+    {
+      "question": "Which platform requires at least 50 MB of RAM just for its interpreter?",
+      "correct_zone": "python3",
+      "explanation": "Python 3 needs ~50 MB for the interpreter alone. MicroPython runs comfortably in 32 KB and is designed for boards with 256 KB–520 KB total RAM."
+    }
+  ]
+}

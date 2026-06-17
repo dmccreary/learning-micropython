@@ -1,0 +1,103 @@
+{
+  "title": "Wireless Technologies Compared",
+  "image": "wireless-types-infographics.png",
+  "layout": "grid",
+  "palette": ["#1389A6", "#6A3FB5", "#2D8A4E", "#E07B39"],
+  "zones": [
+    {
+      "id": "wifi",
+      "label": "WiFi 802.11 b/g/n",
+      "color": "#1389A6",
+      "x1": 17, "y1": 14, "x2": 37.5, "y2": 90,
+      "summary": "High-speed internet link via an access point",
+      "facts": [
+        "Frequency: 2.4 GHz (all three standards); also 5 GHz (802.11n, not on Pico W)",
+        "Typical range: 30–50 m indoors; up to 100 m outdoors (open area)",
+        "Data speed: up to 150 Mbps (802.11n); real throughput 5–20 Mbps typical",
+        "Power use: medium–high — ~250 mA peak during transmit",
+        "Topology: star — all devices connect to a WiFi access point (router)",
+        "Protocol stack: TCP/IP; HTTP, HTTPS, MQTT, WebSocket",
+        "MicroPython boards: Raspberry Pi Pico W (CYW43439); ESP32 (built-in)",
+        "Best for: web servers, REST APIs, streaming data, cloud IoT with MQTT"
+      ]
+    },
+    {
+      "id": "ble",
+      "label": "Bluetooth Low Energy (BLE)",
+      "color": "#6A3FB5",
+      "x1": 37.5, "y1": 14, "x2": 58, "y2": 90,
+      "summary": "Ultra-low-power short-range link to phones",
+      "facts": [
+        "Frequency: 2.4 GHz (40 channels, 2 MHz spacing)",
+        "Typical range: up to 40 m (BLE 5.0); up to 400 m (BLE 5 long-range mode)",
+        "Data speed: 2 Mbps (BLE 5.0); 1 Mbps (BLE 4.2)",
+        "Power use: very low — ~15–20 mA TX; ~3 µA in sleep",
+        "Topology: piconet — one central connects to up to 7 peripherals; also BLE mesh",
+        "Protocol stack: GATT profiles; iBeacon; BLE mesh",
+        "MicroPython boards: Pico W (CYW43439 BT 5.2); ESP32 (BT 4.2)",
+        "Best for: smartphone-to-device apps, wearables, beacons, low-power sensors"
+      ]
+    },
+    {
+      "id": "lora",
+      "label": "LoRa (Long Range)",
+      "color": "#2D8A4E",
+      "x1": 58, "y1": 14, "x2": 78, "y2": 90,
+      "summary": "Kilometre-range link at very low data rates",
+      "facts": [
+        "Frequency: 915 MHz (US); 868 MHz (Europe); 433 MHz (Asia)",
+        "Typical range: 2–5 km urban; 10–20 km rural line-of-sight",
+        "Data speed: 0.3–50 kbps (chirp spread spectrum — lower speed = longer range)",
+        "Power use: very low — ~40 mA TX; ~1.4 mA RX; < 1 µA sleep",
+        "Topology: star (LoRaWAN via gateway) or point-to-point (raw LoRa)",
+        "Protocol stack: LoRaWAN for cloud; raw LoRa for direct P2P links",
+        "MicroPython boards: needs a LoRa module — RFM95W, SX1276, or LilyGO T3",
+        "Best for: agriculture sensors, weather stations, outdoor/remote IoT, long-distance alarms"
+      ]
+    },
+    {
+      "id": "zigbee",
+      "label": "Zigbee 802.15.4",
+      "color": "#E07B39",
+      "x1": 78, "y1": 14, "x2": 98, "y2": 90,
+      "summary": "Self-healing mesh for smart-home devices",
+      "facts": [
+        "Frequency: 2.4 GHz (global channels 11–26); 868/915 MHz regional channels",
+        "Typical range: 10–100 m per hop; mesh extends range across an entire building",
+        "Data speed: 250 kbps (IEEE 802.15.4 physical layer)",
+        "Power use: low — ~30 mA TX; ~1 mA RX; < 1 µA sleep (routers stay on; end devices sleep)",
+        "Topology: mesh — devices relay messages for each other; self-healing network",
+        "Protocol stack: Zigbee Pro; Zigbee clusters; also used in Matter (Thread)",
+        "MicroPython boards: needs an external module — XBee, CC2530, or Zigbee USB coordinator",
+        "Best for: smart-home automation, industrial sensors, mesh networks, Home Assistant"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which wireless technology can reach 10–20 km in rural areas at very low data rates?",
+      "correct_zone": "lora",
+      "explanation": "LoRa (Long Range) uses chirp spread spectrum to trade speed for distance, reaching 10–20 km line-of-sight in rural areas — ideal for remote outdoor sensors."
+    },
+    {
+      "question": "Which wireless technology is built into the Pico W and best for running a web server?",
+      "correct_zone": "wifi",
+      "explanation": "WiFi is built into the Pico W (CYW43439) and uses the TCP/IP stack with HTTP/MQTT, making it the right choice for web servers, REST APIs, and cloud IoT."
+    },
+    {
+      "question": "Which wireless technology uses the least power and is best for a smartwatch talking to a phone?",
+      "correct_zone": "ble",
+      "explanation": "Bluetooth Low Energy (BLE) draws only ~15–20 mA transmitting and ~3 µA asleep, making it perfect for wearables and other battery-powered devices that pair with a phone."
+    },
+    {
+      "question": "Which wireless technology forms a self-healing mesh where devices relay each other's messages?",
+      "correct_zone": "zigbee",
+      "explanation": "Zigbee (802.15.4) builds a mesh network: each device relays messages for others, so the network self-heals and extends range across a whole building — the backbone of many smart homes."
+    },
+    {
+      "question": "Which technology is the only one here that requires an external add-on module (it is not built into the Pico W)?",
+      "correct_zone": "lora",
+      "explanation": "LoRa needs an external radio module like the RFM95W or SX1276. WiFi and BLE are built into the Pico W, and while Zigbee also needs a module, LoRa is the one defined by its kilometre range here."
+    }
+  ]
+}

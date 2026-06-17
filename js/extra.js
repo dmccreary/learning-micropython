@@ -34,3 +34,20 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// ── Interactive infographic poster iframes ─────────────────────────────────
+// Each poster iframe runs grid-diagram.js, which posts its content height via
+// postMessage({ type: "microsim-resize", height }). Resize the matching iframe
+// to fit so the full content — image, facts panel, and quiz answers — is always
+// visible with scrolling="no" (no clipping, no scrollbar), at any window width.
+window.addEventListener("message", function (event) {
+    const data = event.data;
+    if (!data || data.type !== "microsim-resize" || !data.height) return;
+    const iframes = document.getElementsByTagName("iframe");
+    for (let i = 0; i < iframes.length; i++) {
+        if (iframes[i].contentWindow === event.source) {
+            iframes[i].style.height = data.height + "px";
+            break;
+        }
+    }
+});

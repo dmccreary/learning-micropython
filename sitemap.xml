@@ -1045,6 +1045,10 @@
          <lastmod>2026-06-17</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/learning-micropython/posters/interactivity-plan/</loc>
+         <lastmod>2026-06-17</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/learning-micropython/posters/communication-protocols/</loc>
          <lastmod>2026-06-17</lastmod>
     </url>
@@ -1054,6 +1058,10 @@
     </url>
     <url>
          <loc>https://dmccreary.github.io/learning-micropython/posters/display-technologies/</loc>
+         <lastmod>2026-06-17</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/learning-micropython/posters/distance-sensors/</loc>
          <lastmod>2026-06-17</lastmod>
     </url>
     <url>
@@ -1121,15 +1129,15 @@
          <lastmod>2026-06-17</lastmod>
     </url>
     <url>
-         <loc>https://dmccreary.github.io/learning-micropython/posters/sensors/</loc>
-         <lastmod>2026-06-17</lastmod>
-    </url>
-    <url>
          <loc>https://dmccreary.github.io/learning-micropython/posters/serial-protocols/</loc>
          <lastmod>2026-06-17</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/learning-micropython/posters/sound-output/</loc>
+         <lastmod>2026-06-17</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/learning-micropython/posters/temperature-sensors/</loc>
          <lastmod>2026-06-17</lastmod>
     </url>
     <url>

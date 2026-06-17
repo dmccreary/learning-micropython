@@ -1,0 +1,132 @@
+{
+  "title": "Input Device Comparison",
+  "image": "input-devices-infographic.png",
+  "layout": "grid",
+  "palette": ["#C7164E", "#E5398A", "#6A3FB5", "#1389A6", "#2D8A4E", "#E07B39"],
+  "zones": [
+    {
+      "id": "push-button",
+      "label": "Push Button",
+      "color": "#C7164E",
+      "x1": 1.5, "y1": 15, "x2": 33, "y2": 53,
+      "summary": "Simple on/off tactile switch — one digital bit",
+      "facts": [
+        "Signal type: Digital — on (1) or off (0)",
+        "GPIO pins: 1 pin; use Pin.PULL_UP — no external resistor needed",
+        "Output value: 0 (pressed, pulled to GND) or 1 (released, pulled HIGH)",
+        "Resolution: 1 bit (two states only)",
+        "MicroPython: btn = Pin(n, Pin.IN, Pin.PULL_UP); btn.value()",
+        "Typical cost: $0.05–$0.20 each",
+        "Debounce needed: Yes — add 10 ms software delay or 100 nF capacitor",
+        "Best for: Start/stop, menu selection, OK button, trigger"
+      ]
+    },
+    {
+      "id": "potentiometer",
+      "label": "Potentiometer",
+      "color": "#E5398A",
+      "x1": 34, "y1": 15, "x2": 64.5, "y2": 53,
+      "summary": "Analog knob — a smooth continuous voltage you read with the ADC",
+      "facts": [
+        "Signal type: Analog — smooth continuous voltage 0 V to 3.3 V",
+        "GPIO pins: 1 ADC pin (GP26, GP27, or GP28 on Pico)",
+        "Output value: 0–65535 (16-bit scaled from 12-bit ADC)",
+        "Resolution: 12-bit hardware (4096 steps); reported as 16-bit (65536 steps)",
+        "MicroPython: pot = ADC(26); pot.read_u16()",
+        "Typical cost: $0.20–$1.00 each",
+        "Debounce needed: No — analog signal; add RC filter if noisy",
+        "Best for: Volume control, speed setting, brightness dimmer, angle measurement"
+      ]
+    },
+    {
+      "id": "rotary-encoder",
+      "label": "Rotary Encoder",
+      "color": "#6A3FB5",
+      "x1": 65.5, "y1": 15, "x2": 98.5, "y2": 53,
+      "summary": "Endless-turn dial — counts clicks with two quadrature pulses",
+      "facts": [
+        "Signal type: Digital quadrature — two pulse trains 90° out of phase",
+        "GPIO pins: 2 pins for rotation (CLK, DT) + optional 1 for built-in push button",
+        "Output value: Direction (CW/CCW) + step count; unlimited range (no stops)",
+        "Resolution: Typically 20 detents per full revolution; software counts pulses",
+        "MicroPython: Read CLK and DT pins; compare transitions to determine direction",
+        "Typical cost: $0.50–$2.00 each",
+        "Debounce needed: Yes — mechanical encoders bounce; use interrupts + debounce",
+        "Best for: Menu navigation, scroll wheel, motor position, unlimited-range number input"
+      ]
+    },
+    {
+      "id": "capacitive-touch",
+      "label": "Capacitive Touch (TTP223)",
+      "color": "#1389A6",
+      "x1": 1.5, "y1": 57, "x2": 33, "y2": 91,
+      "summary": "Touchless button — a gold pad that senses your finger, no bounce",
+      "facts": [
+        "Signal type: Digital — touch (1) or no-touch (0)",
+        "GPIO pins: 1 pin (digital input — no pull-up needed)",
+        "Output value: 0 or 1",
+        "Resolution: 1 bit; some modules output hold-mode (stays HIGH while touched)",
+        "MicroPython: touch = Pin(n, Pin.IN); touch.value()",
+        "Typical cost: $0.30–$1.00 each",
+        "Debounce needed: No — capacitive sensors have internal hysteresis",
+        "Best for: Touchless buttons, proximity sensing, moisture detection"
+      ]
+    },
+    {
+      "id": "matrix-keypad",
+      "label": "4×4 Matrix Keypad",
+      "color": "#2D8A4E",
+      "x1": 34, "y1": 57, "x2": 64.5, "y2": 91,
+      "summary": "16 keys on 8 wires — scanned row-by-row for PIN entry",
+      "facts": [
+        "Signal type: Digital matrix scan — rows and columns polled",
+        "GPIO pins: 8 pins (4 row output + 4 column input with pull-ups)",
+        "Output value: One of 16 key characters: '0'–'9', 'A'–'D', '*', '#'",
+        "Resolution: 16 discrete keys",
+        "MicroPython: Scan rows/columns in a loop; match pressed row+column to key table",
+        "Typical cost: $1.00–$3.00 each",
+        "Debounce needed: Yes — mechanical membrane keys; add 10 ms delay after detect",
+        "Best for: PIN entry, calculator, menu selection with multiple options"
+      ]
+    },
+    {
+      "id": "joystick",
+      "label": "Joystick Module (KY-023)",
+      "color": "#E07B39",
+      "x1": 65.5, "y1": 57, "x2": 98.5, "y2": 91,
+      "summary": "Two analog axes plus a click — a thumb-stick for full control",
+      "facts": [
+        "Signal type: 2× Analog (X, Y axes) + 1× Digital (push-button click)",
+        "GPIO pins: 2 ADC pins (VRx, VRy) + 1 digital pin (SW)",
+        "Output value: VRx: 0–65535 (left-right); VRy: 0–65535 (up-down); SW: 0 or 1",
+        "Resolution: 12-bit analog per axis; 1-bit for button; center rest ~32768",
+        "MicroPython: x=ADC(26).read_u16(); y=ADC(27).read_u16(); btn=Pin(n,Pin.IN,Pin.PULL_UP)",
+        "Typical cost: $1.00–$3.00 each",
+        "Debounce needed: Button: yes; analog: no",
+        "Best for: Robot remote control, games, pan/tilt camera, drawing apps"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which input device gives you an endless-turn dial with no stops, counting steps using two pulse trains 90° out of phase?",
+      "correct_zone": "rotary-encoder",
+      "explanation": "A rotary encoder outputs digital quadrature — two pulse trains 90° out of phase on its CLK and DT pins. It has no end stops, so software counts pulses for an unlimited range, perfect for scroll wheels and menu navigation."
+    },
+    {
+      "question": "Which device produces a smooth, continuous voltage from 0 V to 3.3 V that you read on a single ADC pin?",
+      "correct_zone": "potentiometer",
+      "explanation": "A potentiometer is an analog input: turning the knob sweeps a wiper to produce a continuous 0–3.3 V voltage. You read it on one ADC pin (GP26, GP27, or GP28) with pot.read_u16(), which returns 0–65535."
+    },
+    {
+      "question": "Which input device needs 8 GPIO pins — 4 row outputs and 4 column inputs — to detect one of 16 keys?",
+      "correct_zone": "matrix-keypad",
+      "explanation": "A 4×4 matrix keypad wires 16 keys as a grid of 4 rows and 4 columns. You scan the 4 row-output pins and read the 4 column-input pins (8 pins total), matching the pressed row+column to a key in a lookup table."
+    },
+    {
+      "question": "Which device is a touchless button that needs no debouncing because it has internal hysteresis?",
+      "correct_zone": "capacitive-touch",
+      "explanation": "The TTP223 capacitive touch sensor outputs a clean digital touch (1) / no-touch (0) signal and has internal hysteresis, so no software debounce is required — unlike mechanical buttons and keypads."
+    }
+  ]
+}

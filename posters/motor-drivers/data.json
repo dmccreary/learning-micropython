@@ -1,0 +1,89 @@
+{
+  "title": "Motor Driver ICs Compared",
+  "image": "motor-drivers-infographic.png",
+  "layout": "grid",
+  "palette": ["#E07B39", "#C7164E", "#6A3FB5"],
+  "zones": [
+    {
+      "id": "l293d",
+      "label": "L293D",
+      "color": "#E07B39",
+      "x1": 14, "y1": 12, "x2": 42, "y2": 87,
+      "summary": "Classic H-bridge — beginner-friendly, breadboard ready",
+      "facts": [
+        "Motor channels: 2 independent DC channels (or 1 stepper)",
+        "Motor voltage: 4.5 V–36 V (Vmotor pin)",
+        "Logic voltage: 5 V (TTL; 3.3 V GPIO usually works)",
+        "Continuous current: 600 mA per channel",
+        "Peak current: 1.2 A per channel",
+        "Protection: thermal shutdown; internal flyback diodes",
+        "Package: DIP-16 — breadboard friendly, no soldering",
+        "Typical cost: $0.50–$1.50",
+        "Best for: beginners, breadboard prototyping, lower-current motors"
+      ]
+    },
+    {
+      "id": "drv8833",
+      "label": "DRV8833",
+      "color": "#C7164E",
+      "x1": 42.5, "y1": 12, "x2": 71, "y2": 87,
+      "summary": "Low-voltage H-bridge — direct 3.3 V logic connect",
+      "facts": [
+        "Motor channels: 2 independent DC channels (or 1 stepper)",
+        "Motor voltage: 2.7 V–10.8 V",
+        "Logic voltage: 2.7 V–5 V (3.3 V GPIO direct connect)",
+        "Continuous current: 1.5 A per channel",
+        "Peak current: 2 A per channel",
+        "Protection: current limiting, thermal shutdown, nSLEEP low-power mode",
+        "Package: HTSSOP-16 (surface-mount; usually on a breakout board)",
+        "Typical cost: $1.00–$3.00 (breakout board)",
+        "Best for: Pico robots, 3.3 V logic, slightly more current than L293D"
+      ]
+    },
+    {
+      "id": "tb6612fng",
+      "label": "TB6612FNG",
+      "color": "#6A3FB5",
+      "x1": 71.5, "y1": 12, "x2": 99, "y2": 87,
+      "summary": "Efficient dual H-bridge — high torque, clean PWM",
+      "facts": [
+        "Motor channels: 2 independent DC channels + separate PWM input each",
+        "Motor voltage: 2.5 V–13.5 V",
+        "Logic voltage: 2.7 V–5.5 V (3.3 V GPIO direct connect)",
+        "Continuous current: 1.2 A per channel",
+        "Peak current: 3.2 A per channel (burst, up to 2 s)",
+        "Protection: thermal shutdown, under-voltage lockout, standby (STBY pin)",
+        "Package: SSOP-24 (surface-mount; usually on a breakout board)",
+        "Typical cost: $2.00–$5.00 (breakout board)",
+        "Best for: higher-torque robots, long battery sessions, clean PWM speed control"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which driver runs on the highest motor voltage, up to 36 V?",
+      "correct_zone": "l293d",
+      "explanation": "The L293D accepts a motor supply of 4.5 V–36 V on its Vmotor pin — the widest high-voltage range of the three. The DRV8833 tops out at 10.8 V and the TB6612FNG at 13.5 V."
+    },
+    {
+      "question": "Which driver gives the highest peak current per channel (3.2 A in a short burst)?",
+      "correct_zone": "tb6612fng",
+      "explanation": "The TB6612FNG can push 3.2 A per channel for a burst of up to 2 seconds, making it the best pick for higher-torque robots. The L293D peaks at 1.2 A and the DRV8833 at 2 A."
+    },
+    {
+      "question": "Which driver is a DIP-16 chip you can plug straight into a breadboard with no soldering?",
+      "correct_zone": "l293d",
+      "explanation": "The L293D ships in a breadboard-friendly DIP-16 package, so beginners can prototype without soldering. The DRV8833 (HTSSOP-16) and TB6612FNG (SSOP-24) are surface-mount and come on breakout boards."
+    },
+    {
+      "question": "Which driver has an nSLEEP low-power mode and built-in current limiting?",
+      "correct_zone": "drv8833",
+      "explanation": "The DRV8833 adds current limiting and an nSLEEP low-power mode on top of thermal shutdown — handy for battery-powered 3.3 V systems. The L293D and TB6612FNG do not list an nSLEEP pin."
+    },
+    {
+      "question": "Which driver uses a single STBY pin to put both motor channels into standby?",
+      "correct_zone": "tb6612fng",
+      "explanation": "The TB6612FNG has one STBY (standby) pin that controls both channels, plus 2 direction pins and 1 PWM pin per channel. That standby control helps save power between moves."
+    }
+  ]
+}

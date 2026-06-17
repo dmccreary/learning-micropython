@@ -7,6 +7,19 @@
     width: auto;
 }
 
+/* Container to control the iframe size and scaling */
+.iframe-container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Iframe styles all should have a solid blue border that is 2px wide */
+  iframe {
+    width: 100%;
+    border: solid 2px blue;
+  }
+
 /* Custom styling for Prompt Admonition */
 .admonition.prompt {
     background-color: #f4f8ff; /* Light blue background */

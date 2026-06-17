@@ -1,0 +1,2699 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/posters/interactivity-plan/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../python-vs-micropython/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Interactivity Plan - Learning MicroPython</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-DS16K4YVRR"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-DS16K4YVRR",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-DS16K4YVRR",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Interactivity Plan - Learning MicroPython">
+      
+        <meta property="og:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/posters/interactivity-plan.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/posters/interactivity-plan/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Interactivity Plan - Learning MicroPython">
+      
+        <meta name="twitter:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/posters/interactivity-plan.png">
+      
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#interactive-infographic-overlay-plan" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Learning MicroPython" class="md-header__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning MicroPython
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Interactivity Plan
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Learning MicroPython" class="md-nav__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Learning MicroPython
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Book
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../intro/01-about/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Hands-On Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../debugging/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Debugging
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../kits/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Infographic Posters
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Infographic Posters
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Interactivity Plan
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Interactivity Plan
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-overlay-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Overlay Modes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Two Overlay Modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mode-1-grid-overlay-most-posters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mode 1: Grid Overlay (most posters)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mode-2-point-overlay-complex-layouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mode 2: Point Overlay (complex layouts)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datajson-schema-grid-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      data.json Schema (Grid Mode)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indexmd-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      index.md Template
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Display Guidelines
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Embedding
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mkdocs-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      MkDocs Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Progress
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Progress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 1 — Infrastructure ✓
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-pilot-posters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 2 — Pilot Posters ✓
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2b-test-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 2b — Test Cases ✓
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-remaining-17-posters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 3 — Remaining 17 Posters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accuracy-notes-from-plan-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accuracy Notes (from plan review)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calibration-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Calibration Workflow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification Checklist
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-vs-micropython/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python vs. MicroPython
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ides/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MicroPython IDEs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../microncontrollers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Microcontroller Boards
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../electronic-components/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Electronic Components
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resistor-color-codes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Resistor Color Codes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gpio-functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GPIO Pin Functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../digital-vs-analog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Digital vs. Analog Signals
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../serial-protocols/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Specialized Serial Protocols (UART/1-Wire/I2S)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../communication-protocols/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Communication Protocols Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../temperature-sensors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Temperature Sensors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../distance-sensors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Distance Sensors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../motion-light-sensors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Motion &amp; Light Sensors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../motor-types/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Motor Types
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../motor-drivers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Motor Driver ICs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../robot-configurations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Robot Drive Configurations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../led-types/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LED Types
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../display-technologies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Display Technologies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sound-output/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sound Output Methods
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wireless-technologies/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wireless Technologies
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iot-architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IoT Architecture Layers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memory-types/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Memory Types
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../input-devices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Input Devices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../micropython-errors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common MicroPython Errors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../edge-ai/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Edge AI on Microcontrollers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sample AI Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/content-authoring-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authoring Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructors Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/acknowledgements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acknowledgements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/30-colophon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Colophon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Problem
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#file-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-overlay-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Two Overlay Modes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Two Overlay Modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mode-1-grid-overlay-most-posters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mode 1: Grid Overlay (most posters)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mode-2-point-overlay-complex-layouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mode 2: Point Overlay (complex layouts)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datajson-schema-grid-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      data.json Schema (Grid Mode)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indexmd-template" class="md-nav__link">
+    <span class="md-ellipsis">
+      index.md Template
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#display-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Display Guidelines
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chapter-embedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chapter Embedding
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mkdocs-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      MkDocs Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Progress
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Progress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-infrastructure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 1 — Infrastructure ✓
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-pilot-posters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 2 — Pilot Posters ✓
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2b-test-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 2b — Test Cases ✓
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-remaining-17-posters" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 3 — Remaining 17 Posters
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accuracy-notes-from-plan-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accuracy Notes (from plan review)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calibration-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      Calibration Workflow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification Checklist
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="interactive-infographic-overlay-plan">Interactive Infographic Overlay Plan</h1>
+<p>This document describes the design and implementation plan for converting the
+24 static infographic poster pages into interactive MicroSims with hover zones,
+click-to-reveal fact panels, and a built-in quiz mode.</p>
+<h2 id="problem">Problem</h2>
+<p>The 24 infographic posters are static PNG images embedded in flat markdown files.
+There is no interactivity, no way for a student to drill into details, and no
+mechanism for a teacher to assess whether a student understood the content.</p>
+<h2 id="solution">Solution</h2>
+<p>Each poster becomes a MicroSim-style page: the PNG infographic is the background
+image, and a transparent HTML overlay catches hover and click events on meaningful
+zones (columns for comparison grids, rows for table-style diagrams). A Quiz Me mode
+lets students self-test against 3–5 questions per infographic.</p>
+<h2 id="file-structure">File Structure</h2>
+<p>Each poster is converted from a flat <code>.md</code> file to a subdirectory:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>docs/posters/
+  shared-libs/
+    grid-diagram.js      ← rectangular zone overlay engine (vanilla JS)
+    grid-overlay.css     ← styles for zones, detail panel, quiz UI
+    diagram.js           ← point-marker engine (from interactive-infographic-overlay skill)
+    style.css            ← styles for point-marker overlays
+    main-template.html   ← copy-paste starting point for new posters
+  {poster-slug}/
+    index.md             ← converted from flat .md; includes &lt;iframe src="main.html"&gt;
+    main.html            ← interactive viewer
+    data.json            ← zone definitions + quiz questions
+    poster-image.png     ← the infographic PNG, living WITH the poster (self-contained)
+</code></pre></div></td></tr></tbody></table></div>
+<p><strong>Each poster is fully self-contained.</strong> Its infographic PNG lives inside the
+poster directory alongside <code>main.html</code>/<code>data.json</code>, so the entire poster (markup +
+data + image) can be copied into another textbook as a unit. <code>data.json</code> references
+the image by bare filename (<code>"image": "poster-image.png"</code>).</p>
+<p>The chapter that used to display the static PNG now <strong>embeds the interactive
+poster</strong> instead — see <a href="#chapter-embedding">Chapter Embedding</a>. (The original PNG
+copy left behind in <code>docs/chapters/.../</code> is still used by the thumbnail grid in
+<code>posters/index.md</code>.)</p>
+<h2 id="two-overlay-modes">Two Overlay Modes</h2>
+<h3 id="mode-1-grid-overlay-most-posters">Mode 1: Grid Overlay (most posters)</h3>
+<p>For comparison-table infographics where each column represents one technology.
+<code>grid-diagram.js</code> draws transparent <code>&lt;div&gt;</code> rectangles over each column.</p>
+<ul>
+<li><strong>Hover</strong>: subtle color highlight on the column (optional label chip via <code>showLabels</code>)</li>
+<li><strong>Click</strong>: slide-in detail panel shows the facts list</li>
+<li><strong>Quiz Me</strong>: question appears, student clicks the correct column. A <strong>wrong</strong>
+  answer shakes red and lets them retry. A <strong>correct</strong> answer flashes green and
+  pops a <strong>"Correct!" celebration modal</strong> — a gold star and a "Correct!" heading
+  over the image — and the student clicks <strong>OK</strong> to advance to the next question.
+  This explicit, click-to-continue feedback is core to the quiz experience.</li>
+<li><strong>Edit mode</strong> (<code>?edit=true</code> URL param): draggable corner handles let the author
+  calibrate zone coordinates against the actual image; Copy JSON button exports
+  the calibrated <code>data.json</code></li>
+</ul>
+<p>Suited for: <code>python-vs-micropython</code>, <code>ides</code>, <code>microncontrollers</code>, <code>motor-types</code>,
+<code>serial-protocols</code>, <code>sensors</code>, <code>motion-light-sensors</code>, <code>motor-drivers</code>, <code>led-types</code>,
+<code>display-technologies</code>, <code>sound-output</code>, <code>wireless-technologies</code>, <code>memory-types</code>,
+<code>electronic-components</code>, <code>input-devices</code>, <code>edge-ai</code></p>
+<h3 id="mode-2-point-overlay-complex-layouts">Mode 2: Point Overlay (complex layouts)</h3>
+<p>For posters with irregular layouts (pin maps, layered architecture diagrams).
+Uses the existing <code>diagram.js</code> from the <code>interactive-infographic-overlay</code> skill
+with numbered circular markers and callout labels.</p>
+<p>Suited for: <code>gpio-functions</code> (row zones), <code>digital-vs-analog</code>, <code>communication-protocols</code>,
+<code>robot-configurations</code>, <code>resistor-color-codes</code>, <code>micropython-errors</code>, <code>iot-architecture</code></p>
+<h2 id="datajson-schema-grid-mode">data.json Schema (Grid Mode)</h2>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Poster Title"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"poster-image.png"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"layout"</span><span class="p">:</span><span class="w"> </span><span class="s2">"grid"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"palette"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"#hex1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"#hex2"</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"zones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unique-id"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Column Label"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"#hex"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"x1"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="nt">"y1"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="nt">"x2"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="nt">"y2"</span><span class="p">:</span><span class="w"> </span><span class="mi">94</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"summary"</span><span class="p">:</span><span class="w"> </span><span class="s2">"One-line summary shown under label"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"facts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"fact 1"</span><span class="p">,</span><span class="w"> </span><span class="s2">"fact 2"</span><span class="p">,</span><span class="w"> </span><span class="s2">"..."</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"quiz"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"question"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Question text?"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"correct_zone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unique-id"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"explanation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Why this answer is correct."</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>Zone coordinates (<code>x1, y1, x2, y2</code>) are percentages of the image dimensions.
+Use <code>main.html?edit=true</code> to drag corner handles and calibrate against the real image.</p>
+<p>Optional top-level flag <strong><code>"showLabels": true</code></strong> renders a small label chip at the
+top of each zone on hover. It is <strong>off by default</strong> because the comparison
+infographics already print the column titles in the image, and a chip would
+overlap them. Only enable it for an image that has no built-in titles.</p>
+<h2 id="indexmd-template">index.md Template</h2>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code>---
+title: Poster Title
+description: One-sentence summary for SEO and social previews (no colons).
+image: /posters/poster-slug/poster-image.png
+og:image: /posters/poster-slug/poster-image.png
+twitter:image: /posters/poster-slug/poster-image.png
+social:
+   cards: false
+hide:
+<span class="gu">    toc</span>
+<span class="gu">---</span>
+<span class="gh"># Poster Title</span>
+
+Audience: ...
+Chapter: N — Chapter Name
+
+&lt;iframe src="main.html" width="100%" height="800" scrolling="no"&gt;&lt;/iframe&gt;
+
+<span class="gu">## About This Infographic</span>
+
+[1–2 sentences describing what the infographic compares.]
+
+<span class="gu">## Image Prompt</span>
+
+!!! prompt
+    [original image generation prompt, preserved verbatim]
+</code></pre></div></td></tr></tbody></table></div>
+<p><strong>Frontmatter conventions</strong> (match the rest of the site — see any <code>docs/sims/*/index.md</code>):</p>
+<ul>
+<li><code>title</code> / <code>description</code> — set the page <code>&lt;title&gt;</code>, meta description, and og/twitter
+  titles+descriptions. Keep <code>description</code> to one sentence with <strong>no colons</strong>
+  (or quote the whole value); quote any <code>title</code> that contains a colon.</li>
+<li><code>image</code> — the social-preview image, given as a <strong>site-root-absolute path</strong> to the
+  poster's own PNG inside its directory (e.g. <code>/posters/led-types/led-types-infographic.png</code>).
+  The <code>plugins/social_override.py</code> hook rewrites it to an absolute
+  <code>site_url + image</code> URL for <code>og:image</code> / <code>twitter:image</code>, so social cards show the
+  actual infographic. <code>og:image</code> / <code>twitter:image</code> are included to match house style.</li>
+<li><code>social: { cards: false }</code> — opt out of the auto-generated social card since the
+  poster supplies its own image.</li>
+<li><code>hide: toc</code> — hides the right-hand table-of-contents sidebar so the infographic
+  uses the full content width. The no-dash form shown here is what the rest of the
+  repo uses and is verified to work — don't "correct" it to a <code>- toc</code> list.</li>
+</ul>
+<h2 id="display-guidelines">Display Guidelines</h2>
+<p>These rules apply to <strong>every</strong> poster — keep them consistent across all 24.</p>
+<div class="admonition tip">
+<p class="admonition-title">⭐ Automatic iframe height resize — the favorite feature, never remove it!</p>
+<p>The most-loved behavior of these posters is that the iframe <strong>resizes itself
+to fit its content automatically.</strong> As a student clicks a column (taller facts
+panel) or runs the quiz (question → answers → score → "Try Again"), the iframe
+grows and shrinks so everything is visible — <strong>no scrollbar, no clipping, no
+dead space</strong> — at any window width.</p>
+<p>Two pieces make this work, and <strong>both must stay in place</strong>:</p>
+<ol>
+<li><code>grid-diagram.js</code> → <code>_reportHeight()</code> posts a <code>microsim-resize</code> message on
+   load, on every content change, and on window resize (via <code>ResizeObserver</code>).</li>
+<li>The <code>message</code> listener in <code>docs/js/extra.js</code> resizes the matching iframe to
+   that reported height.</li>
+</ol>
+<p>Never "fix" a height problem by hard-coding a tall iframe — that brings back
+either clipping (with <code>scrolling="no"</code>) or scrollbars and dead space. When you
+add a new poster you do <strong>nothing special</strong>: the shared engine + listener give
+you the resize for free.</p>
+</div>
+<p><strong>Iframe markup</strong> — identical for every poster (matches all other MicroSims on the site):</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"800"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></tbody></table></div>
+<ul>
+<li><code>width="100%"</code> — fills the content column responsively.</li>
+<li><code>scrolling="no"</code> — no inner scrollbar; the auto-resize guarantees a perfect fit.</li>
+<li>
+<p><strong>No</strong> inline border style — <code>docs/css/extra.css</code> styles <strong>all</strong> iframes
+  sitewide, so every poster inherits the shared border automatically:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c">/* Iframe styles all should have a solid blue border that is 2px wide */</span>
+<span class="nt">iframe</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">  </span><span class="k">border</span><span class="p">:</span><span class="w"> </span><span class="kc">solid</span><span class="w"> </span><span class="mi">2</span><span class="kt">px</span><span class="w"> </span><span class="kc">blue</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>Putting <code>style="border:none"</code> (or any inline border) on a poster iframe would
+override this shared rule and make that poster look different from the rest of
+the site — so keep inline styles off the iframe.
+- <code>height="800"</code> is <strong>only a pre-JS fallback</strong>; the listener overrides it on load.</p>
+</li>
+</ul>
+<p><strong>Column titles</strong> — leave <code>"showLabels": false</code> (the default) whenever the image
+already prints its column titles, so the hover chip never overlaps them.</p>
+<p><strong>Controls placement</strong> — the Explore / Quiz Me buttons sit <strong>below</strong> the image, so
+they never cover the infographic.</p>
+<h2 id="chapter-embedding">Chapter Embedding</h2>
+<p>A chapter that used to show a poster as a static <code>![](image.png)</code> now embeds the
+<strong>interactive</strong> poster with an iframe pointing at the poster's <code>main.html</code>:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">"../../posters/{poster-slug}/main.html"</span> <span class="na">width</span><span class="o">=</span><span class="s">"100%"</span> <span class="na">height</span><span class="o">=</span><span class="s">"800"</span> <span class="na">scrolling</span><span class="o">=</span><span class="s">"no"</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</code></pre></div></td></tr></tbody></table></div>
+<ul>
+<li>The <code>../../</code> climbs from <code>docs/chapters/{chapter}/</code> up to <code>docs/</code> and back down
+  into <code>posters/{slug}/</code> (works with mkdocs <code>use_directory_urls</code>).</li>
+<li>Same iframe convention as the poster page (no inline border, <code>scrolling="no"</code>),
+  and the auto-resize listener in <code>docs/js/extra.js</code> is sitewide, so the embed
+  resizes to fit on the chapter page too — even though the chapter keeps its TOC
+  sidebar and therefore has a narrower content column.</li>
+<li>Not every poster has a chapter embed: a poster only replaces a chapter image if
+  the chapter actually displayed one. (At conversion time <code>wireless-technologies</code>
+  and <code>display-technologies</code> had no inline chapter image, so no chapter embed was
+  added for them.)</li>
+</ul>
+<h2 id="mkdocs-configuration">MkDocs Configuration</h2>
+<ul>
+<li>Each converted poster changes from <code>posters/slug.md</code> → <code>posters/slug/index.md</code> in <code>mkdocs.yml</code></li>
+<li><strong>Do NOT exclude the whole <code>posters/shared-libs/</code> directory.</strong> <code>exclude_docs</code>
+  removes files from the build entirely — if you exclude the directory, the
+  <code>grid-diagram.js</code> / <code>grid-overlay.css</code> assets are never copied to the site and
+  every interactive poster renders as an unstyled, image-less form (404 on the
+  CSS/JS). mkdocs copies non-Markdown files (<code>.js</code>, <code>.css</code>, <code>.json</code>, <code>.html</code>) as
+  static assets automatically and does <strong>not</strong> treat them as nav pages, so they
+  just need to be left in place. Only exclude the dev-only template:</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nt">exclude_docs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">  </span><span class="no">posters/shared-libs/main-template.html</span>
+</code></pre></div></td></tr></tbody></table></div>
+<div class="admonition warning">
+<p class="admonition-title">Verify against the built site, not the raw docs folder</p>
+<p>Serving <code>docs/</code> directly with <code>python -m http.server</code> will serve every file
+and hide an <code>exclude_docs</code> mistake. Always confirm interactive posters with
+<code>mkdocs build</code> output (or <code>mkdocs serve</code>), where excluded assets are actually
+missing.</p>
+</div>
+<h2 id="implementation-progress">Implementation Progress</h2>
+<h3 id="phase-1-infrastructure">Phase 1 — Infrastructure ✓</h3>
+<ul>
+<li>[x] <code>shared-libs/grid-diagram.js</code> — grid zone overlay engine</li>
+<li>[x] <code>shared-libs/grid-overlay.css</code> — styles</li>
+<li>[x] <code>shared-libs/diagram.js</code> — point-marker engine (copied from skill)</li>
+<li>[x] <code>shared-libs/style.css</code> — point-marker styles (copied from skill)</li>
+<li>[x] <code>shared-libs/main-template.html</code> — HTML template</li>
+<li>[x] <code>mkdocs.yml</code> — <code>exclude_docs</code> set to exclude ONLY <code>main-template.html</code> (see MkDocs Configuration)</li>
+</ul>
+<h3 id="phase-2-pilot-posters">Phase 2 — Pilot Posters ✓</h3>
+<ul>
+<li>[x] <code>serial-protocols/</code> — 3-column grid (UART, 1-Wire, I2S — see Accuracy Notes), 5 quiz questions</li>
+<li>[x] <code>python-vs-micropython/</code> — 2-column grid, 4 quiz questions</li>
+<li>[x] <code>gpio-functions/</code> — 7 row zones (one per GPIO function type), 5 quiz questions</li>
+</ul>
+<h3 id="phase-2b-test-cases">Phase 2b — Test Cases ✓</h3>
+<p>Four additional posters built and verified to exercise each grid shape:
+- [x] <code>motor-types/</code> — 3-column grid (DC, Servo, Stepper), 5 quiz questions
+- [x] <code>led-types/</code> — 4-column grid (Single, RGB, NeoPixel, Matrix), 5 quiz questions
+- [x] <code>wireless-technologies/</code> — 4-column grid (WiFi, BLE, LoRa, Zigbee), 5 quiz questions
+- [x] <code>display-technologies/</code> — 3-column grid (OLED, TFT, ePaper), 5 quiz questions</p>
+<p>Zone coordinates for these four were calibrated by reading the actual PNG images
+(all 1536×1024) and measuring each column's edges, rather than guessing — so they
+land within a few percent and only need minor <code>?edit=true</code> fine-tuning if at all.</p>
+<h3 id="phase-3-remaining-17-posters">Phase 3 — Remaining 17 Posters</h3>
+<p>Follow the same pattern for each remaining flat <code>.md</code> file:
+1. <code>mkdir docs/posters/{slug}/</code>
+2. Write <code>data.json</code> with zones calibrated to the image + 3–5 quiz questions
+3. Copy <code>main.html</code> from <code>shared-libs/main-template.html</code>, set title
+4. Convert flat <code>.md</code> to <code>index.md</code> with iframe embed
+5. Update nav entry in <code>mkdocs.yml</code>
+6. Open <code>main.html?edit=true</code> in browser and drag corners to calibrate zones
+7. Paste calibrated JSON back into <code>data.json</code></p>
+<p>Remaining posters: <code>ides</code>, <code>microncontrollers</code>, <code>electronic-components</code>,
+<code>resistor-color-codes</code>, <code>digital-vs-analog</code>, <code>communication-protocols</code>, <code>sensors</code>,
+<code>motion-light-sensors</code>, <code>motor-drivers</code>, <code>robot-configurations</code>, <code>sound-output</code>,
+<code>iot-architecture</code>, <code>memory-types</code>, <code>micropython-errors</code>, <code>input-devices</code>, <code>edge-ai</code></p>
+<h2 id="accuracy-notes-from-plan-review">Accuracy Notes (from plan review)</h2>
+<ul>
+<li><strong>serial-protocols image vs. content</strong>: The page was originally titled "I2C vs.
+  SPI vs. UART", but the image it embeds
+  (<code>specialized-communication-protocols-infographic.png</code>) actually shows <strong>UART ·
+  1-Wire · I2S</strong>. There is no single rendered image showing I2C/SPI/UART together.
+  The page has been retitled to "Specialized Serial Protocols: UART · 1-Wire · I2S"
+  and the overlay zones now match the real image. The I2C/SPI comparison lives in
+  the separate <code>communication-protocols-infographic.png</code> (I2C vs SPI, 2 columns),
+  which the <code>communication-protocols/</code> poster will use when converted.</li>
+<li><strong>led-types.md was missing its image line</strong>: the original flat file had no
+  <code>![](...)</code> reference (only the index thumbnail did). The converted
+  <code>led-types/index.md</code> embeds the interactive <code>main.html</code>, so this is resolved.</li>
+<li>When converting <code>communication-protocols/</code>, use a <strong>2-column</strong> grid (I2C, SPI)
+  to match its actual image — not 3 columns.</li>
+</ul>
+<h2 id="calibration-workflow">Calibration Workflow</h2>
+<p>After generating a poster's <code>main.html</code> and <code>data.json</code>:</p>
+<ol>
+<li>Open <code>docs/posters/{slug}/main.html?edit=true</code> in a browser (or via <code>mkdocs serve</code>)</li>
+<li>Orange corner handles appear on each zone rectangle</li>
+<li>Drag the handles until each rectangle precisely covers its column/row</li>
+<li>Click <strong>Copy JSON</strong> — the calibrated coordinates are in your clipboard</li>
+<li>Paste into <code>data.json</code>, replacing the <code>zones</code> array coordinates</li>
+<li>Reload <code>main.html</code> (without <code>?edit=true</code>) to verify the zones look correct</li>
+</ol>
+<h2 id="verification-checklist">Verification Checklist</h2>
+<ul>
+<li>[ ] Zones highlight on hover in Explore mode</li>
+<li>[ ] Click panel shows label, summary, and facts list</li>
+<li>[ ] Quiz Me shows questions one at a time, tracks score</li>
+<li>[ ] Wrong answer: red shake, retry same question (no modal)</li>
+<li>[ ] Correct answer: green flash + "Correct!" modal with gold star; <strong>OK</strong> advances to next question</li>
+<li>[ ] Quiz complete: shows score and Try Again button</li>
+<li>[ ] Confetti fires on quiz completion</li>
+<li>[ ] <code>mkdocs serve</code> builds with no errors</li>
+<li>[ ] ⭐ iframe auto-resizes to fit content in <strong>every</strong> state — prompt, facts
+      panel (tallest), quiz question, and quiz-complete — with <strong>no scrollbar, no
+      clipping, and no dead space</strong> (the favorite feature)</li>
+<li>[ ] iframe uses <code>scrolling="no"</code>, <code>width="100%"</code>, and <strong>no</strong> inline border style</li>
+<li>[ ] Column-title hover chips do not overlap titles already in the image (<code>showLabels</code> off)</li>
+<li>[ ] Mobile viewport (375px wide) — zones and panel still usable</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: List of Infographic Posters">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                List of Infographic Posters
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../python-vs-micropython/" class="md-footer__link md-footer__link--next" aria-label="Next: Python vs. MicroPython">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Python vs. MicroPython
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="../../js/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

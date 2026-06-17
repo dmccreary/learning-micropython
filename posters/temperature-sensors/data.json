@@ -1,0 +1,83 @@
+{
+  "title": "Temperature Sensor Comparison",
+  "image": "temperature-sensors-infographic.png",
+  "layout": "grid",
+  "palette": ["#1389A6", "#2D8A4E", "#6A3FB5"],
+  "zones": [
+    {
+      "id": "dht",
+      "label": "DHT11 / DHT22",
+      "color": "#1389A6",
+      "x1": 1.5, "y1": 12, "x2": 33, "y2": 89,
+      "summary": "Single-wire digital temperature + humidity",
+      "facts": [
+        "Interface: single-wire digital; built-in dht module",
+        "Measures temperature and humidity",
+        "DHT11: 0 to 50 °C, ±2 °C accuracy (typical)",
+        "DHT22: −40 to 80 °C, ±0.5 °C accuracy (typical)",
+        "Pins: VCC (3.3–5 V), DATA, GND",
+        "Not waterproof; wait ≥2 s between readings",
+        "Best for: simple indoor temperature + humidity projects"
+      ]
+    },
+    {
+      "id": "bme280",
+      "label": "BME280",
+      "color": "#2D8A4E",
+      "x1": 33.7, "y1": 12, "x2": 66.3, "y2": 89,
+      "summary": "I2C temperature, humidity, and pressure",
+      "facts": [
+        "Interface: I2C (up to 3.4 MHz); needs the bme280.py driver",
+        "Measures temperature, humidity, and pressure",
+        "Temperature: −40 to 85 °C, ±1 °C (typical)",
+        "Humidity: 0 to 100 %RH, ±3% (typical)",
+        "Pressure: 300 to 1100 hPa, ±1 hPa (typical)",
+        "Pins: VIN (1.8–3.6 V), GND, SCL, SDA, CSB, SDO",
+        "Best for: weather stations and environmental monitoring"
+      ]
+    },
+    {
+      "id": "ds18b20",
+      "label": "DS18B20",
+      "color": "#6A3FB5",
+      "x1": 67, "y1": 12, "x2": 98.5, "y2": 89,
+      "summary": "Waterproof 1-Wire temperature probe",
+      "facts": [
+        "Interface: 1-Wire; onewire + ds18x20 modules",
+        "Measures temperature only",
+        "−55 to 125 °C, ±0.5 °C accuracy (typical)",
+        "Waterproof stainless-steel probe",
+        "Pins: VDD (3.0–5.5 V), DATA, GND",
+        "Many sensors share one wire (each has a unique 64-bit address)",
+        "Best for: outdoor, aquarium, and remote sensing"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which sensor measures temperature, humidity, AND air pressure?",
+      "correct_zone": "bme280",
+      "explanation": "The BME280 is a 3-in-1 environmental sensor: temperature, humidity, and barometric pressure, all over I2C. The DHT sensors skip pressure, and the DS18B20 measures temperature only."
+    },
+    {
+      "question": "Which sensor is waterproof and can be placed directly in liquid?",
+      "correct_zone": "ds18b20",
+      "explanation": "The DS18B20 comes in a sealed stainless-steel probe, so it can measure pool, aquarium, or sous-vide temperatures. The DHT and BME280 are not waterproof."
+    },
+    {
+      "question": "Which sensor uses a single data wire and MicroPython's built-in dht module?",
+      "correct_zone": "dht",
+      "explanation": "The DHT11 and DHT22 use a one-wire (single data line) protocol and are read with the built-in dht module — no extra driver file needed."
+    },
+    {
+      "question": "Which sensor lets you put many probes on one data wire, each with its own address?",
+      "correct_zone": "ds18b20",
+      "explanation": "Every DS18B20 has a unique 64-bit ROM address, so many of them can share the same 1-Wire bus. ds.scan() returns all the addresses it finds."
+    },
+    {
+      "question": "Which sensor is the best choice for a weather station that also tracks barometric pressure?",
+      "correct_zone": "bme280",
+      "explanation": "The BME280's pressure reading lets you track weather trends and estimate altitude, which is why it is the go-to sensor for weather-station projects."
+    }
+  ]
+}

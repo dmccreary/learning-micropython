@@ -1,0 +1,107 @@
+{
+  "title": "Motion & Light Sensors Compared",
+  "image": "motion-and-light-sensors-infographic.png",
+  "layout": "grid",
+  "palette": ["#C7164E", "#6A3FB5", "#2D8A4E", "#1389A6"],
+  "zones": [
+    {
+      "id": "pir-motion",
+      "label": "PIR Motion Sensor (HC-SR501)",
+      "color": "#C7164E",
+      "x1": 11.5, "y1": 13, "x2": 35, "y2": 88,
+      "summary": "Detects body heat to sense movement nearby",
+      "facts": [
+        "Sensing principle: passive infrared — detects heat from warm bodies (humans, animals)",
+        "Interface: digital output — HIGH when motion detected, LOW otherwise",
+        "Power supply: 5 V–12 V (signal output is 3.3 V safe)",
+        "Detection range: up to 7 m; ~110° cone angle",
+        "Response time: 0.3 s minimum delay between triggers",
+        "Adjustable: sensitivity potentiometer + time-delay potentiometer on board",
+        "MicroPython: Pin(n, Pin.IN) → read 0 or 1",
+        "Typical cost: $1–$3",
+        "Best for: intruder alarm, automatic light, people counter"
+      ]
+    },
+    {
+      "id": "accel-gyro",
+      "label": "Accelerometer + Gyroscope (MPU-6050)",
+      "color": "#6A3FB5",
+      "x1": 35.5, "y1": 13, "x2": 57.5, "y2": 88,
+      "summary": "Measures acceleration and rotation on 3 axes each",
+      "facts": [
+        "Sensing principle: MEMS — measures acceleration (g) and angular rate (°/s) on 3 axes each",
+        "Interface: I2C (address 0x68 default; 0x69 if AD0 pin pulled HIGH)",
+        "Power supply: 3.3 V or 5 V (on-board voltage regulator)",
+        "Measurement range: Accel ±2/4/8/16 g; Gyro ±250/500/1000/2000 °/s (configurable)",
+        "Axes: 6 DOF — X, Y, Z acceleration + X, Y, Z rotation rate",
+        "Response time: up to 1 kHz sample rate (default 100 Hz in MicroPython use)",
+        "MicroPython: i2c.readfrom_mem(0x68, 0x3B, 14) — read 14 bytes raw data",
+        "Typical cost: $1–$4",
+        "Best for: tilt detection, step counter, robot balance, shake detection"
+      ]
+    },
+    {
+      "id": "light-ldr",
+      "label": "Light Sensor (LDR photoresistor)",
+      "color": "#2D8A4E",
+      "x1": 58, "y1": 13, "x2": 77.5, "y2": 88,
+      "summary": "Resistance drops as light gets brighter",
+      "facts": [
+        "Sensing principle: photoresistance — resistance drops as light intensity increases",
+        "Interface: analog output — connect middle of voltage divider to ADC pin",
+        "Power supply: 3.3 V (one end to 3.3 V, other end to GND through 10 kΩ resistor)",
+        "Measurement range: ~100 Ω (bright light) to ~10 MΩ (darkness)",
+        "Axes: N/A — single analog value",
+        "Response time: ~10 ms (not suitable for fast light changes)",
+        "MicroPython: ADC(26).read_u16() → returns 0–65535",
+        "Typical cost: $0.10–$0.50",
+        "Best for: day/night detection, automatic brightness, plant light monitor"
+      ]
+    },
+    {
+      "id": "color-proximity-gesture",
+      "label": "Color, Proximity & Gesture (APDS-9960)",
+      "color": "#1389A6",
+      "x1": 78, "y1": 13, "x2": 99, "y2": 88,
+      "summary": "Senses color, nearby objects, and hand gestures",
+      "facts": [
+        "Sensing principle: ambient light (RGBC), proximity (IR), and gesture direction detection",
+        "Interface: I2C (address 0x39 fixed)",
+        "Power supply: 3.3 V only (not 5 V tolerant — use level shifter if needed)",
+        "Measurement range: RGB+Clear 16-bit per channel; Proximity 0–255; Gesture Up/Down/Left/Right/Near/Far",
+        "Axes: 4-directional gesture (requires IR photodiodes in 4-corner array)",
+        "Response time: Gesture ~100 ms; Proximity/light configurable integration time",
+        "MicroPython: uses apds9960.py library; gesture = sensor.gesture()",
+        "Typical cost: $5–$12",
+        "Best for: touchless gesture control, proximity alarm, color sorting robot"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which sensor detects a person walking into a room by sensing their body heat?",
+      "correct_zone": "pir-motion",
+      "explanation": "The PIR (Passive Infrared) motion sensor detects the heat given off by warm bodies like humans and animals. It outputs HIGH when it senses motion, which makes it perfect for intruder alarms and automatic lights."
+    },
+    {
+      "question": "Which sensor would you use to detect when a robot is tilting or to build a step counter?",
+      "correct_zone": "accel-gyro",
+      "explanation": "The MPU-6050 combines an accelerometer and a gyroscope (6 DOF), measuring acceleration and rotation on three axes each. That lets it detect tilt, shaking, steps, and helps a robot keep its balance."
+    },
+    {
+      "question": "Which sensor connects to an ADC pin and changes its resistance depending on how bright the room is?",
+      "correct_zone": "light-ldr",
+      "explanation": "An LDR (photoresistor) drops its resistance as light gets brighter. Wired into a voltage divider and read with ADC(26).read_u16(), it returns a value from 0 to 65535 — great for day/night detection."
+    },
+    {
+      "question": "Which sensor lets you control a project by waving your hand up, down, left, or right without touching it?",
+      "correct_zone": "color-proximity-gesture",
+      "explanation": "The APDS-9960 can detect gesture direction (Up/Down/Left/Right/Near/Far) using IR photodiodes in a 4-corner array, so you get touchless gesture control. It also reads color and proximity."
+    },
+    {
+      "question": "Which sensor only works at 3.3 V and is not 5 V tolerant, so you may need a level shifter?",
+      "correct_zone": "color-proximity-gesture",
+      "explanation": "The APDS-9960 runs on 3.3 V only and is not 5 V tolerant — connecting it to 5 V can damage it, so a level shifter is used when needed. The MPU-6050 and LDR are more flexible about voltage."
+    }
+  ]
+}

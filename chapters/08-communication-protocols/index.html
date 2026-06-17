@@ -2015,47 +2015,99 @@
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
-      
+          
         
       
         
+          
+        
       
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
         
       
     
@@ -2685,7 +2737,8 @@
 Time to learn how your Pico talks to other chips! I2C, SPI, and UART are the languages of electronics. Once you know these three protocols, you can connect hundreds of different sensors, displays, and modules to your Pico. Let's build the vocabulary!</p>
 </div>
 <h2 id="why-communication-protocols">Why Communication Protocols?</h2>
-<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="communication-protocols-infographic.png" data-desc-position="bottom"><img alt="Communication Protocols Infographic" src="communication-protocols-infographic.png"></a></p>
+<iframe src="../../posters/communication-protocols/main.html" width="100%" height="800" scrolling="no"></iframe>
+
 <p>Sensors, displays, and peripheral chips generate data as electrical signals. To transfer that data to a microcontroller reliably, both sides must agree on a set of rules: which wire carries data, which carries timing, how fast data travels, and how to signal the start and end of a message. These rules are a <strong>communication protocol</strong>.</p>
 <p>Instead of a different wiring scheme for every sensor, a small number of standard protocols cover almost every device you will connect. The Pico supports four: <strong>I2C</strong>, <strong>SPI</strong>, <strong>UART</strong>, and <strong>1-Wire</strong>, plus <strong>I2S</strong> for audio.</p>
 <h3 id="i2c-two-wires-many-devices">I2C — Two Wires, Many Devices</h3>
@@ -2781,7 +2834,8 @@ Run the I2C scanner whenever a sensor does not respond. Wrong address is one of 
 <span class="n">cs</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>               <span class="c1"># deselect device</span>
 </code></pre></div></td></tr></tbody></table></div>
 <h2 id="specialized-communication-protocols">Specialized Communication Protocols</h2>
-<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="specialized-communication-protocols-infographic.png" data-desc-position="bottom"><img alt="Specialized Communication Protocols Infographic" src="specialized-communication-protocols-infographic.png"></a></p>
+<iframe src="../../posters/serial-protocols/main.html" width="100%" height="800" scrolling="no"></iframe>
+
 <h3 id="uart-serial-communication">UART — Serial Communication</h3>
 <p><strong>UART</strong> (Universal Asynchronous Receiver/Transmitter) is the oldest and simplest protocol. It uses just two wires — <strong>TX</strong> (transmit) and <strong>RX</strong> (receive) — and is used for GPS modules, Bluetooth adapters, and the USB-serial connection from your Pico to Thonny.</p>
 <p>UART is <strong>asynchronous</strong> — there is no shared clock wire. Both sides must agree on the same <strong>baud rate</strong> (speed in bits per second) in advance.</p>

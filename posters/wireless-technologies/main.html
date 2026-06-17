@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="schema" content="https://dmccreary.github.io/intelligent-textbooks/ns/microsim/v1">
+  <title>Wireless Technologies Compared — Interactive Infographic</title>
+  <link rel="stylesheet" href="../shared-libs/grid-overlay.css">
+</head>
+<body>
+
+<div id="image-wrapper">
+  <!-- image and zone overlay injected by grid-diagram.js -->
+</div>
+
+<div id="controls">
+  <button class="mode-btn active" id="btn-explore">Explore</button>
+  <button class="mode-btn"        id="btn-quiz">Quiz Me</button>
+  <span id="quiz-score" style="display:none">
+    Score: <strong id="score-val">0</strong> / <strong id="score-total">0</strong>
+  </span>
+  <span id="edit-badge">EDIT MODE</span>
+</div>
+
+<div id="detail-panel">
+  <div id="panel-prompt">Click on any wireless technology column to learn about it.</div>
+  <div id="panel-content">
+    <div id="panel-label"></div>
+    <div id="panel-summary"></div>
+    <ul id="panel-facts"></ul>
+  </div>
+</div>
+
+<div id="quiz-question"></div>
+
+<div id="edit-panel">
+  <h3>Edit Mode — drag corner handles to calibrate zone boundaries</h3>
+  <div id="coord-display">Drag a corner handle to see live coordinates.</div>
+  <textarea id="json-output" readonly spellcheck="false"></textarea>
+  <div id="edit-actions">
+    <button id="copy-json-btn" onclick="sim.copyJSON()">Copy JSON</button>
+    <span id="copy-confirm"></span>
+  </div>
+</div>
+
+<script src="../shared-libs/grid-diagram.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+{
+  "title": "MicroPython IDEs Compared",
+  "image": "ide-comparison-infographic.png",
+  "layout": "grid",
+  "palette": ["#C7164E", "#6A3FB5", "#E07B39", "#1389A6"],
+  "zones": [
+    {
+      "id": "thonny",
+      "label": "Thonny",
+      "color": "#C7164E",
+      "x1": 14, "y1": 13, "x2": 35, "y2": 88,
+      "summary": "Best for beginners — one-click MicroPython setup",
+      "facts": [
+        "Cost: Free (open-source)",
+        "Skill level: Beginner",
+        "Operating system: Windows · macOS · Linux",
+        "MicroPython support: Built-in REPL; flash files directly to board; package installer",
+        "Debugger: Step-by-step visual debugger",
+        "Key strength: One-click MicroPython board setup; no configuration needed",
+        "Best for: First-time coders, classroom instruction",
+        "Download: thonny.org"
+      ]
+    },
+    {
+      "id": "vs-code-micropico",
+      "label": "VS Code + MicroPico",
+      "color": "#6A3FB5",
+      "x1": 35.5, "y1": 13, "x2": 56.5, "y2": 88,
+      "summary": "Best for growing projects — professional workflow",
+      "facts": [
+        "Cost: Free (open-source)",
+        "Skill level: Intermediate – Advanced",
+        "Operating system: Windows · macOS · Linux",
+        "MicroPython support: MicroPico extension; REPL, upload/download, IntelliSense stubs",
+        "Debugger: Full debugging via extension",
+        "Key strength: Git integration, extensions, professional workflow",
+        "Best for: Larger projects; developers comfortable with tools",
+        "Download: code.visualstudio.com"
+      ]
+    },
+    {
+      "id": "mu-editor",
+      "label": "Mu Editor",
+      "color": "#E07B39",
+      "x1": 57, "y1": 13, "x2": 78, "y2": 88,
+      "summary": "Simple and visual — built-in serial plotter",
+      "facts": [
+        "Cost: Free (open-source)",
+        "Skill level: Beginner",
+        "Operating system: Windows · macOS · Linux",
+        "MicroPython support: Built-in REPL; auto-detects BBC micro:bit and Pico",
+        "Debugger: None",
+        "Key strength: Built-in serial plotter for sensor data; clean uncluttered UI",
+        "Best for: Students who want simplicity; sensor data visualization",
+        "Download: codewith.mu"
+      ]
+    },
+    {
+      "id": "wokwi-simulator",
+      "label": "Wokwi Simulator",
+      "color": "#1389A6",
+      "x1": 78.5, "y1": 13, "x2": 99, "y2": 88,
+      "summary": "No hardware needed — simulate circuits in a browser",
+      "facts": [
+        "Cost: Free (basic); Pro subscription available",
+        "Skill level: All levels",
+        "Operating system: Any browser (Chrome, Firefox, Edge)",
+        "MicroPython support: Full MicroPython simulation for Pico, ESP32; virtual sensors",
+        "Debugger: Logic analyzer, UART monitor",
+        "Key strength: Simulate circuits online; shareable project links; no real hardware required",
+        "Best for: Learning without hardware; sharing demos; remote teaching",
+        "Download: wokwi.com"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which IDE lets you write and run MicroPython code in a browser with no real hardware?",
+      "correct_zone": "wokwi-simulator",
+      "explanation": "Wokwi is a browser-based simulator that fully simulates MicroPython on the Pico and ESP32 with virtual sensors — perfect for learning without hardware, sharing demos, and remote teaching."
+    },
+    {
+      "question": "Which IDE is recommended for first-time coders because it sets up a MicroPython board with one click and needs no configuration?",
+      "correct_zone": "thonny",
+      "explanation": "Thonny is the beginner's choice: it has a built-in REPL, flashes files directly to the board, and configures a MicroPython board in one click with no setup needed."
+    },
+    {
+      "question": "Which IDE adds Git integration and a professional workflow for larger projects through the MicroPico extension?",
+      "correct_zone": "vs-code-micropico",
+      "explanation": "VS Code with the MicroPico extension offers Git integration, IntelliSense stubs, full debugging, and extensions — ideal for larger projects and developers comfortable with professional tools."
+    },
+    {
+      "question": "Which IDE has a built-in serial plotter that graphs sensor data with a clean, uncluttered interface?",
+      "correct_zone": "mu-editor",
+      "explanation": "Mu Editor's standout feature is its built-in serial plotter for visualizing sensor data, paired with a clean, simple UI that auto-detects the BBC micro:bit and Pico."
+    },
+    {
+      "question": "You want step-by-step visual debugging while learning — which beginner IDE provides it?",
+      "correct_zone": "thonny",
+      "explanation": "Thonny includes a step-by-step visual debugger aimed at beginners, while Mu Editor has no debugger and VS Code's debugging comes through an extension."
+    }
+  ]
+}

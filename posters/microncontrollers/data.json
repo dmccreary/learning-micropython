@@ -1,0 +1,99 @@
+{
+  "title": "Microcontroller Boards Compared",
+  "image": "microcontroller-infographic-v2.png",
+  "layout": "grid",
+  "palette": ["#C7164E", "#E5398A", "#6A3FB5", "#1389A6"],
+  "zones": [
+    {
+      "id": "pico",
+      "label": "Raspberry Pi Pico",
+      "color": "#C7164E",
+      "x1": 12.8, "y1": 12, "x2": 33.6, "y2": 88,
+      "summary": "The $4 starter board for first coding projects",
+      "facts": [
+        "Price: $4",
+        "RAM: 264 KB",
+        "Clock speed: 133 MHz",
+        "GPIO pins: 26",
+        "Wireless: None",
+        "Chip: RP2040",
+        "Typical uses: first coding projects, blinking LEDs, buttons, sensors, simple robots"
+      ]
+    },
+    {
+      "id": "pico-w",
+      "label": "Raspberry Pi Pico W",
+      "color": "#E5398A",
+      "x1": 34.0, "y1": 12, "x2": 54.7, "y2": 88,
+      "summary": "A Pico with Wi-Fi and Bluetooth for IoT projects",
+      "facts": [
+        "Price: $6",
+        "RAM: 264 KB",
+        "Clock speed: 133 MHz",
+        "GPIO pins: 26",
+        "Wireless: Wi-Fi + Bluetooth 5.2",
+        "Adds a Wi-Fi module and PCB antenna",
+        "Typical uses: Internet of Things, Wi-Fi web servers, wireless sensors, home automation"
+      ]
+    },
+    {
+      "id": "pico-2",
+      "label": "Raspberry Pi Pico 2",
+      "color": "#6A3FB5",
+      "x1": 55.1, "y1": 12, "x2": 74.7, "y2": 88,
+      "summary": "More memory and speed for bigger programs",
+      "facts": [
+        "Price: $5",
+        "RAM: 520 KB",
+        "Clock speed: 150 MHz",
+        "GPIO pins: 26",
+        "Wireless: None",
+        "Chip: RP2350",
+        "Typical uses: bigger programs, more memory, edge AI/ML, advanced projects"
+      ]
+    },
+    {
+      "id": "esp32",
+      "label": "ESP32",
+      "color": "#1389A6",
+      "x1": 75.3, "y1": 12, "x2": 98.6, "y2": 88,
+      "summary": "Fast Wi-Fi + Bluetooth board with a mature ecosystem",
+      "facts": [
+        "Price: ~$6",
+        "RAM: 520 KB",
+        "Clock speed: 240 MHz",
+        "GPIO pins: 34",
+        "Wireless: Wi-Fi + Bluetooth 4.2",
+        "Longer DevKit board with a metal-shielded module",
+        "Typical uses: Wi-Fi & Bluetooth IoT, smart home, mature ecosystem projects"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which board is the cheapest and best for your very first coding projects?",
+      "correct_zone": "pico",
+      "explanation": "The Raspberry Pi Pico costs just $4 and is built for first coding projects — blinking LEDs, reading buttons and sensors, and simple robots."
+    },
+    {
+      "question": "You want to build a Wi-Fi web server but keep the small Pico shape. Which board fits?",
+      "correct_zone": "pico-w",
+      "explanation": "The Raspberry Pi Pico W keeps the Pico's size but adds Wi-Fi + Bluetooth 5.2, making it ideal for IoT, Wi-Fi web servers, and wireless sensors."
+    },
+    {
+      "question": "Which board runs at the fastest clock speed of 240 MHz?",
+      "correct_zone": "esp32",
+      "explanation": "The ESP32 runs at 240 MHz — faster than the Pico and Pico W (133 MHz) and the Pico 2 (150 MHz)."
+    },
+    {
+      "question": "Which board has the most GPIO pins for connecting lots of components?",
+      "correct_zone": "esp32",
+      "explanation": "The ESP32 offers 34 GPIO pins, while the Pico, Pico W, and Pico 2 each have 26."
+    },
+    {
+      "question": "Which board has 520 KB of RAM but NO wireless, for bigger programs and edge AI?",
+      "correct_zone": "pico-2",
+      "explanation": "The Raspberry Pi Pico 2 has 520 KB of RAM and no wireless. Its extra memory and RP2350 chip suit bigger programs and edge AI/ML projects."
+    }
+  ]
+}
