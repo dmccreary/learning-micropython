@@ -45,7 +45,7 @@ This chapter builds on concepts from:
     ![Monty waves hello](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
     It is time to make some noise! A passive buzzer, a few PWM commands, and the right frequencies — and your Pico will play the Super Mario theme. By the end of this chapter you will have a working musical instrument. Let's get sonic!
 
-![](./sound-output-infographic.png)
+<iframe src="../../posters/sound-output/main.html" width="100%" height="800" scrolling="no"></iframe>
 
 ## Buzzers — The Simplest Sound Makers
 

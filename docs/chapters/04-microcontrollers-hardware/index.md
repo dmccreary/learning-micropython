@@ -59,7 +59,7 @@ This chapter builds on concepts from:
 
 ## What Is a Microcontroller?
 
-![Microcontroller Comparison Infographic](./microcontroller-infographic-v2.png)
+<iframe src="../../posters/microncontrollers/main.html" width="100%" height="800" scrolling="no"></iframe>
 
 A **microcontroller** is a tiny computer on a single chip. Unlike your laptop, a microcontroller has its processor, memory, and input/output connections all on one piece of silicon. It is designed to do one job reliably, often for years, without a screen or keyboard.
 

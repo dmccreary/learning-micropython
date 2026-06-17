@@ -58,7 +58,7 @@ This chapter builds on concepts from:
 
 ## Temperature and Humidity Sensors
 
-![Temperature Sensors Infographic](../09-temp-distance-sensors/temp-sensors-infographic.png)
+<iframe src="../../posters/temperature-sensors/main.html" width="100%" height="800" scrolling="no"></iframe>
 
 Temperature and humidity sensors are among the most common components in beginner projects. They tell your Pico how warm and how moist the surrounding air is.
 
@@ -143,7 +143,7 @@ for rom in roms:
 
 ## Distance Sensors
 
-![Distance Sensors Infographic](./distance-sensors-infographic.png)
+<iframe src="../../posters/distance-sensors/main.html" width="100%" height="800" scrolling="no"></iframe>
 
 ### IR Distance Sensors
 

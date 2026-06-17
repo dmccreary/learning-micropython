@@ -69,7 +69,7 @@ For MicroPython, a good IDE connects to your microcontroller over USB, lets you 
 
 The infographic below compares all four side by side across cost, skill level, operating system support, MicroPython features, debugger capability, and best use cases.
 
-![MicroPython IDE Comparison Infographic](./ide-comparison-infographic.png)
+<iframe src="../../posters/ides/main.html" width="100%" height="800" scrolling="no"></iframe>
 
 ## Setting Up Thonny IDE
 

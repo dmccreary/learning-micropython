@@ -50,7 +50,7 @@ This chapter builds on concepts from:
 
 ## Why Communication Protocols?
 
-![Communication Protocols Infographic](./communication-protocols-infographic.png)
+<iframe src="../../posters/communication-protocols/main.html" width="100%" height="800" scrolling="no"></iframe>
 
 Sensors, displays, and peripheral chips generate data as electrical signals. To transfer that data to a microcontroller reliably, both sides must agree on a set of rules: which wire carries data, which carries timing, how fast data travels, and how to signal the start and end of a message. These rules are a **communication protocol**.
 

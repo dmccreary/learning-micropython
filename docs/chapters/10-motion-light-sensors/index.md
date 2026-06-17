@@ -48,7 +48,7 @@ This chapter builds on concepts from:
     ![Monty waves hello](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
     Motion, orientation, color — your Pico is about to gain almost human-like senses! An accelerometer feels tilt the way your inner ear does. A compass finds north like a migrating bird. The APDS9960 detects both color and the distance of your hand above it. Let's wire them in!
 
-![Motion and Light Sensors Infographic](./motion-and-light-sensors-infographic.png)
+<iframe src="../../posters/motion-light-sensors/main.html" width="100%" height="800" scrolling="no"></iframe>
 
 ## Light Sensing with Photoresistors
 

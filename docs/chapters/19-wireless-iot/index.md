@@ -53,7 +53,7 @@ This chapter builds on concepts from:
     ![Monty waves hello](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
     Your Pico W has a Wi-Fi radio built in — and that means the entire internet is one import away. Today you will fetch real weather data, sync the time from a global server, and let anyone on your local network control your NeoPixels from a browser. The Internet of Things starts here!
 
-![](./iot-architecture-infographic.png)
+<iframe src="../../posters/iot-architecture/main.html" width="100%" height="800" scrolling="no"></iframe>
 
 ## Wi-Fi Basics
 

@@ -56,7 +56,7 @@ This chapter builds on concepts from:
     ![Monty waves hello](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
     Before we connect any hardware, we need to understand the rules of electricity. Think of this chapter as learning the traffic laws before you drive. Once you understand voltage, current, and resistance, every wiring decision in this course will make sense. Let's build something amazing!
 
-![](./electrical-components-infographic.png)
+<iframe src="../../posters/electronic-components/main.html" width="100%" height="800" scrolling="no"></iframe>
 
 ## Voltage, Current, and Resistance
 
@@ -160,7 +160,7 @@ Because the Pico's 3.3 V exceeds most LED forward voltages, you must always use 
 
 ### Resistor Color Code
 
-![](./resistor-color-codes-infographic.png)
+<iframe src="../../posters/resistor-color-codes/main.html" width="100%" height="800" scrolling="no"></iframe>
 
 Resistors are too small to print numbers on, so they use colored bands. Before reading the table, here is the key rule: the first two bands give the digits, the third band gives the multiplier (power of 10).
 
