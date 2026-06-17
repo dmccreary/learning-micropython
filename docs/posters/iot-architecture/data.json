@@ -1,0 +1,104 @@
+{
+  "title": "IoT Architecture Layers",
+  "image": "iot-architecture-infographic.png",
+  "layout": "grid",
+  "palette": ["#6A3FB5", "#1389A6", "#2D8A4E", "#E07B39", "#C7164E"],
+  "zones": [
+    {
+      "id": "application",
+      "label": "Layer 5 — Application (Interface)",
+      "color": "#6A3FB5",
+      "x1": 2, "y1": 13, "x2": 98, "y2": 30,
+      "summary": "Where humans see data, set rules, and take action",
+      "facts": [
+        "Components: Dashboards, Mobile apps, Alerts",
+        "Adafruit IO dashboard",
+        "Node-RED",
+        "Grafana",
+        "Home Assistant",
+        "Email / SMS alerts"
+      ]
+    },
+    {
+      "id": "cloud-platform",
+      "label": "Layer 4 — Cloud Platform",
+      "color": "#1389A6",
+      "x1": 2, "y1": 30, "x2": 98, "y2": 46.7,
+      "summary": "Receives, stores, routes, and processes streams of sensor data",
+      "facts": [
+        "Components: MQTT brokers, Cloud IoT services, Time-series databases",
+        "Adafruit IO · HiveMQ · AWS IoT Core",
+        "Google Cloud IoT · InfluxDB",
+        "MQTT broker (Mosquitto)"
+      ]
+    },
+    {
+      "id": "edge-processing",
+      "label": "Layer 3 — Edge Processing",
+      "color": "#2D8A4E",
+      "x1": 2, "y1": 46.7, "x2": 98, "y2": 63.3,
+      "summary": "Processes data close to the source — low latency, works offline",
+      "facts": [
+        "Components: Local decision-making, Data filtering, Rapid response",
+        "Pico W running a MicroPython web server",
+        "MQTT client publishing sensor readings",
+        "Local threshold alerts (no cloud needed)"
+      ]
+    },
+    {
+      "id": "network",
+      "label": "Layer 2 — Network (Connectivity)",
+      "color": "#E07B39",
+      "x1": 2, "y1": 63.3, "x2": 98, "y2": 77.9,
+      "summary": "Moves data reliably between devices and the internet",
+      "facts": [
+        "Components: Wireless radios, Gateways, Routers",
+        "WiFi 802.11 b/g/n",
+        "Bluetooth BLE 5.x",
+        "LoRa 915 MHz",
+        "Ethernet (wired)"
+      ]
+    },
+    {
+      "id": "perception",
+      "label": "Layer 1 — Perception (Things)",
+      "color": "#C7164E",
+      "x1": 2, "y1": 77.9, "x2": 98, "y2": 93,
+      "summary": "Interacts with the physical world — collects data and drives outputs",
+      "facts": [
+        "Components: Sensors, Actuators, Microcontrollers",
+        "DHT22 temperature sensor",
+        "HC-SR04 distance sensor",
+        "NeoPixel LED strip",
+        "Raspberry Pi Pico W · ESP32"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which layer holds the DHT22 temperature sensor, the HC-SR04 distance sensor, and the Raspberry Pi Pico W?",
+      "correct_zone": "perception",
+      "explanation": "Layer 1 — Perception (Things) is where sensors, actuators, and microcontrollers interact with the physical world to collect data and drive outputs."
+    },
+    {
+      "question": "Where do humans see the data, set rules, and take action — for example through a Grafana or Adafruit IO dashboard, or a mobile app?",
+      "correct_zone": "application",
+      "explanation": "Layer 5 — Application (Interface) is the top layer: dashboards, mobile apps, and alerts (Adafruit IO, Node-RED, Grafana, Home Assistant, Email / SMS)."
+    },
+    {
+      "question": "Which layer moves data reliably between devices and the internet using WiFi 802.11 b/g/n, Bluetooth BLE 5.x, LoRa 915 MHz, and Ethernet?",
+      "correct_zone": "network",
+      "explanation": "Layer 2 — Network (Connectivity) provides the wireless radios, gateways, and routers that carry data between devices and the internet."
+    },
+    {
+      "question": "Which layer does a Pico W running a MicroPython web server with local threshold alerts (no cloud needed) belong to?",
+      "correct_zone": "edge-processing",
+      "explanation": "Layer 3 — Edge Processing handles local decision-making, data filtering, and rapid response close to the source, giving low latency and offline operation."
+    },
+    {
+      "question": "Which layer uses MQTT brokers and time-series databases such as AWS IoT Core, Mosquitto, and InfluxDB to receive, store, and route streams of sensor data?",
+      "correct_zone": "cloud-platform",
+      "explanation": "Layer 4 — Cloud Platform receives, stores, routes, and processes streams of sensor data using MQTT brokers, cloud IoT services, and time-series databases."
+    }
+  ]
+}

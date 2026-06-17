@@ -1,0 +1,83 @@
+{
+  "title": "Distance Sensor Comparison",
+  "image": "distance-sensors-infographic.png",
+  "layout": "grid",
+  "palette": ["#2D8A4E", "#1389A6", "#6A3FB5"],
+  "zones": [
+    {
+      "id": "ir",
+      "label": "IR Distance Sensor",
+      "color": "#2D8A4E",
+      "x1": 1.5, "y1": 12, "x2": 33, "y2": 89,
+      "summary": "Binary HIGH/LOW reflective detection",
+      "facts": [
+        "Output: binary digital — LOW when an object is detected, HIGH when clear",
+        "Pins: VCC (3.3–5 V), OUT, GND",
+        "Adjustable detection range via on-board potentiometer",
+        "Typical range: 2 to 30 cm (varies with object and surface)",
+        "Fast response; small and low cost",
+        "Works best on reflective surfaces",
+        "Best for: obstacle avoidance and line-following robots"
+      ]
+    },
+    {
+      "id": "hcsr04",
+      "label": "HC-SR04 Ultrasonic",
+      "color": "#1389A6",
+      "x1": 33.7, "y1": 12, "x2": 66.3, "y2": 89,
+      "summary": "Ultrasonic ping (echo-timing) distance",
+      "facts": [
+        "Sends a 40 kHz ultrasonic pulse and times the echo's round trip",
+        "Pins: VCC (5 V), TRIG, ECHO, GND",
+        "Range: 2 cm to ~400 cm; accuracy ±3 mm",
+        "Trigger: ≥10 µs HIGH pulse; echo ≈ 58 µs per cm",
+        "Beam angle: < 15°",
+        "Inexpensive and easy to use",
+        "Best for: robot navigation, level sensing, parking sensors"
+      ]
+    },
+    {
+      "id": "vl53l0x",
+      "label": "VL53L0X Laser ToF",
+      "color": "#6A3FB5",
+      "x1": 67, "y1": 12, "x2": 98.5, "y2": 89,
+      "summary": "I2C time-of-flight laser ranging",
+      "facts": [
+        "Laser time-of-flight; I2C interface (up to 400 kHz)",
+        "Pins: VCC (2.6–5.5 V), GND, SCL, SDA, XSHUT, GPIO1",
+        "Range: 3 to 120 cm default (up to 200 cm in long-range mode)",
+        "Accuracy ±3% (best case); field of view ~25°",
+        "Fast reading up to 50 Hz; excellent ambient-light immunity",
+        "Works on most surfaces, including fabric and glass",
+        "Best for: precision distance measurement"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which distance sensor uses a laser and time-of-flight for the highest precision?",
+      "correct_zone": "vl53l0x",
+      "explanation": "The VL53L0X times how long a laser pulse takes to bounce back (time-of-flight). It is accurate to about ±3% and works even on fabric or glass."
+    },
+    {
+      "question": "Which sensor only reports 'object detected or not' rather than an exact distance?",
+      "correct_zone": "ir",
+      "explanation": "The IR reflective sensor gives a binary digital output — LOW when something is in range, HIGH when clear. It does not report an exact distance."
+    },
+    {
+      "question": "Which sensor bounces a 40 kHz sound pulse and times the echo to find distance?",
+      "correct_zone": "hcsr04",
+      "explanation": "The HC-SR04 sends an ultrasonic burst at 40 kHz and measures the echo's round-trip time. Distance in cm is about the echo time in µs divided by 58."
+    },
+    {
+      "question": "Which sensor has the longest range (up to about 400 cm) for general robot navigation?",
+      "correct_zone": "hcsr04",
+      "explanation": "The HC-SR04 measures from 2 cm out to about 400 cm, the longest range of the three, which makes it popular for obstacle avoidance."
+    },
+    {
+      "question": "Which sensor talks over I2C and stays accurate even on fabric or glass?",
+      "correct_zone": "vl53l0x",
+      "explanation": "The VL53L0X uses I2C and laser time-of-flight, so unlike ultrasonic it is not fooled by soft or angled surfaces such as fabric and glass."
+    }
+  ]
+}

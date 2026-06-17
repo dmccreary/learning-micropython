@@ -1,0 +1,89 @@
+{
+  "title": "Edge AI on Microcontrollers",
+  "image": "edge-ai-software-stack.png",
+  "layout": "grid",
+  "palette": ["#6A3FB5", "#1389A6", "#C7164E"],
+  "zones": [
+    {
+      "id": "micropython-ulab",
+      "label": "MicroPython + ulab",
+      "color": "#6A3FB5",
+      "x1": 2, "y1": 13, "x2": 33, "y2": 88,
+      "summary": "Pure Python inference — your first ML experiments",
+      "facts": [
+        "Framework: ulab (MicroPython extension — numpy-style arrays)",
+        "Boards: RP2040 (Pico), RP2350 (Pico 2), ESP32 (with ulab firmware)",
+        "Model format: custom Python code — your own kNN, decision tree, or linear regression",
+        "Model size: < 10 KB (hand-coded logic; no neural net runtime)",
+        "Inference speed: moderate — pure Python array math; ~10–100 ms per prediction",
+        "Training: on a PC using scikit-learn; export weights as Python lists",
+        "Memory needed: fits in 264 KB RAM (keep models simple)",
+        "MicroPython: import ulab.numpy as np; then matrix math for inference",
+        "Best for: simple classifiers (kNN, linear regression); first ML experiments"
+      ]
+    },
+    {
+      "id": "tflite-micro",
+      "label": "TensorFlow Lite Micro",
+      "color": "#1389A6",
+      "x1": 34, "y1": 13, "x2": 66, "y2": 88,
+      "summary": "On-device neural networks with a fast C++ runtime",
+      "facts": [
+        "Framework: TensorFlow Lite for Microcontrollers (TFLite Micro)",
+        "Boards: RP2040, RP2350 (via C/C++ port); ESP32 (with Arduino or IDF)",
+        "Model format: .tflite flatbuffer file — quantized INT8 preferred for small RAM",
+        "Model size: 10–200 KB (quantized; full float models are larger)",
+        "Inference speed: fast — C++ runtime; ~1–50 ms per image classification frame",
+        "Training: Google Colab or local PC using TensorFlow + Keras; export as .tflite",
+        "Memory needed: ~64–512 KB RAM for typical small models",
+        "MicroPython: not native — requires C extension or an Arduino build",
+        "Best for: keyword spotting, gesture recognition, small image classification"
+      ]
+    },
+    {
+      "id": "edge-impulse",
+      "label": "Edge Impulse",
+      "color": "#C7164E",
+      "x1": 67, "y1": 13, "x2": 98, "y2": 88,
+      "summary": "End-to-end, no-code ML platform with a guided workflow",
+      "facts": [
+        "Framework: Edge Impulse cloud platform + generated C++ or Arduino library",
+        "Boards: Pico, ESP32, Arduino Nano 33 BLE Sense, many more (web-based)",
+        "Model format: exports a C++ library (.zip) optimized for your board",
+        "Model size: 5–100 KB (optimized and quantized automatically)",
+        "Inference speed: very fast — CMSIS-NN optimized for ARM Cortex-M; < 10 ms typical",
+        "Training: upload data on edgeimpulse.com; train in browser; auto-deploys",
+        "Memory needed: board profiler shows exact RAM/Flash usage before deploy",
+        "MicroPython: export Arduino sketch or C++ library; integrate via serial or direct port",
+        "Best for: audio classification, anomaly detection, motion recognition"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which approach runs inference in pure Python and is best for your first ML experiments like kNN or linear regression?",
+      "correct_zone": "micropython-ulab",
+      "explanation": "MicroPython + ulab lets you hand-code simple classifiers using numpy-style array math. Models stay under 10 KB and fit easily in the Pico's 264 KB of RAM — perfect for a first ML project."
+    },
+    {
+      "question": "Which approach uses a .tflite flatbuffer model file and a fast C++ runtime for on-device neural networks?",
+      "correct_zone": "tflite-micro",
+      "explanation": "TensorFlow Lite Micro loads a quantized INT8 .tflite model and runs it with a fast C++ runtime (~1–50 ms per frame). It is the go-to for keyword spotting and gesture recognition."
+    },
+    {
+      "question": "Which approach lets you upload data in a browser, train a model with no code, and auto-deploy it to your board?",
+      "correct_zone": "edge-impulse",
+      "explanation": "Edge Impulse is an end-to-end cloud platform: you upload data on edgeimpulse.com, train in the browser, and it generates a board-optimized C++ library — a complete no-code ML pipeline."
+    },
+    {
+      "question": "Which approach is the only one that works natively in MicroPython without a C extension or Arduino build?",
+      "correct_zone": "micropython-ulab",
+      "explanation": "Only MicroPython + ulab runs directly in MicroPython (import ulab.numpy as np). Both TFLite Micro and Edge Impulse require a C extension, Arduino build, or generated C++ library."
+    },
+    {
+      "question": "Which approach uses CMSIS-NN optimization for ARM Cortex-M and includes a board profiler that shows RAM and Flash usage before you deploy?",
+      "correct_zone": "edge-impulse",
+      "explanation": "Edge Impulse uses CMSIS-NN optimized kernels for ARM Cortex-M (< 10 ms typical) and its board profiler reports exact RAM/Flash usage before deployment, taking the guesswork out of fitting a model."
+    }
+  ]
+}

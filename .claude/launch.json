@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "poster-preview",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8001", "--directory", "docs"],
+      "port": 8001
+    },
+    {
+      "name": "built-site-verify",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8002", "--directory", "/tmp/mkdocs-verify-site"],
+      "port": 8002
+    }
+  ]
+}

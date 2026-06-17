@@ -52,7 +52,7 @@ This chapter builds on concepts from:
 
 ![](../../img/pi-pico-pinout.png)
 
-![](./pico-pin-infographic.png)
+<iframe src="../../posters/gpio-functions/main.html" width="100%" height="800" scrolling="no"></iframe>
 
 ## Digital Signals: HIGH and LOW
 

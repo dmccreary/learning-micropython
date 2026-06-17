@@ -1,0 +1,86 @@
+{
+  "title": "Specialized Serial Protocols: UART · 1-Wire · I2S",
+  "image": "specialized-communication-protocols-infographic.png",
+  "layout": "grid",
+  "palette": ["#6A3FB5", "#2D8A4E", "#1389A6"],
+  "zones": [
+    {
+      "id": "uart",
+      "label": "UART",
+      "color": "#6A3FB5",
+      "x1": 2, "y1": 10, "x2": 33, "y2": 90,
+      "summary": "Universal Async Receiver/Transmitter — the oldest, simplest serial link",
+      "facts": [
+        "Wires: VCC, GND, TX (transmit), RX (receive)",
+        "Asynchronous serial — no clock line; each device keeps its own clock",
+        "Full-duplex: TX and RX are independent so both run at once",
+        "Start/stop bits frame each byte; configurable baud rate (9,600 to 1,000,000+ bps)",
+        "Point-to-point only — one transmitter, one receiver",
+        "Connectors: JST-PH (4-pin), Dupont/Header (4-pin)",
+        "Use cases: serial console/debugging, Bluetooth modules, WiFi modules, GPS, modems",
+        "Simple, reliable, and supported by every microcontroller"
+      ]
+    },
+    {
+      "id": "onewire",
+      "label": "1-Wire",
+      "color": "#2D8A4E",
+      "x1": 33, "y1": 10, "x2": 66, "y2": 90,
+      "summary": "One data line for temperature sensors and addressable LEDs",
+      "facts": [
+        "Wires: VCC, GND, and a single DQ (1-Wire) data bus",
+        "Uses a single data line for communication — very few pins",
+        "Some devices (e.g. DS18B20) can be parasitically powered with no VCC, using the data line + pull-up resistor",
+        "Many devices can share the same data line",
+        "Connectors: JST-PH (3-pin), Dupont/Header (3-pin)",
+        "Temperature sensors: DS18B20, DS18S20, DS1822, waterproof probes",
+        "Addressable LEDs: NeoPixel/WS2812/SK6812 strips, rings, matrices",
+        "Ideal for sensors and LEDs that share one data line"
+      ]
+    },
+    {
+      "id": "i2s",
+      "label": "I2S",
+      "color": "#1389A6",
+      "x1": 66, "y1": 10, "x2": 98, "y2": 90,
+      "summary": "Inter-IC Sound — a dedicated digital audio bus",
+      "facts": [
+        "Wires: VCC, GND, SCK/BCLK (bit clock), WS/LRCLK (word select), SD/DOUT, SD/DIN",
+        "Synchronous serial protocol designed specifically for audio data",
+        "Uses a bit clock (BCLK) and a left/right word-select clock (LRCLK)",
+        "Typically full-duplex; supports high sample rates and bit depths",
+        "Common sample rates: 8 kHz – 192 kHz+; bit depths 16, 24, 32 bits",
+        "Not for control or commands — audio data only",
+        "Connectors: JST-PH (6-pin), Dupont/Header (6-pin)",
+        "Use cases: audio DACs and ADCs, amplifiers, digital microphones, audio streaming"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which protocol is a dedicated digital audio bus that is not used for general control or commands?",
+      "correct_zone": "i2s",
+      "explanation": "I2S (Inter-IC Sound) carries only audio data, using a bit clock and a left/right word-select clock. It is purpose-built for DACs, ADCs, amplifiers, and digital microphones."
+    },
+    {
+      "question": "Which protocol uses a single data line and powers temperature sensors like the DS18B20?",
+      "correct_zone": "onewire",
+      "explanation": "1-Wire uses one DQ data line shared by many devices. Sensors like the DS18B20 can even be parasitically powered from that line plus a pull-up resistor — no separate VCC needed."
+    },
+    {
+      "question": "Which protocol is point-to-point, has no clock line, and is used for the serial debug console?",
+      "correct_zone": "uart",
+      "explanation": "UART is asynchronous (no shared clock — each side keeps its own and they agree on a baud rate) and connects exactly two devices. It is the standard for serial console/REPL debugging."
+    },
+    {
+      "question": "Which protocol drives addressable LEDs like NeoPixel/WS2812 strips?",
+      "correct_zone": "onewire",
+      "explanation": "On this poster, addressable LEDs (NeoPixel/WS2812/SK6812) are grouped under the single-data-line '1-Wire' family — many LEDs share one data line, just like 1-Wire sensors."
+    },
+    {
+      "question": "Which protocol needs a word-select (left/right) clock to separate stereo audio channels?",
+      "correct_zone": "i2s",
+      "explanation": "I2S uses the WS/LRCLK (word-select) line to tell the receiver whether each sample is the left or right channel, alongside the BCLK bit clock — essential for stereo audio."
+    }
+  ]
+}

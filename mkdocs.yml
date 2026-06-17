@@ -391,29 +391,31 @@ nav:
 
   - Infographic Posters:
     - List of Infographic Posters: posters/index.md
-    - Python vs. MicroPython: posters/python-vs-micropython.md
-    - MicroPython IDEs: posters/ides.md
-    - Microcontroller Boards: posters/microncontrollers.md
-    - Electronic Components: posters/electronic-components.md
-    - Resistor Color Codes: posters/resistor-color-codes.md
-    - GPIO Pin Functions: posters/gpio-functions.md
-    - Digital vs. Analog Signals: posters/digital-vs-analog.md
-    - Serial Protocols (I2C/SPI/UART): posters/serial-protocols.md
-    - Communication Protocols Overview: posters/communication-protocols.md
-    - Temperature & Distance Sensors: posters/sensors.md
-    - Motion & Light Sensors: posters/motion-light-sensors.md
-    - Motor Types: posters/motor-types.md
-    - Motor Driver ICs: posters/motor-drivers.md
-    - Robot Drive Configurations: posters/robot-configurations.md
-    - LED Types: posters/led-types.md
-    - Display Technologies: posters/display-technologies.md
-    - Sound Output Methods: posters/sound-output.md
-    - Wireless Technologies: posters/wireless-technologies.md
-    - IoT Architecture Layers: posters/iot-architecture.md
-    - Memory Types: posters/memory-types.md
-    - Input Devices: posters/input-devices.md
-    - Common MicroPython Errors: posters/micropython-errors.md
-    - Edge AI on Microcontrollers: posters/edge-ai.md
+    - Interactivity Plan: posters/interactivity-plan.md
+    - Python vs. MicroPython: posters/python-vs-micropython/index.md
+    - MicroPython IDEs: posters/ides/index.md
+    - Microcontroller Boards: posters/microncontrollers/index.md
+    - Electronic Components: posters/electronic-components/index.md
+    - Resistor Color Codes: posters/resistor-color-codes/index.md
+    - GPIO Pin Functions: posters/gpio-functions/index.md
+    - Digital vs. Analog Signals: posters/digital-vs-analog/index.md
+    - Specialized Serial Protocols (UART/1-Wire/I2S): posters/serial-protocols/index.md
+    - Communication Protocols Overview: posters/communication-protocols/index.md
+    - Temperature Sensors: posters/temperature-sensors/index.md
+    - Distance Sensors: posters/distance-sensors/index.md
+    - Motion & Light Sensors: posters/motion-light-sensors/index.md
+    - Motor Types: posters/motor-types/index.md
+    - Motor Driver ICs: posters/motor-drivers/index.md
+    - Robot Drive Configurations: posters/robot-configurations/index.md
+    - LED Types: posters/led-types/index.md
+    - Display Technologies: posters/display-technologies/index.md
+    - Sound Output Methods: posters/sound-output/index.md
+    - Wireless Technologies: posters/wireless-technologies/index.md
+    - IoT Architecture Layers: posters/iot-architecture/index.md
+    - Memory Types: posters/memory-types/index.md
+    - Input Devices: posters/input-devices/index.md
+    - Common MicroPython Errors: posters/micropython-errors/index.md
+    - Edge AI on Microcontrollers: posters/edge-ai/index.md
 
   - Learning Graph:
     - Introduction: learning-graph/index.md
@@ -446,6 +448,11 @@ nav:
   # - Render Test: misc/mermaid-test.md
 
 # Dan McCreary's Microsite Standards from here down
+
+# Keep the dev-only HTML template out of the build, but DO copy the
+# shared JS/CSS assets so the interactive posters can load them at runtime.
+exclude_docs: |
+  posters/shared-libs/main-template.html
 
 theme:
   name: material

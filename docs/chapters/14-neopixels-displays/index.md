@@ -61,7 +61,7 @@ This chapter builds on concepts from:
     ![Monty waves hello](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
     Light up the world with 16 million colors! NeoPixels are one of the most satisfying components in all of physical computing — you write three numbers and a single LED glows any color you can imagine. Then we will explore the simpler but practical world of 7-segment displays, LED matrices, and character LCDs. Let's make your projects glow!
 
-![LED Types Infographic](./led-types-infographic.png)
+<iframe src="../../posters/led-types/main.html" width="100%" height="800" scrolling="no"></iframe>
 
 ## NeoPixel LEDs — One Wire, 16 Million Colors
 

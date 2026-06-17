@@ -1,0 +1,99 @@
+{
+  "title": "Resistor Color Code Chart",
+  "image": "resistor-color-codes-infographic.png",
+  "layout": "grid",
+  "palette": ["#C7164E", "#E5398A", "#6A3FB5", "#1389A6", "#2D8A4E", "#E07B39", "#2A2E3A"],
+  "zones": [
+    {
+      "id": "band-positions",
+      "label": "Band Positions",
+      "color": "#C7164E",
+      "x1": 1, "y1": 13, "x2": 41, "y2": 39,
+      "summary": "The four colored bands on a resistor, read left to right",
+      "facts": [
+        "Band 1 = 1st Digit",
+        "Band 2 = 2nd Digit",
+        "Band 3 = Multiplier (how many zeros, or the power of ten to multiply by)",
+        "Band 4 = Tolerance (how far the real value can be off)",
+        "Always read the bands from left to right, starting at the end with the bands grouped closest together"
+      ]
+    },
+    {
+      "id": "worked-example",
+      "label": "Worked Example",
+      "color": "#E5398A",
+      "x1": 1, "y1": 40, "x2": 41, "y2": 58,
+      "summary": "Reading Brown · Black · Red · Gold step by step",
+      "facts": [
+        "Brown = 1 (1st digit)",
+        "Black = 0 (2nd digit)",
+        "Red = ×100 Ω (multiplier)",
+        "Gold = ±5% (tolerance)",
+        "Result: 1 · 0 · ×100 Ω · ±5% = 1,000 Ω (1 kΩ) ±5%"
+      ]
+    },
+    {
+      "id": "color-value-table",
+      "label": "Color Value Table",
+      "color": "#6A3FB5",
+      "x1": 41, "y1": 13, "x2": 99, "y2": 78,
+      "summary": "Look up each color's digit, multiplier, and tolerance",
+      "facts": [
+        "Black 0 · ×1 Ω · — ;  Brown 1 · ×10 Ω · ±1% ;  Red 2 · ×100 Ω · ±2%",
+        "Orange 3 · ×1 kΩ · — ;  Yellow 4 · ×10 kΩ · — ;  Green 5 · ×100 kΩ · ±0.5%",
+        "Blue 6 · ×1 MΩ · ±0.25% ;  Violet 7 · ×10 MΩ · ±0.1% ;  Gray 8 · ×100 MΩ · ±0.05%",
+        "White 9 · ×1 GΩ · —",
+        "Gold and Silver have no digit: Gold ×0.1 Ω · ±5% ;  Silver ×0.01 Ω · ±10%",
+        "Columns: Color Swatch · Color Name · Digit (Bands 1-2) · Multiplier (Band 3) · Tolerance (Band 4)"
+      ]
+    },
+    {
+      "id": "mnemonic",
+      "label": "Mnemonic",
+      "color": "#2A2E3A",
+      "x1": 1, "y1": 80, "x2": 99, "y2": 92,
+      "summary": "A memory phrase for the digit order 0 to 9",
+      "facts": [
+        "\"Bad Beer Rots Our Young Guts But Vodka Goes Well\"",
+        "The first letter of each word matches a color in order",
+        "Black · Brown · Red · Orange · Yellow · Green · Blue · Violet · Gray · White",
+        "These map to digits 0 through 9"
+      ]
+    },
+    {
+      "id": "standard",
+      "label": "Color Code Standard",
+      "color": "#1389A6",
+      "x1": 1, "y1": 93, "x2": 99, "y2": 99,
+      "summary": "The official standard these color codes come from",
+      "facts": [
+        "Color code standard: IEC 60062",
+        "Source: IEC 60062:2016 — Marking codes for resistors and capacitors",
+        "IEC stands for the International Electrotechnical Commission",
+        "The same standard is used by resistor makers worldwide"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "On a 4-band resistor, which band tells you the multiplier (how many zeros to add)?",
+      "correct_zone": "band-positions",
+      "explanation": "Band 3 is the multiplier. Bands 1 and 2 are the first two digits, and Band 4 is the tolerance."
+    },
+    {
+      "question": "What digit does the color Green stand for?",
+      "correct_zone": "color-value-table",
+      "explanation": "In the color value table, Green = 5. Its multiplier is ×100 kΩ and its tolerance is ±0.5%."
+    },
+    {
+      "question": "A resistor has bands Brown · Black · Red · Gold. What is its value?",
+      "correct_zone": "worked-example",
+      "explanation": "Brown=1, Black=0, Red=×100, Gold=±5%, so 10 × 100 = 1,000 Ω (1 kΩ) ±5%."
+    },
+    {
+      "question": "Which phrase helps you remember the color order for digits 0 through 9?",
+      "correct_zone": "mnemonic",
+      "explanation": "\"Bad Beer Rots Our Young Guts But Vodka Goes Well\" — each word's first letter matches Black, Brown, Red, Orange, Yellow, Green, Blue, Violet, Gray, White."
+    }
+  ]
+}

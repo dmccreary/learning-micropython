@@ -1,0 +1,89 @@
+{
+  "title": "Display Technologies Compared: OLED · TFT · ePaper",
+  "image": "display-technologies-infographic.png",
+  "layout": "grid",
+  "palette": ["#6A3FB5", "#C7164E", "#2D8A4E"],
+  "zones": [
+    {
+      "id": "oled",
+      "label": "OLED (SSD1306)",
+      "color": "#6A3FB5",
+      "x1": 15.5, "y1": 14, "x2": 43, "y2": 85,
+      "summary": "Tiny, low-power monochrome screen — true blacks",
+      "facts": [
+        "Module: SSD1306, 0.96 inch; resolution 128 × 64 pixels",
+        "Colors: monochrome — white, blue, or yellow/blue split (no color mixing)",
+        "Interface: I2C (address 0x3C or 0x3D) or SPI",
+        "Power: ~20–40 mW (no backlight — each pixel self-emits)",
+        "Contrast: effectively infinite — true black pixels are completely off",
+        "Refresh: fast (no refresh delay); viewing angle ~160°",
+        "Cost: $2–$5",
+        "MicroPython: from ssd1306 import SSD1306_I2C; oled.text('Hi', 0, 0); oled.show()",
+        "Best for: low-power sensors, wearables, simple text/icon overlays"
+      ]
+    },
+    {
+      "id": "tft",
+      "label": "TFT Color LCD (ILI9341)",
+      "color": "#C7164E",
+      "x1": 43, "y1": 14, "x2": 71, "y2": 85,
+      "summary": "Full-color screen for images and games",
+      "facts": [
+        "Module: ILI9341, 2.4 inch; resolution 240 × 320 pixels (QVGA)",
+        "Colors: 65,536 (16-bit RGB565); some support 262,144 (18-bit)",
+        "Interface: SPI (4-wire: MOSI, SCK, CS, DC + RST, BL)",
+        "Power: ~100–300 mW (LED backlight required)",
+        "Contrast: ~300:1 typical (IPS panels 700:1+); viewing angle 80° (IPS 160°+)",
+        "Refresh: fast (good for video and animation)",
+        "Cost: $5–$20",
+        "MicroPython: ili9341 library; display.fill(color); display.text('Hi', x, y, color)",
+        "Best for: games, images, color dashboards, anything needing color graphics"
+      ]
+    },
+    {
+      "id": "epaper",
+      "label": "ePaper / E-Ink (SSD1680)",
+      "color": "#2D8A4E",
+      "x1": 71, "y1": 14, "x2": 98, "y2": 85,
+      "summary": "Paper-like screen that uses zero power when static",
+      "facts": [
+        "Module: SSD1680, 2.9 inch; resolution 296 × 128 (or 200 × 200 at 1.54 inch)",
+        "Colors: black + white; some panels add red as a third color",
+        "Interface: SPI + multiple GPIO pins (BUSY, RST, DC, CS)",
+        "Power: ~0 mW when static; only draws power during a refresh cycle",
+        "Contrast: reflects ambient light like printed paper; viewing angle ~180°",
+        "Refresh: slow — 2–5 s for a full refresh; partial refresh ~0.3 s",
+        "Cost: $8–$40",
+        "MicroPython: epaper library; display.text('Hi', x, y); display.display() — then wait",
+        "Best for: price tags, name badges, rarely-updated dashboards, battery displays"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which display uses essentially zero power when the image is not changing?",
+      "correct_zone": "epaper",
+      "explanation": "ePaper (E-Ink) only draws power during a refresh — once the image is drawn it holds with no power, making it ideal for battery-powered price tags and badges."
+    },
+    {
+      "question": "Which display is the best choice for showing full-color images and games?",
+      "correct_zone": "tft",
+      "explanation": "A TFT color LCD (ILI9341) shows 65,536 colors at 240×320 and refreshes fast enough for animation, making it the right pick for color graphics and games."
+    },
+    {
+      "question": "Which display is the smallest and lowest-power, with true black pixels and an I2C interface?",
+      "correct_zone": "oled",
+      "explanation": "The SSD1306 OLED is tiny (0.96 inch), draws only 20–40 mW because each pixel self-emits (true blacks), and connects over simple 2-wire I2C — great for wearables."
+    },
+    {
+      "question": "Which display has the slowest refresh, taking 2–5 seconds to update fully?",
+      "correct_zone": "epaper",
+      "explanation": "ePaper refreshes slowly (2–5 seconds for a full update) because it physically rearranges ink particles. That is the trade-off for its paper-like look and zero static power."
+    },
+    {
+      "question": "Which display needs an LED backlight and therefore uses the most power?",
+      "correct_zone": "tft",
+      "explanation": "A TFT color LCD requires an LED backlight to be visible, drawing ~100–300 mW — far more than the self-emitting OLED or the static-power-free ePaper."
+    }
+  ]
+}

@@ -79,11 +79,17 @@ Each poster follows the same visual style: landscape 16:9, flat-design, off-whit
 
     General-purpose and specialized protocols compared.
 
--   [![Temperature & Distance Sensors](../chapters/09-temp-distance-sensors/temp-sensors-infographic.png)](sensors/)
+-   [![Temperature Sensors](../chapters/09-temp-distance-sensors/temp-sensors-infographic.png)](temperature-sensors/)
 
-    **[Temperature & Distance Sensors](sensors/)**
+    **[Temperature Sensors](temperature-sensors/)**
 
-    DHT11/DHT22/BMP280 and HC-SR04/VL53L0X.
+    DHT11, DHT22, and BMP280.
+
+-   [![Distance Sensors](../chapters/09-temp-distance-sensors/distance-sensors-infographic.png)](distance-sensors/)
+
+    **[Distance Sensors](distance-sensors/)**
+
+    HC-SR04 ultrasonic and VL53L0X time-of-flight.
 
 -   [![Motion & Light Sensors](../chapters/10-motion-light-sensors/motion-and-light-sensors-infographic.png)](motion-light-sensors/)
 

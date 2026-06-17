@@ -148,7 +148,7 @@ cs.value(1)               # deselect device
 
 ## Specialized Communication Protocols
 
-![Specialized Communication Protocols Infographic](specialized-communication-protocols-infographic.png)
+<iframe src="../../posters/serial-protocols/main.html" width="100%" height="800" scrolling="no"></iframe>
 
 ### UART — Serial Communication
 

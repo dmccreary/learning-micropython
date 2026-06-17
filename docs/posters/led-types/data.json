@@ -1,0 +1,103 @@
+{
+  "title": "LED Types Compared",
+  "image": "led-types-infographic.png",
+  "layout": "grid",
+  "palette": ["#E07B39", "#6A3FB5", "#C7164E", "#1389A6"],
+  "zones": [
+    {
+      "id": "single-led",
+      "label": "Single-Color LED",
+      "color": "#E07B39",
+      "x1": 15.5, "y1": 13, "x2": 34.5, "y2": 91.5,
+      "summary": "One fixed color — the basic indicator light",
+      "facts": [
+        "Colors available: red, green, blue, yellow, white, infrared, ultraviolet",
+        "Forward voltage: 1.8–2.2 V (red/yellow) · 3.0–3.5 V (blue/white)",
+        "Typical current: 20 mA maximum; 10 mA for dim use",
+        "GPIO pins needed: 1 per LED (+ a 220 Ω–470 Ω series resistor from 3.3 V)",
+        "Colors at once: 1 (fixed color per LED)",
+        "Control: digital on/off, or PWM for brightness",
+        "MicroPython: Pin(n, Pin.OUT).value(1) or PWM(pin).duty_u16(x)",
+        "Best for: power indicators, simple blink programs, status lights"
+      ]
+    },
+    {
+      "id": "rgb-led",
+      "label": "RGB LED",
+      "color": "#6A3FB5",
+      "x1": 34.8, "y1": 13, "x2": 54, "y2": 91,
+      "summary": "Mix red, green, and blue for ~16 million colors",
+      "facts": [
+        "Colors available: ~16 million (mix red, green, and blue channels)",
+        "Forward voltage: R ≈ 2.0 V; G ≈ 3.0 V; B ≈ 3.0 V (per channel)",
+        "Typical current: 20 mA per channel; up to 60 mA combined",
+        "GPIO pins needed: 3 (one per color channel; each needs its own resistor)",
+        "Colors at once: 1 mixed color (any combination of R/G/B)",
+        "Control: 3 independent PWM channels; duty cycle sets the color",
+        "MicroPython: three PWM objects — set duty_u16() on each",
+        "Best for: color-coded status indicators, mood lights, color-mixing experiments"
+      ]
+    },
+    {
+      "id": "neopixel",
+      "label": "NeoPixel (WS2812B)",
+      "color": "#C7164E",
+      "x1": 54.5, "y1": 13, "x2": 76.5, "y2": 91,
+      "summary": "Addressable RGB pixels on a single data wire",
+      "facts": [
+        "Colors available: 16,777,216 (24-bit RGB — 8 bits per channel)",
+        "Forward voltage: 5 V power; data signal works at 3.3 V",
+        "Typical current: up to 60 mA per pixel at full white (R+G+B = 20 mA each)",
+        "GPIO pins needed: 1 data pin for the entire chain; no limit on chain length",
+        "Colors at once: each pixel is independently programmable",
+        "Control: single-wire 800 kHz serial protocol (WS2812B timing)",
+        "MicroPython: from neopixel import NeoPixel; np = NeoPixel(pin, n)",
+        "Best for: addressable lighting strips, RGB rings, pixel art, color animations"
+      ]
+    },
+    {
+      "id": "led-matrix",
+      "label": "LED Matrix (8×8 + MAX7219)",
+      "color": "#1389A6",
+      "x1": 77, "y1": 13, "x2": 99, "y2": 91,
+      "summary": "A grid of single-color LEDs driven over SPI",
+      "facts": [
+        "Colors available: single color (typically red or white)",
+        "Forward voltage: 5 V module power; SPI data at 3.3 V is OK",
+        "Typical current: ~320 mA max (all 64 LEDs on); ~40 mA typical display",
+        "GPIO pins needed: 3 SPI pins (DIN, CS, CLK); up to 8 modules cascade on the same 3 pins",
+        "Colors at once: 1 fixed color; brightness set globally per module (0–15 levels)",
+        "Control: SPI via the MAX7219 driver (row/column addressing)",
+        "MicroPython: max7219 library; matrix.pixel(x, y, 1) or matrix.text('Hi', 0, 0)",
+        "Best for: scrolling text, simple animations, score displays, clocks"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which LED type lets you control hundreds of pixels using just one GPIO data pin?",
+      "correct_zone": "neopixel",
+      "explanation": "NeoPixels (WS2812B) chain together and are all driven from a single data pin using an 800 kHz serial protocol — the chain length is essentially unlimited."
+    },
+    {
+      "question": "Which LED type needs 3 GPIO pins and 3 PWM channels to mix any color?",
+      "correct_zone": "rgb-led",
+      "explanation": "An RGB LED has separate red, green, and blue channels. You drive all three with independent PWM signals (3 pins, 3 resistors) and the duty cycles blend into one mixed color."
+    },
+    {
+      "question": "Which LED type is best for displaying scrolling text and is driven over SPI?",
+      "correct_zone": "led-matrix",
+      "explanation": "An 8×8 LED matrix with a MAX7219 driver uses 3 SPI pins (DIN, CS, CLK) and can scroll text or show simple animations. Modules cascade for longer displays."
+    },
+    {
+      "question": "Which LED type uses just one GPIO pin and a resistor for a simple status light?",
+      "correct_zone": "single-led",
+      "explanation": "A single-color LED needs one GPIO pin plus a 220–470 Ω series resistor. It shows one fixed color and is perfect for power and status indicators."
+    },
+    {
+      "question": "Which LED type can show 16.7 million colors AND control each pixel independently?",
+      "correct_zone": "neopixel",
+      "explanation": "NeoPixels deliver 24-bit color (16,777,216 colors) and each pixel in the chain is independently addressable — unlike an RGB LED, which shows one mixed color at a time."
+    }
+  ]
+}

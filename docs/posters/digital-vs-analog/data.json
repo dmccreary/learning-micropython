@@ -1,0 +1,93 @@
+{
+  "title": "Digital vs. Analog Signals",
+  "image": "analog-adc-pwm-infographic.png",
+  "layout": "grid",
+  "palette": ["#C7164E", "#E5398A", "#6A3FB5", "#1389A6", "#2D8A4E", "#E07B39", "#2A2E3A"],
+  "zones": [
+    {
+      "id": "digital-signal",
+      "label": "Digital Signal",
+      "color": "#C7164E",
+      "x1": 2.6, "y1": 12.0, "x2": 33.9, "y2": 82.0,
+      "summary": "A square wave with only two states — LOW or HIGH",
+      "facts": [
+        "Values: only two states — LOW (0 V) or HIGH (3.3 V)",
+        "Noise immunity: excellent — binary states ignore small fluctuations",
+        "Resolution: 1 bit per sample",
+        "Examples: LED on/off, button press, UART data bit, I2C clock",
+        "MicroPython read: pin.value() returns 0 or 1",
+        "MicroPython write: pin.value(1) or pin.value(0)",
+        "Pico GPIO: all 26 GPIO pins"
+      ]
+    },
+    {
+      "id": "analog-signal",
+      "label": "Analog Signal",
+      "color": "#1389A6",
+      "x1": 35.3, "y1": 12.0, "x2": 64.1, "y2": 82.0,
+      "summary": "A smooth wave that varies continuously from 0 V to 3.3 V",
+      "facts": [
+        "Values: continuous range from 0 V to 3.3 V",
+        "Noise immunity: poor — susceptible to electromagnetic interference",
+        "Resolution: infinite in nature; limited by ADC when digitized",
+        "Examples: potentiometer wiper, microphone output, LDR voltage divider, temperature sensor",
+        "MicroPython read: ADC(pin).read_u16() returns 0–65535 (scaled from 12-bit hardware)",
+        "MicroPython write: not available (use PWM to approximate)",
+        "Pico GPIO: ADC only on GP26, GP27, GP28"
+      ]
+    },
+    {
+      "id": "pwm",
+      "label": "PWM — Digital Pretending to be Analog",
+      "color": "#6A3FB5",
+      "x1": 65.6, "y1": 12.0, "x2": 97.4, "y2": 82.0,
+      "summary": "Rapid HIGH/LOW pulses that slow devices perceive as analog",
+      "facts": [
+        "Values: rapid switching between 0 V and 3.3 V; perceived as analog by slow devices",
+        "Duty cycle: 0% = always LOW; 50% = equal on/off; 100% = always HIGH",
+        "Frequency: 8 Hz to 62.5 MHz on RP2040",
+        "Resolution: 16-bit (0–65535 steps)",
+        "Examples: LED brightness (eye averages the flicker), servo position (1–2 ms pulse), motor speed",
+        "MicroPython: pwm = PWM(pin); pwm.duty_u16(32768) sets 50% duty",
+        "Pico GPIO: all 26 GPIO pins (8 PWM slices, 2 channels each)"
+      ]
+    },
+    {
+      "id": "conversion-bridge",
+      "label": "ADC & PWM Conversion Bridge",
+      "color": "#2A2E3A",
+      "x1": 2.3, "y1": 83.2, "x2": 97.7, "y2": 91.3,
+      "summary": "How the Pico crosses between the analog and digital worlds",
+      "facts": [
+        "ADC converts Analog → Digital",
+        "PWM simulates Analog using Digital",
+        "ADC input is read with ADC(pin).read_u16() returning 0–65535",
+        "PWM output is set with pwm.duty_u16() between 0 and 65535",
+        "ADC reads real-world voltages into the program; PWM fakes voltages back out",
+        "RP2040 ADC is 12-bit hardware; PWM duty cycle is 16-bit"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which signal type has only two states, HIGH and LOW?",
+      "correct_zone": "digital-signal",
+      "explanation": "A digital signal is a square wave that is either LOW (0 V) or HIGH (3.3 V) — just 1 bit per sample. Because it only has two states, it ignores small voltage fluctuations and has excellent noise immunity."
+    },
+    {
+      "question": "Which signal type varies smoothly across a continuous range from 0 V to 3.3 V?",
+      "correct_zone": "analog-signal",
+      "explanation": "An analog signal changes continuously between 0 V and 3.3 V, like the voltage from a potentiometer or microphone. On the Pico you read it with an ADC pin (GP26, GP27, or GP28)."
+    },
+    {
+      "question": "Which technique rapidly switches a pin between 0 V and 3.3 V so a slow device perceives it as analog?",
+      "correct_zone": "pwm",
+      "explanation": "PWM (Pulse Width Modulation) flips the pin HIGH and LOW very fast. The fraction of time it stays HIGH — the duty cycle — sets the perceived level, letting you dim an LED or position a servo with a 16-bit value (0–65535)."
+    },
+    {
+      "question": "Where on the poster does it explain that ADC converts Analog to Digital while PWM simulates Analog using Digital?",
+      "correct_zone": "conversion-bridge",
+      "explanation": "The dark banner across the bottom is the conversion bridge: ADC turns real-world analog voltages into numbers (Analog → Digital), and PWM fakes analog output using fast digital pulses (Digital → Analog)."
+    }
+  ]
+}

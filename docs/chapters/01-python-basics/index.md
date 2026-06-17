@@ -51,8 +51,7 @@ This chapter assumes only the prerequisites listed in the [course description](.
 
     That's it. If I'm not doing one of those six things, I'm not in the chapter. Let's build something amazing!
 
-<!-- TODO: introduce this infographic described in @docs/posters/python-vs-micropython.md -->
-![](./python-vs-micropython-infographic.png)
+<iframe src="../../posters/python-vs-micropython/main.html" width="100%" height="800" scrolling="no"></iframe>
 
 ## What Is a Computer Program?
 
