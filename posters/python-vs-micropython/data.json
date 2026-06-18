@@ -2,13 +2,15 @@
   "title": "Python vs. MicroPython",
   "image": "python-vs-micropython-infographic.png",
   "layout": "grid",
-  "palette": ["#1E4DB7", "#1389A6"],
   "zones": [
     {
       "id": "python3",
       "label": "Python 3",
       "color": "#1E4DB7",
-      "x1": 14, "y1": 12, "x2": 56, "y2": 88,
+      "x1": 19.4,
+      "y1": 13.8,
+      "x2": 55.3,
+      "y2": 82.2,
       "summary": "Full Python runtime for desktop, server, and data science",
       "facts": [
         "Runs on desktop and server computers: Windows, macOS, Linux",
@@ -25,7 +27,10 @@
       "id": "micropython",
       "label": "MicroPython",
       "color": "#1389A6",
-      "x1": 56, "y1": 12, "x2": 100, "y2": 88,
+      "x1": 55.7,
+      "y1": 13.6,
+      "x2": 98.8,
+      "y2": 82.6,
       "summary": "Lean Python implementation for microcontrollers",
       "facts": [
         "Runs on microcontrollers: RP2040, RP2350, ESP32, STM32",

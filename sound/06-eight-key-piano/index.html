@@ -1626,6 +1626,10 @@
         
       
         
+          
+        
+      
+        
       
         
       
@@ -2016,6 +2020,14 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -2383,7 +2395,7 @@
 <li>An optional sound amplifier such as the <a href="https://www.ebay.com/itm/234012505949?hash=item367c3b775d:g:sPkAAOSwtoVbOFbf">LM386 DC 5V-12V Mini Micro Audio Amplifier</a> which can be purchased on e-bay for under $2 USD.  If you are working in a quiet room you may not need the amplifier.</li>
 </ol>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../img/eight-key-piano.jpg" data-desc-position="bottom"><img alt="Eight Key Piano" src="../../img/eight-key-piano.jpg"></a></p>
-<p>Each "key" is a momentary press button that is wired up between a GPIO pin and the +3.3 volt rail on the breadboard connected to <a href="../getting-started/02-pi-pico/#pico-pinout">3V3(OUT) pin</a>.  We do not need to use any resistors to pull the signals low since we configure the pins to be inputs with the PULL_DOWN resistor like this:</p>
+<p>Each "key" is a momentary press button that is wired up between a GPIO pin and the +3.3 volt rail on the breadboard connected to <a href="../../getting-started/02-pi-pico/#pico-pinout">3V3(OUT) pin</a>.  We do not need to use any resistors to pull the signals low since we configure the pins to be inputs with the PULL_DOWN resistor like this:</p>
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">button_pin_1</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">PULL_DOWN</span><span class="p">)</span>
 </code></pre></div></td></tr></tbody></table></div>
 <h2 id="the-play-tone-functions">The Play Tone Functions</h2>

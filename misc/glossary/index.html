@@ -555,6 +555,10 @@
         
       
         
+          
+        
+      
+        
       
         
       
@@ -927,6 +931,14 @@
       
         
           
+        
+      
+        
+      
+        
+      
+        
+      
         
       
         
@@ -1599,6 +1611,15 @@
   <a href="#castellated-edge" class="md-nav__link">
     <span class="md-ellipsis">
       Castellated Edge
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Channels
     </span>
   </a>
   
@@ -2831,7 +2852,7 @@
         <li class="md-nav__item">
   <a href="#interrupt-request" class="md-nav__link">
     <span class="md-ellipsis">
-      Interrupt ReQuest
+      Interrupt Request
     </span>
   </a>
   
@@ -3604,9 +3625,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mpremote-tool" class="md-nav__link">
+  <a href="#mpremote-run" class="md-nav__link">
     <span class="md-ellipsis">
-      mpremote Tool
+      mpremote Run
     </span>
   </a>
   
@@ -4021,6 +4042,15 @@
   <a href="#photoresistor-ldr" class="md-nav__link">
     <span class="md-ellipsis">
       Photoresistor (LDR)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#physical-computing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Physical Computing
     </span>
   </a>
   
@@ -4444,6 +4474,15 @@
   <a href="#resistor-color-code" class="md-nav__link">
     <span class="md-ellipsis">
       Resistor Color Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resolution
     </span>
   </a>
   
@@ -6419,6 +6458,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#channels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Channels
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#character-lcd-display" class="md-nav__link">
     <span class="md-ellipsis">
       Character LCD Display
@@ -7645,7 +7693,7 @@
         <li class="md-nav__item">
   <a href="#interrupt-request" class="md-nav__link">
     <span class="md-ellipsis">
-      Interrupt ReQuest
+      Interrupt Request
     </span>
   </a>
   
@@ -8418,9 +8466,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#mpremote-tool" class="md-nav__link">
+  <a href="#mpremote-run" class="md-nav__link">
     <span class="md-ellipsis">
-      mpremote Tool
+      mpremote Run
     </span>
   </a>
   
@@ -8835,6 +8883,15 @@
   <a href="#photoresistor-ldr" class="md-nav__link">
     <span class="md-ellipsis">
       Photoresistor (LDR)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#physical-computing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Physical Computing
     </span>
   </a>
   
@@ -9258,6 +9315,15 @@
   <a href="#resistor-color-code" class="md-nav__link">
     <span class="md-ellipsis">
       Resistor Color Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resolution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Resolution
     </span>
   </a>
   
@@ -10735,6 +10801,9 @@ see the <a href="#mpremote">mpremote</a> tool for the current best practice.</p>
 <p>The word "Castellated" means having grooves or slots on an edge and is derived from the turrets of a castle.</p>
 <p>The Raspberry Pi Pico uses castellated edges so that it can be used with headers on a breadboard
 or soldered directly to a PC board.  This is the most flexible way to manufacturing boards today.</p>
+<h4 id="channels">Channels</h4>
+<p>Channels refers to the number of separate analog input signals an analog-to-digital converter (ADC) can accept and convert independently. Each channel is connected to a different pin on the microcontroller.</p>
+<p><strong>Example:</strong> The Raspberry Pi Pico's built-in ADC has three user-accessible channels on pins GP26, GP27, and GP28, so you can read three different analog sensors at the same time.</p>
 <h4 id="character-lcd-display">Character LCD Display</h4>
 <p>A character LCD (liquid crystal display) shows text characters on a grid of fixed-size cells. Common sizes are 16 characters wide by 2 rows (16×2) or 20×4.</p>
 <p><strong>Example:</strong> A 16×2 LCD can display two short sentences like "Temp: 23 C" on line one and "Humidity: 55%" on line two.</p>
@@ -11192,7 +11261,7 @@ or soldered directly to a PC board.  This is the most flexible way to manufactur
 <h4 id="interrupt-handler">Interrupt Handler</h4>
 <p>An interrupt handler (also called an interrupt service routine or ISR) is a function that runs automatically when a specific hardware event occurs, such as a pin changing state or a timer firing.</p>
 <p><strong>Example:</strong> <code>def button_pressed(pin): count += 1</code> is a simple interrupt handler that increments a counter each time a button is pressed.</p>
-<h4 id="interrupt-request">Interrupt ReQuest</h4>
+<h4 id="interrupt-request">Interrupt Request</h4>
 <p>A hardware signal that interrupts the normal flow of program execution to handle a high-priority event. </p>
 <p>When an Interrupt ReQuest (IRQ) occurs, the microcontroller saves its current state, handles the interrupt event through an Interrupt Service Routine (ISR), and then returns to its previous task. In MicroPython, IRQs are used with Pin objects using the <code>irq()</code> method to handle events like button presses or sensor triggers.  The <code>irq()</code> method binds an event on a device like a button to a specific MicroPython function.</p>
 <p>See the <a href="../../basics/03-button/">Button Lab</a> for an full example of how IRQs are used to
@@ -11220,7 +11289,7 @@ respond to a button press.</p>
 <h4 id="interrupts">Interrupts</h4>
 <p>A type of signal used to pause a program and execute a different program. </p>
 <p>We use interrupts to pause our program and execute a different program when a
-button is pressed.  Interrupts are also known as <a href="#interrup-request">IRQs</a> Interrupt ReQuest</p>
+button is pressed.  Interrupts are also known as <a href="#interrupt-request">IRQs</a> Interrupt ReQuest</p>
 <h4 id="ip-address">IP Address</h4>
 <p>An IP (Internet Protocol) address is a unique number assigned to each device on a network. It has four numbers separated by dots, like <code>192.168.1.42</code>. It tells the network where to send data.</p>
 <p><strong>Example:</strong> After connecting to Wi-Fi, <code>print(wlan.ifconfig())</code> shows the Pico W's assigned IP address.</p>
@@ -11479,8 +11548,9 @@ many similar items such as NeoPixels.  They are also used to continuously monito
 <h4 id="mpremote-file-commands">mpremote File Commands</h4>
 <p>mpremote file commands are a set of command-line instructions in the <code>mpremote</code> tool that let you copy, list, delete, and manage files on a MicroPython device from your computer.</p>
 <p><strong>Example:</strong> <code>mpremote cp main.py :main.py</code> copies <code>main.py</code> from your computer to the root of the Pico's file system.</p>
-<h4 id="mpremote-tool">mpremote Tool</h4>
-<p>The <code>mpremote</code> tool is a command-line program from the MicroPython project for connecting to and managing MicroPython devices. It can run scripts, transfer files, and open a REPL session.</p>
+<h4 id="mpremote-run">mpremote Run</h4>
+<p>The <code>mpremote</code> Run is command-line program from the MicroPython project for running MicroPython devices directly
+from the host terminal shell. It allows you to execute MicroPython program from within any shell script.</p>
 <p><strong>Example:</strong> <code>mpremote run blink.py</code> runs <code>blink.py</code> on the connected Pico without saving it permanently.</p>
 <h4 id="mpu6050-accelerometergyroscope">MPU6050 Accelerometer/Gyroscope</h4>
 <p>The MPU6050 is a popular IMU chip that combines a 3-axis accelerometer and a 3-axis gyroscope in one package. It communicates over I2C at address 0x68 or 0x69.</p>
@@ -11622,6 +11692,9 @@ many similar items such as NeoPixels.  They are also used to continuously monito
 <h4 id="photoresistor-ldr">Photoresistor (LDR)</h4>
 <p>A photoresistor (also called an LDR, Light-Dependent Resistor) is a component whose electrical resistance decreases when exposed to light. It is used in voltage dividers to produce an analog voltage that represents brightness.</p>
 <p><strong>Example:</strong> In bright sunlight, an LDR's resistance might drop to 1 kΩ; in a dark room it might rise to 1 MΩ.</p>
+<h4 id="physical-computing">Physical Computing</h4>
+<p>The area of computer science where a program reads sensors and controls things in the real world, like lights, motors, and speakers.</p>
+<p>In physical computing, a microcontroller such as the Raspberry Pi Pico is the bridge between your code and the physical world. It reads input from sensors, such as a button or a temperature sensor, and sends output to devices, such as an LED or a motor. This is different from regular programs that only work with information on a screen.</p>
 <h4 id="pico-pinout-diagram">Pico Pinout Diagram</h4>
 <p>The Pico pinout diagram shows you the ways that each Pin can be used.  Different colors are used for GPIO numbers, I2C, and SPI interfaces.</p>
 <p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../img/pi-pico-pinout.png" data-desc-position="bottom"><img alt="" src="../../img/pi-pico-pinout.png"></a></p>
@@ -11763,6 +11836,9 @@ many similar items such as NeoPixels.  They are also used to continuously monito
 <h4 id="resistor-color-code">Resistor Color Code</h4>
 <p>The resistor color code is a system of colored bands painted on a resistor that indicate its resistance value. Each color represents a digit or multiplier, and a gold or silver band shows the tolerance.</p>
 <p><strong>Example:</strong> A resistor with bands orange-orange-brown-gold has a value of 330 Ω ± 5%.</p>
+<h4 id="resolution">Resolution</h4>
+<p>Resolution is the number of bits an analog-to-digital converter (ADC) uses to represent a measured voltage as a digital number. More bits give finer steps and more precise readings.</p>
+<p><strong>Example:</strong> The Raspberry Pi Pico's ADC has 16-bit resolution, producing values from 0 to 65,535 — so a 1.65 V input on a 3.3 V reference reads approximately 32,768.</p>
 <h4 id="rest-api-basics">REST API Basics</h4>
 <p>A REST API (Representational State Transfer Application Programming Interface) is a standard way for programs to request data from web servers using HTTP requests. The server responds with data, usually in JSON format.</p>
 <p><strong>Example:</strong> Sending an HTTP GET request to <code>https://api.openweathermap.org/...</code> is using a REST API to fetch weather data.</p>

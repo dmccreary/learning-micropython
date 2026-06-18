@@ -484,3 +484,4 @@ ConceptID,ConceptLabel,Dependencies,TaxonomyID
 483,Git Basics,482,APP
 484,README Documentation,482|7,APP
 485,Project Demonstration,474|476|481,APP
+486,mip Package Manager,38|31,UENV

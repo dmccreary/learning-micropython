@@ -1781,6 +1781,10 @@
         
       
         
+          
+        
+      
+        
       
         
       
@@ -2153,6 +2157,14 @@
       
         
           
+        
+      
+        
+      
+        
+      
+        
+      
         
       
         
@@ -2619,6 +2631,93 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#managing-files-with-mpremote" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managing Files with mpremote
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Managing Files with mpremote">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finding-your-picos-port" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding Your Pico's Port
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-colon-rule-pico-vs-your-computer" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Colon Rule — Pico vs. Your Computer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#listing-files-on-the-pico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Listing Files on the Pico
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copying-files-to-the-pico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copying Files to the Pico
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-a-script-without-saving-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running a Script Without Saving It
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading-drivers-into-the-lib-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading Drivers into the /lib Folder
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loading-all-drivers-for-a-hardware-kit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading All Drivers for a Hardware Kit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-packages-with-mip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing Packages with mip
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#bootpy-and-mainpy-startup-files" class="md-nav__link">
     <span class="md-ellipsis">
       boot.py and main.py — Startup Files
@@ -2903,6 +3002,154 @@ rshell<span class="w"> </span>ls<span class="w"> </span>/pyboard
 <td>rshell</td>
 <td>Shell-like commands</td>
 <td>Scripted deployments</td>
+</tr>
+</tbody>
+</table>
+<h2 id="managing-files-with-mpremote">Managing Files with mpremote</h2>
+<p><strong>mpremote</strong> is MicroPython's official command-line tool for working with your Pico from a terminal. It lets you list files, copy programs, create folders, and run quick tests — all without opening Thonny. As your projects grow, mpremote becomes one of your fastest and most useful tools.</p>
+<p>Install mpremote once on your computer by opening a terminal and typing:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>mpremote<span class="w">   </span><span class="c1"># install from the Python package registry</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="finding-your-picos-port">Finding Your Pico's Port</h3>
+<p>When you run an mpremote command, it automatically scans your USB ports and connects to the first MicroPython device it finds. You do not need to know the port name — mpremote finds the Pico by its USB ID.</p>
+<p>If you want to see which port your Pico is using, run:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>mpremote<span class="w"> </span>connect<span class="w"> </span>list<span class="w">   </span><span class="c1"># show all connected MicroPython devices and their port names</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>You will see output like this:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>/dev/tty.usbmodem101  2e8a:0005  MicroPython Board in FS mode   # Mac
+/dev/ttyACM0          2e8a:0005  MicroPython Board in FS mode   # Linux
+COM3                  2e8a:0005  MicroPython Board in FS mode   # Windows
+</code></pre></div></td></tr></tbody></table></div>
+<p>If you have more than one Pico plugged in at the same time, auto-detection picks the first one it finds. To target a specific board, add <code>connect</code> and the port name before your command:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>mpremote<span class="w"> </span>connect<span class="w"> </span>/dev/tty.usbmodem101<span class="w"> </span>ls<span class="w">   </span><span class="c1"># Mac — connect to a specific port</span>
+mpremote<span class="w"> </span>connect<span class="w"> </span>/dev/ttyACM0<span class="w"> </span>ls<span class="w">           </span><span class="c1"># Linux</span>
+mpremote<span class="w"> </span>connect<span class="w"> </span>COM3<span class="w"> </span>ls<span class="w">                   </span><span class="c1"># Windows</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>For most students with a single Pico, auto-detection works every time and you never need to type the port name.</p>
+<h3 id="the-colon-rule-pico-vs-your-computer">The Colon Rule — Pico vs. Your Computer</h3>
+<p>mpremote uses one simple rule to tell the two sides apart: any path that starts with a <strong>colon</strong> (<code>:</code>) points to the <strong>Pico</strong>. A path without a colon is on <strong>your computer</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>Where it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>main.py</code></td>
+<td>your computer</td>
+</tr>
+<tr>
+<td><code>:main.py</code></td>
+<td>the Pico</td>
+</tr>
+<tr>
+<td><code>:lib/ssd1306.py</code></td>
+<td>the Pico, inside the <code>/lib</code> folder</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Monty's Tip</p>
+<p><img alt="Monty giving a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png">
+The colon is easy to forget! If mpremote says "file not found" when you know the file is there, check your colons. No colon = your computer; colon = the Pico.</p>
+</div>
+<h3 id="listing-files-on-the-pico">Listing Files on the Pico</h3>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>mpremote<span class="w"> </span>ls<span class="w">           </span><span class="c1"># list all files in the Pico root folder</span>
+mpremote<span class="w"> </span>ls<span class="w"> </span>:lib<span class="w">      </span><span class="c1"># list files inside the /lib folder</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="copying-files-to-the-pico">Copying Files to the Pico</h3>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Copy a program file from your computer to the Pico</span>
+mpremote<span class="w"> </span>cp<span class="w"> </span>my_program.py<span class="w"> </span>:my_program.py
+</code></pre></div></td></tr></tbody></table></div>
+<p>You can also copy the other way — from the Pico back to your computer. Just reverse the colon:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Back up main.py from the Pico to your computer</span>
+mpremote<span class="w"> </span>cp<span class="w"> </span>:main.py<span class="w"> </span>my_backup.py
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="running-a-script-without-saving-it">Running a Script Without Saving It</h3>
+<p>Use <code>mpremote run</code> to send a script to the Pico and run it right away, without saving it to flash memory. This is great for quick tests:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>mpremote<span class="w"> </span>run<span class="w"> </span>test_led.py<span class="w">   </span><span class="c1"># run on the Pico but do not save to flash</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="loading-drivers-into-the-lib-folder">Loading Drivers into the /lib Folder</h3>
+<p>MicroPython searches the <code>/lib</code> folder for driver libraries. When your code says <code>from ssd1306 import SSD1306_I2C</code>, MicroPython looks for <code>/lib/ssd1306.py</code> on the Pico. You must create the <code>/lib</code> folder before you can copy drivers into it:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>mpremote<span class="w"> </span>mkdir<span class="w"> </span>:lib<span class="w">                        </span><span class="c1"># create the /lib folder on the Pico</span>
+mpremote<span class="w"> </span>cp<span class="w"> </span>ssd1306.py<span class="w"> </span>:lib/ssd1306.py<span class="w">    </span><span class="c1"># copy the OLED display driver into /lib</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>After copying, your program can import the driver by name:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>   <span class="c1"># works because /lib/ssd1306.py is now on the Pico</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="loading-all-drivers-for-a-hardware-kit">Loading All Drivers for a Hardware Kit</h3>
+<p>When you set up a new kit, you often need to load several drivers at once. Run each command in order:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Load all drivers for a kit that uses an OLED display, encoder, and distance sensor</span>
+mpremote<span class="w"> </span>mkdir<span class="w"> </span>:lib<span class="w">                                  </span><span class="c1"># create /lib (safe to run even if it already exists)</span>
+mpremote<span class="w"> </span>cp<span class="w"> </span>drivers/ssd1306.py<span class="w"> </span>:lib/ssd1306.py<span class="w">      </span><span class="c1"># OLED display driver</span>
+mpremote<span class="w"> </span>cp<span class="w"> </span>drivers/rotary.py<span class="w">  </span>:lib/rotary.py<span class="w">       </span><span class="c1"># rotary encoder driver</span>
+mpremote<span class="w"> </span>cp<span class="w"> </span>drivers/hcsr04.py<span class="w">  </span>:lib/hcsr04.py<span class="w">       </span><span class="c1"># HC-SR04 distance sensor driver</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>You only need to do this once per Pico. The <code>/lib</code> folder and its drivers stay in flash memory even after you unplug the power.</p>
+<h3 id="installing-packages-with-mip">Installing Packages with mip</h3>
+<p>MicroPython 1.19 added <strong>mip</strong>, the built-in package installer. mpremote downloads the package from the internet through your computer and copies it straight to the Pico — so the Pico itself does not need a Wi-Fi connection.</p>
+<p>The two packages you will use most in this course are <code>umqtt.simple</code> for sending data over the internet and <code>ntptime</code> for setting the clock on a Pico W:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>mpremote<span class="w"> </span>mip<span class="w"> </span>install<span class="w"> </span>umqtt.simple<span class="w">   </span><span class="c1"># MQTT messaging library — used in the wireless chapter</span>
+mpremote<span class="w"> </span>mip<span class="w"> </span>install<span class="w"> </span>ntptime<span class="w">        </span><span class="c1"># sync the Pico W clock over Wi-Fi</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>Other useful packages from the MicroPython library:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>mpremote<span class="w"> </span>mip<span class="w"> </span>install<span class="w"> </span>urllib.urequest<span class="w">   </span><span class="c1"># send HTTP GET and POST requests</span>
+mpremote<span class="w"> </span>mip<span class="w"> </span>install<span class="w"> </span>aioble<span class="w">            </span><span class="c1"># Bluetooth Low Energy support</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>Most hardware drivers in this course — such as <code>ssd1306.py</code> for OLED displays and <code>hcsr04.py</code> for distance sensors — are plain <code>.py</code> files that you copy with <code>mpremote cp</code>, not packages you install with <code>mip</code>. Use <code>mip</code> when a project needs a networking or protocol library that does not come built in to MicroPython.</p>
+<p>To see all available packages, browse the MicroPython package library at <a href="https://github.com/micropython/micropython-lib">github.com/micropython/micropython-lib</a>.</p>
+<p>The table below summarizes the most common mpremote commands:</p>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mpremote ls</code></td>
+<td>List files in the Pico root folder</td>
+</tr>
+<tr>
+<td><code>mpremote ls :lib</code></td>
+<td>List files inside <code>/lib</code></td>
+</tr>
+<tr>
+<td><code>mpremote cp file.py :file.py</code></td>
+<td>Copy a file from your computer to the Pico</td>
+</tr>
+<tr>
+<td><code>mpremote cp :file.py backup.py</code></td>
+<td>Copy a file from the Pico to your computer</td>
+</tr>
+<tr>
+<td><code>mpremote run test.py</code></td>
+<td>Run a script on the Pico without saving it</td>
+</tr>
+<tr>
+<td><code>mpremote mkdir :lib</code></td>
+<td>Create the <code>/lib</code> folder on the Pico</td>
+</tr>
+<tr>
+<td><code>mpremote mip install name</code></td>
+<td>Download and install a package</td>
 </tr>
 </tbody>
 </table>

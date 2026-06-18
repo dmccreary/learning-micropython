@@ -555,6 +555,10 @@
         
       
         
+          
+        
+      
+        
       
         
       
@@ -1710,6 +1714,14 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -2340,6 +2352,12 @@ with numbered circular markers and callout labels.</p>
 <span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div></td></tr></tbody></table></div>
+<p>The top-level <strong><code>title</code></strong> is <strong>not rendered as a visible heading</strong> by the grid
+engine (<code>grid-diagram.js</code>) — it is used only as the image <code>alt</code> text and in the
+edit-mode JSON export. The visible poster title is the one printed in the image,
+so keep <code>title</code> here for accessibility but never repeat it as a <code># Title</code> H1 in
+<code>index.md</code> (that was the original duplicate-title bug — see
+<a href="#display-guidelines">Display Guidelines</a>).</p>
 <p>Zone coordinates (<code>x1, y1, x2, y2</code>) are percentages of the image dimensions.
 Use <code>main.html?edit=true</code> to drag corner handles and calibrate against the real image.</p>
 <p>Optional top-level flag <strong><code>"showLabels": true</code></strong> renders a small label chip at the
@@ -2371,8 +2389,7 @@ overlap them. Only enable it for an image that has no built-in titles.</p>
 <span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code>---
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code>---
 title: Poster Title
 description: One-sentence summary for SEO and social previews (no colons).
 image: /posters/poster-slug/poster-image.png
@@ -2383,7 +2400,6 @@ social:
 hide:
 <span class="gu">    toc</span>
 <span class="gu">---</span>
-<span class="gh"># Poster Title</span>
 
 Audience: ...
 Chapter: N — Chapter Name
@@ -2461,6 +2477,10 @@ the site — so keep inline styles off the iframe.
 - <code>height="800"</code> is <strong>only a pre-JS fallback</strong>; the listener overrides it on load.</p>
 </li>
 </ul>
+<p><strong>Page title</strong> — the infographic image already prints the poster title across the
+top, so the <code>index.md</code> body <strong>omits the <code># Title</code> H1</strong> to avoid showing it twice.
+The title still lives in the frontmatter <code>title:</code> (page <code>&lt;title&gt;</code>, nav label, and
+social cards) and in <code>data.json</code> <code>title</code> (image <code>alt</code> text + edit-mode export).</p>
 <p><strong>Column titles</strong> — leave <code>"showLabels": false</code> (the default) whenever the image
 already prints its column titles, so the hover chip never overlaps them.</p>
 <p><strong>Controls placement</strong> — the Explore / Quiz Me buttons sit <strong>below</strong> the image, so
