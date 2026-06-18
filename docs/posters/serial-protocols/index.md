@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# Specialized Serial Protocols: UART · 1-Wire · I2S
 
 Audience: students choosing a communication protocol for sensors and peripherals.
 Chapter: 8 — Communication Protocols

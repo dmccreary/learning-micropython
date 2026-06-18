@@ -30,9 +30,9 @@ Use Blooms 2001 taxonomy to help stratify concepts.
 
 ## Prompt Engineering
 
-* [Concept Enumeration](concept-enumeration.md)
-* [Concept Dependency](concept-dependency.md)
-* [Concept Taxonomy](concept-taxonomy.md)
+* Concept Enumeration
+* Concept Dependency
+* Concept Taxonomy
 
 ## Demo Graphs
 

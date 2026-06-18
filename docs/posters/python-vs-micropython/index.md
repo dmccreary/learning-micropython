@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# Python vs. MicroPython
 
 Audience: students transitioning from desktop Python to embedded MicroPython.
 Chapter: 1 — Python Basics / Chapter 3 — MicroPython Environment

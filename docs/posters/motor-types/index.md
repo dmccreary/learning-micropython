@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# Motor Types Compared
 
 Audience: students selecting motors for robotics and automation projects.
 Chapter: 12 — Motors, Servos & Steppers

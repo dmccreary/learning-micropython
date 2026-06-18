@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# Temperature Sensors
 
 Audience: students measuring temperature and humidity in their MicroPython projects.
 Chapter: 09 — Temperature & Distance Sensors

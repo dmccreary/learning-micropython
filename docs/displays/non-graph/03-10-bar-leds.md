@@ -3,7 +3,7 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/SooCyURMsPE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
-![](../img/led-bar-graph-10-segments.png)
+![](../../img/led-bar-graph-10-segments.png)
 
 ## Goals for the Lesson
 
@@ -13,13 +13,13 @@
 
 ## Circuit
 
-![](../img/led-10-segment-package-circuit.png)
+![](../../img/led-10-segment-package-circuit.png)
 
 The LEDs come in a dual-in-line package with each of the LEDs connected by the pins aligned across the package.
 
 In the circuit below, I connected the positive (anode) of each LED to a GPIO pin and the negative (cathode) through a 330-ohm resistor to the GND rail of the solderless breadboard.
 
-![](../img/led-10-segment-circuit.png)
+![](../../img/led-10-segment-circuit.png)
 
 Note!  You **MUST** use a current limiting resistor or you will burn out the LED.
 

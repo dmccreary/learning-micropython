@@ -66,7 +66,7 @@ There are literally hundreds of sensors that have Grove connectors on them.  In 
 
 ### Part 4: Collision Avoidance Robot
 
-1. [**Collision Avoidance Robot**](20-collision-avoidance-robot.md) - this lab joins our motor and sensor labs with a SmartCar chassis to create a robot that avoids collisions.
+1. [**Collision Avoidance Robot**](../maker-pi-rp2040-robot/20-collision-avoidance-robot.md) - this lab joins our motor and sensor labs with a SmartCar chassis to create a robot that avoids collisions.
 2. Collision Robot with Modes - TBD
 3. Adjustable Collision Avoidance - the adjusta bot! TBD
 4. Adding a display

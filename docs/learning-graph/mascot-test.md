@@ -6,7 +6,7 @@ description: Rendering test for all seven Monty mascot admonition styles. Verifi
 # Mascot Style Guide
 
 This page tests all seven **Monty** admonition styles defined in
-[`docs/css/mascot.css`](../../css/mascot.css).
+[`docs/css/mascot.css`](../css/mascot.css).
 
 Each box below shows the admonition type, its color theme, the correct image
 float, and the text wrapping to the right of the image.  If an image is
@@ -23,7 +23,7 @@ the seven PNG files with transparent backgrounds.
 ## 1 · Welcome — chapter openings
 
 !!! mascot-welcome "Welcome to This Chapter"
-    ![Monty waves hello](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    ![Monty waves hello](../img/mascot/welcome.png){ class="mascot-admonition-img" }
     Hi there, coder! I'm **Monty**, your Python snake guide for this course.
     The welcome admonition opens every chapter with an encouraging preview of
     what's coming. The title bar is **emerald green** (`#2e7d32`).
@@ -33,7 +33,7 @@ the seven PNG files with transparent backgrounds.
 ## 2 · Thinking — key concepts and insights
 
 !!! mascot-thinking "Key Idea"
-    ![Monty thinking](../../img/mascot/thinking.png){ class="mascot-admonition-img" }
+    ![Monty thinking](../img/mascot/thinking.png){ class="mascot-admonition-img" }
     The thinking admonition highlights important concepts and "aha" moments.
     Use it when you want students to pause and make sure an idea has landed
     before moving on. Title bar is **warm brown** (`#5d4037`).
@@ -43,7 +43,7 @@ the seven PNG files with transparent backgrounds.
 ## 3 · Tip — hints and helpful guidance
 
 !!! mascot-tip "Monty's Tip"
-    ![Monty giving a tip](../../img/mascot/tip.png){ class="mascot-admonition-img" }
+    ![Monty giving a tip](../img/mascot/tip.png){ class="mascot-admonition-img" }
     The tip admonition shares practical shortcuts that experienced makers use
     but nobody writes down. Use it sparingly — zero to two per chapter.
     Title bar is **teal** (`#00838f`).
@@ -53,7 +53,7 @@ the seven PNG files with transparent backgrounds.
 ## 4 · Warning — common mistakes and pitfalls
 
 !!! mascot-warning "Watch Out!"
-    ![Monty warning](../../img/mascot/warning.png){ class="mascot-admonition-img" }
+    ![Monty warning](../img/mascot/warning.png){ class="mascot-admonition-img" }
     The warning admonition flags the exact place where students commonly get
     tripped up. Always end the body with the specific mistake **and** how to
     avoid it. Title bar is **red** (`#c62828`).
@@ -63,7 +63,7 @@ the seven PNG files with transparent backgrounds.
 ## 5 · Encourage — difficult sections
 
 !!! mascot-encourage "You Can Do This!"
-    ![Monty encouraging](../../img/mascot/encouraging.png){ class="mascot-admonition-img" }
+    ![Monty encouraging](../img/mascot/encouraging.png){ class="mascot-admonition-img" }
     The encourage admonition appears before or during content that students
     often find hard. Normalise struggle: "This part is tricky for everyone —
     that's completely normal." Title bar is **blue** (`#0277bd`).
@@ -73,7 +73,7 @@ the seven PNG files with transparent backgrounds.
 ## 6 · Celebration — end of chapter / achievements
 
 !!! mascot-celebration "Great Work, Maker!"
-    ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    ![Monty celebrating](../img/mascot/celebration.png){ class="mascot-admonition-img" }
     The celebration admonition closes every chapter. It uses a **dark purple
     body** (`#311b4f`) so that pale confetti sparkles on Monty's celebration
     pose remain visible. Always end with a call-forward to the next chapter.
@@ -83,7 +83,7 @@ the seven PNG files with transparent backgrounds.
 ## 7 · Neutral — general sidebars and notes
 
 !!! mascot-neutral "A Note from Monty"
-    ![Monty neutral pose](../../img/mascot/neutral.png){ class="mascot-admonition-img" }
+    ![Monty neutral pose](../img/mascot/neutral.png){ class="mascot-admonition-img" }
     The neutral admonition is the catch-all for content that doesn't call for
     a specific emotional tone — administrative notes, asides, or introductions.
     Use it at most once per chapter. Title bar is **slate gray** (`#546e7a`).
@@ -109,7 +109,7 @@ Borders should not appear on the live site — they are toggled by the inline
 <div class="debug-border" markdown="1">
 
 !!! mascot-welcome "Welcome — border diagnostic"
-    ![Monty waves hello](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    ![Monty waves hello](../img/mascot/welcome.png){ class="mascot-admonition-img" }
     The dashed orange outline shows the exact bounding box of the image element.
     It should be a `90 × 90 px` square (or whatever `--mascot-size` is set to
     in `:root`). If the image appears much smaller than the box, run the trim
@@ -117,7 +117,7 @@ Borders should not appear on the live site — they are toggled by the inline
     `python $BK_HOME/src/image-utils/trim-padding-from-image.py docs/img/mascot/welcome.png`
 
 !!! mascot-tip "Tip — border diagnostic"
-    ![Monty giving a tip](../../img/mascot/tip.png){ class="mascot-admonition-img" }
+    ![Monty giving a tip](../img/mascot/tip.png){ class="mascot-admonition-img" }
     The orange outline here lets you verify the `margin: 0 0.6em 0.2em 0`
     spacing between the image and the body text. The right margin creates the
     gap; the bottom margin ensures the image clears neatly above any wrapped

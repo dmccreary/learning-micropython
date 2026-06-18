@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# Sound Output Methods Compared
 
 Audience: students adding audio feedback or music to their MicroPython projects.
 Chapter: 18 — Sound, Music & Audio

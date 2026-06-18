@@ -106,6 +106,13 @@ Suited for: `gpio-functions` (row zones), `digital-vs-analog`, `communication-pr
 }
 ```
 
+The top-level **`title`** is **not rendered as a visible heading** by the grid
+engine (`grid-diagram.js`) — it is used only as the image `alt` text and in the
+edit-mode JSON export. The visible poster title is the one printed in the image,
+so keep `title` here for accessibility but never repeat it as a `# Title` H1 in
+`index.md` (that was the original duplicate-title bug — see
+[Display Guidelines](#display-guidelines)).
+
 Zone coordinates (`x1, y1, x2, y2`) are percentages of the image dimensions.
 Use `main.html?edit=true` to drag corner handles and calibrate against the real image.
 
@@ -128,7 +135,6 @@ social:
 hide:
     toc
 ---
-# Poster Title
 
 Audience: ...
 Chapter: N — Chapter Name
@@ -207,6 +213,11 @@ These rules apply to **every** poster — keep them consistent across all 24.
     override this shared rule and make that poster look different from the rest of
     the site — so keep inline styles off the iframe.
 - `height="800"` is **only a pre-JS fallback**; the listener overrides it on load.
+
+**Page title** — the infographic image already prints the poster title across the
+top, so the `index.md` body **omits the `# Title` H1** to avoid showing it twice.
+The title still lives in the frontmatter `title:` (page `<title>`, nav label, and
+social cards) and in `data.json` `title` (image `alt` text + edit-mode export).
 
 **Column titles** — leave `"showLabels": false` (the default) whenever the image
 already prints its column titles, so the hover chip never overlaps them.

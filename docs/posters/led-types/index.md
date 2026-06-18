@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# LED Types Compared
 
 Audience: students adding lights and visual feedback to their projects.
 Chapter: 14 — NeoPixels & Displays

@@ -2027,6 +2027,12 @@ A photoresistor (also called an LDR, Light-Dependent Resistor) is a component wh
 
 **Example:** In bright sunlight, an LDR's resistance might drop to 1 kΩ; in a dark room it might rise to 1 MΩ.
 
+#### Physical Computing
+
+The area of computer science where a program reads sensors and controls things in the real world, like lights, motors, and speakers.
+
+In physical computing, a microcontroller such as the Raspberry Pi Pico is the bridge between your code and the physical world. It reads input from sensors, such as a button or a temperature sensor, and sends output to devices, such as an LED or a motor. This is different from regular programs that only work with information on a screen.
+
 #### Pico Pinout Diagram
 
 The Pico pinout diagram shows you the ways that each Pin can be used.  Different colors are used for GPIO numbers, I2C, and SPI interfaces.

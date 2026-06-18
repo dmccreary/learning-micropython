@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# IoT Architecture Layers
 
 Audience: students building their first connected IoT project.
 Chapter: 19 — Wireless & IoT

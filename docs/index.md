@@ -72,9 +72,9 @@ This part will help you get started programming MicroPython on your microcontrol
 
 ### Section 3: Basic Examples
 
-These ten lessons are the foundations for learning [MicroPython](misc/glossary#micropython).  They include learning how to blink one or more LEDs, monitor for button presses, fade LEDs in and out using PWM signals, read analog values from potentiometers, read light sensors, turn motors and servos and display rainbow patterns on a NeoPixel strip.  Many other labs are variations of these 10 labs.
+These ten lessons are the foundations for learning [MicroPython](misc/glossary.md#micropython).  They include learning how to blink one or more LEDs, monitor for button presses, fade LEDs in and out using PWM signals, read analog values from potentiometers, read light sensors, turn motors and servos and display rainbow patterns on a NeoPixel strip.  Many other labs are variations of these 10 labs.
 
-[Introduction to Basic MicroPython Examples](intro/01-intro.md)
+[Introduction to Basic MicroPython Examples](basics/index.md)
 
 ### Section 4: Sensors
 
@@ -88,27 +88,27 @@ This is our student's favorite part of this site!  Once you can make a motor go 
 
 [Introduction to Motors and Robots with MicroPython](motors/01-intro.md)
 
-Note that we have many other advanced labs that use our $11 [Cytron Maker Pi RP2040 Kits](kits/maker-pi-rp2040-robot/01-intro.md).  These incredible boards have everything integrated to build robots with lights and sounds.
+Note that we have many other advanced labs that use our $11 [Cytron Maker Pi RP2040 Kits](kits/maker-pi-rp2040-robot/index.md).  These incredible boards have everything integrated to build robots with lights and sounds.
 
 ### Section 6: Displays
 
 This section shows you how to use many different types of displays, from simple 7-segment digital displays to complex OLED graphic displays.  On the old 2K Arduino controllers these graphics labs used to be hard, but now we have 264K of RAM on the Raspberry Pi RP2040 microcontrollers.  Now these labs are easy!
 
-* [Simple Character Displays](displays/01-intro.md)
-* [Graphical Displays](oled/01-intro.md)
+* [Simple Character Displays](displays/non-graph/01-intro.md)
+* [Graphical Displays](displays/graph/01-intro.md)
 
 ### Section 7: Sound and Music
 
 Having powerful microcontrollers allows us to generate complex sounds, play tones and even playback recoded sound effects.
 
-[Introduction to Sound and Music with MicroPython](sound/01-intro.md)
+[Introduction to Sound and Music with MicroPython](sound/index.md)
 
 ### Section 8: Advanced Labs
 
 We have now covered all the things you need to build hundreds of projects.  This section contains deeper dives into other topics
-such as how to use the MicroPython Remote ```pmremote`````` tools to automate the loading of software onto your microcontroller.
+such as how to use the MicroPython Remote `mpremote` tools to automate the loading of software onto your microcontroller.
 
-[Advanced Topics](advanced-labs/01-intro.md)
+[Advanced Topics](advanced-labs/index.md)
 
 ### Section 9: Kits
 
@@ -145,7 +145,6 @@ Each chapter includes detailed annotated references.  We also have a list of gen
 
 [Micropython References](misc/references.md) - links to other useful sites.
 
-If you have suggestions for additional references projects, please [let us know](mailto:info@codesavvy.org)!
 
 ### Contact
 [Contact](misc/contact.md)

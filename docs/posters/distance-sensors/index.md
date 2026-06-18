@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# Distance Sensors
 
 Audience: students adding distance and proximity sensing to their MicroPython projects.
 Chapter: 09 — Temperature & Distance Sensors

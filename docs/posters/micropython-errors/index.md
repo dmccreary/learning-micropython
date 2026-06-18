@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# Common MicroPython Errors
 
 Audience: students debugging their first programs on a Raspberry Pi Pico.
 Chapter: 21 — File Systems & Debugging

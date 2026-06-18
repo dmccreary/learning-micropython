@@ -57,7 +57,6 @@ class GridDiagramSim {
       return;
     }
 
-    this._injectTitle();
     this._buildImageWrapper();
 
     // Wait for image to load so dimensions are valid
@@ -85,14 +84,6 @@ class GridDiagramSim {
   }
 
   // ── DOM Construction ──────────────────────────────────────────────────────
-
-  _injectTitle() {
-    if (!this.data.title) return;
-    const h1 = document.createElement('h1');
-    h1.className   = 'grid-title';
-    h1.textContent = this.data.title;
-    document.body.insertBefore(h1, document.body.firstChild);
-  }
 
   _buildImageWrapper() {
     const wrapper = document.getElementById('image-wrapper');

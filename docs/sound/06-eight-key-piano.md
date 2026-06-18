@@ -14,7 +14,7 @@ To create this project, you will need the following parts:
 
 ![Eight Key Piano](../img/eight-key-piano.jpg)
 
-Each "key" is a momentary press button that is wired up between a GPIO pin and the +3.3 volt rail on the breadboard connected to [3V3(OUT) pin](../getting-started/02-pi-pico/#pico-pinout).  We do not need to use any resistors to pull the signals low since we configure the pins to be inputs with the PULL_DOWN resistor like this:
+Each "key" is a momentary press button that is wired up between a GPIO pin and the +3.3 volt rail on the breadboard connected to [3V3(OUT) pin](../getting-started/02-pi-pico.md#pico-pinout).  We do not need to use any resistors to pull the signals low since we configure the pins to be inputs with the PULL_DOWN resistor like this:
 
 ```py
 button_pin_1 = machine.Pin(10, machine.Pin.IN, machine.Pin.PULL_DOWN)

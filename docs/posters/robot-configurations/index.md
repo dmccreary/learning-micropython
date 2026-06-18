@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# Robot Drive Configurations
 
 Audience: students designing their first mobile robot chassis.
 Chapter: 13 — Robots & Mobile Systems

@@ -300,6 +300,7 @@ nav:
 
   - Project Kits:
     - Introduction: kits/01-intro.md
+    - RGB Color Mixer Box: kits/rgb-box/index.md
     - Pulse Width Modulation:
       - Intro: kits/pwm/index.md
       - Instructors Guide: kits/pwm/instructors-guide.md
@@ -351,7 +352,7 @@ nav:
       - Getting Started: kits/neopixel/01-getting-started.md
       - Simple Patterns: kits/neopixel/02-simple-patterns.md
       - Buttons: kits/neopixel/03-buttons.md
-      - Rotary Neopixel: projects/03-notary-neopixel.md
+      - Rotary Neopixel: kits/03-rotary-neopixel.md
     - MicroBit: kits/microbit.md
     - RFID RC522: kits/rfid-rc522/index.md
   # - Project Ideas: misc/projects.md
@@ -427,7 +428,10 @@ nav:
     - Mascot Style Guide: learning-graph/mascot-test.md
     - FAQ Quality Report: learning-graph/faq-quality-report.md
     - Quiz Generation Report: learning-graph/quiz-generation-report.md
-
+    - learning-graph/book-metrics.md
+    - learning-graph/chapter-metrics.md
+    - learning-graph/linkedin-announcement.md
+    - learning-graph/logs/learning-graph-generator-0.05-2026-06-12.md
 
   - Sample AI Prompts:
     - Introduction: prompts/index.md
@@ -452,7 +456,10 @@ nav:
 # Keep the dev-only HTML template out of the build, but DO copy the
 # shared JS/CSS assets so the interactive posters can load them at runtime.
 exclude_docs: |
+  img/cover-image-prompt.md
+  img/mascot/mascot-image-prompts.md
   posters/shared-libs/main-template.html
+  TODO.md
 
 theme:
   name: material

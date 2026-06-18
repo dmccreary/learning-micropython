@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# Motor Driver ICs Compared
 
 Audience: students wiring motors to their Raspberry Pi Pico.
 Chapter: 12 — Motors, Servos & Steppers

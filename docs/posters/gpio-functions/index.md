@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# GPIO Pin Functions on the Raspberry Pi Pico
 
 Audience: students learning what each GPIO pin can do on the RP2040.
 Chapter: 6 — Digital I/O & Interrupts

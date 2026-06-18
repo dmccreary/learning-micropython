@@ -9,16 +9,6 @@ body {
   padding: 8px;
 }
 
-/* ── Page title ─────────────────────────────────────────────────────────── */
-.grid-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: #2A2E3A;
-  margin-bottom: 10px;
-  text-align: center;
-  letter-spacing: 0.01em;
-}
-
 /* ── Controls bar ────────────────────────────────────────────────────────── */
 #controls {
   display: flex;
@@ -365,7 +355,6 @@ body {
 
 /* ── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 480px) {
-  .grid-title { font-size: 16px; }
   #panel-label { font-size: 15px; }
   #panel-facts { font-size: 12px; }
   #quiz-question { font-size: 13px; }

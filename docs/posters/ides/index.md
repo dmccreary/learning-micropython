@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# MicroPython IDEs Compared
 
 Audience: beginners choosing a coding environment for the first time.
 Chapter: 3 — MicroPython Environment

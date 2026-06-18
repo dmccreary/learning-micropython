@@ -120,6 +120,6 @@ If you are reading sensor values and want to see a nice plot of the values, you 
 
 MicroPython was originally developed by Damien George and first released in 2014.  However, MicroPython did not have a development environment that was easy for students to use.  Thonny was developed to provide an easy to use tool just for MicroPython development.  Thonny was created at the [University of Tartu Institute of Computer Science](https://www.cs.ut.ee/en) in Estonia for this purpose.  They continue to support Thonny.
 
-Several feature for Thonny were sponsored by the [Raspberry Pi Foundation](glossary#raspberry-pi-foundation) and we continue to see a close relationship between the Raspberry Pi Foundation and the Thonny development team.
+Several feature for Thonny were sponsored by the [Raspberry Pi Foundation](../misc/glossary.md#raspberry-pi-foundation) and we continue to see a close relationship between the Raspberry Pi Foundation and the Thonny development team.
 
 * [Thonny web site](https://thonny.org/)

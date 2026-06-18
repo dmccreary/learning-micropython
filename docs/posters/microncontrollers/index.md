@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# Microcontroller Boards Compared
 
 Audience: students choosing their first microcontroller board for learning MicroPython.
 Chapter: 4 — Microcontrollers & Hardware

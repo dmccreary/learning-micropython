@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# Resistor Color Code Chart
 
 Audience: beginners learning to read resistor values from color bands.
 Chapter: 5 — Electronics Fundamentals

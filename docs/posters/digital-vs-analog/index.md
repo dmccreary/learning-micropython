@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# Digital vs. Analog Signals
 
 Audience: students learning signal types before working with ADC and PWM.
 Chapter: 7 — Analog, ADC & PWM

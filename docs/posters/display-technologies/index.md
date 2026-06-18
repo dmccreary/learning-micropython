@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# Display Technologies Compared
 
 Audience: students choosing a display for their MicroPython project.
 Chapters: 15 — OLED Setup · 16 — OLED Drawing · 17 — Color & ePaper Displays

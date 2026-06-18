@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# Common Electronic Components
 
 Audience: beginners learning to identify and use fundamental components.
 Chapter: 5 — Electronics Fundamentals

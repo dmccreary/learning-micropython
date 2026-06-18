@@ -14,7 +14,7 @@ The total cost for the parts is under $10.0
 
 ## Lab 1: Hardware Configuration
 
-[Lab 1 Config File](./lab-1.md)
+Lab 1 Config File
 
 ## Lab 2: Testing the Potentiometer
 

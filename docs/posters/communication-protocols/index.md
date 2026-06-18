@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# I2C vs SPI Communication Protocols
 
 Audience: students connecting sensors, displays, and modules to a microcontroller.
 Chapter: 8 — Communication Protocols

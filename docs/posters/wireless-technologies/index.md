@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# Wireless Technologies Compared
 
 Audience: students building connected IoT projects with MicroPython.
 Chapter: 19 — Wireless & IoT

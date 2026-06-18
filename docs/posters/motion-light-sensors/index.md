@@ -9,7 +9,6 @@ social:
 hide:
     toc
 ---
-# Motion and Light Sensors
 
 Audience: students adding environmental awareness to their MicroPython projects.
 Chapter: 10 — Motion & Light Sensors

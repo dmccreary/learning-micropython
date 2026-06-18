@@ -10,7 +10,7 @@ The [Cytron Nano RP2040](https://www.cytron.io/maker-nano-rp2040-simplifying-pro
 4. 1 Piezo buzzer
 5. 2 4-wire JST-SH ports (with Grove connectors)
 
-![](../img/cytron-nano-rp2040-pinout.png)
+![](../../img/cytron-nano-rp2040-pinout.png)
 
 ## Blink Lab
 
