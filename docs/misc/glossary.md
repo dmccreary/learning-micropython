@@ -348,6 +348,12 @@ The word "Castellated" means having grooves or slots on an edge and is derived f
 The Raspberry Pi Pico uses castellated edges so that it can be used with headers on a breadboard
 or soldered directly to a PC board.  This is the most flexible way to manufacturing boards today.
 
+#### Channels
+
+Channels refers to the number of separate analog input signals an analog-to-digital converter (ADC) can accept and convert independently. Each channel is connected to a different pin on the microcontroller.
+
+**Example:** The Raspberry Pi Pico's built-in ADC has three user-accessible channels on pins GP26, GP27, and GP28, so you can read three different analog sensors at the same time.
+
 #### Character LCD Display
 
 A character LCD (liquid crystal display) shows text characters on a grid of fixed-size cells. Common sizes are 16 characters wide by 2 rows (16×2) or 20×4.
@@ -1205,7 +1211,7 @@ An interrupt handler (also called an interrupt service routine or ISR) is a func
 
 **Example:** `def button_pressed(pin): count += 1` is a simple interrupt handler that increments a counter each time a button is pressed.
 
-#### Interrupt ReQuest
+#### Interrupt Request
 
 A hardware signal that interrupts the normal flow of program execution to handle a high-priority event. 
 
@@ -1234,7 +1240,7 @@ button.irq(trigger=Pin.IRQ_FALLING, handler=button_pressed)
 A type of signal used to pause a program and execute a different program. 
 
 We use interrupts to pause our program and execute a different program when a
-button is pressed.  Interrupts are also known as [IRQs](#interrup-request) Interrupt ReQuest
+button is pressed.  Interrupts are also known as [IRQs](#interrupt-request) Interrupt ReQuest
 
 #### IP Address
 
@@ -1745,9 +1751,10 @@ mpremote file commands are a set of command-line instructions in the `mpremote` 
 
 **Example:** `mpremote cp main.py :main.py` copies `main.py` from your computer to the root of the Pico's file system.
 
-#### mpremote Tool
+#### mpremote Run
 
-The `mpremote` tool is a command-line program from the MicroPython project for connecting to and managing MicroPython devices. It can run scripts, transfer files, and open a REPL session.
+The `mpremote` Run is command-line program from the MicroPython project for running MicroPython devices directly
+from the host terminal shell. It allows you to execute MicroPython program from within any shell script.
 
 **Example:** `mpremote run blink.py` runs `blink.py` on the connected Pico without saving it permanently.
 
@@ -2308,6 +2315,12 @@ Resistance is the opposition to the flow of electric current in a circuit, measu
 The resistor color code is a system of colored bands painted on a resistor that indicate its resistance value. Each color represents a digit or multiplier, and a gold or silver band shows the tolerance.
 
 **Example:** A resistor with bands orange-orange-brown-gold has a value of 330 Ω ± 5%.
+
+#### Resolution
+
+Resolution is the number of bits an analog-to-digital converter (ADC) uses to represent a measured voltage as a digital number. More bits give finer steps and more precise readings.
+
+**Example:** The Raspberry Pi Pico's ADC has 16-bit resolution, producing values from 0 to 65,535 — so a 1.65 V input on a 3.3 V reference reads approximately 32,768.
 
 #### REST API Basics
 

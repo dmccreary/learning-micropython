@@ -22,7 +22,7 @@ Beyond programming syntax, the course is designed to teach **computational think
 ## Main Topics Covered
 
 - **Introduction to Physical Computing** — what MicroPython is, why it has become popular for microcontrollers, the history of the Raspberry Pi Pico, and how to choose and purchase microcontrollers and kits
-- **Getting Started** — setting up an IDE (Thonny), flashing the MicroPython firmware, the REPL, transferring files, and using a solderless breadboard safely
+- **Getting Started** — setting up an IDE (Thonny), flashing the MicroPython firmware, the REPL, transferring files with `mpremote`, installing packages with `mip`, and using a solderless breadboard safely
 - **MicroPython Language Basics** — variables, data types, loops, conditionals, functions, modules, and the `machine` library for hardware control
 - **Digital and Analog I/O** — controlling LEDs, reading buttons, debouncing, pulse-width modulation (PWM) for fading and brightness, and reading analog values from potentiometers and light sensors
 - **Sensors** — temperature/humidity (DHT11, BME280), distance (HC-SR04, VL53L0X time-of-flight), light, rotary encoders, accelerometers, gesture (APDS9960), and magnetic field/compass (HMC5883L) sensors using GPIO, ADC, I2C, and SPI

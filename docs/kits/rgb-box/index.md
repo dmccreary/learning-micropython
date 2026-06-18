@@ -5,7 +5,7 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/okl5uWhzmRg?si=GfIjjfPzxCO9Sn1U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 !!! mascot-welcome "Welcome, Maker!"
-    ![Monty waving welcome](../img/mascot/welcome.png){ class="mascot-admonition-img" }
+    ![Monty waving welcome](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
     In this project you will build a color-mixing box with three knobs and a strip
     of colorful lights. Turn the knobs to blend red, green, and blue into any color
     you can imagine. Let's build something amazing!
@@ -78,7 +78,7 @@ from 0 to 255, for red, green, and blue.
 - `(0, 0, 0)` = off.
 
 !!! mascot-thinking "Key Idea: Scaling Numbers"
-    ![Monty thinking](../img/mascot/thinking.png){ class="mascot-admonition-img" }
+    ![Monty thinking](../../img/mascot/thinking.png){ class="mascot-admonition-img" }
     The ADC gives us numbers from 0 to 65535, but NeoPixels need numbers from
     0 to 255. We can scale down by shifting the bits right by 8 — that divides
     the number by 256. It is a fast way to shrink the range.
@@ -126,7 +126,7 @@ from 0 to 255, for red, green, and blue.
 3. Connect the **Data In** wire on the strip to **GP0** on the Pico.
 
 !!! mascot-tip "Monty's Tip"
-    ![Monty giving a tip](../img/mascot/tip.png){ class="mascot-admonition-img" }
+    ![Monty giving a tip](../../img/mascot/tip.png){ class="mascot-admonition-img" }
     NeoPixel strips have a direction arrow printed on them. Make sure the data
     wire connects to the **Data In** end (the arrow points away from the Pico),
     not the **Data Out** end.
@@ -258,12 +258,15 @@ Try these experiments:
 
 1. **Fewer pixels** — Change `NUMBER_PIXELS` to 5. Only half the strip lights up. Can you explain why?
 2. **Pattern mode** — Instead of setting every pixel the same color, make a gradient: set the first pixel brighter and the last pixel dimmer. Hint: multiply the color by `i / NUMBER_PIXELS`.
-3. **Speed control** — Add a fourth potentiometer on GPIO 27 and use it to control `sleep()` time instead of green. Now you have a speed knob.
-4. **Save a color** — Add a button. When you press it, print the current R, G, B values and save them to a list. At the end, print all your saved colors.
+3. **Speed control** — Add two buttons and use them to control `sleep()` time. Now you have a speed knob.
+4. **Save a color** — Add a button. When you press it, print the current R, G, B values to the console
+or a display.
+5. **Add a display** - add a low-cost LCD display like [this video](https://youtu.be/3Pi7bfh5pbo?si=mhWDCSySDI2Ch_HN) which displays the values of the Red, Green and Blue potentiometers.
 
 !!! mascot-celebration "You Built a Color Mixer!"
-    ![Monty celebrating](../img/mascot/celebration.png){ class="mascot-admonition-img" }
+    ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
     You just built an interactive hardware project that reads three sensors and
     controls ten lights in real time. That is real embedded programming! Next,
     try adding a button to save your favorite colors, or explore the
-    [NeoPixel patterns lab](neopixel/02-simple-patterns.md) to add animations.
+    [NeoPixel patterns lab](../neopixel/02-simple-patterns.md) to add animations.
+

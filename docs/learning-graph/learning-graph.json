@@ -2605,6 +2605,11 @@
       "id": 485,
       "label": "Project Demonstration",
       "group": "APP"
+    },
+    {
+      "id": 486,
+      "label": "mip Package Manager",
+      "group": "UENV"
     }
   ],
   "edges": [
@@ -6259,6 +6264,14 @@
     {
       "from": 485,
       "to": 481
+    },
+    {
+      "from": 486,
+      "to": 38
+    },
+    {
+      "from": 486,
+      "to": 31
     }
   ]
 }

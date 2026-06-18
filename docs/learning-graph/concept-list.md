@@ -59,6 +59,7 @@ Total concepts: 420
 48. uos Module
 49. utime Module
 50. sys Module
+486. mip Package Manager
 
 ## Microcontrollers and Hardware Platforms
 

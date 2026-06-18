@@ -459,6 +459,7 @@ exclude_docs: |
   img/cover-image-prompt.md
   img/mascot/mascot-image-prompts.md
   posters/shared-libs/main-template.html
+  infographic-image-prompt.md
   TODO.md
 
 theme:

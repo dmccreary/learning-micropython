@@ -212,6 +212,122 @@ rshell ls /pyboard
 | mpremote | Short commands in terminal | Everyday file management |
 | rshell | Shell-like commands | Scripted deployments |
 
+## Managing Files with mpremote
+
+**mpremote** is MicroPython's official command-line tool for working with your Pico from a terminal. It lets you list files, copy programs, create folders, and run quick tests — all without opening Thonny. As your projects grow, mpremote becomes one of your fastest and most useful tools.
+
+Install mpremote once on your computer by opening a terminal and typing:
+
+```bash
+pip install mpremote   # install from the Python package registry
+```
+
+### The Colon Rule — Pico vs. Your Computer
+
+mpremote uses one simple rule to tell the two sides apart: any path that starts with a **colon** (`:`) points to the **Pico**. A path without a colon is on **your computer**.
+
+| Path | Where it is |
+|------|-------------|
+| `main.py` | your computer |
+| `:main.py` | the Pico |
+| `:lib/ssd1306.py` | the Pico, inside the `/lib` folder |
+
+!!! mascot-tip "Monty's Tip"
+    ![Monty giving a tip](../../img/mascot/tip.png){ class="mascot-admonition-img" }
+    The colon is easy to forget! If mpremote says "file not found" when you know the file is there, check your colons. No colon = your computer; colon = the Pico.
+
+### Listing Files on the Pico
+
+```bash
+mpremote ls           # list all files in the Pico root folder
+mpremote ls :lib      # list files inside the /lib folder
+```
+
+### Copying Files to the Pico
+
+```bash
+# Copy a program file from your computer to the Pico
+mpremote cp my_program.py :my_program.py
+```
+
+You can also copy the other way — from the Pico back to your computer. Just reverse the colon:
+
+```bash
+# Back up main.py from the Pico to your computer
+mpremote cp :main.py my_backup.py
+```
+
+### Running a Script Without Saving It
+
+Use `mpremote run` to send a script to the Pico and run it right away, without saving it to flash memory. This is great for quick tests:
+
+```bash
+mpremote run test_led.py   # run on the Pico but do not save to flash
+```
+
+### Loading Drivers into the /lib Folder
+
+MicroPython searches the `/lib` folder for driver libraries. When your code says `from ssd1306 import SSD1306_I2C`, MicroPython looks for `/lib/ssd1306.py` on the Pico. You must create the `/lib` folder before you can copy drivers into it:
+
+```bash
+mpremote mkdir :lib                        # create the /lib folder on the Pico
+mpremote cp ssd1306.py :lib/ssd1306.py    # copy the OLED display driver into /lib
+```
+
+After copying, your program can import the driver by name:
+
+```python
+from ssd1306 import SSD1306_I2C   # works because /lib/ssd1306.py is now on the Pico
+```
+
+### Loading All Drivers for a Hardware Kit
+
+When you set up a new kit, you often need to load several drivers at once. Run each command in order:
+
+```bash
+# Load all drivers for a kit that uses an OLED display, encoder, and distance sensor
+mpremote mkdir :lib                                  # create /lib (safe to run even if it already exists)
+mpremote cp drivers/ssd1306.py :lib/ssd1306.py      # OLED display driver
+mpremote cp drivers/rotary.py  :lib/rotary.py       # rotary encoder driver
+mpremote cp drivers/hcsr04.py  :lib/hcsr04.py       # HC-SR04 distance sensor driver
+```
+
+You only need to do this once per Pico. The `/lib` folder and its drivers stay in flash memory even after you unplug the power.
+
+### Installing Packages with mip
+
+MicroPython 1.19 added **mip**, the built-in package installer. mpremote downloads the package from the internet through your computer and copies it straight to the Pico — so the Pico itself does not need a Wi-Fi connection.
+
+The two packages you will use most in this course are `umqtt.simple` for sending data over the internet and `ntptime` for setting the clock on a Pico W:
+
+```bash
+mpremote mip install umqtt.simple   # MQTT messaging library — used in the wireless chapter
+mpremote mip install ntptime        # sync the Pico W clock over Wi-Fi
+```
+
+Other useful packages from the MicroPython library:
+
+```bash
+mpremote mip install urllib.urequest   # send HTTP GET and POST requests
+mpremote mip install aioble            # Bluetooth Low Energy support
+```
+
+Most hardware drivers in this course — such as `ssd1306.py` for OLED displays and `hcsr04.py` for distance sensors — are plain `.py` files that you copy with `mpremote cp`, not packages you install with `mip`. Use `mip` when a project needs a networking or protocol library that does not come built in to MicroPython.
+
+To see all available packages, browse the MicroPython package library at [github.com/micropython/micropython-lib](https://github.com/micropython/micropython-lib).
+
+The table below summarizes the most common mpremote commands:
+
+| Command | What it does |
+|---------|-------------|
+| `mpremote ls` | List files in the Pico root folder |
+| `mpremote ls :lib` | List files inside `/lib` |
+| `mpremote cp file.py :file.py` | Copy a file from your computer to the Pico |
+| `mpremote cp :file.py backup.py` | Copy a file from the Pico to your computer |
+| `mpremote run test.py` | Run a script on the Pico without saving it |
+| `mpremote mkdir :lib` | Create the `/lib` folder on the Pico |
+| `mpremote mip install name` | Download and install a package |
+
 ## boot.py and main.py — Startup Files
 
 When the Pico powers on, MicroPython automatically looks for two special files:
