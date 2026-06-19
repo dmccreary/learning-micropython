@@ -127,7 +127,7 @@ from machine import Pin
 
 # Sample two button Raspberry Pi Pico MicroPython example
 # with a debounce delay value of 200ms in the interrupt handler
-# https://www.coderdojotc.org/micropython/basics/03-button/
+# https://dmccreary.github.io/learning-micropython/basics/03-button/
 
 # these are the pins in the lower-left corner (USB on top)
 BUTTON_PIN_A = 14

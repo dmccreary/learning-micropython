@@ -1001,11 +1001,13 @@ See [Advanced Labs: Converting CircuitPython to MicroPython](advanced-labs/10-co
 After finishing the core labs, there are several related sites with more advanced MicroPython projects:
 
 - [Moving Rainbow](https://dmccreary.github.io/moving-rainbow/) — full curriculum around LED strips and costumes
+- [STEM Robots](https://dmccreary.github.io/stem-robots/) — an entire textbook on creating low-cost (under $25) robots using the Cytron robotics board
 - [Clocks and Watches](https://dmccreary.github.io/micropython-clocks-and-watches/) — dozens of clock projects using the Pico W
 - [Robot Day](https://dmccreary.github.io/robot-day/) — details for running a robot-building event at your school
 - [Beginning Electronics](https://dmccreary.github.io/beginning-electronics/) — deeper electronics theory to complement your MicroPython skills
-
-When you are ready to step beyond the Pico, the [AI Racing League](https://www.coderdojotc.org/ai-racing-league/) moves on to full Python, machine learning, and computer vision on Raspberry Pi single-board computers.
+- [Circuits](https://dmccreary.github.io/circuits/) - a college level course on circuits
+- [Spectrum Analyze](https://dmccreary.github.io/spectrum-analyzer/) - Spectrum Analyzer that displays a sound spectrum from a microphone using an OLED
+When you are ready to step beyond the Pico, the [AI Racing League](https://dmccreary.github.io/ai-racing-league/) moves on to full Python, machine learning, and computer vision on Raspberry Pi single-board computers.
 
 ---
 

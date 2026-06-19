@@ -222,6 +222,34 @@ Install mpremote once on your computer by opening a terminal and typing:
 pip install mpremote   # install from the Python package registry
 ```
 
+### Finding Your Pico's Port
+
+When you run an mpremote command, it automatically scans your USB ports and connects to the first MicroPython device it finds. You do not need to know the port name — mpremote finds the Pico by its USB ID.
+
+If you want to see which port your Pico is using, run:
+
+```bash
+mpremote connect list   # show all connected MicroPython devices and their port names
+```
+
+You will see output like this:
+
+```
+/dev/tty.usbmodem101  2e8a:0005  MicroPython Board in FS mode   # Mac
+/dev/ttyACM0          2e8a:0005  MicroPython Board in FS mode   # Linux
+COM3                  2e8a:0005  MicroPython Board in FS mode   # Windows
+```
+
+If you have more than one Pico plugged in at the same time, auto-detection picks the first one it finds. To target a specific board, add `connect` and the port name before your command:
+
+```bash
+mpremote connect /dev/tty.usbmodem101 ls   # Mac — connect to a specific port
+mpremote connect /dev/ttyACM0 ls           # Linux
+mpremote connect COM3 ls                   # Windows
+```
+
+For most students with a single Pico, auto-detection works every time and you never need to type the port name.
+
 ### The Colon Rule — Pico vs. Your Computer
 
 mpremote uses one simple rule to tell the two sides apart: any path that starts with a **colon** (`:`) points to the **Pico**. A path without a colon is on **your computer**.

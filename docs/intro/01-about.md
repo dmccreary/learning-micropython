@@ -1,6 +1,7 @@
-# About MicroPython for Kids
+# About Learing MicroPython Hands-on Labs
 
-The this site provides a rich collection of resources to teach computational thinking to students from 10 to 16 years old using fun Python programs that control the physical world around us.
+The this site provides a rich collection of hands-on resources to teach computational thinking to students from 10 to 16 years old using fun MicroPython
+ programs that control the physical world around us.
 
 The sub-field of computer science that reads sensors and controls lights and motors is called [Physical Computing](../misc/glossary.md#physical-computing).  We cover physical computing in our [next section](./02-physical-computing.md).
 

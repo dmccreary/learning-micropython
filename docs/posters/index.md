@@ -1,4 +1,6 @@
 ---
+title: Interactive Infographic Posters on MicroPython and Microcontrollers
+description: 24 interactive infographic posters to support the Learning MicroPython course including infographics on microcontrollers and hardware devices like light and sound sensors
 hide:
   toc
 ---
@@ -9,17 +11,6 @@ We use the `/verified-infographic-generator` skill to generate the image descrip
 OpenAI ChatGPT to render the infographics.
 
 Each poster follows the same visual style: landscape 16:9, flat-design, off-white background (#F7F9FC), dark slate (#2A2E3A) text, and a palette of four accent colors drawn from the series palette below.
-
-## Series Color Palette
-
-| Role | Color | Hex |
-|------|-------|-----|
-| Raspberry Red | ![](https://placehold.co/20x20/C7164E/C7164E) | `#C7164E` |
-| Magenta Pink | ![](https://placehold.co/20x20/E5398A/E5398A) | `#E5398A` |
-| Deep Purple | ![](https://placehold.co/20x20/6A3FB5/6A3FB5) | `#6A3FB5` |
-| Teal Blue | ![](https://placehold.co/20x20/1389A6/1389A6) | `#1389A6` |
-| Forest Green | ![](https://placehold.co/20x20/2D8A4E/2D8A4E) | `#2D8A4E` |
-| Warm Orange | ![](https://placehold.co/20x20/E07B39/E07B39) | `#E07B39` |
 
 ---
 
@@ -170,3 +161,14 @@ Each poster follows the same visual style: landscape 16:9, flat-design, off-whit
     MicroPython + TensorFlow Lite Micro + Edge Impulse comparison.
 
 </div>
+
+## Color Palette Standards
+
+| Role | Color | Hex |
+|------|-------|-----|
+| Raspberry Red | ![](https://placehold.co/20x20/C7164E/C7164E) | `#C7164E` |
+| Magenta Pink | ![](https://placehold.co/20x20/E5398A/E5398A) | `#E5398A` |
+| Deep Purple | ![](https://placehold.co/20x20/6A3FB5/6A3FB5) | `#6A3FB5` |
+| Teal Blue | ![](https://placehold.co/20x20/1389A6/1389A6) | `#1389A6` |
+| Forest Green | ![](https://placehold.co/20x20/2D8A4E/2D8A4E) | `#2D8A4E` |
+| Warm Orange | ![](https://placehold.co/20x20/E07B39/E07B39) | `#E07B39` |

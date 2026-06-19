@@ -8,7 +8,8 @@ used in conjunction with AI tools like ChatGPT, Anthropic Claude, Cursor, Windsu
 
 This book was originally created by [Dan McCreary](https://www.linkedin.com/in/danmccreary/) when he was
 a mentor at the local CoderDojo coding club in Minneapolis Minnesota.  Although he had been teaching
-physical computing with Arduino for many years, he longed to migrate his courses to MicroPython.  
+physical computing with Arduino for many years, he longed to migrate his courses to MicroPython.
+Many of his students already knew Python syntax and did not want to learn the C-language syntax used in Arduino projects.
 The biggest challenge was that most of the Arduino Uno hardware only had 2K of RAM.  In order to
 run on a microcontroller, the MicroPython runtime needed 16K of RAM.
 The other problem was that the only microcontrollers that ran MicroPython were very expensive and they

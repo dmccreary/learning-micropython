@@ -22,6 +22,7 @@
         "Framebuffers",
         "Hanning",
         "Hinch",
+        "hoverable",
         "HSTX",
         "indegree",
         "Infographics",
@@ -66,6 +67,7 @@
         "tinyml",
         "TTGO",
         "Tukey",
+        "UART",
         "uctypes",
         "urandom",
         "urequests",
@@ -78,7 +80,9 @@
         "VSYS",
         "watchpoints",
         "waveshare",
-        "WLAN"
+        "WLAN",
+        "Wokwi",
+        "Zigbee"
     ],
     "markdown.experimental.validate.ignoreLinks": [
         "../img/pi-w.png"
