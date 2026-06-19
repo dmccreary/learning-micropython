@@ -180,13 +180,13 @@ Wait until the process finishes completely before doing anything else.
 
 First, tell Thonny which port to use to find your ESP32.
 
-![Thonny serial port configuration screen showing the port selection dropdown](../img/esp32-config-serial-port.png)
+![Thonny serial port configuration screen showing the port selection dropdown](../../img/esp32-config-serial-port.png)
 
 ### Set the Interpreter
 
 Next, tell Thonny to use the ESP32 version of MicroPython. An **interpreter** is the software that reads and runs your Python code.
 
-![Thonny interpreter settings screen showing MicroPython (ESP32) selected](../img/micropython-esp32.png)
+![Thonny interpreter settings screen showing MicroPython (ESP32) selected](../../img/micropython-esp32.png)
 
 ---
 
@@ -250,7 +250,7 @@ tft.text(text_x, text_y, text, 0xFFFFFF)
 
 You should see this on the ESP32 display:
 
-![ESP32 TTGO color screen showing a rainbow background with a circle, diagonal line, and white text reading CoderDojo Rocks!](../img/color-oled.jpg)
+![ESP32 TTGO color screen showing a rainbow background with a circle, diagonal line, and white text reading CoderDojo Rocks!](../../img/color-oled.jpg)
 
 !!! mascot-encourage "You Can Do This!"
     ![Monty encouraging](../../img/mascot/encouraging.png){ class="mascot-admonition-img" }

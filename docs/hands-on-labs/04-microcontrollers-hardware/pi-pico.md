@@ -1,6 +1,6 @@
 # Getting Started with the Raspberry Pi RP2040 Microcontroller
 
-![Raspberry Pi Pico](../img/raspberry-pi-pico.png)
+![Raspberry Pi Pico](../../img/raspberry-pi-pico.png)
 
 !!! mascot-welcome "Welcome to This Lab"
     ![Monty waving welcome](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
@@ -8,7 +8,7 @@
 
 The Raspberry Pi RP2040 is a tiny computer chip. It was designed by the [Raspberry Pi Foundation](../misc/glossary.md#raspberry-pi-foundation). The Pico board uses this chip and costs about $4. It has 264KB of memory — about 100 times more than an older Arduino Uno board. That extra memory lets you do things like drawing pictures on a small screen.
 
-![](../img/pico-h-microcenter.png)
+![](../../img/pico-h-microcenter.png)
 "H" is with headers.
 
 ## Specs
@@ -32,13 +32,15 @@ The Pico is packed with features. Here are the most important ones for beginners
 
 ## Runtimes
 
-![Micropython.org RP2 Runtime Page](https://micropython.org/download/rp2-pico/)
+You can download the latest MicroPython Runtimes for the Raspberry Pi here:
+
+[Micropython.org RP2 Runtime Page](https://micropython.org/download/rp2-pico/)
 
 ## USB Cable
 
 The Raspberry Pi Pico uses a USB-Micro connector. You can buy a USB Micro-B to USB-A or USB-C cable on eBay for under $2, or at Microcenter for $5.
 
-![usb-micro-to-c](../img/usb-micro-to-c.png) - image from ebay
+![usb-micro-to-c](../../img/usb-micro-to-c.png) - image from ebay
 
 !!! mascot-tip "Monty's Tip"
     ![Monty giving a tip](../../img/mascot/tip.png){ class="mascot-admonition-img" }
@@ -48,7 +50,7 @@ The Raspberry Pi Pico uses a USB-Micro connector. You can buy a USB Micro-B to U
 
 The pinout diagram for the Raspberry Pi Pico is shown below.
 
-![Raspberry Pi Pico Pins](../img/pico-pins.png)
+![Raspberry Pi Pico Pins](../../img/pico-pins.png)
 
 The Pico has 40 pins in total. Here is how they are arranged:
 
@@ -103,7 +105,7 @@ Thonny is a free, easy-to-use program for writing MicroPython code. Follow these
 4. Test the connection by typing `help()` in the Thonny shell.
 5. Test your setup by running a blink program.
 
-![Thonny Micropython Firmware Update](../img/thonny-micropython-firmware-update.png)
+![Thonny Micropython Firmware Update](../../img/thonny-micropython-firmware-update.png)
 
 ```
 Downloading 465408 bytes from https://github.com/raspberrypi/micropython/releases/download/pico-20210120/pico_micropython_20210121.uf2
@@ -175,7 +177,7 @@ Press the Play button in Thonny to run the program.
 
 One of the key disadvantages
 
-![](../img/pico-on-breadboard-with-gnd-markers.jpg)
+![](../../img/pico-on-breadboard-with-gnd-markers.jpg)
 
 ## References
 

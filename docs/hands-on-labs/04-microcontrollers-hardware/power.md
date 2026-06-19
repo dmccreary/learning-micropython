@@ -12,7 +12,7 @@ Be careful about how much power you connect. The Pico and most modern microcontr
 
 The Raspberry Pi Pico has three important power connectors you should learn about.
 
-![](../img/pico-power-pins.png)
+![](../../img/pico-power-pins.png)
 
 1. **VBUS** — Connects directly to the USB port's power. It appears in the upper-right corner of the Pico. When you plug in a USB cable, the Pico automatically uses this power source. This is the best way to power the Pico during development or when using a USB battery pack.
 2. **VSYS** — This is the main power input when you are not using USB. The Pico can accept between 1.8 V and 5.5 V here. This means even a set of three AAA batteries — which starts at 4.5 V and slowly drops — will work right down to 1.8 V. The Pico uses a built-in Switched-Mode Power Supply (SMPS) to turn whatever voltage you give it into a steady 3.3 V.
@@ -26,7 +26,7 @@ The Raspberry Pi Pico has three important power connectors you should learn abou
 
 ### USB Battery Packs
 
-![USB Battery Pack Large](../img/usb-battery-pack-large.png)
+![USB Battery Pack Large](../../img/usb-battery-pack-large.png)
 
 USB battery packs — the kind people use to charge phones — work great for powering a Pico. You can buy them in many sizes, from 2,500 milliamp-hours (mAh) up to very large capacities. A larger mAh number means the battery lasts longer before you need to recharge it.
 

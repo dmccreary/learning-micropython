@@ -8,13 +8,13 @@ A **breadboard** is a plastic board full of tiny holes. You push wires and parts
 
 Breadboards are also called **solderless breadboards**. **Solder** is a metal that you melt to attach wires permanently. Because a breadboard uses tiny metal clips instead of solder, you can change your circuit in seconds.
 
-![Solderless Mini Breadboard](../img/solderless-mini-breadboard.jpg)
+![Solderless Mini Breadboard](../../img/solderless-mini-breadboard.jpg)
 
 We use standard solderless mini breadboards in our labs. The holes are spaced 1/10th of an inch apart. That is the standard spacing for most electronic parts in the US. Our breadboards are usually half-size boards with 400 holes. They have a center gap and power rails along the left and right edges.
 
 ## Breadboard Regions and Connections
 
-![Breadboard Regions and Connections showing power rails on the sides and row connectors in the center](../img/breadboard-regions.png)
+![Breadboard Regions and Connections showing power rails on the sides and row connectors in the center](../../img/breadboard-regions.png)
 
 Learning how a breadboard works is the most important skill in this lab. Look at the picture above. You will see two types of regions.
 
@@ -49,7 +49,7 @@ Parts like buttons and chips have legs on both sides. You place them so their le
 
 For most of our labs, you place the Raspberry Pi Pico so that pin 1 is in row 1 of the breadboard.
 
-![Pico placed on a breadboard with pin 1 in row 1](../img/pico-on-breadboard.png)
+![Pico placed on a breadboard with pin 1 in row 1](../../img/pico-on-breadboard.png)
 
 The Pico straddles the center gap. Each pin goes into a different side of the breadboard. This lets you connect wires to every pin without crowding.
 
@@ -61,7 +61,7 @@ When you place the Pico this way, the Ground (GND) pins of the Pico always land 
 
 ## Pico Placement Annotations
 
-![Annotated diagram of a Pico on a breadboard showing GND, VBUS, and VSYS pins](../img/pico-on-breadboard-annotated.png)
+![Annotated diagram of a Pico on a breadboard showing GND, VBUS, and VSYS pins](../../img/pico-on-breadboard-annotated.png)
 
 The picture above labels the most important pins on the Pico. Here is what each one means:
 

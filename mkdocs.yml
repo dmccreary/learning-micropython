@@ -125,6 +125,7 @@ nav:
 
     - Ch 4 - Microcontrollers and Hardware:
       - Raspberry Pi Pico: hands-on-labs/04-microcontrollers-hardware/pi-pico.md
+      - ESP32 S3 Mini: hands-on-labs/04-microcontrollers-hardware/esp32-s3-mini.md
       - YD-RP2040: hands-on-labs/04-microcontrollers-hardware/yd-rp2040.md
       - Powering Your Projects: hands-on-labs/04-microcontrollers-hardware/power.md
 
@@ -244,14 +245,14 @@ nav:
       - Display Clock: hands-on-labs/19-wireless-iot/12-display-clock.md
       - With Display: hands-on-labs/19-wireless-iot/20-display.md
 
-  - Debugging:
-    - Introduction: debugging/index.md
-    - Debugging With Thonny: debugging/27-debugging-with-thonny.md
-    - Debugging Python: debugging/28-debugging-python.md
-    - Debugging I2C: debugging/29a-debugging-i2c.md
-    - Debugging SPI: debugging/29-debugging-spi.md
-    - Viewing the Stack: debugging/30-stack-view.md
-    - Viewing the Heap: debugging/31-heap.md
+    - Debugging:
+      - Introduction: debugging/index.md
+      - Debugging With Thonny: debugging/27-debugging-with-thonny.md
+      - Debugging Python: debugging/28-debugging-python.md
+      - Debugging I2C: debugging/29a-debugging-i2c.md
+      - Debugging SPI: debugging/29-debugging-spi.md
+      - Viewing the Stack: debugging/30-stack-view.md
+      - Viewing the Heap: debugging/31-heap.md
 
     - Advanced Labs:
       - Introduction: advanced-labs/index.md
@@ -277,21 +278,6 @@ nav:
       - File System: advanced-labs/17-file-system.md
       - Button Callback: advanced-labs/21-button-callback.md
       - advanced-labs/pio/index.md
-
-      - Spectrum Analyzer: 
-        - Introduction: advanced-labs/30-spectrum-analyzer/index.md
-        - Test Sound: advanced-labs/30-spectrum-analyzer/01-test-incoming-sound.md
-        # - advanced-labs/30-spectrum-analyzer/02-gain-pot.md
-        - Display Scroll: advanced-labs/30-spectrum-analyzer/03-display-scroll.md
-        - Optimization: advanced-labs/30-spectrum-analyzer/04-optimizing-fft-speed.md
-        - advanced-labs/30-spectrum-analyzer/05-frequency-shift.md
-        - Peak Frequency: advanced-labs/30-spectrum-analyzer/06-peak-frequency.md
-        - Further Speedups: advanced-labs/30-spectrum-analyzer/07-speedups.md
-        - Adding Timers: advanced-labs/30-spectrum-analyzer/08-adding-timers.md
-        - Assembler FFT: advanced-labs/30-spectrum-analyzer/09-assembler-function.md
-        - Future Work: advanced-labs/30-spectrum-analyzer/10-future-improvements.md
-        - advanced-labs/30-spectrum-analyzer/02-gain-pot.md
-
 
   - Project Kits:
     - Introduction: kits/01-intro.md
@@ -319,6 +305,7 @@ nav:
       - Button Lab: kits/maker-pi-rp2040/04-button-lab.md
       - Sound Lab: kits/maker-pi-rp2040/05-sound-lab.md
       - Up/Down Mode Lab: kits/maker-pi-rp2040/06-up-down-lab.md
+    
     - Maker Pi RP2040 Robot:
       - Introduction: kits/maker-pi-rp2040-robot/index.md 
       - Assembly: kits/maker-pi-rp2040-robot/02-assembly.md
@@ -351,6 +338,21 @@ nav:
       - Rotary Neopixel: kits/03-rotary-neopixel.md
     - MicroBit: kits/microbit.md
     - RFID RC522: kits/rfid-rc522/index.md
+    - Spectrum Analyzer: 
+      - Introduction: advanced-labs/30-spectrum-analyzer/index.md
+      - Test Sound: advanced-labs/30-spectrum-analyzer/01-test-incoming-sound.md
+      # - advanced-labs/30-spectrum-analyzer/02-gain-pot.md
+      - Display Scroll: advanced-labs/30-spectrum-analyzer/03-display-scroll.md
+      - Optimization: advanced-labs/30-spectrum-analyzer/04-optimizing-fft-speed.md
+      - advanced-labs/30-spectrum-analyzer/05-frequency-shift.md
+      - Peak Frequency: advanced-labs/30-spectrum-analyzer/06-peak-frequency.md
+      - Further Speedups: advanced-labs/30-spectrum-analyzer/07-speedups.md
+      - Adding Timers: advanced-labs/30-spectrum-analyzer/08-adding-timers.md
+      - Assembler FFT: advanced-labs/30-spectrum-analyzer/09-assembler-function.md
+      - Future Work: advanced-labs/30-spectrum-analyzer/10-future-improvements.md
+      - advanced-labs/30-spectrum-analyzer/02-gain-pot.md
+
+  
   # - Project Ideas: misc/projects.md
 
   - MicroSims:
