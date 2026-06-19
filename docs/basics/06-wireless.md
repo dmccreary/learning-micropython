@@ -473,9 +473,3 @@ print(wlan.isconnected())
 my_ip = urequests.get("https://api.myip.com/").json()
 print(im_pi)
 ```
-
-### Sending Notifications
-
-We can connect to a remote server to send text and e-mail notifications if specific events occur on our devices.  To do this you must have credentials on some system that response to messages such as [IFTTT](https://ifttt.com/) or an [MQTT](https://en.wikipedia.org/wiki/MQTT) server.
-
-TBD
