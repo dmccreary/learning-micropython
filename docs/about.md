@@ -74,3 +74,32 @@ learn and sharpen their curiosity.  We sincerely hope you have as much fun as we
 this on-line resources.
 
 [Dan McCreary](https://www.linkedin.com/in/danmccreary/) - Aug. 2025
+
+## Content License
+
+All content on this website is licensed under the
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
+This means you may use the content for free in your classrooms and adapt it
+to meet your needs — as long as you preserve the attribution and license.
+You may not charge students additional fees for the content or resell it.
+
+## Contributing
+
+We invite students, teachers, and mentors to help improve this website.
+
+**Git pull requests** — If you are comfortable with Git, submit a
+[Pull Request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+on GitHub. This is the preferred approach.
+
+**GitHub Issues** — Open a new
+[Issue](https://github.com/dmccreary/learning-micropython/issues)
+and paste your content in Markdown. Note where any images or videos are stored.
+
+**Other formats** — If Markdown is unfamiliar, send content as a Word document,
+PowerPoint, or Google Doc and a volunteer will convert it.
+Please use original content and avoid images you did not create yourself.
+
+## Questions and Discussion
+
+Use [GitHub Discussions](https://github.com/dmccreary/learning-micropython/discussions)
+as your first stop for questions about the course or the hardware.

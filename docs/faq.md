@@ -32,7 +32,7 @@ You need three things:
 2. **A USB cable** — a standard USB Micro-B cable to connect the Pico to your computer.
 3. **A few basic parts** — LEDs, resistors, a solderless breadboard, and jumper wires. A starter kit costs under $20.
 
-You also need a free program called Thonny on your computer. See [Getting Started](getting-started/01-intro.md) for a complete list and shopping links.
+You also need a free program called Thonny on your computer. See [Getting Started](chapters/03-micropython-environment/index.md) for a complete list and shopping links.
 
 ---
 
@@ -42,7 +42,7 @@ A microcontroller is a tiny computer built into a single chip. It has a processo
 
 The Raspberry Pi Pico uses the RP2040 chip. It costs $4 and has 264 KB of RAM — about 100 times more than an older Arduino Uno. That extra memory makes it easy to work with displays and complex programs.
 
-See [Introduction to Microcontrollers](intro/03-microcontrollers.md) for more details.
+See [Introduction to Microcontrollers](chapters/04-microcontrollers-hardware/index.md) for more details.
 
 ---
 
@@ -56,7 +56,7 @@ There are several versions:
 - **Pico W** — adds Wi-Fi
 - **Pico 2** — newer version with more memory and speed
 
-Most lessons in this course use the original Pico or Pico W. See [Getting Started with the Raspberry Pi Pico](getting-started/02-pi-pico.md) for setup steps.
+Most lessons in this course use the original Pico or Pico W. See [Getting Started with the Raspberry Pi Pico](hands-on-labs/04-microcontrollers-hardware/pi-pico.md) for setup steps.
 
 ---
 
@@ -80,7 +80,7 @@ The easiest setup uses a free program called **Thonny**. Here are the basic step
 4. In Thonny, go to **Tools → Options → Interpreter** and choose MicroPython (Raspberry Pi Pico).
 5. Click **Install or update MicroPython** to flash the firmware.
 
-After these steps, you can type code directly into the Thonny shell and run it on your Pico. See [Getting Started with Thonny](getting-started/02c-thonny.md) for a full walkthrough with screenshots.
+After these steps, you can type code directly into the Thonny shell and run it on your Pico. See [Getting Started with Thonny](chapters/03-micropython-environment/index.md) for a full walkthrough with screenshots.
 
 ---
 
@@ -88,7 +88,7 @@ After these steps, you can type code directly into the Thonny shell and run it o
 
 Thonny is a free, lightweight code editor designed for beginners. It runs on Windows, Mac, and Linux. Thonny lets you write and run MicroPython programs on your Pico, see error messages in plain language, and even step through your code one line at a time to find bugs.
 
-It is the recommended editor for this course. Advanced users may prefer VS Code — see [Getting Started with VS Code](getting-started/02d-vscode.md) for that setup.
+It is the recommended editor for this course. Advanced users may prefer VS Code — see [Getting Started with VS Code](chapters/03-micropython-environment/index.md) for that setup.
 
 ---
 
@@ -96,7 +96,7 @@ It is the recommended editor for this course. Advanced users may prefer VS Code 
 
 Yes! The ESP32 is another popular microcontroller that runs MicroPython. It has built-in Wi-Fi and Bluetooth and typically costs around $5–$10. Many of the lessons in this course work on an ESP32 with small changes.
 
-The main difference is that the Pico is simpler and cheaper for beginners, while the ESP32 is better for wireless projects from the start. See [Getting Started with ESP32](getting-started/02-esp32.md) for setup steps.
+The main difference is that the Pico is simpler and cheaper for beginners, while the ESP32 is better for wireless projects from the start. See [Getting Started with ESP32](hands-on-labs/03-micropython-environment/esp32.md) for setup steps.
 
 ---
 
@@ -134,7 +134,7 @@ Physical computing means writing programs that interact with the real, physical 
 
 Physical computing connects two worlds: software (the code you write) and hardware (the wires, sensors, and motors). MicroPython is one of the best tools for learning physical computing because you see results immediately.
 
-See [Introduction to Physical Computing](intro/02-physical-computing.md) for more.
+See [Introduction to Physical Computing](chapters/04-microcontrollers-hardware/index.md) for more.
 
 ---
 
@@ -147,7 +147,7 @@ GPIO stands for **General-Purpose Input/Output**. These are the small metal pins
 
 The Raspberry Pi Pico has 26 GPIO pins. Each one has a number (GP0 through GP28). When you write MicroPython code, you use these GP numbers to tell the Pico which pin to use.
 
-See the [Raspberry Pi Pico setup page](getting-started/02-pi-pico.md) for the full pinout diagram.
+See the [Raspberry Pi Pico setup page](hands-on-labs/04-microcontrollers-hardware/pi-pico.md) for the full pinout diagram.
 
 ---
 
@@ -157,7 +157,7 @@ A breadboard is a plastic board with lots of small holes that let you connect el
 
 Breadboards make it easy to try circuits, move parts around, and fix mistakes — perfect for learning. All labs in this course use a solderless breadboard.
 
-See [Getting Started with Breadboards](getting-started/02-breadboards.md) for a guide to how breadboard connections work.
+See [Getting Started with Breadboards](hands-on-labs/05-electronics-fundamentals/breadboards.md) for a guide to how breadboard connections work.
 
 ---
 
@@ -321,7 +321,7 @@ A module is a file that contains Python code you can use in other programs. You 
 - `neopixel` — drives NeoPixel LED strips
 - `network` — connects to Wi-Fi (Pico W)
 
-You can also install extra driver modules to support specific sensors and displays. See [Getting Started: MicroPython Libraries](getting-started/01b-libraries.md) for how to install them.
+You can also install extra driver modules to support specific sensors and displays. See [Getting Started: MicroPython Libraries](chapters/03-micropython-environment/index.md) for how to install them.
 
 ---
 
@@ -348,7 +348,7 @@ Both I2C and SPI are ways for your Pico to talk to sensors and displays, but the
 
 **Use SPI** when you need fast data transfer — for example, a color TFT display that redraws the full screen many times per second.
 
-See [Advanced Labs: I2C Scanner](advanced-labs/06-i2c.md) and [Displays Graphical](displays/graph/01-intro.md) for side-by-side examples of both protocols in use.
+See [Advanced Labs: I2C Scanner](advanced-labs/06-i2c.md) and [Displays Graphical](hands-on-labs/15-oled-setup/01-intro.md) for side-by-side examples of both protocols in use.
 
 ---
 
@@ -413,7 +413,7 @@ The RP2040 is a custom microcontroller chip designed by the Raspberry Pi Foundat
 - **GPIO**: 26 multi-function pins
 - **ADC**: Three 12-bit analog inputs
 
-The RP2040 also has 8 programmable I/O (PIO) state machines, which let it emulate almost any communication protocol. See [Getting Started with the Raspberry Pi Pico](getting-started/02-pi-pico.md) for the full specs.
+The RP2040 also has 8 programmable I/O (PIO) state machines, which let it emulate almost any communication protocol. See [Getting Started with the Raspberry Pi Pico](hands-on-labs/04-microcontrollers-hardware/pi-pico.md) for the full specs.
 
 ---
 
@@ -562,7 +562,7 @@ OLED stands for **Organic Light-Emitting Diode**. An OLED display is a small, br
 
 OLED displays connect over I2C or SPI and use the `SSD1306` or `SH1106` driver chip. MicroPython has a driver for both. You can draw pixels, lines, rectangles, and text onto the display.
 
-See [Displays Graphical: OLED Setup](displays/graph/02-oled-setup.md) to get started.
+See [Displays Graphical: OLED Setup](hands-on-labs/15-oled-setup/02-oled-setup.md) to get started.
 
 ---
 
@@ -601,7 +601,7 @@ If you get an `ImportError`, use Option 2.
 2. In Thonny, open the Files panel, find `ssd1306.py` on your computer, right-click it, and choose **Upload to /**.
 3. Now `from ssd1306 import SSD1306_I2C` will work.
 
-See [Displays Graphical: OLED Setup](displays/graph/02-oled-setup.md) for the full wiring diagram and first drawing program.
+See [Displays Graphical: OLED Setup](hands-on-labs/15-oled-setup/02-oled-setup.md) for the full wiring diagram and first drawing program.
 
 ---
 
@@ -628,7 +628,7 @@ An `ImportError` means MicroPython cannot find the module you are trying to impo
 1. The module name is spelled wrong — check capitalisation. Python is case-sensitive: `import neopixel` not `import NeoPixel`.
 2. The driver file has not been copied to the Pico. For example, `ssd1306.py` must be on the Pico before you can `import ssd1306`.
 
-To copy driver files to the Pico, use the Thonny file manager or the `mpremote` tool. See [Getting Started: MicroPython Libraries](getting-started/01b-libraries.md) for instructions.
+To copy driver files to the Pico, use the Thonny file manager or the `mpremote` tool. See [Getting Started: MicroPython Libraries](chapters/03-micropython-environment/index.md) for instructions.
 
 ---
 
@@ -653,7 +653,7 @@ For an OLED or LCD display that is blank:
 3. **I2C address** — the default address in most drivers is `0x3C`. Your display may use `0x3D`. Run an I2C scanner to find the real address.
 4. **Calling `.show()`** — drawing functions update the framebuffer, but nothing appears on screen until you call `oled.show()`. Make sure that call is in your code.
 
-See [Displays Graphical: OLED Setup](displays/graph/02-oled-setup.md) for a step-by-step setup guide.
+See [Displays Graphical: OLED Setup](hands-on-labs/15-oled-setup/02-oled-setup.md) for a step-by-step setup guide.
 
 ---
 
@@ -693,7 +693,7 @@ Check:
 2. Is your code setting both pins, not just one?
 3. Is the H-bridge powered correctly (some need 5 V for the motor, 3.3 V for logic)?
 
-See [Motors: H-Bridge](motors/03-h-bridge.md) and [Motors: L293D Chip](motors/04-l293d.md) for wiring diagrams and example code.
+See [Motors: H-Bridge](hands-on-labs/12-motors-servos-steppers/03-h-bridge.md) and [Motors: L293D Chip](hands-on-labs/12-motors-servos-steppers/04-l293d.md) for wiring diagrams and example code.
 
 ---
 
@@ -705,7 +705,7 @@ All GPIO pins (GP0–GP28) can be used for basic digital input and output. Howev
 - **Specific I2C pins** — I2C0 uses GP0/GP1 by default; I2C1 uses GP2/GP3
 - **SPI pins** — check the datasheet for default SPI pin assignments
 
-The pinout diagram on the [Raspberry Pi Pico setup page](getting-started/02-pi-pico.md) shows every pin and its functions. Keep that page handy when wiring new projects.
+The pinout diagram on the [Raspberry Pi Pico setup page](hands-on-labs/04-microcontrollers-hardware/pi-pico.md) shows every pin and its functions. Keep that page handy when wiring new projects.
 
 ---
 
@@ -780,7 +780,7 @@ Driver libraries are `.py` files that you copy onto the Pico. You can do this tw
 
 After copying, you can `import ssd1306` in your program just like any other module.
 
-See [Getting Started: MicroPython Libraries](getting-started/01b-libraries.md) for a list of common drivers and where to find them.
+See [Getting Started: MicroPython Libraries](chapters/03-micropython-environment/index.md) for a list of common drivers and where to find them.
 
 ---
 
@@ -833,7 +833,7 @@ If two devices share the same address (a common problem), some sensors let you c
 
 The best way to share is to put your code on GitHub. You upload your `main.py`, `config.py`, and any driver files, along with a README that explains what your project does and how to wire it.
 
-You can also contribute to this course by submitting a pull request. See [About This Site](intro/01-about.md) for the different ways to contribute, including Git pull requests, GitHub Issues, and even sending raw documents.
+You can also contribute to this course by submitting a pull request. See [About This Site](about.md) for the different ways to contribute, including Git pull requests, GitHub Issues, and even sending raw documents.
 
 ---
 
@@ -877,7 +877,7 @@ For a project that needs to send sensor data over Wi-Fi, you have two main optio
 
 Both the **Pico W** and the **ESP32** are excellent choices. The Pico W uses the same RP2040 chip as the rest of this course, so your existing code needs fewer changes. The ESP32 has a larger online community and more code examples for IoT projects.
 
-If you are already comfortable with the Pico, start with the Pico W. See [Wireless: Connecting to Wi-Fi](wireless/02-connecting-to-wifi.md) for a Pico W setup guide, or [Getting Started with ESP32](getting-started/02-esp32.md) for the ESP32 path.
+If you are already comfortable with the Pico, start with the Pico W. See [Wireless: Connecting to Wi-Fi](hands-on-labs/19-wireless-iot/02-connecting-to-wifi.md) for a Pico W setup guide, or [Getting Started with ESP32](hands-on-labs/03-micropython-environment/esp32.md) for the ESP32 path.
 
 ---
 
@@ -897,7 +897,7 @@ Both move things, but they are designed for different jobs:
 
 **Choose a DC motor** when you need continuous spinning — robot drive wheels, a fan, or a winch. Pair it with an H-bridge driver (like the DRV8833) to control speed and direction.
 
-Some projects use both: DC motors for the wheels and servos for the arm or camera mount. See [Basic Examples: Servo](basics/04-servo.md) and [Motors: H-Bridge](motors/03-h-bridge.md) for hands-on code for each type.
+Some projects use both: DC motors for the wheels and servos for the arm or camera mount. See [Basic Examples: Servo](basics/04-servo.md) and [Motors: H-Bridge](hands-on-labs/12-motors-servos-steppers/03-h-bridge.md) for hands-on code for each type.
 
 ---
 
@@ -922,7 +922,7 @@ print("Connected! IP:", wlan.ifconfig()[0])
 
 Once connected, you can make HTTP requests to fetch data from the internet, or build a simple web server that shows sensor readings in a browser.
 
-See [Wireless: Connecting to Wi-Fi](wireless/02-connecting-to-wifi.md) and [Wireless: Web Server](wireless/04-web-server.md) for full examples.
+See [Wireless: Connecting to Wi-Fi](hands-on-labs/19-wireless-iot/02-connecting-to-wifi.md) and [Wireless: Web Server](hands-on-labs/19-wireless-iot/04-web-server.md) for full examples.
 
 ---
 
@@ -937,7 +937,7 @@ A basic collision-avoidance robot needs four things:
 
 The robot runs a loop: measure distance, if too close then reverse and turn, else go forward. This is a simple but powerful example of computational thinking — a real algorithm controlling real hardware.
 
-See [Robots: Base Bot](robots/02-base-bot.md) and the [Kits: Maker Pi RP2040 Robot](kits/maker-pi-rp2040-robot/index.md) section for step-by-step assembly and code.
+See [Robots: Base Bot](hands-on-labs/13-robots-mobile-systems/02-base-bot.md) and the [Kits: Maker Pi RP2040 Robot](kits/maker-pi-rp2040-robot/index.md) section for step-by-step assembly and code.
 
 ---
 
@@ -1043,7 +1043,7 @@ while True:
     cl.close()
 ```
 
-Open a browser on your phone or computer, type in the Pico's IP address, and you will see the live sensor reading. For a more complete example with a proper HTML page, see [Wireless: Web Server](wireless/04-web-server.md) and [Wireless: Display Forecast on OLED](wireless/09-get-weather-display.md).
+Open a browser on your phone or computer, type in the Pico's IP address, and you will see the live sensor reading. For a more complete example with a proper HTML page, see [Wireless: Web Server](hands-on-labs/19-wireless-iot/04-web-server.md) and [Wireless: Display Forecast on OLED](hands-on-labs/19-wireless-iot/09-get-weather-display.md).
 
 ---
 

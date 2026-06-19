@@ -1,6 +1,6 @@
 # Introduction to MicroPython
 
-This lesson assumes that you have at least skimmed the [Getting Started](../getting-started/01-intro.md) sections and have selected one of the MicroPython IDEs to write your code.
+This lesson assumes that you have at least skimmed the [Getting Started](../chapters/03-micropython-environment/index.md) sections and have selected one of the MicroPython IDEs to write your code.
 
 The lesson will introduce you to the basic concepts of using MicroPython using the $4 Raspberry Pi Pico or a similar microcontroller.
 

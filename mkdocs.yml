@@ -106,24 +106,6 @@ nav:
       - Annotated References: chapters/23-applied-learning-projects/references.md
 
   - Hands-On Labs:
-    - Introduction:
-      - About This Site: intro/01-about.md
-      - Physical Computing:  intro/02-physical-computing.md
-      - Microcontrollers:  intro/03-microcontrollers.md
-
-    - Getting Started:
-      - Introduction: getting-started/01-intro.md
-      - Solderless Breadboards: getting-started/02-breadboards.md
-      - Boards: getting-started/02-boards.md
-      - Displays: getting-started/10-displays.md
-      - Sourcing Parts: getting-started/03-suggested-parts.md
-      - Raspberry Pi Pico: getting-started/02-pi-pico.md
-      - ESP32: getting-started/02-esp32.md
-      - YD-RP2040: getting-started/06-yd-2040.md
-      - Powering Your Projects: getting-started/04-power.md
-      - Thonny IDE: getting-started/02c-thonny.md
-      - VS Code IDE: getting-started/02d-vscode.md
-      - MicroPython Libraries: getting-started/01b-libraries.md
 
     - Basic Examples:
       - Introduction: basics/index.md
@@ -137,6 +119,17 @@ nav:
       - NeoPixel: basics/05-neopixel.md
       - Wireless: basics/06-wireless.md
       - Config: basics/10.config.md
+
+    - Ch 3 - MicroPython Environment:
+      - ESP32 Setup: hands-on-labs/03-micropython-environment/esp32.md
+
+    - Ch 4 - Microcontrollers and Hardware:
+      - Raspberry Pi Pico: hands-on-labs/04-microcontrollers-hardware/pi-pico.md
+      - YD-RP2040: hands-on-labs/04-microcontrollers-hardware/yd-rp2040.md
+      - Powering Your Projects: hands-on-labs/04-microcontrollers-hardware/power.md
+
+    - Ch 5 - Electronics Fundamentals:
+      - Solderless Breadboards: hands-on-labs/05-electronics-fundamentals/breadboards.md
 
     - Sensors:
       - Introduction: sensors/01-intro.md
@@ -157,97 +150,99 @@ nav:
       - Microphone INMP441: sensors/15-inmp441.md
       - BME280 Temp and Pressure: sensors/09-bme280.md
 
-    - Motors and Servos:
-      - Introduction: motors/01-intro.md
-      - Transistor Lab: motors/02-transistor.md
-      - H-Bridge: motors/03-h-bridge.md
-      - L293D Chip: motors/04-l293d.md
-      - Controller Board: motors/05-controller-board.md
-      - Servos: motors/06-servos.md
-      - Stepper Motors: motors/07-stepper-motors.md
-      - DRV8833 Motor Driver: motors/08-drv8833.md
+    - Ch 12 - Motors and Servos:
+      - Introduction: hands-on-labs/12-motors-servos-steppers/01-intro.md
+      - Transistor Lab: hands-on-labs/12-motors-servos-steppers/02-transistor.md
+      - H-Bridge: hands-on-labs/12-motors-servos-steppers/03-h-bridge.md
+      - L293D Chip: hands-on-labs/12-motors-servos-steppers/04-l293d.md
+      - Controller Board: hands-on-labs/12-motors-servos-steppers/05-controller-board.md
+      - Servos: hands-on-labs/12-motors-servos-steppers/06-servos.md
+      - Stepper Motors: hands-on-labs/12-motors-servos-steppers/07-stepper-motors.md
+      - DRV8833 Motor Driver: hands-on-labs/12-motors-servos-steppers/08-drv8833.md
 
-    - Displays - Non-Graphical:
-      - Introduction: displays/non-graph/01-intro.md
-      - LED Button: displays/non-graph/02-led-button.md
-      - 7 Segment Display: displays/non-graph/seven-segment.md
-      - 10 Bar LEDs: displays/non-graph/03-10-bar-leds.md
-      - Level Meter: displays/non-graph/03a-10-bar-level.md
-      - 8x8 LED Matrix: displays/non-graph/04-8x8-led-matrix.md
-      - Character LCD: displays/non-graph/10-character-lcd-display.md
-      - 4 Digit LED: displays/non-graph/05-4-digit.md
+    - Ch 13 - Robots:
+      - Introduction: hands-on-labs/13-robots-mobile-systems/index.md
+      - Base Bot: hands-on-labs/13-robots-mobile-systems/02-base-bot.md
+      # - Rainbow Bot: hands-on-labs/13-robots-mobile-systems/03-rainbow-bot.md
+      - Face Bot: hands-on-labs/13-robots-mobile-systems/04-face-bot.md
+      # - Ajusta Bot: hands-on-labs/13-robots-mobile-systems/05-ajusta-bot.md
+      - IR Sensor Bot: hands-on-labs/13-robots-mobile-systems/03-ir-sensor-bot.md
+      - FAQs: hands-on-labs/13-robots-mobile-systems/20-faqs.md
 
-    - Displays Graphical:
-      - Introduction: displays/graph/01-intro.md
-      - Wiring Harness: displays/graph/19-wiring-harness.md
-      - Graphic LCD: displays/graph/15-cu1609c-led.md
-      - Basic Drawing: displays/graph/03-basic-drawing.md
-      - Drawing with Bitmaps: displays/graph/03-bitmaps.md
-      - Custom Drawing Functions: displays/graph/04-extended-drawing-functions.md
-      - Color LCD ST7789V: displays/graph/14-lcd-st7789V.md
-      - Timing Draw Speed: displays/graph/05-timing-draw-speed.md
-      - TFT ILI9341: displays/graph/16-tft-ili9341.md
-      - LCD Waveshare: displays/graph/11-lcd-waveshare.md
-      - E-Paper: displays/graph/12-e-paper-display.md
-      - OLED Setup: displays/graph/02-oled-setup.md
-      - OLED SSD1306 I2C: displays/graph/11-oled-ssd1306-i2c.md
-      - OLED SSD1306 SPI V1: displays/graph/12-oled-ssd1306-spi-v1.md
-      - OLED SSD1306 SPI V2: displays/graph/11-oled-ssd1306-spi.md
-      - OLED SH1106 I2C Example: displays/graph/11-oled-sh1106-i2c.md
-      - OLED SSD 1352: displays/graph/17-ssd1352.md
-      - OLED Bounce: displays/graph/10-oled-bounce.md
-      - OLED Pot: displays/graph/12-oled-pot.md
-      - OLED Ping: displays/graph/11-oled-ping.md
-      - OLED Pong: displays/graph/11-pong.md
-      - OLED Pixel Draw: displays/graph/13-pixel-draw.md
-      - OLED Patterns: displays/graph/15-oled-patterns.md
-      - Random Hearts: displays/graph/14-random-hearts.md
-      - NeoPixel Matrix: displays/graph/18-neopixel-matrix.md
-      - OLED References: displays/graph/40-oled-references.md
-      - HSTX Display Interface: displays/graph/50-hstx.md
+    - Ch 14 - Non-Graphical Displays:
+      - Introduction: hands-on-labs/14-neopixels-displays/01-intro.md
+      - LED Button: hands-on-labs/14-neopixels-displays/02-led-button.md
+      - 7 Segment Display: hands-on-labs/14-neopixels-displays/seven-segment.md
+      - 10 Bar LEDs: hands-on-labs/14-neopixels-displays/03-10-bar-leds.md
+      - Level Meter: hands-on-labs/14-neopixels-displays/03a-10-bar-level.md
+      - 8x8 LED Matrix: hands-on-labs/14-neopixels-displays/04-8x8-led-matrix.md
+      - Character LCD: hands-on-labs/14-neopixels-displays/10-character-lcd-display.md
+      - 4 Digit LED: hands-on-labs/14-neopixels-displays/05-4-digit.md
+      - NeoPixel Matrix: hands-on-labs/14-neopixels-displays/18-neopixel-matrix.md
 
-    - Sound and Music:
-      - Introduction: sound/index.md
-      - Playing a Tone: sound/02-play-tone.md
-      - Playing Three Tones: sound/03-play-three-tones.md
-      - Playing a Scale: sound/04-play-scale.md
-      - Play Mario: sound/05-play-mario.md
-      - Eight Key Piano: sound/06-eight-key-piano.md
-      - Playing Audio File: sound/07-play-audio-file.md
-      - Converting Audio Files: sound/09-converting-mp3-to-wav.md
-      - Testing Audio Ports: sound/07a-test-audio-ports.md
-      - I2S Standard: sound/08-i2s-standard.md
-      - MIDI Basics: sound/10-midi.md
-      - Sound Parts: sound/11-sound-parts.md
-      - The I2S Bus: sound/20-i2s-bus.md
-      - Digital to Analog Converter: sound/dac/index.md
-      - Tone Generator: sound/12-tone-gen-pot.md
-      - MIDI Projects: sound/midi/index.md
+    - Ch 15 - OLED Setup:
+      - Introduction: hands-on-labs/15-oled-setup/01-intro.md
+      - OLED Setup: hands-on-labs/15-oled-setup/02-oled-setup.md
+      - Wiring Harness: hands-on-labs/15-oled-setup/19-wiring-harness.md
+      - SSD1306 I2C: hands-on-labs/15-oled-setup/11-oled-ssd1306-i2c.md
+      - SSD1306 SPI: hands-on-labs/15-oled-setup/11-oled-ssd1306-spi.md
+      - SH1106 I2C: hands-on-labs/15-oled-setup/11-oled-sh1106-i2c.md
+      - OLED References: hands-on-labs/15-oled-setup/40-oled-references.md
 
-    - Wireless:
-      - Introduction: wireless/01-intro.md
-      - Connecting to WiFi: wireless/02-connecting-to-wifi.md
-      - HTTP GET: wireless/03-http-get.md
-      - Web Server: wireless/04-web-server.md
-      - Web Server NeoPixel: wireless/07-web-server-rgb-neopixels.md
-      - MAC Address: wireless/05-mac-address.md
-      - UPIP: wireless/06-upip.md
-      - Get Weather Forecast: wireless/08-get-weather.md
-      - Display Forecast on OLED: wireless/09-get-weather-display.md
-      - WiFi Clock: wireless/10-wifi-clock.md
-      - Display Clock: wireless/12-display-clock.md
-      - Advanced Labs: wireless/11-advanced-labs.md
-      - With Display: wireless/20-display.md
+    - Ch 16 - OLED Drawing and Animation:
+      - Basic Drawing: hands-on-labs/16-oled-drawing-animation/03-basic-drawing.md
+      - Drawing with Bitmaps: hands-on-labs/16-oled-drawing-animation/03-bitmaps.md
+      - Custom Drawing Functions: hands-on-labs/16-oled-drawing-animation/04-extended-drawing-functions.md
+      - Timing Draw Speed: hands-on-labs/16-oled-drawing-animation/05-timing-draw-speed.md
+      - OLED Bounce: hands-on-labs/16-oled-drawing-animation/10-oled-bounce.md
+      - OLED Ping: hands-on-labs/16-oled-drawing-animation/11-oled-ping.md
+      - OLED Pong: hands-on-labs/16-oled-drawing-animation/11-pong.md
+      - OLED Potentiometer: hands-on-labs/16-oled-drawing-animation/12-oled-pot.md
+      - Pixel Draw: hands-on-labs/16-oled-drawing-animation/13-pixel-draw.md
+      - Random Hearts: hands-on-labs/16-oled-drawing-animation/14-random-hearts.md
+      - OLED Patterns: hands-on-labs/16-oled-drawing-animation/15-oled-patterns.md
 
-    - Robots:
-      - Introduction: robots/index.md
-      - Base Bot: robots/02-base-bot.md
-      # - Rainbow Bot: robots/03-rainbow-bot.md
-      - Face Bot: robots/04-face-bot.md
-      # - Ajusta Bot: robots/05-ajusta-bot.md
-      # - Servo Bot: robots/05-servo-bot.md
-      - IR Sensor Bot: robots/03-ir-sensor-bot.md
-      - FAQs: robots/20-faqs.md
+    - Ch 17 - Color and E-Paper Displays:
+      - LCD Waveshare: hands-on-labs/17-color-epaper-displays/11-lcd-waveshare.md
+      - E-Paper Display: hands-on-labs/17-color-epaper-displays/12-e-paper-display.md
+      - Color LCD ST7789V: hands-on-labs/17-color-epaper-displays/14-lcd-st7789V.md
+      - Graphic LCD CU1609C: hands-on-labs/17-color-epaper-displays/15-cu1609c-led.md
+      - TFT ILI9341: hands-on-labs/17-color-epaper-displays/16-tft-ili9341.md
+      - Color OLED SSD1351: hands-on-labs/17-color-epaper-displays/17-ssd1352.md
+      - HSTX Display Interface: hands-on-labs/17-color-epaper-displays/50-hstx.md
+
+    - Ch 18 - Sound and Music:
+      - Introduction: hands-on-labs/18-sound-music-audio/index.md
+      - Playing a Tone: hands-on-labs/18-sound-music-audio/02-play-tone.md
+      - Playing Three Tones: hands-on-labs/18-sound-music-audio/03-play-three-tones.md
+      - Playing a Scale: hands-on-labs/18-sound-music-audio/04-play-scale.md
+      - Play Mario: hands-on-labs/18-sound-music-audio/05-play-mario.md
+      - Eight Key Piano: hands-on-labs/18-sound-music-audio/06-eight-key-piano.md
+      - Playing Audio File: hands-on-labs/18-sound-music-audio/07-play-audio-file.md
+      - Testing Audio Ports: hands-on-labs/18-sound-music-audio/07a-test-audio-ports.md
+      - I2S Standard: hands-on-labs/18-sound-music-audio/08-i2s-standard.md
+      - Converting Audio Files: hands-on-labs/18-sound-music-audio/09-converting-mp3-to-wav.md
+      - MIDI Basics: hands-on-labs/18-sound-music-audio/10-midi.md
+      - Sound Parts: hands-on-labs/18-sound-music-audio/11-sound-parts.md
+      - Tone Generator with Pot: hands-on-labs/18-sound-music-audio/12-tone-gen-pot.md
+      - The I2S Bus: hands-on-labs/18-sound-music-audio/20-i2s-bus.md
+      - Digital to Analog Converter: hands-on-labs/18-sound-music-audio/dac/index.md
+      - MIDI Projects: hands-on-labs/18-sound-music-audio/midi/index.md
+
+    - Ch 19 - Wireless and IoT:
+      - Introduction: hands-on-labs/19-wireless-iot/01-intro.md
+      - Connecting to WiFi: hands-on-labs/19-wireless-iot/02-connecting-to-wifi.md
+      - HTTP GET: hands-on-labs/19-wireless-iot/03-http-get.md
+      - Web Server: hands-on-labs/19-wireless-iot/04-web-server.md
+      - MAC Address: hands-on-labs/19-wireless-iot/05-mac-address.md
+      - UPIP: hands-on-labs/19-wireless-iot/06-upip.md
+      - Web Server NeoPixel: hands-on-labs/19-wireless-iot/07-web-server-rgb-neopixels.md
+      - Get Weather Forecast: hands-on-labs/19-wireless-iot/08-get-weather.md
+      - Display Forecast on OLED: hands-on-labs/19-wireless-iot/09-get-weather-display.md
+      - WiFi Clock: hands-on-labs/19-wireless-iot/10-wifi-clock.md
+      - Advanced Labs: hands-on-labs/19-wireless-iot/11-advanced-labs.md
+      - Display Clock: hands-on-labs/19-wireless-iot/12-display-clock.md
+      - With Display: hands-on-labs/19-wireless-iot/20-display.md
 
   - Debugging:
     - Introduction: debugging/index.md
@@ -300,6 +295,7 @@ nav:
 
   - Project Kits:
     - Introduction: kits/01-intro.md
+    - Sourcing Parts: kits/suggested-parts.md
     - RGB Color Mixer Box: kits/rgb-box/index.md
     - Pulse Width Modulation:
       - Intro: kits/pwm/index.md

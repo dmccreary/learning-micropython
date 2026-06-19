@@ -164,7 +164,7 @@ while True:
 
 ## Adding the Cylon Scanner Sounds
 
-You can also add the Cylon eye scanner sound by addint a .wav file to the pico and using the playWave library.  This is covered in the [Sound and Music Play Audio File](../../sound/07-play-audio-file.md) lesson of this microsite.
+You can also add the Cylon eye scanner sound by addint a .wav file to the pico and using the playWave library.  This is covered in the [Sound and Music Play Audio File](../../hands-on-labs/18-sound-music-audio/07-play-audio-file.md) lesson of this microsite.
 
 ## More to Explore
 

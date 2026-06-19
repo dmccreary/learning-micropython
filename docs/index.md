@@ -86,7 +86,7 @@ This section will give you more examples of how to use different types of sensor
 
 This is our student's favorite part of this site!  Once you can make a motor go forward and reverse, you are close to being able to make a robot move.  We walk you through the basics of using a simple transistor to control a motor, to using simple motor controllers like the L293D chips.
 
-[Introduction to Motors and Robots with MicroPython](motors/01-intro.md)
+[Introduction to Motors and Robots with MicroPython](hands-on-labs/12-motors-servos-steppers/01-intro.md)
 
 Note that we have many other advanced labs that use our $11 [Cytron Maker Pi RP2040 Kits](kits/maker-pi-rp2040-robot/index.md).  These incredible boards have everything integrated to build robots with lights and sounds.
 
@@ -94,14 +94,14 @@ Note that we have many other advanced labs that use our $11 [Cytron Maker Pi RP2
 
 This section shows you how to use many different types of displays, from simple 7-segment digital displays to complex OLED graphic displays.  On the old 2K Arduino controllers these graphics labs used to be hard, but now we have 264K of RAM on the Raspberry Pi RP2040 microcontrollers.  Now these labs are easy!
 
-* [Simple Character Displays](displays/non-graph/01-intro.md)
-* [Graphical Displays](displays/graph/01-intro.md)
+* [Simple Character Displays](hands-on-labs/14-neopixels-displays/01-intro.md)
+* [Graphical Displays](hands-on-labs/15-oled-setup/01-intro.md)
 
 ### Section 7: Sound and Music
 
 Having powerful microcontrollers allows us to generate complex sounds, play tones and even playback recoded sound effects.
 
-[Introduction to Sound and Music with MicroPython](sound/index.md)
+[Introduction to Sound and Music with MicroPython](hands-on-labs/18-sound-music-audio/index.md)
 
 ### Section 8: Advanced Labs
 

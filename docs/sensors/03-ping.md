@@ -49,7 +49,7 @@ while True:
 If you have a small OLED screen, you can also display the results
 of the distance measurement directly on an OLED screen.
 
-See the OLED example here: [OLED Ping Example](../displays/graph/11-oled-ping.md)
+See the OLED example here: [OLED Ping Example](../hands-on-labs/16-oled-drawing-animation/11-oled-ping.md)
 
 ## References
 

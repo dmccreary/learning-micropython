@@ -1884,7 +1884,7 @@ OLED (Organic polymer light emitting diode) displays are small but bright displa
 
 Typical chips that control the OLED include the SSD1306 driver chips.
 
-* See: [Graph Displays](../displays/graph/01-intro.md)
+* See: [Graph Displays](../hands-on-labs/15-oled-setup/01-intro.md)
 
 #### OLED Framebuffer
 

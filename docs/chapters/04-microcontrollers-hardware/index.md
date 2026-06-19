@@ -57,6 +57,27 @@ This chapter builds on concepts from:
     ![Monty waves hello](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
     Now that your Pico is set up, let's look at the hardware itself. Understanding your microcontroller is like learning the rules of a new city — once you know where the roads go, you can navigate anywhere. By the end of this chapter you will be able to look at any Pico project photo and recognize every pin and component. Let's build something amazing!
 
+## What Is Physical Computing?
+
+**Physical computing** is the use of computers to read data from the world around us
+and take actions based on that data.  Those actions are things like blinking an LED,
+moving a motor, or updating a display.
+
+![Physical computing overview diagram](../../img/physical-computing.png)
+
+The sensors and actuators in this course span a wide range:
+
+**Sensors** — buttons and switches, light sensors, distance sensors (ultrasonic and laser),
+sound sensors, motion and acceleration sensors, gesture sensors, compass, temperature,
+touch, voltage, and air-quality sensors.
+
+**Actuators** — LEDs, DC motors, servo motors, stepper motors, character displays,
+graphic OLED displays, and color LCD screens.
+
+Physical computing is powerful for teaching because students see results immediately.
+When you change one line of code, the LED blinks faster, the motor turns the other way,
+or the display shows something new.
+
 ## What Is a Microcontroller?
 
 <iframe src="../../posters/microncontrollers/main.html" width="100%" height="800" scrolling="no"></iframe>
