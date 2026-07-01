@@ -1,0 +1,1793 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/hands-on-labs/17-color-epaper-displays/18-waveshare-round-display/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Waveshare Round LCD Display (1.28 inch) - Learning MicroPython</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-DS16K4YVRR"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-DS16K4YVRR",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-DS16K4YVRR",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Waveshare Round LCD Display (1.28 inch) - Learning MicroPython">
+      
+        <meta property="og:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/hands-on-labs/17-color-epaper-displays/18-waveshare-round-display.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/hands-on-labs/17-color-epaper-displays/18-waveshare-round-display/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Waveshare Round LCD Display (1.28 inch) - Learning MicroPython">
+      
+        <meta name="twitter:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/hands-on-labs/17-color-epaper-displays/18-waveshare-round-display.png">
+      
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#waveshare-round-lcd-display-128-inch" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Learning MicroPython" class="md-header__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning MicroPython
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Waveshare Round LCD Display (1.28 inch)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Learning MicroPython" class="md-nav__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Learning MicroPython
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Book
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../../basics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Hands-On Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../kits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sample AI Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/content-authoring-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authoring Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructors Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/acknowledgements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acknowledgements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/30-colophon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Colophon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#parts-you-need" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parts You Need
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-the-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loading the Driver
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pin-assignments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pin Assignments
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-1-drawing-text-and-shapes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab 1: Drawing Text and Shapes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab 1: Drawing Text and Shapes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Line Does
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-2-reading-the-imu-accelerometer-and-gyroscope" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab 2: Reading the IMU (Accelerometer and Gyroscope)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab 2: Reading the IMU (Accelerometer and Gyroscope)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-does_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Line Does
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-3-tilt-display-show-imu-data-on-screen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab 3: Tilt Display — Show IMU Data on Screen
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-rgb565-colors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding RGB565 Colors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experiments
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="waveshare-round-lcd-display-128-inch">Waveshare Round LCD Display (1.28 inch)</h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome to Round Display Programming!</p>
+<p><img alt="Monty waving welcome" class="mascot-admonition-img" src="../../../img/mascot/welcome.png">
+Not all displays are rectangles! In this lab you will program the Waveshare RP2040-LCD-1.28 — a beautiful round 240×240 color LCD. It even has a built-in IMU sensor so you can tilt it and see the screen react! Let's build something amazing!</p>
+</div>
+<p>The <strong>Waveshare RP2040-LCD-1.28</strong> is a complete development board with a round 240×240 pixel IPS LCD display built in. It also includes:</p>
+<ul>
+<li>A <strong>QMI8658 IMU</strong> (Inertial Measurement Unit) — measures acceleration and rotation</li>
+<li>A USB-C connector for programming</li>
+<li>A built-in lithium battery charging circuit</li>
+<li>The RP2040 microcontroller (the same chip as in the Raspberry Pi Pico)</li>
+</ul>
+<p>The display driver is the <strong>GC9A01</strong> chip, which drives the round LCD through an SPI bus.</p>
+<h2 id="parts-you-need">Parts You Need</h2>
+<ul>
+<li>Waveshare RP2040-LCD-1.28 board</li>
+<li>USB-C cable for programming</li>
+</ul>
+<p>No external wiring is needed — the display, IMU, and Pico are all on one board.</p>
+<h2 id="loading-the-driver">Loading the Driver</h2>
+<p>The driver for this display is a custom class called <code>LCD_1inch28</code>. Copy the file <code>LCD_1inch28.py</code> from <code>src/displays/waveshare-round/</code> to the root of the board's filesystem using Thonny.</p>
+<p>This driver works like the standard MicroPython <code>FrameBuffer</code> — you draw on it using the same <code>text()</code>, <code>fill_rect()</code>, <code>fill()</code>, and <code>show()</code> methods you already know.</p>
+<h2 id="pin-assignments">Pin Assignments</h2>
+<p>The display pins are fixed on the board (you cannot change them):</p>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>GPIO Pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPI Clock (SCK)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>SPI Data (MOSI)</td>
+<td>11</td>
+</tr>
+<tr>
+<td>Display Reset (RST)</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Data/Command (DC)</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Chip Select (CS)</td>
+<td>9</td>
+</tr>
+<tr>
+<td>Backlight (PWM)</td>
+<td>25</td>
+</tr>
+</tbody>
+</table>
+<p>The IMU uses I2C:</p>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>GPIO Pin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I2C SDA</td>
+<td>6</td>
+</tr>
+<tr>
+<td>I2C SCL</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<h2 id="lab-1-drawing-text-and-shapes">Lab 1: Drawing Text and Shapes</h2>
+<p>This program draws text and colored rectangles on the round display.</p>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Watch Out!</p>
+<p><img alt="Monty warning" class="mascot-admonition-img" src="../../../img/mascot/warning.png">
+The round display uses 16-bit RGB565 color, not the 1-bit (on/off) color of OLED displays. Colors are stored as 16-bit numbers. <code>lcd.white</code> gives you white, <code>lcd.red</code> gives red, <code>lcd.blue</code> gives blue, and <code>lcd.green</code> gives green.</p>
+</div>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">from</span> <span class="nn">LCD_1inch28</span> <span class="kn">import</span> <span class="n">LCD_1inch28</span>    <span class="c1"># import the round display driver</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># Create the display object (all pins are set inside the driver class)</span>
+<span class="n">lcd</span> <span class="o">=</span> <span class="n">LCD_1inch28</span><span class="p">()</span>
+
+<span class="c1"># Turn on the backlight to full brightness</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">set_bl_pwm</span><span class="p">(</span><span class="mi">65535</span><span class="p">)</span>             <span class="c1"># 65535 = maximum brightness</span>
+
+<span class="c1"># Clear the display to white</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">lcd</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+
+<span class="c1"># Draw a red banner across the top</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">lcd</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"RP2040-LCD-1.28"</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">lcd</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>   <span class="c1"># white text on red</span>
+
+<span class="c1"># Draw a blue banner across the bottom</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">190</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">lcd</span><span class="o">.</span><span class="n">blue</span><span class="p">)</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"MicroPython"</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="n">lcd</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+
+<span class="c1"># Draw a colored box in the middle left</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mh">0x1805</span><span class="p">)</span>            <span class="c1"># dark teal color</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"Hello!"</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span> <span class="n">lcd</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+
+<span class="c1"># Draw a colored box in the middle right</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">140</span><span class="p">,</span> <span class="mh">0xF073</span><span class="p">)</span>           <span class="c1"># pink color</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"World!"</span><span class="p">,</span> <span class="mi">130</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span> <span class="n">lcd</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+
+<span class="c1"># Send the frame buffer to the display</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Display test complete!"</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="what-each-line-does">What Each Line Does</h3>
+<ol>
+<li><code>LCD_1inch28()</code> — sets up SPI, initializes the display controller, and creates the FrameBuffer.</li>
+<li><code>lcd.set_bl_pwm(65535)</code> — sets the backlight brightness with PWM. Values from 0 (off) to 65535 (full on).</li>
+<li><code>lcd.fill(lcd.white)</code> — fills the entire 240×240 buffer with white.</li>
+<li><code>lcd.fill_rect(x, y, w, h, color)</code> — draws a filled rectangle.</li>
+<li><code>lcd.show()</code> — sends the buffer to the physical display over SPI.</li>
+</ol>
+<h2 id="lab-2-reading-the-imu-accelerometer-and-gyroscope">Lab 2: Reading the IMU (Accelerometer and Gyroscope)</h2>
+<p>The QMI8658 IMU measures how fast the board is moving (accelerometer) and how fast it is rotating (gyroscope). You can use this to detect tilting, shaking, or dropping.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">ADC</span>
+<span class="kn">from</span> <span class="nn">LCD_1inch28</span> <span class="kn">import</span> <span class="n">LCD_1inch28</span><span class="p">,</span> <span class="n">QMI8658</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="c1"># Create both the display and the IMU</span>
+<span class="n">lcd</span> <span class="o">=</span> <span class="n">LCD_1inch28</span><span class="p">()</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">set_bl_pwm</span><span class="p">(</span><span class="mi">65535</span><span class="p">)</span>
+<span class="n">imu</span> <span class="o">=</span> <span class="n">QMI8658</span><span class="p">()</span>                   <span class="c1"># QMI8658 IMU on I2C</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"IMU ready. Tilt the board and watch the values change."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Format: AX  AY  AZ  GX  GY  GZ"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"  A = acceleration in g (1g = gravity), G = rotation in degrees/second"</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">xyz</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">Read_XYZ</span><span class="p">()</span>          <span class="c1"># returns [acc_x, acc_y, acc_z, gyro_x, gyro_y, gyro_z]</span>
+
+    <span class="n">acc_x</span>  <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>               <span class="c1"># acceleration left/right (in g)</span>
+    <span class="n">acc_y</span>  <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>               <span class="c1"># acceleration forward/back (in g)</span>
+    <span class="n">acc_z</span>  <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>               <span class="c1"># acceleration up/down (in g)</span>
+    <span class="n">gyro_x</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>               <span class="c1"># rotation speed around X axis (degrees/second)</span>
+    <span class="n">gyro_y</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>               <span class="c1"># rotation speed around Y axis</span>
+    <span class="n">gyro_z</span> <span class="o">=</span> <span class="n">xyz</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>               <span class="c1"># rotation speed around Z axis</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"ACC: </span><span class="si">{</span><span class="n">acc_x</span><span class="si">:</span><span class="s2">+.2f</span><span class="si">}</span><span class="s2">g </span><span class="si">{</span><span class="n">acc_y</span><span class="si">:</span><span class="s2">+.2f</span><span class="si">}</span><span class="s2">g </span><span class="si">{</span><span class="n">acc_z</span><span class="si">:</span><span class="s2">+.2f</span><span class="si">}</span><span class="s2">g  "</span>
+          <span class="sa">f</span><span class="s2">"GYRO: </span><span class="si">{</span><span class="n">gyro_x</span><span class="si">:</span><span class="s2">+6.1f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">gyro_y</span><span class="si">:</span><span class="s2">+6.1f</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">gyro_z</span><span class="si">:</span><span class="s2">+6.1f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="what-each-line-does_1">What Each Line Does</h3>
+<ol>
+<li><code>QMI8658()</code> — creates the IMU object connected via I2C on GPIO 6 (SDA) and GPIO 7 (SCL).</li>
+<li><code>imu.Read_XYZ()</code> — reads all six values at once: three axes of acceleration and three axes of rotation.</li>
+<li><code>xyz[2]</code> — the Z axis acceleration. When the board is flat and still, this should be about ±1.0 (gravity).</li>
+<li><code>f"{acc_x:+.2f}g"</code> — formats the number with a sign (+/-), 2 decimal places, and the unit g.</li>
+</ol>
+<h2 id="lab-3-tilt-display-show-imu-data-on-screen">Lab 3: Tilt Display — Show IMU Data on Screen</h2>
+<p>This program combines the display and IMU. It shows the acceleration and gyroscope readings on screen, updating in real time.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">ADC</span>
+<span class="kn">from</span> <span class="nn">LCD_1inch28</span> <span class="kn">import</span> <span class="n">LCD_1inch28</span><span class="p">,</span> <span class="n">QMI8658</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">lcd</span> <span class="o">=</span> <span class="n">LCD_1inch28</span><span class="p">()</span>
+<span class="n">lcd</span><span class="o">.</span><span class="n">set_bl_pwm</span><span class="p">(</span><span class="mi">65535</span><span class="p">)</span>
+<span class="n">imu</span> <span class="o">=</span> <span class="n">QMI8658</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">xyz</span> <span class="o">=</span> <span class="n">imu</span><span class="o">.</span><span class="n">Read_XYZ</span><span class="p">()</span>
+
+    <span class="n">lcd</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">lcd</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>            <span class="c1"># clear to white each frame</span>
+
+    <span class="c1"># Red header</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="n">lcd</span><span class="o">.</span><span class="n">red</span><span class="p">)</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"RP2040-LCD-1.28"</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">lcd</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+
+    <span class="c1"># Blue footer — show battery voltage</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mh">0x180f</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span>
+    <span class="n">vbat_pin</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">29</span><span class="p">))</span>
+    <span class="n">vbat</span> <span class="o">=</span> <span class="n">vbat_pin</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span> <span class="o">*</span> <span class="mf">3.3</span> <span class="o">/</span> <span class="mi">65535</span> <span class="o">*</span> <span class="mi">2</span>    <span class="c1"># voltage divider on pin 29</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Vbat=</span><span class="si">{</span><span class="n">vbat</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">V"</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">212</span><span class="p">,</span> <span class="n">lcd</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+
+    <span class="c1"># Left panel — accelerometer</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mh">0x1805</span><span class="p">)</span>           <span class="c1"># dark teal</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"ACC_X=</span><span class="si">{:+.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xyz</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="n">lcd</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"ACC_Y=</span><span class="si">{:+.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xyz</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span> <span class="n">lcd</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"ACC_Z=</span><span class="si">{:+.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xyz</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">155</span><span class="p">,</span> <span class="n">lcd</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+
+    <span class="c1"># Right panel — gyroscope</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">120</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mh">0xF073</span><span class="p">)</span>         <span class="c1"># pink</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"GYR_X=</span><span class="si">{:.1f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xyz</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">75</span><span class="p">,</span> <span class="n">lcd</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"GYR_Y=</span><span class="si">{:.1f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xyz</span><span class="p">[</span><span class="mi">4</span><span class="p">]),</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">115</span><span class="p">,</span> <span class="n">lcd</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"GYR_Z=</span><span class="si">{:.1f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">xyz</span><span class="p">[</span><span class="mi">5</span><span class="p">]),</span> <span class="mi">125</span><span class="p">,</span> <span class="mi">155</span><span class="p">,</span> <span class="n">lcd</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+
+    <span class="n">lcd</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                     <span class="c1"># send to display</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>                <span class="c1"># update 10 times per second</span>
+</code></pre></div></td></tr></tbody></table></div>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Key Idea</p>
+<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../../img/mascot/thinking.png">
+When the board is lying flat and still, <code>ACC_Z</code> should read about 1.0 (one unit of gravity pulling down). Tilt the board sideways and watch <code>ACC_X</code> or <code>ACC_Y</code> change. Shake the board and all three values spike.</p>
+</div>
+<h2 id="understanding-rgb565-colors">Understanding RGB565 Colors</h2>
+<p>The round display uses <strong>RGB565</strong> color format. Each pixel is a 16-bit number. The bits are divided:
+- 5 bits for red (0–31)
+- 6 bits for green (0–63)
+- 5 bits for blue (0–31)</p>
+<p>To make a custom color, use the formula: <code>(red &lt;&lt; 11) | (green &lt;&lt; 5) | blue</code></p>
+<p>Some examples:
+- Pure red: <code>(31 &lt;&lt; 11)</code> = <code>0xF800</code>
+- Pure green: <code>(63 &lt;&lt; 5)</code> = <code>0x07E0</code>
+- Pure blue: <code>31</code> = <code>0x001F</code>
+- White: <code>0xFFFF</code>
+- Black: <code>0x0000</code></p>
+<h2 id="experiments">Experiments</h2>
+<ol>
+<li>Tilt the board to different angles. Can you detect when the board is exactly flat (<code>ACC_Z</code> near 1.0)?</li>
+<li>Add a bubble-level indicator: draw a small circle that moves based on <code>ACC_X</code> and <code>ACC_Y</code>. When the board is flat, the circle is in the center.</li>
+<li>Shake the board hard. What is the maximum <code>ACC_Z</code> value you can read during a shake?</li>
+<li>Change the backlight brightness: use <code>lcd.set_bl_pwm(value)</code> with values like 10000, 30000, 65535 to see the difference.</li>
+</ol>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Great Work!</p>
+<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../../img/mascot/celebration.png">
+You have programmed a round full-color display and read live data from a motion sensor! These skills combine hardware, graphics, and physics in one project. Great work, coder — keep exploring!</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="../../../js/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

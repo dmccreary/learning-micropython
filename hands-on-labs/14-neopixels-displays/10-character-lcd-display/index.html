@@ -1,0 +1,3183 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/hands-on-labs/14-neopixels-displays/10-character-lcd-display/">
+      
+      
+        <link rel="prev" href="../04-8x8-led-matrix/">
+      
+      
+        <link rel="next" href="../05-4-digit/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Character LCD - Learning MicroPython</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-DS16K4YVRR"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-DS16K4YVRR",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-DS16K4YVRR",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Character LCD - Learning MicroPython">
+      
+        <meta property="og:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/hands-on-labs/14-neopixels-displays/10-character-lcd-display.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/hands-on-labs/14-neopixels-displays/10-character-lcd-display/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Character LCD - Learning MicroPython">
+      
+        <meta name="twitter:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/hands-on-labs/14-neopixels-displays/10-character-lcd-display.png">
+      
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#character-lcd-display" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Learning MicroPython" class="md-header__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning MicroPython
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Character LCD
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Learning MicroPython" class="md-nav__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Learning MicroPython
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Book
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hands-On Labs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Hands-On Labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../basics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Basic Examples
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../03-micropython-environment/esp32/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 3 - MicroPython Environment
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../04-microcontrollers-hardware/pi-pico/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 4 - Microcontrollers and Hardware
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../05-electronics-fundamentals/breadboards/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 5 - Electronics Fundamentals
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sensors/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sensors
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../12-motors-servos-steppers/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 12 - Motors and Servos
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../13-robots-mobile-systems/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 13 - Robots
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ch 14 - Non-Graphical Displays
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            Ch 14 - Non-Graphical Displays
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-led-button/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LED Button
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seven-segment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7 Segment Display
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-10-bar-leds/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10 Bar LEDs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03a-10-bar-level/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Level Meter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-8x8-led-matrix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8x8 LED Matrix
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Character LCD
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Character LCD
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-character-lcd-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Is a Character LCD Display?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wiring-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wiring Steps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-address-scanner-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      I2C Address Scanner Test
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I2C Address Scanner Test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Line Does
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scanner-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scanner Result
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-lcd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing the LCD
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing the LCD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-does_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Line Does
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-the-device-through-display-option-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Putting the Device Through Display Option Tests
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Putting the Device Through Display Option Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-does_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Line Does
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-4-digit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4 Digit LED
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../18-neopixel-matrix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    NeoPixel Matrix
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../15-oled-setup/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 15 - OLED Setup
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../16-oled-drawing-animation/03-basic-drawing/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 16 - OLED Drawing and Animation
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../17-color-epaper-displays/11-lcd-waveshare/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 17 - Color and E-Paper Displays
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../18-sound-music-audio/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 18 - Sound and Music
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../19-wireless-iot/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 19 - Wireless and IoT
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../debugging/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Debugging
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../advanced-labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Advanced Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../kits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sample AI Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/content-authoring-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authoring Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructors Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/acknowledgements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acknowledgements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/30-colophon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Colophon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-character-lcd-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Is a Character LCD Display?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wiring-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wiring Steps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-address-scanner-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      I2C Address Scanner Test
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="I2C Address Scanner Test">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Line Does
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scanner-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scanner Result
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-lcd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing the LCD
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing the LCD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-does_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Line Does
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-the-device-through-display-option-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Putting the Device Through Display Option Tests
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Putting the Device Through Display Option Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-does_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Line Does
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="character-lcd-display">Character LCD Display</h1>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../img/lcd-1602.jpg" data-desc-position="bottom"><img alt="LCD 1602 character display showing two rows of text" src="../../../img/lcd-1602.jpg"></a></p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome to the Character LCD Lab</p>
+<p><img alt="Monty waving welcome" class="mascot-admonition-img" src="../../../img/mascot/welcome.png">
+A character LCD screen can show 32 letters and numbers at once — 16 on each row! You will print messages, move the cursor, and even control the backlight with code. Let's build something amazing!</p>
+</div>
+<h2 id="what-is-a-character-lcd-display">What Is a Character LCD Display?</h2>
+<p>A <strong>character LCD (Liquid Crystal Display)</strong> is a screen that shows text. The most popular size is the <strong>16×2</strong> model. It has 16 columns and 2 rows, so it can show 32 characters at once.</p>
+<p>This lab uses the <strong>LCM1602 I2C LCD interface</strong> board. The I2C board clips onto the back of the LCD. It reduces the wiring from about 12 wires down to just 4.</p>
+<p><strong>Inter-Integrated Circuit (I2C)</strong> is a way for two devices to share data using just two signal wires. It is much simpler than connecting every pin separately.</p>
+<p>The I2C board has four wires:</p>
+<ol>
+<li><strong>GND</strong> — ground (negative power)</li>
+<li><strong>VCC</strong> — power supply</li>
+<li><strong>SDA</strong> — data wire (sends and receives data)</li>
+<li><strong>SCL</strong> — clock wire (keeps the timing in sync)</li>
+</ol>
+<p>The photo above shows a 3.3 V to 5 V voltage converter. Using 5 V gives the backlight more power and makes the screen easier to read. You can connect VCC to the Pico's 3.3 V pin, but the display may be harder to read in bright light.</p>
+<h2 id="wiring-steps">Wiring Steps</h2>
+<ol>
+<li>Connect <strong>GND</strong> on the I2C board to any <strong>GND</strong> pin on the Pico.</li>
+<li>Connect <strong>VCC</strong> on the I2C board to the <strong>3.3 V</strong> pin on the Pico (or 5 V if you have a converter).</li>
+<li>Connect <strong>SDA</strong> on the I2C board to <strong>GP0</strong> on the Pico.</li>
+<li>Connect <strong>SCL</strong> on the I2C board to <strong>GP1</strong> on the Pico.</li>
+</ol>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Watch Out!</p>
+<p><img alt="Monty warning" class="mascot-admonition-img" src="../../../img/mascot/warning.png">
+Make sure you connect SDA to GP0 and SCL to GP1. Swapping these two wires is a very common mistake. If the scanner finds no devices, check your SDA and SCL wires first.</p>
+</div>
+<h2 id="i2c-address-scanner-test">I2C Address Scanner Test</h2>
+<p>Before you can use the LCD, you need to find its <strong>I2C address</strong>. Every I2C device has a unique address — a number the Pico uses to talk to it. Run this scanner code to find the address.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>   <span class="c1"># import machine so we can use the I2C bus</span>
+
+<span class="n">I2C_SDA_PIN</span> <span class="o">=</span> <span class="mi">0</span>   <span class="c1"># SDA is on GP0</span>
+<span class="n">I2C_SCL_PIN</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1"># SCL is on GP1</span>
+
+<span class="c1"># Set up the I2C bus on bus 0 at 400,000 Hz</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>
+                  <span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="n">I2C_SDA_PIN</span><span class="p">),</span>
+                  <span class="n">scl</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="n">I2C_SCL_PIN</span><span class="p">),</span>
+                  <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Scanning I2C bus.'</span><span class="p">)</span>
+<span class="n">devices</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>          <span class="c1"># scan the bus and return a list of addresses found</span>
+
+<span class="n">device_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">devices</span><span class="p">)</span>   <span class="c1"># count how many devices were found</span>
+<span class="k">if</span> <span class="n">device_count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'No I2C device found.'</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">device_count</span><span class="p">,</span> <span class="s1">'devices found.'</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">device</span> <span class="ow">in</span> <span class="n">devices</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'Decimal address:'</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="s1">', Hex address:'</span><span class="p">,</span> <span class="nb">hex</span><span class="p">(</span><span class="n">device</span><span class="p">))</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="what-each-line-does">What Each Line Does</h3>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>machine.I2C(0, sda=..., scl=..., freq=400000)</code></td>
+<td>Sets up the I2C bus on bus 0 at 400 kHz</td>
+</tr>
+<tr>
+<td><code>i2c.scan()</code></td>
+<td>Scans all possible addresses and returns the ones that answer</td>
+</tr>
+<tr>
+<td><code>len(devices)</code></td>
+<td>Counts the items in the devices list</td>
+</tr>
+<tr>
+<td><code>hex(device)</code></td>
+<td>Converts the address to a hex number (like 0x27)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="scanner-result">Scanner Result</h3>
+<p>When the LCD is connected correctly, you should see output like this:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>Scanning I2C bus.
+1 devices found.
+Decimal address: 39 , Hex address:  0x27
+</code></pre></div></td></tr></tbody></table></div>
+<p>Write down the hex address. You will need it in the next step. Most LCM1602 boards use address <code>0x27</code>.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Key Idea</p>
+<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../../img/mascot/thinking.png">
+The I2C address is like a house number on a street. The Pico sends a message to that address, and only the device at that address answers. If the scanner shows no devices, the wiring has a problem — check your connections.</p>
+</div>
+<h2 id="testing-the-lcd">Testing the LCD</h2>
+<p>Now you will display a message on the screen. This code uses two library files: <code>lcd_api.py</code> and <code>pico_i2c_lcd.py</code>. Copy both files to your Pico before running this.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>       <span class="c1"># import I2C and Pin</span>
+<span class="kn">from</span> <span class="nn">lcd_api</span> <span class="kn">import</span> <span class="n">LcdApi</span>         <span class="c1"># import the base LCD API library</span>
+<span class="kn">from</span> <span class="nn">pico_i2c_lcd</span> <span class="kn">import</span> <span class="n">I2cLcd</span>    <span class="c1"># import the Pico-specific I2C LCD driver</span>
+
+<span class="n">I2C_ADDR</span>     <span class="o">=</span> <span class="mh">0x27</span>   <span class="c1"># the I2C address found by the scanner</span>
+<span class="n">I2C_NUM_ROWS</span> <span class="o">=</span> <span class="mi">2</span>      <span class="c1"># the screen has 2 rows</span>
+<span class="n">I2C_NUM_COLS</span> <span class="o">=</span> <span class="mi">16</span>     <span class="c1"># the screen has 16 columns</span>
+
+<span class="c1"># Set up the I2C bus on bus 0</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
+
+<span class="c1"># Create the LCD object using the I2C bus and the screen size</span>
+<span class="n">lcd</span> <span class="o">=</span> <span class="n">I2cLcd</span><span class="p">(</span><span class="n">i2c</span><span class="p">,</span> <span class="n">I2C_ADDR</span><span class="p">,</span> <span class="n">I2C_NUM_ROWS</span><span class="p">,</span> <span class="n">I2C_NUM_COLS</span><span class="p">)</span>
+
+<span class="n">lcd</span><span class="o">.</span><span class="n">putstr</span><span class="p">(</span><span class="s2">"Hello, Maker!"</span><span class="p">)</span>   <span class="c1"># print a message to the screen</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="what-each-line-does_1">What Each Line Does</h3>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>I2C_ADDR = 0x27</code></td>
+<td>Stores the screen's I2C address</td>
+</tr>
+<tr>
+<td><code>I2cLcd(i2c, I2C_ADDR, I2C_NUM_ROWS, I2C_NUM_COLS)</code></td>
+<td>Creates the LCD object with the right address and size</td>
+</tr>
+<tr>
+<td><code>lcd.putstr("Hello, Maker!")</code></td>
+<td>Sends a string of text to the screen</td>
+</tr>
+</tbody>
+</table>
+<h2 id="putting-the-device-through-display-option-tests">Putting the Device Through Display Option Tests</h2>
+<p>Once you can display text, you can explore all the other things the LCD can do. Here is a list of the most useful functions:</p>
+<ol>
+<li><code>lcd.move_to(col, row)</code> — move the cursor to a specific column and row</li>
+<li><code>lcd.display_on()</code> and <code>lcd.display_off()</code> — turn the display on or off</li>
+<li><code>lcd.show_cursor()</code> and <code>lcd.hide_cursor()</code> — show or hide the blinking cursor</li>
+<li><code>lcd.blink_cursor_on()</code> and <code>lcd.blink_cursor_off()</code> — make the cursor blink or stop blinking</li>
+<li><code>lcd.backlight_on()</code> and <code>lcd.backlight_off()</code> — turn the backlight on or off</li>
+<li><code>lcd.clear()</code> — erase all text from the screen</li>
+</ol>
+<p>The following test program cycles through all of these features automatically:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">utime</span>                        <span class="c1"># import utime for sleep and localtime</span>
+<span class="kn">import</span> <span class="nn">machine</span>                      <span class="c1"># import machine for Pin</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span>             <span class="c1"># import I2C for the bus</span>
+<span class="kn">from</span> <span class="nn">lcd_api</span> <span class="kn">import</span> <span class="n">LcdApi</span>          <span class="c1"># import the base LCD library</span>
+<span class="kn">from</span> <span class="nn">pico_i2c_lcd</span> <span class="kn">import</span> <span class="n">I2cLcd</span>    <span class="c1"># import the Pico I2C LCD driver</span>
+
+<span class="n">I2C_ADDR</span>     <span class="o">=</span> <span class="mh">0x27</span>   <span class="c1"># LCD I2C address</span>
+<span class="n">I2C_NUM_ROWS</span> <span class="o">=</span> <span class="mi">2</span>      <span class="c1"># 2 rows</span>
+<span class="n">I2C_NUM_COLS</span> <span class="o">=</span> <span class="mi">16</span>     <span class="c1"># 16 columns per row</span>
+
+<span class="k">def</span> <span class="nf">test_main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""Run through all the LCD display options to test the screen."""</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Running test_main"</span><span class="p">)</span>
+
+    <span class="c1"># Set up the I2C bus</span>
+    <span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
+
+    <span class="c1"># Create the LCD object</span>
+    <span class="n">lcd</span> <span class="o">=</span> <span class="n">I2cLcd</span><span class="p">(</span><span class="n">i2c</span><span class="p">,</span> <span class="n">I2C_ADDR</span><span class="p">,</span> <span class="n">I2C_NUM_ROWS</span><span class="p">,</span> <span class="n">I2C_NUM_COLS</span><span class="p">)</span>
+
+    <span class="n">lcd</span><span class="o">.</span><span class="n">putstr</span><span class="p">(</span><span class="s2">"Hello, Maker!"</span><span class="p">)</span>   <span class="c1"># show a greeting</span>
+    <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>               <span class="c1"># leave it on screen for 10 seconds</span>
+    <span class="n">lcd</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>                   <span class="c1"># erase the greeting</span>
+
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>   <span class="c1"># track which step we are on</span>
+
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">lcd</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>   <span class="c1"># clear the screen at the start of each loop</span>
+
+        <span class="c1"># Read the current time from the Pico's internal clock</span>
+        <span class="n">time</span> <span class="o">=</span> <span class="n">utime</span><span class="o">.</span><span class="n">localtime</span><span class="p">()</span>
+
+        <span class="c1"># Show the date and time formatted as: YYYY/MM/DD HH:MM:SS</span>
+        <span class="n">lcd</span><span class="o">.</span><span class="n">putstr</span><span class="p">(</span><span class="s2">"</span><span class="si">{year:&gt;04d}</span><span class="s2">/</span><span class="si">{month:&gt;02d}</span><span class="s2">/</span><span class="si">{day:&gt;02d}</span><span class="s2"> </span><span class="si">{HH:&gt;02d}</span><span class="s2">:</span><span class="si">{MM:&gt;02d}</span><span class="s2">:</span><span class="si">{SS:&gt;02d}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">year</span><span class="o">=</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">month</span><span class="o">=</span><span class="n">time</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">day</span><span class="o">=</span><span class="n">time</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+            <span class="n">HH</span><span class="o">=</span><span class="n">time</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">MM</span><span class="o">=</span><span class="n">time</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">SS</span><span class="o">=</span><span class="n">time</span><span class="p">[</span><span class="mi">5</span><span class="p">]))</span>
+
+        <span class="c1"># Every 10 loops, cycle through a display feature</span>
+        <span class="k">if</span> <span class="n">count</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Turning cursor on"</span><span class="p">)</span>
+            <span class="n">lcd</span><span class="o">.</span><span class="n">show_cursor</span><span class="p">()</span>           <span class="c1"># make the cursor visible</span>
+
+        <span class="k">if</span> <span class="n">count</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Turning cursor off"</span><span class="p">)</span>
+            <span class="n">lcd</span><span class="o">.</span><span class="n">hide_cursor</span><span class="p">()</span>           <span class="c1"># hide the cursor</span>
+
+        <span class="k">if</span> <span class="n">count</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Turning blink cursor on"</span><span class="p">)</span>
+            <span class="n">lcd</span><span class="o">.</span><span class="n">blink_cursor_on</span><span class="p">()</span>       <span class="c1"># make the cursor blink</span>
+
+        <span class="k">if</span> <span class="n">count</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Turning blink cursor off"</span><span class="p">)</span>
+            <span class="n">lcd</span><span class="o">.</span><span class="n">blink_cursor_off</span><span class="p">()</span>      <span class="c1"># stop the cursor blinking</span>
+
+        <span class="k">if</span> <span class="n">count</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Turning backlight off"</span><span class="p">)</span>
+            <span class="n">lcd</span><span class="o">.</span><span class="n">backlight_off</span><span class="p">()</span>         <span class="c1"># turn off the backlight</span>
+
+        <span class="k">if</span> <span class="n">count</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Turning backlight on"</span><span class="p">)</span>
+            <span class="n">lcd</span><span class="o">.</span><span class="n">backlight_on</span><span class="p">()</span>          <span class="c1"># turn the backlight back on</span>
+
+        <span class="k">if</span> <span class="n">count</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Turning display off"</span><span class="p">)</span>
+            <span class="n">lcd</span><span class="o">.</span><span class="n">display_off</span><span class="p">()</span>           <span class="c1"># blank the entire display</span>
+
+        <span class="k">if</span> <span class="n">count</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Turning display on"</span><span class="p">)</span>
+            <span class="n">lcd</span><span class="o">.</span><span class="n">display_on</span><span class="p">()</span>            <span class="c1"># turn the display back on</span>
+
+        <span class="k">if</span> <span class="n">count</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">8</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">"Filling display"</span><span class="p">)</span>
+            <span class="n">lcd</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+            <span class="n">fill_string</span> <span class="o">=</span> <span class="s2">""</span>
+            <span class="c1"># Build a string of 32 printable characters to fill both rows</span>
+            <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span> <span class="o">+</span> <span class="n">I2C_NUM_ROWS</span> <span class="o">*</span> <span class="n">I2C_NUM_COLS</span><span class="p">):</span>
+                <span class="n">fill_string</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>   <span class="c1"># chr() converts a number to a character</span>
+            <span class="n">lcd</span><span class="o">.</span><span class="n">putstr</span><span class="p">(</span><span class="n">fill_string</span><span class="p">)</span>     <span class="c1"># show the filled string</span>
+
+        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>          <span class="c1"># move to the next step</span>
+        <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>      <span class="c1"># wait 2 seconds before the next step</span>
+
+<span class="n">test_main</span><span class="p">()</span>   <span class="c1"># run the test function</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="what-each-line-does_2">What Each Line Does</h3>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>utime.localtime()</code></td>
+<td>Returns the current date and time as a list</td>
+</tr>
+<tr>
+<td><code>lcd.putstr(...)</code></td>
+<td>Sends a formatted string to the LCD</td>
+</tr>
+<tr>
+<td><code>count % 10</code></td>
+<td>Cycles through values 0–9 to test each feature in turn</td>
+</tr>
+<tr>
+<td><code>chr(x)</code></td>
+<td>Converts a number to its matching character (32 = space, 33 = !, etc.)</td>
+</tr>
+<tr>
+<td><code>count += 1</code></td>
+<td>Adds 1 to count each loop</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Monty's Tip</p>
+<p><img alt="Monty giving a tip" class="mascot-admonition-img" src="../../../img/mascot/tip.png">
+Use <code>lcd.move_to(col, row)</code> to control exactly where your text appears. Row 0 is the top row and row 1 is the bottom row. Column 0 is the leftmost position.</p>
+</div>
+<h2 id="references">References</h2>
+<p><a href="https://wokwi.com/projects/359400194112248833">Wokwi LCD Simulator</a></p>
+<p><a href="https://www.youtube.com/watch?v=liwMc01LOIA&amp;list=PLGs0VKk2DiYz8js1SJog21cDhkBqyAhC5&amp;index=22">Paul McWhorter Video on Using an LCD with an I2C Interface</a></p>
+<p><a href="https://chatgpt.com/share/67ba0326-b104-8001-891e-b6a8d2c99d20">ChatGPT response when asked how to use a 2-line LCD with MicroPython</a></p>
+<p><a href="https://www.mfitzp.com/article/oled-displays-i2c-micropython/">MFitzp article on OLED displays</a></p>
+<p><a href="https://learn.adafruit.com/character-lcds">Adafruit LCD Guide</a></p>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Great Work!</p>
+<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../../img/mascot/celebration.png">
+You can now display text, move the cursor, and control the backlight on a 16×2 LCD! Next, try the NeoPixel Matrix lab to light up a full grid of color LEDs.</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../04-8x8-led-matrix/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 8x8 LED Matrix">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                8x8 LED Matrix
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../05-4-digit/" class="md-footer__link md-footer__link--next" aria-label="Next: 4 Digit LED">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                4 Digit LED
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="../../../js/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

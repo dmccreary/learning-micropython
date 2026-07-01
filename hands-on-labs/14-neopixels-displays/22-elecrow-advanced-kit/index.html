@@ -1,0 +1,1846 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/hands-on-labs/14-neopixels-displays/22-elecrow-advanced-kit/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Elecrow Advanced Sensor Kit - Learning MicroPython</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-DS16K4YVRR"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-DS16K4YVRR",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-DS16K4YVRR",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Elecrow Advanced Sensor Kit - Learning MicroPython">
+      
+        <meta property="og:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/hands-on-labs/14-neopixels-displays/22-elecrow-advanced-kit.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/hands-on-labs/14-neopixels-displays/22-elecrow-advanced-kit/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Elecrow Advanced Sensor Kit - Learning MicroPython">
+      
+        <meta name="twitter:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/hands-on-labs/14-neopixels-displays/22-elecrow-advanced-kit.png">
+      
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#elecrow-advanced-sensor-kit" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Learning MicroPython" class="md-header__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning MicroPython
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Elecrow Advanced Sensor Kit
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Learning MicroPython" class="md-nav__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Learning MicroPython
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Book
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../../basics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Hands-On Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../kits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sample AI Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/content-authoring-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authoring Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructors Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/acknowledgements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acknowledgements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/30-colophon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Colophon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installing-the-tm1637-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing the TM1637 Driver
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-1-tm1637-4-digit-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab 1: TM1637 4-Digit Display
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab 1: TM1637 4-Digit Display">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Line Does
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-2-pir-motion-sensor-light-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab 2: PIR Motion Sensor + Light Sensor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab 2: PIR Motion Sensor + Light Sensor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-does_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Line Does
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-3-stoplight-with-countdown-timer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab 3: Stoplight with Countdown Timer
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab 3: Stoplight with Countdown Timer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-does_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Line Does
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-4-police-car-lights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab 4: Police Car Lights
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab 4: Police Car Lights">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-does_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Line Does
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experiments
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="elecrow-advanced-sensor-kit">Elecrow Advanced Sensor Kit</h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome to the Elecrow Advanced Kit!</p>
+<p><img alt="Monty waving welcome" class="mascot-admonition-img" src="../../../img/mascot/welcome.png">
+This kit takes everything you have learned and puts it together. You will use a motion sensor, a light sensor, a 4-digit display, LEDs, a buzzer, and RFID cards — all controlled from your Pico. Let's build something amazing!</p>
+</div>
+<p>The <strong>Elecrow Advanced Sensor Kit</strong> is a collection of components that work together on a development board. It includes:</p>
+<ul>
+<li><strong>TM1637 4-digit 7-segment display</strong> — shows numbers and simple text</li>
+<li><strong>PIR motion sensor</strong> — detects when a person or animal moves nearby</li>
+<li><strong>Photoresistor (light sensor)</strong> — measures how bright the light is</li>
+<li><strong>RGB LED</strong> — shows color by mixing red, green, and blue</li>
+<li><strong>Buzzer</strong> — makes beeping sounds</li>
+<li><strong>Laser module</strong> — shines a tiny dot of red light</li>
+<li><strong>RFID module</strong> — reads and writes data to key fobs and cards</li>
+<li><strong>Rotary encoder</strong> — a knob you can turn and click</li>
+</ul>
+<p>This page covers the most useful programs from the kit. Each lab focuses on one component at a time, then a final project combines them.</p>
+<h2 id="installing-the-tm1637-driver">Installing the TM1637 Driver</h2>
+<p>The 4-digit display uses a driver library. Copy <code>tm1637.py</code> from <code>src/kits/elecrow-adv/</code> to the root folder on your Pico.</p>
+<h2 id="lab-1-tm1637-4-digit-display">Lab 1: TM1637 4-Digit Display</h2>
+<p>The <strong>TM1637</strong> is a two-wire display controller. You connect just a clock wire and a data wire, and it drives all four digit segments.</p>
+<p><strong>Wiring:</strong></p>
+<ol>
+<li>Connect display <strong>CLK</strong> to <strong>GPIO 1</strong>.</li>
+<li>Connect display <strong>DIO</strong> to <strong>GPIO 0</strong>.</li>
+<li>Connect display <strong>VCC</strong> to <strong>3.3V</strong>.</li>
+<li>Connect display <strong>GND</strong> to <strong>GND</strong>.</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">tm1637</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="n">CLK_PIN</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">DIO_PIN</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Create the display object</span>
+<span class="n">tm</span> <span class="o">=</span> <span class="n">tm1637</span><span class="o">.</span><span class="n">TM1637</span><span class="p">(</span><span class="n">clk</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">CLK_PIN</span><span class="p">),</span> <span class="n">dio</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">DIO_PIN</span><span class="p">))</span>
+
+<span class="c1"># Show a number</span>
+<span class="n">tm</span><span class="o">.</span><span class="n">number</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>              <span class="c1"># displays "1234"</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Show a time (with colon between digits 2 and 3)</span>
+<span class="n">tm</span><span class="o">.</span><span class="n">numbers</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">59</span><span class="p">)</span>           <span class="c1"># displays "12:59" with the colon lit</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Show scrolling text</span>
+<span class="n">tm</span><span class="o">.</span><span class="n">scroll</span><span class="p">(</span><span class="s2">"Hello World"</span><span class="p">)</span>    <span class="c1"># scrolls text across the 4 digits</span>
+
+<span class="c1"># Show temperature</span>
+<span class="n">tm</span><span class="o">.</span><span class="n">temperature</span><span class="p">(</span><span class="mi">24</span><span class="p">)</span>          <span class="c1"># displays "24°C"</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="what-each-line-does">What Each Line Does</h3>
+<ol>
+<li><code>tm1637.TM1637(clk=..., dio=...)</code> — creates the display driver.</li>
+<li><code>tm.number(1234)</code> — shows any number from -999 to 9999.</li>
+<li><code>tm.numbers(12, 59)</code> — shows two separate two-digit numbers with the colon between them. Great for clocks.</li>
+<li><code>tm.scroll("Hello World")</code> — scrolls text at about 4 characters per second.</li>
+<li><code>tm.temperature(24)</code> — shows a temperature with the degree symbol.</li>
+</ol>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Key Idea</p>
+<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../../img/mascot/thinking.png">
+The TM1637 only has two wires for data (CLK and DIO). It uses a special timing protocol — not I2C or SPI. The <code>tm1637.py</code> library handles all the timing for you.</p>
+</div>
+<h2 id="lab-2-pir-motion-sensor-light-sensor">Lab 2: PIR Motion Sensor + Light Sensor</h2>
+<p>The <strong>PIR (Passive Infrared) sensor</strong> detects the heat signature of moving people or animals. The <strong>photoresistor</strong> measures brightness. This lab turns on an RGB LED only when motion is detected AND the room is dark enough.</p>
+<p><strong>Wiring:</strong></p>
+<ol>
+<li>Connect photoresistor (light sensor) ADC output to <strong>GPIO 26</strong> (ADC0).</li>
+<li>Connect PIR sensor signal to <strong>GPIO 1</strong>.</li>
+<li>Connect RGB LED red to <strong>GPIO 2</strong>, green to <strong>GPIO 3</strong>, blue to <strong>GPIO 4</strong> (each through a 330Ω resistor).</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">ADC</span>
+<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="c1"># Sensor inputs</span>
+<span class="n">light_sensor</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">26</span><span class="p">))</span>        <span class="c1"># photoresistor on ADC pin</span>
+<span class="n">pir</span>          <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_DOWN</span><span class="p">)</span>  <span class="c1"># PIR sensor</span>
+
+<span class="c1"># RGB LED outputs (PWM for brightness control)</span>
+<span class="n">led_r</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">led_g</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">led_b</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">led_r</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">led_g</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">led_b</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">set_rgb</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="c1"># Set LED brightness (0=off, 65535=full on)</span>
+    <span class="n">led_r</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+    <span class="n">led_g</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+    <span class="n">led_b</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="n">DARK_THRESHOLD</span> <span class="o">=</span> <span class="mi">35000</span>    <span class="c1"># ADC value below this = room is dark (0=bright, 65535=dark)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Motion + light sensor active."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"The LED lights up when motion is detected AND the room is dark."</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">light_level</span> <span class="o">=</span> <span class="n">light_sensor</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>    <span class="c1"># higher = darker</span>
+    <span class="n">motion</span>      <span class="o">=</span> <span class="n">pir</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>               <span class="c1"># 1 = motion detected, 0 = no motion</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Light: </span><span class="si">{</span><span class="n">light_level</span><span class="si">}</span><span class="s2">  Motion: </span><span class="si">{</span><span class="n">motion</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">motion</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">light_level</span> <span class="o">&gt;</span> <span class="n">DARK_THRESHOLD</span><span class="p">:</span>
+        <span class="n">set_rgb</span><span class="p">(</span><span class="mi">65535</span><span class="p">,</span> <span class="mi">65535</span><span class="p">,</span> <span class="mi">65535</span><span class="p">)</span>        <span class="c1"># white light — motion in the dark!</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">set_rgb</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>                    <span class="c1"># off</span>
+
+    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="what-each-line-does_1">What Each Line Does</h3>
+<ol>
+<li><code>ADC(Pin(26))</code> — reads a voltage from the photoresistor using Analog-to-Digital Conversion.</li>
+<li><code>Pin(1, Pin.IN, Pin.PULL_DOWN)</code> — sets the PIR pin as an input with an internal pull-down resistor.</li>
+<li><code>pir.value()</code> — returns 1 when motion is detected, 0 when still.</li>
+<li><code>light_level &gt; DARK_THRESHOLD</code> — the photoresistor gives a higher ADC value when it is darker.</li>
+</ol>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Monty's Tip</p>
+<p><img alt="Monty giving a tip" class="mascot-admonition-img" src="../../../img/mascot/tip.png">
+The PIR sensor has a warm-up period of about 30 seconds after you plug it in. During that time it may trigger randomly. Wait for it to settle before testing.</p>
+</div>
+<h2 id="lab-3-stoplight-with-countdown-timer">Lab 3: Stoplight with Countdown Timer</h2>
+<p>This project combines the TM1637 display and three LEDs to make a working stoplight. The red light shows a 30-second countdown, then the yellow light flashes briefly, then the green light stays on for 10 seconds.</p>
+<p><strong>Wiring:</strong></p>
+<ol>
+<li>TM1637: CLK → <strong>GPIO 1</strong>, DIO → <strong>GPIO 0</strong>.</li>
+<li>Red LED → <strong>GPIO 0</strong> (through 330Ω resistor to GND).</li>
+<li>Yellow LED → <strong>GPIO 1</strong> (through 330Ω resistor to GND).</li>
+<li>Green LED → <strong>GPIO 2</strong> (through 330Ω resistor to GND).</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">tm1637</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="n">tm</span>    <span class="o">=</span> <span class="n">tm1637</span><span class="o">.</span><span class="n">TM1637</span><span class="p">(</span><span class="n">clk</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">dio</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+<span class="n">red</span>    <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+<span class="n">yellow</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+<span class="n">green</span>  <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">all_off</span><span class="p">():</span>
+    <span class="n">red</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">yellow</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">green</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># Red phase — count down from 30 seconds</span>
+    <span class="n">all_off</span><span class="p">()</span>
+    <span class="n">red</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                           <span class="c1"># red light on</span>
+    <span class="k">for</span> <span class="n">countdown</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>     <span class="c1"># count from 30 down to 1</span>
+        <span class="n">tm</span><span class="o">.</span><span class="n">number</span><span class="p">(</span><span class="n">countdown</span><span class="p">)</span>               <span class="c1"># show the count on the display</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                           <span class="c1"># wait one second</span>
+
+    <span class="c1"># Yellow phase — flash three times</span>
+    <span class="n">all_off</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">yellow</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+        <span class="n">yellow</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
+
+    <span class="c1"># Green phase — 10 seconds</span>
+    <span class="n">all_off</span><span class="p">()</span>
+    <span class="n">green</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">tm</span><span class="o">.</span><span class="n">number</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="what-each-line-does_2">What Each Line Does</h3>
+<ol>
+<li><code>for countdown in range(30, 0, -1)</code> — counts from 30 down to 1 (stepping by -1 each loop).</li>
+<li><code>tm.number(countdown)</code> — shows the current countdown value on the 4-digit display.</li>
+<li><code>sleep(1)</code> — waits exactly one second between each countdown step.</li>
+</ol>
+<h2 id="lab-4-police-car-lights">Lab 4: Police Car Lights</h2>
+<p>This fun project uses a PWM buzzer and an RGB LED to imitate a police car's flashing lights and siren.</p>
+<p><strong>Wiring:</strong></p>
+<ol>
+<li>RGB LED: red → <strong>GPIO 4</strong>, green → <strong>GPIO 3</strong>, blue → <strong>GPIO 2</strong> (each through 330Ω).</li>
+<li>Buzzer → <strong>GPIO 15</strong>.</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="n">led_r</span>   <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">led_g</span>   <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">led_b</span>   <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">buzzer</span>  <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
+
+<span class="n">led_r</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">led_g</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">led_b</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>    <span class="c1"># set a low volume</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Blue flash with low tone</span>
+        <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">750</span><span class="p">)</span>
+        <span class="n">led_r</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">led_g</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">led_b</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">65535</span><span class="p">)</span>    <span class="c1"># blue light</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.23</span><span class="p">)</span>
+
+        <span class="c1"># Red flash with high tone</span>
+        <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1550</span><span class="p">)</span>
+        <span class="n">led_r</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">65535</span><span class="p">)</span>    <span class="c1"># red light</span>
+        <span class="n">led_g</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">led_b</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>           <span class="c1"># always silence the buzzer on Ctrl-C</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Siren off"</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="what-each-line-does_3">What Each Line Does</h3>
+<ol>
+<li><code>buzzer.duty_u16(1000)</code> — sets the buzzer to a low volume (1000 out of 65535).</li>
+<li><code>buzzer.freq(750)</code> — sets the low tone for the siren sweep.</li>
+<li><code>buzzer.freq(1550)</code> — sets the high tone for the siren sweep.</li>
+<li><code>except KeyboardInterrupt</code> — catches Ctrl-C and silences the buzzer cleanly.</li>
+</ol>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Watch Out!</p>
+<p><img alt="Monty warning" class="mascot-admonition-img" src="../../../img/mascot/warning.png">
+Always silence the buzzer before your program ends. If you do not set <code>buzzer.duty_u16(0)</code>, the tone keeps playing until you unplug the Pico. Use <code>try/except KeyboardInterrupt</code> to catch Ctrl-C.</p>
+</div>
+<h2 id="experiments">Experiments</h2>
+<ol>
+<li>In Lab 1, display the current time using <code>tm.numbers(hours, minutes)</code>. Set the starting hours and minutes as variables at the top of the program and increment them using a loop.</li>
+<li>In Lab 2, add the TM1637 display and show the light sensor reading on screen. This turns it into a simple light meter.</li>
+<li>In Lab 3, change the 30-second countdown to count faster — try <code>sleep(0.5)</code> instead of <code>sleep(1)</code>.</li>
+<li>In Lab 4, add a second alternating pattern: green-blue instead of red-blue.</li>
+</ol>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Advanced Kit Complete!</p>
+<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../../img/mascot/celebration.png">
+You have used five different components from the Elecrow Advanced Kit! You can now combine these into your own projects — a light-activated alarm, a countdown game timer, or a color-changing lamp. Great work, coder!</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="../../../js/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

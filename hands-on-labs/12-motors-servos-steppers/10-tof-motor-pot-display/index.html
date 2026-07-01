@@ -1,0 +1,1760 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/hands-on-labs/12-motors-servos-steppers/10-tof-motor-pot-display/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>ToF Sensor + Motor + Potentiometer + Display - Learning MicroPython</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-DS16K4YVRR"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-DS16K4YVRR",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-DS16K4YVRR",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="ToF Sensor + Motor + Potentiometer + Display - Learning MicroPython">
+      
+        <meta property="og:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/hands-on-labs/12-motors-servos-steppers/10-tof-motor-pot-display.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/hands-on-labs/12-motors-servos-steppers/10-tof-motor-pot-display/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="ToF Sensor + Motor + Potentiometer + Display - Learning MicroPython">
+      
+        <meta name="twitter:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/hands-on-labs/12-motors-servos-steppers/10-tof-motor-pot-display.png">
+      
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tof-sensor-motor-potentiometer-display" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Learning MicroPython" class="md-header__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning MicroPython
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              ToF Sensor + Motor + Potentiometer + Display
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Learning MicroPython" class="md-nav__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Learning MicroPython
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Book
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../../basics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Hands-On Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../kits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sample AI Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/content-authoring-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authoring Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructors Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/acknowledgements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acknowledgements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/30-colophon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Colophon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#parts-you-need" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parts You Need
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wiring-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wiring Steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wiring Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oled-display-i2c" class="md-nav__link">
+    <span class="md-ellipsis">
+      OLED Display (I2C)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tof-distance-sensor-i2c-shares-the-same-bus-as-oled" class="md-nav__link">
+    <span class="md-ellipsis">
+      ToF Distance Sensor (I2C — shares the same bus as OLED)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#potentiometer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Potentiometer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motor-and-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      Motor and Driver
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-1-reading-the-potentiometer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab 1: Reading the Potentiometer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-2-reading-the-distance-sensor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab 2: Reading the Distance Sensor
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-3-the-full-integrated-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab 3: The Full Integrated System
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab 3: The Full Integrated System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-section-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Section Does
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experiments
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="tof-sensor-motor-potentiometer-display">ToF Sensor + Motor + Potentiometer + Display</h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome to System Integration!</p>
+<p><img alt="Monty waving welcome" class="mascot-admonition-img" src="../../../img/mascot/welcome.png">
+This is one of the most exciting labs in the course — you will combine four different components into one working system! A distance sensor, a motor, a knob, and a display all working together. Let's build something amazing!</p>
+</div>
+<p><strong>System integration</strong> means making different parts work together as one. This lab is not about one new component — it is about making all the skills you have learned talk to each other.</p>
+<p>Here is the system you will build:</p>
+<ul>
+<li>A <strong>VL53L0X ToF sensor</strong> measures how far away an obstacle is.</li>
+<li>A <strong>potentiometer</strong> (a knob) lets you control the motor speed by hand.</li>
+<li>A <strong>DC motor</strong> spins faster or slower based on the knob, and stops when an obstacle is too close.</li>
+<li>An <strong>SSD1306 OLED display</strong> shows the distance, speed, and status on screen.</li>
+</ul>
+<h2 id="parts-you-need">Parts You Need</h2>
+<ul>
+<li>Raspberry Pi Pico</li>
+<li>VL53L0X Time-of-Flight distance sensor</li>
+<li>DC motor + L293D motor driver (or DRV8833)</li>
+<li>10kΩ potentiometer</li>
+<li>SSD1306 OLED display (128×64, I2C)</li>
+<li>Jumper wires and breadboard</li>
+</ul>
+<h2 id="wiring-steps">Wiring Steps</h2>
+<h3 id="oled-display-i2c">OLED Display (I2C)</h3>
+<ol>
+<li>Connect OLED <strong>VCC</strong> to Pico <strong>3.3V</strong>.</li>
+<li>Connect OLED <strong>GND</strong> to Pico <strong>GND</strong>.</li>
+<li>Connect OLED <strong>SDA</strong> to <strong>GPIO 0</strong>.</li>
+<li>Connect OLED <strong>SCL</strong> to <strong>GPIO 1</strong>.</li>
+</ol>
+<h3 id="tof-distance-sensor-i2c-shares-the-same-bus-as-oled">ToF Distance Sensor (I2C — shares the same bus as OLED)</h3>
+<ol>
+<li>Connect sensor <strong>VCC</strong> to Pico <strong>3.3V</strong>.</li>
+<li>Connect sensor <strong>GND</strong> to Pico <strong>GND</strong>.</li>
+<li>Connect sensor <strong>SDA</strong> to <strong>GPIO 0</strong> (same wire as OLED SDA).</li>
+<li>Connect sensor <strong>SCL</strong> to <strong>GPIO 1</strong> (same wire as OLED SCL).</li>
+</ol>
+<h3 id="potentiometer">Potentiometer</h3>
+<ol>
+<li>Connect one outer leg of the potentiometer to <strong>3.3V</strong>.</li>
+<li>Connect the other outer leg to <strong>GND</strong>.</li>
+<li>Connect the middle (wiper) leg to <strong>GPIO 26</strong> (ADC0).</li>
+</ol>
+<h3 id="motor-and-driver">Motor and Driver</h3>
+<ol>
+<li>Connect motor driver <strong>IN1</strong> to <strong>GPIO 14</strong>.</li>
+<li>Connect motor driver <strong>IN2</strong> to <strong>GPIO 15</strong>.</li>
+<li>Connect motor to the driver output terminals.</li>
+<li>Power the motor driver from <strong>VBUS (5V)</strong>.</li>
+</ol>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Watch Out!</p>
+<p><img alt="Monty warning" class="mascot-admonition-img" src="../../../img/mascot/warning.png">
+Two I2C devices (OLED and ToF sensor) can share the same SDA and SCL wires because each has a unique address. Make sure you do not connect a third I2C device with the same address as the OLED (0x3C) or the VL53L0X (0x29).</p>
+</div>
+<h2 id="lab-1-reading-the-potentiometer">Lab 1: Reading the Potentiometer</h2>
+<p>Start with just the potentiometer and test that you can read its value.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="n">pot</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">26</span><span class="p">))</span>              <span class="c1"># connect potentiometer to GPIO 26 (ADC0)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Turn the knob and watch the number change."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Range: 0 (turned all the way left) to 65535 (all the way right)"</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">raw</span> <span class="o">=</span> <span class="n">pot</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>        <span class="c1"># read a 16-bit value from the ADC</span>
+    <span class="c1"># Scale from 0–65535 to 0–100 as a percentage</span>
+    <span class="n">percent</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">raw</span> <span class="o">/</span> <span class="mi">65535</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Pot:"</span><span class="p">,</span> <span class="n">percent</span><span class="p">,</span> <span class="s2">"%"</span><span class="p">)</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>Turn the knob slowly from one end to the other. The percentage should go smoothly from 0 to 100.</p>
+<h2 id="lab-2-reading-the-distance-sensor">Lab 2: Reading the Distance Sensor</h2>
+<p>Test the distance sensor on its own before combining everything.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
+<span class="kn">import</span> <span class="nn">VL53L0X</span>
+<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
+<span class="n">tof</span> <span class="o">=</span> <span class="n">VL53L0X</span><span class="o">.</span><span class="n">VL53L0X</span><span class="p">(</span><span class="n">i2c</span><span class="p">)</span>
+<span class="n">tof</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Distance sensor ready. Hold objects at different distances."</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">tof</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>               <span class="c1"># distance in millimeters</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Distance:"</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">)</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h2 id="lab-3-the-full-integrated-system">Lab 3: The Full Integrated System</h2>
+<p>This program combines all four components. The motor speed follows the potentiometer, but automatically stops if an obstacle is closer than 20 cm (200 mm).</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
+<span class="kn">import</span> <span class="nn">VL53L0X</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">I2C</span>
+<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span> <span class="nn">ssd1306</span>
+
+<span class="c1"># --- Set up I2C bus (shared by OLED and ToF sensor) ---</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>
+
+<span class="c1"># --- Set up OLED display ---</span>
+<span class="n">oled</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_I2C</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">i2c</span><span class="p">)</span>
+
+<span class="c1"># --- Set up distance sensor ---</span>
+<span class="n">tof</span> <span class="o">=</span> <span class="n">VL53L0X</span><span class="o">.</span><span class="n">VL53L0X</span><span class="p">(</span><span class="n">i2c</span><span class="p">)</span>
+<span class="n">tof</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="c1"># --- Set up potentiometer ---</span>
+<span class="n">pot</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">26</span><span class="p">))</span>
+
+<span class="c1"># --- Set up motor PWM outputs ---</span>
+<span class="n">motor_fwd</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">14</span><span class="p">))</span>    <span class="c1"># forward signal to motor driver</span>
+<span class="n">motor_fwd</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>        <span class="c1"># 1 kHz PWM frequency for motor control</span>
+
+<span class="n">motor_rev</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>    <span class="c1"># reverse signal to motor driver</span>
+<span class="n">motor_rev</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">motor_rev</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>       <span class="c1"># keep reverse off throughout this lab</span>
+
+<span class="n">STOP_DISTANCE</span> <span class="o">=</span> <span class="mi">200</span>         <span class="c1"># stop the motor if obstacle closer than 200 mm</span>
+
+<span class="k">def</span> <span class="nf">set_motor_speed</span><span class="p">(</span><span class="n">percent</span><span class="p">):</span>
+    <span class="c1"># Convert 0–100 percent to 0–65535 PWM duty cycle</span>
+    <span class="n">duty</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">percent</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">*</span> <span class="mi">65535</span><span class="p">)</span>
+    <span class="n">motor_fwd</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">update_display</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">speed</span><span class="p">,</span> <span class="n">stopped</span><span class="p">):</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                                      <span class="c1"># clear the screen</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"ToF Motor Lab"</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>             <span class="c1"># title at top</span>
+
+    <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Dist: </span><span class="si">{</span><span class="n">dist</span><span class="si">}</span><span class="s2"> mm"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>         <span class="c1"># distance reading</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Speed: </span><span class="si">{</span><span class="n">speed</span><span class="si">}</span><span class="s2">%"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>         <span class="c1"># motor speed</span>
+
+    <span class="k">if</span> <span class="n">stopped</span><span class="p">:</span>
+        <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"** STOPPED **"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>        <span class="c1"># obstacle warning</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"Running..."</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                                       <span class="c1"># send to display</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"System running. Turn the knob to set speed."</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Move your hand in front of the sensor to stop the motor."</span><span class="p">)</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># Read the distance sensor</span>
+    <span class="n">distance</span> <span class="o">=</span> <span class="n">tof</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+    <span class="c1"># Read the potentiometer (0–65535) and convert to 0–100%</span>
+    <span class="n">pot_raw</span> <span class="o">=</span> <span class="n">pot</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
+    <span class="n">speed_pct</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">pot_raw</span> <span class="o">/</span> <span class="mi">65535</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+
+    <span class="c1"># Decide whether to run or stop</span>
+    <span class="k">if</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="n">STOP_DISTANCE</span><span class="p">:</span>
+        <span class="n">set_motor_speed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>           <span class="c1"># obstacle too close — stop the motor</span>
+        <span class="n">stopped</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">set_motor_speed</span><span class="p">(</span><span class="n">speed_pct</span><span class="p">)</span>   <span class="c1"># run the motor at the knob-set speed</span>
+        <span class="n">stopped</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># Update the OLED display</span>
+    <span class="n">update_display</span><span class="p">(</span><span class="n">distance</span><span class="p">,</span> <span class="n">speed_pct</span><span class="p">,</span> <span class="n">stopped</span><span class="p">)</span>
+
+    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>                       <span class="c1"># update 10 times per second</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="what-each-section-does">What Each Section Does</h3>
+<ol>
+<li><code>I2C(0, ...)</code> — one I2C bus serves both the OLED and the distance sensor.</li>
+<li><code>set_motor_speed(percent)</code> — converts a 0–100% value into the PWM duty cycle the motor driver expects.</li>
+<li><code>if distance &lt; STOP_DISTANCE</code> — the safety check. Below 200 mm (20 cm), the motor stops regardless of what the knob says.</li>
+<li><code>update_display(...)</code> — draws the current status on the OLED every cycle.</li>
+</ol>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Key Idea</p>
+<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../../img/mascot/thinking.png">
+This pattern — read sensors, make a decision, control outputs, update display — is the foundation of almost every robot and embedded system. You have just built a complete control loop.</p>
+</div>
+<h2 id="experiments">Experiments</h2>
+<ol>
+<li>Change <code>STOP_DISTANCE</code> to 100 mm. Does the motor stop earlier or later?</li>
+<li>Add a second threshold: slow the motor to 30% when the obstacle is between 200 mm and 400 mm, stop completely below 200 mm.</li>
+<li>Change the display to show a bar graph of the motor speed instead of a percentage number.</li>
+<li>Add a buzzer on GPIO 16. Sound a brief beep each time the motor switches from running to stopped.</li>
+</ol>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Great Work!</p>
+<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../../img/mascot/celebration.png">
+You have built a complete integrated system — sensor, control, actuator, and display all working together. This is what real engineering looks like. Every robot in the next chapter uses this same pattern!</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="../../../js/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

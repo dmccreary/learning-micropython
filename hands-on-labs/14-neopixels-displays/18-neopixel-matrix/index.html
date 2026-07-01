@@ -1,0 +1,3383 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/hands-on-labs/14-neopixels-displays/18-neopixel-matrix/">
+      
+      
+        <link rel="prev" href="../05-4-digit/">
+      
+      
+        <link rel="next" href="../../15-oled-setup/01-intro/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>NeoPixel Matrix - Learning MicroPython</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-DS16K4YVRR"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-DS16K4YVRR",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-DS16K4YVRR",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="NeoPixel Matrix - Learning MicroPython">
+      
+        <meta property="og:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/hands-on-labs/14-neopixels-displays/18-neopixel-matrix.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/hands-on-labs/14-neopixels-displays/18-neopixel-matrix/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="NeoPixel Matrix - Learning MicroPython">
+      
+        <meta name="twitter:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/hands-on-labs/14-neopixels-displays/18-neopixel-matrix.png">
+      
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#neopixel-matrix-display" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Learning MicroPython" class="md-header__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning MicroPython
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              NeoPixel Matrix
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Learning MicroPython" class="md-nav__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Learning MicroPython
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Book
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hands-On Labs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Hands-On Labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../basics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Basic Examples
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../03-micropython-environment/esp32/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 3 - MicroPython Environment
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../04-microcontrollers-hardware/pi-pico/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 4 - Microcontrollers and Hardware
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../05-electronics-fundamentals/breadboards/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 5 - Electronics Fundamentals
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sensors/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sensors
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../12-motors-servos-steppers/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 12 - Motors and Servos
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../13-robots-mobile-systems/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 13 - Robots
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ch 14 - Non-Graphical Displays
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            Ch 14 - Non-Graphical Displays
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-led-button/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LED Button
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seven-segment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    7 Segment Display
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-10-bar-leds/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    10 Bar LEDs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03a-10-bar-level/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Level Meter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-8x8-led-matrix/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    8x8 LED Matrix
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-character-lcd-display/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Character LCD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-4-digit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4 Digit LED
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    NeoPixel Matrix
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    NeoPixel Matrix
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#purchasing-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purchasing Hardware
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-software-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Software Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Software Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Line Does
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-your-write-pixel-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Your Write Pixel Function
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Your Write Pixel Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-does_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Line Does
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bounce-a-ball" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bounce a Ball
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitmap-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitmap Library
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Full Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-does_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Line Does
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../15-oled-setup/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 15 - OLED Setup
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../16-oled-drawing-animation/03-basic-drawing/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 16 - OLED Drawing and Animation
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../17-color-epaper-displays/11-lcd-waveshare/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 17 - Color and E-Paper Displays
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../18-sound-music-audio/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 18 - Sound and Music
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../19-wireless-iot/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 19 - Wireless and IoT
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../debugging/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Debugging
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../advanced-labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Advanced Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../kits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sample AI Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/content-authoring-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authoring Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructors Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/acknowledgements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acknowledgements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/30-colophon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Colophon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#purchasing-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Purchasing Hardware
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic-software-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Software Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Software Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Line Does
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-your-write-pixel-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Your Write Pixel Function
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Your Write Pixel Function">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-does_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Line Does
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bounce-a-ball" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bounce a Ball
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bitmap-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bitmap Library
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#full-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Full Code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Full Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-does_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Line Does
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="neopixel-matrix-display">NeoPixel Matrix Display</h1>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../img/neopixel-matrix.gif" data-desc-position="bottom"><img alt="Animated GIF showing the NeoPixel 8×32 matrix scrolling colors" src="../../../img/neopixel-matrix.gif"></a></p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome to the NeoPixel Matrix Lab</p>
+<p><img alt="Monty waving welcome" class="mascot-admonition-img" src="../../../img/mascot/welcome.png">
+A NeoPixel matrix is a grid of colorful smart LEDs — all controlled by a single wire! You will learn to draw pixels, bounce a ball, and even scroll text across the display. Let's build something amazing!</p>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p>This lab uses MicroPython to control a display made of an 8×32 matrix of <strong>WS2812 RGB LEDs</strong>. The entire display is controlled by just three wires: a ground (GND), a +5 V power wire, and one serial data signal.</p>
+<p><strong>RGB</strong> stands for Red, Green, and Blue. Each LED can mix those three colors to make any color you want. <strong>WS2812</strong> is the chip inside each LED that lets it receive color commands and pass them on to the next LED in the strip.</p>
+<p>You will use the MicroPython built-in <strong>NeoPixel</strong> library to control the display. Many of the programs from the <a href="../../../basics/05-neopixel/">NeoPixel Basics</a> lesson work here too. The key difference is that you need to convert grid coordinates (x, y) to a single NeoPixel index number.</p>
+<h2 id="purchasing-hardware">Purchasing Hardware</h2>
+<p>You can buy an 8×32 WS2812 RGB LED matrix on <a href="https://www.ebay.com/itm/255390906966">eBay</a> for about $12. The same matrix from <a href="https://www.adafruit.com/product/2294">Adafruit</a> costs about $100. They are also available in 16×16 versions. You can chain multiple displays together to make a larger screen.</p>
+<p>The 8×32 display has a total of 8 × 32 = 256 pixels.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../img/ws2811B-8x32-matrix.png" data-desc-position="bottom"><img alt="WS2811B 8×32 matrix showing the serpentine wiring layout" src="../../../img/ws2811B-8x32-matrix.png"></a></p>
+<h2 id="basic-software-setup">Basic Software Setup</h2>
+<p>Before you can draw on the matrix, you need a function that converts (x, y) grid coordinates to a single NeoPixel index number. This is important because the pixels are not wired in a simple left-to-right, top-to-bottom order. Instead, they follow a <strong>serpentine</strong> (zigzag) pattern.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../img/matrix-mapping-function.png" data-desc-position="bottom"><img alt="Matrix mapping function diagram showing the serpentine wiring pattern" src="../../../img/matrix-mapping-function.png"></a></p>
+<p>In the serpentine pattern, even columns (0, 2, 4…) run from top to bottom. Odd columns (1, 3, 5…) run from bottom to top. The math for each direction is different.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>        <span class="c1"># import Pin for the data wire</span>
+<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">NeoPixel</span>  <span class="c1"># import the NeoPixel library</span>
+
+<span class="n">NEOPIXEL_PIN</span>  <span class="o">=</span> <span class="mi">0</span>              <span class="c1"># data signal goes to GP0</span>
+<span class="n">ROWS</span>          <span class="o">=</span> <span class="mi">8</span>              <span class="c1"># the matrix has 8 rows</span>
+<span class="n">COLS</span>          <span class="o">=</span> <span class="mi">32</span>             <span class="c1"># the matrix has 32 columns</span>
+<span class="n">NUMBER_PIXELS</span> <span class="o">=</span> <span class="n">ROWS</span> <span class="o">*</span> <span class="n">COLS</span>    <span class="c1"># total pixels = 8 × 32 = 256</span>
+
+<span class="c1"># Create the NeoPixel object — this reserves memory for all 256 pixels</span>
+<span class="n">matrix</span> <span class="o">=</span> <span class="n">NeoPixel</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">NEOPIXEL_PIN</span><span class="p">),</span> <span class="n">NUMBER_PIXELS</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">write_pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Turn on one pixel at column x, row y with the given color."""</span>
+    <span class="c1"># Only draw if x and y are inside the display boundaries</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">ROWS</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">COLS</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># odd columns (1, 3, 5…) are wired bottom to top</span>
+            <span class="n">matrix</span><span class="p">[(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">ROWS</span> <span class="o">-</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
+        <span class="k">else</span><span class="p">:</span>       <span class="c1"># even columns (0, 2, 4…) are wired top to bottom</span>
+            <span class="n">matrix</span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">ROWS</span> <span class="o">+</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="what-each-line-does">What Each Line Does</h3>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NeoPixel(Pin(NEOPIXEL_PIN), NUMBER_PIXELS)</code></td>
+<td>Creates a NeoPixel object for 256 LEDs on GP0</td>
+</tr>
+<tr>
+<td><code>x % 2</code></td>
+<td>Checks if x is odd (1) or even (0)</td>
+</tr>
+<tr>
+<td><code>(x + 1) * ROWS - y - 1</code></td>
+<td>Calculates the index for an odd column (bottom to top)</td>
+</tr>
+<tr>
+<td><code>x * ROWS + y</code></td>
+<td>Calculates the index for an even column (top to bottom)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Key Idea</p>
+<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../../img/mascot/thinking.png">
+Think of the serpentine wiring like a snake slithering through the grid. It goes down column 0, then up column 1, then down column 2, and so on. The <code>write_pixel()</code> function works out where each pixel sits in that snake.</p>
+</div>
+<h2 id="testing-your-write-pixel-function">Testing Your Write Pixel Function</h2>
+<p>You can test the <code>write_pixel()</code> function by lighting up one pixel at each corner of the matrix with a different color.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Draw one pixel at each corner of the matrix to check the layout</span>
+<span class="n">write_pixel</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">))</span>    <span class="c1"># top-left corner — red</span>
+<span class="n">write_pixel</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span>  <span class="p">(</span><span class="mi">0</span><span class="p">,</span>   <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>    <span class="c1"># lower-left corner — green</span>
+<span class="n">write_pixel</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="p">(</span><span class="mi">0</span><span class="p">,</span>   <span class="mi">0</span><span class="p">,</span>   <span class="mi">255</span><span class="p">))</span>  <span class="c1"># top-right corner — blue</span>
+<span class="n">write_pixel</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span>  <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>  <span class="c1"># lower-right corner — white</span>
+<span class="n">matrix</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>                         <span class="c1"># send all the pixel data to the display</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="what-each-line-does_1">What Each Line Does</h3>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>write_pixel(0, 0, (255, 0, 0))</code></td>
+<td>Turns on the pixel at (col 0, row 0) with full red</td>
+</tr>
+<tr>
+<td><code>(255, 0, 0)</code></td>
+<td>A color tuple: red=255, green=0, blue=0</td>
+</tr>
+<tr>
+<td><code>matrix.write()</code></td>
+<td>Sends all pixel data from the Pico to the display</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bounce-a-ball">Bounce a Ball</h2>
+<p>This program draws a ball that bounces around the matrix. It changes color every 100 steps.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Bounce a ball around a NeoPixel Matrix</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>        <span class="c1"># import Pin</span>
+<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">NeoPixel</span>  <span class="c1"># import NeoPixel</span>
+<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>        <span class="c1"># import sleep for the delay</span>
+
+<span class="n">NEOPIXEL_PIN</span>  <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ROWS</span>          <span class="o">=</span> <span class="mi">8</span>
+<span class="n">COLS</span>          <span class="o">=</span> <span class="mi">32</span>
+<span class="n">NUMBER_PIXELS</span> <span class="o">=</span> <span class="n">ROWS</span> <span class="o">*</span> <span class="n">COLS</span>
+<span class="n">strip</span> <span class="o">=</span> <span class="n">NeoPixel</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">NEOPIXEL_PIN</span><span class="p">),</span> <span class="n">NUMBER_PIXELS</span><span class="p">)</span>   <span class="c1"># create the NeoPixel object</span>
+
+<span class="k">def</span> <span class="nf">clear</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""Turn off all pixels."""</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">NUMBER_PIXELS</span><span class="p">):</span>
+        <span class="n">strip</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>   <span class="c1"># set every pixel to off (black)</span>
+    <span class="n">strip</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>               <span class="c1"># send the update to the display</span>
+
+<span class="k">def</span> <span class="nf">write_pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Draw one pixel at (x, y) with the given color."""</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">ROWS</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">COLS</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span><span class="p">:</span>   <span class="c1"># odd column — wired bottom to top</span>
+            <span class="n">strip</span><span class="p">[(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">ROWS</span> <span class="o">-</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
+        <span class="k">else</span><span class="p">:</span>        <span class="c1"># even column — wired top to bottom</span>
+            <span class="n">strip</span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">ROWS</span> <span class="o">+</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
+
+<span class="k">def</span> <span class="nf">show</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""Send all pixel data to the display."""</span>
+    <span class="n">strip</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+
+<span class="n">brightness</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1"># keep brightness low so the display does not use too much power</span>
+<span class="n">x</span>  <span class="o">=</span> <span class="mi">0</span>           <span class="c1"># starting column</span>
+<span class="n">y</span>  <span class="o">=</span> <span class="mi">0</span>           <span class="c1"># starting row</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="mi">1</span>           <span class="c1"># horizontal direction: 1 = right, -1 = left</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="mi">1</span>           <span class="c1"># vertical direction: 1 = down, -1 = up</span>
+<span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>      <span class="c1"># counts steps to change color every 100 steps</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># Reverse direction when the ball hits an edge</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="mi">1</span>           <span class="c1"># hit left edge — move right</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="mi">1</span>           <span class="c1"># hit top edge — move down</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">COLS</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>          <span class="c1"># hit right edge — move left</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="n">ROWS</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>          <span class="c1"># hit bottom edge — move up</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>          <span class="c1"># print position to the console for debugging</span>
+
+    <span class="c1"># Change ball color based on the counter value</span>
+    <span class="k">if</span> <span class="n">counter</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="n">write_pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="n">brightness</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>       <span class="c1"># red for steps 0–99</span>
+    <span class="k">elif</span> <span class="n">counter</span> <span class="o">&lt;</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="n">write_pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">brightness</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>       <span class="c1"># green for steps 100–199</span>
+    <span class="k">elif</span> <span class="n">counter</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">:</span>
+        <span class="n">write_pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">brightness</span><span class="p">))</span>       <span class="c1"># blue for steps 200–299</span>
+
+    <span class="n">show</span><span class="p">()</span>               <span class="c1"># update the display</span>
+
+    <span class="n">x</span> <span class="o">+=</span> <span class="n">dx</span>              <span class="c1"># move the ball one step horizontally</span>
+    <span class="n">y</span> <span class="o">+=</span> <span class="n">dy</span>              <span class="c1"># move the ball one step vertically</span>
+    <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>         <span class="c1"># count one more step</span>
+
+    <span class="k">if</span> <span class="n">counter</span> <span class="o">&gt;</span> <span class="mi">300</span><span class="p">:</span>
+        <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>      <span class="c1"># reset the color counter after 300 steps</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">counter</span> <span class="o">%</span> <span class="mi">150</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>           <span class="c1"># nudge the ball sideways every 150 steps to vary the path</span>
+
+    <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>           <span class="c1"># wait 100 ms before the next frame</span>
+</code></pre></div></td></tr></tbody></table></div>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">You Can Do This!</p>
+<p><img alt="Monty encouraging" class="mascot-admonition-img" src="../../../img/mascot/encouraging.png">
+The bounce logic can look confusing at first. Remember: <code>dx</code> and <code>dy</code> are just direction numbers — either +1 or -1. When the ball hits a wall, you flip the sign. That is all there is to it! You've got this, coder!</p>
+</div>
+<h2 id="bitmap-library">Bitmap Library</h2>
+<p>To draw letters on the matrix, you need a <strong>bitmap font</strong>. A bitmap font stores each character as a grid of on/off dots. The class below reads a font file called <code>font5x8.bin</code> and draws characters one pixel at a time.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># MicroPython basic bitmap font renderer.</span>
+<span class="c1"># Author: Tony DiCola</span>
+<span class="c1"># License: MIT License (https://opensource.org/licenses/MIT)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">ustruct</span>           <span class="c1"># use the smaller MicroPython struct module</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">struct</span> <span class="k">as</span> <span class="nn">ustruct</span>  <span class="c1"># fall back to the standard struct module</span>
+
+<span class="k">class</span> <span class="nc">BitmapFont</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">pixel</span><span class="p">,</span> <span class="n">font_name</span><span class="o">=</span><span class="s1">'font5x8.bin'</span><span class="p">):</span>
+        <span class="c1"># Store the display size and the function used to draw one pixel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_width</span>     <span class="o">=</span> <span class="n">width</span>       <span class="c1"># display width in pixels</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_height</span>    <span class="o">=</span> <span class="n">height</span>      <span class="c1"># display height in pixels</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pixel</span>     <span class="o">=</span> <span class="n">pixel</span>       <span class="c1"># the function called to draw each pixel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_font_name</span> <span class="o">=</span> <span class="n">font_name</span>   <span class="c1"># path to the binary font file</span>
+
+    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Open the font file and read the character size."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_font</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_name</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span>
+        <span class="c1"># The first two bytes of the file store the width and height of each character</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_font_width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_font_height</span> <span class="o">=</span> <span class="n">ustruct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">'BB'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_font</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">deinit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Close the font file when done."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_font</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Called automatically when you use 'with BitmapFont(...) as bf:'"""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exception_type</span><span class="p">,</span> <span class="n">exception_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Called automatically when the 'with' block ends."""</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">draw_char</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ch</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Draw one character at column x, row y."""</span>
+        <span class="c1"># Skip characters that would be fully off the visible area</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_width</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="ow">or</span> \
+           <span class="n">y</span> <span class="o">&lt;</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_height</span> <span class="ow">or</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_height</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="c1"># Loop through each column of pixels in the character</span>
+        <span class="k">for</span> <span class="n">char_x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_width</span><span class="p">):</span>
+            <span class="c1"># Find the byte for this column in the font file</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_font</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_font_width</span><span class="p">)</span> <span class="o">+</span> <span class="n">char_x</span><span class="p">)</span>
+            <span class="n">line</span> <span class="o">=</span> <span class="n">ustruct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">'B'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_font</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="c1"># Loop through each row in this column</span>
+            <span class="k">for</span> <span class="n">char_y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_height</span><span class="p">):</span>
+                <span class="c1"># Draw a pixel if the bit at this position is 1</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">line</span> <span class="o">&gt;&gt;</span> <span class="n">char_y</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x1</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_pixel</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">char_x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">char_y</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Draw a string of characters starting at (x, y)."""</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">draw_char</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_width</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">y</span><span class="p">,</span>
+                           <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">width</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">"""Return the total pixel width of a text string."""</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_width</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h2 id="full-code">Full Code</h2>
+<p>This program scrolls a text message across the full 8×32 matrix from right to left.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># LED Matrix message scroller demo.</span>
+
+<span class="kn">import</span> <span class="nn">bitmapfont</span>              <span class="c1"># import the BitmapFont class (save the class above as bitmapfont.py)</span>
+<span class="kn">import</span> <span class="nn">machine</span>                 <span class="c1"># import machine for Pin</span>
+<span class="kn">import</span> <span class="nn">utime</span>                   <span class="c1"># import utime for timing</span>
+<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">NeoPixel</span>  <span class="c1"># import NeoPixel</span>
+
+<span class="n">NEOPIXEL_PIN</span>  <span class="o">=</span> <span class="mi">0</span>
+<span class="n">ROWS</span>          <span class="o">=</span> <span class="mi">8</span>
+<span class="n">COLS</span>          <span class="o">=</span> <span class="mi">32</span>
+<span class="n">NUMBER_PIXELS</span> <span class="o">=</span> <span class="n">ROWS</span> <span class="o">*</span> <span class="n">COLS</span>
+<span class="n">matrix</span> <span class="o">=</span> <span class="n">NeoPixel</span><span class="p">(</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="n">NEOPIXEL_PIN</span><span class="p">),</span> <span class="n">NUMBER_PIXELS</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fill</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Set all pixels to the same color."""</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">NUMBER_PIXELS</span><span class="p">):</span>
+        <span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>   <span class="c1"># set every pixel</span>
+
+<span class="c1"># Display settings</span>
+<span class="n">DISPLAY_WIDTH</span>  <span class="o">=</span> <span class="mi">32</span>     <span class="c1"># display width in pixels</span>
+<span class="n">DISPLAY_HEIGHT</span> <span class="o">=</span> <span class="mi">8</span>      <span class="c1"># display height in pixels</span>
+<span class="n">SPEED</span>          <span class="o">=</span> <span class="mf">20.0</span>   <span class="c1"># scroll speed in pixels per second</span>
+
+<span class="k">def</span> <span class="nf">show</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">"""Send all pixel data to the display."""</span>
+    <span class="n">matrix</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">write_pixel_value</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Set one pixel at (x, y) to the given color — handles serpentine wiring."""</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">ROWS</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">COLS</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span><span class="p">:</span>   <span class="c1"># odd column — wired bottom to top</span>
+            <span class="n">matrix</span><span class="p">[(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">ROWS</span> <span class="o">-</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
+        <span class="k">else</span><span class="p">:</span>        <span class="c1"># even column — wired top to bottom</span>
+            <span class="n">matrix</span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">ROWS</span> <span class="o">+</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
+
+<span class="k">def</span> <span class="nf">write_pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Draw one white-blue pixel — used by the bitmap font renderer."""</span>
+    <span class="n">write_pixel_value</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>   <span class="c1"># dim blue-white color</span>
+
+<span class="k">def</span> <span class="nf">scroll_text</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Scroll a text message across the display from right to left."""</span>
+    <span class="k">with</span> <span class="n">bitmapfont</span><span class="o">.</span><span class="n">BitmapFont</span><span class="p">(</span><span class="n">DISPLAY_WIDTH</span><span class="p">,</span> <span class="n">DISPLAY_HEIGHT</span><span class="p">,</span> <span class="n">write_pixel</span><span class="p">)</span> <span class="k">as</span> <span class="n">bf</span><span class="p">:</span>
+        <span class="n">pos</span>           <span class="o">=</span> <span class="n">DISPLAY_WIDTH</span>          <span class="c1"># start the message off the right edge</span>
+        <span class="n">message_width</span> <span class="o">=</span> <span class="n">bf</span><span class="o">.</span><span class="n">width</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>      <span class="c1"># measure how wide the message is</span>
+        <span class="n">last</span>          <span class="o">=</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>       <span class="c1"># record the current time in milliseconds</span>
+        <span class="n">speed_ms</span>      <span class="o">=</span> <span class="n">SPEED</span> <span class="o">/</span> <span class="mf">1000.0</span>         <span class="c1"># convert pixels/second to pixels/ms</span>
+
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">current</span>  <span class="o">=</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>                      <span class="c1"># get current time</span>
+            <span class="n">delta_ms</span> <span class="o">=</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_diff</span><span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">last</span><span class="p">)</span>       <span class="c1"># how many ms since last frame</span>
+            <span class="n">last</span>     <span class="o">=</span> <span class="n">current</span>
+
+            <span class="n">pos</span> <span class="o">-=</span> <span class="n">speed_ms</span> <span class="o">*</span> <span class="n">delta_ms</span>   <span class="c1"># move the text left based on elapsed time</span>
+            <span class="k">if</span> <span class="n">pos</span> <span class="o">&lt;</span> <span class="o">-</span><span class="n">message_width</span><span class="p">:</span>
+                <span class="n">pos</span> <span class="o">=</span> <span class="n">DISPLAY_WIDTH</span>      <span class="c1"># reset when the message scrolls fully off the left</span>
+
+            <span class="n">fill</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>              <span class="c1"># clear the display (all black)</span>
+            <span class="n">bf</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">pos</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># draw the text at the current position</span>
+            <span class="n">show</span><span class="p">()</span>                        <span class="c1"># update the display</span>
+
+            <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>            <span class="c1"># short pause to keep the animation smooth</span>
+
+<span class="c1"># Light up one pixel to test the display, then scroll a message</span>
+<span class="n">write_pixel</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">show</span><span class="p">()</span>
+<span class="n">scroll_text</span><span class="p">(</span><span class="s1">'MicroPython Rocks'</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="what-each-line-does_2">What Each Line Does</h3>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>SPEED = 20.0</code></td>
+<td>Sets scroll speed to 20 pixels per second</td>
+</tr>
+<tr>
+<td><code>utime.ticks_ms()</code></td>
+<td>Returns the current time in milliseconds</td>
+</tr>
+<tr>
+<td><code>utime.ticks_diff(current, last)</code></td>
+<td>Calculates how many ms have passed since the last frame</td>
+</tr>
+<tr>
+<td><code>pos -= speed_ms * delta_ms</code></td>
+<td>Moves the text left by the right amount for the time elapsed</td>
+</tr>
+<tr>
+<td><code>fill((0, 0, 0))</code></td>
+<td>Clears all pixels (black = off)</td>
+</tr>
+<tr>
+<td><code>bf.text(message, int(pos), 0)</code></td>
+<td>Draws the message at the current scroll position</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Monty's Tip</p>
+<p><img alt="Monty giving a tip" class="mascot-admonition-img" src="../../../img/mascot/tip.png">
+Change <code>scroll_text('MicroPython Rocks')</code> to your own message. Try your name, a joke, or a countdown — it will scroll across the display automatically!</p>
+</div>
+<h2 id="references">References</h2>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Great Work!</p>
+<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../../img/mascot/celebration.png">
+You drew pixels, bounced a ball, and scrolled a message across a 256-LED matrix! You have learned the full range of non-graphical displays in this section. Keep building, coder!</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../05-4-digit/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 4 Digit LED">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                4 Digit LED
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../15-oled-setup/01-intro/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Introduction
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="../../../js/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

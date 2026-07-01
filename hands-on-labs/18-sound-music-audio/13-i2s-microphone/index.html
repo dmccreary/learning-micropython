@@ -1,0 +1,1869 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/hands-on-labs/18-sound-music-audio/13-i2s-microphone/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>INMP441 I2S Digital Microphone - Learning MicroPython</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-DS16K4YVRR"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-DS16K4YVRR",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-DS16K4YVRR",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="INMP441 I2S Digital Microphone - Learning MicroPython">
+      
+        <meta property="og:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/hands-on-labs/18-sound-music-audio/13-i2s-microphone.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/hands-on-labs/18-sound-music-audio/13-i2s-microphone/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="INMP441 I2S Digital Microphone - Learning MicroPython">
+      
+        <meta name="twitter:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/hands-on-labs/18-sound-music-audio/13-i2s-microphone.png">
+      
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#inmp441-i2s-digital-microphone" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Learning MicroPython" class="md-header__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning MicroPython
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              INMP441 I2S Digital Microphone
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Learning MicroPython" class="md-nav__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Learning MicroPython
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Book
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../../basics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Hands-On Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../kits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sample AI Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/content-authoring-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authoring Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructors Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/acknowledgements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acknowledgements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/30-colophon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Colophon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#parts-you-need" class="md-nav__link">
+    <span class="md-ellipsis">
+      Parts You Need
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wiring-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wiring Steps
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-1-checking-ram-before-you-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab 1: Checking RAM Before You Start
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-2-testing-the-microphone-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab 2: Testing the Microphone Connection
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lab 2: Testing the Microphone Connection">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-line-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Line Does
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-3-measuring-sound-level" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab 3: Measuring Sound Level
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-4-spectrum-analyzer-on-an-oled-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lab 4: Spectrum Analyzer on an OLED Display
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experiments
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="inmp441-i2s-digital-microphone">INMP441 I2S Digital Microphone</h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome to Digital Audio Input!</p>
+<p><img alt="Monty waving welcome" class="mascot-admonition-img" src="../../../img/mascot/welcome.png">
+You have made sounds come out of your Pico — now you will make your Pico listen! In this lab, you will connect a high-quality digital microphone and measure sound levels and frequencies. Let's build something amazing!</p>
+</div>
+<p>The <strong>INMP441</strong> is a tiny digital microphone. Unlike cheap analog microphones, it sends its audio data over a digital bus called <strong>I2S</strong> (Inter-IC Sound). This means the signal stays clean and clear even over long wires. The same technology is used in smart speakers and voice assistants.</p>
+<p><strong>I2S</strong> (pronounced "eye-squared-ess") is a three-wire audio bus:
+- <strong>SCK</strong> — Serial Clock (the timing signal)
+- <strong>WS</strong> — Word Select (tells the device which audio channel is being sent)
+- <strong>SD</strong> — Serial Data (the actual audio samples)</p>
+<h2 id="parts-you-need">Parts You Need</h2>
+<ul>
+<li>Raspberry Pi Pico</li>
+<li>INMP441 MEMS I2S microphone module</li>
+<li>5 jumper wires</li>
+<li>Breadboard</li>
+<li>(Optional) SSD1306 OLED display for visualization</li>
+</ul>
+<h2 id="wiring-steps">Wiring Steps</h2>
+<ol>
+<li>Connect <strong>VDD</strong> on the microphone to the Pico's <strong>3.3V</strong> pin.</li>
+<li>Connect <strong>GND</strong> on the microphone to any <strong>GND</strong> pin on the Pico.</li>
+<li>Connect <strong>SCK</strong> on the microphone to <strong>GPIO 10</strong> on the Pico.</li>
+<li>Connect <strong>WS</strong> on the microphone to <strong>GPIO 11</strong> on the Pico.</li>
+<li>Connect <strong>SD</strong> on the microphone to <strong>GPIO 12</strong> on the Pico.</li>
+<li>Connect the microphone's <strong>L/R</strong> pin to <strong>GND</strong> (this selects the left channel).</li>
+</ol>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Monty's Tip</p>
+<p><img alt="Monty giving a tip" class="mascot-admonition-img" src="../../../img/mascot/tip.png">
+The L/R pin selects which stereo channel the microphone sends. Connecting it to GND means left channel. If you want to use two microphones, connect one to GND and the other to 3.3V.</p>
+</div>
+<h2 id="lab-1-checking-ram-before-you-start">Lab 1: Checking RAM Before You Start</h2>
+<p>The INMP441 needs a large audio buffer — a chunk of memory where it stores audio samples while your Pico is processing them. Check that your Pico has enough free RAM first.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">gc</span>                   <span class="c1"># import the garbage collector</span>
+<span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>                <span class="c1"># free any unused memory first</span>
+
+<span class="n">free_bytes</span> <span class="o">=</span> <span class="n">gc</span><span class="o">.</span><span class="n">mem_free</span><span class="p">()</span>  <span class="c1"># check how many bytes are available</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Free RAM:"</span><span class="p">,</span> <span class="n">free_bytes</span><span class="p">,</span> <span class="s2">"bytes"</span><span class="p">)</span>
+
+<span class="c1"># We need at least 40,000 bytes for the audio buffer</span>
+<span class="k">if</span> <span class="n">free_bytes</span> <span class="o">&lt;</span> <span class="mi">40000</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Warning: not enough free RAM for the audio buffer!"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"RAM is OK — ready to connect the microphone."</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>A standard Raspberry Pi Pico should show about 180,000 to 200,000 bytes free. If you see less, restart your Pico and try again.</p>
+<h2 id="lab-2-testing-the-microphone-connection">Lab 2: Testing the Microphone Connection</h2>
+<p>This program reads audio samples and prints the raw values. If you see numbers other than zero, the microphone is connected and working.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span> <span class="nn">struct</span>
+
+<span class="c1"># Pin assignments for the I2S bus</span>
+<span class="n">SCK_PIN</span> <span class="o">=</span> <span class="mi">10</span>     <span class="c1"># Serial Clock</span>
+<span class="n">WS_PIN</span>  <span class="o">=</span> <span class="mi">11</span>     <span class="c1"># Word Select</span>
+<span class="n">SD_PIN</span>  <span class="o">=</span> <span class="mi">12</span>     <span class="c1"># Serial Data</span>
+
+<span class="c1"># I2S configuration</span>
+<span class="n">I2S_ID</span>              <span class="o">=</span> <span class="mi">0</span>           <span class="c1"># use I2S bus 0</span>
+<span class="n">SAMPLE_SIZE_IN_BITS</span> <span class="o">=</span> <span class="mi">32</span>          <span class="c1"># INMP441 always sends 32-bit words</span>
+<span class="n">SAMPLE_RATE</span>         <span class="o">=</span> <span class="mi">16000</span>       <span class="c1"># 16,000 samples per second</span>
+<span class="n">BUFFER_SIZE</span>         <span class="o">=</span> <span class="mi">4096</span>        <span class="c1"># bytes in the receive buffer</span>
+
+<span class="c1"># Set up the I2S bus in receive (RX) mode</span>
+<span class="n">audio_in</span> <span class="o">=</span> <span class="n">I2S</span><span class="p">(</span>
+    <span class="n">I2S_ID</span><span class="p">,</span>
+    <span class="n">sck</span>  <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">SCK_PIN</span><span class="p">),</span>
+    <span class="n">ws</span>   <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">WS_PIN</span><span class="p">),</span>
+    <span class="n">sd</span>   <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">SD_PIN</span><span class="p">),</span>
+    <span class="n">mode</span> <span class="o">=</span> <span class="n">I2S</span><span class="o">.</span><span class="n">RX</span><span class="p">,</span>                <span class="c1"># RX = receiving (listening)</span>
+    <span class="n">bits</span> <span class="o">=</span> <span class="n">SAMPLE_SIZE_IN_BITS</span><span class="p">,</span>
+    <span class="nb">format</span> <span class="o">=</span> <span class="n">I2S</span><span class="o">.</span><span class="n">MONO</span><span class="p">,</span>            <span class="c1"># one channel</span>
+    <span class="n">rate</span> <span class="o">=</span> <span class="n">SAMPLE_RATE</span><span class="p">,</span>
+    <span class="n">ibuf</span> <span class="o">=</span> <span class="mi">40000</span><span class="p">,</span>                 <span class="c1"># internal buffer size in bytes</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Microphone connected. Make some noise!"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"You should see non-zero numbers below."</span><span class="p">)</span>
+
+<span class="c1"># Create a buffer to hold one chunk of raw audio data</span>
+<span class="n">samples_raw</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="n">BUFFER_SIZE</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>                           <span class="c1"># read 5 chunks</span>
+    <span class="n">num_bytes</span> <span class="o">=</span> <span class="n">audio_in</span><span class="o">.</span><span class="n">readinto</span><span class="p">(</span><span class="n">samples_raw</span><span class="p">)</span>   <span class="c1"># fill the buffer from the mic</span>
+    <span class="c1"># Unpack raw bytes into a list of 32-bit integers</span>
+    <span class="n">num_samples</span> <span class="o">=</span> <span class="n">num_bytes</span> <span class="o">//</span> <span class="mi">4</span>
+    <span class="n">fmt</span> <span class="o">=</span> <span class="s2">"&lt;</span><span class="si">{}</span><span class="s2">i"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num_samples</span><span class="p">)</span>             <span class="c1"># little-endian signed integers</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">samples_raw</span><span class="p">[:</span><span class="n">num_bytes</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"First 4 samples:"</span><span class="p">,</span> <span class="n">samples</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span>       <span class="c1"># print a few raw values</span>
+
+<span class="n">audio_in</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>                            <span class="c1"># shut down the I2S bus cleanly</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="what-each-line-does">What Each Line Does</h3>
+<ol>
+<li><code>I2S.RX</code> — sets the bus to receive mode (listening to the microphone).</li>
+<li><code>ibuf=40000</code> — reserves 40,000 bytes of internal buffer space for incoming audio.</li>
+<li><code>audio_in.readinto(samples_raw)</code> — fills your buffer with the latest audio samples.</li>
+<li><code>struct.unpack(fmt, ...)</code> — converts raw bytes into usable integer values.</li>
+<li><code>audio_in.deinit()</code> — releases the hardware so other programs can use it.</li>
+</ol>
+<h2 id="lab-3-measuring-sound-level">Lab 3: Measuring Sound Level</h2>
+<p>This program reads audio samples and calculates the <strong>RMS</strong> (Root Mean Square) level — a measure of how loud the sound is.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">struct</span><span class="o">,</span> <span class="nn">time</span>
+
+<span class="n">SCK_PIN</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">WS_PIN</span>  <span class="o">=</span> <span class="mi">11</span>
+<span class="n">SD_PIN</span>  <span class="o">=</span> <span class="mi">12</span>
+
+<span class="n">audio_in</span> <span class="o">=</span> <span class="n">I2S</span><span class="p">(</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="n">sck</span>  <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">SCK_PIN</span><span class="p">),</span>
+    <span class="n">ws</span>   <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">WS_PIN</span><span class="p">),</span>
+    <span class="n">sd</span>   <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">SD_PIN</span><span class="p">),</span>
+    <span class="n">mode</span> <span class="o">=</span> <span class="n">I2S</span><span class="o">.</span><span class="n">RX</span><span class="p">,</span>
+    <span class="n">bits</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span>
+    <span class="nb">format</span> <span class="o">=</span> <span class="n">I2S</span><span class="o">.</span><span class="n">MONO</span><span class="p">,</span>
+    <span class="n">rate</span> <span class="o">=</span> <span class="mi">16000</span><span class="p">,</span>
+    <span class="n">ibuf</span> <span class="o">=</span> <span class="mi">40000</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">NUM_SAMPLE_BYTES</span> <span class="o">=</span> <span class="mi">2048</span>       <span class="c1"># bytes to read each time (512 samples × 4 bytes)</span>
+<span class="n">samples_raw</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="n">NUM_SAMPLE_BYTES</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"# Sound level monitor — clap or speak into the microphone"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"# Values range from 0 (silent) to about 100 (very loud)"</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">num_bytes</span> <span class="o">=</span> <span class="n">audio_in</span><span class="o">.</span><span class="n">readinto</span><span class="p">(</span><span class="n">samples_raw</span><span class="p">)</span>    <span class="c1"># get a chunk of audio</span>
+
+        <span class="c1"># Unpack 32-bit signed integers from the raw bytes</span>
+        <span class="n">fmt</span> <span class="o">=</span> <span class="s2">"&lt;</span><span class="si">{}</span><span class="s2">i"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num_bytes</span> <span class="o">//</span> <span class="mi">4</span><span class="p">)</span>
+        <span class="n">samples</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="n">samples_raw</span><span class="p">[:</span><span class="n">num_bytes</span><span class="p">])</span>
+
+        <span class="c1"># Calculate RMS (how loud is it?)</span>
+        <span class="n">sum_squares</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">samples</span><span class="p">:</span>
+            <span class="n">adjusted</span> <span class="o">=</span> <span class="n">s</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span>          <span class="c1"># INMP441 sends 24-bit data in a 32-bit word</span>
+            <span class="n">sum_squares</span> <span class="o">+=</span> <span class="n">adjusted</span> <span class="o">*</span> <span class="n">adjusted</span>
+
+        <span class="n">rms</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sum_squares</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">samples</span><span class="p">))</span>
+
+        <span class="c1"># Scale to 0–100 for easy reading</span>
+        <span class="n">MAX_VALUE</span> <span class="o">=</span> <span class="mi">8388608</span>            <span class="c1"># 2^23 = max value of a 24-bit sample</span>
+        <span class="n">level</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="p">(</span><span class="n">rms</span> <span class="o">/</span> <span class="n">MAX_VALUE</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">level</span><span class="p">))</span>             <span class="c1"># Thonny plotter can graph this number</span>
+
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Stopped"</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">audio_in</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>                 <span class="c1"># always clean up the I2S bus</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>Open the <strong>Thonny plotter</strong> (View → Plotter) to see the sound level as a live graph. Speak, clap, or play music and watch the line jump up and down.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Key Idea</p>
+<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../../img/mascot/thinking.png">
+RMS stands for Root Mean Square. It is the standard way to measure the "average loudness" of an audio signal. Squaring each sample makes all values positive, then taking the square root at the end brings the scale back.</p>
+</div>
+<h2 id="lab-4-spectrum-analyzer-on-an-oled-display">Lab 4: Spectrum Analyzer on an OLED Display</h2>
+<p>This advanced lab performs a <strong>Fast Fourier Transform (FFT)</strong> on the audio. An FFT splits a sound into its frequency components — like seeing which musical notes are present. The result is displayed as a bar chart on an SSD1306 OLED screen.</p>
+<p>You need an SSD1306 OLED connected via SPI:
+- SCL → GPIO 2, SDA → GPIO 3, RES → GPIO 4, DC → GPIO 5, CS → GPIO 6</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
+<span class="kn">import</span> <span class="nn">ssd1306</span>
+<span class="kn">import</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">struct</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">array</span>
+
+<span class="c1"># Set up SPI OLED display</span>
+<span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">oled</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_SPI</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Set up I2S microphone</span>
+<span class="n">audio_in</span> <span class="o">=</span> <span class="n">I2S</span><span class="p">(</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">ws</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">11</span><span class="p">),</span> <span class="n">sd</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span>
+    <span class="n">mode</span><span class="o">=</span><span class="n">I2S</span><span class="o">.</span><span class="n">RX</span><span class="p">,</span>
+    <span class="n">bits</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="n">I2S</span><span class="o">.</span><span class="n">MONO</span><span class="p">,</span>
+    <span class="n">rate</span><span class="o">=</span><span class="mi">16000</span><span class="p">,</span>
+    <span class="n">ibuf</span><span class="o">=</span><span class="mi">40000</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">FFT_SIZE</span> <span class="o">=</span> <span class="mi">512</span>                        <span class="c1"># number of audio samples for one FFT frame</span>
+
+<span class="k">def</span> <span class="nf">capture_samples</span><span class="p">():</span>
+    <span class="n">raw</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="n">FFT_SIZE</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>     <span class="c1"># 4 bytes per 32-bit sample</span>
+    <span class="n">audio_in</span><span class="o">.</span><span class="n">readinto</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">"&lt;</span><span class="si">{}</span><span class="s2">i"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">FFT_SIZE</span><span class="p">),</span> <span class="n">raw</span><span class="p">)</span>
+    <span class="c1"># Apply a Hanning window to reduce noise at the edges of each frame</span>
+    <span class="n">windowed</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'f'</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">FFT_SIZE</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">FFT_SIZE</span><span class="p">):</span>
+        <span class="n">adjusted</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span>    <span class="c1"># shift right 8 to get 24-bit value</span>
+        <span class="n">hann</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">i</span> <span class="o">/</span> <span class="p">(</span><span class="n">FFT_SIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
+        <span class="n">windowed</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">adjusted</span> <span class="o">*</span> <span class="n">hann</span>
+    <span class="k">return</span> <span class="n">windowed</span>
+
+<span class="k">def</span> <span class="nf">compute_magnitudes</span><span class="p">(</span><span class="n">samples</span><span class="p">):</span>
+    <span class="c1"># Simple DFT magnitude calculation for 64 display bins</span>
+    <span class="n">num_bins</span> <span class="o">=</span> <span class="mi">64</span>
+    <span class="n">magnitudes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="n">FFT_SIZE</span> <span class="o">//</span> <span class="p">(</span><span class="n">num_bins</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># frequency resolution</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_bins</span><span class="p">):</span>
+        <span class="n">re</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">im</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">freq</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">step</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">FFT_SIZE</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span>   <span class="c1"># sample every 8th point for speed</span>
+            <span class="n">angle</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">freq</span> <span class="o">*</span> <span class="n">n</span> <span class="o">/</span> <span class="n">FFT_SIZE</span>
+            <span class="n">re</span> <span class="o">+=</span> <span class="n">samples</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+            <span class="n">im</span> <span class="o">-=</span> <span class="n">samples</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+        <span class="n">magnitudes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">re</span><span class="o">*</span><span class="n">re</span> <span class="o">+</span> <span class="n">im</span><span class="o">*</span><span class="n">im</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">magnitudes</span>
+
+<span class="k">def</span> <span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">magnitudes</span><span class="p">):</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">max_mag</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">magnitudes</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># avoid division by zero</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">mag</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">magnitudes</span><span class="p">[:</span><span class="mi">64</span><span class="p">]):</span>
+        <span class="n">height</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mag</span> <span class="o">/</span> <span class="n">max_mag</span><span class="p">)</span> <span class="o">*</span> <span class="mi">62</span><span class="p">)</span>  <span class="c1"># scale to display height</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">2</span>                        <span class="c1"># each bin is 2 pixels wide</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">63</span><span class="p">,</span> <span class="mi">63</span> <span class="o">-</span> <span class="n">height</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">oled</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">hline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>           <span class="c1"># draw baseline</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Spectrum analyzer running — make noise!"</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">samples</span> <span class="o">=</span> <span class="n">capture_samples</span><span class="p">()</span>
+        <span class="n">magnitudes</span> <span class="o">=</span> <span class="n">compute_magnitudes</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+        <span class="n">draw_spectrum</span><span class="p">(</span><span class="n">magnitudes</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Stopped"</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">audio_in</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
+</code></pre></div></td></tr></tbody></table></div>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">You Can Do This!</p>
+<p><img alt="Monty encouraging" class="mascot-admonition-img" src="../../../img/mascot/encouraging.png">
+The FFT math looks complicated — and it is! You do not need to understand every line right now. Focus on the result: each bar on the OLED shows the strength of a different frequency in the sound.</p>
+</div>
+<h2 id="experiments">Experiments</h2>
+<ol>
+<li>In Lab 3, whistle a single note. Watch the level jump. Then try humming a lower note. Is the level the same?</li>
+<li>In Lab 3, try printing a bar of <code>=</code> characters instead of a number to make a text-based level meter: <code>print('=' * int(level))</code>.</li>
+<li>In Lab 4, play music from a phone speaker near the microphone. Watch the bars dance with the beat.</li>
+<li>Try different <code>SAMPLE_RATE</code> values (8000, 22050, 44100). Higher rates capture higher frequencies but use more memory.</li>
+</ol>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Your Pico Can Hear!</p>
+<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../../img/mascot/celebration.png">
+You have built a digital audio input system and a live spectrum analyzer. These are the same building blocks used in voice assistants and audio visualizers. Next, you will give your Pico an accurate hardware clock that keeps time even without WiFi.</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="../../../js/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

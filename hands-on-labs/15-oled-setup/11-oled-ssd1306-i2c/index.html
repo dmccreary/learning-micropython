@@ -1,0 +1,3200 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/hands-on-labs/15-oled-setup/11-oled-ssd1306-i2c/">
+      
+      
+        <link rel="prev" href="../19-wiring-harness/">
+      
+      
+        <link rel="next" href="../11-oled-ssd1306-spi/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>SSD1306 I2C - Learning MicroPython</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-DS16K4YVRR"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-DS16K4YVRR",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-DS16K4YVRR",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="SSD1306 I2C - Learning MicroPython">
+      
+        <meta property="og:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/hands-on-labs/15-oled-setup/11-oled-ssd1306-i2c.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/hands-on-labs/15-oled-setup/11-oled-ssd1306-i2c/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="SSD1306 I2C - Learning MicroPython">
+      
+        <meta name="twitter:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/hands-on-labs/15-oled-setup/11-oled-ssd1306-i2c.png">
+      
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#oled-ssd1306-examples" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Learning MicroPython" class="md-header__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning MicroPython
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SSD1306 I2C
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Learning MicroPython" class="md-nav__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Learning MicroPython
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Book
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hands-On Labs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Hands-On Labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../basics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Basic Examples
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../03-micropython-environment/esp32/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 3 - MicroPython Environment
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../04-microcontrollers-hardware/pi-pico/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 4 - Microcontrollers and Hardware
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../05-electronics-fundamentals/breadboards/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 5 - Electronics Fundamentals
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sensors/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sensors
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../12-motors-servos-steppers/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 12 - Motors and Servos
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../13-robots-mobile-systems/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 13 - Robots
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../14-neopixels-displays/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 14 - Non-Graphical Displays
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ch 15 - OLED Setup
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            Ch 15 - OLED Setup
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-oled-setup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OLED Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../19-wiring-harness/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Wiring Harness
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    SSD1306 I2C
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    SSD1306 I2C
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-ssd1306-with-i2c-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the SSD1306 with I2C Interfaces
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the SSD1306 with I2C Interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-the-ssd1306-python-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add the ssd1306 Python Module
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-hello-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      I2C Hello World
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sh1106-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      SH1106 Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#counter-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Counter Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animated-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      Animated Box
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-ssd1306-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install SSD1306 Module
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssd1306-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      ssd1306 module
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssd1306-vs-sh1106" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSD1306 vs. SH1106
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-spi-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      The SPI interface
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The SPI interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spi-baudrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      SPI Baudrate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pico-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pico Pins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spi-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      SPI Terms
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-nonworking-spi-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Nonworking SPI Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-oled-ssd1306-spi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSD1306 SPI
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-oled-sh1106-i2c/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SH1106 I2C
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../40-oled-references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OLED References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../16-oled-drawing-animation/03-basic-drawing/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 16 - OLED Drawing and Animation
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../17-color-epaper-displays/11-lcd-waveshare/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 17 - Color and E-Paper Displays
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../18-sound-music-audio/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 18 - Sound and Music
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../19-wireless-iot/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 19 - Wireless and IoT
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../debugging/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Debugging
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../advanced-labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Advanced Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../kits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sample AI Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/content-authoring-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authoring Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructors Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/acknowledgements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acknowledgements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/30-colophon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Colophon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-ssd1306-with-i2c-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using the SSD1306 with I2C Interfaces
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using the SSD1306 with I2C Interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-the-ssd1306-python-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add the ssd1306 Python Module
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-hello-world" class="md-nav__link">
+    <span class="md-ellipsis">
+      I2C Hello World
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sh1106-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      SH1106 Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#counter-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Counter Example
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#animated-box" class="md-nav__link">
+    <span class="md-ellipsis">
+      Animated Box
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-ssd1306-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install SSD1306 Module
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssd1306-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      ssd1306 module
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssd1306-vs-sh1106" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSD1306 vs. SH1106
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-spi-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      The SPI interface
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The SPI interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spi-baudrate" class="md-nav__link">
+    <span class="md-ellipsis">
+      SPI Baudrate
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pico-pins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pico Pins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spi-terms" class="md-nav__link">
+    <span class="md-ellipsis">
+      SPI Terms
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-nonworking-spi-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sample Nonworking SPI Code
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      References
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="oled-ssd1306-examples">OLED SSD1306 Examples</h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome to the SSD1306 Lab</p>
+<p><img alt="Monty waving welcome" class="mascot-admonition-img" src="../../../img/mascot/welcome.png">
+In this lab, you will use the SSD1306 — the most popular OLED display chip. You will show text, count to 50, and animate a moving box. Let's get started!</p>
+</div>
+<h2 id="using-the-ssd1306-with-i2c-interfaces">Using the SSD1306 with I2C Interfaces</h2>
+<h3 id="add-the-ssd1306-python-module">Add the ssd1306 Python Module</h3>
+<p>You need to add the SSD1306 driver to your Pico before you can use it. You can do this in Thonny using the <strong>Tools → Manage Packages...</strong> menu. Search for <code>ssd1306</code> and install it. You need to do this once for each new device type you use.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../img/thonny-add-ssd1306.png" data-desc-position="bottom"><img alt="" src="../../../img/thonny-add-ssd1306.png"></a></p>
+<p>If the Manage Packages menu is grayed out, go to the Shell at the bottom of Thonny and type the install command there.</p>
+<h2 id="i2c-hello-world">I2C Hello World</h2>
+<p>This is the first program you should try. It shows "Hello World!" on your display.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
+<span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>   <span class="c1"># load the SSD1306 I2C display driver</span>
+
+<span class="n">sda</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>               <span class="c1"># data wire connected to GPIO pin 0</span>
+<span class="n">scl</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>               <span class="c1"># clock wire connected to GPIO pin 1</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">sda</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">scl</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>  <span class="c1"># set up I2C bus at 400,000 Hz</span>
+<span class="n">oled</span> <span class="o">=</span> <span class="n">SSD1306_I2C</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">i2c</span><span class="p">)</span>   <span class="c1"># create the display object: 128 wide, 64 tall</span>
+
+<span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                       <span class="c1"># clear screen to black</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"Hello World!"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>    <span class="c1"># draw text at top-left corner</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                        <span class="c1"># send the image to the physical screen</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Done'</span><span class="p">)</span>                      <span class="c1"># print to console when finished</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p><strong>What each line does:</strong></p>
+<ol>
+<li><code>import machine</code> — loads the hardware library.</li>
+<li><code>from ssd1306 import SSD1306_I2C</code> — loads only the I2C class from the ssd1306 driver.</li>
+<li><code>sda = machine.Pin(0)</code> — names the data wire pin.</li>
+<li><code>scl = machine.Pin(1)</code> — names the clock wire pin.</li>
+<li><code>i2c = machine.I2C(0, ...)</code> — creates the Inter-Integrated Circuit (I2C) bus. The <code>freq=400000</code> sets the speed to 400,000 signals per second.</li>
+<li><code>oled = SSD1306_I2C(128, 64, i2c)</code> — creates the display object. <code>128</code> is the width. <code>64</code> is the height.</li>
+<li><code>oled.fill(0)</code> — fills the screen with black (0 means off).</li>
+<li><code>oled.text("Hello World!", 0, 0)</code> — draws text starting at column 0, row 0 (top-left corner).</li>
+<li><code>oled.show()</code> — sends everything to the screen. Nothing appears until you call this!</li>
+<li><code>print('Done')</code> — shows a message in the console.</li>
+</ol>
+<p>After this program runs you should see the text on your OLED display.
+<a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../img/oled-hello-world.png" data-desc-position="bottom"><img alt="" src="../../../img/oled-hello-world.png"></a></p>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Monty's Tip</p>
+<p><img alt="Monty giving a tip" class="mascot-admonition-img" src="../../../img/mascot/tip.png">
+<code>oled.show()</code> is like pressing the "send" button. You can draw as many things as you want, but nothing appears on screen until you call <code>show()</code>. Always put it last!</p>
+</div>
+<h2 id="sh1106-example">SH1106 Example</h2>
+<p>If your display uses the SH1106 chip instead of the SSD1306, use this setup. The SH1106 chip has slightly more internal memory (132 x 64 pixels vs. 128 x 64 pixels), but the programming is very similar.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>   <span class="c1"># load Pin and I2C from the machine library</span>
+<span class="kn">import</span> <span class="nn">sh1106</span>                   <span class="c1"># load the SH1106 display driver</span>
+
+<span class="n">sda</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>            <span class="c1"># data wire on GPIO pin 0</span>
+<span class="n">scl</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>            <span class="c1"># clock wire on GPIO pin 1</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">scl</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">sda</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>  <span class="c1"># set up I2C bus</span>
+
+<span class="n">display</span> <span class="o">=</span> <span class="n">sh1106</span><span class="o">.</span><span class="n">SH1106_I2C</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">i2c</span><span class="p">,</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="mh">0x3c</span><span class="p">)</span>  <span class="c1"># create display with address 0x3c</span>
+<span class="n">display</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>   <span class="c1"># wake the display up</span>
+
+<span class="n">display</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                      <span class="c1"># clear screen to black</span>
+<span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">'CoderDojo'</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># draw text at top-left, white (1 = white)</span>
+<span class="n">display</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                       <span class="c1"># send image to screen</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">'done'</span><span class="p">)</span>  <span class="c1"># print to console when finished</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p><strong>What each line does:</strong></p>
+<p>1–2. Import lines — load the hardware library and SH1106 driver.
+3–4. Pin setup — same data and clock pins as SSD1306.
+5. <code>i2c = I2C(0, ...)</code> — creates the I2C bus.
+6. <code>display = sh1106.SH1106_I2C(128, 64, i2c, Pin(4), 0x3c)</code> — creates the display. <code>0x3c</code> is the display address in hexadecimal.
+7. <code>display.sleep(False)</code> — wakes the display. Some SH1106 displays start in sleep mode.
+8–10. Drawing and showing — same as SSD1306.</p>
+<h2 id="counter-example">Counter Example</h2>
+<p>In this example, you will update the display 50 times. A counter counts from 1 to 50. There is a short pause between each update so you can watch it count.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
+<span class="kn">import</span> <span class="nn">utime</span>                         <span class="c1"># load the time library for pausing</span>
+<span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>     <span class="c1"># load the SSD1306 driver</span>
+
+<span class="n">sda</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                 <span class="c1"># data wire on GPIO pin 0</span>
+<span class="n">scl</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                 <span class="c1"># clock wire on GPIO pin 1</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">sda</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">scl</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>  <span class="c1"># set up I2C bus</span>
+<span class="n">oled</span> <span class="o">=</span> <span class="n">SSD1306_I2C</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">i2c</span><span class="p">)</span>     <span class="c1"># create the display object</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">51</span><span class="p">):</span>                      <span class="c1"># count from 1 to 50</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                            <span class="c1"># clear screen to black each time</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">'CoderDojo Rocks!'</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># draw title at top-left, white</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>            <span class="c1"># draw the counter number below the title</span>
+    <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                             <span class="c1"># send new image to screen</span>
+    <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>                        <span class="c1"># wait 1/10 of a second</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">'done'</span><span class="p">)</span>  <span class="c1"># print when all 50 counts finish</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p><strong>What each line does:</strong></p>
+<p>1–6. Setup — loads libraries and creates the display.
+7. <code>for i in range(1, 51):</code> — loops 50 times. Each time, <code>i</code> is one number higher.
+8. <code>oled.fill(0)</code> — clears the screen before drawing the next frame.
+9. <code>oled.text('CoderDojo Rocks!', 0, 0, 1)</code> — draws the title every frame so it stays visible.
+10. <code>oled.text(str(i), 40, 20, 1)</code> — converts the number <code>i</code> to text with <code>str()</code>, then draws it at x=40, y=20.
+11. <code>oled.show()</code> — sends the new frame to the screen.
+12. <code>utime.sleep(0.1)</code> — waits 0.1 seconds (100 milliseconds) so you can see each number.</p>
+<h2 id="animated-box">Animated Box</h2>
+<p>This example draws a title and a border rectangle. Then it draws a small filled box that slides from left to right across the display.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>   <span class="c1"># load Pin and I2C</span>
+<span class="kn">import</span> <span class="nn">sh1106</span>                   <span class="c1"># load SH1106 driver</span>
+<span class="kn">import</span> <span class="nn">utime</span>                    <span class="c1"># load time library</span>
+
+<span class="n">sda</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>            <span class="c1"># data wire on GPIO pin 0</span>
+<span class="n">scl</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>            <span class="c1"># clock wire on GPIO pin 1</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">scl</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">sda</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>  <span class="c1"># set up I2C bus</span>
+
+<span class="n">display</span> <span class="o">=</span> <span class="n">sh1106</span><span class="o">.</span><span class="n">SH1106_I2C</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">i2c</span><span class="p">,</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="mh">0x3c</span><span class="p">)</span>  <span class="c1"># create display</span>
+<span class="n">display</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># wake the display</span>
+
+<span class="n">display</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                           <span class="c1"># clear screen to black</span>
+<span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">'CoderDojo Rocks'</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># draw title at top-left, white</span>
+<span class="c1"># line under title</span>
+<span class="n">display</span><span class="o">.</span><span class="n">hline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">127</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>              <span class="c1"># draw horizontal line at row 9, full width</span>
+<span class="c1"># bottom of display</span>
+<span class="n">display</span><span class="o">.</span><span class="n">hline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">127</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>             <span class="c1"># draw horizontal line at row 30</span>
+<span class="c1"># left edge</span>
+<span class="n">display</span><span class="o">.</span><span class="n">vline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>              <span class="c1"># draw vertical line on left side</span>
+<span class="c1"># right edge</span>
+<span class="n">display</span><span class="o">.</span><span class="n">vline</span><span class="p">(</span><span class="mi">127</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>            <span class="c1"># draw vertical line on right side</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">118</span><span class="p">):</span>                  <span class="c1"># slide box from column 0 to column 117</span>
+    <span class="c1"># box x0, y0, width, height, on</span>
+    <span class="n">display</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># draw white 10x10 filled box at position i</span>
+    <span class="c1"># draw black behind number</span>
+    <span class="n">display</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># erase old number with black rectangle</span>
+    <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>      <span class="c1"># draw current position number in white</span>
+    <span class="n">display</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                       <span class="c1"># send frame to screen</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">'done'</span><span class="p">)</span>  <span class="c1"># print when animation finishes</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p><strong>What each line does:</strong></p>
+<p>1–7. Setup — loads libraries and creates the I2C bus and display.
+8. <code>display.fill(0)</code> — clears the screen.
+9. <code>display.text(...)</code> — draws the title.
+10. <code>display.hline(0, 9, 127, 1)</code> — draws a horizontal line. Arguments: x start, y position, length, color.
+11. <code>display.vline(0, 10, 32, 1)</code> — draws a vertical line. Arguments: x position, y start, height, color.
+12. <code>for i in range(0, 118):</code> — loops 118 times, one position for each step.
+13. <code>display.fill_rect(i, 10, 10, 10, 1)</code> — draws the moving box. Arguments: x, y, width, height, color.
+14. <code>display.fill_rect(10, 21, 30, 8, 0)</code> — draws a black rectangle to erase the previous number.
+15. <code>display.text(str(i), 10, 21, 1)</code> — draws the current position as a number.
+16. <code>display.show()</code> — sends the new frame to the screen.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Key Idea</p>
+<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../../img/mascot/thinking.png">
+To erase something on an OLED, you draw a black rectangle over it. Black pixels are "off" — they produce no light. Drawing in black is the same as erasing!</p>
+</div>
+<h2 id="install-ssd1306-module">Install SSD1306 Module</h2>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../img/install-ssd1306.png" data-desc-position="bottom"><img alt="" src="../../../img/install-ssd1306.png"></a></p>
+<h2 id="ssd1306-module">ssd1306 module</h2>
+<p><a href="https://github.com/micropython/micropython/blob/master/drivers/display/ssd1306.py">SSD1306 Library</a> — click the RAW button, then right-click and choose "Save As" to download the file.</p>
+<h2 id="ssd1306-vs-sh1106">SSD1306 vs. SH1106</h2>
+<p>There is only one small difference between SSD1306 and SH1106. The SH1106 chip has an internal memory of 132 x 64 pixels. The SSD1306 only has 128 x 64 pixels. For most programs, you will not notice any difference.</p>
+<h2 id="the-spi-interface">The SPI interface</h2>
+<p>The four-wire I2C connection is great for beginners who do not want to hook up many wires. But sometimes you need a faster screen. This is when the Serial Peripheral Interface (SPI) connection is useful.</p>
+<h3 id="spi-baudrate">SPI Baudrate</h3>
+<p>The baud rate is the number of signals the SPI bus sends per second. You can read more about Pico SPI baud rates here:
+https://raspberrypi.github.io/pico-sdk-doxygen/group__hardware__spi.html#ga37f4c04ce4165ac8c129226336a0b66c</p>
+<p>The seven wires on the back of the SPI OLED screens are the following, reading from top to bottom when looking at the back of the display:</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="../../../img/oled-back-connections.png" data-desc-position="bottom"><img alt="" src="../../../img/oled-back-connections.png"></a></p>
+<ol>
+<li>CS — Chip Select — pin 4</li>
+<li>DC — Data/Command — pin 5</li>
+<li>RES — Reset — pin 6</li>
+<li>SDA — Data — SPI0 TX GP7 pin 10</li>
+<li>SCL — Clock — Connect to SPI0 SCK GP6 pin 9</li>
+<li>VCC — Connect to the 3.3V Out pin 36</li>
+<li>GND — pin 38 or any other GND pin</li>
+</ol>
+<h3 id="pico-pins">Pico Pins</h3>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code># Sample code sections
+ 28 # ------------ SPI ------------------
+ 29 # Pin Map SPI
+ 30 # - 3v - xxxxxx - Vcc
+ 31 # - G - xxxxxx - Gnd
+ 32 # - D7 - GPIO 13 - Din / MOSI fixed
+ 33 # - D5 - GPIO 14 - Clk / Sck fixed
+ 34 # - D8 - GPIO 4 - CS (optional, if the only connected device)
+ 35 # - D2 - GPIO 5 - D/C
+ 36 # - D1 - GPIO 2 - Res
+</code></pre></div></td></tr></tbody></table></div>
+<p>SCK is the clock — connect this to the OLED SCL pin.
+MOSI is the data line that sends data from your Pico to the display. Connect this to the SDA pin.</p>
+<p>From the SDK:
+https://datasheets.raspberrypi.org/pico/raspberry-pi-pico-python-sdk.pdf
+Section 3.7</p>
+<ol>
+<li>SPI0_SCK — pin 6</li>
+<li>SPI0_MOSI — pin 7</li>
+<li>SPI0_MISO — pin 8</li>
+</ol>
+<p>This contradicts p122 in GET STARTED WITH MICROPYTHON ON RASPBERRY PI PICO</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>spi_sck = machine.Pin(2)
+spi_tx  = machine.Pin(3)
+spi_rx  = machine.Pin(4)
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="spi-terms">SPI Terms</h3>
+<p>Master Out Slave In (MOSI) is the wire that carries data from the Pico to the display.</p>
+<p>We send the data to the SPI RX (Receive) port on the Pico. These are pin 1 (GP0) or pin 6 (GP4).</p>
+<h2 id="sample-nonworking-spi-code">Sample Nonworking SPI Code</h2>
+<p>From the documentation:</p>
+<div class="admonition from raspberry pi pico documentation">
+<p class="admonition-title">From</p>
+<p><strong>spi</strong> is an SPI object, which has to be created beforehand and tells the ports for SCLJ and MOSI. MISO is not used.</p>
+<p><strong>dc</strong> is the GPIO Pin object for the Data/Command selection. It will be initialized by the driver.</p>
+<p><strong>res</strong> is the GPIO Pin object for the reset connection. It will be initialized by the driver. If it is not needed, it can be set to None or omitted. In this case the default value of None applies.</p>
+<p><strong>cs</strong> is the GPIO Pin object for the CS connection. It will be initialized by the driver. If it is not needed, it can be set to None or omitted. In this case the default value of None applies.</p>
+</div>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
+<span class="kn">import</span> <span class="nn">machine</span>     <span class="c1"># loaded twice here — you only need it once</span>
+<span class="kn">import</span> <span class="nn">utime</span>
+<span class="kn">import</span> <span class="nn">ssd1306</span>
+<span class="n">led</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>  <span class="c1"># built-in LED on the Pico board</span>
+
+<span class="n">spi_sck</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>               <span class="c1"># SPI clock wire on GPIO pin 6</span>
+<span class="n">spi_tx</span>  <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>               <span class="c1"># SPI data wire on GPIO pin 7</span>
+<span class="n">spi</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">spi_sck</span><span class="p">,</span> <span class="n">mosi</span><span class="o">=</span><span class="n">spi_tx</span><span class="p">)</span>  <span class="c1"># set up SPI bus</span>
+
+<span class="n">CS</span>  <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>    <span class="c1"># Chip Select pin</span>
+<span class="n">DC</span>  <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span>    <span class="c1"># Data/Command pin</span>
+<span class="n">RES</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>   <span class="c1"># Reset pin</span>
+
+<span class="n">oled</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_SPI</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">DC</span><span class="p">,</span> <span class="n">RES</span><span class="p">,</span> <span class="n">CS</span><span class="p">)</span>  <span class="c1"># create the display</span>
+
+<span class="c1"># flash all pixels on</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>             <span class="c1"># fill screen white (1 = on)</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>         <span class="c1"># wait half a second</span>
+
+<span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                          <span class="c1"># clear screen to black</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">'CoderDojo Rocks!'</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># draw text at top-left, white</span>
+<span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># flash the LED to show end</span>
+<span class="n">led</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>        <span class="c1"># turn on the LED</span>
+<span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># wait half a second</span>
+<span class="n">led</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>         <span class="c1"># turn off the LED</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">'Done'</span><span class="p">)</span>  <span class="c1"># print when finished</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h2 id="references">References</h2>
+<ol>
+<li>
+<p><a href="https://docs.micropython.org/en/latest/esp8266/tutorial/ssd1306.html">MicroPython Tutorial on the SSD1306</a></p>
+</li>
+<li>
+<p><a href="https://github.com/robert-hh/SH1106">robert-hh's SH1106 Driver</a></p>
+</li>
+<li>
+<p><a href="https://www.mfitzp.com/article/oled-displays-i2c-micropython/">M Fitzp OLED Display i2c Article</a></p>
+</li>
+<li>
+<p><a href="https://github.com/adafruit/Adafruit_CircuitPython_SSD1306/blob/master/examples/ssd1306_stats.py">Adafruit Stats</a></p>
+</li>
+</ol>
+<p><a href="https://www.diymore.cc/collections/all-about-arduino/products/2-42-inch-12864-oled-display-module-iic-i2c-spi-serial-for-arduino-c51-stm32-green-white-blue-yellow?variant=17060396597306">DIY More OLED Product Description</a></p>
+<ol>
+<li><a href="https://github.com/raspberrypi/pico-micropython-examples/blob/master/i2c/1306oled/i2c_1306oled_using_defaults.py">Using I2C Defaults</a></li>
+</ol>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Great Work!</p>
+<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../../img/mascot/celebration.png">
+You have run Hello World, counted to 50, and animated a sliding box. You are making your display come alive. Next, try changing the text or the animation speed to make it your own!</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../19-wiring-harness/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Wiring Harness">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Wiring Harness
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../11-oled-ssd1306-spi/" class="md-footer__link md-footer__link--next" aria-label="Next: SSD1306 SPI">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                SSD1306 SPI
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="../../../js/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

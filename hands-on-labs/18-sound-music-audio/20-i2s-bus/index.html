@@ -1,0 +1,3624 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/hands-on-labs/18-sound-music-audio/20-i2s-bus/">
+      
+      
+        <link rel="prev" href="../12-tone-gen-pot/">
+      
+      
+        <link rel="next" href="../dac/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>The I2S Bus - Learning MicroPython</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-DS16K4YVRR"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-DS16K4YVRR",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-DS16K4YVRR",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="The I2S Bus - Learning MicroPython">
+      
+        <meta property="og:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/hands-on-labs/18-sound-music-audio/20-i2s-bus.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/hands-on-labs/18-sound-music-audio/20-i2s-bus/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="The I2S Bus - Learning MicroPython">
+      
+        <meta name="twitter:description" content="Creative Commons SA Noncommercial Resources for teaching and learning MicroPython.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/hands-on-labs/18-sound-music-audio/20-i2s-bus.png">
+      
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-i2s-bus" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Learning MicroPython" class="md-header__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning MicroPython
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The I2S Bus
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Learning MicroPython" class="md-nav__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Learning MicroPython
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Book
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Hands-On Labs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Hands-On Labs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../basics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Basic Examples
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../03-micropython-environment/esp32/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 3 - MicroPython Environment
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../04-microcontrollers-hardware/pi-pico/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 4 - Microcontrollers and Hardware
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../05-electronics-fundamentals/breadboards/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 5 - Electronics Fundamentals
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sensors/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sensors
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../12-motors-servos-steppers/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 12 - Motors and Servos
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../13-robots-mobile-systems/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 13 - Robots
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../14-neopixels-displays/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 14 - Non-Graphical Displays
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../15-oled-setup/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 15 - OLED Setup
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../16-oled-drawing-animation/03-basic-drawing/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 16 - OLED Drawing and Animation
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../17-color-epaper-displays/11-lcd-waveshare/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 17 - Color and E-Paper Displays
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_12" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Ch 18 - Sound and Music
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_12" id="__nav_5_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_12">
+            <span class="md-nav__icon md-icon"></span>
+            Ch 18 - Sound and Music
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-play-tone/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Playing a Tone
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-play-three-tones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Playing Three Tones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-play-scale/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Playing a Scale
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-play-mario/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Play Mario
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-eight-key-piano/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Eight Key Piano
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-play-audio-file/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Playing Audio File
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07a-test-audio-ports/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Testing Audio Ports
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-i2s-standard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I2S Standard
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-converting-mp3-to-wav/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Converting Audio Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-midi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MIDI Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-sound-parts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sound Parts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-tone-gen-pot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tone Generator with Pot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    The I2S Bus
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    The I2S Bus
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-use-i2s" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Use I2S?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why Use I2S?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-high-quality-digital-audio" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. High-Quality Digital Audio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-low-pin-count" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Low Pin Count
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-stereo-audio-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Stereo Audio Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-works-with-many-audio-chips" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Works With Many Audio Chips
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-less-electrical-interference" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Less Electrical Interference
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-many-sample-rates-and-bit-depths" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Many Sample Rates and Bit Depths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-great-for-audio-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Great for Audio Projects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-easy-in-micropython" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Easy in MicroPython
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-learning-opportunity" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Learning Opportunity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#robot-sounds-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Robot Sounds Project
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Robot Sounds Project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-robot-sound-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project: Robot Sound Player
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#components-needed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Components Needed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps to Build
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Steps to Build">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-prepare-the-sound-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Prepare the Sound Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-connect-the-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Connect the Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-install-the-required-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Install the Required Software
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-write-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Write the Code
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-each-section-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Section Does
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Each Section Does">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5-test-the-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Test the Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extensions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storing-sounds-in-the-picos-built-in-flash-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storing Sounds in the Pico's Built-In Flash Memory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storing Sounds in the Pico's Built-In Flash Memory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Considerations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-store-and-play-sounds-from-flash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps to Store and Play Sounds From Flash
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Steps to Store and Play Sounds From Flash">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-prepare-the-sound-files_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Prepare the Sound Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-upload-files-to-the-pico" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Upload Files to the Pico
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-play-the-sound-from-flash" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Play the Sound From Flash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-optimize-and-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Optimize and Test
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantages-of-using-flash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advantages of Using Flash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations-of-using-flash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitations of Using Flash
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dac/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Digital to Analog Converter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../midi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MIDI Projects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../19-wireless-iot/01-intro/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Ch 19 - Wireless and IoT
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../debugging/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Debugging
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../advanced-labs/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Advanced Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../kits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../prompts/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sample AI Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/content-authoring-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authoring Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/instructors-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructors Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/acknowledgements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acknowledgements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/30-colophon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Colophon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-use-i2s" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Use I2S?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why Use I2S?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-high-quality-digital-audio" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. High-Quality Digital Audio
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-low-pin-count" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Low Pin Count
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-stereo-audio-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Stereo Audio Support
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-works-with-many-audio-chips" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Works With Many Audio Chips
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-less-electrical-interference" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Less Electrical Interference
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-many-sample-rates-and-bit-depths" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Many Sample Rates and Bit Depths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-great-for-audio-projects" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Great for Audio Projects
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-easy-in-micropython" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Easy in MicroPython
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-learning-opportunity" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Learning Opportunity
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#robot-sounds-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      Robot Sounds Project
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Robot Sounds Project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-robot-sound-player" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project: Robot Sound Player
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#components-needed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Components Needed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps to Build
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Steps to Build">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-prepare-the-sound-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Prepare the Sound Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-connect-the-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Connect the Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-install-the-required-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Install the Required Software
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-write-the-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Write the Code
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-each-section-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Section Does
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Each Section Does">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5-test-the-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Test the Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extensions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#storing-sounds-in-the-picos-built-in-flash-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Storing Sounds in the Pico's Built-In Flash Memory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Storing Sounds in the Pico's Built-In Flash Memory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Considerations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps-to-store-and-play-sounds-from-flash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps to Store and Play Sounds From Flash
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Steps to Store and Play Sounds From Flash">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-prepare-the-sound-files_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Prepare the Sound Files
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-upload-files-to-the-pico" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Upload Files to the Pico
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-play-the-sound-from-flash" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Play the Sound From Flash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-optimize-and-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Optimize and Test
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advantages-of-using-flash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advantages of Using Flash
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations-of-using-flash" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limitations of Using Flash
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="the-i2s-bus">The I2S Bus</h1>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome to the I2S Bus Lab</p>
+<p><img alt="Monty waving welcome" class="mascot-admonition-img" src="../../../img/mascot/welcome.png">
+In this lab, you will learn why the Inter-IC Sound (I2S) bus is the best way to play high-quality audio on the Pico, and you will build a robot sound player!</p>
+</div>
+<h2 id="why-use-i2s">Why Use I2S?</h2>
+<p>The <strong>Inter-IC Sound (I2S)</strong> bus on the Raspberry Pi Pico is a great choice for digital audio projects. Here is why:</p>
+<h3 id="1-high-quality-digital-audio">1. High-Quality Digital Audio</h3>
+<p>I2S transfers digital audio without any loss of quality. Analog signals can pick up electrical noise and sound scratchy. I2S keeps the audio in digital form until the very last moment.</p>
+<h3 id="2-low-pin-count">2. Low Pin Count</h3>
+<p>I2S only needs three pins to transmit high-quality audio. That leaves most of the Pico's other GPIO pins free for sensors, buttons, and displays.</p>
+<h3 id="3-stereo-audio-support">3. Stereo Audio Support</h3>
+<p>The I2S bus can carry stereo audio — a separate left and right channel at the same time. This makes it great for music players, audio recorders, and interactive sound art.</p>
+<h3 id="4-works-with-many-audio-chips">4. Works With Many Audio Chips</h3>
+<p>Most digital audio chips — <strong>Digital-to-Analog Converters (DACs)</strong>, <strong>Analog-to-Digital Converters (ADCs)</strong>, and audio codecs — support I2S directly. You can connect them to the Pico with just three wires.</p>
+<h3 id="5-less-electrical-interference">5. Less Electrical Interference</h3>
+<p>Because the audio stays digital until it reaches the DAC chip, it does not pick up the electrical noise that affects analog wires. The result is cleaner sound.</p>
+<h3 id="6-many-sample-rates-and-bit-depths">6. Many Sample Rates and Bit Depths</h3>
+<p>I2S supports audio at different qualities: 16-bit at 8 kHz (good for voice), 16-bit at 44.1 kHz (CD quality), or even 24-bit at 48 kHz (studio quality). The Pico handles all of these.</p>
+<h3 id="7-great-for-audio-projects">7. Great for Audio Projects</h3>
+<p>I2S is perfect for:</p>
+<ul>
+<li>Building audio streaming devices</li>
+<li>Making digital radios or podcast players</li>
+<li>Creating smart speakers or voice assistants</li>
+<li>Building voice-controlled robots</li>
+</ul>
+<h3 id="8-easy-in-micropython">8. Easy in MicroPython</h3>
+<p>MicroPython's <code>machine.I2S</code> class makes it simple to send and receive I2S audio without writing complex low-level code.</p>
+<h3 id="9-learning-opportunity">9. Learning Opportunity</h3>
+<p>Working with I2S teaches you about digital audio processing and how modern audio equipment works. The skills you learn here apply to professional audio devices too.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Key Idea</p>
+<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../../img/mascot/thinking.png">
+I2S keeps the audio signal digital until it reaches the DAC chip. Keeping audio digital for as long as possible means less noise and better sound quality.</p>
+</div>
+<h2 id="robot-sounds-project">Robot Sounds Project</h2>
+<p>Here is a fun project that plays robot sound files on the Raspberry Pi Pico using I2S.</p>
+<h3 id="project-robot-sound-player">Project: Robot Sound Player</h3>
+<p>This project uses the Pico with an I2S DAC to play robot sound files (beeps, boops, speech) stored on a microSD card. A button press triggers each sound.</p>
+<h3 id="components-needed">Components Needed</h3>
+<ol>
+<li>Raspberry Pi Pico (with headers for easy wiring)</li>
+<li>I2S DAC module (for example, PCM5102)</li>
+<li>MicroSD card module (for storing sound files)</li>
+<li>Speaker (connected to the DAC output)</li>
+<li>Push button or slider switch (to trigger sounds)</li>
+<li>Jumper wires and a breadboard</li>
+</ol>
+<h3 id="steps-to-build">Steps to Build</h3>
+<h4 id="1-prepare-the-sound-files">1. Prepare the Sound Files</h4>
+<ul>
+<li>Convert your robot sound files to 16-bit PCM WAV format at 44.1 kHz.</li>
+<li>Save the WAV files on a microSD card with names like <code>robot1.wav</code>, <code>robot2.wav</code>.</li>
+</ul>
+<h4 id="2-connect-the-components">2. Connect the Components</h4>
+<p><strong>MicroSD Module to Pico:</strong></p>
+<ol>
+<li>Connect <code>VCC</code> on the SD module to <code>3.3V</code> on the Pico.</li>
+<li>Connect <code>GND</code> on the SD module to <code>GND</code> on the Pico.</li>
+<li>Connect <code>MISO</code> on the SD module to <code>GP16</code> on the Pico.</li>
+<li>Connect <code>MOSI</code> on the SD module to <code>GP19</code> on the Pico.</li>
+<li>Connect <code>SCK</code> on the SD module to <code>GP18</code> on the Pico.</li>
+<li>Connect <code>CS</code> on the SD module to <code>GP17</code> on the Pico.</li>
+</ol>
+<p><strong>I2S DAC to Pico:</strong></p>
+<ol>
+<li>Connect <code>BCK</code> on the DAC to <code>GP10</code> on the Pico.</li>
+<li>Connect <code>LRCK</code> on the DAC to <code>GP11</code> on the Pico.</li>
+<li>Connect <code>DIN</code> on the DAC to <code>GP9</code> on the Pico.</li>
+<li>Connect <code>GND</code> on the DAC to <code>GND</code> on the Pico.</li>
+<li>Connect <code>VCC</code> on the DAC to <code>3.3V</code> or <code>5V</code> on the Pico (check your module's label).</li>
+</ol>
+<p><strong>Speaker to DAC:</strong></p>
+<ol>
+<li>Connect the <code>+</code> speaker terminal to the <code>+</code> output on the DAC module.</li>
+<li>Connect the <code>−</code> speaker terminal to the <code>−</code> output on the DAC module.</li>
+</ol>
+<p><strong>Button to Pico:</strong></p>
+<ol>
+<li>Connect one side of the button to <code>GP14</code> on the Pico.</li>
+<li>Connect the other side of the button to <code>GND</code>.</li>
+<li>Connect a 10 kΩ pull-up resistor from <code>GP14</code> to <code>3.3V</code>.</li>
+</ol>
+<h4 id="3-install-the-required-software">3. Install the Required Software</h4>
+<ul>
+<li>Make sure MicroPython is installed on your Pico.</li>
+<li>Upload the I2S audio library (for example, <code>i2s_audio.py</code>) to the Pico.</li>
+<li>Upload the SD card library to the Pico.</li>
+<li>Format the microSD card as FAT32 before copying sound files to it.</li>
+</ul>
+<h4 id="4-write-the-code">4. Write the Code</h4>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">SPI</span>  <span class="c1"># import Pin, I2S, and SPI classes</span>
+<span class="kn">import</span> <span class="nn">uos</span>                          <span class="c1"># import the operating-system module</span>
+
+<span class="c1"># Set up I2S for the DAC</span>
+<span class="n">audio_out</span> <span class="o">=</span> <span class="n">I2S</span><span class="p">(</span>
+    <span class="mi">0</span><span class="p">,</span>                              <span class="c1"># use I2S peripheral 0</span>
+    <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>                    <span class="c1"># bit clock pin</span>
+    <span class="n">ws</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">11</span><span class="p">),</span>                     <span class="c1"># word select (left/right channel) pin</span>
+    <span class="n">sd</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span>                      <span class="c1"># serial data output pin</span>
+    <span class="n">mode</span><span class="o">=</span><span class="n">I2S</span><span class="o">.</span><span class="n">TX</span><span class="p">,</span>                    <span class="c1"># TX = transmit (play audio)</span>
+    <span class="n">bits</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>                        <span class="c1"># 16-bit audio samples</span>
+    <span class="nb">format</span><span class="o">=</span><span class="n">I2S</span><span class="o">.</span><span class="n">MONO</span><span class="p">,</span>                <span class="c1"># single channel</span>
+    <span class="n">rate</span><span class="o">=</span><span class="mi">44100</span>                      <span class="c1"># 44,100 samples per second</span>
+<span class="p">)</span>
+
+<span class="c1"># Set up the SPI bus for the SD card</span>
+<span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">18</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">19</span><span class="p">),</span> <span class="n">miso</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
+<span class="n">sd_cs</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>            <span class="c1"># chip-select pin for the SD card</span>
+<span class="n">uos</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="n">SDCard</span><span class="p">(</span><span class="n">spi</span><span class="p">,</span> <span class="n">sd_cs</span><span class="p">),</span> <span class="s2">"/sd"</span><span class="p">)</span>  <span class="c1"># mount the SD card at /sd</span>
+
+<span class="c1"># Set up the button with a pull-up resistor</span>
+<span class="n">button</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>  <span class="c1"># button reads LOW when pressed</span>
+
+<span class="k">def</span> <span class="nf">play_sound</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Open a WAV file and play it through the I2S DAC."""</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">wav</span><span class="p">:</span>
+        <span class="n">wav</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">44</span><span class="p">)</span>               <span class="c1"># skip past the 44-byte WAV file header</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">buf</span> <span class="o">=</span> <span class="n">wav</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">2048</span><span class="p">)</span>   <span class="c1"># read 2 KB of audio data at a time</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">buf</span><span class="p">:</span>
+                <span class="k">break</span>              <span class="c1"># stop when we reach the end of the file</span>
+            <span class="n">audio_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>   <span class="c1"># send the audio data to the DAC</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Ready to play robot sounds!"</span><span class="p">)</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">button</span><span class="o">.</span><span class="n">value</span><span class="p">():</span>         <span class="c1"># button pressed (value is LOW with PULL_UP)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Playing sound!"</span><span class="p">)</span>
+        <span class="n">play_sound</span><span class="p">(</span><span class="s2">"/sd/robot1.wav"</span><span class="p">)</span>  <span class="c1"># play the first robot sound</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h3 id="what-each-section-does">What Each Section Does</h3>
+<ol>
+<li><code>I2S(0, mode=I2S.TX, ...)</code> — sets up I2S peripheral 0 to transmit audio.</li>
+<li><code>SPI(0, ...)</code> and <code>uos.mount(...)</code> — connects to the SD card over SPI and mounts it as a drive at <code>/sd</code>.</li>
+<li><code>Pin(14, Pin.IN, Pin.PULL_UP)</code> — sets the button pin as an input with an internal pull-up resistor.</li>
+<li><code>wav.seek(44)</code> — skips the WAV file header. The first 44 bytes describe the file format, not audio.</li>
+<li><code>wav.read(2048)</code> — reads 2 KB of audio at a time to avoid running out of memory.</li>
+<li><code>audio_out.write(buf)</code> — sends the audio chunk to the DAC over I2S.</li>
+<li><code>if not button.value()</code> — the button reads <code>False</code> (LOW) when pressed, because of the pull-up resistor.</li>
+</ol>
+<h4 id="5-test-the-setup">5. Test the Setup</h4>
+<ol>
+<li>Power up the Pico.</li>
+<li>Press the button to play <code>robot1.wav</code>.</li>
+<li>Swap in different sound files or add more buttons for additional sounds.</li>
+</ol>
+<h3 id="extensions">Extensions</h3>
+<ol>
+<li><strong>Multiple buttons</strong>: Add more buttons to trigger different sound effects.</li>
+<li><strong>Random playback</strong>: Use the <code>random</code> module to pick a random sound from the SD card.</li>
+<li><strong>Sensor triggers</strong>: Connect a distance sensor and play a sound when something gets close.</li>
+</ol>
+<div class="admonition mascot-encourage">
+<p class="admonition-title">You Can Do This!</p>
+<p><img alt="Monty encouraging" class="mascot-admonition-img" src="../../../img/mascot/encouraging.png">
+Setting up I2S with an SD card can feel like a lot of steps. Take it one step at a time — connect the SD card first, then add the DAC, then add the button. You've got this!</p>
+</div>
+<h2 id="storing-sounds-in-the-picos-built-in-flash-memory">Storing Sounds in the Pico's Built-In Flash Memory</h2>
+<p>You do not need an SD card for short sound effects. You can store WAV files directly in the Pico's 2 MB of built-in flash memory. Here are the trade-offs:</p>
+<h3 id="considerations">Considerations</h3>
+<ul>
+<li>The Pico has 2 MB of flash, shared with MicroPython and your code. A WAV file at 16-bit, 44.1 kHz uses about 88 KB per second. A file at 8 kHz uses only about 16 KB per second.</li>
+<li>Mono files use half as much space as stereo.</li>
+<li>Copy files to the Pico using Thonny's file manager or the <code>mpremote</code> command-line tool.</li>
+<li>Flash memory is a bit slower to read than an SD card, but for short clips this is not a problem.</li>
+</ul>
+<h3 id="steps-to-store-and-play-sounds-from-flash">Steps to Store and Play Sounds From Flash</h3>
+<h4 id="1-prepare-the-sound-files_1">1. Prepare the Sound Files</h4>
+<p>Convert your files to a smaller format using ffmpeg:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>ffmpeg<span class="w"> </span>-i<span class="w"> </span>input.wav<span class="w"> </span>-ar<span class="w"> </span><span class="m">16000</span><span class="w"> </span>-ac<span class="w"> </span><span class="m">1</span><span class="w"> </span>-b:a<span class="w"> </span>8k<span class="w"> </span>output.wav
+</code></pre></div></td></tr></tbody></table></div>
+<p>This creates a mono file at 16,000 samples per second.</p>
+<h4 id="2-upload-files-to-the-pico">2. Upload Files to the Pico</h4>
+<ol>
+<li>Open Thonny.</li>
+<li>Connect your Pico.</li>
+<li>Use the <strong>File</strong> menu to upload your WAV file to the Pico's flash memory.</li>
+</ol>
+<h4 id="3-play-the-sound-from-flash">3. Play the Sound From Flash</h4>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span>     <span class="c1"># import I2S and Pin classes</span>
+
+<span class="c1"># Set up I2S for the DAC</span>
+<span class="n">audio_out</span> <span class="o">=</span> <span class="n">I2S</span><span class="p">(</span>
+    <span class="mi">0</span><span class="p">,</span>                            <span class="c1"># use I2S peripheral 0</span>
+    <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>                  <span class="c1"># bit clock pin</span>
+    <span class="n">ws</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">11</span><span class="p">),</span>                   <span class="c1"># word select pin</span>
+    <span class="n">sd</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span>                    <span class="c1"># serial data output pin</span>
+    <span class="n">mode</span><span class="o">=</span><span class="n">I2S</span><span class="o">.</span><span class="n">TX</span><span class="p">,</span>                  <span class="c1"># TX = transmit (play audio)</span>
+    <span class="n">bits</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>                      <span class="c1"># 16-bit audio samples</span>
+    <span class="nb">format</span><span class="o">=</span><span class="n">I2S</span><span class="o">.</span><span class="n">MONO</span><span class="p">,</span>              <span class="c1"># single channel</span>
+    <span class="n">rate</span><span class="o">=</span><span class="mi">16000</span>                    <span class="c1"># must match the WAV file's sample rate</span>
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">play_sound</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Open a WAV file from flash and play it through the I2S DAC."""</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">wav</span><span class="p">:</span>
+            <span class="n">wav</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">44</span><span class="p">)</span>          <span class="c1"># skip the 44-byte WAV header</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="n">buf</span> <span class="o">=</span> <span class="n">wav</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">2048</span><span class="p">)</span>   <span class="c1"># read 2 KB at a time</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">buf</span><span class="p">:</span>
+                    <span class="k">break</span>              <span class="c1"># stop at the end of the file</span>
+                <span class="n">audio_out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">buf</span><span class="p">)</span>   <span class="c1"># send audio to the DAC</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error playing sound: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>  <span class="c1"># print any error message</span>
+
+<span class="c1"># Play the sound stored on the Pico</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Playing robot sound..."</span><span class="p">)</span>
+<span class="n">play_sound</span><span class="p">(</span><span class="s2">"robot1.wav"</span><span class="p">)</span>          <span class="c1"># the file is in the root folder on the Pico</span>
+</code></pre></div></td></tr></tbody></table></div>
+<h4 id="4-optimize-and-test">4. Optimize and Test</h4>
+<ul>
+<li>Use <code>uos.listdir()</code> to list the files in flash and confirm your WAV file is there.</li>
+<li>Make sure the <code>rate</code> value in the I2S setup matches the sample rate of your WAV file.</li>
+<li>If the sound skips or stutters, try a smaller buffer size or a lower sample rate.</li>
+</ul>
+<h3 id="advantages-of-using-flash">Advantages of Using Flash</h3>
+<ul>
+<li>No extra hardware needed — just the Pico.</li>
+<li>Simple wiring.</li>
+<li>Good for a few short sound clips in a self-contained project.</li>
+</ul>
+<h3 id="limitations-of-using-flash">Limitations of Using Flash</h3>
+<ul>
+<li>Only 2 MB of space, shared with your code and MicroPython.</li>
+<li>Use low sample rates (8 kHz or 16 kHz) to fit more sounds.</li>
+<li>Flash memory wears out after many write cycles, so do not write new files too often.</li>
+</ul>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Monty's Tip</p>
+<p><img alt="Monty giving a tip" class="mascot-admonition-img" src="../../../img/mascot/tip.png">
+For a small robot with just a few sound effects, flash storage is perfect. For a music player with many songs, use an SD card instead.</p>
+</div>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Great Work!</p>
+<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../../img/mascot/celebration.png">
+You just built a robot sound player using the I2S bus! Your Pico can now play real audio files — not just buzzer beeps.</p>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../12-tone-gen-pot/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Tone Generator with Pot">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Tone Generator with Pot
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../dac/" class="md-footer__link md-footer__link--next" aria-label="Next: Digital to Analog Converter">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Digital to Analog Converter
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="../../../js/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

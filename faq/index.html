@@ -12,7 +12,7 @@
         <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/faq/">
       
       
-        <link rel="prev" href="../prompts/concept-taxonomy/">
+        <link rel="prev" href="../stories/larson-scanner/">
       
       
         <link rel="next" href="../misc/glossary/">
@@ -447,6 +447,16 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -463,7 +473,7 @@
     
   
   
-    <a href="../intro/01-about/" class="md-nav__link">
+    <a href="../basics/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -502,11 +512,37 @@
         
       
         
+          
+        
+      
+        
       
         
       
         
       
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
         
       
         
@@ -524,84 +560,7 @@
         
   
   
-    <a href="../debugging/" class="md-nav__link">
-      
-  
-  <span class="md-ellipsis">
-    Debugging
-  </span>
-  
-
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
-  
-
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-          
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-          
-        
-      
-    
-    
-    
-      
-        
-        
-      
-    
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
-      
-        
-  
-  
-    <a href="../kits/01-intro/" class="md-nav__link">
+    <a href="../kits/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -1026,6 +985,55 @@
   
   <span class="md-ellipsis">
     Sample AI Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
   </span>
   
 
@@ -2928,12 +2936,12 @@
 <li><strong>A USB cable</strong> — a standard USB Micro-B cable to connect the Pico to your computer.</li>
 <li><strong>A few basic parts</strong> — LEDs, resistors, a solderless breadboard, and jumper wires. A starter kit costs under $20.</li>
 </ol>
-<p>You also need a free program called Thonny on your computer. See <a href="../getting-started/01-intro/">Getting Started</a> for a complete list and shopping links.</p>
+<p>You also need a free program called Thonny on your computer. See <a href="../chapters/03-micropython-environment/">Getting Started</a> for a complete list and shopping links.</p>
 <hr>
 <h3 id="what-is-a-microcontroller">What is a microcontroller?</h3>
 <p>A microcontroller is a tiny computer built into a single chip. It has a processor, memory, and input/output pins all in one small package. Unlike a laptop or phone, a microcontroller does not run a full operating system. It runs one program at a time and uses its pins to talk to the physical world — reading sensors, lighting LEDs, or spinning motors.</p>
 <p>The Raspberry Pi Pico uses the RP2040 chip. It costs $4 and has 264 KB of RAM — about 100 times more than an older Arduino Uno. That extra memory makes it easy to work with displays and complex programs.</p>
-<p>See <a href="../intro/03-microcontrollers/">Introduction to Microcontrollers</a> for more details.</p>
+<p>See <a href="../chapters/04-microcontrollers-hardware/">Introduction to Microcontrollers</a> for more details.</p>
 <hr>
 <h3 id="what-is-the-raspberry-pi-pico">What is the Raspberry Pi Pico?</h3>
 <p>The Raspberry Pi Pico is a small, low-cost microcontroller board made by the Raspberry Pi Foundation. It uses the RP2040 chip and costs about $4. The Pico has 26 GPIO (General-Purpose Input/Output) pins you can use to connect sensors, displays, motors, and more.</p>
@@ -2943,7 +2951,7 @@
 <li><strong>Pico W</strong> — adds Wi-Fi</li>
 <li><strong>Pico 2</strong> — newer version with more memory and speed</li>
 </ul>
-<p>Most lessons in this course use the original Pico or Pico W. See <a href="../getting-started/02-pi-pico/">Getting Started with the Raspberry Pi Pico</a> for setup steps.</p>
+<p>Most lessons in this course use the original Pico or Pico W. See <a href="../hands-on-labs/04-microcontrollers-hardware/pi-pico/">Getting Started with the Raspberry Pi Pico</a> for setup steps.</p>
 <hr>
 <h3 id="what-is-micropython">What is MicroPython?</h3>
 <p>MicroPython is a version of Python designed to run on small microcontrollers. It includes most of the features of regular Python, plus special libraries for controlling hardware — reading pins, driving motors, and talking to displays.</p>
@@ -2959,15 +2967,15 @@
 <li>In Thonny, go to <strong>Tools → Options → Interpreter</strong> and choose MicroPython (Raspberry Pi Pico).</li>
 <li>Click <strong>Install or update MicroPython</strong> to flash the firmware.</li>
 </ol>
-<p>After these steps, you can type code directly into the Thonny shell and run it on your Pico. See <a href="../getting-started/02c-thonny/">Getting Started with Thonny</a> for a full walkthrough with screenshots.</p>
+<p>After these steps, you can type code directly into the Thonny shell and run it on your Pico. See <a href="../chapters/03-micropython-environment/">Getting Started with Thonny</a> for a full walkthrough with screenshots.</p>
 <hr>
 <h3 id="what-is-thonny">What is Thonny?</h3>
 <p>Thonny is a free, lightweight code editor designed for beginners. It runs on Windows, Mac, and Linux. Thonny lets you write and run MicroPython programs on your Pico, see error messages in plain language, and even step through your code one line at a time to find bugs.</p>
-<p>It is the recommended editor for this course. Advanced users may prefer VS Code — see <a href="../getting-started/02d-vscode/">Getting Started with VS Code</a> for that setup.</p>
+<p>It is the recommended editor for this course. Advanced users may prefer VS Code — see <a href="../chapters/03-micropython-environment/">Getting Started with VS Code</a> for that setup.</p>
 <hr>
 <h3 id="can-i-use-an-esp32-instead-of-a-raspberry-pi-pico">Can I use an ESP32 instead of a Raspberry Pi Pico?</h3>
 <p>Yes! The ESP32 is another popular microcontroller that runs MicroPython. It has built-in Wi-Fi and Bluetooth and typically costs around $5–$10. Many of the lessons in this course work on an ESP32 with small changes.</p>
-<p>The main difference is that the Pico is simpler and cheaper for beginners, while the ESP32 is better for wireless projects from the start. See <a href="../getting-started/02-esp32/">Getting Started with ESP32</a> for setup steps.</p>
+<p>The main difference is that the Pico is simpler and cheaper for beginners, while the ESP32 is better for wireless projects from the start. See <a href="../hands-on-labs/03-micropython-environment/esp32/">Getting Started with ESP32</a> for setup steps.</p>
 <hr>
 <h3 id="do-i-need-to-know-python-before-i-start">Do I need to know Python before I start?</h3>
 <p>No prior Python knowledge is required. The course starts from the very beginning and teaches you the programming concepts you need as you go. If you already know some Python, you will move through the early sections quickly.</p>
@@ -2986,7 +2994,7 @@
 <h3 id="what-is-physical-computing">What is physical computing?</h3>
 <p>Physical computing means writing programs that interact with the real, physical world. Instead of just showing text on a screen, a physical computing program might turn on a light when it gets dark, play a sound when a button is pressed, or stop a robot when an obstacle is detected.</p>
 <p>Physical computing connects two worlds: software (the code you write) and hardware (the wires, sensors, and motors). MicroPython is one of the best tools for learning physical computing because you see results immediately.</p>
-<p>See <a href="../intro/02-physical-computing/">Introduction to Physical Computing</a> for more.</p>
+<p>See <a href="../chapters/04-microcontrollers-hardware/">Introduction to Physical Computing</a> for more.</p>
 <hr>
 <h3 id="what-is-a-gpio-pin">What is a GPIO pin?</h3>
 <p>GPIO stands for <strong>General-Purpose Input/Output</strong>. These are the small metal pins on the side of your Pico. You can use them to:</p>
@@ -2995,12 +3003,12 @@
 <li><strong>Input</strong>: read a signal from a button, sensor, or switch</li>
 </ul>
 <p>The Raspberry Pi Pico has 26 GPIO pins. Each one has a number (GP0 through GP28). When you write MicroPython code, you use these GP numbers to tell the Pico which pin to use.</p>
-<p>See the <a href="../getting-started/02-pi-pico/">Raspberry Pi Pico setup page</a> for the full pinout diagram.</p>
+<p>See the <a href="../hands-on-labs/04-microcontrollers-hardware/pi-pico/">Raspberry Pi Pico setup page</a> for the full pinout diagram.</p>
 <hr>
 <h3 id="what-is-a-breadboard">What is a breadboard?</h3>
 <p>A breadboard is a plastic board with lots of small holes that let you connect electronic parts without soldering. The holes are wired together in rows and columns underneath, so you can connect components like LEDs, resistors, and sensors by simply pushing their legs into the right holes.</p>
 <p>Breadboards make it easy to try circuits, move parts around, and fix mistakes — perfect for learning. All labs in this course use a solderless breadboard.</p>
-<p>See <a href="../getting-started/02-breadboards/">Getting Started with Breadboards</a> for a guide to how breadboard connections work.</p>
+<p>See <a href="../hands-on-labs/05-electronics-fundamentals/breadboards/">Getting Started with Breadboards</a> for a guide to how breadboard connections work.</p>
 <hr>
 <h3 id="what-is-pwm">What is PWM?</h3>
 <p>PWM stands for <strong>Pulse-Width Modulation</strong>. It is a way to control the average power going to a device by switching it on and off very quickly. The percentage of time it is "on" is called the <strong>duty cycle</strong>.</p>
@@ -3117,7 +3125,7 @@
 <li><code>neopixel</code> — drives NeoPixel LED strips</li>
 <li><code>network</code> — connects to Wi-Fi (Pico W)</li>
 </ul>
-<p>You can also install extra driver modules to support specific sensors and displays. See <a href="../getting-started/01b-libraries/">Getting Started: MicroPython Libraries</a> for how to install them.</p>
+<p>You can also install extra driver modules to support specific sensors and displays. See <a href="../chapters/03-micropython-environment/">Getting Started: MicroPython Libraries</a> for how to install them.</p>
 <hr>
 <h3 id="what-is-a-wiring-diagram">What is a wiring diagram?</h3>
 <p>A wiring diagram shows you how to connect the parts of a circuit together. It uses pictures of the components — LEDs, resistors, sensors, the Pico — and lines to show which wire goes where.</p>
@@ -3158,7 +3166,7 @@
 </table>
 <p><strong>Use I2C</strong> when you have many devices (sensors, displays) to connect and speed is not critical. Most OLED displays and environmental sensors use I2C.</p>
 <p><strong>Use SPI</strong> when you need fast data transfer — for example, a color TFT display that redraws the full screen many times per second.</p>
-<p>See <a href="../advanced-labs/06-i2c/">Advanced Labs: I2C Scanner</a> and <a href="../displays/graph/01-intro/">Displays Graphical</a> for side-by-side examples of both protocols in use.</p>
+<p>See <a href="../advanced-labs/06-i2c/">Advanced Labs: I2C Scanner</a> and <a href="../hands-on-labs/15-oled-setup/01-intro/">Displays Graphical</a> for side-by-side examples of both protocols in use.</p>
 <hr>
 <h3 id="what-are-the-trade-offs-between-the-hc-sr04-and-vl53l0x-distance-sensors">What are the trade-offs between the HC-SR04 and VL53L0X distance sensors?</h3>
 <p>Both sensors measure distance, but they work differently and suit different projects:</p>
@@ -3258,7 +3266,7 @@
 <li><strong>GPIO</strong>: 26 multi-function pins</li>
 <li><strong>ADC</strong>: Three 12-bit analog inputs</li>
 </ul>
-<p>The RP2040 also has 8 programmable I/O (PIO) state machines, which let it emulate almost any communication protocol. See <a href="../getting-started/02-pi-pico/">Getting Started with the Raspberry Pi Pico</a> for the full specs.</p>
+<p>The RP2040 also has 8 programmable I/O (PIO) state machines, which let it emulate almost any communication protocol. See <a href="../hands-on-labs/04-microcontrollers-hardware/pi-pico/">Getting Started with the Raspberry Pi Pico</a> for the full specs.</p>
 <hr>
 <h3 id="what-is-a-uf2-file">What is a UF2 file?</h3>
 <p>A UF2 file is the file you drag onto the Pico to install MicroPython firmware. When you hold the BOOTSEL button while plugging in the Pico, it appears on your computer as a USB drive called RPI-RP2. You drag the MicroPython UF2 file onto that drive, and the Pico automatically installs the firmware and restarts.</p>
@@ -3362,7 +3370,7 @@
 <h3 id="what-is-an-oled-display">What is an OLED display?</h3>
 <p>OLED stands for <strong>Organic Light-Emitting Diode</strong>. An OLED display is a small, bright screen with high contrast and a wide viewing angle. The most common size in this course is 128×64 pixels — about 1 inch diagonally — and costs around $4–$5.</p>
 <p>OLED displays connect over I2C or SPI and use the <code>SSD1306</code> or <code>SH1106</code> driver chip. MicroPython has a driver for both. You can draw pixels, lines, rectangles, and text onto the display.</p>
-<p>See <a href="../displays/graph/02-oled-setup/">Displays Graphical: OLED Setup</a> to get started.</p>
+<p>See <a href="../hands-on-labs/15-oled-setup/02-oled-setup/">Displays Graphical: OLED Setup</a> to get started.</p>
 <hr>
 <h3 id="what-are-pio-state-machines-and-what-can-they-do">What are PIO state machines and what can they do?</h3>
 <p>PIO stands for <strong>Programmable I/O</strong>. The RP2040 chip inside the Pico has 8 PIO state machines — tiny programmable processors that run independently from the main CPU. They are designed to handle precise, high-speed input/output tasks that would be too fast or too timing-sensitive for regular MicroPython code.</p>
@@ -3388,7 +3396,7 @@
 <li>In Thonny, open the Files panel, find <code>ssd1306.py</code> on your computer, right-click it, and choose <strong>Upload to /</strong>.</li>
 <li>Now <code>from ssd1306 import SSD1306_I2C</code> will work.</li>
 </ol>
-<p>See <a href="../displays/graph/02-oled-setup/">Displays Graphical: OLED Setup</a> for the full wiring diagram and first drawing program.</p>
+<p>See <a href="../hands-on-labs/15-oled-setup/02-oled-setup/">Displays Graphical: OLED Setup</a> for the full wiring diagram and first drawing program.</p>
 <hr>
 <h2 id="common-challenge-questions">Common Challenge Questions</h2>
 <h3 id="my-led-does-not-light-up-what-do-i-check">My LED does not light up. What do I check?</h3>
@@ -3408,7 +3416,7 @@
 <li>The module name is spelled wrong — check capitalisation. Python is case-sensitive: <code>import neopixel</code> not <code>import NeoPixel</code>.</li>
 <li>The driver file has not been copied to the Pico. For example, <code>ssd1306.py</code> must be on the Pico before you can <code>import ssd1306</code>.</li>
 </ol>
-<p>To copy driver files to the Pico, use the Thonny file manager or the <code>mpremote</code> tool. See <a href="../getting-started/01b-libraries/">Getting Started: MicroPython Libraries</a> for instructions.</p>
+<p>To copy driver files to the Pico, use the Thonny file manager or the <code>mpremote</code> tool. See <a href="../chapters/03-micropython-environment/">Getting Started: MicroPython Libraries</a> for instructions.</p>
 <hr>
 <h3 id="my-sensor-gives-wrong-readings-what-do-i-check">My sensor gives wrong readings. What do I check?</h3>
 <p>Sensor problems are usually one of three things:</p>
@@ -3427,7 +3435,7 @@
 <li><strong>I2C address</strong> — the default address in most drivers is <code>0x3C</code>. Your display may use <code>0x3D</code>. Run an I2C scanner to find the real address.</li>
 <li><strong>Calling <code>.show()</code></strong> — drawing functions update the framebuffer, but nothing appears on screen until you call <code>oled.show()</code>. Make sure that call is in your code.</li>
 </ol>
-<p>See <a href="../displays/graph/02-oled-setup/">Displays Graphical: OLED Setup</a> for a step-by-step setup guide.</p>
+<p>See <a href="../hands-on-labs/15-oled-setup/02-oled-setup/">Displays Graphical: OLED Setup</a> for a step-by-step setup guide.</p>
 <hr>
 <h3 id="my-pico-will-not-connect-to-my-computer-what-do-i-do">My Pico will not connect to my computer. What do I do?</h3>
 <p>Try these steps in order:</p>
@@ -3455,7 +3463,7 @@
 1. Are both motor control pins connected to the H-bridge?
 2. Is your code setting both pins, not just one?
 3. Is the H-bridge powered correctly (some need 5 V for the motor, 3.3 V for logic)?</p>
-<p>See <a href="../motors/03-h-bridge/">Motors: H-Bridge</a> and <a href="../motors/04-l293d/">Motors: L293D Chip</a> for wiring diagrams and example code.</p>
+<p>See <a href="../hands-on-labs/12-motors-servos-steppers/03-h-bridge/">Motors: H-Bridge</a> and <a href="../hands-on-labs/12-motors-servos-steppers/04-l293d/">Motors: L293D Chip</a> for wiring diagrams and example code.</p>
 <hr>
 <h3 id="how-do-i-know-which-gpio-pin-to-use">How do I know which GPIO pin to use?</h3>
 <p>All GPIO pins (GP0–GP28) can be used for basic digital input and output. However, some pins have special functions:</p>
@@ -3464,7 +3472,7 @@
 <li><strong>Specific I2C pins</strong> — I2C0 uses GP0/GP1 by default; I2C1 uses GP2/GP3</li>
 <li><strong>SPI pins</strong> — check the datasheet for default SPI pin assignments</li>
 </ul>
-<p>The pinout diagram on the <a href="../getting-started/02-pi-pico/">Raspberry Pi Pico setup page</a> shows every pin and its functions. Keep that page handy when wiring new projects.</p>
+<p>The pinout diagram on the <a href="../hands-on-labs/04-microcontrollers-hardware/pi-pico/">Raspberry Pi Pico setup page</a> shows every pin and its functions. Keep that page handy when wiring new projects.</p>
 <hr>
 <h3 id="my-code-was-working-and-now-it-stops-after-a-few-seconds-what-happened">My code was working, and now it stops after a few seconds. What happened?</h3>
 <p>A few common causes:</p>
@@ -3520,7 +3528,7 @@
 <li><strong><code>mpremote</code> tool</strong> — use the command line: <code>mpremote cp ssd1306.py :ssd1306.py</code></li>
 </ol>
 <p>After copying, you can <code>import ssd1306</code> in your program just like any other module.</p>
-<p>See <a href="../getting-started/01b-libraries/">Getting Started: MicroPython Libraries</a> for a list of common drivers and where to find them.</p>
+<p>See <a href="../chapters/03-micropython-environment/">Getting Started: MicroPython Libraries</a> for a list of common drivers and where to find them.</p>
 <hr>
 <h3 id="when-should-i-use-while-true-versus-a-timer">When should I use <code>while True:</code> versus a timer?</h3>
 <p>Use <code>while True:</code> when your program only does one thing repeatedly — like reading a sensor and printing the value. It is simple and easy to understand.</p>
@@ -3559,7 +3567,7 @@
 <hr>
 <h3 id="how-do-i-share-my-project-with-others">How do I share my project with others?</h3>
 <p>The best way to share is to put your code on GitHub. You upload your <code>main.py</code>, <code>config.py</code>, and any driver files, along with a README that explains what your project does and how to wire it.</p>
-<p>You can also contribute to this course by submitting a pull request. See <a href="../intro/01-about/">About This Site</a> for the different ways to contribute, including Git pull requests, GitHub Issues, and even sending raw documents.</p>
+<p>You can also contribute to this course by submitting a pull request. See <a href="../about/">About This Site</a> for the different ways to contribute, including Git pull requests, GitHub Issues, and even sending raw documents.</p>
 <hr>
 <h3 id="how-does-blocking-timing-with-sleep-differ-from-non-blocking-timing">How does blocking timing with <code>sleep()</code> differ from non-blocking timing?</h3>
 <p><strong>Blocking timing</strong> uses <code>utime.sleep()</code>. While the Pico is sleeping, it cannot do anything else — it is frozen. This is fine for simple programs that only do one thing at a time:</p>
@@ -3624,7 +3632,7 @@
 </tbody>
 </table>
 <p>Both the <strong>Pico W</strong> and the <strong>ESP32</strong> are excellent choices. The Pico W uses the same RP2040 chip as the rest of this course, so your existing code needs fewer changes. The ESP32 has a larger online community and more code examples for IoT projects.</p>
-<p>If you are already comfortable with the Pico, start with the Pico W. See <a href="../wireless/02-connecting-to-wifi/">Wireless: Connecting to Wi-Fi</a> for a Pico W setup guide, or <a href="../getting-started/02-esp32/">Getting Started with ESP32</a> for the ESP32 path.</p>
+<p>If you are already comfortable with the Pico, start with the Pico W. See <a href="../hands-on-labs/19-wireless-iot/02-connecting-to-wifi/">Wireless: Connecting to Wi-Fi</a> for a Pico W setup guide, or <a href="../hands-on-labs/03-micropython-environment/esp32/">Getting Started with ESP32</a> for the ESP32 path.</p>
 <hr>
 <h3 id="how-do-i-decide-between-using-a-servo-and-a-dc-motor">How do I decide between using a servo and a DC motor?</h3>
 <p>Both move things, but they are designed for different jobs:</p>
@@ -3666,7 +3674,7 @@
 </table>
 <p><strong>Choose a servo</strong> when you need to move something to a specific position and hold it there — a robot arm, a sensor pan-and-tilt mount, or a steering mechanism.</p>
 <p><strong>Choose a DC motor</strong> when you need continuous spinning — robot drive wheels, a fan, or a winch. Pair it with an H-bridge driver (like the DRV8833) to control speed and direction.</p>
-<p>Some projects use both: DC motors for the wheels and servos for the arm or camera mount. See <a href="../basics/04-servo/">Basic Examples: Servo</a> and <a href="../motors/03-h-bridge/">Motors: H-Bridge</a> for hands-on code for each type.</p>
+<p>Some projects use both: DC motors for the wheels and servos for the arm or camera mount. See <a href="../basics/04-servo/">Basic Examples: Servo</a> and <a href="../hands-on-labs/12-motors-servos-steppers/03-h-bridge/">Motors: H-Bridge</a> for hands-on code for each type.</p>
 <hr>
 <h2 id="advanced-topic-questions">Advanced Topic Questions</h2>
 <h3 id="how-do-i-connect-my-pico-w-to-wi-fi">How do I connect my Pico W to Wi-Fi?</h3>
@@ -3692,7 +3700,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Connected! IP:"</span><span class="p">,</span> <span class="n">wlan</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
 </code></pre></div></td></tr></tbody></table></div>
 <p>Once connected, you can make HTTP requests to fetch data from the internet, or build a simple web server that shows sensor readings in a browser.</p>
-<p>See <a href="../wireless/02-connecting-to-wifi/">Wireless: Connecting to Wi-Fi</a> and <a href="../wireless/04-web-server/">Wireless: Web Server</a> for full examples.</p>
+<p>See <a href="../hands-on-labs/19-wireless-iot/02-connecting-to-wifi/">Wireless: Connecting to Wi-Fi</a> and <a href="../hands-on-labs/19-wireless-iot/04-web-server/">Wireless: Web Server</a> for full examples.</p>
 <hr>
 <h3 id="how-do-i-build-a-robot-with-micropython">How do I build a robot with MicroPython?</h3>
 <p>A basic collision-avoidance robot needs four things:</p>
@@ -3703,7 +3711,7 @@
 <li><strong>Power</strong> — a battery pack</li>
 </ol>
 <p>The robot runs a loop: measure distance, if too close then reverse and turn, else go forward. This is a simple but powerful example of computational thinking — a real algorithm controlling real hardware.</p>
-<p>See <a href="../robots/02-base-bot/">Robots: Base Bot</a> and the <a href="../kits/maker-pi-rp2040-robot/">Kits: Maker Pi RP2040 Robot</a> section for step-by-step assembly and code.</p>
+<p>See <a href="../hands-on-labs/13-robots-mobile-systems/02-base-bot/">Robots: Base Bot</a> and the <a href="../kits/maker-pi-rp2040-robot/">Kits: Maker Pi RP2040 Robot</a> section for step-by-step assembly and code.</p>
 <hr>
 <h3 id="what-is-multi-core-programming-on-the-rp2040">What is multi-core programming on the RP2040?</h3>
 <p>The RP2040 chip inside the Pico has <strong>two processor cores</strong> that can run code at the same time. This is called multi-core programming. You can run your main program on Core 0 and a background task (like reading a sensor) on Core 1.</p>
@@ -3747,11 +3755,14 @@
 <p>After finishing the core labs, there are several related sites with more advanced MicroPython projects:</p>
 <ul>
 <li><a href="https://dmccreary.github.io/moving-rainbow/">Moving Rainbow</a> — full curriculum around LED strips and costumes</li>
+<li><a href="https://dmccreary.github.io/stem-robots/">STEM Robots</a> — an entire textbook on creating low-cost (under $25) robots using the Cytron robotics board</li>
 <li><a href="https://dmccreary.github.io/micropython-clocks-and-watches/">Clocks and Watches</a> — dozens of clock projects using the Pico W</li>
 <li><a href="https://dmccreary.github.io/robot-day/">Robot Day</a> — details for running a robot-building event at your school</li>
 <li><a href="https://dmccreary.github.io/beginning-electronics/">Beginning Electronics</a> — deeper electronics theory to complement your MicroPython skills</li>
+<li><a href="https://dmccreary.github.io/circuits/">Circuits</a> - a college level course on circuits</li>
+<li><a href="https://dmccreary.github.io/spectrum-analyzer/">Spectrum Analyze</a> - Spectrum Analyzer that displays a sound spectrum from a microphone using an OLED
+When you are ready to step beyond the Pico, the <a href="https://dmccreary.github.io/ai-racing-league/">AI Racing League</a> moves on to full Python, machine learning, and computer vision on Raspberry Pi single-board computers.</li>
 </ul>
-<p>When you are ready to step beyond the Pico, the <a href="https://www.coderdojotc.org/ai-racing-league/">AI Racing League</a> moves on to full Python, machine learning, and computer vision on Raspberry Pi single-board computers.</p>
 <hr>
 <h3 id="how-do-i-send-sensor-data-to-a-web-server">How do I send sensor data to a web server?</h3>
 <p>Once your Pico W is connected to Wi-Fi, you can send sensor readings to a web server using HTTP. The simplest approach is to run a tiny web server on the Pico itself, so any browser on your network can see the data:</p>
@@ -3805,7 +3816,7 @@
     <span class="n">cl</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">"HTTP/1.0 200 OK</span><span class="se">\r\n\r\n</span><span class="s2">"</span> <span class="o">+</span> <span class="n">response</span><span class="p">)</span>
     <span class="n">cl</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div></td></tr></tbody></table></div>
-<p>Open a browser on your phone or computer, type in the Pico's IP address, and you will see the live sensor reading. For a more complete example with a proper HTML page, see <a href="../wireless/04-web-server/">Wireless: Web Server</a> and <a href="../wireless/09-get-weather-display/">Wireless: Display Forecast on OLED</a>.</p>
+<p>Open a browser on your phone or computer, type in the Pico's IP address, and you will see the live sensor reading. For a more complete example with a proper HTML page, see <a href="../hands-on-labs/19-wireless-iot/04-web-server/">Wireless: Web Server</a> and <a href="../hands-on-labs/19-wireless-iot/09-get-weather-display/">Wireless: Display Forecast on OLED</a>.</p>
 <hr>
 <h3 id="what-is-the-maker-pi-rp2040-kit">What is the Maker Pi RP2040 kit?</h3>
 <p>The <strong>Cytron Maker Pi RP2040</strong> is a $10 robotics board that packs everything you need to build a robot into one board. It uses the same RP2040 chip as the Raspberry Pi Pico and is designed to make robotics as easy as possible.</p>
@@ -3886,7 +3897,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../prompts/concept-taxonomy/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Concept Taxonomy">
+          <a href="../stories/larson-scanner/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Glen Larson - The Scanning Eye">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
@@ -3896,7 +3907,7 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Concept Taxonomy
+                Glen Larson - The Scanning Eye
               </div>
             </div>
           </a>
