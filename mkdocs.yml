@@ -280,6 +280,7 @@ nav:
       - advanced-labs/pio/index.md
 
   - Project Kits:
+    - List of Kits: kits/index.md
     - Introduction: kits/01-intro.md
     - Sourcing Parts: kits/suggested-parts.md
     - RGB Color Mixer Box: kits/rgb-box/index.md
@@ -436,6 +437,10 @@ nav:
     - Concept Enumeration: prompts/concept-enumeration.md
     - Concept Dependency: prompts/concept-dependency.md
     - Concept Taxonomy: prompts/concept-taxonomy.md
+
+  - Stories:
+    - Overview: stories/index.md
+    - Glen Larson - The Scanning Eye: stories/larson-scanner/index.md
 
   - FAQ: faq.md
   - Glossary: misc/glossary.md
