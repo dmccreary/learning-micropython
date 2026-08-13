@@ -85,18 +85,19 @@ your programming tool such as `Thonny` is configured correctly.
 
 |Kit Name            |Approximate Part Cost|Description|
 |--------------------|----------------|-------------------------|
-|Moving Rainbow      |$20|Learn to display patterns on an LED Strip|
-|Red-Green-Blue Box  |$25|Adjust three potentiometers to control the red, green and blue colors on an LED strip|
-|Rotary Spinner Box  |$25|Spin a rotary dial to change a pattern on an LED strip|
-|Tone Generator Box  |$25|Turn a potentiometer and change the frequency of a tone|
-|Distance Sensor Box |$25|A distance sensor that shows the distance from the box to your hand|
-|STEM Robot (Base)   |$30|Collision avoidance robot|
-|STEM Robot (Display)|$50|Collision avoidance robot with OLED display|
-|Wireless STEM Robot |TBD|Collision avoidance robot with WiFi and Bluetooth|
-|Basic Clock         |$29|Basic clock with no wireless|
-|Smart Clock         |$30|Smart clock that connects to the internet|
-|Smart Watch         |$20|Round color smart watch display|
-|Spectrum Analyzer   |$35|Microphone with spectrum on a display|
+|Moving Rainbow       |$20|Learn to display patterns on an LED Strip|
+|Red-Green-Blue Box   |$25|Adjust three potentiometers to control the red, green and blue colors on an LED strip|
+|Rotary Spinner Box   |$25|Spin a rotary dial to change a pattern on an LED strip|
+|Tone Generator Box   |$25|Turn a potentiometer and change the frequency of a tone|
+|Distance Sensor Box  |$25|A distance sensor that shows the distance from the box to your hand|
+|STEM Robot (Base)    |$30|Collision avoidance robot|
+|STEM Robot (Display) |$50|Collision avoidance robot with OLED display|
+|Wireless STEM Robot  |$40|Collision avoidance robot with WiFi and Bluetooth|
+|Wireless Robot Display|$50|Collision avoidance robot with WiFi and Bluetooth and a large OLED display|
+|Basic Clock          |$29|Basic clock with no wireless|
+|Smart Clock          |$30|Smart clock that connects to the internet|
+|Smart Watch          |$20|Round color smart watch display|
+|Spectrum Analyzer    |$35|Microphone with spectrum on a display|
 
 ### Moving Rainbow
 

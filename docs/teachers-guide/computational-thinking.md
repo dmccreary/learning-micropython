@@ -1,4 +1,4 @@
-# Instructor's Guide
+# Teacher's Guide on Computational Thinking
 
 Here are some key computational thinking concepts that we want to each
 and examples of how they are used in our MicroPython programming:

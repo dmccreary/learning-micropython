@@ -281,7 +281,7 @@ nav:
 
   - Project Kits:
     - List of Kits: kits/index.md
-    - Introduction: kits/01-intro.md
+    - General Development Kits: kits/01-general-kits .md
     - Sourcing Parts: kits/suggested-parts.md
     - RGB Color Mixer Box: kits/rgb-box/index.md
     - Pulse Width Modulation:
@@ -448,7 +448,7 @@ nav:
   - Contributing: misc/contributing.md
   - Contact: misc/contact.md
   - Authoring Guide: misc/content-authoring-guide.md
-  - Instructors Guide: misc/instructors-guide.md
+  - Teacher's Guide: teachers-guide/index.md
   - Acknowledgements: misc/acknowledgements.md
   - Colophon: misc/30-colophon.md
   - License: license.md
@@ -484,18 +484,11 @@ theme:
     - navigation.prune
     - navigation.indexes
     - toc.follow
-    - navigation.top
     # this adds the prev and next icons in the footer
     - navigation.footer
 plugins:
   - search
-  # Generates per-page Open Graph / Twitter Card images and emits og:title,
-  # og:description, og:url, twitter:card, etc. Requires the imaging extra
-  # (mkdocs-material[imaging]) plus system Cairo + freetype, which are
-  # installed here. Card background matches the theme primary color.
-  - social:
-      cards_layout_options:
-        background_color: '#642580'
+  - social
   # Click any chapter image to open it fullscreen in a zoomable lightbox.
   # skip_classes keeps mascot poses out of the lightbox gallery -- without it
   # every Monty image is indexed and shows up in the prev/next arrows.

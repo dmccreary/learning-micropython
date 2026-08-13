@@ -1,6 +1,73 @@
-# Kits for Learning MicroPython
+# General Kits for Learning MicroPython
 
-This section review several kits for learning MicroPython.  Most of them use the RP2040 chip, but there are some that also use the ESP32 when wireless communication is needed.
+This section review several kits for learning MicroPython.  Most of them use the Raspberry Pi Pico (RP2040 chip), the Raspberry Pi Pico 2 (which uses the more powerful RD2350) but there are some that also use the ESP32 when wireless communication is needed.
+
+## General MicroPython Kits
+
+### Seeed Studio
+
+[Grove Starter Kit for Raspberry Pi Pico with Free Course](https://www.seeedstudio.com/Grove-Starter-Kit-for-Raspberry-Pi-Pico-p-4851.html) - this $40 kit has one of the highest values of any kit we surveyed.  It includes an extensive collection of no-solder Grove connectors that make it easy for classrooms that don't permit soldering.  Although it lacks a solderless breadboard, that can be easily added.  It includes 5 sensors, 5 actuators, 2 LEDs, 1 LCD display, 8 Grove connectors and 1 Grove shield.  I would strongly recommend this kit for getting started and then add a solderless breadboard and a NeoPixel strip for other projects.  Note that you must supply your own Raspberry Pi Pico ($4).
+
+**Parts list:**
+
+1. Grove - LED Pack
+1. Grove - RGB LED (WS2813 Mini)
+1. Grove - Light Sensor
+1. Grove - Sound Sensor
+1. Grove - Rotary Angle Sensor
+1. Grove - Temperature & Humidity Sensor
+1. Grove - mini PIR motion sensor
+1. Grove - Passive Buzzer
+1. Grove - Button	
+1. Grove - Servo	
+1. Grove - Mini Fan 	
+1. Grove - Relay	
+1. Grove - 16x2 LCD	
+1. Grove Shield for Pi Pico
+1. 8 Grove connectors 	
+
+### SparkFun Inventors Kit
+
+The SparkFun Inventor's Kit (SIK) is the "gold standard" kit for learning MicroPython.
+
+[SparkFun Inventor's Kit for MicroPython](https://www.sparkfun.com/sparkfun-inventors-kit-for-micropython.html).  Sparkfun has
+been building Inventor's Kits for many years and they are very
+good at putting in good components and providing a guide.
+
+There are a few downsides.  The biggest one that this kit is $125 US and that price does NOT include shipping.  The second is that instead of using
+the low-cost Raspberry Pi Pico on a breadboard they provide you with
+their own board attached to the base.  This makes it hard to use
+with projects like costumes.  The last complaint is that
+there is no NeoPixel strip.  This omissions seems unforgivable!
+
+One other note.  The included USB cable is a USB-C to USB-C.  If you
+don't have a USB-C cable on your computer you will need to purchase
+an additional adapter.
+
+The site also provides a web-based JupyterLite Notebook option that
+prevents you from needing to use a local tool like Thonny to
+write MicroPython.
+
+### eBay Raspberry Pi Pico Kits
+
+This $35 development kit is a good start.  It does include a small short NeoPixel strip and an LCD display.
+
+[RP2040 Development Board Starter Kit Compatible with Raspberry Pi RPi PICO Kit](https://www.ebay.com/itm/326259984544) for $32
+
+[Raspberry Pi Pico Starter Kit with LCD1602, SG90 Servo Motor & Tutorial Guide](https://www.ebay.com/itm/147321975349) for $39 which includes some transistors and a photo detector.
+
+[Inland Brand (MicroCenter) 52Pi Raspberry Pi Pico Starter Kit K-0582](https://www.ebay.com/itm/117067417658) - $50 - this kit includes
+a NeoPixel Ring
+
+[GeeekPi Raspberry Pi Pico Development Kit with Display Module and Programming Resources](https://www.ebay.com/itm/318095183675) - $125 - this kit includes a NeoPixel ring and a very small OLED display.
+
+[Raspberry Pi Pico W 2 Starter Kit | 224 Items | 119 Projects | 767pg Tutorial](https://www.ebay.com/itm/137469925392) - $112 - this has the upgraded W with a faster RP2350 processor.
+
+### The ESP32 Kit
+
+At the low-end of the cost spectrum is one of the ES32 development kits you can get on eBay for as low as $35.
+
+[Basic Starter Kit for ESP32 ESP-32S Wifi I OT Development Board with Tutorial Co](https://www.ebay.com/itm/297842302584)
 
 ## Solderless Connectors
 
