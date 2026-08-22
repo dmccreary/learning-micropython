@@ -4,7 +4,7 @@ repo_url: 'https://github.com/dmccreary/learning-micropython'
 site_url: 'https://dmccreary.github.io/learning-micropython/'
 site_author: 'Dan McCreary'
 repo_name: 'GitHub Repo'
-edit_uri: 'blob/master/docs'
+edit_uri: 'blob/main/docs'
 
 nav:
   - Home: index.md
