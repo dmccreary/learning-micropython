@@ -6,7 +6,7 @@
 # address that answers back.
 #
 # Wiring (standard Pico breadboard):
-#   SHT40 VIN -> 3.3V (pin 36)     <- do NOT use 5V
+#   SHT40 VIN -> 3V3 OUT (pin 36)  <- NOT pin 40 (VBUS), that is 5V
 #   SHT40 GND -> GND
 #   SHT40 SDA -> GP0 (pin 1)       <- row one on our standard breadboard
 #   SHT40 SCL -> GP1 (pin 2)       <- row two on our standard breadboard
@@ -35,7 +35,7 @@ if len(devices) == 0:
     print("No I2C devices found.")
     print()
     print("Things to check:")
-    print("  1. Is VIN connected to 3.3V (not 5V)?")
+    print("  1. Is VIN on pin 36 (3V3 OUT), not pin 40 (VBUS)?")
     print("  2. Is GND connected?")
     print("  3. Are SDA and SCL swapped? Try swapping them.")
     print("  4. Are the jumper wires pushed all the way into the breadboard?")

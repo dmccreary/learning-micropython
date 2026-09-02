@@ -20,8 +20,9 @@ numbers to each other.
 
 ## Wiring
 
-The SHT40 runs on 3.3 volts. Do **not** connect it to the 5V pin. Too much
-voltage can damage the sensor.
+The SHT40 runs on 3.3 volts. Do **not** connect it to pin 40 (VBUS), which
+carries 5 volts straight from the USB cable. Too much voltage can damage
+the sensor.
 
 1. Put the Pico on the breadboard with the USB port facing off the edge.
 2. Connect SHT40 **VIN** to Pico pin 36 (3V3 OUT).
@@ -140,7 +141,7 @@ every number it sees, so a stray word would draw junk on your graph.
 
 | What you see | What to try |
 |--------------|-------------|
-| Scanner finds no devices | Check VIN goes to 3.3V, not 5V. Check GND is connected. |
+| Scanner finds no devices | Check VIN goes to pin 36 (3V3 OUT), not pin 40 (VBUS). Check GND is connected. |
 | Scanner finds no devices | Try swapping the SDA and SCL wires. They are easy to mix up. |
 | Scanner finds a device, but not at 0x44 | Read the number it found. Your board may use 0x45 or 0x46. Change `SHT40_ADDR` in the programs. |
 | "Checksum failed" | Use shorter jumper wires, or lower `freq=400000` to `freq=100000`. |

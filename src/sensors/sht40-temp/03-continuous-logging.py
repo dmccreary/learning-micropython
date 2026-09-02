@@ -14,7 +14,7 @@
 # Try this: hold your thumb on the sensor and watch the numbers climb.
 #
 # Wiring (standard Pico breadboard):
-#   SHT40 VIN -> 3.3V (pin 36)
+#   SHT40 VIN -> 3V3 OUT (pin 36)  <- NOT pin 40 (VBUS), that is 5V
 #   SHT40 GND -> GND
 #   SHT40 SDA -> GP0 (pin 1)
 #   SHT40 SCL -> GP1 (pin 2)
