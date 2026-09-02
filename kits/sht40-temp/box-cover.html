@@ -256,10 +256,56 @@
     }
 
     /* Right Features List */
+    /* Right column: feature list sits at the top, QR code pinned to the
+       bottom-right corner so it lands in the cover's lower-right area. */
+    .right-column {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
     .features-panel {
       display: flex;
       flex-direction: column;
       gap: 4px;
+    }
+
+    .qr-block {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .qr-caption {
+      font-size: 0.46rem;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: right;
+      color: #0f172a;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .qr-caption span {
+      display: block;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+      color: #64748b;
+    }
+
+    /* 0.8in keeps each module ~0.48mm, well above the ~0.4mm that phone
+       cameras start to struggle with on printed paper. */
+    .qr-code {
+      width: 0.8in;
+      height: 0.8in;
+      display: block;
+      border: 1px solid #0f172a;
+      border-radius: 3px;
+      background: #ffffff;
     }
 
     .feature-item {
@@ -405,7 +451,8 @@
             </div>
           </div>
 
-          <div class="features-panel">
+          <div class="right-column">
+            <div class="features-panel">
             <div class="feature-item">
               <div class="feature-icon">🌡️</div>
               <div class="feature-text">Measure heat and humidity in real time</div>
@@ -425,6 +472,11 @@
             <div class="feature-item">
               <div class="feature-icon">🐍</div>
               <div class="feature-text">Five MicroPython labs, no soldering</div>
+            </div>
+            </div>
+            <div class="qr-block">
+              <div class="qr-caption">Build it online<span>Full lessons &amp; code</span></div>
+              <img class="qr-code" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2745%27%20height%3D%2745%27%20class%3D%27segno%27%3E%3Cpath%20fill%3D%27%23fff%27%20d%3D%27M0%200h45v45h-45z%27%2F%3E%3Cpath%20class%3D%27qrline%27%20stroke%3D%27%230f172a%27%20d%3D%27M4%204.5h7m2%200h1m1%200h3m1%200h3m8%200h1m3%200h7m-37%201h1m5%200h1m3%200h1m3%200h1m1%200h1m1%200h1m1%200h1m1%200h4m1%200h1m2%200h1m5%200h1m-37%201h1m1%200h3m1%200h1m1%200h2m3%200h2m1%200h1m4%200h1m1%200h1m3%200h2m1%200h1m1%200h3m1%200h1m-37%201h1m1%200h3m1%200h1m1%200h5m2%200h1m1%200h1m4%200h7m1%200h1m1%200h3m1%200h1m-37%201h1m1%200h3m1%200h1m1%200h2m1%200h3m3%200h5m1%200h2m1%200h1m1%200h1m1%200h1m1%200h3m1%200h1m-37%201h1m5%200h1m1%200h1m1%200h2m2%200h4m3%200h1m2%200h1m2%200h2m1%200h1m5%200h1m-37%201h7m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h7m-29%201h3m1%200h1m2%200h10m2%200h1m-28%201h1m1%200h5m2%200h1m3%200h1m1%200h2m2%200h1m1%200h1m2%200h2m1%200h2m1%200h5m-35%201h1m1%200h1m1%200h2m1%200h2m2%200h3m1%200h1m1%200h2m1%200h1m1%200h1m1%200h2m3%200h1m1%200h1m3%200h1m-33%201h1m2%200h2m1%200h9m1%200h1m1%200h1m2%200h1m2%200h1m1%200h3m1%200h1m1%200h2m-37%201h1m1%200h1m2%200h1m2%200h1m2%200h2m2%200h1m2%200h5m1%200h1m1%200h3m1%200h1m1%200h1m3%200h1m-35%201h1m3%200h4m2%200h2m1%200h1m1%200h1m1%200h1m2%200h1m1%200h2m1%200h1m1%200h2m1%200h5m-37%201h3m1%200h1m3%200h2m1%200h1m1%200h1m2%200h1m1%200h3m2%200h1m1%200h1m2%200h1m2%200h1m3%200h1m-36%201h3m1%200h3m1%200h1m5%200h2m2%200h1m3%200h1m3%200h8m1%200h2m-34%201h3m1%200h1m1%200h2m8%200h1m6%200h3m1%200h3m2%200h2m-36%201h1m1%200h1m2%200h4m1%200h2m1%200h2m2%200h1m1%200h3m1%200h7m1%200h1m1%200h1m-35%201h2m1%200h1m1%200h1m3%200h1m1%200h6m7%200h3m1%200h2m1%200h1m1%200h3m-35%201h2m1%200h1m1%200h1m2%200h1m2%200h1m1%200h1m2%200h1m2%200h1m1%200h1m2%200h3m1%200h1m1%200h3m1%200h2m-32%201h1m1%200h1m2%200h1m1%200h1m3%200h1m4%200h3m3%200h1m1%200h2m1%200h1m3%200h1m-34%201h6m1%200h1m1%200h2m2%200h3m1%200h1m2%200h1m1%200h2m2%200h2m1%200h3m-34%201h1m2%200h1m3%200h1m1%200h2m4%200h6m1%200h1m4%200h1m4%200h1m1%200h1m-35%201h4m1%200h1m2%200h1m1%200h2m2%200h3m2%200h2m2%200h1m1%200h2m2%200h4m1%200h2m-37%201h2m3%200h1m3%200h3m1%200h1m3%200h2m2%200h2m1%200h1m4%200h1m1%200h2m3%200h1m-37%201h2m3%200h4m2%200h1m2%200h3m4%200h1m1%200h5m2%200h1m1%200h1m1%200h1m1%200h1m-37%201h4m8%200h1m2%200h1m1%200h2m1%200h1m1%200h3m3%200h1m2%200h1m2%200h1m-35%201h1m2%200h1m1%200h3m1%200h3m3%200h2m2%200h1m2%200h1m1%200h5m1%200h3m1%200h3m-37%201h1m1%200h1m2%200h1m3%200h1m1%200h1m3%200h1m3%200h4m1%200h1m1%200h1m2%200h1m1%200h2m2%200h2m-37%201h1m5%200h4m1%200h1m1%200h3m1%200h1m1%200h1m2%200h1m1%200h11m1%200h1m-29%201h2m1%200h2m1%200h1m1%200h1m1%200h3m2%200h1m4%200h1m3%200h2m1%200h1m-36%201h7m4%200h1m1%200h4m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h3m-37%201h1m5%200h1m1%200h3m4%200h1m4%200h1m5%200h1m1%200h1m3%200h2m1%200h1m-36%201h1m1%200h3m1%200h1m1%200h1m1%200h1m1%200h1m5%200h1m1%200h3m2%200h8m1%200h2m-36%201h1m1%200h3m1%200h1m1%200h2m1%200h1m3%200h3m5%200h1m1%200h1m2%200h3m1%200h1m1%200h1m1%200h1m-37%201h1m1%200h3m1%200h1m1%200h1m5%200h1m5%200h3m4%200h1m5%200h4m-37%201h1m5%200h1m2%200h3m1%200h1m2%200h1m4%200h1m4%200h1m1%200h2m2%200h2m2%200h1m-37%201h7m1%200h2m2%200h2m3%200h1m4%200h2m1%200h2m2%200h1m2%200h5%27%2F%3E%3C%2Fsvg%3E" alt="QR code linking to the SHT40 kit lessons at dmccreary.github.io">
             </div>
           </div>
         </div>
@@ -483,7 +535,8 @@
             </div>
           </div>
 
-          <div class="features-panel">
+          <div class="right-column">
+            <div class="features-panel">
             <div class="feature-item">
               <div class="feature-icon">🌡️</div>
               <div class="feature-text">Measure heat and humidity in real time</div>
@@ -503,6 +556,11 @@
             <div class="feature-item">
               <div class="feature-icon">🐍</div>
               <div class="feature-text">Five MicroPython labs, no soldering</div>
+            </div>
+            </div>
+            <div class="qr-block">
+              <div class="qr-caption">Build it online<span>Full lessons &amp; code</span></div>
+              <img class="qr-code" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2745%27%20height%3D%2745%27%20class%3D%27segno%27%3E%3Cpath%20fill%3D%27%23fff%27%20d%3D%27M0%200h45v45h-45z%27%2F%3E%3Cpath%20class%3D%27qrline%27%20stroke%3D%27%230f172a%27%20d%3D%27M4%204.5h7m2%200h1m1%200h3m1%200h3m8%200h1m3%200h7m-37%201h1m5%200h1m3%200h1m3%200h1m1%200h1m1%200h1m1%200h1m1%200h4m1%200h1m2%200h1m5%200h1m-37%201h1m1%200h3m1%200h1m1%200h2m3%200h2m1%200h1m4%200h1m1%200h1m3%200h2m1%200h1m1%200h3m1%200h1m-37%201h1m1%200h3m1%200h1m1%200h5m2%200h1m1%200h1m4%200h7m1%200h1m1%200h3m1%200h1m-37%201h1m1%200h3m1%200h1m1%200h2m1%200h3m3%200h5m1%200h2m1%200h1m1%200h1m1%200h1m1%200h3m1%200h1m-37%201h1m5%200h1m1%200h1m1%200h2m2%200h4m3%200h1m2%200h1m2%200h2m1%200h1m5%200h1m-37%201h7m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h7m-29%201h3m1%200h1m2%200h10m2%200h1m-28%201h1m1%200h5m2%200h1m3%200h1m1%200h2m2%200h1m1%200h1m2%200h2m1%200h2m1%200h5m-35%201h1m1%200h1m1%200h2m1%200h2m2%200h3m1%200h1m1%200h2m1%200h1m1%200h1m1%200h2m3%200h1m1%200h1m3%200h1m-33%201h1m2%200h2m1%200h9m1%200h1m1%200h1m2%200h1m2%200h1m1%200h3m1%200h1m1%200h2m-37%201h1m1%200h1m2%200h1m2%200h1m2%200h2m2%200h1m2%200h5m1%200h1m1%200h3m1%200h1m1%200h1m3%200h1m-35%201h1m3%200h4m2%200h2m1%200h1m1%200h1m1%200h1m2%200h1m1%200h2m1%200h1m1%200h2m1%200h5m-37%201h3m1%200h1m3%200h2m1%200h1m1%200h1m2%200h1m1%200h3m2%200h1m1%200h1m2%200h1m2%200h1m3%200h1m-36%201h3m1%200h3m1%200h1m5%200h2m2%200h1m3%200h1m3%200h8m1%200h2m-34%201h3m1%200h1m1%200h2m8%200h1m6%200h3m1%200h3m2%200h2m-36%201h1m1%200h1m2%200h4m1%200h2m1%200h2m2%200h1m1%200h3m1%200h7m1%200h1m1%200h1m-35%201h2m1%200h1m1%200h1m3%200h1m1%200h6m7%200h3m1%200h2m1%200h1m1%200h3m-35%201h2m1%200h1m1%200h1m2%200h1m2%200h1m1%200h1m2%200h1m2%200h1m1%200h1m2%200h3m1%200h1m1%200h3m1%200h2m-32%201h1m1%200h1m2%200h1m1%200h1m3%200h1m4%200h3m3%200h1m1%200h2m1%200h1m3%200h1m-34%201h6m1%200h1m1%200h2m2%200h3m1%200h1m2%200h1m1%200h2m2%200h2m1%200h3m-34%201h1m2%200h1m3%200h1m1%200h2m4%200h6m1%200h1m4%200h1m4%200h1m1%200h1m-35%201h4m1%200h1m2%200h1m1%200h2m2%200h3m2%200h2m2%200h1m1%200h2m2%200h4m1%200h2m-37%201h2m3%200h1m3%200h3m1%200h1m3%200h2m2%200h2m1%200h1m4%200h1m1%200h2m3%200h1m-37%201h2m3%200h4m2%200h1m2%200h3m4%200h1m1%200h5m2%200h1m1%200h1m1%200h1m1%200h1m-37%201h4m8%200h1m2%200h1m1%200h2m1%200h1m1%200h3m3%200h1m2%200h1m2%200h1m-35%201h1m2%200h1m1%200h3m1%200h3m3%200h2m2%200h1m2%200h1m1%200h5m1%200h3m1%200h3m-37%201h1m1%200h1m2%200h1m3%200h1m1%200h1m3%200h1m3%200h4m1%200h1m1%200h1m2%200h1m1%200h2m2%200h2m-37%201h1m5%200h4m1%200h1m1%200h3m1%200h1m1%200h1m2%200h1m1%200h11m1%200h1m-29%201h2m1%200h2m1%200h1m1%200h1m1%200h3m2%200h1m4%200h1m3%200h2m1%200h1m-36%201h7m4%200h1m1%200h4m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h3m-37%201h1m5%200h1m1%200h3m4%200h1m4%200h1m5%200h1m1%200h1m3%200h2m1%200h1m-36%201h1m1%200h3m1%200h1m1%200h1m1%200h1m1%200h1m5%200h1m1%200h3m2%200h8m1%200h2m-36%201h1m1%200h3m1%200h1m1%200h2m1%200h1m3%200h3m5%200h1m1%200h1m2%200h3m1%200h1m1%200h1m1%200h1m-37%201h1m1%200h3m1%200h1m1%200h1m5%200h1m5%200h3m4%200h1m5%200h4m-37%201h1m5%200h1m2%200h3m1%200h1m2%200h1m4%200h1m4%200h1m1%200h2m2%200h2m2%200h1m-37%201h7m1%200h2m2%200h2m3%200h1m4%200h2m1%200h2m2%200h1m2%200h5%27%2F%3E%3C%2Fsvg%3E" alt="QR code linking to the SHT40 kit lessons at dmccreary.github.io">
             </div>
           </div>
         </div>
