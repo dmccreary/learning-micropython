@@ -2606,6 +2606,57 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#why-the-sht40-is-so-accurate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why the SHT40 Is So Accurate
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Why the SHT40 Is So Accurate">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-it-compares" class="md-nav__link">
+    <span class="md-ellipsis">
+      How It Compares
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#four-reasons-it-wins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Four Reasons It Wins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-honest-warning" class="md-nav__link">
+    <span class="md-ellipsis">
+      One Honest Warning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-heater-trick" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Heater Trick
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#parts-you-need" class="md-nav__link">
     <span class="md-ellipsis">
       Parts You Need
@@ -2905,6 +2956,96 @@ Every I2C device has an <strong>address</strong>, like a house number on a stree
 The SHT40 lives at address 0x44 on most boards. That is how the Pico
 knows which chip it is talking to.</p>
 </div>
+<h2 id="why-the-sht40-is-so-accurate">Why the SHT40 Is So Accurate</h2>
+<p>People mix up three different ideas when they talk about a good sensor.
+Picture throwing darts at a dartboard.</p>
+<ul>
+<li><strong>Accuracy</strong> is how close your darts land to the bullseye. A sensor that
+  always reads 3 degrees too warm is not accurate.</li>
+<li><strong>Repeatability</strong> is how tightly your darts group together. Measure the
+  same air twice and a repeatable sensor gives you almost the same number.</li>
+<li><strong>Drift</strong> is the dartboard slowly sliding across the wall over the years.
+  A sensor that was right when you bought it can be wrong three years later.</li>
+</ul>
+<p>A cheap sensor can fail at all three. The SHT40 is strong at all three.</p>
+<h3 id="how-it-compares">How It Compares</h3>
+<table>
+<thead>
+<tr>
+<th>Sensor</th>
+<th>Temperature</th>
+<th>Humidity</th>
+<th>Smallest step it reports</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DHT11</td>
+<td>Plus or minus 2 C</td>
+<td>Plus or minus 5 %</td>
+<td>1 C and 1 %</td>
+</tr>
+<tr>
+<td>DHT22</td>
+<td>Plus or minus 0.5 C</td>
+<td>Plus or minus 2 %</td>
+<td>0.1 C and 0.1 %</td>
+</tr>
+<tr>
+<td>BME280</td>
+<td>Plus or minus 1 C</td>
+<td>Plus or minus 3 %</td>
+<td>0.01 C</td>
+</tr>
+<tr>
+<td>DS18B20</td>
+<td>Plus or minus 0.5 C</td>
+<td>No humidity</td>
+<td>0.06 C</td>
+</tr>
+<tr>
+<td><strong>SHT40</strong></td>
+<td><strong>Plus or minus 0.2 C</strong></td>
+<td><strong>Plus or minus 1.8 %</strong></td>
+<td><strong>0.01 C and 0.01 %</strong></td>
+</tr>
+</tbody>
+</table>
+<p>On temperature, the SHT40 is about ten times more accurate than a DHT11 and
+about five times more accurate than a BME280. On humidity the gap is
+smaller but still real: about three times better than a DHT11.</p>
+<h3 id="four-reasons-it-wins">Four Reasons It Wins</h3>
+<p><strong>1. Every chip is tested on its own.</strong> Sensirion measures each individual
+SHT40 in the factory against a reference instrument, then stores the
+correction numbers inside that exact chip. Those references trace back to
+NIST, the United States national measurement lab. Cheaper sensors are
+calibrated one batch at a time, so your particular chip may sit at the edge
+of the batch and no one ever checked.</p>
+<p><strong>2. It barely drifts.</strong> The SHT40 changes by less than 0.03 C and less than
+0.25 % humidity per year. A DHT11 datasheet only promises about 1 % humidity
+per year, which is four times more drift, and damp rooms make it worse. If
+you log your bedroom for a whole school year, the SHT40 readings from June
+can still be trusted against the ones from September.</p>
+<p><strong>3. It gives the same answer twice.</strong> Ask an SHT40 the same question twice
+in a row and the two answers differ by only about 0.04 C. That number is
+called repeatability, and it is why the plot in Step 4 draws a smooth line
+instead of a jagged one.</p>
+<p><strong>4. It checks its own work.</strong> Every reading arrives with a checksum, so a
+scrambled number turns into an error message instead of a wrong answer. A
+DHT11 sends its bits with careful timing and no clock line, so if your
+program is busy at the wrong moment the reading can be silently wrong.</p>
+<h3 id="one-honest-warning">One Honest Warning</h3>
+<p>A great sensor does not guarantee a great reading. The SHT40 reports the
+temperature of the air touching <em>it</em>, and your Pico makes heat. If you push
+the sensor right up against the board, an expensive sensor will confidently
+report a wrong room temperature.</p>
+<p>Accuracy comes from the sensor <strong>and</strong> from where you put it.</p>
+<h3 id="the-heater-trick">The Heater Trick</h3>
+<p>The SHT40 hides a tiny heater inside. If the sensor gets damp enough for
+water to form on it, you can switch the heater on for a moment to dry it
+out. That is why the datasheet says the SHT40 is "fully functional in
+condensing environment". Most hobby sensors just read 99 % and stay stuck
+there until they dry on their own.</p>
 <h2 id="parts-you-need">Parts You Need</h2>
 <table>
 <thead>
@@ -3002,8 +3143,9 @@ read the labels printed on your own board.</p>
 <div class="admonition mascot-warning">
 <p class="admonition-title">Watch Out!</p>
 <p><img alt="Monty warning" class="mascot-admonition-img" src="../../img/mascot/warning.png">
-Do not connect VIN to the 5V pin (pin 40). The SHT40 can only take up
-to 3.6 volts, and 5 volts will destroy it. Always use pin 36.</p>
+Do not connect VIN to pin 40, which is labelled <strong>VBUS</strong>. That pin
+carries 5 volts straight from the USB cable, and the SHT40 can only take
+3.6 volts. Always use pin 36, labelled <strong>3V3 OUT</strong>.</p>
 </div>
 <h2 id="step-1-find-the-sensor">Step 1: Find the Sensor</h2>
 <p>Never guess at your wiring. Ask the Pico what it can see first.</p>
@@ -3241,7 +3383,7 @@ showers. Graph both in a spreadsheet. Which room changes faster, and why?</p>
 <tbody>
 <tr>
 <td>Scanner finds nothing</td>
-<td>Check VIN goes to pin 36, not the 5V pin</td>
+<td>Check VIN goes to pin 36 (3V3 OUT), not pin 40 (VBUS)</td>
 </tr>
 <tr>
 <td>Scanner finds nothing</td>
@@ -3393,7 +3535,7 @@ build a weather station you can carry anywhere!</p>
 from the kit folder.</p>
 <h2 id="references">References</h2>
 <ol>
-<li><a href="https://sensirion.com/products/catalog/SHT40">SHT4x Datasheet</a> - Sensirion - the official numbers behind every formula in this lab.</li>
+<li><a href="https://sensirion.com/resource/datasheet/sht4x">SHT4x Datasheet</a> - Sensirion - the source of every accuracy, repeatability and drift number in this lab.</li>
 <li><a href="https://learn.adafruit.com/adafruit-sht40-temperature-humidity-sensor">Adafruit SHT40 Guide</a> - Adafruit - wiring photos and a CircuitPython comparison.</li>
 <li><a href="https://docs.micropython.org/en/latest/library/machine.I2C.html">I2C on the Raspberry Pi Pico</a> - MicroPython Docs - every method the <code>I2C</code> class offers.</li>
 <li><a href="https://en.wikipedia.org/wiki/Relative_humidity">Relative Humidity</a> - Wikipedia - why warm air holds more water than cold air.</li>
