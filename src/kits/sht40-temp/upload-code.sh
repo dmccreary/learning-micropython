@@ -1,0 +1,131 @@
+#!/usr/bin/env bash
+# Upload every SHT40 lesson onto the Pico's flash filesystem.
+#
+# The lesson files live in src/sensors/sht40-temp/ so there is only one
+# copy of each program.  This script finds them and copies them over.
+#
+# Usage:
+#     ./upload-code.sh                  # find the board automatically
+#     PORT=/dev/cu.usbmodem14301 ./upload-code.sh   # name the port yourself
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SRC_DIR="$SCRIPT_DIR/../../sensors/sht40-temp"
+
+if [ ! -d "$SRC_DIR" ]; then
+    echo "Cannot find the lesson files at:"
+    echo "    $SRC_DIR"
+    exit 1
+fi
+
+# --- Look at every port on this Mac ---------------------------------
+# macOS gives the Pico a different name depending on which USB jack you
+# plug it into (/dev/cu.usbmodem101, ...14101, ...14301 and so on).  It
+# also lists Bluetooth ports that are not boards at all.  So we print
+# every /dev/cu.* port, then work out which one is really a Pico.
+
+echo "Serial ports on this Mac:"
+found_any_port=0
+for port in /dev/cu.*; do
+    [ -e "$port" ] || continue
+    found_any_port=1
+    echo "    $port"
+done
+
+if [ "$found_any_port" = "0" ]; then
+    echo "    (none)"
+fi
+echo
+
+# mpremote devs prints one line per port:
+#     <port> <serial number> <vid:pid> <description>
+# A real USB board has a true vid:pid such as 2e8a:0005 (Raspberry Pi).
+# Bluetooth and other fake ports report 0000:0000, so we skip those.
+find_boards() {
+    mpremote devs 2>/dev/null | while read -r port serial vidpid rest; do
+        case "$port" in
+            /dev/cu.Bluetooth*|/dev/cu.BLTH*|/dev/cu.debug*|/dev/cu.wlan*)
+                continue
+                ;;
+        esac
+        if [ "$vidpid" = "0000:0000" ] || [ -z "$vidpid" ]; then
+            continue
+        fi
+        echo "$port"
+    done
+}
+
+if [ -n "$PORT" ]; then
+    # The user told us which port to use, so trust them.
+    BOARDS="$PORT"
+else
+    BOARDS="$(find_boards)"
+fi
+
+# Count how many boards we found.  grep -c . counts non-empty lines.
+BOARD_COUNT="$(printf '%s\n' "$BOARDS" | grep -c . || true)"
+
+if [ "$BOARD_COUNT" -eq 0 ]; then
+    echo "No Pico found on any port."
+    echo
+    echo "Things to check:"
+    echo "  1. Is the Pico plugged into USB?"
+    echo "  2. Does it have MicroPython installed? A brand new Pico does not."
+    echo "  3. Try a different USB cable. Some cheap cables only carry power."
+    exit 1
+fi
+
+if [ "$BOARD_COUNT" -gt 1 ]; then
+    echo "Found more than one board:"
+    printf '%s\n' "$BOARDS" | sed 's/^/    /'
+    echo
+    echo "Pick the one you want and run the script again, like this:"
+    echo "    PORT=$(printf '%s\n' "$BOARDS" | head -n 1) ./upload-code.sh"
+    exit 1
+fi
+
+PORT="$(printf '%s\n' "$BOARDS" | head -n 1)"
+
+if [ ! -e "$PORT" ]; then
+    echo "The port $PORT disappeared. Unplug the Pico, plug it back in,"
+    echo "then run this script again."
+    exit 1
+fi
+
+echo "Found a board at $PORT"
+
+# --- Make sure the port is free -------------------------------------
+# Thonny, the Arduino IDE and screen all hold the port open while they
+# are connected, and only one program can use it at a time.
+if ! mpremote connect "$PORT" eval "1" >/dev/null 2>&1; then
+    echo
+    echo "The board is there, but something else is using the port."
+    echo
+    echo "Close Thonny (or click its red Stop button), close any other"
+    echo "serial monitor, then run this script again."
+    exit 1
+fi
+
+# --- Copy the lesson files ------------------------------------------
+echo "Uploading to $PORT ..."
+
+upload_count=0
+for f in "$SRC_DIR"/[0-9][0-9]-*.py; do
+    [ -e "$f" ] || continue
+    name="$(basename "$f")"
+    echo "    $name"
+    mpremote connect "$PORT" fs cp "$f" ":$name" >/dev/null
+    upload_count=$((upload_count + 1))
+done
+
+if [ "$upload_count" -eq 0 ]; then
+    echo "No lesson files found in $SRC_DIR"
+    exit 1
+fi
+
+echo
+echo "Uploaded $upload_count files. Files now on the Pico:"
+mpremote connect "$PORT" fs ls
+
+echo
+echo "Next step: open Thonny and run 01-i2c-scanner.py"
