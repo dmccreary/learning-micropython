@@ -1097,6 +1097,10 @@
          <lastmod>2026-09-02</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/learning-micropython/kits/sht40-temp/</loc>
+         <lastmod>2026-09-02</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/learning-micropython/kits/spectrum-analyzer/</loc>
          <lastmod>2026-09-02</lastmod>
     </url>
@@ -1382,10 +1386,6 @@
     </url>
     <url>
          <loc>https://dmccreary.github.io/learning-micropython/sensors/dht11-temp-humidity/</loc>
-         <lastmod>2026-09-02</lastmod>
-    </url>
-    <url>
-         <loc>https://dmccreary.github.io/learning-micropython/sensors/16-sht40-temp/</loc>
          <lastmod>2026-09-02</lastmod>
     </url>
     <url>
