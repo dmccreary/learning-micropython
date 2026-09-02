@@ -150,7 +150,6 @@ nav:
       - Touch Sensor: sensors/14-touch-ttp223.md
       - Microphone INMP441: sensors/15-inmp441.md
       - BME280 Temp and Pressure: sensors/09-bme280.md
-      - SHT40 Temp and Humidity: sensors/16-sht40-temp/index.md
 
     - Ch 12 - Motors and Servos:
       - Introduction: hands-on-labs/12-motors-servos-steppers/01-intro.md
@@ -299,6 +298,7 @@ nav:
     - Maker Pi Nano: kits/maker-nano-rp2040/01-intro.md
     - NeoPixel Rotary: kits/neopixel/04-rotary-neopixel.md
     - Spectrum Analyzer: kits/spectrum-analyzer/index.md
+    - SHT40 Temp and Humidity: kits/sht40-temp/index.md
     - Maker Pi RP2040:
       - Introduction: kits/maker-pi-rp2040/index.md
       - Getting Started: kits/maker-pi-rp2040/01-getting-started.md

@@ -38,16 +38,18 @@
 
 from machine import Pin, I2C
 import time
+import config
 
-SHT40_ADDR = 0x44        # the I2C address the scanner found
-CMD_MEASURE_HIGH = 0xFD  # measure temperature + humidity, high precision
-CMD_SOFT_RESET = 0x94    # restart the sensor
+# All of these come from config.py so you only ever edit them in one place.
+SHT40_ADDR = config.SHT40_ADDR
+CMD_MEASURE_HIGH = config.SHT40_CMD_MEASURE_HIGH
+CMD_SOFT_RESET = config.SHT40_CMD_SOFT_RESET
 
-SAMPLE_SECONDS = 1       # how long to wait between points on the graph
+SAMPLE_SECONDS = config.PLOT_SECONDS  # wait between points on the graph
 
-sda = Pin(0)
-scl = Pin(1)
-i2c = I2C(0, sda=sda, scl=scl, freq=400000)
+sda = Pin(config.I2C_SDA_PIN)
+scl = Pin(config.I2C_SCL_PIN)
+i2c = I2C(config.I2C_BUS, sda=sda, scl=scl, freq=config.I2C_BUS_FREQ)
 
 
 def crc8(data):
@@ -66,7 +68,7 @@ def crc8(data):
 def read_sht40():
     """Return one (temperature_c, humidity_percent) reading."""
     i2c.writeto(SHT40_ADDR, bytes([CMD_MEASURE_HIGH]))
-    time.sleep_ms(15)
+    time.sleep_ms(config.SHT40_MEASURE_MS)
     data = i2c.readfrom(SHT40_ADDR, 6)
 
     if crc8(data[0:2]) != data[2]:
@@ -88,9 +90,21 @@ def read_sht40():
     return temperature_c, humidity
 
 
-# Give the sensor a clean start
-i2c.writeto(SHT40_ADDR, bytes([CMD_SOFT_RESET]))
-time.sleep_ms(10)
+# Give the sensor a clean start.
+#
+# If the last program was stopped in the middle of taking a reading, the
+# sensor can be left half way through a conversation and it will refuse to
+# answer. Unplugging the Pico and plugging it back in always clears this.
+try:
+    i2c.writeto(SHT40_ADDR, bytes([CMD_SOFT_RESET]))
+    time.sleep_ms(10)
+except OSError:
+    print("The sensor is not answering.")
+    print()
+    print("This almost always means the last program was stopped in the")
+    print("middle of a reading. Unplug the Pico from USB, plug it back in,")
+    print("and run this program again.")
+    raise SystemExit
 
 while True:
     try:

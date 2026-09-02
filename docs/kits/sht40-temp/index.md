@@ -152,6 +152,12 @@ The SHT40 runs on 3.3 volts. Follow these steps in order.
 6. Connect SHT40 **SDA** to Pico **pin 1 (GP0)** with a blue wire.
 7. Check each wire twice, then plug the USB cable back in.
 
+![A Raspberry Pi Pico and a small purple SHT40 breakout board plugged into a white solderless breadboard, joined by red, black, yellow and orange jumper wires](./sht40-on-breadboard.jpg)
+
+The photo above shows the finished wiring. The sensor sits at the far end of
+the breadboard, away from the Pico, so the heat of the board does not warm
+the readings.
+
 Working down the board from the top pin:
 
 | SHT40 pin | Pico pin | Pico name | Wire colour | What it does |
@@ -424,19 +430,25 @@ though no water left the room.
 
 ## Source Code
 
-All four programs live in
-[`src/sensors/sht40-temp/`](https://github.com/dmccreary/learning-micropython/tree/main/src/sensors/sht40-temp):
+The whole kit lives in one folder,
+[`src/kits/sht40-temp/`](https://github.com/dmccreary/learning-micropython/tree/main/src/kits/sht40-temp):
 
 | File | What it does |
 |------|--------------|
+| `config.py` | Every pin number the kit uses, in one place |
 | `01-i2c-scanner.py` | Finds the sensor on the I2C bus |
 | `02-get-single-temp-reading.py` | Takes one reading with checksum checks |
 | `03-continuous-logging.py` | Logs CSV every 2 seconds with a summary |
 | `04-plot-temp-and-humidity.py` | Prints two numbers for Thonny's Plotter |
+| `05-temp-touch-neopixel.py` | Lights a NeoPixel strip when you touch the sensor |
 
-To copy all four onto your Pico at once, run
+`config.py` is the file to edit when you move a wire. The programs read
+their pin numbers from it, so you change a number once instead of hunting
+through five programs.
+
+To copy them all onto your Pico at once, run
 [`upload-code.sh`](https://github.com/dmccreary/learning-micropython/tree/main/src/kits/sht40-temp)
-from the kit folder.
+from that same folder.
 
 ## References
 

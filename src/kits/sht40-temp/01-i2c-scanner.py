@@ -10,8 +10,12 @@
 #   SHT40 GND -> GND
 #   SHT40 SDA -> GP0 (pin 1)       <- row one on our standard breadboard
 #   SHT40 SCL -> GP1 (pin 2)       <- row two on our standard breadboard
+#
+# The pin numbers come from config.py. If you move a wire, change the
+# number there and every lab in this kit follows.
 
 from machine import Pin, I2C
+import config
 
 # The SHT40 always answers at one of these three addresses.
 # Most breakout boards (Adafruit, SparkFun) use 0x44.
@@ -21,14 +25,15 @@ SHT40_ADDRESSES = {
     0x46: "SHT40-CD1B",
 }
 
-sda = Pin(0)  # row one on our standard Pico breadboard
-scl = Pin(1)  # row two on our standard Pico breadboard
-i2c = I2C(0, sda=sda, scl=scl, freq=400000)
+sda = Pin(config.I2C_SDA_PIN)
+scl = Pin(config.I2C_SCL_PIN)
+i2c = I2C(config.I2C_BUS, sda=sda, scl=scl, freq=config.I2C_BUS_FREQ)
 
 # i2c.scan() returns a list of the addresses of every device it found
 devices = i2c.scan()
 
-print("Scanning the I2C bus on SDA=GP0 and SCL=GP1...")
+print("Scanning I2C bus {} on SDA=GP{} and SCL=GP{}...".format(
+    config.I2C_BUS, config.I2C_SDA_PIN, config.I2C_SCL_PIN))
 print()
 
 if len(devices) == 0:

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Upload every SHT40 lesson onto the Pico's flash filesystem.
 #
-# The lesson files live in src/sensors/sht40-temp/ so there is only one
-# copy of each program.  This script finds them and copies them over.
+# Every file this kit needs lives in this same folder, next to this
+# script: config.py and the numbered lesson programs.
 #
 # Usage:
 #     ./upload-code.sh                  # find the board automatically
@@ -10,11 +10,12 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SRC_DIR="$SCRIPT_DIR/../../sensors/sht40-temp"
+SRC_DIR="$SCRIPT_DIR"
 
-if [ ! -d "$SRC_DIR" ]; then
-    echo "Cannot find the lesson files at:"
+if [ ! -e "$SRC_DIR/config.py" ]; then
+    echo "config.py is missing from:"
     echo "    $SRC_DIR"
+    echo "Every lesson imports it, so nothing will run without it."
     exit 1
 fi
 
@@ -110,6 +111,15 @@ fi
 echo "Uploading to $PORT ..."
 
 upload_count=0
+
+# config.py holds every pin number the lessons use, so it goes first.
+# Without it the programs that import config will not start.
+if [ -e "$SRC_DIR/config.py" ]; then
+    echo "    config.py"
+    mpremote connect "$PORT" fs cp "$SRC_DIR/config.py" :config.py >/dev/null
+    upload_count=$((upload_count + 1))
+fi
+
 for f in "$SRC_DIR"/[0-9][0-9]-*.py; do
     [ -e "$f" ] || continue
     name="$(basename "$f")"

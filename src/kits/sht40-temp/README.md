@@ -63,8 +63,8 @@ again. Only one program can talk to the Pico at a time.
 
 ## The Programs
 
-The source files live in
-[`src/sensors/sht40-temp/`](../../sensors/sht40-temp/). Run them in order.
+The source files live in this same folder, next to this README. Run them
+in order.
 
 ### 01-i2c-scanner.py
 

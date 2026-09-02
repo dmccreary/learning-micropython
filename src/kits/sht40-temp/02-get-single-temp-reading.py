@@ -18,14 +18,16 @@
 
 from machine import Pin, I2C
 import time
+import config
 
-SHT40_ADDR = 0x44        # the I2C address the scanner found
-CMD_MEASURE_HIGH = 0xFD  # measure temperature + humidity, high precision
-CMD_SOFT_RESET = 0x94    # restart the sensor, like unplugging and replugging
+# All of these come from config.py so you only ever edit them in one place.
+SHT40_ADDR = config.SHT40_ADDR              # the I2C address the scanner found
+CMD_MEASURE_HIGH = config.SHT40_CMD_MEASURE_HIGH  # measure at high precision
+CMD_SOFT_RESET = config.SHT40_CMD_SOFT_RESET      # restart the sensor
 
-sda = Pin(0)
-scl = Pin(1)
-i2c = I2C(0, sda=sda, scl=scl, freq=400000)
+sda = Pin(config.I2C_SDA_PIN)
+scl = Pin(config.I2C_SCL_PIN)
+i2c = I2C(config.I2C_BUS, sda=sda, scl=scl, freq=config.I2C_BUS_FREQ)
 
 
 def crc8(data):
@@ -52,7 +54,7 @@ def read_sht40():
     i2c.writeto(SHT40_ADDR, bytes([CMD_MEASURE_HIGH]))
 
     # Step 2: wait for the sensor to finish (high precision needs 8.3 ms)
-    time.sleep_ms(15)
+    time.sleep_ms(config.SHT40_MEASURE_MS)
 
     # Step 3: read the 6 bytes of the answer
     data = i2c.readfrom(SHT40_ADDR, 6)
@@ -83,9 +85,21 @@ def read_sht40():
 print("Reading the SHT40 at", hex(SHT40_ADDR), "...")
 print()
 
-# Give the sensor a clean start
-i2c.writeto(SHT40_ADDR, bytes([CMD_SOFT_RESET]))
-time.sleep_ms(10)
+# Give the sensor a clean start.
+#
+# If the last program was stopped in the middle of taking a reading, the
+# sensor can be left half way through a conversation and it will refuse to
+# answer. Unplugging the Pico and plugging it back in always clears this.
+try:
+    i2c.writeto(SHT40_ADDR, bytes([CMD_SOFT_RESET]))
+    time.sleep_ms(10)
+except OSError:
+    print("The sensor is not answering.")
+    print()
+    print("This almost always means the last program was stopped in the")
+    print("middle of a reading. Unplug the Pico from USB, plug it back in,")
+    print("and run this program again.")
+    raise SystemExit
 
 try:
     temperature_c, humidity = read_sht40()
