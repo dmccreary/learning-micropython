@@ -1,6 +1,6 @@
 # Test the Button and the Blinking LED
 #
-# Before we use the button in the smartwatch (program 09), let's prove it
+# Before we use the button in the six-mode display (program 09), let's prove it
 # works. This program does not need the sensor or the screen.
 #
 # Wiring (see config.py):

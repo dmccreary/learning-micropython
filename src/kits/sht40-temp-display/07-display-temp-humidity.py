@@ -1,10 +1,10 @@
-# Smartwatch Face: Temperature and Humidity on a Round Display
+# Temperature and Humidity on a Round Display
 #
 # Run 01-i2c-scanner.py, 02-get-single-temp-reading.py and
 # 06-display-hello.py first. If all three print "TEST PASS", this program
 # will work too.
 #
-# This program reads the SHT40 once a second and draws a watch face:
+# This program reads the SHT40 once a second and draws this on the screen:
 #
 #   - The top half is the temperature in big letters, with the same
 #     temperature in Celsius underneath. The color tells you how warm it
@@ -238,7 +238,7 @@ except OSError:
     raise SystemExit
 
 draw_watch_face()
-print("Watch face is running. Press Ctrl-C to stop.")
+print("Display is running. Press Ctrl-C to stop.")
 
 last_reading_ok = True
 
@@ -258,7 +258,7 @@ try:
             print("%.2f F  %.2f C  %.2f %%" % (temperature_f, temperature_c, humidity))
 
         except (OSError, ValueError) as error:
-            # One bad reading should not stop the watch. We keep the last
+            # One bad reading should not stop the display. We keep the last
             # numbers on the screen, turn the top label red so nobody trusts
             # them, and try again next second.
             if last_reading_ok:

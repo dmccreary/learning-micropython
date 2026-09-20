@@ -43,7 +43,7 @@ class Records:
                     self.hi_f, self.lo_f, self.hi_h, self.lo_h))
             self.changed = False
         except OSError:
-            pass                       # a full or busy disk must not stop the watch
+            pass                       # a full or busy disk must not stop the display
         self.last_save = time.ticks_ms()
 
     def update(self, temp_f, humidity):

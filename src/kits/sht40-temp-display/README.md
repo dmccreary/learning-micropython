@@ -1,22 +1,23 @@
 # SHT40 Temperature and Humidity Kit with a Round Smartwatch Display
 
 Measure the temperature and humidity of the air around you, then show
-both numbers on a round smartwatch screen.
+both numbers on a low-cost round display, the kind made for smartwatches.
 
 The SHT40 is a tiny sensor made by Sensirion. It measures two things at
 once: how warm the air is, and how much water is floating in it. It talks
 to your Pico over I2C, which is a two-wire system that lets chips send
 numbers to each other.
 
-The screen is a GC9A01, a round 240 x 240 color display about the size of
-a watch face. It talks to your Pico over SPI, a faster wiring system with
+The screen is a GC9A01, a round 240 x 240 color display that costs about $5.
+It was made for smartwatches, but here it is a window that lets you watch the
+very precise, very fast SHT40 at work. It talks to your Pico over SPI, a faster wiring system with
 five wires.
 
 This kit is the plain SHT40 kit plus the round display and a push button.
 Programs 01 to 04 are the same lessons as before. Programs 05 to 09 are new.
 Program 05 plots the temperature on its own. Programs 06 and 07 put the
-readings on the watch face. Programs 08 and 09 add the button and turn the
-watch into a six-mode smartwatch.
+readings on the screen. Programs 08 and 09 add a button and six display
+modes.
 
 This kit has no NeoPixel strip. The plain SHT40 kit uses program 05 to
 light a NeoPixel strip, so here that number is used for the temperature
@@ -110,14 +111,14 @@ The script lists every serial port on your Mac, works out which one is
 your Pico, and copies everything onto it:
 
 - the `lib` folder, which holds the display driver, two fonts, a shapes
-  helper, and the small files the smartwatch modes share (the display
+  helper, and the small files the display modes share (the display
   programs cannot run without it)
 - `config.py`
 - every numbered lesson program
 - a second copy of program 09, saved as `main.py`
 
 A Pico runs `main.py` all by itself when it powers up. Once the script
-finishes, unplug the Pico and plug it back in. The smartwatch starts with
+finishes, unplug the Pico and plug it back in. The display starts with
 no computer needed, so you can power it from a phone charger or a battery
 pack. To stop it, plug the Pico into Thonny and click the red Stop button.
 
@@ -242,7 +243,7 @@ If the screen stays dark, check the display wiring table above.
 
 ### 07-display-temp-humidity.py
 
-The smartwatch face. Once a second it reads the SHT40 and draws:
+The full display. Once a second it reads the SHT40 and draws:
 
 - the temperature in big letters, in Fahrenheit, with Celsius underneath
 - the humidity in big letters, with a bar that fills from empty to full
@@ -300,11 +301,11 @@ quick tap, shorter than 50 milliseconds, is ignored. Normal taps are much longer
 
 ### 09-smartwatch-modes.py
 
-The smartwatch. A tap on the button switches to the next of six screens.
+The six-mode sensor display. A tap on the button switches to the next of six screens.
 
 | # | Mode | What you see |
 |---|------|--------------|
-| 1 | Watch | The classic watch face from program 07 |
+| 1 | Classic | The classic display from program 07 |
 | 2 | Buddy | A cartoon face that feels the air. The whole face is a mood-ring color: blue when it is cold, green when it is comfy, red when it is hot. Buddy shivers, smiles, sweats and blinks |
 | 3 | Live | A graph of the last three minutes of temperature. The line changes color with the temperature |
 | 4 | Ring | Two rainbow ring gauges. The outer ring is the temperature and the inner ring is the humidity |
@@ -318,7 +319,7 @@ in. The bright dot is the current mode.
 
 | What you do | What happens |
 |-------------|--------------|
-| Tap | Go to the next mode. After Hi/Lo it starts over at Watch |
+| Tap | Go to the next mode. After Hi/Lo it starts over at Classic |
 | Hold for about a second | Switch between Fahrenheit (F) and Celsius (C) |
 | Hold for 3 seconds (in Hi/Lo) | Clear the records |
 
@@ -331,7 +332,7 @@ a reading failed. If the LED stops blinking, the program has stopped.
 
 **Mood-ring colors**
 
-A mood ring changes color with how you feel. The watch does the same with
+A mood ring changes color with how you feel. The display does the same with
 the temperature. It spreads the colors along a line from blue (cold)
 through cyan, green and orange to red (hot), and each temperature gets its
 own color. Look for it in the dots around the rim, Buddy's face, the graph
@@ -340,7 +341,7 @@ line, the Ring gauges and the thermometer. The two ends of the line are
 
 **Things to know**
 
-- The watch keeps track of the highest and lowest readings in **every**
+- The display keeps track of the highest and lowest readings in **every**
   mode, not just Hi/Lo. Touching the sensor with a warm finger will set a
   new high!
 - The records are saved in a file called `records.txt` on the Pico. To be
@@ -349,7 +350,7 @@ line, the Ring gauges and the thermometer. The two ends of the line are
 - The Live graph draws one dot column for every reading. When it reaches
   the right edge it starts over on the left.
 - If the sensor stops answering, the title at the top of the screen turns
-  into a red SENSOR FAIL. The watch keeps trying and comes back to life by
+  into a red SENSOR FAIL. The display keeps trying and comes back to life by
   itself when the sensor answers.
 
 **Settings in `config.py`**
@@ -381,11 +382,11 @@ Program 09 is short because most of the work lives in small files in the
 
 ## Things to Try
 
-- Breathe on the sensor while the watch face is running. Watch the
+- Breathe on the sensor while the display is running. Watch the
   humidity bar jump, then slowly drain back down.
 - Change `TEMP_WARM_F` in `config.py` to 70, upload again, and see when
   the temperature turns orange.
-- Change `DISPLAY_SECONDS` in `config.py` to 10. How does the watch feel
+- Change `DISPLAY_SECONDS` in `config.py` to 10. How does the display feel
   when it updates less often?
 - In program 09, go to Buddy and breathe on the sensor. Does Buddy's
   caption change?
@@ -415,8 +416,8 @@ Program 09 is short because most of the work lives in small files in the
 | The display stays dark | Check VCC is on pin 36 (3V3 OUT) and GND is connected. Then check DC, CS and RST, the three wires that are easiest to swap. Run program 06 to test the display by itself. |
 | The display shows static or garbage | SCL and SDA on the display go to GP2 and GP3, not GP0 and GP1. Check they are not swapped with each other. |
 | "ImportError: no module named 'gc9a01'" | The `lib` folder is not on the Pico. Run `./upload-code.sh` again. |
-| The watch face starts by itself and Thonny cannot connect | That is `main.py` running. Click Thonny's red Stop button, or press Ctrl-C in the Shell. |
-| Watch face says SENSOR FAIL | The sensor is not answering. Run program 01 to check the wiring. If program 01 passes, unplug the Pico and plug it back in. |
+| The program starts by itself and Thonny cannot connect | That is `main.py` running. Click Thonny's red Stop button, or press Ctrl-C in the Shell. |
+| The display says SENSOR FAIL | The sensor is not answering. Run program 01 to check the wiring. If program 01 passes, unplug the Pico and plug it back in. |
 | Program 08 says the button reads PRESSED, or never sees a press | Check the button wires: one leg to pin 20 (GP15) and the other to pin 18 (GND). Push both wires all the way in. |
 | The button changes modes on its own | A loose wire can act like a press. Check that both button wires are pushed in firmly. |
 | The green LED never blinks | Program 09 is not running. Unplug the Pico and plug it back in, or run program 09 in Thonny. |

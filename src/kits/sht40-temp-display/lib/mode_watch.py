@@ -1,4 +1,4 @@
-# mode_watch.py -- mode 1: the watch face from lab 07.
+# mode_watch.py -- mode 1: the classic face from lab 07.
 #
 # The temperature in big letters, the other unit underneath, the humidity
 # with a bar, and a white ring around the edge. The big number changes color
@@ -45,7 +45,7 @@ def temperature_color(temperature_f):
 
 
 class WatchMode(Mode):
-    NAME = "Watch"
+    NAME = "Classic"
     TITLE = "TEMPERATURE"
     TITLE_Y = 36
 

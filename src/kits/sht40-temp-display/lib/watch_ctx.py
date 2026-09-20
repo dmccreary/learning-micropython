@@ -1,4 +1,4 @@
-# watch_ctx.py -- what every smartwatch mode shares.
+# watch_ctx.py -- what every display mode shares.
 #
 # "ctx" is short for context. It holds the display, the latest reading, the
 # unit (F or C) and the recent history. Each mode gets the same ctx, so a mode
@@ -124,7 +124,7 @@ class Context:
 
 
 class Mode:
-    """The pattern every smartwatch mode follows."""
+    """The pattern every display mode follows."""
     NAME = "Mode"
     READ_MS = config.DISPLAY_SECONDS * 1000   # how often this mode wants a reading
 

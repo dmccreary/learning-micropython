@@ -3,10 +3,10 @@
 #
 # Every file this kit needs lives in this same folder, next to this
 # script: config.py, the numbered lesson programs, and lib/ (the round
-# display driver, its fonts, and the helper files the smartwatch shares).
+# display driver, its fonts, and the helper files the display modes share).
 #
-# The six-mode smartwatch (lab 09) is also copied to the Pico as main.py.
-# A Pico runs main.py by itself every time it powers up, so the watch works
+# The six-mode display (lab 09) is also copied to the Pico as main.py.
+# A Pico runs main.py by itself every time it powers up, so the display works
 # with the USB cable plugged into a plain phone charger and no computer at
 # all. To make a different lab start by itself, change MAIN_LAB below.
 #
@@ -157,7 +157,7 @@ if [ "$upload_count" -eq 0 ]; then
     exit 1
 fi
 
-# The smartwatch lab, saved a second time under the name main.py.
+# The six-mode display lab, saved a second time under the name main.py.
 if [ -e "$SRC_DIR/$MAIN_LAB" ]; then
     echo "    main.py  (a copy of $MAIN_LAB)"
     mpremote connect "$PORT" fs cp "$SRC_DIR/$MAIN_LAB" :main.py >/dev/null
@@ -171,4 +171,4 @@ mpremote connect "$PORT" fs ls :lib
 
 echo
 echo "Next step: open Thonny and run 01-i2c-scanner.py"
-echo "Unplug the Pico and plug it back in to start the smartwatch on its own."
+echo "Unplug the Pico and plug it back in to start the display on its own."

@@ -1,11 +1,11 @@
-# The Smartwatch: six modes, one button
+# The Sensor Display: six modes, one button
 #
 # Run 01, 02, 06 and 08 first. If all of them print "TEST PASS", this
 # program will work too.
 #
 # One push button switches between six screens:
 #
-#   1. Watch    the classic face from program 07
+#   1. Classic  the classic face from program 07
 #   2. Buddy    a face that feels the air. Its face is the mood-ring color!
 #   3. Live     a graph of the last few minutes of temperature
 #   4. Ring     rainbow ring gauges for temperature and humidity
@@ -22,7 +22,7 @@
 # program has stopped.
 #
 # upload-code.sh also saves a copy of THIS program on the Pico as main.py.
-# A Pico runs main.py by itself when it gets power, so the watch starts
+# A Pico runs main.py by itself when it gets power, so the display starts
 # with no computer at all.
 #
 # HOW THE PROGRAM IS BUILT
@@ -80,14 +80,14 @@ records = Records(config.RECORDS_FILE, config.RECORDS_SAVE_SECONDS)
 
 modes = load_modes()
 ctx = Context(display, records, len(modes))
-print("Smartwatch ready. {} modes. Free memory: {} bytes.".format(
+print("Display ready. {} modes. Free memory: {} bytes.".format(
     len(modes), gc.mem_free()))
 
 # Give the sensor a clean start.
 #
 # If the last program was stopped in the middle of a reading, the sensor can
 # be left half way through a conversation. If it still will not answer, we
-# do not quit. We show SENSOR FAIL and keep trying, so the watch comes alive
+# do not quit. We show SENSOR FAIL and keep trying, so the display comes alive
 # by itself as soon as the sensor answers.
 try:
     sensor.reset()

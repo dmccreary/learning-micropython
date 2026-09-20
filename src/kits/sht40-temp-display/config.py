@@ -117,9 +117,9 @@ HEARTBEAT_MS = 60         # how long each blink lasts
 # --- How often each lab takes a reading --------------------------------
 LOG_SECONDS = 2      # 03-continuous-logging.py, one CSV row every 2 seconds
 PLOT_SECONDS = 1     # 04 and 05, the Plotter programs, one point per second
-DISPLAY_SECONDS = 1  # 07-display-temp-humidity.py, redraw the watch face once a second
+DISPLAY_SECONDS = 1  # 07-display-temp-humidity.py, redraw the display once a second
 
-# --- Watch face settings ------------------------------------------------
+# --- Display color settings ------------------------------------------------
 # 07-display-temp-humidity.py colors the temperature by how warm it is.
 # Below TEMP_COOL_F it is cyan, up to TEMP_WARM_F it is green, up to
 # TEMP_HOT_F it is orange, and from TEMP_HOT_F on it is red.
@@ -128,7 +128,7 @@ TEMP_COOL_F = 65.0
 TEMP_WARM_F = 78.0
 TEMP_HOT_F = 90.0
 
-# --- Smartwatch modes (lab 09) ----------------------------------------
+# --- Display modes (lab 09) ----------------------------------------
 # Mood ring: the temperature is spread along a color line from blue (cold)
 # through cyan, green and orange to red (hot). These two numbers are the
 # ends of that line.

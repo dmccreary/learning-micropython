@@ -1,6 +1,6 @@
 # mode_hilo.py -- mode 6: the highest and lowest readings.
 #
-# The watch remembers the hottest and coldest temperature it has felt, and
+# The display remembers the hottest and coldest temperature it has felt, and
 # the wettest and driest air too. It keeps track in EVERY mode, not just this
 # one, and it saves the records in a file, so they survive unplugging.
 #
@@ -95,7 +95,7 @@ class HiLoMode(Mode):
         d.text(SMALL_FONT, widgets.pad_center(humidity, 14), 80, HUMIDITY_Y + 4,
                config.WHITE, config.BLACK)
 
-        # How long the watch has been running
+        # How long the display has been running
         seconds = time.ticks_ms() // 1000
         uptime = "up %d:%02d:%02d" % (seconds // 3600, (seconds // 60) % 60, seconds % 60)
         widgets.draw_centered(d, SMALL_FONT, widgets.pad_center(uptime, 14),

@@ -1,4 +1,4 @@
-# widgets.py -- colors, icons and gauges shared by the smartwatch modes.
+# widgets.py -- colors, icons and gauges shared by the display modes.
 #
 # Everything here is built from the drawing tools in shapes.py and the
 # display driver: filled rectangles, filled circles and filled polygons.
