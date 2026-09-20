@@ -126,6 +126,7 @@ there until they dry on their own.
 | Solderless breadboard | Half-size is plenty |
 | 4 jumper wires | Male-to-male |
 | USB data cable | Some cheap cables only carry power |
+| 8-pixel NeoPixel stick | Only for Step 5. About $2 on eBay, or a WS2812 strip you already own |
 
 Low-cost eBay boards work well, but they are not always labelled honestly.
 Some are really an SHT30 or SHT31, which use the same wiring and the same
@@ -139,6 +140,21 @@ The purple board above is the common eBay version. Look closely at the pin
 labels: the order is **VIN, GND, SCL, SDA**. Many other sensors put SDA
 before SCL, so it is easy to wire this one backwards out of habit. Always
 read the labels printed on your own board.
+
+![Close-up of the front of the purple SHT40 board, with the four pins labelled VIN, GND, SCL and SDA down the left edge and the tiny black sensor chip marked U1 on the right](./sht40-front.jpg)
+
+Here is the front of the board close up. The four pin names are printed
+right beside the holes. The tiny black square marked **U1** is the SHT40
+itself, and it is smaller than a grain of rice. The little parts marked
+**R1** and **R2** are the pull-up resistors the I2C bus needs, already
+fitted for you, which is one reason a breakout board is easier than a bare
+chip.
+
+![The back of the same SHT40 board, plain dark purple with four plated holes down the left edge and a mounting hole on the right](./sht40-back.jpg)
+
+The back is empty except for the four holes and a mounting hole. Nothing on
+this side is a pin you connect to, so you can rest this face on the
+breadboard without worrying about shorting anything.
 
 ## Wiring Steps
 
@@ -307,6 +323,44 @@ The program prints only two numbers per line and nothing else:
 
 That is on purpose. The Plotter graphs every number it finds, so a heading
 row or a "Done!" message would draw junk on your graph.
+
+## Step 5: Light Up a NeoPixel Strip
+
+This last program turns the sensor into something you can read from across
+the room. It needs one extra part: an eight-pixel NeoPixel stick.
+
+Wire the strip like this:
+
+1. Strip **DIN** to Pico **pin 4 (GP2)**.
+2. Strip **GND** to any Pico **GND** pin.
+3. Strip **VCC** to **3V3 OUT (pin 36)**, the same power as the sensor.
+
+Keep the strip an inch or so away from the sensor. We measured this: eight
+pixels at full white for 90 seconds changed the reading by less than half a
+degree, so an inch of air is plenty.
+
+When the program starts it takes five readings and remembers how warm the
+room is. That number is the **baseline**. One blue pixel glows to show the
+program is awake and waiting.
+
+![The Pico, SHT40 sensor and an eight-pixel NeoPixel strip wired on a breadboard, with only the first pixel lit blue while nobody is touching the sensor](./sht-40-led-cool.jpg)
+
+Nobody is touching the sensor here, so the strip shows a single blue pixel.
+Blue always means "this is just room temperature".
+
+Now press a fingertip onto the sensor. Your finger is warmer than the room,
+so the reading climbs and the bar fills in one pixel at a time.
+
+![A finger pressing on the SHT40 sensor while seven of the eight pixels glow in a gradient from blue through green and yellow to orange and red](./sht40-led-hot.jpg)
+
+Seven pixels are lit here and the colors run all the way from blue up to
+orange. Each pixel keeps its own place in the gradient, so the first pixel
+is always blue and the last one is always red. All eight turn red at 90 F,
+which is about the temperature of a fingertip.
+
+Take your finger away and the bar drains back down as the sensor cools.
+
+Press Ctrl-C to stop. The program turns the pixels off on its way out.
 
 ## Challenges
 

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Learning MicroPython SHT40 Kit — 6" x 4" Dual Box Covers (8.5" x 11" Printable) — e.g. Robot Faces sw-gc9b72 Kit — 6" x 4" Dual Box Covers (8.5" x 11" Printable) -->
+  <title>Learning MicroPython SHT40 Kit — 6" x 4" Dual Box Covers (8.5" x 11" Printable)</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fira+Code:wght@500;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #e2e8f0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: #0f172a;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .no-print-toolbar {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      padding: 16px 28px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .no-print-toolbar h1 {
+      font-size: 1.1rem;
+      color: #0284c7;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .no-print-toolbar p {
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+
+    .print-btn {
+      background: #0284c7;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+    }
+
+    .print-btn:hover {
+      background: #0369a1;
+      transform: translateY(-1px);
+    }
+
+    /* 8.5" x 11" US Letter Portrait Page Sheet */
+    .page-sheet {
+      width: 8.5in;
+      height: 11in;
+      background-color: #ffffff;
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.4in;
+      padding: 0.5in 0;
+    }
+
+    /* Outer Crop / Trim Container Guides for 6" x 4" Box Cover */
+    .crop-container {
+      width: 6in;
+      height: 4in;
+      position: relative;
+      outline: 1.5px dashed #94a3b8;
+      outline-offset: 3px;
+    }
+
+    .corner-mark {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-color: #475569;
+      border-style: solid;
+      pointer-events: none;
+      z-index: 100;
+    }
+    .top-left { top: -10px; left: -10px; border-width: 2px 0 0 2px; }
+    .top-right { top: -10px; right: -10px; border-width: 2px 2px 0 0; }
+    .bottom-left { bottom: -10px; left: -10px; border-width: 0 0 2px 2px; }
+    .bottom-right { bottom: -10px; right: -10px; border-width: 0 2px 2px 0; }
+
+    /* 6" x 4" Box Cover Panel Main Graphic Design */
+    .box-cover {
+      width: 6in;
+      height: 4in;
+      background: #ffffff;
+      color: #0f172a;
+      position: relative;
+      overflow: hidden;
+      padding: 0.2in 0.25in;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 2px solid #0f172a;
+    }
+
+    /* Light Grid Accent Background */
+    .circuit-bg {
+      position: absolute;
+      inset: 0;
+      opacity: 0.2;
+      background-image:
+        radial-gradient(#0284c7 1px, transparent 1px),
+        linear-gradient(to right, rgba(2, 132, 199, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(2, 132, 199, 0.08) 1px, transparent 1px);
+      background-size: 20px 20px, 40px 40px, 40px 40px;
+      pointer-events: none;
+    }
+
+    /* Top Header Bar */
+    .header-bar {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1.5px solid #0f172a;
+      padding-bottom: 4px;
+    }
+
+    .brand-tag {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.52rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #0369a1;
+      background: #e0f2fe;
+      border: 1px solid #0284c7;
+      padding: 2px 6px;
+      border-radius: 3px;
+      display: inline-block;
+      margin-bottom: 2px;
+      font-weight: 700;
+    }
+
+    .main-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.55rem;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      color: #0f172a;
+      line-height: 1.05;
+    }
+
+    .subtitle {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #0284c7;
+    }
+
+    .audience-badges {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 3px;
+    }
+
+    .target-pill {
+      background: #f1f5f9;
+      border: 1px solid #64748b;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 0.52rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      color: #0f172a;
+    }
+
+    .target-pill.highlight-pill {
+      background: #0284c7;
+      border-color: #0369a1;
+      color: #ffffff;
+    }
+
+    /* Main Body Layout */
+    .content-body {
+      position: relative;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 0.18in;
+      align-items: center;
+      margin: 4px 0;
+    }
+
+    /* Left Kit Photo Showcase Card */
+    .photo-card {
+      background: #f8fafc;
+      border: 1.5px solid #0f172a;
+      border-radius: 6px;
+      padding: 6px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .photo-card-title {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #0f172a;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+    }
+
+    /* Frames the one real photo of the assembled kit. object-fit: contain keeps the
+       whole photo visible regardless of the source image's aspect ratio -- kit photos
+       are ordinary phone snapshots, not pre-cropped assets, so never assume 4:3 or
+       square and never crop with `cover`. */
+    .kit-photo-frame {
+      flex: 1;
+      background: #000000;
+      border: 1px solid #0f172a;
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .kit-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Right Features List */
+    /* Right column: feature list sits at the top, QR code pinned to the
+       bottom-right corner so it lands in the cover's lower-right area. */
+    .right-column {
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .features-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .qr-block {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .qr-caption {
+      font-size: 0.46rem;
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: right;
+      color: #0f172a;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .qr-caption span {
+      display: block;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: 0;
+      color: #64748b;
+    }
+
+    /* 0.8in keeps each module ~0.48mm, well above the ~0.4mm that phone
+       cameras start to struggle with on printed paper. */
+    .qr-code {
+      width: 0.8in;
+      height: 0.8in;
+      display: block;
+      border: 1px solid #0f172a;
+      border-radius: 3px;
+      background: #ffffff;
+    }
+
+    .feature-item {
+      background: #ffffff;
+      border: 1px solid #0f172a;
+      border-left: 4px solid #0284c7;
+      padding: 4px 8px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .feature-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #e0f2fe;
+      border: 1px solid #0284c7;
+      color: #0369a1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.58rem;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .feature-text {
+      font-size: 0.6rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.15;
+    }
+
+    /* Footer Specs Bar */
+    .footer-bar {
+      position: relative;
+      z-index: 10;
+      background: #f1f5f9;
+      border: 1.5px solid #0f172a;
+      border-radius: 4px;
+      padding: 4px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .spec-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.52rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .spec-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #0284c7;
+    }
+
+    .kit-includes {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.5rem;
+      font-weight: 700;
+      color: #0369a1;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+
+      .no-print-toolbar {
+        display: none !important;
+      }
+
+      .page-sheet {
+        box-shadow: none;
+        width: 8.5in;
+        height: 11in;
+      }
+
+      @page {
+        size: letter portrait;
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Toolbar for Printing Instructions -->
+  <div class="no-print-toolbar">
+    <div>
+      <h1>Learning MicroPython SHT40 Kit — 6" x 4" Dual Box Covers (8.5" x 11" Printable)</h1>
+      <p>Printable Sheet: Two 6" × 4" covers on a single 8.5" × 11" Portrait US Letter page</p>
+    </div>
+    <button class="print-btn" onclick="window.print()">🖨️ Print 2 Covers (100% Scale)</button>
+  </div>
+
+  <!-- 8.5" x 11" Portrait Page Sheet -->
+  <div class="page-sheet">
+
+    <!-- COVER PANEL #1 (6" x 4") -->
+    <div class="crop-container">
+      <div class="corner-mark top-left"></div>
+      <div class="corner-mark top-right"></div>
+      <div class="corner-mark bottom-left"></div>
+      <div class="corner-mark bottom-right"></div>
+
+      <div class="box-cover">
+        <div class="circuit-bg"></div>
+
+        <!-- Header -->
+        <div class="header-bar">
+          <div>
+            <div class="brand-tag">MicroPython STEM Kit</div>
+            <div class="main-title">SHT40 Temp &amp; Humidity</div>
+            <div class="subtitle">Learning MicroPython</div>
+          </div>
+          <div class="audience-badges">
+            <div class="target-pill highlight-pill">AGES 10+ TO ADULT</div>
+            <div class="target-pill">STUDENTS • LIBRARIES • CLUBS</div>
+            <div class="target-pill">NO SOLDERING REQUIRED</div>
+          </div>
+        </div>
+
+        <!-- Body: Kit Photo + Features -->
+        <div class="content-body">
+          <div class="photo-card">
+            <div class="photo-card-title">
+              <span>Real Kit Photo</span>
+              <span style="color:#64748b; font-weight:normal;">±0.2°C · ±1.8% RH</span>
+            </div>
+            <div class="kit-photo-frame">
+              <img src="sht40-led-hot.jpg" alt="A finger pressing the SHT40 sensor while seven of eight NeoPixels glow from blue through green and yellow to orange">
+            </div>
+          </div>
+
+          <div class="right-column">
+            <div class="features-panel">
+            <div class="feature-item">
+              <div class="feature-icon">🌡️</div>
+              <div class="feature-text">Measure heat and humidity in real time</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🎨</div>
+              <div class="feature-text">Watch your fingertip paint a color bar</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">📈</div>
+              <div class="feature-text">Graph live data right inside Thonny</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🔗</div>
+              <div class="feature-text">Learn how to use the I2C bus to gather sensor data</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🐍</div>
+              <div class="feature-text">Five MicroPython labs, no soldering</div>
+            </div>
+            </div>
+            <div class="qr-block">
+              <div class="qr-caption">Build it online<span>Full lessons &amp; code</span></div>
+              <img class="qr-code" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2745%27%20height%3D%2745%27%20class%3D%27segno%27%3E%3Cpath%20fill%3D%27%23fff%27%20d%3D%27M0%200h45v45h-45z%27%2F%3E%3Cpath%20class%3D%27qrline%27%20stroke%3D%27%230f172a%27%20d%3D%27M4%204.5h7m2%200h1m1%200h3m1%200h3m8%200h1m3%200h7m-37%201h1m5%200h1m3%200h1m3%200h1m1%200h1m1%200h1m1%200h1m1%200h4m1%200h1m2%200h1m5%200h1m-37%201h1m1%200h3m1%200h1m1%200h2m3%200h2m1%200h1m4%200h1m1%200h1m3%200h2m1%200h1m1%200h3m1%200h1m-37%201h1m1%200h3m1%200h1m1%200h5m2%200h1m1%200h1m4%200h7m1%200h1m1%200h3m1%200h1m-37%201h1m1%200h3m1%200h1m1%200h2m1%200h3m3%200h5m1%200h2m1%200h1m1%200h1m1%200h1m1%200h3m1%200h1m-37%201h1m5%200h1m1%200h1m1%200h2m2%200h4m3%200h1m2%200h1m2%200h2m1%200h1m5%200h1m-37%201h7m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h7m-29%201h3m1%200h1m2%200h10m2%200h1m-28%201h1m1%200h5m2%200h1m3%200h1m1%200h2m2%200h1m1%200h1m2%200h2m1%200h2m1%200h5m-35%201h1m1%200h1m1%200h2m1%200h2m2%200h3m1%200h1m1%200h2m1%200h1m1%200h1m1%200h2m3%200h1m1%200h1m3%200h1m-33%201h1m2%200h2m1%200h9m1%200h1m1%200h1m2%200h1m2%200h1m1%200h3m1%200h1m1%200h2m-37%201h1m1%200h1m2%200h1m2%200h1m2%200h2m2%200h1m2%200h5m1%200h1m1%200h3m1%200h1m1%200h1m3%200h1m-35%201h1m3%200h4m2%200h2m1%200h1m1%200h1m1%200h1m2%200h1m1%200h2m1%200h1m1%200h2m1%200h5m-37%201h3m1%200h1m3%200h2m1%200h1m1%200h1m2%200h1m1%200h3m2%200h1m1%200h1m2%200h1m2%200h1m3%200h1m-36%201h3m1%200h3m1%200h1m5%200h2m2%200h1m3%200h1m3%200h8m1%200h2m-34%201h3m1%200h1m1%200h2m8%200h1m6%200h3m1%200h3m2%200h2m-36%201h1m1%200h1m2%200h4m1%200h2m1%200h2m2%200h1m1%200h3m1%200h7m1%200h1m1%200h1m-35%201h2m1%200h1m1%200h1m3%200h1m1%200h6m7%200h3m1%200h2m1%200h1m1%200h3m-35%201h2m1%200h1m1%200h1m2%200h1m2%200h1m1%200h1m2%200h1m2%200h1m1%200h1m2%200h3m1%200h1m1%200h3m1%200h2m-32%201h1m1%200h1m2%200h1m1%200h1m3%200h1m4%200h3m3%200h1m1%200h2m1%200h1m3%200h1m-34%201h6m1%200h1m1%200h2m2%200h3m1%200h1m2%200h1m1%200h2m2%200h2m1%200h3m-34%201h1m2%200h1m3%200h1m1%200h2m4%200h6m1%200h1m4%200h1m4%200h1m1%200h1m-35%201h4m1%200h1m2%200h1m1%200h2m2%200h3m2%200h2m2%200h1m1%200h2m2%200h4m1%200h2m-37%201h2m3%200h1m3%200h3m1%200h1m3%200h2m2%200h2m1%200h1m4%200h1m1%200h2m3%200h1m-37%201h2m3%200h4m2%200h1m2%200h3m4%200h1m1%200h5m2%200h1m1%200h1m1%200h1m1%200h1m-37%201h4m8%200h1m2%200h1m1%200h2m1%200h1m1%200h3m3%200h1m2%200h1m2%200h1m-35%201h1m2%200h1m1%200h3m1%200h3m3%200h2m2%200h1m2%200h1m1%200h5m1%200h3m1%200h3m-37%201h1m1%200h1m2%200h1m3%200h1m1%200h1m3%200h1m3%200h4m1%200h1m1%200h1m2%200h1m1%200h2m2%200h2m-37%201h1m5%200h4m1%200h1m1%200h3m1%200h1m1%200h1m2%200h1m1%200h11m1%200h1m-29%201h2m1%200h2m1%200h1m1%200h1m1%200h3m2%200h1m4%200h1m3%200h2m1%200h1m-36%201h7m4%200h1m1%200h4m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h3m-37%201h1m5%200h1m1%200h3m4%200h1m4%200h1m5%200h1m1%200h1m3%200h2m1%200h1m-36%201h1m1%200h3m1%200h1m1%200h1m1%200h1m1%200h1m5%200h1m1%200h3m2%200h8m1%200h2m-36%201h1m1%200h3m1%200h1m1%200h2m1%200h1m3%200h3m5%200h1m1%200h1m2%200h3m1%200h1m1%200h1m1%200h1m-37%201h1m1%200h3m1%200h1m1%200h1m5%200h1m5%200h3m4%200h1m5%200h4m-37%201h1m5%200h1m2%200h3m1%200h1m2%200h1m4%200h1m4%200h1m1%200h2m2%200h2m2%200h1m-37%201h7m1%200h2m2%200h2m3%200h1m4%200h2m1%200h2m2%200h1m2%200h5%27%2F%3E%3C%2Fsvg%3E" alt="QR code linking to the SHT40 kit lessons at dmccreary.github.io">
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Specs -->
+        <div class="footer-bar">
+          <div class="spec-item">
+            <div class="spec-dot"></div>
+            <span>SHT40 Precision Sensor</span>
+          </div>
+          <div class="spec-item">
+            <div class="spec-dot"></div>
+            <span>Raspberry Pi Pico</span>
+          </div>
+          <div class="kit-includes">FULL HARDWARE &amp; ONLINE BOOK</div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- COVER PANEL #2 (6" x 4") — identical to Panel #1. This is not a front/back
+         pair, it's two copies of the same cover so one printed sheet yields two
+         cut-apart covers. Fill in the same placeholder values here. -->
+    <div class="crop-container">
+      <div class="corner-mark top-left"></div>
+      <div class="corner-mark top-right"></div>
+      <div class="corner-mark bottom-left"></div>
+      <div class="corner-mark bottom-right"></div>
+
+      <div class="box-cover">
+        <div class="circuit-bg"></div>
+
+        <!-- Header -->
+        <div class="header-bar">
+          <div>
+            <div class="brand-tag">MicroPython STEM Kit</div>
+            <div class="main-title">SHT40 Temp &amp; Humidity</div>
+            <div class="subtitle">Learning MicroPython</div>
+          </div>
+          <div class="audience-badges">
+            <div class="target-pill highlight-pill">AGES 10+ TO ADULT</div>
+            <div class="target-pill">STUDENTS • LIBRARIES • CLUBS</div>
+            <div class="target-pill">NO SOLDERING REQUIRED</div>
+          </div>
+        </div>
+
+        <!-- Body: Kit Photo + Features -->
+        <div class="content-body">
+          <div class="photo-card">
+            <div class="photo-card-title">
+              <span>Real Kit Photo</span>
+              <span style="color:#64748b; font-weight:normal;">±0.2°C · ±1.8% RH</span>
+            </div>
+            <div class="kit-photo-frame">
+              <img src="sht40-led-hot.jpg" alt="A finger pressing the SHT40 sensor while seven of eight NeoPixels glow from blue through green and yellow to orange">
+            </div>
+          </div>
+
+          <div class="right-column">
+            <div class="features-panel">
+            <div class="feature-item">
+              <div class="feature-icon">🌡️</div>
+              <div class="feature-text">Measure heat and humidity in real time</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🎨</div>
+              <div class="feature-text">Watch your fingertip paint a color bar</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">📈</div>
+              <div class="feature-text">Graph live data right inside Thonny</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🔗</div>
+              <div class="feature-text">Learn how to use the I2C bus to gather sensor data</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🐍</div>
+              <div class="feature-text">Five MicroPython labs, no soldering</div>
+            </div>
+            </div>
+            <div class="qr-block">
+              <div class="qr-caption">Build it online<span>Full lessons &amp; code</span></div>
+              <img class="qr-code" src="data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%2745%27%20height%3D%2745%27%20class%3D%27segno%27%3E%3Cpath%20fill%3D%27%23fff%27%20d%3D%27M0%200h45v45h-45z%27%2F%3E%3Cpath%20class%3D%27qrline%27%20stroke%3D%27%230f172a%27%20d%3D%27M4%204.5h7m2%200h1m1%200h3m1%200h3m8%200h1m3%200h7m-37%201h1m5%200h1m3%200h1m3%200h1m1%200h1m1%200h1m1%200h1m1%200h4m1%200h1m2%200h1m5%200h1m-37%201h1m1%200h3m1%200h1m1%200h2m3%200h2m1%200h1m4%200h1m1%200h1m3%200h2m1%200h1m1%200h3m1%200h1m-37%201h1m1%200h3m1%200h1m1%200h5m2%200h1m1%200h1m4%200h7m1%200h1m1%200h3m1%200h1m-37%201h1m1%200h3m1%200h1m1%200h2m1%200h3m3%200h5m1%200h2m1%200h1m1%200h1m1%200h1m1%200h3m1%200h1m-37%201h1m5%200h1m1%200h1m1%200h2m2%200h4m3%200h1m2%200h1m2%200h2m1%200h1m5%200h1m-37%201h7m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h7m-29%201h3m1%200h1m2%200h10m2%200h1m-28%201h1m1%200h5m2%200h1m3%200h1m1%200h2m2%200h1m1%200h1m2%200h2m1%200h2m1%200h5m-35%201h1m1%200h1m1%200h2m1%200h2m2%200h3m1%200h1m1%200h2m1%200h1m1%200h1m1%200h2m3%200h1m1%200h1m3%200h1m-33%201h1m2%200h2m1%200h9m1%200h1m1%200h1m2%200h1m2%200h1m1%200h3m1%200h1m1%200h2m-37%201h1m1%200h1m2%200h1m2%200h1m2%200h2m2%200h1m2%200h5m1%200h1m1%200h3m1%200h1m1%200h1m3%200h1m-35%201h1m3%200h4m2%200h2m1%200h1m1%200h1m1%200h1m2%200h1m1%200h2m1%200h1m1%200h2m1%200h5m-37%201h3m1%200h1m3%200h2m1%200h1m1%200h1m2%200h1m1%200h3m2%200h1m1%200h1m2%200h1m2%200h1m3%200h1m-36%201h3m1%200h3m1%200h1m5%200h2m2%200h1m3%200h1m3%200h8m1%200h2m-34%201h3m1%200h1m1%200h2m8%200h1m6%200h3m1%200h3m2%200h2m-36%201h1m1%200h1m2%200h4m1%200h2m1%200h2m2%200h1m1%200h3m1%200h7m1%200h1m1%200h1m-35%201h2m1%200h1m1%200h1m3%200h1m1%200h6m7%200h3m1%200h2m1%200h1m1%200h3m-35%201h2m1%200h1m1%200h1m2%200h1m2%200h1m1%200h1m2%200h1m2%200h1m1%200h1m2%200h3m1%200h1m1%200h3m1%200h2m-32%201h1m1%200h1m2%200h1m1%200h1m3%200h1m4%200h3m3%200h1m1%200h2m1%200h1m3%200h1m-34%201h6m1%200h1m1%200h2m2%200h3m1%200h1m2%200h1m1%200h2m2%200h2m1%200h3m-34%201h1m2%200h1m3%200h1m1%200h2m4%200h6m1%200h1m4%200h1m4%200h1m1%200h1m-35%201h4m1%200h1m2%200h1m1%200h2m2%200h3m2%200h2m2%200h1m1%200h2m2%200h4m1%200h2m-37%201h2m3%200h1m3%200h3m1%200h1m3%200h2m2%200h2m1%200h1m4%200h1m1%200h2m3%200h1m-37%201h2m3%200h4m2%200h1m2%200h3m4%200h1m1%200h5m2%200h1m1%200h1m1%200h1m1%200h1m-37%201h4m8%200h1m2%200h1m1%200h2m1%200h1m1%200h3m3%200h1m2%200h1m2%200h1m-35%201h1m2%200h1m1%200h3m1%200h3m3%200h2m2%200h1m2%200h1m1%200h5m1%200h3m1%200h3m-37%201h1m1%200h1m2%200h1m3%200h1m1%200h1m3%200h1m3%200h4m1%200h1m1%200h1m2%200h1m1%200h2m2%200h2m-37%201h1m5%200h4m1%200h1m1%200h3m1%200h1m1%200h1m2%200h1m1%200h11m1%200h1m-29%201h2m1%200h2m1%200h1m1%200h1m1%200h3m2%200h1m4%200h1m3%200h2m1%200h1m-36%201h7m4%200h1m1%200h4m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h1m1%200h3m-37%201h1m5%200h1m1%200h3m4%200h1m4%200h1m5%200h1m1%200h1m3%200h2m1%200h1m-36%201h1m1%200h3m1%200h1m1%200h1m1%200h1m1%200h1m5%200h1m1%200h3m2%200h8m1%200h2m-36%201h1m1%200h3m1%200h1m1%200h2m1%200h1m3%200h3m5%200h1m1%200h1m2%200h3m1%200h1m1%200h1m1%200h1m-37%201h1m1%200h3m1%200h1m1%200h1m5%200h1m5%200h3m4%200h1m5%200h4m-37%201h1m5%200h1m2%200h3m1%200h1m2%200h1m4%200h1m4%200h1m1%200h2m2%200h2m2%200h1m-37%201h7m1%200h2m2%200h2m3%200h1m4%200h2m1%200h2m2%200h1m2%200h5%27%2F%3E%3C%2Fsvg%3E" alt="QR code linking to the SHT40 kit lessons at dmccreary.github.io">
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Specs -->
+        <div class="footer-bar">
+          <div class="spec-item">
+            <div class="spec-dot"></div>
+            <span>SHT40 Precision Sensor</span>
+          </div>
+          <div class="spec-item">
+            <div class="spec-dot"></div>
+            <span>Raspberry Pi Pico</span>
+          </div>
+          <div class="kit-includes">FULL HARDWARE &amp; ONLINE BOOK</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
