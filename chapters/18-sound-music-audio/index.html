@@ -1770,6 +1770,8 @@
         
       
         
+      
+        
           
         
       
@@ -2711,12 +2713,12 @@ It is time to make some noise! A passive buzzer, a few PWM commands, and the rig
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
 
 <span class="c1"># Passive buzzer on GP16</span>
 <span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
 
-<span class="k">def</span> <span class="nf">play_tone</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">duration_ms</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_tone</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">duration_ms</span><span class="p">):</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">32768</span><span class="p">)</span>      <span class="c1"># 50% duty cycle = maximum volume</span>
     <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="n">duration_ms</span><span class="p">)</span>
@@ -2804,15 +2806,15 @@ It is time to make some noise! A passive buzzer, a few PWM commands, and the rig
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">utime</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
 
 <span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
 
 <span class="n">NOTES</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"C4"</span><span class="p">:</span> <span class="mi">262</span><span class="p">,</span> <span class="s2">"D4"</span><span class="p">:</span> <span class="mi">294</span><span class="p">,</span> <span class="s2">"E4"</span><span class="p">:</span> <span class="mi">330</span><span class="p">,</span> <span class="s2">"F4"</span><span class="p">:</span> <span class="mi">349</span><span class="p">,</span>
          <span class="s2">"G4"</span><span class="p">:</span> <span class="mi">392</span><span class="p">,</span> <span class="s2">"A4"</span><span class="p">:</span> <span class="mi">440</span><span class="p">,</span> <span class="s2">"B4"</span><span class="p">:</span> <span class="mi">494</span><span class="p">,</span> <span class="s2">"C5"</span><span class="p">:</span> <span class="mi">523</span><span class="p">}</span>
 
-<span class="k">def</span> <span class="nf">play_note</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_note</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">300</span><span class="p">):</span>
     <span class="n">freq</span> <span class="o">=</span> <span class="n">NOTES</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
     <span class="k">if</span> <span class="n">freq</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">freq</span><span class="p">)</span>
@@ -2901,8 +2903,8 @@ It is time to make some noise! A passive buzzer, a few PWM commands, and the rig
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">import</span> <span class="nn">utime</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
 
 <span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
 <span class="n">SCALE</span>  <span class="o">=</span> <span class="p">[</span><span class="mi">262</span><span class="p">,</span> <span class="mi">294</span><span class="p">,</span> <span class="mi">330</span><span class="p">,</span> <span class="mi">349</span><span class="p">,</span> <span class="mi">392</span><span class="p">,</span> <span class="mi">440</span><span class="p">,</span> <span class="mi">494</span><span class="p">,</span> <span class="mi">523</span><span class="p">]</span>   <span class="c1"># C4 through C5</span>
@@ -2973,8 +2975,8 @@ Learning Objective: Students can play notes on a virtual keyboard and observe th
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
 <span class="n">audio</span> <span class="o">=</span> <span class="n">I2S</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">ws</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">11</span><span class="p">),</span> <span class="n">sd</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span>
             <span class="n">mode</span><span class="o">=</span><span class="n">I2S</span><span class="o">.</span><span class="n">TX</span><span class="p">,</span> <span class="n">bits</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">I2S</span><span class="o">.</span><span class="n">STEREO</span><span class="p">,</span>

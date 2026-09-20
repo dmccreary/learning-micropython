@@ -1837,6 +1837,8 @@
         
       
         
+      
+        
           
         
       
@@ -2656,8 +2658,8 @@ The MicroPython <code>urequests</code> library does not yet fully support HTTPS 
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">socket</span>  <span class="c1"># standard Python socket library</span>
-<span class="kn">import</span> <span class="nn">ssl</span>     <span class="c1"># standard Python security library</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>  <span class="c1"># standard Python socket library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssl</span>     <span class="c1"># standard Python security library</span>
 
 <span class="n">hostname</span> <span class="o">=</span> <span class="s1">'www.python.org'</span>                     <span class="c1"># the website to connect to</span>
 <span class="n">context</span> <span class="o">=</span> <span class="n">ssl</span><span class="o">.</span><span class="n">create_default_context</span><span class="p">()</span>          <span class="c1"># set up a secure TLS context</span>
@@ -2694,13 +2696,13 @@ When you visit a website that starts with <code>https://</code> in your browser,
 <p>You can use <code>uiperf3</code> to measure the total WiFi throughput your Pico W can achieve.</p>
 <h2 id="installing-uiperf3-with-upip">Installing uiperf3 with UPIP</h2>
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">upip</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">upip</span>
 <span class="n">upip</span><span class="o">.</span><span class="n">install</span><span class="p">(</span><span class="s2">"uiperf3"</span><span class="p">)</span>  <span class="c1"># download and install uiperf3 from PyPI</span>
 </code></pre></div></td></tr></tbody></table></div>
 <p>Make sure you are connected to WiFi first. See the <a href="../06-upip/">UPIP lab</a> for setup instructions.</p>
 <h2 id="testing-client-performance">Testing Client Performance</h2>
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">uiperf3</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">uiperf3</span>
 <span class="n">uiperf3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span><span class="s1">'MY_IP_ADDRESS'</span><span class="p">)</span>  <span class="c1"># replace with the IP address of your iperf3 server</span>
 </code></pre></div></td></tr></tbody></table></div>
 <p>Run <code>iperf3</code> in server mode on a computer on the same network. Then run the above code on the Pico W to measure the speed of data moving from the Pico W to the server.</p>

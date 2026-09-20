@@ -1792,6 +1792,8 @@
         
       
         
+      
+        
           
         
       
@@ -2675,9 +2677,9 @@ An 8×8 LED matrix is a grid of 64 tiny lights. You can draw letters, shapes, an
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">Pin</span>    <span class="c1"># import SPI for communication, Pin for the CS pin</span>
-<span class="kn">import</span> <span class="nn">max7219</span>                   <span class="c1"># import the MAX7219 driver library</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>          <span class="c1"># import sleep for delays</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">Pin</span>    <span class="c1"># import SPI for communication, Pin for the CS pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">max7219</span>                   <span class="c1"># import the MAX7219 driver library</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>          <span class="c1"># import sleep for delays</span>
 
 <span class="n">CLOCK_PIN</span> <span class="o">=</span> <span class="mi">2</span>    <span class="c1"># GP2 — SPI clock</span>
 <span class="n">DATA_PIN</span>  <span class="o">=</span> <span class="mi">3</span>    <span class="c1"># GP3 — SPI data (MOSI)</span>
@@ -2740,8 +2742,8 @@ An 8×8 LED matrix is a grid of 64 tiny lights. You can draw letters, shapes, an
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">max7219</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">max7219</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
 
 <span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="mi">10000000</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
           <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>     <span class="c1"># set up the SPI bus</span>
@@ -2778,9 +2780,9 @@ When you chain displays, data flows from one display to the next like a relay ra
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">Pin</span>    <span class="c1"># import SPI and Pin</span>
-<span class="kn">import</span> <span class="nn">max7219</span>                   <span class="c1"># import the MAX7219 driver</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>          <span class="c1"># import sleep for delays</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">Pin</span>    <span class="c1"># import SPI and Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">max7219</span>                   <span class="c1"># import the MAX7219 driver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>          <span class="c1"># import sleep for delays</span>
 
 <span class="n">CLOCK_PIN</span>  <span class="o">=</span> <span class="mi">2</span>    <span class="c1"># GP2 — SPI clock</span>
 <span class="n">DATA_PIN</span>   <span class="o">=</span> <span class="mi">3</span>    <span class="c1"># GP3 — SPI data</span>
@@ -2854,9 +2856,9 @@ When you chain displays, data flows from one display to the next like a relay ra
 <span class="normal">51</span>
 <span class="normal">52</span>
 <span class="normal">53</span>
-<span class="normal">54</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">Pin</span>    <span class="c1"># import SPI and Pin</span>
-<span class="kn">import</span> <span class="nn">max7219</span>                   <span class="c1"># import the MAX7219 driver</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>          <span class="c1"># import sleep for delays</span>
+<span class="normal">54</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">Pin</span>    <span class="c1"># import SPI and Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">max7219</span>                   <span class="c1"># import the MAX7219 driver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>          <span class="c1"># import sleep for delays</span>
 
 <span class="c1"># Set up SPI bus 0 with clock on GP2 and data on GP3</span>
 <span class="n">spi0</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="mi">10000000</span><span class="p">,</span> <span class="n">polarity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>

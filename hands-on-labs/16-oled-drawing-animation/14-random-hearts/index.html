@@ -1768,6 +1768,8 @@
         
       
         
+      
+        
           
         
       
@@ -2604,12 +2606,12 @@ An image stored as a grid of 1s and 0s is called a <strong>bitmap</strong>. The 
 <span class="normal">52</span>
 <span class="normal">53</span>
 <span class="normal">54</span>
-<span class="normal">55</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">SPI</span>  <span class="c1"># import hardware control tools</span>
-<span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">urandom</span>                      <span class="c1"># import the random number library</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>                      <span class="c1"># import the display driver</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">import</span> <span class="nn">random</span>                       <span class="c1"># import another random module (used for direction)</span>
+<span class="normal">55</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">SPI</span>  <span class="c1"># import hardware control tools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urandom</span>                      <span class="c1"># import the random number library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>                      <span class="c1"># import the display driver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>                       <span class="c1"># import another random module (used for direction)</span>
 
 <span class="c1"># display size in pixels</span>
 <span class="n">WIDTH</span>  <span class="o">=</span> <span class="mi">128</span>
@@ -2640,13 +2642,13 @@ An image stored as a grid of 1s and 0s is called a <strong>bitmap</strong>. The 
 <span class="p">]</span>
 
 <span class="c1"># draw a heart at a given (xofs, yofs) offset position on the screen</span>
-<span class="k">def</span> <span class="nf">draw_heart</span><span class="p">(</span><span class="n">x_offset</span><span class="p">,</span> <span class="n">y_offset</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_heart</span><span class="p">(</span><span class="n">x_offset</span><span class="p">,</span> <span class="n">y_offset</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">y</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">HEART</span><span class="p">):</span>           <span class="c1"># loop through each row of the grid</span>
         <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">pixel_color</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span> <span class="c1"># loop through each column in the row</span>
             <span class="n">oled</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">x_offset</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">y_offset</span><span class="p">,</span> <span class="n">pixel_color</span><span class="p">)</span>  <span class="c1"># draw one pixel</span>
 
 <span class="c1"># pick a random position and draw a heart there</span>
-<span class="k">def</span> <span class="nf">draw_random_heart</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_random_heart</span><span class="p">():</span>
     <span class="n">x_offset</span> <span class="o">=</span> <span class="n">urandom</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>   <span class="c1"># random number 0–127 (7 bits) for the x position</span>
     <span class="n">y_offset</span> <span class="o">=</span> <span class="n">urandom</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>   <span class="c1"># random number 0–63  (6 bits) for the y position</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">x_offset</span><span class="p">,</span> <span class="n">y_offset</span><span class="p">)</span>           <span class="c1"># print the chosen position for debugging</span>

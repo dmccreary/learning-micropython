@@ -546,6 +546,8 @@
         
       
         
+      
+        
           
         
       
@@ -886,6 +888,52 @@
           
         
       
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sht40-temp-display/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    SHT40 Smartwatch Display
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
         
       
         
@@ -983,7 +1031,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_12" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_13" checked>
         
           
           
@@ -999,14 +1047,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_12" id="__nav_6_12_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6_13" id="__nav_6_13_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_12_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_12">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_13">
             <span class="md-nav__icon md-icon"></span>
             Maker Pi RP2040 Robot
           </label>
@@ -2538,9 +2586,9 @@
 <span class="c1"># Perhaps derived from here: https://github.com/uceeatz/VL53L0X/blob/master/VL53L0X.py</span>
 
 <span class="c1"># This demo makes the blue LEDs show the distance and prints the distance on the console</span>
-<span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">VL53L0X</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">VL53L0X</span>
 
 <span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># row one on our standard Pico breadboard</span>
 <span class="n">scl</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># row two on our standard Pico breadboard</span>
@@ -2570,7 +2618,7 @@
 
 
 <span class="c1"># get the normalized time-of-flight distance</span>
-<span class="k">def</span> <span class="nf">get_distance</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_distance</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">zero_dist</span><span class="p">,</span> <span class="n">scale_factor</span>
     <span class="n">tof_distance</span> <span class="o">=</span> <span class="n">tof</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">tof_distance</span> <span class="o">&gt;</span> <span class="n">MAX_DIST</span><span class="p">:</span>
@@ -2581,7 +2629,7 @@
     <span class="k">return</span>  <span class="nb">int</span><span class="p">((</span><span class="n">tof_distance</span> <span class="o">-</span> <span class="n">ZERO_DIST</span><span class="p">)</span> <span class="o">*</span> <span class="n">SCALE_DIST</span><span class="p">)</span>
 
 <span class="c1"># use the dist_scale to turn on LEDs</span>
-<span class="k">def</span> <span class="nf">led_show_dist</span><span class="p">(</span><span class="n">in_distance</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">led_show_dist</span><span class="p">(</span><span class="n">in_distance</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">number_leds</span>
     <span class="k">for</span> <span class="n">led_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">number_leds</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">in_distance</span> <span class="o">&gt;</span> <span class="n">dist_scale</span><span class="p">[</span><span class="n">led_index</span><span class="p">]:</span>

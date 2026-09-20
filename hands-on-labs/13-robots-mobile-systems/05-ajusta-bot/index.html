@@ -540,6 +540,8 @@
         
       
         
+      
+        
           
         
       
@@ -1474,7 +1476,7 @@ In this lab you will add buttons and a knob to your robot so you can change its 
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
 
 <span class="n">button_a</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>  <span class="c1"># Button A on pin 14</span>
 <span class="n">button_b</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>  <span class="c1"># Button B on pin 15</span>
@@ -1521,12 +1523,12 @@ With PULL_UP, a button reads 1 when not pressed and 0 when pressed. This is oppo
 <span class="n">param_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">30000</span><span class="p">,</span>   <span class="mi">400</span><span class="p">,</span>         <span class="mf">0.75</span><span class="p">,</span>          <span class="mf">0.25</span><span class="p">]</span>
 <span class="n">param_index</span>  <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># which parameter is selected right now</span>
 
-<span class="k">def</span> <span class="nf">next_param</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">next_param</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Move to the next parameter in the list."""</span>
     <span class="k">global</span> <span class="n">param_index</span>
     <span class="n">param_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">param_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">param_names</span><span class="p">)</span>  <span class="c1"># wrap around at the end</span>
 
-<span class="k">def</span> <span class="nf">prev_param</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">prev_param</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Move to the previous parameter in the list."""</span>
     <span class="k">global</span> <span class="n">param_index</span>
     <span class="n">param_index</span> <span class="o">=</span> <span class="p">(</span><span class="n">param_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">param_names</span><span class="p">)</span>  <span class="c1"># wrap around at the start</span>
@@ -1556,7 +1558,7 @@ With PULL_UP, a button reads 1 when not pressed and 0 when pressed. This is oppo
 <span class="normal">14</span>
 <span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">last_clk</span> <span class="o">=</span> <span class="n">encoder_clk</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>  <span class="c1"># save the starting state of the clock pin</span>
 
-<span class="k">def</span> <span class="nf">read_encoder</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_encoder</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Return +1 for clockwise turn, -1 for counter-clockwise, 0 for no movement."""</span>
     <span class="k">global</span> <span class="n">last_clk</span>
     <span class="n">current_clk</span> <span class="o">=</span> <span class="n">encoder_clk</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>  <span class="c1"># read the current state of the clock pin</span>
@@ -1596,13 +1598,13 @@ With PULL_UP, a button reads 1 when not pressed and 0 when pressed. This is oppo
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span>
-<span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2C</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ssd1306</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSD1306_I2C</span>
 
 <span class="n">i2c</span>  <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># set up the I2C bus</span>
 <span class="n">oled</span> <span class="o">=</span> <span class="n">SSD1306_I2C</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">i2c</span><span class="p">)</span>       <span class="c1"># create the display object</span>
 
-<span class="k">def</span> <span class="nf">update_display</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_display</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Show the current parameter and value on the OLED screen."""</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                                          <span class="c1"># clear the screen</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"Ajusta Bot"</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                    <span class="c1"># title</span>
@@ -1662,7 +1664,7 @@ Keep the display update fast. If you call <code>oled.show()</code> too often in 
 <span class="normal">37</span>
 <span class="normal">38</span>
 <span class="normal">39</span>
-<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="c1"># How much each turn of the knob changes the selected value</span>
 <span class="n">param_steps</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">]</span>

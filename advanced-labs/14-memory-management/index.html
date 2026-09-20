@@ -2051,6 +2051,8 @@
         
       
         
+      
+        
           
         
       
@@ -2886,8 +2888,8 @@ We will cover the following topics:</p>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">gc</span>
-<span class="kn">import</span> <span class="nn">micropython</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">micropython</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">'Memory Free:'</span><span class="p">,</span> <span class="s2">"</span><span class="si">{:,}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gc</span><span class="o">.</span><span class="n">mem_free</span><span class="p">()),</span> <span class="s1">'bytes'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'Memory Allocated:'</span><span class="p">,</span> <span class="s2">"</span><span class="si">{:,}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gc</span><span class="o">.</span><span class="n">mem_alloc</span><span class="p">()),</span> <span class="s1">'bytes'</span><span class="p">)</span>
@@ -2903,7 +2905,7 @@ Memory Allocated: 4,864 bytes
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="err">```</span><span class="n">python</span>
-<span class="kn">import</span> <span class="nn">micropython</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">micropython</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">micropython</span><span class="o">.</span><span class="n">mem_info</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 </code></pre></div></td></tr></tbody></table></div>
 <p>results:
@@ -2977,10 +2979,10 @@ None
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">gc</span>
-<span class="kn">import</span> <span class="nn">micropython</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">micropython</span>
 
-<span class="k">def</span> <span class="nf">show_memory</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">show_memory</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">'Memory Free:'</span><span class="p">,</span> <span class="s2">"</span><span class="si">{:,}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gc</span><span class="o">.</span><span class="n">mem_free</span><span class="p">()),</span> <span class="s1">'bytes'</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">'Memory Allocated:'</span><span class="p">,</span> <span class="s2">"</span><span class="si">{:,}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gc</span><span class="o">.</span><span class="n">mem_alloc</span><span class="p">()),</span> <span class="s1">'bytes'</span><span class="p">)</span>
 

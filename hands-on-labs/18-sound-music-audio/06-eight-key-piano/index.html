@@ -1904,6 +1904,8 @@
         
       
         
+      
+        
           
         
       
@@ -2744,12 +2746,12 @@ In this lab, you will wire up eight buttons and turn your Pico into a real playa
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">play_tone</span><span class="p">(</span><span class="n">frequency</span><span class="p">):</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">play_tone</span><span class="p">(</span><span class="n">frequency</span><span class="p">):</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>     <span class="c1"># turn the PWM signal on</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>    <span class="c1"># set the pitch to the given frequency</span>
     <span class="n">builtin_led</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>         <span class="c1"># turn the built-in LED on to show a note is playing</span>
 
-<span class="k">def</span> <span class="nf">be_quiet</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">be_quiet</span><span class="p">():</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>        <span class="c1"># turn the PWM signal off (silence)</span>
     <span class="n">builtin_led</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>          <span class="c1"># turn the built-in LED off</span>
 </code></pre></div></td></tr></tbody></table></div>
@@ -2814,9 +2816,9 @@ The eight notes go from A3 (220 Hz) up to A4 (440 Hz). A4 is exactly twice the f
 <span class="normal">48</span>
 <span class="normal">49</span>
 <span class="normal">50</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Play a tone while a button is held down</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">ticks_ms</span>
-<span class="kn">import</span> <span class="nn">machine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">ticks_ms</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
 
 <span class="n">SPEAKER_PIN</span> <span class="o">=</span> <span class="mi">22</span>               <span class="c1"># GPIO pin connected to the speaker</span>
 <span class="n">speaker</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">SPEAKER_PIN</span><span class="p">))</span>
@@ -2833,13 +2835,13 @@ The eight notes go from A3 (220 Hz) up to A4 (440 Hz). A4 is exactly twice the f
 <span class="n">button_pin_7</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">PULL_DOWN</span><span class="p">)</span>
 <span class="n">button_pin_8</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">PULL_DOWN</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">play_tone</span><span class="p">(</span><span class="n">frequency</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_tone</span><span class="p">(</span><span class="n">frequency</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Turn the speaker on at the given frequency and light the LED."""</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>     <span class="c1"># turn the PWM signal on</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>    <span class="c1"># set the pitch</span>
     <span class="n">builtin_led</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>         <span class="c1"># show that a note is playing</span>
 
-<span class="k">def</span> <span class="nf">be_quiet</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">be_quiet</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Turn the speaker off and turn off the LED."""</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>        <span class="c1"># silence the speaker</span>
     <span class="n">builtin_led</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>          <span class="c1"># show that no note is playing</span>

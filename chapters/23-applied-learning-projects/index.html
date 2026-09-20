@@ -1770,6 +1770,8 @@
         
       
         
+      
+        
           
         
       
@@ -2876,8 +2878,8 @@ This is it — the final chapter! Everything you have learned across 22 chapters
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Maker Pi RP2040 Robot — simplified structure</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">import</span> <span class="nn">utime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
 
 <span class="c1"># Motor control (DRV8833 built in)</span>
 <span class="n">motor_a</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">8</span><span class="p">));</span> <span class="n">motor_a</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
@@ -2956,8 +2958,8 @@ This is it — the final chapter! Everything you have learned across 22 chapters
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">mfrc522</span> <span class="kn">import</span> <span class="n">MFRC522</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mfrc522</span><span class="w"> </span><span class="kn">import</span> <span class="n">MFRC522</span>
 
 <span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">miso</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">cs</span>  <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>

@@ -1711,6 +1711,8 @@
         
       
         
+      
+        
           
         
       
@@ -2620,12 +2622,12 @@ An OLED pixel that shows black is completely turned off — no light at all. An 
 <span class="normal">97</span>
 <span class="normal">98</span>
 <span class="normal">99</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="sd">"""SSD1351 shapes demo — draws lines, rectangles, circles, and polygons."""</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>                      <span class="c1"># import sleep to pause between drawings</span>
-<span class="kn">from</span> <span class="nn">ssd1351</span> <span class="kn">import</span> <span class="n">Display</span><span class="p">,</span> <span class="n">color565</span>      <span class="c1"># import the display driver and color helper</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>               <span class="c1"># import GPIO and SPI tools</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>                      <span class="c1"># import sleep to pause between drawings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ssd1351</span><span class="w"> </span><span class="kn">import</span> <span class="n">Display</span><span class="p">,</span> <span class="n">color565</span>      <span class="c1"># import the display driver and color helper</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>               <span class="c1"># import GPIO and SPI tools</span>
 
 
-<span class="k">def</span> <span class="nf">test</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Draw a series of shapes on the OLED display."""</span>
     <span class="c1"># set up SPI bus 2 — 14,500,000 bits per second is about the fastest this driver supports</span>
     <span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="mi">14500000</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">18</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">23</span><span class="p">))</span>

@@ -1808,6 +1808,8 @@
         
       
         
+      
+        
           
         
       
@@ -2658,8 +2660,8 @@ and using frequency higher that 1K will not help and can cause additional noise 
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="n">pwm</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>
 
@@ -2684,7 +2686,7 @@ and using frequency higher that 1K will not help and can cause additional noise 
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
 
 <span class="n">pwm0</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>      <span class="c1"># create PWM object from a pin</span>
 <span class="n">pwm0</span><span class="o">.</span><span class="n">freq</span><span class="p">()</span>             <span class="c1"># get current frequency</span>
@@ -2714,14 +2716,14 @@ and using frequency higher that 1K will not help and can cause additional noise 
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
 
 <span class="n">PWM_PIN</span> <span class="o">=</span> <span class="mi">15</span>
 
 <span class="c1"># Create PWM instance</span>
 <span class="n">my_pwm</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">PWM_PIN</span><span class="p">))</span>  <span class="c1"># Example using GPIO 15</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="c1"># main code loop here</span>
 
 <span class="c1"># This allows us to stop the sound by doing a Stop or Control-C which is a keyboard intrrup</span>
@@ -2781,7 +2783,7 @@ down in a consistent way.</p>
 <span class="normal">40</span>
 <span class="normal">41</span>
 <span class="normal">42</span>
-<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
 
 <span class="c1"># Constants</span>
 <span class="n">PWM_PIN</span> <span class="o">=</span> <span class="mi">15</span>
@@ -2789,13 +2791,13 @@ down in a consistent way.</p>
 <span class="c1"># Global PWM objects (since we need to access in cleanup)</span>
 <span class="n">pwm_objects</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">def</span> <span class="nf">init_hardware</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">init_hardware</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Initialize hardware and store PWM objects for cleanup"""</span>
     <span class="n">pwm</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">PWM_PIN</span><span class="p">))</span>
     <span class="n">pwm_objects</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pwm</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">pwm</span>
 
-<span class="k">def</span> <span class="nf">cleanup</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">cleanup</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Cleanup function to ensure all PWM objects are properly shut down"""</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">'Cleaning up hardware...'</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">pwm</span> <span class="ow">in</span> <span class="n">pwm_objects</span><span class="p">:</span>
@@ -2803,7 +2805,7 @@ down in a consistent way.</p>
         <span class="n">pwm</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">'Cleanup complete'</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Main program loop"""</span>
     <span class="c1"># Initialize hardware</span>
     <span class="n">my_pwm</span> <span class="o">=</span> <span class="n">init_hardware</span><span class="p">()</span>

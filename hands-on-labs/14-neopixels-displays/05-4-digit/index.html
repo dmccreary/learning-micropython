@@ -1816,6 +1816,8 @@
         
       
         
+      
+        
           
         
       
@@ -2714,9 +2716,9 @@ In this lab, you will build a working clock using a 4-digit LED display! You wil
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>    <span class="c1"># import Pin to control GPIO pins</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>     <span class="c1"># import sleep for delays</span>
-<span class="kn">import</span> <span class="nn">tm1637</span>              <span class="c1"># import the TM1637 display driver</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>    <span class="c1"># import Pin to control GPIO pins</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>     <span class="c1"># import sleep for delays</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tm1637</span>              <span class="c1"># import the TM1637 display driver</span>
 
 <span class="c1"># Pin numbers for data and clock</span>
 <span class="n">DIO_PIN</span> <span class="o">=</span> <span class="mi">0</span>   <span class="c1"># data signal on GP0</span>
@@ -2796,9 +2798,9 @@ The TM1637 chip handles all the hard work. You just tell it which digits to show
 <span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">tm1637</span>                        <span class="c1"># import the TM1637 display driver</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>              <span class="c1"># import Pin to control GPIO pins</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">localtime</span>   <span class="c1"># import sleep and localtime</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">tm1637</span>                        <span class="c1"># import the TM1637 display driver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>              <span class="c1"># import Pin to control GPIO pins</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">localtime</span>   <span class="c1"># import sleep and localtime</span>
 
 <span class="c1"># Set up the display with clock on GP1 and data on GP0</span>
 <span class="n">tm</span> <span class="o">=</span> <span class="n">tm1637</span><span class="o">.</span><span class="n">TM1637</span><span class="p">(</span><span class="n">clk</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">dio</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
@@ -2917,15 +2919,15 @@ The Pico's internal clock resets every time you unplug the power. The time shown
 <span class="normal">36</span>
 <span class="normal">37</span>
 <span class="normal">38</span>
-<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">tm1637</span>                        <span class="c1"># import the TM1637 driver</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>              <span class="c1"># import Pin for GPIO</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">localtime</span>   <span class="c1"># import sleep and localtime</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">tm1637</span>                        <span class="c1"># import the TM1637 driver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>              <span class="c1"># import Pin for GPIO</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">localtime</span>   <span class="c1"># import sleep and localtime</span>
 
 <span class="n">hour</span>   <span class="o">=</span> <span class="mi">0</span>   <span class="c1"># start with hour 0</span>
 <span class="n">minute</span> <span class="o">=</span> <span class="mi">0</span>   <span class="c1"># start with minute 0</span>
 <span class="n">sec</span>    <span class="o">=</span> <span class="mi">0</span>   <span class="c1"># start with second 0</span>
 
-<span class="k">def</span> <span class="nf">update_time</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_time</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Read the current time from the Pico's internal clock."""</span>
     <span class="k">global</span> <span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">sec</span>    <span class="c1"># tell Python to update the global variables</span>
     <span class="n">now</span>    <span class="o">=</span> <span class="n">localtime</span><span class="p">()</span>

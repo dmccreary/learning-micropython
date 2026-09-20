@@ -1770,6 +1770,8 @@
         
       
         
+      
+        
           
         
       
@@ -2740,7 +2742,7 @@ Black and white is so Chapter 16! In this chapter your Pico drives a full-color 
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">rgb565</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">rgb565</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Convert 8-bit RGB (0–255 each) to 16-bit RGB565."""</span>
     <span class="n">r5</span> <span class="o">=</span> <span class="n">r</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span>          <span class="c1"># top 5 bits of red</span>
     <span class="n">g6</span> <span class="o">=</span> <span class="n">g</span> <span class="o">&gt;&gt;</span> <span class="mi">2</span>          <span class="c1"># top 6 bits of green</span>
@@ -2777,8 +2779,8 @@ Black and white is so Chapter 16! In this chapter your Pico drives a full-color 
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">ili9341</span>   <span class="c1"># driver: copy ili9341.py and glcdfont.py to Pico</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ili9341</span>   <span class="c1"># driver: copy ili9341.py and glcdfont.py to Pico</span>
 
 <span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="mi">40_000_000</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">miso</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">dc</span>  <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span>  <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
@@ -2804,8 +2806,8 @@ Black and white is so Chapter 16! In this chapter your Pico drives a full-color 
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">st7789</span>   <span class="c1"># driver: copy st7789.py to Pico</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">st7789</span>   <span class="c1"># driver: copy st7789.py to Pico</span>
 
 <span class="n">spi</span>  <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="mi">40_000_000</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>
 <span class="n">tft</span>  <span class="o">=</span> <span class="n">st7789</span><span class="o">.</span><span class="n">ST7789</span><span class="p">(</span><span class="n">spi</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="n">reset</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span>
@@ -2861,8 +2863,8 @@ A 240×320 TFT has 240 × 320 × 2 = 153,600 bytes per frame. At 10 MHz SPI that
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">waveshare_epaper</span> <span class="kn">import</span> <span class="n">EPD_2in9</span>   <span class="c1"># Waveshare 2.9-inch b/w module</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">waveshare_epaper</span><span class="w"> </span><span class="kn">import</span> <span class="n">EPD_2in9</span>   <span class="c1"># Waveshare 2.9-inch b/w module</span>
 
 <span class="n">spi</span>  <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="mi">4_000_000</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">epd</span>  <span class="o">=</span> <span class="n">EPD_2in9</span><span class="p">(</span><span class="n">spi</span><span class="p">,</span> <span class="n">dc</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">cs</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span> <span class="n">rst</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">12</span><span class="p">),</span> <span class="n">busy</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">13</span><span class="p">))</span>
@@ -2871,7 +2873,7 @@ A 240×320 TFT has 240 × 320 × 2 = 153,600 bytes per frame. At 10 MHz SPI that
 <span class="n">epd</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
 
 <span class="c1"># Draw into a framebuffer, then display</span>
-<span class="kn">import</span> <span class="nn">framebuf</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">framebuf</span>
 <span class="n">buf</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="n">epd</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">epd</span><span class="o">.</span><span class="n">height</span> <span class="o">//</span> <span class="mi">8</span><span class="p">)</span>
 <span class="n">fb</span>  <span class="o">=</span> <span class="n">framebuf</span><span class="o">.</span><span class="n">FrameBuffer</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="n">epd</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">epd</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">framebuf</span><span class="o">.</span><span class="n">MONO_HLSB</span><span class="p">)</span>
 

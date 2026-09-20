@@ -1886,6 +1886,8 @@
         
       
         
+      
+        
           
         
       
@@ -2684,7 +2686,7 @@ In this lab, you will make your Pico play a single beep. It is your first step t
 </div>
 <h2 id="importing-the-sleep-function">Importing the Sleep Function</h2>
 <p>You will need to pause your program between tones. You can import the <code>sleep</code> function directly from MicroPython's time library:</p>
-<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>  <span class="c1"># import just the sleep function</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>  <span class="c1"># import just the sleep function</span>
 </code></pre></div></td></tr></tbody></table></div>
 <p>Now you can write <code>sleep(0.5)</code> to pause for half a second. This is shorter than writing <code>utime.sleep(0.5)</code> every time.</p>
 <p>If you need other functions from the <code>utime</code> library later, you can import those too. Just add them after the comma, like <code>from utime import sleep, ticks_ms</code>.</p>
@@ -2702,8 +2704,8 @@ In this lab, you will make your Pico play a single beep. It is your first step t
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>  <span class="c1"># import Pin and PWM classes</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>        <span class="c1"># import sleep so we can pause</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>  <span class="c1"># import Pin and PWM classes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>        <span class="c1"># import sleep so we can pause</span>
 
 <span class="n">SPEAKER_PIN</span> <span class="o">=</span> <span class="mi">16</span>               <span class="c1"># GPIO pin connected to the speaker</span>
 

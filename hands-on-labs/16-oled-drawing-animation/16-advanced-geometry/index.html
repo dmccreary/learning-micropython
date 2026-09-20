@@ -540,6 +540,8 @@
         
       
         
+      
+        
           
         
       
@@ -1431,8 +1433,8 @@ You already know how to draw lines and rectangles. Now you will learn to draw cu
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
 
 <span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">oled</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_SPI</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
@@ -1518,9 +1520,9 @@ You already know how to draw lines and rectangles. Now you will learn to draw cu
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
-<span class="kn">from</span> <span class="nn">array</span> <span class="kn">import</span> <span class="n">array</span>           <span class="c1"># needed to create the points list</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">array</span><span class="w"> </span><span class="kn">import</span> <span class="n">array</span>           <span class="c1"># needed to create the points list</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
 
 <span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">oled</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_SPI</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
@@ -1651,10 +1653,10 @@ Points in <code>poly()</code> are measured from the center you pass in, not from
 <span class="normal">95</span>
 <span class="normal">96</span>
 <span class="normal">97</span>
-<span class="normal">98</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">ticks_us</span>
-<span class="kn">from</span> <span class="nn">array</span> <span class="kn">import</span> <span class="n">array</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>
+<span class="normal">98</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">ticks_us</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">array</span><span class="w"> </span><span class="kn">import</span> <span class="n">array</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
 
 <span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 <span class="n">oled</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_SPI</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
@@ -1682,13 +1684,13 @@ Points in <code>poly()</code> are measured from the center you pass in, not from
 <span class="n">left_eyebrow</span>  <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="s1">'h'</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="n">EYE_W</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">15</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span>  <span class="n">EYE_W</span><span class="o">+</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">15</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
 <span class="n">right_eyebrow</span> <span class="o">=</span> <span class="n">array</span><span class="p">(</span><span class="s1">'h'</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="n">EYE_W</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">EYE_W</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">])</span>
 
-<span class="k">def</span> <span class="nf">draw_eye</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">pupil_offset</span><span class="p">,</span> <span class="n">blink_level</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_eye</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">pupil_offset</span><span class="p">,</span> <span class="n">blink_level</span><span class="p">):</span>
     <span class="c1"># White of the eye</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">ellipse</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">EYE_Y</span><span class="p">,</span> <span class="n">EYE_W</span><span class="p">,</span> <span class="n">EYE_H</span> <span class="o">-</span> <span class="n">blink_level</span><span class="p">,</span> <span class="n">ON</span><span class="p">,</span> <span class="n">FILL</span><span class="p">)</span>
     <span class="c1"># Black pupil on top of the white</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">ellipse</span><span class="p">(</span><span class="n">cx</span> <span class="o">+</span> <span class="n">pupil_offset</span><span class="p">,</span> <span class="n">EYE_Y</span><span class="p">,</span> <span class="n">PUPIL_W</span><span class="p">,</span> <span class="n">PUPIL_W</span><span class="p">,</span> <span class="n">OFF</span><span class="p">,</span> <span class="n">FILL</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">draw_mouth</span><span class="p">(</span><span class="n">curve</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_mouth</span><span class="p">(</span><span class="n">curve</span><span class="p">):</span>
     <span class="c1"># curve &gt; 0 = smile, curve = 0 = neutral line, curve &lt; 0 = frown</span>
     <span class="k">if</span> <span class="n">curve</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="c1"># Bottom half of ellipse = smile arc</span>
@@ -1699,7 +1701,7 @@ Points in <code>poly()</code> are measured from the center you pass in, not from
         <span class="c1"># Top half of ellipse = frown arc</span>
         <span class="n">oled</span><span class="o">.</span><span class="n">ellipse</span><span class="p">(</span><span class="n">HALF_W</span><span class="p">,</span> <span class="n">MOUTH_Y</span><span class="p">,</span> <span class="n">MOUTH_W</span><span class="p">,</span> <span class="o">-</span><span class="n">curve</span><span class="p">,</span> <span class="n">ON</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">draw_face</span><span class="p">(</span><span class="n">pupil_offset</span><span class="p">,</span> <span class="n">blink_level</span><span class="p">,</span> <span class="n">mouth_curve</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_face</span><span class="p">(</span><span class="n">pupil_offset</span><span class="p">,</span> <span class="n">blink_level</span><span class="p">,</span> <span class="n">mouth_curve</span><span class="p">):</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="c1"># Left eye and eyebrow</span>

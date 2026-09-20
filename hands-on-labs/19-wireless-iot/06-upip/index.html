@@ -1828,6 +1828,8 @@
         
       
         
+      
+        
           
         
       
@@ -2672,10 +2674,10 @@ PyPI (the Python Package Index) is a huge library of free Python packages. <code
 <span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
-<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">upip</span>                                    <span class="c1"># the MicroPython package installer</span>
-<span class="kn">import</span> <span class="nn">network</span>                                 <span class="c1"># WiFi library</span>
-<span class="kn">import</span> <span class="nn">secrets</span>                                 <span class="c1"># your network name and password</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span>  <span class="c1"># timing functions</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">upip</span>                                    <span class="c1"># the MicroPython package installer</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">network</span>                                 <span class="c1"># WiFi library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">secrets</span>                                 <span class="c1"># your network name and password</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span>  <span class="c1"># timing functions</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">'Connecting to WiFi Network Name:'</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">SSID</span><span class="p">)</span>
 <span class="n">wlan</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>           <span class="c1"># create WiFi object in station mode</span>
@@ -2732,7 +2734,7 @@ To install a different library, just change the package name in the <code>upip.i
 <h2 id="testing-your-newly-installed-library">Testing Your Newly Installed Library</h2>
 <p>After installing, test the new library to make sure it works.</p>
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">pystone_lowmem</span>     <span class="c1"># import the library we just installed</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">pystone_lowmem</span>     <span class="c1"># import the library we just installed</span>
 <span class="n">pystone_lowmem</span><span class="o">.</span><span class="n">main</span><span class="p">()</span>     <span class="c1"># run its built-in test function</span>
 </code></pre></div></td></tr></tbody></table></div>
 <p><strong>Expected output:</strong></p>
@@ -2744,7 +2746,7 @@ This machine benchmarks at 1219 pystones/second
 <h2 id="getting-upip-help">Getting UPIP Help</h2>
 <p>You can ask <code>upip</code> to explain itself:</p>
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">upip</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">upip</span>
 <span class="n">upip</span><span class="o">.</span><span class="n">help</span><span class="p">()</span>  <span class="c1"># print instructions for using upip</span>
 </code></pre></div></td></tr></tbody></table></div>
 <p><strong>Output:</strong></p>

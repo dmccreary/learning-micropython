@@ -1770,6 +1770,8 @@
         
       
         
+      
+        
           
         
       
@@ -2760,8 +2762,8 @@ Light up the world with 16 million colors! NeoPixels are one of the most satisfy
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">neopixel</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">neopixel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
 
 <span class="n">NUM_LEDS</span> <span class="o">=</span> <span class="mi">30</span>
 <span class="n">np</span> <span class="o">=</span> <span class="n">neopixel</span><span class="o">.</span><span class="n">NeoPixel</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">NUM_LEDS</span><span class="p">)</span>
@@ -2806,7 +2808,7 @@ Light up the world with 16 million colors! NeoPixels are one of the most satisfy
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">hsv_to_rgb</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">hsv_to_rgb</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""h: 0–360, s: 0–1, v: 0–1 → (r, g, b) each 0–255"""</span>
     <span class="n">h</span> <span class="o">/=</span> <span class="mi">60</span>
     <span class="n">i</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">h</span><span class="p">)</span> <span class="o">%</span> <span class="mi">6</span>
@@ -2818,7 +2820,7 @@ Light up the world with 16 million colors! NeoPixels are one of the most satisfy
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">r</span> <span class="o">*</span> <span class="mi">255</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">g</span> <span class="o">*</span> <span class="mi">255</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="mi">255</span><span class="p">)</span>
 
 <span class="c1"># Color wheel animation</span>
-<span class="kn">import</span> <span class="nn">utime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
 <span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NUM_LEDS</span><span class="p">):</span>
@@ -2832,7 +2834,7 @@ Light up the world with 16 million colors! NeoPixels are one of the most satisfy
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">scale</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">factor</span><span class="p">):</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">scale</span><span class="p">(</span><span class="n">color</span><span class="p">,</span> <span class="n">factor</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">color</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">factor</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">color</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">factor</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">color</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">factor</span><span class="p">))</span>
 
 <span class="n">np</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">scale</span><span class="p">((</span><span class="mi">255</span><span class="p">,</span> <span class="mi">165</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">0.5</span><span class="p">)</span>   <span class="c1"># half-brightness orange</span>
@@ -2877,8 +2879,8 @@ Learning Objective: Students can construct a target NeoPixel color by adjusting 
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">tm1637</span> <span class="kn">import</span> <span class="n">TM1637</span>   <span class="c1"># driver in src/drivers/</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tm1637</span><span class="w"> </span><span class="kn">import</span> <span class="n">TM1637</span>   <span class="c1"># driver in src/drivers/</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
 
 <span class="n">tm</span> <span class="o">=</span> <span class="n">TM1637</span><span class="p">(</span><span class="n">clk</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">dio</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">tm</span><span class="o">.</span><span class="n">number</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>              <span class="c1"># display "1234"</span>
@@ -2896,7 +2898,7 @@ Learning Objective: Students can construct a target NeoPixel color by adjusting 
 <span class="normal">5</span>
 <span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">bar_pins</span> <span class="o">=</span> <span class="p">[</span><span class="n">Pin</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">16</span><span class="p">)]</span>  <span class="c1"># GP6–GP15</span>
 
-<span class="k">def</span> <span class="nf">show_level</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">show_level</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">max_value</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
     <span class="n">lit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">value</span> <span class="o">/</span> <span class="n">max_value</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">pin</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bar_pins</span><span class="p">):</span>
         <span class="n">pin</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span> <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">lit</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
@@ -2915,8 +2917,8 @@ Learning Objective: Students can construct a target NeoPixel color by adjusting 
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">max7219</span> <span class="kn">import</span> <span class="n">Matrix8x8</span>   <span class="c1"># driver in src/drivers/</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">max7219</span><span class="w"> </span><span class="kn">import</span> <span class="n">Matrix8x8</span>   <span class="c1"># driver in src/drivers/</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">Pin</span>
 
 <span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">miso</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">cs</span>  <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
@@ -2940,9 +2942,9 @@ Learning Objective: Students can construct a target NeoPixel color by adjusting 
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">lcd_api</span> <span class="kn">import</span> <span class="n">LcdApi</span>        <span class="c1"># driver in src/drivers/</span>
-<span class="kn">from</span> <span class="nn">i2c_lcd</span> <span class="kn">import</span> <span class="n">I2cLcd</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lcd_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">LcdApi</span>        <span class="c1"># driver in src/drivers/</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">i2c_lcd</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2cLcd</span>
 
 <span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
 <span class="n">lcd</span> <span class="o">=</span> <span class="n">I2cLcd</span><span class="p">(</span><span class="n">i2c</span><span class="p">,</span> <span class="n">addr</span><span class="o">=</span><span class="mh">0x27</span><span class="p">,</span> <span class="n">num_lines</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">num_columns</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>

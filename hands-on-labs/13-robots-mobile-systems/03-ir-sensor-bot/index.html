@@ -1703,6 +1703,8 @@
         
       
         
+      
+        
           
         
       
@@ -2784,10 +2786,10 @@ The robot turns away from the side that detects an obstacle. If the left sensor 
 <span class="normal">166</span>
 <span class="normal">167</span>
 <span class="normal">168</span>
-<span class="normal">169</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>  <span class="c1"># driver for the OLED display</span>
-<span class="kn">import</span> <span class="nn">machine</span>
+<span class="normal">169</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>  <span class="c1"># driver for the OLED display</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
 
 <span class="c1"># Motor pin numbers — connect these to your motor driver board</span>
 <span class="n">RIGHT_FORWARD_PIN</span> <span class="o">=</span> <span class="mi">17</span>
@@ -2823,52 +2825,52 @@ The robot turns away from the side that detects an obstacle. If the left sensor 
 
 <span class="c1"># --- Motor functions ---</span>
 
-<span class="k">def</span> <span class="nf">turn_motor_on</span><span class="p">(</span><span class="n">pwm</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_motor_on</span><span class="p">(</span><span class="n">pwm</span><span class="p">):</span>
     <span class="n">pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">65025</span><span class="p">)</span>  <span class="c1"># set full power (65025 is the maximum)</span>
 
-<span class="k">def</span> <span class="nf">turn_motor_off</span><span class="p">(</span><span class="n">pwm</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_motor_off</span><span class="p">(</span><span class="n">pwm</span><span class="p">):</span>
     <span class="n">pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># stop the motor</span>
 
-<span class="k">def</span> <span class="nf">forward</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">():</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">right_forward</span><span class="p">)</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">left_forward</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">reverse</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">reverse</span><span class="p">():</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">right_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">left_reverse</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">turn_right</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_right</span><span class="p">():</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">right_forward</span><span class="p">)</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">left_reverse</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">turn_left</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_left</span><span class="p">():</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">right_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">left_forward</span><span class="p">)</span>
 
 <span class="c1"># --- Speaker functions ---</span>
 
-<span class="k">def</span> <span class="nf">sound_off</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sound_off</span><span class="p">():</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># silence the speaker</span>
 
-<span class="k">def</span> <span class="nf">left_tone</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">left_tone</span><span class="p">():</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>   <span class="c1"># set volume</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">700</span><span class="p">)</span>        <span class="c1"># set pitch to 700 Hz (a medium-high tone)</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>               <span class="c1"># play for half a second</span>
     <span class="n">sound_off</span><span class="p">()</span>              <span class="c1"># then silence</span>
 
-<span class="k">def</span> <span class="nf">center_tone</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">center_tone</span><span class="p">():</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">900</span><span class="p">)</span>        <span class="c1"># higher pitch for the center sensor</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
     <span class="n">sound_off</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">right_tone</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">right_tone</span><span class="p">():</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">600</span><span class="p">)</span>        <span class="c1"># lower pitch for the right sensor</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
     <span class="n">sound_off</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">forward_tone</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">forward_tone</span><span class="p">():</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>        <span class="c1"># rising three-note sound when going forward</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
@@ -2880,7 +2882,7 @@ The robot turns away from the side that detects an obstacle. If the left sensor 
 
 <span class="c1"># --- Display function ---</span>
 
-<span class="k">def</span> <span class="nf">update_oled</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_oled</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Draw sensor readings on the OLED screen."""</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># clear the screen (fill with black)</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"CoderDojo Rocks!"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># title text</span>

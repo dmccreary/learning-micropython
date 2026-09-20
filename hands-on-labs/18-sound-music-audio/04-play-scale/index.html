@@ -1895,6 +1895,8 @@
         
       
         
+      
+        
           
         
       
@@ -2730,21 +2732,21 @@ In this lab, you will use a loop to play many tones in order from low to high. T
 <span class="normal">24</span>
 <span class="normal">25</span>
 <span class="normal">26</span>
-<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>  <span class="c1"># import Pin and PWM classes</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>        <span class="c1"># import sleep to pause between notes</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>  <span class="c1"># import Pin and PWM classes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>        <span class="c1"># import sleep to pause between notes</span>
 
 <span class="n">SPEAKER_PIN</span> <span class="o">=</span> <span class="mi">16</span>               <span class="c1"># GPIO pin connected to the speaker</span>
 
 <span class="c1"># Create a PWM object on the speaker pin</span>
 <span class="n">speaker</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">SPEAKER_PIN</span><span class="p">))</span>
 
-<span class="k">def</span> <span class="nf">play_tone</span><span class="p">(</span><span class="n">frequency</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_tone</span><span class="p">(</span><span class="n">frequency</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Turn on the speaker at the given frequency."""</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>     <span class="c1"># turn the sound on</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>    <span class="c1"># set the pitch</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>                 <span class="c1"># hold the note for 0.3 seconds</span>
 
-<span class="k">def</span> <span class="nf">be_quiet</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">be_quiet</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Turn the speaker off."""</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>        <span class="c1"># set duty cycle to 0 to silence the speaker</span>
 

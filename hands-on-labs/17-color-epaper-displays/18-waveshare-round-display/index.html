@@ -540,6 +540,8 @@
         
       
         
+      
+        
           
         
       
@@ -1507,9 +1509,9 @@ The round display uses 16-bit RGB565 color, not the 1-bit (on/off) color of OLED
 <span class="normal">30</span>
 <span class="normal">31</span>
 <span class="normal">32</span>
-<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">from</span> <span class="nn">LCD_1inch28</span> <span class="kn">import</span> <span class="n">LCD_1inch28</span>    <span class="c1"># import the round display driver</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">LCD_1inch28</span><span class="w"> </span><span class="kn">import</span> <span class="n">LCD_1inch28</span>    <span class="c1"># import the round display driver</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="c1"># Create the display object (all pins are set inside the driver class)</span>
 <span class="n">lcd</span> <span class="o">=</span> <span class="n">LCD_1inch28</span><span class="p">()</span>
@@ -1576,9 +1578,9 @@ The round display uses 16-bit RGB565 color, not the 1-bit (on/off) color of OLED
 <span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
-<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">ADC</span>
-<span class="kn">from</span> <span class="nn">LCD_1inch28</span> <span class="kn">import</span> <span class="n">LCD_1inch28</span><span class="p">,</span> <span class="n">QMI8658</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">ADC</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">LCD_1inch28</span><span class="w"> </span><span class="kn">import</span> <span class="n">LCD_1inch28</span><span class="p">,</span> <span class="n">QMI8658</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="c1"># Create both the display and the IMU</span>
 <span class="n">lcd</span> <span class="o">=</span> <span class="n">LCD_1inch28</span><span class="p">()</span>
@@ -1649,9 +1651,9 @@ The round display uses 16-bit RGB565 color, not the 1-bit (on/off) color of OLED
 <span class="normal">35</span>
 <span class="normal">36</span>
 <span class="normal">37</span>
-<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">ADC</span>
-<span class="kn">from</span> <span class="nn">LCD_1inch28</span> <span class="kn">import</span> <span class="n">LCD_1inch28</span><span class="p">,</span> <span class="n">QMI8658</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">ADC</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">LCD_1inch28</span><span class="w"> </span><span class="kn">import</span> <span class="n">LCD_1inch28</span><span class="p">,</span> <span class="n">QMI8658</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="n">lcd</span> <span class="o">=</span> <span class="n">LCD_1inch28</span><span class="p">()</span>
 <span class="n">lcd</span><span class="o">.</span><span class="n">set_bl_pwm</span><span class="p">(</span><span class="mi">65535</span><span class="p">)</span>
@@ -1668,7 +1670,7 @@ The round display uses 16-bit RGB565 color, not the 1-bit (on/off) color of OLED
 
     <span class="c1"># Blue footer — show battery voltage</span>
     <span class="n">lcd</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mh">0x180f</span><span class="p">)</span>
-    <span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADC</span>
     <span class="n">vbat_pin</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">29</span><span class="p">))</span>
     <span class="n">vbat</span> <span class="o">=</span> <span class="n">vbat_pin</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span> <span class="o">*</span> <span class="mf">3.3</span> <span class="o">/</span> <span class="mi">65535</span> <span class="o">*</span> <span class="mi">2</span>    <span class="c1"># voltage divider on pin 29</span>
     <span class="n">lcd</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Vbat=</span><span class="si">{</span><span class="n">vbat</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">V"</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">212</span><span class="p">,</span> <span class="n">lcd</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>

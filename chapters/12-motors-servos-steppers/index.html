@@ -1770,6 +1770,8 @@
         
       
         
+      
+        
           
         
       
@@ -2739,7 +2741,7 @@ This is the chapter where your project starts moving! DC motors, servos, and ste
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
 
 <span class="n">motor_pwm</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">17</span><span class="p">))</span>
 <span class="n">motor_pwm</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>         <span class="c1"># 10 kHz avoids audible motor whine</span>
@@ -2819,24 +2821,24 @@ GND → GND (shared with Pico)
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
 
 <span class="n">in1</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
 <span class="n">in2</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
 <span class="n">speed</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">19</span><span class="p">))</span>
 <span class="n">speed</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">motor_forward</span><span class="p">(</span><span class="n">duty</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">motor_forward</span><span class="p">(</span><span class="n">duty</span><span class="p">):</span>
     <span class="n">in1</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">in2</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">speed</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">motor_backward</span><span class="p">(</span><span class="n">duty</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">motor_backward</span><span class="p">(</span><span class="n">duty</span><span class="p">):</span>
     <span class="n">in1</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">in2</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">speed</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">duty</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">motor_stop</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">motor_stop</span><span class="p">():</span>
     <span class="n">in1</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">in2</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">speed</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -2873,13 +2875,13 @@ Never block a spinning motor shaft with your hand or an obstacle while the motor
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">import</span> <span class="nn">utime</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
 
 <span class="n">servo</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
 <span class="n">servo</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>          <span class="c1"># MUST be exactly 50 Hz for standard servos</span>
 
-<span class="k">def</span> <span class="nf">set_angle</span><span class="p">(</span><span class="n">degrees</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_angle</span><span class="p">(</span><span class="n">degrees</span><span class="p">):</span>
     <span class="c1"># Map 0–180° to 1,000–2,000 µs pulse width</span>
     <span class="n">min_duty</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">1000</span> <span class="o">/</span> <span class="mi">20000</span> <span class="o">*</span> <span class="mi">65535</span><span class="p">)</span>    <span class="c1"># 1 ms / 20 ms × 65535 = 3276</span>
     <span class="n">max_duty</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">2000</span> <span class="o">/</span> <span class="mi">20000</span> <span class="o">*</span> <span class="mi">65535</span><span class="p">)</span>    <span class="c1"># 2 ms / 20 ms × 65535 = 6553</span>
@@ -2962,8 +2964,8 @@ Learning Objective: Students can convert a desired servo angle to the correct PW
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
-<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">utime</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
 
 <span class="c1"># Connect IN1–IN4 on ULN2003 to GP6–GP9</span>
 <span class="n">coil_pins</span> <span class="o">=</span> <span class="p">[</span><span class="n">Pin</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">),</span>
@@ -2981,7 +2983,7 @@ Learning Objective: Students can convert a desired servo angle to the correct PW
     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
 <span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">delay_ms</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">delay_ms</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">sequence</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">pin</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">coil_pins</span><span class="p">,</span> <span class="n">pattern</span><span class="p">):</span>
             <span class="n">pin</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
@@ -2989,7 +2991,7 @@ Learning Objective: Students can convert a desired servo angle to the correct PW
 
 <span class="n">STEPS_PER_REV</span> <span class="o">=</span> <span class="mi">2048</span>   <span class="c1"># 28BYJ-48 in half-step mode</span>
 
-<span class="k">def</span> <span class="nf">rotate_degrees</span><span class="p">(</span><span class="n">degrees</span><span class="p">,</span> <span class="n">clockwise</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">rotate_degrees</span><span class="p">(</span><span class="n">degrees</span><span class="p">,</span> <span class="n">clockwise</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="n">steps_needed</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">STEPS_PER_REV</span> <span class="o">*</span> <span class="n">degrees</span> <span class="o">/</span> <span class="mi">360</span><span class="p">)</span>
     <span class="n">seq</span> <span class="o">=</span> <span class="n">HALF_STEP</span> <span class="k">if</span> <span class="n">clockwise</span> <span class="k">else</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">HALF_STEP</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps_needed</span><span class="p">):</span>

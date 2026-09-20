@@ -2090,6 +2090,8 @@
         
       
         
+      
+        
           
         
       
@@ -3010,8 +3012,8 @@ When clocks are used to trigger future events, they are called timers.  Timers a
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">Timer</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">Timer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="c1"># create an LED object using the onboard LED</span>
 <span class="n">myLED</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="s2">"LED"</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
@@ -3021,7 +3023,7 @@ When clocks are used to trigger future events, they are called timers.  Timers a
 
 <span class="c1"># create a function to be called when the timer goes off</span>
 <span class="c1"># this function just toggles the onboard LED</span>
-<span class="k">def</span> <span class="nf">toggle_led</span><span class="p">(</span><span class="n">timer</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">toggle_led</span><span class="p">(</span><span class="n">timer</span><span class="p">):</span>
     <span class="n">myLED</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
 
 <span class="c1"># initialize the timer object to tick every second (1,000 milliseconds)</span>
@@ -3063,9 +3065,9 @@ When clocks are used to trigger future events, they are called timers.  Timers a
 <span class="normal">28</span>
 <span class="normal">29</span>
 <span class="normal">30</span>
-<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">Timer</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">NeoPixel</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">Timer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neopixel</span><span class="w"> </span><span class="kn">import</span> <span class="n">NeoPixel</span>
 
 <span class="n">NEOPIXEL_PIN</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">NUMBER_PIXELS</span> <span class="o">=</span> <span class="mi">8</span>
@@ -3076,7 +3078,7 @@ When clocks are used to trigger future events, they are called timers.  Timers a
 
 <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="c1"># a callback function.  Use this with a timer that triggers 20 times a second</span>
-<span class="k">def</span> <span class="nf">move_pixel</span><span class="p">(</span><span class="n">myTimer</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">move_pixel</span><span class="p">(</span><span class="n">myTimer</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">counter</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">NUMBER_PIXELS</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">counter</span><span class="p">:</span>

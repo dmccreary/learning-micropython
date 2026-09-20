@@ -1948,6 +1948,8 @@
         
       
         
+      
+        
           
         
       
@@ -2879,8 +2881,8 @@
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># MicroPython: TTP223 touch -&gt; onboard LED</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep_ms</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep_ms</span>
 
 <span class="n">TOUCH_PIN</span> <span class="o">=</span> <span class="mi">2</span>            <span class="c1"># TTP223 OUT wired to GP2 (change if needed)</span>
 <span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="s2">"LED"</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>  <span class="c1"># Pico's onboard LED</span>
@@ -2904,8 +2906,8 @@
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># MicroPython: TTP223 touch -&gt; external LED</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep_ms</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep_ms</span>
 
 <span class="n">TOUCH_PIN</span> <span class="o">=</span> <span class="mi">2</span>   <span class="c1"># TTP223 OUT</span>
 <span class="n">LED_PIN</span>   <span class="o">=</span> <span class="mi">15</span>  <span class="c1"># Your LED’s GPIO (through a resistor to GND)</span>

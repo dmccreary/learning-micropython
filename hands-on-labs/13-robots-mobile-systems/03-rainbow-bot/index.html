@@ -540,6 +540,8 @@
         
       
         
+      
+        
           
         
       
@@ -1484,7 +1486,7 @@ These LED strips are called NeoPixels (a name from Adafruit) or WS2812B LEDs (th
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span><span class="o">,</span> <span class="nn">neopixel</span><span class="o">,</span> <span class="nn">time</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span><span class="o">,</span><span class="w"> </span><span class="nn">neopixel</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="n">LED_PIN</span>       <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># data wire connected to pin 4</span>
 <span class="n">NUMBER_PIXELS</span> <span class="o">=</span> <span class="mi">12</span>              <span class="c1"># how many LEDs are on the strip</span>
@@ -1580,8 +1582,8 @@ These LED strips are called NeoPixels (a name from Adafruit) or WS2812B LEDs (th
 <span class="normal">70</span>
 <span class="normal">71</span>
 <span class="normal">72</span>
-<span class="normal">73</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">Neopixel</span>
+<span class="normal">73</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neopixel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Neopixel</span>
 
 <span class="n">numpix</span> <span class="o">=</span> <span class="mi">72</span>                       <span class="c1"># total number of pixels</span>
 <span class="n">strip</span> <span class="o">=</span> <span class="n">Neopixel</span><span class="p">(</span><span class="n">numpix</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"GRB"</span><span class="p">)</span>  <span class="c1"># create the strip (GRB = Green-Red-Blue color order)</span>
@@ -1598,7 +1600,7 @@ These LED strips are called NeoPixels (a name from Adafruit) or WS2812B LEDs (th
 
 <span class="n">strip</span><span class="o">.</span><span class="n">brightness</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span>  <span class="c1"># set brightness to maximum</span>
 
-<span class="k">def</span> <span class="nf">color_wipe</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">color_wipe</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Fill the strip one pixel at a time with each rainbow color."""</span>
     <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>            <span class="c1"># loop through each color</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numpix</span><span class="p">):</span>     <span class="c1"># loop through each pixel</span>
@@ -1606,7 +1608,7 @@ These LED strips are called NeoPixels (a name from Adafruit) or WS2812B LEDs (th
             <span class="n">strip</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>            <span class="c1"># update the display</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>        <span class="c1"># short pause for animation effect</span>
 
-<span class="k">def</span> <span class="nf">color_wipe_2</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">color_wipe_2</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Fill one column at a time with each rainbow color."""</span>
     <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>         <span class="c1"># loop through 12 columns</span>
@@ -1620,7 +1622,7 @@ These LED strips are called NeoPixels (a name from Adafruit) or WS2812B LEDs (th
             <span class="n">strip</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">color_wipe_3</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">color_wipe_3</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Fill columns while accounting for the serpentine row direction."""</span>
     <span class="k">for</span> <span class="n">color</span> <span class="ow">in</span> <span class="n">colors</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
@@ -1633,7 +1635,7 @@ These LED strips are called NeoPixels (a name from Adafruit) or WS2812B LEDs (th
             <span class="n">strip</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.3</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">color_wipe_4</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span> <span class="n">direction</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">color_wipe_4</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span> <span class="n">direction</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Draw a rainbow column pattern that can move forward or backward."""</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">direction</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
@@ -1812,11 +1814,11 @@ Start with <code>strip.brightness(20)</code> instead of 255 when filming the rob
 <span class="normal">142</span>
 <span class="normal">143</span>
 <span class="normal">144</span>
-<span class="normal">145</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">VL53L0X</span>        <span class="c1"># time-of-flight distance sensor driver</span>
-<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">Neopixel</span>  <span class="c1"># addressable LED driver</span>
+<span class="normal">145</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">VL53L0X</span>        <span class="c1"># time-of-flight distance sensor driver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neopixel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Neopixel</span>  <span class="c1"># addressable LED driver</span>
 
 <span class="c1"># --- Motor pins ---</span>
 <span class="n">RIGHT_FORWARD_PIN</span> <span class="o">=</span> <span class="mi">19</span>
@@ -1862,37 +1864,37 @@ Start with <code>strip.brightness(20)</code> instead of 255 when filming the rob
 
 <span class="c1"># --- Motor control functions ---</span>
 
-<span class="k">def</span> <span class="nf">turn_motor_on</span><span class="p">(</span><span class="n">pwm</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_motor_on</span><span class="p">(</span><span class="n">pwm</span><span class="p">):</span>
     <span class="n">pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">POWER_LEVEL</span><span class="p">)</span>  <span class="c1"># set motor to the chosen power level</span>
 
-<span class="k">def</span> <span class="nf">turn_motor_off</span><span class="p">(</span><span class="n">pwm</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_motor_off</span><span class="p">(</span><span class="n">pwm</span><span class="p">):</span>
     <span class="n">pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># stop the motor</span>
 
-<span class="k">def</span> <span class="nf">forward</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">():</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">right_forward</span><span class="p">)</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">left_forward</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">right_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">left_reverse</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">reverse</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">reverse</span><span class="p">():</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">right_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">left_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">right_forward</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">left_forward</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">turn_right</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_right</span><span class="p">():</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">right_forward</span><span class="p">)</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">left_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">right_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">left_forward</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">turn_left</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_left</span><span class="p">():</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">right_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">left_forward</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">right_forward</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">left_reverse</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">stop</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">():</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">right_forward</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">right_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">left_forward</span><span class="p">)</span>
@@ -1903,7 +1905,7 @@ Start with <code>strip.brightness(20)</code> instead of 255 when filming the rob
 
 <span class="c1"># --- Sensor function ---</span>
 
-<span class="k">def</span> <span class="nf">read_sensor_avg</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_sensor_avg</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Read the distance sensor 10 times and return the average."""</span>
     <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
@@ -1913,7 +1915,7 @@ Start with <code>strip.brightness(20)</code> instead of 255 when filming the rob
 
 <span class="c1"># --- LED animation function ---</span>
 
-<span class="k">def</span> <span class="nf">color_wipe_4</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span> <span class="n">direction</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">color_wipe_4</span><span class="p">(</span><span class="n">offset</span><span class="p">,</span> <span class="n">direction</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Animate a moving rainbow column pattern on the LED matrix."""</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">12</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">direction</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>

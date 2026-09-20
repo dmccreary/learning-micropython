@@ -1877,6 +1877,8 @@
         
       
         
+      
+        
           
         
       
@@ -2719,8 +2721,8 @@ In this lab, you will play the famous Super Mario theme song on your Pico! You w
 <span class="normal">45</span>
 <span class="normal">46</span>
 <span class="normal">47</span>
-<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>  <span class="c1"># import Pin and PWM classes</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>        <span class="c1"># import sleep to pause between notes</span>
+<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>  <span class="c1"># import Pin and PWM classes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>        <span class="c1"># import sleep to pause between notes</span>
 
 <span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>          <span class="c1"># create a PWM object on pin 16 for the buzzer</span>
 
@@ -2747,16 +2749,16 @@ In this lab, you will play the famous Super Mario theme song on your Pico! You w
          <span class="mi">0</span><span class="p">,</span> <span class="s2">"E7"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="s2">"C7"</span><span class="p">,</span> <span class="s2">"D7"</span><span class="p">,</span> <span class="s2">"B6"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"C7"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"G6"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"E6"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"A6"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"B6"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>
          <span class="s2">"AS6"</span><span class="p">,</span> <span class="s2">"A6"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"G6"</span><span class="p">,</span> <span class="s2">"E7"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"G7"</span><span class="p">,</span> <span class="s2">"A7"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"F7"</span><span class="p">,</span> <span class="s2">"G7"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">"E7"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="s2">"C7"</span><span class="p">,</span> <span class="s2">"D7"</span><span class="p">,</span> <span class="s2">"B6"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">play_tone</span><span class="p">(</span><span class="n">frequency</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_tone</span><span class="p">(</span><span class="n">frequency</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Turn the buzzer on at the given frequency."""</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>      <span class="c1"># turn the buzzer on</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>     <span class="c1"># set the pitch</span>
 
-<span class="k">def</span> <span class="nf">be_quiet</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">be_quiet</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Turn the buzzer off (silence)."""</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>         <span class="c1"># set duty cycle to 0 to silence the buzzer</span>
 
-<span class="k">def</span> <span class="nf">play_song</span><span class="p">(</span><span class="n">note_list</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_song</span><span class="p">(</span><span class="n">note_list</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Play every note in note_list one at a time."""</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">note_list</span><span class="p">)):</span>        <span class="c1"># loop through each position in the list</span>
         <span class="k">if</span> <span class="n">note_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"P"</span> <span class="ow">or</span> <span class="n">note_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>

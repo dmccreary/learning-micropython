@@ -1783,6 +1783,8 @@
         
       
         
+      
+        
           
         
       
@@ -2712,9 +2714,9 @@ Storing 16 bits per pixel instead of 24 bits saves memory and makes the display 
 <span class="normal">22</span>
 <span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># print "Hello World!" in landscape mode using a 32-pixel-tall bold font</span>
 <span class="c1"># default is white text on a black background</span>
-<span class="kn">from</span> <span class="nn">ili934x</span> <span class="kn">import</span> <span class="n">ILI9341</span>    <span class="c1"># import the ILI9341 display driver</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>   <span class="c1"># import GPIO and SPI tools</span>
-<span class="kn">import</span> <span class="nn">tt32</span>                    <span class="c1"># import the 32-pixel font</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ili934x</span><span class="w"> </span><span class="kn">import</span> <span class="n">ILI9341</span>    <span class="c1"># import the ILI9341 display driver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>   <span class="c1"># import GPIO and SPI tools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tt32</span>                    <span class="c1"># import the 32-pixel font</span>
 
 <span class="c1"># pin number constants — giving names to pin numbers makes code easier to read</span>
 <span class="n">SCK_PIN</span>  <span class="o">=</span> <span class="mi">2</span>    <span class="c1"># SPI clock pin</span>
@@ -2808,10 +2810,10 @@ Storing 16 bits per pixel instead of 24 bits saves memory and makes the display 
 <span class="normal">58</span>
 <span class="normal">59</span>
 <span class="normal">60</span>
-<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">ili934x</span> <span class="kn">import</span> <span class="n">ILI9341</span><span class="p">,</span> <span class="n">color565</span>   <span class="c1"># import driver and color helper</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>              <span class="c1"># import random number generator</span>
+<span class="normal">61</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ili934x</span><span class="w"> </span><span class="kn">import</span> <span class="n">ILI9341</span><span class="p">,</span> <span class="n">color565</span>   <span class="c1"># import driver and color helper</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <span class="n">randint</span>              <span class="c1"># import random number generator</span>
 
 <span class="n">WIDTH</span>      <span class="o">=</span> <span class="mi">320</span>    <span class="c1"># screen width in pixels</span>
 <span class="n">HALF_WIDTH</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">WIDTH</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>    <span class="c1"># half the width (used for random positions)</span>
@@ -2954,11 +2956,11 @@ Storing 16 bits per pixel instead of 24 bits saves memory and makes the display 
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
-<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">ili934x</span> <span class="kn">import</span> <span class="n">ILI9341</span><span class="p">,</span> <span class="n">color565</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">randint</span>
-<span class="kn">import</span> <span class="nn">tt32</span>                 <span class="c1"># import the 32-pixel font for color names</span>
+<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ili934x</span><span class="w"> </span><span class="kn">import</span> <span class="n">ILI9341</span><span class="p">,</span> <span class="n">color565</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <span class="n">randint</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tt32</span>                 <span class="c1"># import the 32-pixel font for color names</span>
 
 <span class="n">WIDTH</span>       <span class="o">=</span> <span class="mi">320</span>
 <span class="n">HALF_WIDTH</span>  <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">WIDTH</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
@@ -3099,9 +3101,9 @@ Storing 16 bits per pixel instead of 24 bits saves memory and makes the display 
 <span class="normal">56</span>
 <span class="normal">57</span>
 <span class="normal">58</span>
-<span class="normal">59</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">ili934x</span> <span class="kn">import</span> <span class="n">ILI9341</span><span class="p">,</span> <span class="n">color565</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">59</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ili934x</span><span class="w"> </span><span class="kn">import</span> <span class="n">ILI9341</span><span class="p">,</span> <span class="n">color565</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="n">WIDTH</span>    <span class="o">=</span> <span class="mi">320</span>
 <span class="n">HEIGHT</span>   <span class="o">=</span> <span class="mi">240</span>
@@ -3124,7 +3126,7 @@ Storing 16 bits per pixel instead of 24 bits saves memory and makes the display 
 <span class="n">blue</span>  <span class="o">=</span> <span class="n">color565</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
 
 <span class="c1"># ok, not really a circle — just a square for now</span>
-<span class="k">def</span> <span class="nf">draw_ball</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_ball</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">size</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">display</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>              <span class="c1"># draw a single pixel for tiny balls</span>
     <span class="k">else</span><span class="p">:</span>

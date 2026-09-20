@@ -546,6 +546,8 @@
         
       
         
+      
+        
           
         
       
@@ -886,6 +888,52 @@
           
         
       
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sht40-temp-display/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    SHT40 Smartwatch Display
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
         
       
         
@@ -983,7 +1031,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_12" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_13" checked>
         
           
           
@@ -999,14 +1047,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_12" id="__nav_6_12_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6_13" id="__nav_6_13_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_12_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_12">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_13">
             <span class="md-nav__icon md-icon"></span>
             Maker Pi RP2040 Robot
           </label>
@@ -2717,10 +2765,10 @@ the ultrasonic ping sensor.  Connect the Trigger on white and Echo on yellow.  T
 <span class="normal">271</span>
 <span class="normal">272</span>
 <span class="normal">273</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Demo for Maker Pi RP2040 board using Ping sensor</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Timer</span>
-<span class="kn">import</span> <span class="nn">utime</span>
-<span class="kn">import</span> <span class="nn">urandom</span>
-<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">Neopixel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Timer</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urandom</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neopixel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Neopixel</span>
 
 <span class="c1"># Adjust these parameters to tune the collision avoidance behavior</span>
 
@@ -2749,7 +2797,7 @@ the ultrasonic ping sensor.  Connect the Trigger on white and Echo on yellow.  T
 <span class="n">last_time</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># the last time we pressed the button</span>
 
 <span class="c1"># This function gets called every time the button is pressed.  The parameter "pin" is not used.</span>
-<span class="k">def</span> <span class="nf">button_pressed_handler</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">button_pressed_handler</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">mode</span><span class="p">,</span> <span class="n">last_time</span>
     <span class="n">new_time</span> <span class="o">=</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
     <span class="c1"># if it has been more that 1/5 of a second since the last event, we have a new event</span>
@@ -2788,7 +2836,7 @@ the ultrasonic ping sensor.  Connect the Trigger on white and Echo on yellow.  T
 <span class="n">left_reverse</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">LEFT_REVERSE_PIN</span><span class="p">))</span>
 
 <span class="c1"># returns distance in cm</span>
-<span class="k">def</span> <span class="nf">ping</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ping</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">'in ping'</span><span class="p">)</span>
     <span class="n">trigger</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
     <span class="n">utime</span><span class="o">.</span><span class="n">sleep_us</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># Wait 2 microseconds low</span>
@@ -2805,37 +2853,37 @@ the ultrasonic ping sensor.  Connect the Trigger on white and Echo on yellow.  T
     <span class="nb">print</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">turn_motor_on</span><span class="p">(</span><span class="n">pwm</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_motor_on</span><span class="p">(</span><span class="n">pwm</span><span class="p">):</span>
    <span class="n">pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">65025</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">turn_motor_off</span><span class="p">(</span><span class="n">pwm</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_motor_off</span><span class="p">(</span><span class="n">pwm</span><span class="p">):</span>
    <span class="n">pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">forward</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">():</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">right_forward</span><span class="p">)</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">left_forward</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">right_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">left_reverse</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">reverse</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">reverse</span><span class="p">():</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">right_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">left_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">right_forward</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">left_forward</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">turn_right</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_right</span><span class="p">():</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">right_forward</span><span class="p">)</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">left_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">right_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">left_forward</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">turn_left</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_left</span><span class="p">():</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">right_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">left_forward</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">right_forward</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">left_reverse</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">stop</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">():</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">right_forward</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">right_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">left_forward</span><span class="p">)</span>
@@ -2877,7 +2925,7 @@ the ultrasonic ping sensor.  Connect the Trigger on white and Echo on yellow.  T
    <span class="n">led_ports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="n">blue_led_pins</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">))</span>
 
 <span class="n">LED_DELAY</span> <span class="o">=</span> <span class="mf">.08</span>
-<span class="k">def</span> <span class="nf">run_lights</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">run_lights</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">number_leds</span><span class="p">):</span>
         <span class="n">led_ports</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>
         <span class="n">strip</span><span class="o">.</span><span class="n">set_pixel</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
@@ -2894,7 +2942,7 @@ the ultrasonic ping sensor.  Connect the Trigger on white and Echo on yellow.  T
         <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">LED_DELAY</span><span class="p">)</span>
         <span class="n">led_ports</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">led_show_dist</span><span class="p">(</span><span class="n">in_distance</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">led_show_dist</span><span class="p">(</span><span class="n">in_distance</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">number_leds</span>
     <span class="k">for</span> <span class="n">led_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">number_leds</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">in_distance</span> <span class="o">&gt;</span> <span class="n">dist_scale</span><span class="p">[</span><span class="n">led_index</span><span class="p">]:</span>
@@ -2902,30 +2950,30 @@ the ultrasonic ping sensor.  Connect the Trigger on white and Echo on yellow.  T
         <span class="k">else</span><span class="p">:</span>
             <span class="n">led_ports</span><span class="p">[</span><span class="n">led_index</span><span class="p">]</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">play_no_signal</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_no_signal</span><span class="p">():</span>
     <span class="n">playnote</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
     <span class="n">sound_off</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">play_turn</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_turn</span><span class="p">():</span>
     <span class="n">playnote</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mf">.1</span><span class="p">)</span>
     <span class="n">sound_off</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">setfreq</span><span class="p">(</span><span class="n">frequency</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">setfreq</span><span class="p">(</span><span class="n">frequency</span><span class="p">):</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">playnote</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">playnote</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
     <span class="n">setfreq</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>
     <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">sound_off</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sound_off</span><span class="p">():</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">rest</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">rest</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">play_startup</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_startup</span><span class="p">():</span>
     <span class="n">playnote</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mf">.2</span><span class="p">)</span>
     <span class="n">rest</span><span class="p">(</span><span class="mf">.05</span><span class="p">)</span>
     <span class="n">playnote</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mf">.2</span><span class="p">)</span>
@@ -2937,7 +2985,7 @@ the ultrasonic ping sensor.  Connect the Trigger on white and Echo on yellow.  T
 
 <span class="n">valid_distance</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="c1"># loop forever</span>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">valid_distance</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"running main()"</span><span class="p">)</span>
 

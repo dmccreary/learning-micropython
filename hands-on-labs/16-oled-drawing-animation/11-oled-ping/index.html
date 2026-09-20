@@ -1777,6 +1777,8 @@
         
       
         
+      
+        
           
         
       
@@ -2636,19 +2638,19 @@ The button uses a <strong>debounce</strong> timer. When you press a button, it c
 <span class="normal">55</span>
 <span class="normal">56</span>
 <span class="normal">57</span>
-<span class="normal">58</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Timer</span>   <span class="c1"># import pin, I2C, and timer tools</span>
-<span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>       <span class="c1"># import the display driver</span>
-<span class="kn">import</span> <span class="nn">utime</span>                          <span class="c1"># import the time library</span>
+<span class="normal">58</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Timer</span>   <span class="c1"># import pin, I2C, and timer tools</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ssd1306</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSD1306_I2C</span>       <span class="c1"># import the display driver</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>                          <span class="c1"># import the time library</span>
 
 <span class="c1"># this variable tracks whether distance measuring is on or off</span>
 <span class="n">measure_on</span> <span class="o">=</span> <span class="kc">False</span>                    <span class="c1"># start with measuring turned off</span>
 
 <span class="c1"># called when the button is first pressed — starts a short timer to debounce</span>
-<span class="k">def</span> <span class="nf">debounce</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">debounce</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
     <span class="n">timer</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">Timer</span><span class="o">.</span><span class="n">ONE_SHOT</span><span class="p">,</span> <span class="n">period</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">callback</span><span class="o">=</span><span class="n">on_pressed</span><span class="p">)</span>  <span class="c1"># wait 200ms then run on_pressed</span>
 
 <span class="c1"># called after the debounce timer fires — toggles measuring on/off</span>
-<span class="k">def</span> <span class="nf">on_pressed</span><span class="p">(</span><span class="n">timer</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">on_pressed</span><span class="p">(</span><span class="n">timer</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">measure_on</span>                 <span class="c1"># we need to change the global variable</span>
     <span class="n">measure_on</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">measure_on</span>       <span class="c1"># flip: if True becomes False, if False becomes True</span>
 
@@ -2666,7 +2668,7 @@ The button uses a <strong>debounce</strong> timer. When you press a button, it c
 <span class="n">echo</span>    <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>    <span class="c1"># echo listens for the pulse to return</span>
 
 <span class="c1"># measure the distance in centimeters</span>
-<span class="k">def</span> <span class="nf">measure_distance</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">measure_distance</span><span class="p">():</span>
     <span class="n">trigger</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>                           <span class="c1"># make sure the trigger is off</span>
     <span class="n">utime</span><span class="o">.</span><span class="n">sleep_us</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>                       <span class="c1"># wait 2 microseconds</span>
     <span class="n">trigger</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>                          <span class="c1"># send a short sound pulse</span>

@@ -1894,6 +1894,8 @@
         
       
         
+      
+        
           
         
       
@@ -2701,7 +2703,7 @@ p[Pico]--&gt;|GP26 pin=26 ADC0 31 row=10| tap(Center Tap)
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">sample_pot</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">sample_pot</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
     <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">):</span>
         <span class="n">total</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">pin</span><span class="o">.</span><span class="n">read_u16</span><span class="p">())</span>

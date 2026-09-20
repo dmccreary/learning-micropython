@@ -546,6 +546,8 @@
         
       
         
+      
+        
           
         
       
@@ -886,6 +888,52 @@
           
         
       
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sht40-temp-display/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    SHT40 Smartwatch Display
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
         
       
         
@@ -983,7 +1031,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_12" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_13" checked>
         
           
           
@@ -999,14 +1047,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_12" id="__nav_6_12_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6_13" id="__nav_6_13_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_12_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_12">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_13">
             <span class="md-nav__icon md-icon"></span>
             Maker Pi RP2040 Robot
           </label>
@@ -2467,14 +2515,14 @@
 <span class="c1"># 2.0 ms : 135 degree</span>
 <span class="c1"># 2.5 ms : 180 degree</span>
 
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="n">SERVO_PIN</span> <span class="o">=</span> <span class="mi">15</span>
 <span class="n">servoPin</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">SERVO_PIN</span><span class="p">))</span>
 <span class="n">servoPin</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">servo</span><span class="p">(</span><span class="n">degrees</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">servo</span><span class="p">(</span><span class="n">degrees</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">degrees</span> <span class="o">&gt;</span> <span class="mi">180</span><span class="p">:</span> <span class="n">degrees</span><span class="o">=</span><span class="mi">180</span>
     <span class="k">if</span> <span class="n">degrees</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">degrees</span><span class="o">=</span><span class="mi">0</span>
     <span class="n">maxDuty</span><span class="o">=</span><span class="mi">8000</span> <span class="c1"># duty*100</span>
@@ -2951,16 +2999,16 @@
 <span class="normal">452</span>
 <span class="normal">453</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Demo for Maker Pi RP2040 board using Ping sensor, servo and i2c display</span>
 
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Timer</span>
-<span class="kn">import</span> <span class="nn">utime</span>
-<span class="kn">import</span> <span class="nn">urandom</span>
-<span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>
-<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">Neopixel</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
-<span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>
-<span class="kn">import</span> <span class="nn">framebuf</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">utime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Timer</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urandom</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ssd1306</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSD1306_I2C</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neopixel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Neopixel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ssd1306</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSD1306_I2C</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">framebuf</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
 <span class="c1">#</span>
 <span class="c1"># Ping Sensor</span>
 <span class="c1"># Use the Grove 4 Connector and put trigger on white and echo on yellow</span>
@@ -3055,27 +3103,27 @@
 <span class="c1"># Load the raspberry pi logo into the framebuffer (the image is 32x32)</span>
 <span class="n">fb</span> <span class="o">=</span> <span class="n">framebuf</span><span class="o">.</span><span class="n">FrameBuffer</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">framebuf</span><span class="o">.</span><span class="n">MONO_HLSB</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">blk</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">blk</span><span class="p">():</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">horiz</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>  <span class="c1"># left, right , top</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">horiz</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>  <span class="c1"># left, right , top</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">r</span><span class="o">-</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span>        <span class="c1"># Horizontal line</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="n">oled</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">l</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">vert</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>   <span class="c1"># left, top, bottom</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">vert</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>   <span class="c1"># left, top, bottom</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">b</span><span class="o">-</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span>        <span class="c1"># Vertical line</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
         <span class="n">oled</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">t</span><span class="o">+</span><span class="n">i</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">box</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>  <span class="c1"># left, top, right, bottom</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">box</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>  <span class="c1"># left, top, right, bottom</span>
     <span class="n">horiz</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>   <span class="c1"># Hollow rectangle</span>
     <span class="n">horiz</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
     <span class="n">vert</span><span class="p">(</span><span class="n">l</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
     <span class="n">vert</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">ring2</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span><span class="n">cy</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>   <span class="c1"># Centre (x,y), radius, colour</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ring2</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span><span class="n">cy</span><span class="p">,</span><span class="n">r</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>   <span class="c1"># Centre (x,y), radius, colour</span>
     <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>  <span class="c1"># 0 to 90 degrees in 2s</span>
         <span class="n">y3</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle</span><span class="p">)))</span>
         <span class="n">x3</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle</span><span class="p">)))</span>
@@ -3114,7 +3162,7 @@
 <span class="c1"># Back to the motor control stuff. (sorry... i'm soppy today)</span>
 <span class="c1"># </span>
 <span class="c1"># This function gets called every time the button is pressed.  The parameter "pin" is not used.</span>
-<span class="k">def</span> <span class="nf">button_pressed_handler</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">button_pressed_handler</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">mode</span><span class="p">,</span> <span class="n">last_time</span>
     <span class="n">new_time</span> <span class="o">=</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
     <span class="c1"># if it has been more that 1/5 of a second since the last event, we have a new event</span>
@@ -3153,7 +3201,7 @@
 <span class="n">left_reverse</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">LEFT_REVERSE_PIN</span><span class="p">))</span>
 
 <span class="c1"># returns distance in cm</span>
-<span class="k">def</span> <span class="nf">ping</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ping</span><span class="p">():</span>
     <span class="c1">#print('in ping')</span>
     <span class="n">trigger</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
     <span class="n">utime</span><span class="o">.</span><span class="n">sleep_us</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># Wait 2 microseconds low</span>
@@ -3171,38 +3219,38 @@
 
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">turn_motor_on</span><span class="p">(</span><span class="n">pwm</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_motor_on</span><span class="p">(</span><span class="n">pwm</span><span class="p">):</span>
    <span class="c1">#pwm.duty_u16(65025)</span>
    <span class="n">pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">16000</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">turn_motor_off</span><span class="p">(</span><span class="n">pwm</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_motor_off</span><span class="p">(</span><span class="n">pwm</span><span class="p">):</span>
    <span class="n">pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">forward</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">():</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">right_forward</span><span class="p">)</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">left_forward</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">right_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">left_reverse</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">reverse</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">reverse</span><span class="p">():</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">right_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">left_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">right_forward</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">left_forward</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">turn_right</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_right</span><span class="p">():</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">right_forward</span><span class="p">)</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">left_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">right_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">left_forward</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">turn_left</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_left</span><span class="p">():</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">right_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_on</span><span class="p">(</span><span class="n">left_forward</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">right_forward</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">left_reverse</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">stop</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">stop</span><span class="p">():</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">right_forward</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">right_reverse</span><span class="p">)</span>
     <span class="n">turn_motor_off</span><span class="p">(</span><span class="n">left_forward</span><span class="p">)</span>
@@ -3249,7 +3297,7 @@
    <span class="n">led_ports</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="n">blue_led_pins</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">))</span>
 
 <span class="n">LED_DELAY</span> <span class="o">=</span> <span class="mf">.08</span>
-<span class="k">def</span> <span class="nf">run_lights</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">run_lights</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">number_leds</span><span class="p">):</span>
         <span class="n">led_ports</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>
         <span class="n">strip</span><span class="o">.</span><span class="n">set_pixel</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
@@ -3266,7 +3314,7 @@
         <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">LED_DELAY</span><span class="p">)</span>
         <span class="n">led_ports</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">led_show_dist</span><span class="p">(</span><span class="n">in_distance</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">led_show_dist</span><span class="p">(</span><span class="n">in_distance</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">number_leds</span>
     <span class="k">for</span> <span class="n">led_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">number_leds</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">in_distance</span> <span class="o">&gt;</span> <span class="n">dist_scale</span><span class="p">[</span><span class="n">led_index</span><span class="p">]:</span>
@@ -3274,30 +3322,30 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">led_ports</span><span class="p">[</span><span class="n">led_index</span><span class="p">]</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">play_no_signal</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_no_signal</span><span class="p">():</span>
     <span class="n">playnote</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
     <span class="n">sound_off</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">play_turn</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_turn</span><span class="p">():</span>
     <span class="n">playnote</span><span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mf">.1</span><span class="p">)</span>
     <span class="n">sound_off</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">setfreq</span><span class="p">(</span><span class="n">frequency</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">setfreq</span><span class="p">(</span><span class="n">frequency</span><span class="p">):</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">playnote</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">playnote</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">time</span><span class="p">):</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
     <span class="n">setfreq</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>
     <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">sound_off</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sound_off</span><span class="p">():</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">rest</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">rest</span><span class="p">(</span><span class="n">time</span><span class="p">):</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">play_startup</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_startup</span><span class="p">():</span>
     <span class="n">playnote</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mf">.2</span><span class="p">)</span>
     <span class="n">rest</span><span class="p">(</span><span class="mf">.05</span><span class="p">)</span>
     <span class="n">playnote</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mf">.2</span><span class="p">)</span>
@@ -3307,7 +3355,7 @@
     <span class="n">playnote</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mf">.4</span><span class="p">)</span>
     <span class="n">sound_off</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">servo</span><span class="p">(</span><span class="n">degrees</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">servo</span><span class="p">(</span><span class="n">degrees</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">degrees</span> <span class="o">&gt;</span> <span class="mi">180</span><span class="p">:</span> <span class="n">degrees</span><span class="o">=</span><span class="mi">180</span>
     <span class="k">if</span> <span class="n">degrees</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">degrees</span><span class="o">=</span><span class="mi">0</span>
     <span class="n">maxDuty</span><span class="o">=</span><span class="mi">8000</span> <span class="c1"># duty*100</span>
@@ -3322,7 +3370,7 @@
 
 <span class="n">valid_distance</span> <span class="o">=</span> <span class="mi">1</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">valid_distance</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"running main()"</span><span class="p">)</span>
 

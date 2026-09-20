@@ -546,6 +546,8 @@
         
       
         
+      
+        
           
         
       
@@ -858,6 +860,52 @@
   
   <span class="md-ellipsis">
     SHT40 Temp and Humidity
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../kits/sht40-temp-display/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    SHT40 Smartwatch Display
   </span>
   
 
@@ -1283,7 +1331,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_19" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_20" checked>
         
           
           
@@ -1299,14 +1347,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_19" id="__nav_6_19_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6_20" id="__nav_6_20_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_19_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_19">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_20_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_20">
             <span class="md-nav__icon md-icon"></span>
             Spectrum Analyzer
           </label>
@@ -2641,12 +2689,12 @@
 <span class="normal">297</span>
 <span class="normal">298</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Sound Spectrum Analyzer with FFT - Optimized for MicroPython</span>
 <span class="c1"># Combines INMP441 I2S microphone with SSD1306 OLED display and performs FFT</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">struct</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">array</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">struct</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">array</span>
 
 <span class="c1"># OLED Display configuration</span>
 <span class="n">SCL</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># SPI Clock</span>
@@ -2693,7 +2741,7 @@
     <span class="n">hanning_window</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">i</span> <span class="o">/</span> <span class="p">(</span><span class="n">FFT_SIZE</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
 
 <span class="c1"># Precompute bit-reversal table - MicroPython compatible version</span>
-<span class="k">def</span> <span class="nf">bit_reverse</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">bits</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bit_reverse</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">bits</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">bits</span><span class="p">):</span>
         <span class="n">result</span> <span class="o">=</span> <span class="p">(</span><span class="n">result</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">n</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">)</span>
@@ -2713,7 +2761,7 @@
     <span class="n">twiddle_factors_real</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
     <span class="n">twiddle_factors_imag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">capture_audio_samples</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">capture_audio_samples</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Capture audio samples for FFT processing"""</span>
     <span class="c1"># For 32-bit samples, we need 4 bytes per sample</span>
     <span class="n">NUM_SAMPLE_BYTES</span> <span class="o">=</span> <span class="n">FFT_SIZE</span> <span class="o">*</span> <span class="mi">4</span>
@@ -2743,7 +2791,7 @@
 
     <span class="k">return</span> <span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">iterative_fft</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">iterative_fft</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Compute FFT in-place using an iterative algorithm"""</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">real</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">n</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">imag</span><span class="p">)</span>
@@ -2786,7 +2834,7 @@
 
     <span class="k">return</span> <span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">calculate_magnitudes</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_magnitudes</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Calculate magnitude spectrum from complex FFT result"""</span>
     <span class="c1"># Only need the first half due to symmetry for real input</span>
     <span class="n">mags</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'f'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">FFT_SIZE</span> <span class="o">//</span> <span class="mi">2</span><span class="p">))</span>
@@ -2803,7 +2851,7 @@
 
     <span class="k">return</span> <span class="n">mags</span>
 
-<span class="k">def</span> <span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">magnitudes</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">magnitudes</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Draw the frequency spectrum on the OLED display with focus on lower frequencies"""</span>
     <span class="c1"># Clear the display</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>

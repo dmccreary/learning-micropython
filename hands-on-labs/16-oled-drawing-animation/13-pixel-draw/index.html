@@ -1777,6 +1777,8 @@
         
       
         
+      
+        
           
         
       
@@ -2649,9 +2651,9 @@ The <code>scaled()</code> function converts one range of numbers to another. For
 <span class="normal">66</span>
 <span class="normal">67</span>
 <span class="normal">68</span>
-<span class="normal">69</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">ADC</span>   <span class="c1"># import Pin, SPI, and ADC tools</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>                       <span class="c1"># import the display driver</span>
-<span class="kn">import</span> <span class="nn">time</span>                          <span class="c1"># import the time library</span>
+<span class="normal">69</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span><span class="p">,</span> <span class="n">ADC</span>   <span class="c1"># import Pin, SPI, and ADC tools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>                       <span class="c1"># import the display driver</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>                          <span class="c1"># import the time library</span>
 
 <span class="c1"># scale a number from one range to another (like the Arduino map() function)</span>
 <span class="c1"># value  = the number to convert</span>
@@ -2659,7 +2661,7 @@ The <code>scaled()</code> function converts one range of numbers to another. For
 <span class="c1"># istop  = the high end of the input range</span>
 <span class="c1"># ostart = the low end of the output range</span>
 <span class="c1"># ostop  = the high end of the output range</span>
-<span class="k">def</span> <span class="nf">scaled</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">istart</span><span class="p">,</span> <span class="n">istop</span><span class="p">,</span> <span class="n">ostart</span><span class="p">,</span> <span class="n">ostop</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">scaled</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">istart</span><span class="p">,</span> <span class="n">istop</span><span class="p">,</span> <span class="n">ostart</span><span class="p">,</span> <span class="n">ostop</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">ostart</span> <span class="o">+</span> <span class="p">(</span><span class="n">ostop</span> <span class="o">-</span> <span class="n">ostart</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">-</span> <span class="n">istart</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">istop</span> <span class="o">-</span> <span class="n">istart</span><span class="p">)))</span>
 
 <span class="c1"># --- set up the SPI display connection ---</span>

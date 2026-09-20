@@ -1711,6 +1711,8 @@
         
       
         
+      
+        
           
         
       
@@ -2536,8 +2538,8 @@ In this lab, you will use an SH1106 OLED display with the Inter-Integrated Circu
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>   <span class="c1"># load Pin and I2C classes from the machine library</span>
-<span class="kn">import</span> <span class="nn">sh1106</span>                   <span class="c1"># load the SH1106 display driver</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>   <span class="c1"># load Pin and I2C classes from the machine library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sh1106</span>                   <span class="c1"># load the SH1106 display driver</span>
 
 <span class="n">sda</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>            <span class="c1"># data wire connected to GPIO pin 0</span>
 <span class="n">scl</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>            <span class="c1"># clock wire connected to GPIO pin 1</span>
@@ -2589,9 +2591,9 @@ Always call <code>display.fill(0)</code> before drawing new things. This clears 
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">utime</span>                       <span class="c1"># load the time library for pausing</span>
-<span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>   <span class="c1"># load the SSD1306 driver (works for the counter demo)</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>                       <span class="c1"># load the time library for pausing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ssd1306</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSD1306_I2C</span>   <span class="c1"># load the SSD1306 driver (works for the counter demo)</span>
 
 <span class="n">sda</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>               <span class="c1"># data wire on GPIO pin 0</span>
 <span class="n">scl</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>               <span class="c1"># clock wire on GPIO pin 1</span>
@@ -2648,9 +2650,9 @@ Always call <code>display.fill(0)</code> before drawing new things. This clears 
 <span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span>
-<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>    <span class="c1"># load Pin and I2C classes</span>
-<span class="kn">import</span> <span class="nn">sh1106</span>                    <span class="c1"># load SH1106 display driver</span>
-<span class="kn">import</span> <span class="nn">utime</span>                     <span class="c1"># load time library</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>    <span class="c1"># load Pin and I2C classes</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sh1106</span>                    <span class="c1"># load SH1106 display driver</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>                     <span class="c1"># load time library</span>
 
 <span class="n">sda</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>             <span class="c1"># data wire on GPIO pin 0</span>
 <span class="n">scl</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>             <span class="c1"># clock wire on GPIO pin 1</span>
@@ -2764,9 +2766,9 @@ Animation on a display works just like a flip-book. You draw a new image, show i
 <span class="normal">63</span>
 <span class="normal">64</span>
 <span class="normal">65</span>
-<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">utime</span>
-<span class="kn">import</span> <span class="nn">sh1106</span>      <span class="c1"># load the SH1106 display driver</span>
+<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sh1106</span>      <span class="c1"># load the SH1106 display driver</span>
 
 <span class="n">sda</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>             <span class="c1"># data wire on GPIO pin 0</span>
 <span class="n">scl</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>             <span class="c1"># clock wire on GPIO pin 1</span>
@@ -2781,14 +2783,14 @@ Animation on a display works just like a flip-book. You draw a new image, show i
 <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># clear screen to black</span>
 
 <span class="c1"># note that OLEDs have problems with screen burn in - don't leave this on too long!</span>
-<span class="k">def</span> <span class="nf">border</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">border</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">hline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>          <span class="c1"># draw top edge</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">hline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># draw bottom edge</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">vline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>          <span class="c1"># draw left edge</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">vline</span><span class="p">(</span><span class="n">width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># draw right edge</span>
 
 <span class="c1"># ok, not really a circle - just a square for now</span>
-<span class="k">def</span> <span class="nf">draw_ball</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_ball</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">size</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">size</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">oled</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>  <span class="c1"># draw a single pixel when size is 1</span>
     <span class="k">else</span><span class="p">:</span>

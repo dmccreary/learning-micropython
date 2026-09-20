@@ -2150,6 +2150,8 @@
         
       
         
+      
+        
           
         
       
@@ -3334,8 +3336,8 @@ I2S keeps the audio signal digital until it reaches the DAC chip. Keeping audio 
 <span class="normal">35</span>
 <span class="normal">36</span>
 <span class="normal">37</span>
-<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">SPI</span>  <span class="c1"># import Pin, I2S, and SPI classes</span>
-<span class="kn">import</span> <span class="nn">uos</span>                          <span class="c1"># import the operating-system module</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">SPI</span>  <span class="c1"># import Pin, I2S, and SPI classes</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">uos</span>                          <span class="c1"># import the operating-system module</span>
 
 <span class="c1"># Set up I2S for the DAC</span>
 <span class="n">audio_out</span> <span class="o">=</span> <span class="n">I2S</span><span class="p">(</span>
@@ -3357,7 +3359,7 @@ I2S keeps the audio signal digital until it reaches the DAC chip. Keeping audio 
 <span class="c1"># Set up the button with a pull-up resistor</span>
 <span class="n">button</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>  <span class="c1"># button reads LOW when pressed</span>
 
-<span class="k">def</span> <span class="nf">play_sound</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_sound</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Open a WAV file and play it through the I2S DAC."""</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">wav</span><span class="p">:</span>
         <span class="n">wav</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">44</span><span class="p">)</span>               <span class="c1"># skip past the 44-byte WAV file header</span>
@@ -3451,7 +3453,7 @@ Setting up I2S with an SD card can feel like a lot of steps. Take it one step at
 <span class="normal">27</span>
 <span class="normal">28</span>
 <span class="normal">29</span>
-<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span>     <span class="c1"># import I2S and Pin classes</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span>     <span class="c1"># import I2S and Pin classes</span>
 
 <span class="c1"># Set up I2S for the DAC</span>
 <span class="n">audio_out</span> <span class="o">=</span> <span class="n">I2S</span><span class="p">(</span>
@@ -3465,7 +3467,7 @@ Setting up I2S with an SD card can feel like a lot of steps. Take it one step at
     <span class="n">rate</span><span class="o">=</span><span class="mi">16000</span>                    <span class="c1"># must match the WAV file's sample rate</span>
 <span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">play_sound</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_sound</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Open a WAV file from flash and play it through the I2S DAC."""</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s2">"rb"</span><span class="p">)</span> <span class="k">as</span> <span class="n">wav</span><span class="p">:</span>

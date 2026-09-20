@@ -546,6 +546,8 @@
         
       
         
+      
+        
           
         
       
@@ -886,6 +888,52 @@
           
         
       
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../sht40-temp-display/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    SHT40 Smartwatch Display
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
         
       
         
@@ -1175,7 +1223,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_16" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_17" checked>
         
           
           
@@ -1191,14 +1239,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_16" id="__nav_6_16_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6_17" id="__nav_6_17_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_16_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_16">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_17_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_17">
             <span class="md-nav__icon md-icon"></span>
             NeoPixel
           </label>
@@ -2232,8 +2280,8 @@
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">rotary</span> <span class="kn">import</span> <span class="n">Rotary</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rotary</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rotary</span>
 
 <span class="n">ENCODER_A</span> <span class="o">=</span> <span class="mi">15</span>
 <span class="n">ENCODER_B</span> <span class="o">=</span> <span class="mi">14</span>
@@ -2355,10 +2403,10 @@
 <span class="normal">111</span>
 <span class="normal">112</span>
 <span class="normal">113</span>
-<span class="normal">114</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">rotary</span> <span class="kn">import</span> <span class="n">Rotary</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">ticks_ms</span>
-<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">NeoPixel</span>
+<span class="normal">114</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rotary</span><span class="w"> </span><span class="kn">import</span> <span class="n">Rotary</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">ticks_ms</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neopixel</span><span class="w"> </span><span class="kn">import</span> <span class="n">NeoPixel</span>
 
 <span class="n">NEOPIXEL_PIN</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">NUMBER_PIXELS</span> <span class="o">=</span> <span class="mi">12</span>
@@ -2377,7 +2425,7 @@
 
 <span class="n">button_presses</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># the count of times the button has been pressed</span>
 <span class="n">last_time</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># the last time we pressed the button</span>
-<span class="k">def</span> <span class="nf">button_pressed_handler</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">button_pressed_handler</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">button_presses</span><span class="p">,</span> <span class="n">last_time</span><span class="p">,</span> <span class="n">mode</span>
     <span class="n">new_time</span> <span class="o">=</span> <span class="n">ticks_ms</span><span class="p">()</span>
     <span class="c1"># if it has been more that 1/5 of a second since the last event, we have a new event</span>
@@ -2406,7 +2454,7 @@
 
 
 <span class="c1"># this function is called whenever the rotory is changed</span>
-<span class="k">def</span> <span class="nf">rotary_changed</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">rotary_changed</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">val</span><span class="p">,</span> <span class="n">button_press</span><span class="p">,</span> <span class="n">color_index</span>
     <span class="k">if</span> <span class="n">change</span> <span class="o">==</span> <span class="n">Rotary</span><span class="o">.</span><span class="n">ROT_CW</span><span class="p">:</span>
         <span class="n">val</span> <span class="o">=</span> <span class="n">val</span> <span class="o">+</span> <span class="mi">1</span>

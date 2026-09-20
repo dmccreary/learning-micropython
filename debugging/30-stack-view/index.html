@@ -1664,6 +1664,8 @@
         
       
         
+      
+        
           
         
       
@@ -2449,17 +2451,17 @@ you use the stack view.</p>
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">calculate_square</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">calculate_square</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span>
 
-<span class="k">def</span> <span class="nf">calculate_sum_of_squares</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_sum_of_squares</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
     <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
         <span class="n">square</span> <span class="o">=</span> <span class="n">calculate_square</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
         <span class="n">total</span> <span class="o">+=</span> <span class="n">square</span>
     <span class="k">return</span> <span class="n">total</span>
 
-<span class="k">def</span> <span class="nf">process_number_list</span><span class="p">(</span><span class="n">number_list</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">process_number_list</span><span class="p">(</span><span class="n">number_list</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">calculate_sum_of_squares</span><span class="p">(</span><span class="n">number_list</span><span class="p">)</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s2">"Sum of squares: </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">"</span>
 

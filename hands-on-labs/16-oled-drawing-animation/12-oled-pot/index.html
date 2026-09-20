@@ -1852,6 +1852,8 @@
         
       
         
+      
+        
           
         
       
@@ -2733,8 +2735,8 @@ In this lab, you will connect a potentiometer knob to your OLED display and draw
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>   <span class="c1"># import the hardware control library</span>
-<span class="kn">import</span> <span class="nn">utime</span>     <span class="c1"># import the time library</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>   <span class="c1"># import the hardware control library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>     <span class="c1"># import the time library</span>
 
 <span class="n">pot</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">ADC</span><span class="p">(</span><span class="mi">26</span><span class="p">)</span>   <span class="c1"># create an ADC object on GP26 (ADC0)</span>
 
@@ -2797,7 +2799,7 @@ The ADC gives you numbers from 0 to 65,535. That is 65,536 possible values (2 to
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>   <span class="c1"># import Pin and I2C tools</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>   <span class="c1"># import Pin and I2C tools</span>
 
 <span class="n">i2c</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                             <span class="c1"># create I2C on bus 0 with defaults</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Device found at decimal"</span><span class="p">,</span> <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">())</span>     <span class="c1"># print the device address</span>
@@ -2821,8 +2823,8 @@ I2C(0, freq=399361, scl=1, sda=0)
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
-<span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ssd1306</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSD1306_I2C</span>
 
 <span class="n">WIDTH</span>  <span class="o">=</span> <span class="mi">128</span>   <span class="c1"># display width in pixels</span>
 <span class="n">HEIGHT</span> <span class="o">=</span> <span class="mi">64</span>    <span class="c1"># display height in pixels</span>
@@ -2854,10 +2856,10 @@ I2C(0, freq=399361, scl=1, sda=0)
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
-<span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>
-<span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">utime</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ssd1306</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSD1306_I2C</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
 
 <span class="n">WIDTH</span>  <span class="o">=</span> <span class="mi">128</span>
 <span class="n">HEIGHT</span> <span class="o">=</span> <span class="mi">32</span>
@@ -2942,9 +2944,9 @@ Always call <code>oled.fill(0)</code> at the start of each loop. Without it, new
 <span class="normal">51</span>
 <span class="normal">52</span>
 <span class="normal">53</span>
-<span class="normal">54</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">utime</span>
-<span class="kn">import</span> <span class="nn">sh1106</span>    <span class="c1"># this example uses the SH1106 driver — swap for ssd1306 if needed</span>
+<span class="normal">54</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sh1106</span>    <span class="c1"># this example uses the SH1106 driver — swap for ssd1306 if needed</span>
 
 <span class="n">sda</span>     <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>        <span class="c1"># data wire</span>
 <span class="n">scl</span>     <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>        <span class="c1"># clock wire</span>
@@ -2963,18 +2965,18 @@ Always call <code>oled.fill(0)</code> at the start of each loop. Without it, new
 <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># clear to black</span>
 
 <span class="c1"># draw a border around the screen</span>
-<span class="k">def</span> <span class="nf">draw_border</span><span class="p">(</span><span class="n">screen_width</span><span class="p">,</span> <span class="n">screen_height</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_border</span><span class="p">(</span><span class="n">screen_width</span><span class="p">,</span> <span class="n">screen_height</span><span class="p">):</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">hline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>                <span class="n">screen_width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">)</span>  <span class="c1"># top edge</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">hline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">screen_height</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">screen_width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># bottom edge</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">vline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>                <span class="n">screen_height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># left edge</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">vline</span><span class="p">(</span><span class="n">screen_width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">screen_height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># right edge</span>
 
 <span class="c1"># scale a number from one range to another (like the Arduino map() function)</span>
-<span class="k">def</span> <span class="nf">valmap</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">istart</span><span class="p">,</span> <span class="n">istop</span><span class="p">,</span> <span class="n">ostart</span><span class="p">,</span> <span class="n">ostop</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">valmap</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">istart</span><span class="p">,</span> <span class="n">istop</span><span class="p">,</span> <span class="n">ostart</span><span class="p">,</span> <span class="n">ostop</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">ostart</span> <span class="o">+</span> <span class="p">(</span><span class="n">ostop</span> <span class="o">-</span> <span class="n">ostart</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="n">value</span> <span class="o">-</span> <span class="n">istart</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">istop</span> <span class="o">-</span> <span class="n">istart</span><span class="p">)))</span>
 
 <span class="c1"># draw a horizontal bar that fills from the left</span>
-<span class="k">def</span> <span class="nf">draw_horizontal_bar</span><span class="p">(</span><span class="n">bar_width</span><span class="p">,</span> <span class="n">bar_height</span><span class="p">,</span> <span class="n">pixel_color</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_horizontal_bar</span><span class="p">(</span><span class="n">bar_width</span><span class="p">,</span> <span class="n">bar_height</span><span class="p">,</span> <span class="n">pixel_color</span><span class="p">):</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                                          <span class="c1"># clear the screen</span>
     <span class="n">draw_border</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span>                            <span class="c1"># draw the border</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">bar_width</span><span class="p">,</span> <span class="n">bar_height</span><span class="p">,</span> <span class="n">pixel_color</span><span class="p">)</span>  <span class="c1"># draw the filled bar</span>

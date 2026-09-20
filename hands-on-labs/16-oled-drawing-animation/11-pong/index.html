@@ -1804,6 +1804,8 @@
         
       
         
+      
+        
           
         
       
@@ -2699,8 +2701,8 @@ A <strong>potentiometer</strong> is a knob with three legs. The two outside legs
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
-<span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ssd1306</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSD1306_I2C</span>
 
 <span class="n">WIDTH</span>  <span class="o">=</span> <span class="mi">128</span>   <span class="c1"># display width in pixels</span>
 <span class="n">HEIGHT</span> <span class="o">=</span> <span class="mi">64</span>    <span class="c1"># display height in pixels</span>
@@ -2889,11 +2891,11 @@ A <strong>potentiometer</strong> is a knob with three legs. The two outside legs
 <span class="normal">165</span>
 <span class="normal">166</span>
 <span class="normal">167</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Pong game on Raspberry Pi Pico with an OLED and two potentiometers</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">SPI</span>
-<span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">import</span> <span class="nn">random</span>              <span class="c1"># used to pick a random direction when the ball resets</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">SPI</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>              <span class="c1"># used to pick a random direction when the ball resets</span>
 
 <span class="c1"># set up SPI display connection</span>
 <span class="n">spi_sck</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>                                        <span class="c1"># SPI clock</span>
@@ -2935,7 +2937,7 @@ A <strong>potentiometer</strong> is a knob with three legs. The two outside legs
 <span class="n">ball_y_dir</span> <span class="o">=</span> <span class="mi">1</span>         <span class="c1"># ball moves down  (+1) or up   (-1)</span>
 
 <span class="c1"># play three rising tones on startup</span>
-<span class="k">def</span> <span class="nf">play_startup_sound</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_startup_sound</span><span class="p">():</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>   <span class="c1"># turn the speaker on at low volume</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">600</span><span class="p">)</span>        <span class="c1"># low note</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
@@ -2946,14 +2948,14 @@ A <strong>potentiometer</strong> is a knob with three legs. The two outside legs
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>      <span class="c1"># turn the speaker off</span>
 
 <span class="c1"># play a short beep when the ball hits a paddle</span>
-<span class="k">def</span> <span class="nf">play_bounce_sound</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_bounce_sound</span><span class="p">():</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">900</span><span class="p">)</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># play two tones when a player scores</span>
-<span class="k">def</span> <span class="nf">play_score_sound</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_score_sound</span><span class="p">():</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">600</span><span class="p">)</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
@@ -2962,11 +2964,11 @@ A <strong>potentiometer</strong> is a knob with three legs. The two outside legs
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># scale a number from one range to another (like the Arduino map() function)</span>
-<span class="k">def</span> <span class="nf">valmap</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">istart</span><span class="p">,</span> <span class="n">istop</span><span class="p">,</span> <span class="n">ostart</span><span class="p">,</span> <span class="n">ostop</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">valmap</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">istart</span><span class="p">,</span> <span class="n">istop</span><span class="p">,</span> <span class="n">ostart</span><span class="p">,</span> <span class="n">ostop</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">ostart</span> <span class="o">+</span> <span class="p">(</span><span class="n">ostop</span> <span class="o">-</span> <span class="n">ostart</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="n">value</span> <span class="o">-</span> <span class="n">istart</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">istop</span> <span class="o">-</span> <span class="n">istart</span><span class="p">)))</span>
 
 <span class="c1"># draw one paddle as a vertical filled rectangle</span>
-<span class="k">def</span> <span class="nf">draw_paddle</span><span class="p">(</span><span class="n">paddle_number</span><span class="p">,</span> <span class="n">paddle_center_y</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_paddle</span><span class="p">(</span><span class="n">paddle_number</span><span class="p">,</span> <span class="n">paddle_center_y</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">paddle_number</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">paddle_x</span> <span class="o">=</span> <span class="mi">0</span>               <span class="c1"># left paddle is at the left edge</span>
     <span class="k">else</span><span class="p">:</span>
@@ -2975,7 +2977,7 @@ A <strong>potentiometer</strong> is a knob with three legs. The two outside legs
     <span class="n">oled</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="n">paddle_x</span><span class="p">,</span> <span class="n">paddle_top_y</span><span class="p">,</span> <span class="n">PAD_WIDTH</span><span class="p">,</span> <span class="n">PAD_HEIGHT</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># draw filled rectangle</span>
 
 <span class="c1"># draw the ball as a small filled square</span>
-<span class="k">def</span> <span class="nf">draw_ball</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_ball</span><span class="p">():</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="n">ball_x</span><span class="p">,</span> <span class="n">ball_y</span><span class="p">,</span> <span class="n">BALL_SIZE</span><span class="p">,</span> <span class="n">BALL_SIZE</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 3x3 white square</span>
 
 <span class="c1"># --- main game loop ---</span>

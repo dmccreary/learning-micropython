@@ -1828,6 +1828,8 @@
         
       
         
+      
+        
           
         
       
@@ -2623,7 +2625,7 @@ In this lab your Pico W will get the exact time from the internet. It will keep 
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">ntptime</span>             <span class="c1"># the MicroPython library for Network Time Protocol</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ntptime</span>             <span class="c1"># the MicroPython library for Network Time Protocol</span>
 <span class="n">ntptime</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="s1">'us.pool.ntp.org'</span>  <span class="c1"># the address of an NTP time server</span>
 <span class="n">ntptime</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="mi">10</span>       <span class="c1"># wait up to 10 seconds for a response</span>
 <span class="n">ntptime</span><span class="o">.</span><span class="n">settime</span><span class="p">()</span>          <span class="c1"># ask the server for the time and set the internal clock</span>
@@ -2736,10 +2738,10 @@ UTC is the same everywhere on Earth. To get your local time, you subtract your t
 <span class="normal">91</span>
 <span class="normal">92</span>
 <span class="normal">93</span>
-<span class="normal">94</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">ntptime</span><span class="o">,</span> <span class="nn">network</span>               <span class="c1"># time and WiFi libraries</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">RTC</span>               <span class="c1"># Real-Time Clock module</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">sleep_ms</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">localtime</span><span class="p">,</span> <span class="n">mktime</span>
-<span class="kn">import</span> <span class="nn">config</span>                         <span class="c1"># your local WiFi credentials</span>
+<span class="normal">94</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ntptime</span><span class="o">,</span><span class="w"> </span><span class="nn">network</span>               <span class="c1"># time and WiFi libraries</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">RTC</span>               <span class="c1"># Real-Time Clock module</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">sleep_ms</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">localtime</span><span class="p">,</span> <span class="n">mktime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">config</span>                         <span class="c1"># your local WiFi credentials</span>
 
 <span class="c1"># set your time zone offset in hours from UTC (negative = behind UTC)</span>
 <span class="n">time_zone</span> <span class="o">=</span> <span class="o">-</span><span class="mi">6</span>  <span class="c1"># US Central time is 6 hours behind UTC</span>
@@ -2747,7 +2749,7 @@ UTC is the same everywhere on Earth. To get your local time, you subtract your t
 <span class="n">ntptime</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="s1">'us.pool.ntp.org'</span>     <span class="c1"># NTP server address</span>
 <span class="n">ntptime</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="mi">10</span>                  <span class="c1"># wait up to 10 seconds per attempt</span>
 
-<span class="k">def</span> <span class="nf">wifi_connect</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">wifi_connect</span><span class="p">():</span>
     <span class="n">wifi</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>    <span class="c1"># create WiFi object in station mode</span>
     <span class="n">wifi</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>                       <span class="c1"># power on the WiFi chip</span>
     <span class="n">wifi</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">pm</span> <span class="o">=</span> <span class="mh">0xa11140</span><span class="p">)</span>             <span class="c1"># disable WiFi sleep mode for reliability</span>
@@ -2767,7 +2769,7 @@ UTC is the same everywhere on Earth. To get your local time, you subtract your t
     <span class="n">sleep_ms</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>                           <span class="c1"># small delay to stabilize the connection</span>
     <span class="k">return</span> <span class="n">wifi</span>
 
-<span class="k">def</span> <span class="nf">is_daylight_saving_time</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_daylight_saving_time</span><span class="p">():</span>
     <span class="c1"># calculate whether Daylight Saving Time is currently in effect (US rules)</span>
     <span class="n">year</span><span class="p">,</span> <span class="n">weekday</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">localtime</span><span class="p">()[</span><span class="mi">6</span><span class="p">]</span>
     <span class="c1"># DST starts second Sunday in March at 2:00 AM</span>
@@ -2776,7 +2778,7 @@ UTC is the same everywhere on Earth. To get your local time, you subtract your t
     <span class="n">dst_end</span> <span class="o">=</span> <span class="n">mktime</span><span class="p">((</span><span class="n">year</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">weekday</span><span class="p">)</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">dst_start</span> <span class="o">&lt;=</span> <span class="n">time</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">dst_end</span>   <span class="c1"># return True if we are in DST right now</span>
 
-<span class="k">def</span> <span class="nf">set_rtc</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_rtc</span><span class="p">():</span>
     <span class="c1"># try up to 5 times to get the time from the NTP server</span>
     <span class="n">time_was_set</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">attempts</span> <span class="o">=</span> <span class="mi">0</span>
@@ -2816,7 +2818,7 @@ UTC is the same everywhere on Earth. To get your local time, you subtract your t
     <span class="nb">print</span><span class="p">(</span><span class="s1">'ERROR! Unable to update time from server!'</span><span class="p">)</span>
     <span class="k">return</span> <span class="kc">False</span>
 
-<span class="k">def</span> <span class="nf">update</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">():</span>
     <span class="c1"># connect to WiFi and sync the clock</span>
     <span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">wifi</span> <span class="o">=</span> <span class="n">wifi_connect</span><span class="p">()</span>

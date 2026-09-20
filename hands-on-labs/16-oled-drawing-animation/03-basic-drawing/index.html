@@ -1840,6 +1840,8 @@
         
       
         
+      
+        
           
         
       
@@ -2706,7 +2708,7 @@ Always call <code>oled.show()</code> after drawing. Without it, nothing appears 
 <p>Our display uses a chip called the <strong>SSD1306</strong>. The SSD1306 talks to the Pico over a two-wire connection called <strong>I2C (Inter-Integrated Circuit)</strong>. I2C uses one wire for a clock signal and one wire for data.</p>
 <p>Here is the code to set up the display:</p>
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>  <span class="c1"># import the display driver</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ssd1306</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSD1306_I2C</span>  <span class="c1"># import the display driver</span>
 <span class="n">oled</span> <span class="o">=</span> <span class="n">SSD1306_I2C</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">i2c</span><span class="p">)</span> <span class="c1"># create an oled object: 128 wide, 64 tall</span>
 </code></pre></div></td></tr></tbody></table></div>
 <p><strong>What each line does:</strong></p>
@@ -2798,8 +2800,8 @@ Always call <code>oled.show()</code> after drawing. Without it, nothing appears 
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>        <span class="c1"># import Pin and I2C tools</span>
-<span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>     <span class="c1"># import the display driver</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>        <span class="c1"># import Pin and I2C tools</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ssd1306</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSD1306_I2C</span>     <span class="c1"># import the display driver</span>
 
 <span class="c1"># set up the two I2C wires</span>
 <span class="n">sda</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                        <span class="c1"># data wire goes to GP0</span>
@@ -2835,7 +2837,7 @@ The display has a <strong>framebuffer</strong> — a region of memory that holds
 <h2 id="seeing-all-available-drawing-functions">Seeing All Available Drawing Functions</h2>
 <p>You can ask MicroPython to list every function a display object has. Use the <code>dir()</code> function to see the full list.</p>
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>   <span class="c1"># import the driver</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ssd1306</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSD1306_I2C</span>   <span class="c1"># import the driver</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">SSD1306_I2C</span><span class="p">))</span>           <span class="c1"># print all available functions</span>
 </code></pre></div></td></tr></tbody></table></div>
 <p>This prints:</p>
@@ -2927,7 +2929,7 @@ OLED screens can get <strong>burn-in</strong> if the same image stays on screen 
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">framebuf</span>                                           <span class="c1"># import the framebuffer tool</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">framebuf</span>                                           <span class="c1"># import the framebuffer tool</span>
 
 <span class="c1"># create a tiny 8x8 pixel drawing area</span>
 <span class="n">small_buf</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="mi">8</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">*</span> <span class="mi">1</span><span class="p">)</span>                        <span class="c1"># memory for an 8x8 image</span>

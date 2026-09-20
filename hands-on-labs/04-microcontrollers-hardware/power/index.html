@@ -1678,6 +1678,8 @@
         
       
         
+      
+        
           
         
       
@@ -2552,8 +2554,8 @@ Never connect 4 AA batteries directly to VSYS. Four AA batteries give 6 V total,
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>    <span class="c1"># import the machine module for hardware control</span>
-<span class="kn">import</span> <span class="nn">utime</span>      <span class="c1"># import utime for delays</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>    <span class="c1"># import the machine module for hardware control</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>      <span class="c1"># import utime for delays</span>
 
 <span class="n">led_onboard</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>  <span class="c1"># set up the onboard LED on GP25</span>
 <span class="n">usb_power</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>     <span class="c1"># set up GP24 to read USB power status</span>
@@ -2595,8 +2597,8 @@ Running on battery? You can use GP24 to check. When USB is disconnected, your pr
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>    <span class="c1"># import the hardware control tools</span>
-<span class="kn">import</span> <span class="nn">utime</span>      <span class="c1"># import the time tools</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>    <span class="c1"># import the hardware control tools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>      <span class="c1"># import the time tools</span>
 
 <span class="n">led_onboard</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>  <span class="c1"># set up the onboard LED</span>
 <span class="n">usb_power</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>     <span class="c1"># set up pin to read USB power</span>

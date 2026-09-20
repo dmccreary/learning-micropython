@@ -1770,6 +1770,8 @@
         
       
         
+      
+        
           
         
       
@@ -2755,8 +2757,8 @@ Three powerful input types in one chapter! Rotary encoders give your projects a 
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">utime</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
 
 <span class="n">clk</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
 <span class="n">dt</span>  <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_UP</span><span class="p">)</span>
@@ -2764,7 +2766,7 @@ Three powerful input types in one chapter! Rotary encoders give your projects a 
 <span class="n">position</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">last_clk</span> <span class="o">=</span> <span class="n">clk</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">encoder_isr</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">encoder_isr</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">position</span><span class="p">,</span> <span class="n">last_clk</span>
     <span class="n">current_clk</span> <span class="o">=</span> <span class="n">clk</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">current_clk</span> <span class="o">!=</span> <span class="n">last_clk</span> <span class="ow">and</span> <span class="n">current_clk</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -2790,7 +2792,7 @@ Three powerful input types in one chapter! Rotary encoders give your projects a 
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">rotary_irq_rp2</span> <span class="kn">import</span> <span class="n">RotaryIRQ</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">rotary_irq_rp2</span><span class="w"> </span><span class="kn">import</span> <span class="n">RotaryIRQ</span>
 
 <span class="n">r</span> <span class="o">=</span> <span class="n">RotaryIRQ</span><span class="p">(</span><span class="n">pin_num_clk</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">pin_num_dt</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
               <span class="n">min_val</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_val</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
@@ -2817,8 +2819,8 @@ Three powerful input types in one chapter! Rotary encoders give your projects a 
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">utime</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
 
 <span class="n">touch</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>   <span class="c1"># TTP223 output connected to GP16</span>
 
@@ -2850,8 +2852,8 @@ The TTP223 has two solder-bridge pads on the back. By default it is in toggle mo
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">array</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">array</span>
 
 <span class="c1"># Configure I2S for INMP441 microphone input</span>
 <span class="n">mic</span> <span class="o">=</span> <span class="n">I2S</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>
@@ -2876,7 +2878,7 @@ The TTP223 has two solder-bridge pads on the back. By default it is in toggle mo
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">array</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span><span class="o">,</span><span class="w"> </span><span class="nn">array</span>
 
 <span class="n">NUM_SAMPLES</span> <span class="o">=</span> <span class="mi">256</span>
 <span class="n">buf</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'l'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">NUM_SAMPLES</span><span class="p">)</span>   <span class="c1"># signed 32-bit integers</span>
@@ -2901,7 +2903,7 @@ The TTP223 has two solder-bridge pads on the back. By default it is in toggle mo
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Conceptual FFT usage (requires a micropython-ulab or micropython-fft library)</span>
-<span class="kn">import</span> <span class="nn">ulab.numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ulab.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">samples</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'h'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">512</span><span class="p">)</span>
 <span class="n">mic</span><span class="o">.</span><span class="n">readinto</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>

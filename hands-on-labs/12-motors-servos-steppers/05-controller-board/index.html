@@ -1765,6 +1765,8 @@
         
       
         
+      
+        
           
         
       
@@ -2699,8 +2701,8 @@ Make sure the battery pack <strong>positive (red)</strong> wire goes to VIN and 
 <span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
-<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="c1"># Set up Motor 1 — left motor</span>
 <span class="n">m1_direction</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>   <span class="c1"># direction pin: HIGH = forward, LOW = backward</span>
@@ -2712,14 +2714,14 @@ Make sure the battery pack <strong>positive (red)</strong> wire goes to VIN and 
 <span class="n">m2_speed</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">11</span><span class="p">))</span>          <span class="c1"># speed pin for motor 2</span>
 <span class="n">m2_speed</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>              <span class="c1"># same PWM frequency for smooth control</span>
 
-<span class="k">def</span> <span class="nf">drive_forward</span><span class="p">(</span><span class="n">motor_power</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">drive_forward</span><span class="p">(</span><span class="n">motor_power</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Drive both motors forward at the given speed (0 to 65535)."""</span>
     <span class="n">m1_direction</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>          <span class="c1"># motor 1 forward direction</span>
     <span class="n">m1_speed</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">motor_power</span><span class="p">)</span> <span class="c1"># motor 1 speed</span>
     <span class="n">m2_direction</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>          <span class="c1"># motor 2 forward direction</span>
     <span class="n">m2_speed</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">motor_power</span><span class="p">)</span> <span class="c1"># motor 2 speed</span>
 
-<span class="k">def</span> <span class="nf">stop_motors</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">stop_motors</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Stop both motors."""</span>
     <span class="n">m1_speed</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># duty cycle 0 = motor 1 stops</span>
     <span class="n">m2_speed</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># duty cycle 0 = motor 2 stops</span>
@@ -2772,7 +2774,7 @@ Try changing <code>49152</code> to smaller numbers like <code>32768</code> (50%)
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">drive_backward</span><span class="p">(</span><span class="n">motor_power</span><span class="p">):</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">drive_backward</span><span class="p">(</span><span class="n">motor_power</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Drive both motors backward at the given speed (0 to 65535)."""</span>
     <span class="n">m1_direction</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>          <span class="c1"># direction LOW means reverse</span>
     <span class="n">m1_speed</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">motor_power</span><span class="p">)</span> <span class="c1"># set motor 1 speed</span>

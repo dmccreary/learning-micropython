@@ -1961,6 +1961,8 @@
         
       
         
+      
+        
           
         
       
@@ -2724,9 +2726,9 @@ does this using the regular expression (re) function within MicroPython.</p>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">re</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
-<span class="k">def</span> <span class="nf">extract_gpio_pin</span><span class="p">(</span><span class="n">input_string</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_gpio_pin</span><span class="p">(</span><span class="n">input_string</span><span class="p">):</span>
     <span class="c1"># Use a regular expression to find the GPIO number</span>
     <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"GPIO(\d+)"</span><span class="p">,</span> <span class="n">input_string</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">match</span><span class="p">:</span>

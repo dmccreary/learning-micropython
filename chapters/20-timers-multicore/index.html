@@ -1770,6 +1770,8 @@
         
       
         
+      
+        
           
         
       
@@ -2714,7 +2716,7 @@ Real projects need to juggle multiple tasks at once. In this chapter you will le
     <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>      <span class="c1"># program is frozen here for 1 second</span>
 
 <span class="c1"># NON-BLOCKING — main loop runs freely</span>
-<span class="kn">import</span> <span class="nn">utime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
 <span class="n">last_blink</span> <span class="o">=</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
 
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
@@ -2732,7 +2734,7 @@ Real projects need to juggle multiple tasks at once. In this chapter you will le
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">utime</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
 
 <span class="n">start</span> <span class="o">=</span> <span class="n">utime</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
 <span class="c1"># ... do some work ...</span>
@@ -2781,9 +2783,9 @@ Real projects need to juggle multiple tasks at once. In this chapter you will le
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Timer</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Timer</span>
 
-<span class="k">def</span> <span class="nf">blink_callback</span><span class="p">(</span><span class="n">timer</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">blink_callback</span><span class="p">(</span><span class="n">timer</span><span class="p">):</span>
     <span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>   <span class="c1"># called automatically every 500 ms</span>
 
 <span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">()</span>
@@ -2800,7 +2802,7 @@ Real projects need to juggle multiple tasks at once. In this chapter you will le
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># One-shot: turn off after 3 seconds</span>
-<span class="k">def</span> <span class="nf">turn_off</span><span class="p">(</span><span class="n">timer</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">turn_off</span><span class="p">(</span><span class="n">timer</span><span class="p">):</span>
     <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">()</span>
@@ -2859,13 +2861,13 @@ Learning Objective: Students can explain why blocking code misses events and pre
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">_thread</span>
-<span class="kn">import</span> <span class="nn">utime</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">_thread</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
 
 <span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">blink_task</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">blink_task</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""This function runs on Core 1, continuously."""</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">led</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
@@ -2899,12 +2901,12 @@ Learning Objective: Students can explain why blocking code misses events and pre
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">_thread</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">_thread</span>
 
 <span class="n">data_ready</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">shared_value</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="k">def</span> <span class="nf">producer</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">producer</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">shared_value</span><span class="p">,</span> <span class="n">data_ready</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">shared_value</span> <span class="o">=</span> <span class="n">read_sensor</span><span class="p">()</span>    <span class="c1"># Core 1 writes</span>
@@ -2928,7 +2930,7 @@ Learning Objective: Students can explain why blocking code misses events and pre
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">gc</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>
 
 <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>                    <span class="c1"># run garbage collection now</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">gc</span><span class="o">.</span><span class="n">mem_free</span><span class="p">())</span>            <span class="c1"># bytes of heap memory available</span>

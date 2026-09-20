@@ -1962,6 +1962,8 @@
         
       
         
+      
+        
           
         
       
@@ -2892,8 +2894,8 @@
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
-<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 
 <span class="n">left</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">PULL_DOWN</span><span class="p">)</span>
@@ -2904,34 +2906,34 @@
 <span class="c1"># create a Pulse Width Modulation Object on this pin</span>
 <span class="n">speaker</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">SPEAKER_PIN</span><span class="p">))</span>
 
-<span class="k">def</span> <span class="nf">sound_off</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sound_off</span><span class="p">():</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">left_tone</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">left_tone</span><span class="p">():</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">300</span><span class="p">)</span> <span class="c1"># 1 Kilohertz</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">.5</span><span class="p">)</span> <span class="c1"># wait a 1/4 second</span>
     <span class="n">sound_off</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">center_tone</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">center_tone</span><span class="p">():</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">800</span><span class="p">)</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">.5</span><span class="p">)</span>
     <span class="n">sound_off</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">right_tone</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">right_tone</span><span class="p">():</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">.5</span><span class="p">)</span>
     <span class="n">sound_off</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">right_tone</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">right_tone</span><span class="p">():</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">800</span><span class="p">)</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">.25</span><span class="p">)</span>
     <span class="n">sound_off</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">forward_tone</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">forward_tone</span><span class="p">():</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">.1</span><span class="p">)</span>

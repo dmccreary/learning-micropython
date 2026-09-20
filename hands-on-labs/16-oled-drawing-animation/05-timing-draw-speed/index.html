@@ -1786,6 +1786,8 @@
         
       
         
+      
+        
           
         
       
@@ -2589,7 +2591,7 @@ In this lab, you will measure how long drawing functions take to run. This is a 
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">ticks_us</span>   <span class="c1"># import the microsecond timer</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">ticks_us</span>   <span class="c1"># import the microsecond timer</span>
 
 <span class="n">start</span> <span class="o">=</span> <span class="n">ticks_us</span><span class="p">()</span>           <span class="c1"># record the time before the function runs</span>
 <span class="n">my_function</span><span class="p">()</span>                <span class="c1"># run the function you want to time</span>
@@ -2676,11 +2678,11 @@ A microsecond is one millionth of a second. The Pico can do millions of operatio
 <span class="normal">55</span>
 <span class="normal">56</span>
 <span class="normal">57</span>
-<span class="normal">58</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">ticks_us</span>   <span class="c1"># import the timer and sleep</span>
-<span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="normal">58</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">ticks_us</span>   <span class="c1"># import the timer and sleep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
 
 <span class="c1"># display size in pixels</span>
 <span class="n">WIDTH</span>  <span class="o">=</span> <span class="mi">128</span>
@@ -2697,7 +2699,7 @@ A microsecond is one millionth of a second. The Pico can do millions of operatio
 <span class="n">oled</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_SPI</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">DC</span><span class="p">,</span> <span class="n">RES</span><span class="p">,</span> <span class="n">CS</span><span class="p">)</span>  <span class="c1"># create the display</span>
 
 <span class="c1"># Point Draw Method: walks around the circle edge using sine and cosine</span>
-<span class="k">def</span> <span class="nf">fast_circle</span><span class="p">(</span><span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fast_circle</span><span class="p">(</span><span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>                   <span class="c1"># step 2 degrees at a time</span>
         <span class="n">radians</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>                <span class="c1"># convert degrees to radians</span>
         <span class="n">pixel_x</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">center_x</span> <span class="o">+</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">radians</span><span class="p">))</span>  <span class="c1"># x position on the edge</span>
@@ -2705,7 +2707,7 @@ A microsecond is one millionth of a second. The Pico can do millions of operatio
         <span class="n">oled</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">pixel_x</span><span class="p">,</span> <span class="n">pixel_y</span><span class="p">,</span> <span class="n">color</span><span class="p">)</span>          <span class="c1"># turn that pixel on</span>
 
 <span class="c1"># Row Scanner Method: checks every pixel in a square around the circle</span>
-<span class="k">def</span> <span class="nf">circle</span><span class="p">(</span><span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">circle</span><span class="p">(</span><span class="n">center_x</span><span class="p">,</span> <span class="n">center_y</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
     <span class="n">inner_radius_sq</span> <span class="o">=</span> <span class="p">(</span><span class="n">radius</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>  <span class="c1"># square of the inner edge distance</span>
     <span class="n">outer_radius_sq</span> <span class="o">=</span> <span class="p">(</span><span class="n">radius</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>  <span class="c1"># square of the outer edge distance</span>
     <span class="n">x_min</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>   <span class="nb">int</span><span class="p">(</span><span class="n">center_x</span> <span class="o">-</span> <span class="n">radius</span><span class="p">))</span>      <span class="c1"># left bound (don't go off screen)</span>

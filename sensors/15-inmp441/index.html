@@ -2026,6 +2026,8 @@
         
       
         
+      
+        
           
         
       
@@ -3104,11 +3106,11 @@ eBay listing for under $3 (USD).</p>
 <span class="c1"># Based on Mike Teachman's micropython-i2s-examples</span>
 <span class="c1"># https://github.com/miketeachman/micropython-i2s-examples/tree/master</span>
 
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2S</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">struct</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2S</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">struct</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="c1"># I2S configuration for INMP441 microphone</span>
 <span class="n">SCK_PIN</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Serial Clock</span>
@@ -3135,7 +3137,7 @@ eBay listing for under $3 (USD).</p>
     <span class="n">ibuf</span><span class="o">=</span><span class="n">BUFFER_LENGTH_IN_BYTES</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">sound_level</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sound_level</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Capture audio and calculate sound level</span>
 
 <span class="sd">    Based on Mike Teachman's example but simplified for sound level monitoring.</span>
@@ -3213,11 +3215,11 @@ eBay listing for under $3 (USD).</p>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2S</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">struct</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2S</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">struct</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 </code></pre></div></td></tr></tbody></table></div>
 <p>These are like tool kits the program needs:
 - <code>machine.I2S</code> and <code>machine.Pin</code> connect with the microphone hardware
@@ -3281,7 +3283,7 @@ eBay listing for under $3 (USD).</p>
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">sound_level</span><span class="p">():</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">sound_level</span><span class="p">():</span>
     <span class="c1"># Number of samples to read each time</span>
     <span class="n">NUM_SAMPLE_BYTES</span> <span class="o">=</span> <span class="mi">2048</span>
 

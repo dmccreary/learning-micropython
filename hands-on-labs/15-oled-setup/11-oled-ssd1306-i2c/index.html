@@ -1813,6 +1813,8 @@
         
       
         
+      
+        
           
         
       
@@ -2732,8 +2734,8 @@ In this lab, you will use the SSD1306 — the most popular OLED display chip. Yo
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>   <span class="c1"># load the SSD1306 I2C display driver</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ssd1306</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSD1306_I2C</span>   <span class="c1"># load the SSD1306 I2C display driver</span>
 
 <span class="n">sda</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>               <span class="c1"># data wire connected to GPIO pin 0</span>
 <span class="n">scl</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>               <span class="c1"># clock wire connected to GPIO pin 1</span>
@@ -2781,8 +2783,8 @@ In this lab, you will use the SSD1306 — the most popular OLED display chip. Yo
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>   <span class="c1"># load Pin and I2C from the machine library</span>
-<span class="kn">import</span> <span class="nn">sh1106</span>                   <span class="c1"># load the SH1106 display driver</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>   <span class="c1"># load Pin and I2C from the machine library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sh1106</span>                   <span class="c1"># load the SH1106 display driver</span>
 
 <span class="n">sda</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>            <span class="c1"># data wire on GPIO pin 0</span>
 <span class="n">scl</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>            <span class="c1"># clock wire on GPIO pin 1</span>
@@ -2822,9 +2824,9 @@ In this lab, you will use the SSD1306 — the most popular OLED display chip. Yo
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">utime</span>                         <span class="c1"># load the time library for pausing</span>
-<span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>     <span class="c1"># load the SSD1306 driver</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>                         <span class="c1"># load the time library for pausing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ssd1306</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSD1306_I2C</span>     <span class="c1"># load the SSD1306 driver</span>
 
 <span class="n">sda</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                 <span class="c1"># data wire on GPIO pin 0</span>
 <span class="n">scl</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                 <span class="c1"># clock wire on GPIO pin 1</span>
@@ -2880,9 +2882,9 @@ In this lab, you will use the SSD1306 — the most popular OLED display chip. Yo
 <span class="normal">28</span>
 <span class="normal">29</span>
 <span class="normal">30</span>
-<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>   <span class="c1"># load Pin and I2C</span>
-<span class="kn">import</span> <span class="nn">sh1106</span>                   <span class="c1"># load SH1106 driver</span>
-<span class="kn">import</span> <span class="nn">utime</span>                    <span class="c1"># load time library</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>   <span class="c1"># load Pin and I2C</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sh1106</span>                   <span class="c1"># load SH1106 driver</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>                    <span class="c1"># load time library</span>
 
 <span class="n">sda</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>            <span class="c1"># data wire on GPIO pin 0</span>
 <span class="n">scl</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>            <span class="c1"># clock wire on GPIO pin 1</span>
@@ -3030,10 +3032,10 @@ spi_rx  = machine.Pin(4)
 <span class="normal">28</span>
 <span class="normal">29</span>
 <span class="normal">30</span>
-<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">machine</span>     <span class="c1"># loaded twice here — you only need it once</span>
-<span class="kn">import</span> <span class="nn">utime</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>     <span class="c1"># loaded twice here — you only need it once</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
 <span class="n">led</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>  <span class="c1"># built-in LED on the Pico board</span>
 
 <span class="n">spi_sck</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>               <span class="c1"># SPI clock wire on GPIO pin 6</span>

@@ -1786,6 +1786,8 @@
         
       
         
+      
+        
           
         
       
@@ -2681,8 +2683,8 @@ In this lab, you will connect an SSD1306 OLED display using the Serial Periphera
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_SPI</span>   <span class="c1"># load the SSD1306 SPI display driver</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ssd1306</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSD1306_SPI</span>   <span class="c1"># load the SSD1306 SPI display driver</span>
 
 <span class="c1"># default is data (MOSI) on GP7 and clock (sck) on GP6</span>
 <span class="n">spi</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># create SPI bus using default pins</span>
@@ -2788,9 +2790,9 @@ SPI uses five signal wires: Clock, Data, Chip Select, Data/Command, and Reset. E
 <span class="normal">28</span>
 <span class="normal">29</span>
 <span class="normal">30</span>
-<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">utime</span>     <span class="c1"># load the time library for pausing</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>   <span class="c1"># load the SSD1306 display driver</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>     <span class="c1"># load the time library for pausing</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>   <span class="c1"># load the SSD1306 display driver</span>
 
 <span class="n">led</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>  <span class="c1"># set up the built-in LED on the Pico</span>
 

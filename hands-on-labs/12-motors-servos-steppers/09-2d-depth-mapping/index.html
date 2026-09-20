@@ -540,6 +540,8 @@
         
       
         
+      
+        
           
         
       
@@ -1474,8 +1476,8 @@ Servo motors can draw a lot of current. Power them from VBUS (5V from USB), not 
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">VL53L0X</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">VL53L0X</span>
 
 <span class="c1"># Set up I2C for the distance sensor</span>
 <span class="n">sda</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -1491,7 +1493,7 @@ Servo motors can draw a lot of current. Power them from VBUS (5V from USB), not 
 <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">dist</span> <span class="o">=</span> <span class="n">tof</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>                    <span class="c1"># read distance in millimeters</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Distance:"</span><span class="p">,</span> <span class="n">dist</span><span class="p">,</span> <span class="s2">"mm"</span><span class="p">)</span>
-    <span class="kn">import</span> <span class="nn">time</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
 </code></pre></div></td></tr></tbody></table></div>
 <p>Hold your hand at different distances from the sensor. You should see values change smoothly.</p>
@@ -1524,8 +1526,8 @@ Servo motors can draw a lot of current. Power them from VBUS (5V from USB), not 
 <span class="normal">25</span>
 <span class="normal">26</span>
 <span class="normal">27</span>
-<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="c1"># Set up both servo PWM signals at 50 Hz (the standard servo frequency)</span>
 <span class="n">horizontal</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">14</span><span class="p">))</span>
@@ -1625,10 +1627,10 @@ Servo positions differ between motors and brackets. Start with small ranges and 
 <span class="normal">62</span>
 <span class="normal">63</span>
 <span class="normal">64</span>
-<span class="normal">65</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">VL53L0X</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">65</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">VL53L0X</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="c1"># Set up the distance sensor</span>
 <span class="n">sda</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -1654,7 +1656,7 @@ Servo positions differ between motors and brackets. Start with small ranges and 
 <span class="n">V_DELAY</span> <span class="o">=</span> <span class="mf">0.04</span>          <span class="c1"># wait time (seconds) after moving vertical servo</span>
 <span class="n">UP_DELAY</span> <span class="o">=</span> <span class="mf">0.01</span>         <span class="c1"># fast return delay when resetting vertical position</span>
 
-<span class="k">def</span> <span class="nf">read_distance</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_distance</span><span class="p">():</span>
     <span class="n">dist</span> <span class="o">=</span> <span class="n">tof</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="o">-</span> <span class="mi">20</span>            <span class="c1"># subtract 20 mm sensor offset</span>
     <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dist</span><span class="p">)</span>               <span class="c1"># never return a negative distance</span>
 

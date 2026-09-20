@@ -1816,6 +1816,8 @@
         
       
         
+      
+        
           
         
       
@@ -2726,7 +2728,7 @@ Make sure you connect SDA to GP0 and SCL to GP1. Swapping these two wires is a v
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>   <span class="c1"># import machine so we can use the I2C bus</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>   <span class="c1"># import machine so we can use the I2C bus</span>
 
 <span class="n">I2C_SDA_PIN</span> <span class="o">=</span> <span class="mi">0</span>   <span class="c1"># SDA is on GP0</span>
 <span class="n">I2C_SCL_PIN</span> <span class="o">=</span> <span class="mi">1</span>   <span class="c1"># SCL is on GP1</span>
@@ -2806,9 +2808,9 @@ The I2C address is like a house number on a street. The Pico sends a message to 
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>       <span class="c1"># import I2C and Pin</span>
-<span class="kn">from</span> <span class="nn">lcd_api</span> <span class="kn">import</span> <span class="n">LcdApi</span>         <span class="c1"># import the base LCD API library</span>
-<span class="kn">from</span> <span class="nn">pico_i2c_lcd</span> <span class="kn">import</span> <span class="n">I2cLcd</span>    <span class="c1"># import the Pico-specific I2C LCD driver</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>       <span class="c1"># import I2C and Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lcd_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">LcdApi</span>         <span class="c1"># import the base LCD API library</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pico_i2c_lcd</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2cLcd</span>    <span class="c1"># import the Pico-specific I2C LCD driver</span>
 
 <span class="n">I2C_ADDR</span>     <span class="o">=</span> <span class="mh">0x27</span>   <span class="c1"># the I2C address found by the scanner</span>
 <span class="n">I2C_NUM_ROWS</span> <span class="o">=</span> <span class="mi">2</span>      <span class="c1"># the screen has 2 rows</span>
@@ -2938,17 +2940,17 @@ The I2C address is like a house number on a street. The Pico sends a message to 
 <span class="normal">80</span>
 <span class="normal">81</span>
 <span class="normal">82</span>
-<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">utime</span>                        <span class="c1"># import utime for sleep and localtime</span>
-<span class="kn">import</span> <span class="nn">machine</span>                      <span class="c1"># import machine for Pin</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span>             <span class="c1"># import I2C for the bus</span>
-<span class="kn">from</span> <span class="nn">lcd_api</span> <span class="kn">import</span> <span class="n">LcdApi</span>          <span class="c1"># import the base LCD library</span>
-<span class="kn">from</span> <span class="nn">pico_i2c_lcd</span> <span class="kn">import</span> <span class="n">I2cLcd</span>    <span class="c1"># import the Pico I2C LCD driver</span>
+<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>                        <span class="c1"># import utime for sleep and localtime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>                      <span class="c1"># import machine for Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2C</span>             <span class="c1"># import I2C for the bus</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">lcd_api</span><span class="w"> </span><span class="kn">import</span> <span class="n">LcdApi</span>          <span class="c1"># import the base LCD library</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pico_i2c_lcd</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2cLcd</span>    <span class="c1"># import the Pico I2C LCD driver</span>
 
 <span class="n">I2C_ADDR</span>     <span class="o">=</span> <span class="mh">0x27</span>   <span class="c1"># LCD I2C address</span>
 <span class="n">I2C_NUM_ROWS</span> <span class="o">=</span> <span class="mi">2</span>      <span class="c1"># 2 rows</span>
 <span class="n">I2C_NUM_COLS</span> <span class="o">=</span> <span class="mi">16</span>     <span class="c1"># 16 columns per row</span>
 
-<span class="k">def</span> <span class="nf">test_main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_main</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Run through all the LCD display options to test the screen."""</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Running test_main"</span><span class="p">)</span>
 

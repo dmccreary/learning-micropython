@@ -540,6 +540,8 @@
         
       
         
+      
+        
           
         
       
@@ -1560,10 +1562,10 @@ You are about to write a real video game! Pong is the classic table tennis game 
 <span class="normal">135</span>
 <span class="normal">136</span>
 <span class="normal">137</span>
-<span class="normal">138</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">ADC</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">import</span> <span class="nn">random</span>
+<span class="normal">138</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">ADC</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
 
 <span class="c1"># --- Display setup ---</span>
 <span class="n">i2c</span>  <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
@@ -1601,13 +1603,13 @@ You are about to write a real video game! Pong is the classic table tennis game 
 <span class="n">l_score</span> <span class="o">=</span> <span class="mi">0</span>                 <span class="c1"># left (player 1) score</span>
 <span class="n">r_score</span> <span class="o">=</span> <span class="mi">0</span>                 <span class="c1"># right (player 2) score</span>
 
-<span class="k">def</span> <span class="nf">play_bounce_sound</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_bounce_sound</span><span class="p">():</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">900</span><span class="p">)</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">0.03</span><span class="p">)</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">play_score_sound</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_score_sound</span><span class="p">():</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">600</span><span class="p">)</span>
     <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
@@ -1615,11 +1617,11 @@ You are about to write a real video game! Pong is the classic table tennis game 
     <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
     <span class="n">speaker</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">valmap</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">in_min</span><span class="p">,</span> <span class="n">in_max</span><span class="p">,</span> <span class="n">out_min</span><span class="p">,</span> <span class="n">out_max</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">valmap</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">in_min</span><span class="p">,</span> <span class="n">in_max</span><span class="p">,</span> <span class="n">out_min</span><span class="p">,</span> <span class="n">out_max</span><span class="p">):</span>
     <span class="c1"># Scale a value from one range to another (like Arduino's map() function)</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">out_min</span> <span class="o">+</span> <span class="p">(</span><span class="n">out_max</span> <span class="o">-</span> <span class="n">out_min</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="n">value</span> <span class="o">-</span> <span class="n">in_min</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">in_max</span> <span class="o">-</span> <span class="n">in_min</span><span class="p">)))</span>
 
-<span class="k">def</span> <span class="nf">read_paddles</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_paddles</span><span class="p">():</span>
     <span class="c1"># Read both potentiometers and convert to Y positions on screen</span>
     <span class="n">raw1</span> <span class="o">=</span> <span class="n">pot1</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
     <span class="n">raw2</span> <span class="o">=</span> <span class="n">pot2</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
@@ -1627,12 +1629,12 @@ You are about to write a real video game! Pong is the classic table tennis game 
     <span class="n">y2</span> <span class="o">=</span> <span class="n">valmap</span><span class="p">(</span><span class="n">raw2</span><span class="p">,</span> <span class="n">POT_MIN</span><span class="p">,</span> <span class="n">POT_MAX</span><span class="p">,</span> <span class="n">HALF_PAD_H</span><span class="p">,</span> <span class="n">HEIGHT</span> <span class="o">-</span> <span class="n">HALF_PAD_H</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span>
 
-<span class="k">def</span> <span class="nf">draw_paddle</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">center_y</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_paddle</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="n">center_y</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">player</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="n">WIDTH</span> <span class="o">-</span> <span class="n">PAD_W</span>        <span class="c1"># left or right side</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">center_y</span> <span class="o">-</span> <span class="n">HALF_PAD_H</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill_rect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">PAD_W</span><span class="p">,</span> <span class="n">PAD_H</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>         <span class="c1"># draw a filled rectangle</span>
 
-<span class="k">def</span> <span class="nf">reset_ball</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">reset_ball</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">ball_x</span><span class="p">,</span> <span class="n">ball_y</span><span class="p">,</span> <span class="n">ball_x_dir</span><span class="p">,</span> <span class="n">ball_y_dir</span>
     <span class="n">ball_x</span> <span class="o">=</span> <span class="n">WIDTH</span>  <span class="o">//</span> <span class="mi">2</span>
     <span class="n">ball_y</span> <span class="o">=</span> <span class="n">HEIGHT</span> <span class="o">//</span> <span class="mi">2</span>

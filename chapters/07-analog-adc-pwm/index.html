@@ -1770,6 +1770,8 @@
         
       
         
+      
+        
           
         
       
@@ -2776,7 +2778,7 @@ The real world is not made of just ones and zeros — it has shades of brightnes
 <p>Import <code>ADC</code> from <code>machine</code>, then create an ADC object using the GPIO pin number:</p>
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADC</span>
 
 <span class="n">pot</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">26</span><span class="p">)</span>   <span class="c1"># potentiometer on GP26 (ADC channel 0)</span>
 </code></pre></div></td></tr></tbody></table></div>
@@ -2815,7 +2817,7 @@ The real world is not made of just ones and zeros — it has shades of brightnes
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADC</span>
 
 <span class="n">pot</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">26</span><span class="p">)</span>
 
@@ -2848,7 +2850,7 @@ The real world is not made of just ones and zeros — it has shades of brightnes
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADC</span>
 
 <span class="n">ldr</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">27</span><span class="p">)</span>     <span class="c1"># LDR voltage divider on GP27</span>
 
@@ -2913,7 +2915,7 @@ Duty cycle 90%:   ▌▌▌▌▌▌▌▌▌  ▌  (LED nearly full brightness)
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
 
 <span class="c1"># Wrap an output pin in a PWM object</span>
 <span class="n">pwm_led</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
@@ -2934,7 +2936,7 @@ Duty cycle 90%:   ▌▌▌▌▌▌▌▌▌  ▌  (LED nearly full brightness)
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">PWM</span>
 
 <span class="n">pot</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">26</span><span class="p">)</span>
 <span class="n">led</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
@@ -2958,8 +2960,8 @@ Duty cycle 90%:   ▌▌▌▌▌▌▌▌▌  ▌  (LED nearly full brightness)
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">import</span> <span class="nn">utime</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
 
 <span class="n">led</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>   <span class="c1"># onboard LED</span>
 <span class="n">led</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
@@ -2989,12 +2991,12 @@ Duty cycle 90%:   ▌▌▌▌▌▌▌▌▌  ▌  (LED nearly full brightness)
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
 
 <span class="n">servo</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
 <span class="n">servo</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>    <span class="c1"># MUST be 50 Hz for servos</span>
 
-<span class="k">def</span> <span class="nf">set_angle</span><span class="p">(</span><span class="n">degrees</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_angle</span><span class="p">(</span><span class="n">degrees</span><span class="p">):</span>
     <span class="n">min_duty</span> <span class="o">=</span> <span class="mi">3277</span>   <span class="c1"># 1 ms pulse = 0 degrees</span>
     <span class="n">max_duty</span> <span class="o">=</span> <span class="mi">6554</span>   <span class="c1"># 2 ms pulse = 180 degrees</span>
     <span class="n">duty</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">min_duty</span> <span class="o">+</span> <span class="p">(</span><span class="n">max_duty</span> <span class="o">-</span> <span class="n">min_duty</span><span class="p">)</span> <span class="o">*</span> <span class="n">degrees</span> <span class="o">/</span> <span class="mi">180</span><span class="p">)</span>

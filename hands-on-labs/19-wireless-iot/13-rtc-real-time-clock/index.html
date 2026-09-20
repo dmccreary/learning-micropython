@@ -540,6 +540,8 @@
         
       
         
+      
+        
           
         
       
@@ -1430,8 +1432,8 @@ To keep time when unplugged, you need an external RTC module with its own small 
 <span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">RTC</span>         <span class="c1"># import the Real-Time Clock module</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">RTC</span>         <span class="c1"># import the Real-Time Clock module</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="c1"># Create an RTC object</span>
 <span class="n">rtc</span> <span class="o">=</span> <span class="n">RTC</span><span class="p">()</span>
@@ -1489,8 +1491,8 @@ To keep time when unplugged, you need an external RTC module with its own small 
 <span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">RTC</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">RTC</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="n">rtc</span> <span class="o">=</span> <span class="n">RTC</span><span class="p">()</span>
 
@@ -1557,9 +1559,9 @@ To keep time when unplugged, you need an external RTC module with its own small 
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">RTC</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">RTC</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
 
 <span class="c1"># Set up the OLED display</span>
 <span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
@@ -1651,16 +1653,16 @@ Put a call to <code>rtc.datetime(...)</code> with today's actual date and time a
 <span class="normal">49</span>
 <span class="normal">50</span>
 <span class="normal">51</span>
-<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">ntptime</span><span class="o">,</span> <span class="nn">network</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">RTC</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">sleep_ms</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">localtime</span>
-<span class="kn">import</span> <span class="nn">config</span>                            <span class="c1"># your WiFi credentials file</span>
+<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ntptime</span><span class="o">,</span><span class="w"> </span><span class="nn">network</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">RTC</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">sleep_ms</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">localtime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">config</span>                            <span class="c1"># your WiFi credentials file</span>
 
 <span class="n">TIME_ZONE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">6</span>                           <span class="c1"># hours offset from UTC (US Central = -6)</span>
 
 <span class="n">rtc</span> <span class="o">=</span> <span class="n">RTC</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">connect_wifi</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">connect_wifi</span><span class="p">():</span>
     <span class="n">wifi</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>
     <span class="n">wifi</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">wifi</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">wifi_ssid</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">wifi_pass</span><span class="p">)</span>
@@ -1673,7 +1675,7 @@ Put a call to <code>rtc.datetime(...)</code> with today's actual date and time a
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Could not connect to WiFi"</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">wifi</span>
 
-<span class="k">def</span> <span class="nf">sync_rtc_from_ntp</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sync_rtc_from_ntp</span><span class="p">():</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">ntptime</span><span class="o">.</span><span class="n">settime</span><span class="p">()</span>               <span class="c1"># set the Pico's clock to UTC from NTP</span>
         <span class="n">sleep_ms</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>

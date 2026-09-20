@@ -1912,6 +1912,8 @@
         
       
         
+      
+        
           
         
       
@@ -2740,8 +2742,8 @@
 <span class="c1"># Connect GND to any GND pin on the Pico</span>
 <span class="c1"># Connnect VCC to VBUS or 5 Volt power</span>
 
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">Timer</span>
-<span class="kn">import</span> <span class="nn">utime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">Timer</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
 
 <span class="n">TRIGGER_PIN</span> <span class="o">=</span> <span class="mi">15</span> <span class="c1"># With USB on the top, this pin is the bottom left corner</span>
 <span class="n">ECHO_PIN</span> <span class="o">=</span> <span class="mi">14</span> <span class="c1"># One up from bottom left corner</span>
@@ -2750,7 +2752,7 @@
 <span class="n">trigger</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">TRIGGER_PIN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span> <span class="c1"># send trigger out to sensor</span>
 <span class="n">echo</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">ECHO_PIN</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span> <span class="c1"># get the delay interval back</span>
 
-<span class="k">def</span> <span class="nf">ping</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ping</span><span class="p">():</span>
     <span class="n">trigger</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
     <span class="n">utime</span><span class="o">.</span><span class="n">sleep_us</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># Wait 2 microseconds low</span>
     <span class="n">trigger</span><span class="o">.</span><span class="n">high</span><span class="p">()</span>

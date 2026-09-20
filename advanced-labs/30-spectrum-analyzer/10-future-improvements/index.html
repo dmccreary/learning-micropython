@@ -546,6 +546,8 @@
         
       
         
+      
+        
           
         
       
@@ -858,6 +860,52 @@
   
   <span class="md-ellipsis">
     SHT40 Temp and Humidity
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../kits/sht40-temp-display/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    SHT40 Smartwatch Display
   </span>
   
 
@@ -1283,7 +1331,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_19" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_20" checked>
         
           
           
@@ -1299,14 +1347,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_19" id="__nav_6_19_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6_20" id="__nav_6_20_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_19_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_19">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_20_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_20">
             <span class="md-nav__icon md-icon"></span>
             Spectrum Analyzer
           </label>
@@ -2626,10 +2674,10 @@ vfms(s10, s13, s15)     # s10 = ax - (by)
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">array</span>
-<span class="kn">import</span> <span class="nn">math</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">array</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
 
-<span class="k">def</span> <span class="nf">generate_sine</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">sample_rate</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_sine</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">sample_rate</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Generate a sine wave of specified frequency"""</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'f'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">length</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
@@ -2646,7 +2694,7 @@ vfms(s10, s13, s15)     # s10 = ax - (by)
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">generate_composite</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">frequencies</span><span class="p">,</span> <span class="n">amplitudes</span><span class="p">,</span> <span class="n">sample_rate</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_composite</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">frequencies</span><span class="p">,</span> <span class="n">amplitudes</span><span class="p">,</span> <span class="n">sample_rate</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Generate a signal with multiple frequency components"""</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'f'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">length</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">length</span><span class="p">):</span>
@@ -2679,7 +2727,7 @@ vfms(s10, s13, s15)     # s10 = ax - (by)
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">test_fft_implementation</span><span class="p">(</span><span class="n">fft_function</span><span class="p">,</span> <span class="n">test_data</span><span class="p">,</span> <span class="n">expected_peaks</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">test_fft_implementation</span><span class="p">(</span><span class="n">fft_function</span><span class="p">,</span> <span class="n">test_data</span><span class="p">,</span> <span class="n">expected_peaks</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Test an FFT implementation against known data"""</span>
     <span class="c1"># Copy the data (so original isn't modified)</span>
     <span class="n">data_copy</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'f'</span><span class="p">,</span> <span class="n">test_data</span><span class="p">)</span>
@@ -2704,7 +2752,7 @@ vfms(s10, s13, s15)     # s10 = ax - (by)
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">compare_implementations</span><span class="p">(</span><span class="n">original_fft</span><span class="p">,</span> <span class="n">modified_fft</span><span class="p">,</span> <span class="n">test_cases</span><span class="p">):</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">compare_implementations</span><span class="p">(</span><span class="n">original_fft</span><span class="p">,</span> <span class="n">modified_fft</span><span class="p">,</span> <span class="n">test_cases</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Compare performance of two FFT implementations"""</span>
     <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">expected</span> <span class="ow">in</span> <span class="n">test_cases</span><span class="p">:</span>
         <span class="n">orig_time</span> <span class="o">=</span> <span class="n">test_fft_implementation</span><span class="p">(</span><span class="n">original_fft</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>

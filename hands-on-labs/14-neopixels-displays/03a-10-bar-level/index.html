@@ -1849,6 +1849,8 @@
         
       
         
+      
+        
           
         
       
@@ -2855,8 +2857,8 @@ Pulse Width Modulation (PWM) is a way to fake an analog voltage using digital si
 <span class="normal">45</span>
 <span class="normal">46</span>
 <span class="normal">47</span>
-<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">PWM</span>   <span class="c1"># import ADC for reading voltage, PWM for output</span>
-<span class="kn">import</span> <span class="nn">time</span>                          <span class="c1"># import time for delays</span>
+<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">PWM</span>   <span class="c1"># import ADC for reading voltage, PWM for output</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>                          <span class="c1"># import time for delays</span>
 
 <span class="c1"># Pin numbers</span>
 <span class="n">POT_PIN</span> <span class="o">=</span> <span class="mi">26</span>   <span class="c1"># ADC0 — reads the potentiometer voltage on GPIO26</span>
@@ -2869,17 +2871,17 @@ Pulse Width Modulation (PWM) is a way to fake an analog voltage using digital si
 <span class="n">pwm</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">PWM_PIN</span><span class="p">))</span>
 <span class="n">pwm</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>   <span class="c1"># use 10,000 Hz — fast enough to smooth out the signal</span>
 
-<span class="k">def</span> <span class="nf">map_value</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">in_min</span><span class="p">,</span> <span class="n">in_max</span><span class="p">,</span> <span class="n">out_min</span><span class="p">,</span> <span class="n">out_max</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">map_value</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">in_min</span><span class="p">,</span> <span class="n">in_max</span><span class="p">,</span> <span class="n">out_min</span><span class="p">,</span> <span class="n">out_max</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Convert a number from one range to another range."""</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">value</span> <span class="o">-</span> <span class="n">in_min</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">out_max</span> <span class="o">-</span> <span class="n">out_min</span><span class="p">)</span> <span class="o">//</span> <span class="p">(</span><span class="n">in_max</span> <span class="o">-</span> <span class="n">in_min</span><span class="p">)</span> <span class="o">+</span> <span class="n">out_min</span>
 
-<span class="k">def</span> <span class="nf">read_voltage</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_voltage</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Read the potentiometer and return a voltage between 0 V and 3.3 V."""</span>
     <span class="n">raw_value</span> <span class="o">=</span> <span class="n">pot</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>           <span class="c1"># read a number from 0 to 65535</span>
     <span class="n">voltage</span> <span class="o">=</span> <span class="n">raw_value</span> <span class="o">*</span> <span class="mf">3.3</span> <span class="o">/</span> <span class="mi">65535</span>   <span class="c1"># convert the number to a voltage</span>
     <span class="k">return</span> <span class="n">voltage</span>
 
-<span class="k">def</span> <span class="nf">set_bar_level</span><span class="p">(</span><span class="n">level</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_bar_level</span><span class="p">(</span><span class="n">level</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Set the LM3914 level by sending a PWM duty cycle value (0–65535)."""</span>
     <span class="n">pwm</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">level</span><span class="p">)</span>   <span class="c1"># set how long the PWM signal stays HIGH each cycle</span>
 

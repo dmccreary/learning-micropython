@@ -1770,6 +1770,8 @@
         
       
         
+      
+        
           
         
       
@@ -2752,7 +2754,7 @@ Every concept you have learned so far comes together in this chapter. Motors, se
 <span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
-<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
 
 <span class="c1"># Left motor</span>
 <span class="n">l_in1</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span>  <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
@@ -2764,7 +2766,7 @@ Every concept you have learned so far comes together in this chapter. Motors, se
 <span class="n">r_in2</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
 <span class="n">r_pwm</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">12</span><span class="p">));</span> <span class="n">r_pwm</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="n">left_speed</span><span class="p">,</span> <span class="n">right_speed</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">move</span><span class="p">(</span><span class="n">left_speed</span><span class="p">,</span> <span class="n">right_speed</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Speed: -65535 (full reverse) to 65535 (full forward)."""</span>
     <span class="k">for</span> <span class="n">speed</span><span class="p">,</span> <span class="n">in1</span><span class="p">,</span> <span class="n">in2</span><span class="p">,</span> <span class="n">pwm</span> <span class="ow">in</span> <span class="p">[</span>
         <span class="p">(</span><span class="n">left_speed</span><span class="p">,</span>  <span class="n">l_in1</span><span class="p">,</span> <span class="n">l_in2</span><span class="p">,</span> <span class="n">l_pwm</span><span class="p">),</span>
@@ -2892,13 +2894,13 @@ The line follower logic above is simple but jerky — it swings from full left t
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">import</span> <span class="nn">utime</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
 
 <span class="n">servo</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
 <span class="n">servo</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">scan</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">scan</span><span class="p">():</span>
     <span class="n">distances</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">181</span><span class="p">,</span> <span class="mi">15</span><span class="p">):</span>     <span class="c1"># 0° to 180° in 15° steps</span>
         <span class="n">set_angle</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>                <span class="c1"># from Chapter 12</span>

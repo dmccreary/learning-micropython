@@ -1819,6 +1819,8 @@
         
       
         
+      
+        
           
         
       
@@ -2690,12 +2692,12 @@ In this lab you will turn your Pico W into a tiny web server! Other devices on y
 <span class="normal">82</span>
 <span class="normal">83</span>
 <span class="normal">84</span>
-<span class="normal">85</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">network</span>           <span class="c1"># WiFi library</span>
-<span class="kn">import</span> <span class="nn">socket</span>            <span class="c1"># library for sending and receiving network data</span>
-<span class="kn">import</span> <span class="nn">time</span>              <span class="c1"># timing functions</span>
-<span class="kn">import</span> <span class="nn">secrets</span>           <span class="c1"># your network name and password</span>
+<span class="normal">85</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">network</span>           <span class="c1"># WiFi library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>            <span class="c1"># library for sending and receiving network data</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>              <span class="c1"># timing functions</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">secrets</span>           <span class="c1"># your network name and password</span>
 
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>  <span class="c1"># lets us control hardware pins</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>  <span class="c1"># lets us control hardware pins</span>
 
 <span class="c1"># set up the onboard LED as an output pin</span>
 <span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="s2">"LED"</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>

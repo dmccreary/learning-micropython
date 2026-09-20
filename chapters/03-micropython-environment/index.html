@@ -1770,6 +1770,8 @@
         
       
         
+      
+        
           
         
       
@@ -2904,8 +2906,8 @@ If the RPI-RP2 drive does not appear, try a different USB cable. Some cables are
 <span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span>
 <span class="mi">4</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"Hello from the Pico!"</span><span class="p">)</span>
-<span class="n">Hello</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">Pico</span><span class="err">!</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="n">Hello</span> <span class="kn">from</span><span class="w"> </span><span class="nn">the</span> <span class="n">Pico</span><span class="err">!</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># the onboard LED lights up instantly</span>
 </code></pre></div></td></tr></tbody></table></div>
@@ -2955,8 +2957,8 @@ Learning Objective: Students can describe the Read-Evaluate-Print Loop cycle and
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># my_program.py — a complete script</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">utime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
 
 <span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>   <span class="c1"># onboard LED</span>
 
@@ -3093,7 +3095,7 @@ mpremote<span class="w"> </span>cp<span class="w"> </span>:main.py<span class="w
 mpremote<span class="w"> </span>cp<span class="w"> </span>ssd1306.py<span class="w"> </span>:lib/ssd1306.py<span class="w">    </span><span class="c1"># copy the OLED display driver into /lib</span>
 </code></pre></div></td></tr></tbody></table></div>
 <p>After copying, your program can import the driver by name:</p>
-<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>   <span class="c1"># works because /lib/ssd1306.py is now on the Pico</span>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ssd1306</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSD1306_I2C</span>   <span class="c1"># works because /lib/ssd1306.py is now on the Pico</span>
 </code></pre></div></td></tr></tbody></table></div>
 <h3 id="loading-all-drivers-for-a-hardware-kit">Loading All Drivers for a Hardware Kit</h3>
 <p>When you set up a new kit, you often need to load several drivers at once. Run each command in order:</p>
@@ -3176,8 +3178,8 @@ mpremote<span class="w"> </span>mip<span class="w"> </span>install<span class="w
 <span class="normal">7</span>
 <span class="normal">8</span>
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># main.py — runs automatically after boot.py on every power-up</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">utime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
 
 <span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
 
@@ -3199,7 +3201,7 @@ Unlike programs on your laptop that finish and exit, a Pico program usually runs
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">utime</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
 
 <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>           <span class="c1"># pause for 1 second (float supported)</span>
 <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>      <span class="c1"># pause for 500 milliseconds</span>
@@ -3213,7 +3215,7 @@ Unlike programs on your laptop that finish and exit, a Pico program usually runs
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">uos</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">uos</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">uos</span><span class="o">.</span><span class="n">listdir</span><span class="p">())</span>     <span class="c1"># list files: ['boot.py', 'main.py']</span>
 <span class="n">uos</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">"data"</span><span class="p">)</span>        <span class="c1"># create a directory</span>
@@ -3227,7 +3229,7 @@ Unlike programs on your laptop that finish and exit, a Pico program usually runs
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">sys</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>       <span class="c1"># MicroPython version string</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">platform</span><span class="p">)</span>      <span class="c1"># 'rp2' on the Pico</span>

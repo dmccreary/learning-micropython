@@ -540,6 +540,8 @@
         
       
         
+      
+        
           
         
       
@@ -1450,9 +1452,9 @@ Keep the compass sensor away from motors, speakers, and strong magnets. Nearby m
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span>
-<span class="kn">from</span> <span class="nn">hmc5883l</span> <span class="kn">import</span> <span class="n">HMC5883L</span>    <span class="c1"># import the compass driver</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2C</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hmc5883l</span><span class="w"> </span><span class="kn">import</span> <span class="n">HMC5883L</span>    <span class="c1"># import the compass driver</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="c1"># Create the sensor on GPIO 12 (SDA) and GPIO 13 (SCL)</span>
 <span class="n">sensor</span> <span class="o">=</span> <span class="n">HMC5883L</span><span class="p">(</span><span class="n">scl</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
@@ -1495,9 +1497,9 @@ When the sensor is flat on the table, the X and Y values change as you rotate it
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
-<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span>
-<span class="kn">from</span> <span class="nn">hmc5883l</span> <span class="kn">import</span> <span class="n">HMC5883L</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2C</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hmc5883l</span><span class="w"> </span><span class="kn">import</span> <span class="n">HMC5883L</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="c1"># The 'declination' corrects for the difference between</span>
 <span class="c1"># magnetic north and true geographic north.</span>
@@ -1552,10 +1554,10 @@ When the sensor is flat on the table, the X and Y values change as you rotate it
 <span class="normal">28</span>
 <span class="normal">29</span>
 <span class="normal">30</span>
-<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">hmc5883l</span> <span class="kn">import</span> <span class="n">HMC5883L</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">NeoPixel</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2C</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hmc5883l</span><span class="w"> </span><span class="kn">import</span> <span class="n">HMC5883L</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neopixel</span><span class="w"> </span><span class="kn">import</span> <span class="n">NeoPixel</span>
 
 <span class="c1"># Set up the compass sensor</span>
 <span class="n">sensor</span> <span class="o">=</span> <span class="n">HMC5883L</span><span class="p">(</span><span class="n">scl</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">declination</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">71</span><span class="p">))</span>

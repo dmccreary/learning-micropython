@@ -1770,6 +1770,8 @@
         
       
         
+      
+        
           
         
       
@@ -2792,13 +2794,13 @@ This is the advanced chapter — the one where the Pico reveals its most impress
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">rp2</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">array</span><span class="o">,</span> <span class="nn">utime</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">rp2</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">array</span><span class="o">,</span><span class="w"> </span><span class="nn">utime</span>
 
 <span class="nd">@rp2</span><span class="o">.</span><span class="n">asm_pio</span><span class="p">(</span><span class="n">sideset_init</span><span class="o">=</span><span class="n">rp2</span><span class="o">.</span><span class="n">PIO</span><span class="o">.</span><span class="n">OUT_LOW</span><span class="p">,</span> <span class="n">out_init</span><span class="o">=</span><span class="n">rp2</span><span class="o">.</span><span class="n">PIO</span><span class="o">.</span><span class="n">OUT_LOW</span><span class="p">,</span>
              <span class="n">out_shiftdir</span><span class="o">=</span><span class="n">rp2</span><span class="o">.</span><span class="n">PIO</span><span class="o">.</span><span class="n">SHIFT_LEFT</span><span class="p">,</span> <span class="n">autopull</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">pull_thresh</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">ws2812</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ws2812</span><span class="p">():</span>
     <span class="n">T1</span> <span class="o">=</span> <span class="mi">2</span>
     <span class="n">T2</span> <span class="o">=</span> <span class="mi">5</span>
     <span class="n">T3</span> <span class="o">=</span> <span class="mi">3</span>
@@ -2844,7 +2846,7 @@ This is the advanced chapter — the one where the Pico reveals its most impress
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">ulab.numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">ulab.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1"># Collect 512 audio samples from the I2S microphone</span>
 <span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">...</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">)</span>
@@ -2871,7 +2873,7 @@ This is the advanced chapter — the one where the Pico reveals its most impress
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADC</span>
 
 <span class="n">vsys</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">29</span><span class="p">)</span>                       <span class="c1"># ADC channel 29 = VSYS sense (internal)</span>
 <span class="n">raw</span>  <span class="o">=</span> <span class="n">vsys</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
@@ -2890,7 +2892,7 @@ This is the advanced chapter — the one where the Pico reveals its most impress
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">WDT</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">WDT</span>
 
 <span class="c1"># Start watchdog — must be fed every 5,000 ms or the Pico reboots</span>
 <span class="n">wdt</span> <span class="o">=</span> <span class="n">WDT</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
@@ -2908,7 +2910,7 @@ This is the advanced chapter — the one where the Pico reveals its most impress
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">RTC</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">RTC</span>
 
 <span class="n">rtc</span> <span class="o">=</span> <span class="n">RTC</span><span class="p">()</span>
 <span class="n">rtc</span><span class="o">.</span><span class="n">datetime</span><span class="p">((</span><span class="mi">2026</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>   <span class="c1"># (year,month,day,weekday,hr,min,sec,subsec)</span>
@@ -2925,7 +2927,7 @@ This is the advanced chapter — the one where the Pico reveals its most impress
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
 
 <span class="c1"># Lightweight sleep — saves about 15 mA; RTC and GPIO still work</span>
 <span class="n">machine</span><span class="o">.</span><span class="n">lightsleep</span><span class="p">(</span><span class="mi">5000</span><span class="p">)</span>    <span class="c1"># sleep for 5,000 ms</span>

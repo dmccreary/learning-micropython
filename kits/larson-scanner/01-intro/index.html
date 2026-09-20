@@ -546,6 +546,8 @@
         
       
         
+      
+        
           
         
       
@@ -886,6 +888,52 @@
           
         
       
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sht40-temp-display/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    SHT40 Smartwatch Display
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
         
       
         
@@ -1121,10 +1169,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_15" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_16" checked>
         
           
-          <label class="md-nav__link" for="__nav_6_15" id="__nav_6_15_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6_16" id="__nav_6_16_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1135,8 +1183,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_15_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_15">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_16_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_16">
             <span class="md-nav__icon md-icon"></span>
             Larson Scanner
           </label>
@@ -2235,9 +2283,9 @@ This is a screen image from e-bay showing a 1/2 meter of LED strip for $8.</p>
 <span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 <span class="c1"># We are using https://github.com/blaz-r/pi_pico_neopixel</span>
-<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">Neopixel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neopixel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Neopixel</span>
 
 <span class="n">NUMBER_PIXELS</span> <span class="o">=</span> <span class="mi">27</span>
 <span class="n">STATE_MACHINE</span> <span class="o">=</span> <span class="mi">0</span>
@@ -2362,9 +2410,9 @@ This is a screen image from e-bay showing a 1/2 meter of LED strip for $8.</p>
 <span class="normal">83</span>
 <span class="normal">84</span>
 <span class="normal">85</span>
-<span class="normal">86</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">86</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 <span class="c1"># We are using https://github.com/blaz-r/pi_pico_neopixel</span>
-<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">Neopixel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neopixel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Neopixel</span>
 
 <span class="n">NUMBER_PIXELS</span> <span class="o">=</span> <span class="mi">25</span>
 <span class="n">STATE_MACHINE</span> <span class="o">=</span> <span class="mi">0</span>
@@ -2390,7 +2438,7 @@ This is a screen image from e-bay showing a 1/2 meter of LED strip for $8.</p>
 <span class="c1"># set to be 1 to 100 for percent brightness</span>
 <span class="n">strip</span><span class="o">.</span><span class="n">brightness</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">draw_eye_7</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_eye_7</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">NUMBER_PIXELS</span><span class="p">):</span> 
         <span class="n">strip</span><span class="o">.</span><span class="n">set_pixel</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
         <span class="c1"># step back from the current to 6 back halfing the intensity each time</span>
@@ -2408,7 +2456,7 @@ This is a screen image from e-bay showing a 1/2 meter of LED strip for $8.</p>
         <span class="n">strip</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
         <span class="n">sleep</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">draw_rainbow</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_rainbow</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">NUMBER_PIXELS</span><span class="o">-</span><span class="mi">7</span><span class="p">):</span>
         <span class="n">strip</span><span class="o">.</span><span class="n">set_pixel</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">violet</span><span class="p">)</span>
         <span class="n">strip</span><span class="o">.</span><span class="n">set_pixel</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">indigo</span><span class="p">)</span>

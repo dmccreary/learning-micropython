@@ -1963,6 +1963,8 @@
         
       
         
+      
+        
           
         
       
@@ -2826,9 +2828,9 @@ more complex gestures can be accurately sensed.
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep_ms</span>
-<span class="kn">from</span> <span class="nn">uPy_APDS9960.apds9960LITE</span> <span class="kn">import</span> <span class="n">APDS9960LITE</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep_ms</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">uPy_APDS9960.apds9960LITE</span><span class="w"> </span><span class="kn">import</span> <span class="n">APDS9960LITE</span>
 
 <span class="c1">#Init I2C Buss on RP2040</span>
 <span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
@@ -2868,9 +2870,9 @@ more complex gestures can be accurately sensed.
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># from https://github.com/rlangoy/uPy_APDS9960</span>
-<span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span><span class="n">sleep_ms</span>
-<span class="kn">from</span> <span class="nn">APDS9960LITE</span> <span class="kn">import</span> <span class="n">APDS9960LITE</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span><span class="n">sleep_ms</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">APDS9960LITE</span><span class="w"> </span><span class="kn">import</span> <span class="n">APDS9960LITE</span>
 
 <span class="c1">#Init I2C Buss on RP2040</span>
 <span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
@@ -2991,10 +2993,10 @@ more complex gestures can be accurately sensed.
 <span class="normal">51</span>
 <span class="normal">52</span>
 <span class="normal">53</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># from https://github.com/rlangoy/uPy_APDS9960</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span><span class="n">sleep_ms</span>
-<span class="kn">from</span> <span class="nn">APDS9960LITE</span> <span class="kn">import</span> <span class="n">APDS9960LITE</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span><span class="n">sleep_ms</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">APDS9960LITE</span><span class="w"> </span><span class="kn">import</span> <span class="n">APDS9960LITE</span>
 
 <span class="c1">#Init I2C Buss on RP2040</span>
 <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
@@ -3019,7 +3021,7 @@ more complex gestures can be accurately sensed.
 <span class="n">spi</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">clock</span><span class="p">,</span> <span class="n">mosi</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="n">oled</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_SPI</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">DC</span><span class="p">,</span> <span class="n">RES</span><span class="p">,</span> <span class="n">CS</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">update_display</span><span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_display</span><span class="p">(</span><span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">):</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="c1"># scale red, green and blue to the height</span>
     <span class="n">red</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">red</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>

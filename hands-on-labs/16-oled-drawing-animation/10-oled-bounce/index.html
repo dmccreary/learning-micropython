@@ -1777,6 +1777,8 @@
         
       
         
+      
+        
           
         
       
@@ -2587,9 +2589,9 @@ In this lab, you will animate a bouncing ball inside a border on your OLED displ
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">utime</span>
-<span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ssd1306</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSD1306_I2C</span>
 
 <span class="c1"># set up I2C wires</span>
 <span class="n">sda</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>             <span class="c1"># data wire on GP0</span>
@@ -2691,9 +2693,9 @@ In this lab, you will animate a bouncing ball inside a border on your OLED displ
 <span class="normal">63</span>
 <span class="normal">64</span>
 <span class="normal">65</span>
-<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">utime</span>
-<span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>
+<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ssd1306</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSD1306_I2C</span>
 
 <span class="c1"># set up I2C wires</span>
 <span class="n">sda</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -2708,14 +2710,14 @@ In this lab, you will animate a bouncing ball inside a border on your OLED displ
 <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># clear to black</span>
 
 <span class="c1"># draw the border on all four sides</span>
-<span class="k">def</span> <span class="nf">draw_border</span><span class="p">(</span><span class="n">screen_width</span><span class="p">,</span> <span class="n">screen_height</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_border</span><span class="p">(</span><span class="n">screen_width</span><span class="p">,</span> <span class="n">screen_height</span><span class="p">):</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">hline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>               <span class="n">screen_width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">)</span>  <span class="c1"># top edge</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">hline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">screen_height</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">screen_width</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>  <span class="mi">1</span><span class="p">)</span>  <span class="c1"># bottom edge</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">vline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>               <span class="n">screen_height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># left edge</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">vline</span><span class="p">(</span><span class="n">screen_width</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>  <span class="n">screen_height</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># right edge</span>
 
 <span class="c1"># draw or erase a small square ball at position (x, y)</span>
-<span class="k">def</span> <span class="nf">draw_ball</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ball_size</span><span class="p">,</span> <span class="n">pixel_color</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_ball</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ball_size</span><span class="p">,</span> <span class="n">pixel_color</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">ball_size</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">oled</span><span class="o">.</span><span class="n">pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">pixel_color</span><span class="p">)</span>          <span class="c1"># draw a single pixel for tiny balls</span>
     <span class="k">else</span><span class="p">:</span>

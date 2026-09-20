@@ -1801,6 +1801,8 @@
         
       
         
+      
+        
           
         
       
@@ -2695,14 +2697,14 @@ In this lab you will combine everything you have learned. Your Pico W will fetch
 <span class="normal">120</span>
 <span class="normal">121</span>
 <span class="normal">122</span>
-<span class="normal">123</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">network</span>
-<span class="kn">import</span> <span class="nn">ntptime</span>                                   <span class="c1"># library for Network Time Protocol</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>                                   <span class="c1"># OLED display driver</span>
-<span class="kn">import</span> <span class="nn">secrets</span>                                   <span class="c1"># your WiFi network name and password</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">sleep_ms</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">localtime</span><span class="p">,</span> <span class="n">mktime</span><span class="p">,</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">RTC</span>                          <span class="c1"># built-in Real-Time Clock</span>
+<span class="normal">123</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">network</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ntptime</span>                                   <span class="c1"># library for Network Time Protocol</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>                                   <span class="c1"># OLED display driver</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">secrets</span>                                   <span class="c1"># your WiFi network name and password</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">sleep_ms</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">localtime</span><span class="p">,</span> <span class="n">mktime</span><span class="p">,</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">RTC</span>                          <span class="c1"># built-in Real-Time Clock</span>
 
 <span class="c1"># set up the OLED display over SPI</span>
 <span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">128</span>
@@ -2722,7 +2724,7 @@ In this lab you will combine everything you have learned. Your Pico W will fetch
 <span class="n">ntptime</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="s1">'us.pool.ntp.org'</span>                <span class="c1"># address of the NTP time server</span>
 <span class="n">ntptime</span><span class="o">.</span><span class="n">timeout</span> <span class="o">=</span> <span class="mi">10</span>                             <span class="c1"># wait up to 10 seconds per attempt</span>
 
-<span class="k">def</span> <span class="nf">wifi_connect</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">wifi_connect</span><span class="p">():</span>
     <span class="n">wifi</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>          <span class="c1"># create WiFi object in station mode</span>
     <span class="n">wifi</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>                            <span class="c1"># power on the WiFi chip</span>
     <span class="n">wifi</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">pm</span> <span class="o">=</span> <span class="mh">0xa11140</span><span class="p">)</span>                   <span class="c1"># disable WiFi sleep mode for stability</span>
@@ -2742,7 +2744,7 @@ In this lab you will combine everything you have learned. Your Pico W will fetch
     <span class="n">sleep_ms</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>                                <span class="c1"># small delay to stabilize</span>
     <span class="k">return</span> <span class="n">wifi</span>
 
-<span class="k">def</span> <span class="nf">is_daylight_saving_time</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_daylight_saving_time</span><span class="p">():</span>
     <span class="c1"># check whether Daylight Saving Time is in effect (US rules)</span>
     <span class="n">year</span><span class="p">,</span> <span class="n">weekday</span> <span class="o">=</span> <span class="n">localtime</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">localtime</span><span class="p">()[</span><span class="mi">6</span><span class="p">]</span>
     <span class="n">dst_start</span> <span class="o">=</span> <span class="n">mktime</span><span class="p">((</span><span class="n">year</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="p">(</span><span class="mi">8</span> <span class="o">-</span> <span class="n">weekday</span><span class="p">)</span> <span class="o">%</span> <span class="mi">7</span> <span class="o">+</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>   <span class="c1"># 2nd Sunday in March</span>
@@ -2754,7 +2756,7 @@ In this lab you will combine everything you have learned. Your Pico W will fetch
 <span class="n">date_str</span> <span class="o">=</span> <span class="s1">''</span>
 <span class="n">clock_values</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="k">def</span> <span class="nf">set_rtc</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_rtc</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">time_str</span><span class="p">,</span> <span class="n">date_str</span><span class="p">,</span> <span class="n">clock_values</span>
     <span class="n">time_was_set</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">attempts</span> <span class="o">=</span> <span class="mi">0</span>
@@ -2798,7 +2800,7 @@ In this lab you will combine everything you have learned. Your Pico W will fetch
     <span class="nb">print</span><span class="p">(</span><span class="s1">'ERROR! Unable to update time from server!'</span><span class="p">)</span>
     <span class="k">return</span> <span class="kc">False</span>
 
-<span class="k">def</span> <span class="nf">update</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">():</span>
     <span class="c1"># connect to WiFi and sync the internal clock</span>
     <span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">wifi</span> <span class="o">=</span> <span class="n">wifi_connect</span><span class="p">()</span>
@@ -2808,7 +2810,7 @@ In this lab you will combine everything you have learned. Your Pico W will fetch
         <span class="n">sleep_ms</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">wifi</span><span class="p">,</span> <span class="n">success</span>
 
-<span class="k">def</span> <span class="nf">update_display</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_display</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">time_str</span><span class="p">,</span> <span class="n">date_str</span><span class="p">,</span> <span class="n">clock_values</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                                 <span class="c1"># clear the screen</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">time_str</span> <span class="o">+</span> <span class="s1">' '</span> <span class="o">+</span> <span class="n">date_str</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># show time and date on row 10</span>

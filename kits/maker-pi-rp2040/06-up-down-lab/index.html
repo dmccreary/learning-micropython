@@ -546,6 +546,8 @@
         
       
         
+      
+        
           
         
       
@@ -877,6 +879,52 @@
                 
   
   
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sht40-temp-display/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    SHT40 Smartwatch Display
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -909,7 +957,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_11" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_12" checked>
         
           
           
@@ -925,14 +973,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_11" id="__nav_6_11_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6_12" id="__nav_6_12_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_11_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_11">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_12">
             <span class="md-nav__icon md-icon"></span>
             Maker Pi RP2040
           </label>
@@ -2354,10 +2402,10 @@ two buttons.  One will increment a counter (add one) and the other will decremen
 <span class="normal">110</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Mode Up/Down Lab</span>
 <span class="c1"># Change a mode using the buttons on the Maker Pi RP2040 board</span>
 <span class="c1"># Changes the NeoPixel color and the blue GPIO status LEDs</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
 <span class="c1"># We are using a MicroPython NeoPixel library from here: https://github.com/blaz-r/pi_pico_neopixel</span>
-<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">Neopixel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neopixel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Neopixel</span>
 
 <span class="n">BUZZER_PORT</span> <span class="o">=</span> <span class="mi">22</span>
 <span class="n">buzzer</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">BUZZER_PORT</span><span class="p">))</span>
@@ -2407,7 +2455,7 @@ two buttons.  One will increment a counter (add one) and the other will decremen
 <span class="n">previous_mode_pin</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">21</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">PULL_DOWN</span><span class="p">)</span>
 
 <span class="c1"># This function gets called every time the button is pressed.  The parameter "pin" is not used.</span>
-<span class="k">def</span> <span class="nf">button_pressed_handler</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">button_pressed_handler</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">mode</span><span class="p">,</span> <span class="n">last_time</span>
     <span class="n">new_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
     <span class="c1"># if it has been more that 1/5 of a second since the last event, we have a new event</span>
@@ -2422,7 +2470,7 @@ two buttons.  One will increment a counter (add one) and the other will decremen
         <span class="k">if</span> <span class="n">mode</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">mode</span> <span class="o">=</span> <span class="n">mode_count</span> <span class="o">-</span> <span class="mi">1</span>
         <span class="n">last_time</span> <span class="o">=</span> <span class="n">new_time</span>
 
-<span class="k">def</span> <span class="nf">set_blue_led_mode</span><span class="p">(</span><span class="n">mode</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_blue_led_mode</span><span class="p">(</span><span class="n">mode</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">num_colors</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_colors</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">mode</span><span class="p">:</span>
@@ -2436,11 +2484,11 @@ two buttons.  One will increment a counter (add one) and the other will decremen
 
 <span class="c1">#  Note the non-linear increases in frequency - note that some are louder</span>
 <span class="n">tone_freq</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">210</span><span class="p">,</span> <span class="mi">280</span><span class="p">,</span> <span class="mi">350</span><span class="p">,</span> <span class="mi">450</span><span class="p">,</span> <span class="mi">580</span><span class="p">,</span> <span class="mi">750</span><span class="p">,</span> <span class="mi">850</span><span class="p">,</span> <span class="mi">950</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
-<span class="k">def</span> <span class="nf">playtone</span><span class="p">(</span><span class="n">frequency</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">playtone</span><span class="p">(</span><span class="n">frequency</span><span class="p">):</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">bequiet</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bequiet</span><span class="p">():</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># This is for only printing when a new button press count value happens</span>

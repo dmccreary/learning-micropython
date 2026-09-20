@@ -1922,6 +1922,8 @@
         
       
         
+      
+        
           
         
       
@@ -2861,19 +2863,19 @@ MIDI might look complicated at first with all those numbers. But once you see th
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">UART</span>  <span class="c1"># import Pin and UART classes</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">UART</span>  <span class="c1"># import Pin and UART classes</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="c1"># MIDI always uses 31250 baud — this is the universal MIDI speed</span>
 <span class="n">uart</span> <span class="o">=</span> <span class="n">UART</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="mi">31250</span><span class="p">,</span> <span class="n">tx</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">rx</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">uart</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">bits</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">parity</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 8 data bits, no parity, 1 stop bit</span>
 
-<span class="k">def</span> <span class="nf">note_on</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">velocity</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">note_on</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">velocity</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Send a MIDI Note On message to start playing a note."""</span>
     <span class="c1"># 0x90 = Note On command; channels are numbered 0–15</span>
     <span class="n">uart</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">([</span><span class="mh">0x90</span> <span class="o">|</span> <span class="n">channel</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="n">velocity</span><span class="p">]))</span>
 
-<span class="k">def</span> <span class="nf">note_off</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">note</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">note_off</span><span class="p">(</span><span class="n">channel</span><span class="p">,</span> <span class="n">note</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Send a MIDI Note Off message to stop a note."""</span>
     <span class="n">uart</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">bytearray</span><span class="p">([</span><span class="mh">0x80</span> <span class="o">|</span> <span class="n">channel</span><span class="p">,</span> <span class="n">note</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>
 

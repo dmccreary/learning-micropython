@@ -1825,6 +1825,8 @@
         
       
         
+      
+        
           
         
       
@@ -2727,8 +2729,8 @@ A NeoPixel matrix is a grid of colorful smart LEDs — all controlled by a singl
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>        <span class="c1"># import Pin for the data wire</span>
-<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">NeoPixel</span>  <span class="c1"># import the NeoPixel library</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>        <span class="c1"># import Pin for the data wire</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neopixel</span><span class="w"> </span><span class="kn">import</span> <span class="n">NeoPixel</span>  <span class="c1"># import the NeoPixel library</span>
 
 <span class="n">NEOPIXEL_PIN</span>  <span class="o">=</span> <span class="mi">0</span>              <span class="c1"># data signal goes to GP0</span>
 <span class="n">ROWS</span>          <span class="o">=</span> <span class="mi">8</span>              <span class="c1"># the matrix has 8 rows</span>
@@ -2738,7 +2740,7 @@ A NeoPixel matrix is a grid of colorful smart LEDs — all controlled by a singl
 <span class="c1"># Create the NeoPixel object — this reserves memory for all 256 pixels</span>
 <span class="n">matrix</span> <span class="o">=</span> <span class="n">NeoPixel</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">NEOPIXEL_PIN</span><span class="p">),</span> <span class="n">NUMBER_PIXELS</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">write_pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Turn on one pixel at column x, row y with the given color."""</span>
     <span class="c1"># Only draw if x and y are inside the display boundaries</span>
     <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">ROWS</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">COLS</span><span class="p">:</span>
@@ -2888,9 +2890,9 @@ Think of the serpentine wiring like a snake slithering through the grid. It goes
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Bounce a ball around a NeoPixel Matrix</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>        <span class="c1"># import Pin</span>
-<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">NeoPixel</span>  <span class="c1"># import NeoPixel</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>        <span class="c1"># import sleep for the delay</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>        <span class="c1"># import Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neopixel</span><span class="w"> </span><span class="kn">import</span> <span class="n">NeoPixel</span>  <span class="c1"># import NeoPixel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>        <span class="c1"># import sleep for the delay</span>
 
 <span class="n">NEOPIXEL_PIN</span>  <span class="o">=</span> <span class="mi">0</span>
 <span class="n">ROWS</span>          <span class="o">=</span> <span class="mi">8</span>
@@ -2898,13 +2900,13 @@ Think of the serpentine wiring like a snake slithering through the grid. It goes
 <span class="n">NUMBER_PIXELS</span> <span class="o">=</span> <span class="n">ROWS</span> <span class="o">*</span> <span class="n">COLS</span>
 <span class="n">strip</span> <span class="o">=</span> <span class="n">NeoPixel</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="n">NEOPIXEL_PIN</span><span class="p">),</span> <span class="n">NUMBER_PIXELS</span><span class="p">)</span>   <span class="c1"># create the NeoPixel object</span>
 
-<span class="k">def</span> <span class="nf">clear</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">clear</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Turn off all pixels."""</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">NUMBER_PIXELS</span><span class="p">):</span>
         <span class="n">strip</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>   <span class="c1"># set every pixel to off (black)</span>
     <span class="n">strip</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>               <span class="c1"># send the update to the display</span>
 
-<span class="k">def</span> <span class="nf">write_pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Draw one pixel at (x, y) with the given color."""</span>
     <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">ROWS</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">COLS</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span><span class="p">:</span>   <span class="c1"># odd column — wired bottom to top</span>
@@ -2912,7 +2914,7 @@ Think of the serpentine wiring like a snake slithering through the grid. It goes
         <span class="k">else</span><span class="p">:</span>        <span class="c1"># even column — wired top to bottom</span>
             <span class="n">strip</span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">ROWS</span> <span class="o">+</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
 
-<span class="k">def</span> <span class="nf">show</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">show</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Send all pixel data to the display."""</span>
     <span class="n">strip</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
 
@@ -3030,39 +3032,39 @@ The bounce logic can look confusing at first. Remember: <code>dx</code> and <cod
 <span class="c1"># Author: Tony DiCola</span>
 <span class="c1"># License: MIT License (https://opensource.org/licenses/MIT)</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">ustruct</span>           <span class="c1"># use the smaller MicroPython struct module</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">ustruct</span>           <span class="c1"># use the smaller MicroPython struct module</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="kn">import</span> <span class="nn">struct</span> <span class="k">as</span> <span class="nn">ustruct</span>  <span class="c1"># fall back to the standard struct module</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">struct</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ustruct</span>  <span class="c1"># fall back to the standard struct module</span>
 
-<span class="k">class</span> <span class="nc">BitmapFont</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">BitmapFont</span><span class="p">:</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">pixel</span><span class="p">,</span> <span class="n">font_name</span><span class="o">=</span><span class="s1">'font5x8.bin'</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">pixel</span><span class="p">,</span> <span class="n">font_name</span><span class="o">=</span><span class="s1">'font5x8.bin'</span><span class="p">):</span>
         <span class="c1"># Store the display size and the function used to draw one pixel</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_width</span>     <span class="o">=</span> <span class="n">width</span>       <span class="c1"># display width in pixels</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_height</span>    <span class="o">=</span> <span class="n">height</span>      <span class="c1"># display height in pixels</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_pixel</span>     <span class="o">=</span> <span class="n">pixel</span>       <span class="c1"># the function called to draw each pixel</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_font_name</span> <span class="o">=</span> <span class="n">font_name</span>   <span class="c1"># path to the binary font file</span>
 
-    <span class="k">def</span> <span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""Open the font file and read the character size."""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_font</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_name</span><span class="p">,</span> <span class="s1">'rb'</span><span class="p">)</span>
         <span class="c1"># The first two bytes of the file store the width and height of each character</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_font_width</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_font_height</span> <span class="o">=</span> <span class="n">ustruct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">'BB'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_font</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
 
-    <span class="k">def</span> <span class="nf">deinit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">deinit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""Close the font file when done."""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_font</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""Called automatically when you use 'with BitmapFont(...) as bf:'"""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span>
 
-    <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exception_type</span><span class="p">,</span> <span class="n">exception_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exception_type</span><span class="p">,</span> <span class="n">exception_value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""Called automatically when the 'with' block ends."""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">deinit</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">draw_char</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ch</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">draw_char</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ch</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""Draw one character at column x, row y."""</span>
         <span class="c1"># Skip characters that would be fully off the visible area</span>
         <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_width</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_width</span> <span class="ow">or</span> \
@@ -3079,13 +3081,13 @@ The bounce logic can look confusing at first. Remember: <code>dx</code> and <cod
                 <span class="k">if</span> <span class="p">(</span><span class="n">line</span> <span class="o">&gt;&gt;</span> <span class="n">char_y</span><span class="p">)</span> <span class="o">&amp;</span> <span class="mh">0x1</span><span class="p">:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">_pixel</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">char_x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">char_y</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""Draw a string of characters starting at (x, y)."""</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">draw_char</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_width</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">y</span><span class="p">,</span>
                            <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">width</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">width</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""Return the total pixel width of a text string."""</span>
         <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_font_width</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
 </code></pre></div></td></tr></tbody></table></div>
@@ -3158,10 +3160,10 @@ The bounce logic can look confusing at first. Remember: <code>dx</code> and <cod
 <span class="normal">65</span>
 <span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># LED Matrix message scroller demo.</span>
 
-<span class="kn">import</span> <span class="nn">bitmapfont</span>              <span class="c1"># import the BitmapFont class (save the class above as bitmapfont.py)</span>
-<span class="kn">import</span> <span class="nn">machine</span>                 <span class="c1"># import machine for Pin</span>
-<span class="kn">import</span> <span class="nn">utime</span>                   <span class="c1"># import utime for timing</span>
-<span class="kn">from</span> <span class="nn">neopixel</span> <span class="kn">import</span> <span class="n">NeoPixel</span>  <span class="c1"># import NeoPixel</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">bitmapfont</span>              <span class="c1"># import the BitmapFont class (save the class above as bitmapfont.py)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>                 <span class="c1"># import machine for Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>                   <span class="c1"># import utime for timing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neopixel</span><span class="w"> </span><span class="kn">import</span> <span class="n">NeoPixel</span>  <span class="c1"># import NeoPixel</span>
 
 <span class="n">NEOPIXEL_PIN</span>  <span class="o">=</span> <span class="mi">0</span>
 <span class="n">ROWS</span>          <span class="o">=</span> <span class="mi">8</span>
@@ -3169,7 +3171,7 @@ The bounce logic can look confusing at first. Remember: <code>dx</code> and <cod
 <span class="n">NUMBER_PIXELS</span> <span class="o">=</span> <span class="n">ROWS</span> <span class="o">*</span> <span class="n">COLS</span>
 <span class="n">matrix</span> <span class="o">=</span> <span class="n">NeoPixel</span><span class="p">(</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="n">NEOPIXEL_PIN</span><span class="p">),</span> <span class="n">NUMBER_PIXELS</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">fill</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">fill</span><span class="p">(</span><span class="n">color</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Set all pixels to the same color."""</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">NUMBER_PIXELS</span><span class="p">):</span>
         <span class="n">matrix</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>   <span class="c1"># set every pixel</span>
@@ -3179,11 +3181,11 @@ The bounce logic can look confusing at first. Remember: <code>dx</code> and <cod
 <span class="n">DISPLAY_HEIGHT</span> <span class="o">=</span> <span class="mi">8</span>      <span class="c1"># display height in pixels</span>
 <span class="n">SPEED</span>          <span class="o">=</span> <span class="mf">20.0</span>   <span class="c1"># scroll speed in pixels per second</span>
 
-<span class="k">def</span> <span class="nf">show</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">show</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Send all pixel data to the display."""</span>
     <span class="n">matrix</span><span class="o">.</span><span class="n">write</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">write_pixel_value</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_pixel_value</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Set one pixel at (x, y) to the given color — handles serpentine wiring."""</span>
     <span class="k">if</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">ROWS</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">COLS</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span><span class="p">:</span>   <span class="c1"># odd column — wired bottom to top</span>
@@ -3191,11 +3193,11 @@ The bounce logic can look confusing at first. Remember: <code>dx</code> and <cod
         <span class="k">else</span><span class="p">:</span>        <span class="c1"># even column — wired top to bottom</span>
             <span class="n">matrix</span><span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">ROWS</span> <span class="o">+</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">color</span>
 
-<span class="k">def</span> <span class="nf">write_pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">write_pixel</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Draw one white-blue pixel — used by the bitmap font renderer."""</span>
     <span class="n">write_pixel_value</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>   <span class="c1"># dim blue-white color</span>
 
-<span class="k">def</span> <span class="nf">scroll_text</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">scroll_text</span><span class="p">(</span><span class="n">message</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Scroll a text message across the display from right to left."""</span>
     <span class="k">with</span> <span class="n">bitmapfont</span><span class="o">.</span><span class="n">BitmapFont</span><span class="p">(</span><span class="n">DISPLAY_WIDTH</span><span class="p">,</span> <span class="n">DISPLAY_HEIGHT</span><span class="p">,</span> <span class="n">write_pixel</span><span class="p">)</span> <span class="k">as</span> <span class="n">bf</span><span class="p">:</span>
         <span class="n">pos</span>           <span class="o">=</span> <span class="n">DISPLAY_WIDTH</span>          <span class="c1"># start the message off the right edge</span>

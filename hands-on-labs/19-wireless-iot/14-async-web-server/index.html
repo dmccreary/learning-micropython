@@ -540,6 +540,8 @@
         
       
         
+      
+        
           
         
       
@@ -1516,12 +1518,12 @@ Never share or upload your <code>config.py</code> file to GitHub. It contains yo
 <span class="normal">112</span>
 <span class="normal">113</span>
 <span class="normal">114</span>
-<span class="normal">115</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">network</span>
-<span class="kn">import</span> <span class="nn">socket</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">uasyncio</span> <span class="k">as</span> <span class="nn">asyncio</span>        <span class="c1"># MicroPython's async library</span>
-<span class="kn">import</span> <span class="nn">config</span>                     <span class="c1"># your WiFi credentials</span>
+<span class="normal">115</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">network</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">socket</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">uasyncio</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">asyncio</span>        <span class="c1"># MicroPython's async library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">config</span>                     <span class="c1"># your WiFi credentials</span>
 
 <span class="c1"># Set up the controllable LED (connected to GPIO 15)</span>
 <span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
@@ -1552,7 +1554,7 @@ Never share or upload your <code>config.py</code> file to GitHub. It contains yo
 
 <span class="n">wlan</span> <span class="o">=</span> <span class="n">network</span><span class="o">.</span><span class="n">WLAN</span><span class="p">(</span><span class="n">network</span><span class="o">.</span><span class="n">STA_IF</span><span class="p">)</span>   <span class="c1"># create a WiFi client (station mode)</span>
 
-<span class="k">def</span> <span class="nf">connect_to_network</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">connect_to_network</span><span class="p">():</span>
     <span class="n">wlan</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">wlan</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="n">pm</span><span class="o">=</span><span class="mh">0xa11140</span><span class="p">)</span>          <span class="c1"># disable WiFi power-save mode for reliability</span>
     <span class="n">wlan</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">wifi_ssid</span><span class="p">,</span> <span class="n">config</span><span class="o">.</span><span class="n">wifi_pass</span><span class="p">)</span>
@@ -1570,7 +1572,7 @@ Never share or upload your <code>config.py</code> file to GitHub. It contains yo
 
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Connected! IP address:"</span><span class="p">,</span> <span class="n">wlan</span><span class="o">.</span><span class="n">ifconfig</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="k">async</span> <span class="k">def</span> <span class="nf">serve_client</span><span class="p">(</span><span class="n">reader</span><span class="p">,</span> <span class="n">writer</span><span class="p">):</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">serve_client</span><span class="p">(</span><span class="n">reader</span><span class="p">,</span> <span class="n">writer</span><span class="p">):</span>
     <span class="c1"># This function runs once for each browser that connects</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Client connected"</span><span class="p">)</span>
     <span class="n">request_line</span> <span class="o">=</span> <span class="k">await</span> <span class="n">reader</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>   <span class="c1"># await: wait for the first line of the HTTP request</span>
@@ -1602,7 +1604,7 @@ Never share or upload your <code>config.py</code> file to GitHub. It contains yo
     <span class="k">await</span> <span class="n">writer</span><span class="o">.</span><span class="n">wait_closed</span><span class="p">()</span>         <span class="c1"># await: wait for the connection to close</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Client disconnected"</span><span class="p">)</span>
 
-<span class="k">async</span> <span class="k">def</span> <span class="nf">heartbeat</span><span class="p">():</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">heartbeat</span><span class="p">():</span>
     <span class="c1"># This task runs in the background while the server handles requests</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">onboard</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
@@ -1611,7 +1613,7 @@ Never share or upload your <code>config.py</code> file to GitHub. It contains yo
         <span class="n">onboard</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
         <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>        <span class="c1"># wait 5 seconds before the next heartbeat</span>
 
-<span class="k">async</span> <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Connecting to WiFi..."</span><span class="p">)</span>
     <span class="n">connect_to_network</span><span class="p">()</span>
 
@@ -1701,7 +1703,7 @@ If multiple people visit your server at the same time, each gets their own <code
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span>
 
 <span class="n">pot</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">26</span><span class="p">))</span>             <span class="c1"># potentiometer connected to GPIO 26</span>
 

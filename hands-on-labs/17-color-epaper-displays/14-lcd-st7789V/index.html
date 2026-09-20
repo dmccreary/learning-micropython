@@ -1783,6 +1783,8 @@
         
       
         
+      
+        
           
         
       
@@ -2777,8 +2779,8 @@ The Pico has two SPI ports: SPI0 and SPI1. This wiring uses SPI1. The clock and 
 <span class="normal">25</span>
 <span class="normal">26</span>
 <span class="normal">27</span>
-<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>    <span class="c1"># import Pin for GPIO and SPI for the fast data bus</span>
-<span class="kn">import</span> <span class="nn">st7789</span>                   <span class="c1"># import the ST7789 display driver</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>    <span class="c1"># import Pin for GPIO and SPI for the fast data bus</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">st7789</span>                   <span class="c1"># import the ST7789 display driver</span>
 
 <span class="c1"># give each pin a clear name so the code is easy to read</span>
 <span class="n">BACKLIGHT_PIN</span> <span class="o">=</span> <span class="mi">10</span>   <span class="c1"># controls the screen backlight</span>
@@ -2788,7 +2790,7 @@ The Pico has two SPI ports: SPI0 and SPI1. This wiring uses SPI1. The clock and 
 <span class="n">CLK_PIN</span> <span class="o">=</span> <span class="mi">14</span>         <span class="c1"># SPI clock — keeps data in sync</span>
 <span class="n">DIN_PIN</span> <span class="o">=</span> <span class="mi">15</span>         <span class="c1"># SPI data — sends pixel information to the display</span>
 
-<span class="kn">import</span> <span class="nn">vga1_bold_16x32</span> <span class="k">as</span> <span class="nn">font</span>  <span class="c1"># import a bold font that is 16 pixels wide and 32 pixels tall</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">vga1_bold_16x32</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">font</span>  <span class="c1"># import a bold font that is 16 pixels wide and 32 pixels tall</span>
 
 <span class="c1"># set up the SPI bus at 31,250,000 bits per second (very fast!)</span>
 <span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="mi">31250000</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">CLK_PIN</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">DIN_PIN</span><span class="p">))</span>
@@ -2845,8 +2847,8 @@ The Pico has two SPI ports: SPI0 and SPI1. This wiring uses SPI1. The clock and 
 <span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
-<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>    <span class="c1"># import GPIO and SPI tools</span>
-<span class="kn">import</span> <span class="nn">st7789</span>                   <span class="c1"># import the display driver</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>    <span class="c1"># import GPIO and SPI tools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">st7789</span>                   <span class="c1"># import the display driver</span>
 
 <span class="n">BACKLIGHT_PIN</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">RESET_PIN</span> <span class="o">=</span> <span class="mi">11</span>
@@ -2855,7 +2857,7 @@ The Pico has two SPI ports: SPI0 and SPI1. This wiring uses SPI1. The clock and 
 <span class="n">CLK_PIN</span> <span class="o">=</span> <span class="mi">14</span>
 <span class="n">DIN_PIN</span> <span class="o">=</span> <span class="mi">15</span>
 
-<span class="kn">import</span> <span class="nn">vga1_bold_16x32</span> <span class="k">as</span> <span class="nn">font</span>  <span class="c1"># use the same bold font</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">vga1_bold_16x32</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">font</span>  <span class="c1"># use the same bold font</span>
 
 <span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">baudrate</span><span class="o">=</span><span class="mi">31250000</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">CLK_PIN</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="n">DIN_PIN</span><span class="p">))</span>
 <span class="n">tft</span> <span class="o">=</span> <span class="n">st7789</span><span class="o">.</span><span class="n">ST7789</span><span class="p">(</span><span class="n">spi</span><span class="p">,</span> <span class="mi">240</span><span class="p">,</span> <span class="mi">320</span><span class="p">,</span>

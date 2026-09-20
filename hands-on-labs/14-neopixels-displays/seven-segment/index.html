@@ -1750,6 +1750,8 @@
         
       
         
+      
+        
           
         
       
@@ -2724,8 +2726,8 @@ Do not skip the current-limiting resistors! Connecting LED segments directly to 
 <span class="normal">148</span>
 <span class="normal">149</span>
 <span class="normal">150</span>
-<span class="normal">151</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Timer</span>   <span class="c1"># import Pin for GPIO, Timer for timing</span>
-<span class="kn">import</span> <span class="nn">utime</span>                           <span class="c1"># import utime for localtime</span>
+<span class="normal">151</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span><span class="p">,</span> <span class="n">Timer</span>   <span class="c1"># import Pin for GPIO, Timer for timing</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>                           <span class="c1"># import utime for localtime</span>
 
 <span class="c1"># --- Pin assignments ---</span>
 
@@ -2793,7 +2795,7 @@ Do not skip the current-limiting resistors! Connecting LED segments directly to 
     <span class="n">other_maps</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>   <span class="c1"># create a Pin object for colon/dash control</span>
 
 
-<span class="k">def</span> <span class="nf">render_digit_display</span><span class="p">(</span><span class="n">show_digit</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">render_digit_display</span><span class="p">(</span><span class="n">show_digit</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Show one digit (number) at the position (show_digit = 1 to 4)."""</span>
 
     <span class="c1"># Turn all segment pins off first (1 = off for common-cathode displays)</span>
@@ -2830,7 +2832,7 @@ Do not skip the current-limiting resistors! Connecting LED segments directly to 
     <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span>   <span class="c1"># short pause before the next call</span>
 
 
-<span class="k">def</span> <span class="nf">render_feature_display</span><span class="p">(</span><span class="n">show_colon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_dash</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">render_feature_display</span><span class="p">(</span><span class="n">show_colon</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_dash</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Turn the colon and dash on or off."""</span>
     <span class="k">if</span> <span class="n">show_colon</span><span class="p">:</span>
         <span class="n">other_pin_maps</span><span class="p">[</span><span class="s1">'colon'</span><span class="p">]</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>   <span class="c1"># turn the colon LED on</span>

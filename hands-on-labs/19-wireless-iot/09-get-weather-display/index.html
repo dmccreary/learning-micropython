@@ -1846,6 +1846,8 @@
         
       
         
+      
+        
           
         
       
@@ -2733,7 +2735,7 @@ On screens, Y=0 is the top and Y=63 is the bottom. So a higher temperature means
 <span class="normal">51</span>
 <span class="normal">52</span>
 <span class="normal">53</span>
-<span class="normal">54</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">display_weather</span><span class="p">():</span>
+<span class="normal">54</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">display_weather</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">weather</span><span class="p">,</span> <span class="n">city</span><span class="p">,</span> <span class="n">current_temp</span>  <span class="c1"># use the global variables set in the main loop</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                        <span class="c1"># clear the screen (0 = black)</span>
 
@@ -2922,11 +2924,11 @@ On screens, Y=0 is the top and Y=63 is the bottom. So a higher temperature means
 <span class="normal">106</span>
 <span class="normal">107</span>
 <span class="normal">108</span>
-<span class="normal">109</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">network</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>                                  <span class="c1"># OLED display driver</span>
-<span class="kn">import</span> <span class="nn">secrets</span>
-<span class="kn">import</span> <span class="nn">urequests</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span>
+<span class="normal">109</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">network</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>                                  <span class="c1"># OLED display driver</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">secrets</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urequests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span>
 
 <span class="c1"># startup</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'Connecting to WiFi Network Name:'</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">SSID</span><span class="p">)</span>
@@ -2945,7 +2947,7 @@ On screens, Y=0 is the top and Y=63 is the bottom. So a higher temperature means
 <span class="n">oled</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_SPI</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">DC</span><span class="p">,</span> <span class="n">RES</span><span class="p">,</span> <span class="n">CS</span><span class="p">)</span>
 <span class="n">oled</span><span class="o">.</span><span class="n">poweron</span><span class="p">()</span>                                 <span class="c1"># turn on the OLED screen</span>
 
-<span class="k">def</span> <span class="nf">display_startup</span><span class="p">(</span><span class="n">counter</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">display_startup</span><span class="p">(</span><span class="n">counter</span><span class="p">):</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">'Running startup'</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">'Connecting to'</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -2953,14 +2955,14 @@ On screens, Y=0 is the top and Y=63 is the bottom. So a higher temperature means
     <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">counter</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>          <span class="c1"># show how many seconds have passed</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">display_status</span><span class="p">(</span><span class="n">counter</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">display_status</span><span class="p">(</span><span class="n">counter</span><span class="p">):</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">'n:'</span> <span class="o">+</span> <span class="n">secrets</span><span class="o">.</span><span class="n">SSID</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># show network name</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">'t:'</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">connection_time</span><span class="p">)</span> <span class="o">+</span> <span class="s1">' ms'</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># show connection time</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">display_weather</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">display_weather</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">weather</span><span class="p">,</span> <span class="n">city</span><span class="p">,</span> <span class="n">current_temp</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">min_temp</span> <span class="o">=</span> <span class="mi">120</span>

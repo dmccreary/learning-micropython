@@ -1777,6 +1777,8 @@
         
       
         
+      
+        
           
         
       
@@ -2588,9 +2590,9 @@ In this lab, you will write your own drawing functions to make shapes that Micro
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
-<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>  <span class="c1"># import the square root function</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span>  <span class="c1"># import the square root function</span>
 
-<span class="k">def</span> <span class="nf">draw_circle</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_circle</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
     <span class="n">diameter</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="mi">2</span>                   <span class="c1"># the width of the bounding square</span>
     <span class="n">upper_left_x</span> <span class="o">=</span> <span class="n">cx</span> <span class="o">-</span> <span class="n">r</span>             <span class="c1"># left edge of the bounding square</span>
     <span class="n">upper_left_y</span> <span class="o">=</span> <span class="n">cy</span> <span class="o">-</span> <span class="n">r</span>             <span class="c1"># top edge of the bounding square</span>
@@ -2672,11 +2674,11 @@ The math here uses the Pythagorean theorem: the distance from (i, j) to (cx, cy)
 <span class="normal">48</span>
 <span class="normal">49</span>
 <span class="normal">50</span>
-<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
-<span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>
+<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
 
 <span class="c1"># display size in pixels</span>
 <span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">128</span>
@@ -2693,7 +2695,7 @@ The math here uses the Pythagorean theorem: the distance from (i, j) to (cx, cy)
 <span class="n">spi</span>  <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">clock</span><span class="p">,</span> <span class="n">mosi</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
 <span class="n">oled</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_SPI</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">DC</span><span class="p">,</span> <span class="n">RES</span><span class="p">,</span> <span class="n">CS</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">draw_circle</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_circle</span><span class="p">(</span><span class="n">cx</span><span class="p">,</span> <span class="n">cy</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
     <span class="n">diameter</span>    <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="mi">2</span>
     <span class="n">upper_left_x</span> <span class="o">=</span> <span class="n">cx</span> <span class="o">-</span> <span class="n">r</span>
     <span class="n">upper_left_y</span> <span class="o">=</span> <span class="n">cy</span> <span class="o">-</span> <span class="n">r</span>

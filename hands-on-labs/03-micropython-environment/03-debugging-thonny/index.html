@@ -540,6 +540,8 @@
         
       
         
+      
+        
           
         
       
@@ -1504,11 +1506,11 @@ You can hover your mouse over any variable name in the code editor while paused 
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>      <span class="c1"># calculate the product</span>
     <span class="k">return</span> <span class="n">result</span>       <span class="c1"># send the answer back</span>
 
-<span class="k">def</span> <span class="nf">add_then_multiply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">add_then_multiply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
     <span class="n">total</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>       <span class="c1"># add x and y first</span>
     <span class="n">product</span> <span class="o">=</span> <span class="n">multiply</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>   <span class="c1"># then multiply by z</span>
     <span class="k">return</span> <span class="n">product</span>      <span class="c1"># return the final answer</span>
@@ -1551,7 +1553,7 @@ Navigating the call stack can feel confusing at first. That is completely normal
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">gc</span>                           <span class="c1"># import the garbage collector module</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>                           <span class="c1"># import the garbage collector module</span>
 
 <span class="c1"># Create some objects with references</span>
 <span class="n">list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>                  <span class="c1"># a small list</span>

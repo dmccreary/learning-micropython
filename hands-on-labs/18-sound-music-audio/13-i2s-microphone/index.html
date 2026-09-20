@@ -540,6 +540,8 @@
         
       
         
+      
+        
           
         
       
@@ -1411,7 +1413,7 @@ The L/R pin selects which stereo channel the microphone sends. Connecting it to 
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">gc</span>                   <span class="c1"># import the garbage collector</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>                   <span class="c1"># import the garbage collector</span>
 <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>                <span class="c1"># free any unused memory first</span>
 
 <span class="n">free_bytes</span> <span class="o">=</span> <span class="n">gc</span><span class="o">.</span><span class="n">mem_free</span><span class="p">()</span>  <span class="c1"># check how many bytes are available</span>
@@ -1467,8 +1469,8 @@ The L/R pin selects which stereo channel the microphone sends. Connecting it to 
 <span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
-<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">struct</span>
+<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">struct</span>
 
 <span class="c1"># Pin assignments for the I2S bus</span>
 <span class="n">SCK_PIN</span> <span class="o">=</span> <span class="mi">10</span>     <span class="c1"># Serial Clock</span>
@@ -1571,8 +1573,8 @@ The L/R pin selects which stereo channel the microphone sends. Connecting it to 
 <span class="normal">49</span>
 <span class="normal">50</span>
 <span class="normal">51</span>
-<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">struct</span><span class="o">,</span> <span class="nn">time</span>
+<span class="normal">52</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span><span class="o">,</span><span class="w"> </span><span class="nn">struct</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="n">SCK_PIN</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">WS_PIN</span>  <span class="o">=</span> <span class="mi">11</span>
@@ -1704,9 +1706,9 @@ RMS stands for Root Mean Square. It is the standard way to measure the "average 
 <span class="normal">68</span>
 <span class="normal">69</span>
 <span class="normal">70</span>
-<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>
-<span class="kn">import</span> <span class="nn">math</span><span class="o">,</span> <span class="nn">struct</span><span class="o">,</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">array</span>
+<span class="normal">71</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span><span class="o">,</span><span class="w"> </span><span class="nn">struct</span><span class="o">,</span><span class="w"> </span><span class="nn">time</span><span class="o">,</span><span class="w"> </span><span class="nn">array</span>
 
 <span class="c1"># Set up SPI OLED display</span>
 <span class="n">spi</span> <span class="o">=</span> <span class="n">SPI</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sck</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">mosi</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
@@ -1725,7 +1727,7 @@ RMS stands for Root Mean Square. It is the standard way to measure the "average 
 
 <span class="n">FFT_SIZE</span> <span class="o">=</span> <span class="mi">512</span>                        <span class="c1"># number of audio samples for one FFT frame</span>
 
-<span class="k">def</span> <span class="nf">capture_samples</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">capture_samples</span><span class="p">():</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="nb">bytearray</span><span class="p">(</span><span class="n">FFT_SIZE</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>     <span class="c1"># 4 bytes per 32-bit sample</span>
     <span class="n">audio_in</span><span class="o">.</span><span class="n">readinto</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
     <span class="n">samples</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s2">"&lt;</span><span class="si">{}</span><span class="s2">i"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">FFT_SIZE</span><span class="p">),</span> <span class="n">raw</span><span class="p">)</span>
@@ -1737,7 +1739,7 @@ RMS stands for Root Mean Square. It is the standard way to measure the "average 
         <span class="n">windowed</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">adjusted</span> <span class="o">*</span> <span class="n">hann</span>
     <span class="k">return</span> <span class="n">windowed</span>
 
-<span class="k">def</span> <span class="nf">compute_magnitudes</span><span class="p">(</span><span class="n">samples</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_magnitudes</span><span class="p">(</span><span class="n">samples</span><span class="p">):</span>
     <span class="c1"># Simple DFT magnitude calculation for 64 display bins</span>
     <span class="n">num_bins</span> <span class="o">=</span> <span class="mi">64</span>
     <span class="n">magnitudes</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1753,7 +1755,7 @@ RMS stands for Root Mean Square. It is the standard way to measure the "average 
         <span class="n">magnitudes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">re</span><span class="o">*</span><span class="n">re</span> <span class="o">+</span> <span class="n">im</span><span class="o">*</span><span class="n">im</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">magnitudes</span>
 
-<span class="k">def</span> <span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">magnitudes</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_spectrum</span><span class="p">(</span><span class="n">magnitudes</span><span class="p">):</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">max_mag</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">magnitudes</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># avoid division by zero</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">mag</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">magnitudes</span><span class="p">[:</span><span class="mi">64</span><span class="p">]):</span>

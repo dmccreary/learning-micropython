@@ -546,6 +546,8 @@
         
       
         
+      
+        
           
         
       
@@ -886,6 +888,52 @@
           
         
       
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sht40-temp-display/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    SHT40 Smartwatch Display
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
         
       
         
@@ -983,7 +1031,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_12" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_13" checked>
         
           
           
@@ -999,14 +1047,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_12" id="__nav_6_12_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6_13" id="__nav_6_13_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_12_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_12">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_13">
             <span class="md-nav__icon md-icon"></span>
             Maker Pi RP2040 Robot
           </label>
@@ -2454,9 +2502,9 @@
 <span class="normal">115</span>
 <span class="normal">116</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Demo for Maker Pi RP2040 board</span>
 
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span><span class="n">PWM</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">VL53L0X</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span><span class="n">PWM</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">VL53L0X</span>
 <span class="n">buzzer</span><span class="o">=</span><span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">22</span><span class="p">))</span>
 
 <span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># row one on our standard Pico breadboard</span>
@@ -2497,7 +2545,7 @@
     <span class="n">led_ports</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
 
 <span class="c1"># get the normalized time-of-flight distance</span>
-<span class="k">def</span> <span class="nf">get_distance</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_distance</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">zero_dist</span><span class="p">,</span> <span class="n">scale_factor</span>
     <span class="n">tof_distance</span> <span class="o">=</span> <span class="n">tof</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">tof_distance</span> <span class="o">&gt;</span> <span class="n">max_dist</span><span class="p">:</span>
@@ -2507,7 +2555,7 @@
         <span class="n">zero_dist</span> <span class="o">=</span> <span class="n">tof_distance</span>
     <span class="k">return</span>  <span class="nb">int</span><span class="p">((</span><span class="n">tof_distance</span> <span class="o">-</span> <span class="n">zero_dist</span><span class="p">)</span> <span class="o">*</span> <span class="n">scale_factor</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">led_show_dist</span><span class="p">(</span><span class="n">in_distance</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">led_show_dist</span><span class="p">(</span><span class="n">in_distance</span><span class="p">):</span>
     <span class="k">global</span> <span class="n">number_leds</span>
     <span class="k">for</span> <span class="n">led_index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">number_leds</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">in_distance</span> <span class="o">&gt;</span> <span class="n">dist_scale</span><span class="p">[</span><span class="n">led_index</span><span class="p">]:</span>
@@ -2515,19 +2563,19 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="n">led_ports</span><span class="p">[</span><span class="n">led_index</span><span class="p">]</span><span class="o">.</span><span class="n">low</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">playtone</span><span class="p">(</span><span class="n">frequency</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">playtone</span><span class="p">(</span><span class="n">frequency</span><span class="p">):</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="n">frequency</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">bequiet</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bequiet</span><span class="p">():</span>
     <span class="n">buzzer</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">play_no_signal</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_no_signal</span><span class="p">():</span>
     <span class="n">playtone</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
     <span class="n">bequiet</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">play_turn</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">play_turn</span><span class="p">():</span>
     <span class="n">playtone</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
     <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
     <span class="n">bequiet</span><span class="p">()</span>
@@ -2537,7 +2585,7 @@
 <span class="n">valid_distance</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="c1"># loop forever</span>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="k">global</span> <span class="n">valid_distance</span>
         <span class="n">distance</span> <span class="o">=</span> <span class="n">get_distance</span><span class="p">()</span>

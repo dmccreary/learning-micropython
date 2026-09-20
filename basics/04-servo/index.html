@@ -1820,6 +1820,8 @@
         
       
         
+      
+        
           
         
       
@@ -2777,14 +2779,14 @@ equals a duty value of about <strong>1 638</strong>, and a 2 ms pulse equals abo
 <span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
-<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="c1"># Create a PWM signal on GP15 for the servo signal wire</span>
 <span class="n">servo_pin</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
 <span class="n">servo_pin</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>  <span class="c1"># servos need a 50 Hz signal</span>
 
-<span class="k">def</span> <span class="nf">set_angle</span><span class="p">(</span><span class="n">degrees</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_angle</span><span class="p">(</span><span class="n">degrees</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Move the servo to the given angle (0 to 180 degrees)."""</span>
     <span class="c1"># Convert degrees to a pulse width between 1 ms and 2 ms</span>
     <span class="c1"># At 50 Hz, one full cycle = 20 ms = 65535 duty units</span>

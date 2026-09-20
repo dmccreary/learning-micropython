@@ -1783,6 +1783,8 @@
         
       
         
+      
+        
           
         
       
@@ -2734,8 +2736,8 @@ A servo does not spin freely like a DC motor. It turns to a specific angle — u
 <span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="c1"># Set up GP15 as a PWM pin to control the servo</span>
 <span class="n">servo_pwm</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
@@ -2743,7 +2745,7 @@ A servo does not spin freely like a DC motor. It turns to a specific angle — u
 <span class="c1"># Servos need a 50 Hz signal — 50 pulses per second</span>
 <span class="n">servo_pwm</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">set_servo_angle</span><span class="p">(</span><span class="n">angle_degrees</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_servo_angle</span><span class="p">(</span><span class="n">angle_degrees</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Move the servo to the given angle (0 to 180 degrees)."""</span>
     <span class="c1"># Convert the angle to a pulse width between 1 ms and 2 ms</span>
     <span class="c1"># The full PWM range is 0 to 65535 (16-bit)</span>
@@ -2840,13 +2842,13 @@ If your servo twitches or buzzes at the end positions (0° or 180°), your min a
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="n">servo_pwm</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>  <span class="c1"># servo on GP15</span>
 <span class="n">servo_pwm</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>        <span class="c1"># 50 Hz standard servo signal</span>
 
-<span class="k">def</span> <span class="nf">set_servo_angle</span><span class="p">(</span><span class="n">angle_degrees</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_servo_angle</span><span class="p">(</span><span class="n">angle_degrees</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Move the servo to the given angle (0 to 180 degrees)."""</span>
     <span class="n">min_pulse</span> <span class="o">=</span> <span class="mi">3277</span>   <span class="c1"># duty value for 0 degrees</span>
     <span class="n">max_pulse</span> <span class="o">=</span> <span class="mi">6554</span>   <span class="c1"># duty value for 180 degrees</span>

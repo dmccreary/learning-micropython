@@ -1770,6 +1770,8 @@
         
       
         
+      
+        
           
         
       
@@ -2976,7 +2978,7 @@ A while loop whose condition never becomes False runs forever and freezes your P
 <p>A <strong>function definition</strong> uses <code>def</code>, then the name, then parentheses, then a colon:</p>
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">blink_led</span><span class="p">():</span>             <span class="c1"># define a function called blink_led</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">blink_led</span><span class="p">():</span>             <span class="c1"># define a function called blink_led</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"LED on"</span><span class="p">)</span>          <span class="c1"># indented code is the function body</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"LED off"</span><span class="p">)</span>
 </code></pre></div></td></tr></tbody></table></div>
@@ -2993,7 +2995,7 @@ A while loop whose condition never becomes False runs forever and freezes your P
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">celsius_to_fahrenheit</span><span class="p">(</span><span class="n">celsius</span><span class="p">):</span>   <span class="c1"># celsius is the parameter</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">celsius_to_fahrenheit</span><span class="p">(</span><span class="n">celsius</span><span class="p">):</span>   <span class="c1"># celsius is the parameter</span>
     <span class="n">fahrenheit</span> <span class="o">=</span> <span class="n">celsius</span> <span class="o">*</span> <span class="mi">9</span> <span class="o">/</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">32</span>
     <span class="k">return</span> <span class="n">fahrenheit</span>                 <span class="c1"># return sends the result back</span>
 
@@ -3011,7 +3013,7 @@ Name your functions clearly. <code>celsius_to_fahrenheit</code> is perfect — y
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">utime</span>           <span class="c1"># import the MicroPython time module</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>           <span class="c1"># import the MicroPython time module</span>
 
 <span class="n">utime</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>         <span class="c1"># pause for 1 second</span>
 <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>    <span class="c1"># pause for 500 milliseconds</span>
@@ -3019,7 +3021,7 @@ Name your functions clearly. <code>celsius_to_fahrenheit</code> is perfect — y
 <p>You can import just the parts you need:</p>
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep_ms</span>   <span class="c1"># import only sleep_ms</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep_ms</span>   <span class="c1"># import only sleep_ms</span>
 
 <span class="n">sleep_ms</span><span class="p">(</span><span class="mi">250</span><span class="p">)</span>                <span class="c1"># call it without the module prefix</span>
 </code></pre></div></td></tr></tbody></table></div>
@@ -3027,7 +3029,7 @@ Name your functions clearly. <code>celsius_to_fahrenheit</code> is perfect — y
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>      <span class="c1"># import the Pin class</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>      <span class="c1"># import the Pin class</span>
 
 <span class="n">led</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>       <span class="c1"># create a Pin object for the onboard LED</span>
 <span class="n">led</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                 <span class="c1"># turn the LED on</span>
@@ -3038,7 +3040,7 @@ Name your functions clearly. <code>celsius_to_fahrenheit</code> is perfect — y
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_brightness</span><span class="p">(</span><span class="n">level</span><span class="p">):</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_brightness</span><span class="p">(</span><span class="n">level</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">level</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">level</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">:</span>      <span class="c1"># check the allowed range</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"Brightness must be 0–100"</span><span class="p">)</span>
         <span class="k">return</span>                         <span class="c1"># exit early without crashing</span>
@@ -3112,13 +3114,13 @@ Name your functions clearly. <code>celsius_to_fahrenheit</code> is perfect — y
 <span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Chapter 2 Review Program</span>
-<span class="kn">import</span> <span class="nn">utime</span>                                    <span class="c1"># Module Import</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>                                    <span class="c1"># Module Import</span>
 
 <span class="n">note_freq</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"C4"</span><span class="p">:</span> <span class="mi">261</span><span class="p">,</span> <span class="s2">"D4"</span><span class="p">:</span> <span class="mi">294</span><span class="p">,</span> <span class="s2">"E4"</span><span class="p">:</span> <span class="mi">330</span><span class="p">}</span>  <span class="c1"># Dictionary</span>
 <span class="n">melody</span>    <span class="o">=</span> <span class="p">[</span><span class="s2">"C4"</span><span class="p">,</span> <span class="s2">"E4"</span><span class="p">,</span> <span class="s2">"D4"</span><span class="p">,</span> <span class="s2">"C4"</span><span class="p">]</span>           <span class="c1"># List</span>
 <span class="n">tempo</span>     <span class="o">=</span> <span class="p">(</span><span class="mi">120</span><span class="p">,)</span>                              <span class="c1"># Tuple</span>
 
-<span class="k">def</span> <span class="nf">bpm_to_ms</span><span class="p">(</span><span class="n">bpm</span><span class="p">):</span>                            <span class="c1"># Function Definition</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bpm_to_ms</span><span class="p">(</span><span class="n">bpm</span><span class="p">):</span>                            <span class="c1"># Function Definition</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="mi">60000</span> <span class="o">/</span> <span class="n">bpm</span><span class="p">)</span>                    <span class="c1"># Return Value</span>
 
 <span class="n">beat_ms</span> <span class="o">=</span> <span class="n">bpm_to_ms</span><span class="p">(</span><span class="n">tempo</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>                 <span class="c1"># Function Call</span>

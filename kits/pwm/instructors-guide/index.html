@@ -546,6 +546,8 @@
         
       
         
+      
+        
           
         
       
@@ -1257,6 +1259,52 @@
   
   <span class="md-ellipsis">
     SHT40 Temp and Humidity
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sht40-temp-display/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    SHT40 Smartwatch Display
   </span>
   
 
@@ -2787,7 +2835,7 @@
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">istart</span><span class="p">,</span> <span class="n">istop</span><span class="p">,</span> <span class="n">ostart</span><span class="p">,</span> <span class="n">ostop</span><span class="p">):</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">istart</span><span class="p">,</span> <span class="n">istop</span><span class="p">,</span> <span class="n">ostart</span><span class="p">,</span> <span class="n">ostop</span><span class="p">):</span>
   <span class="k">if</span> <span class="p">(</span><span class="n">istop</span> <span class="o">-</span> <span class="n">istart</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
       <span class="k">return</span> <span class="n">ostop</span>
   <span class="k">else</span><span class="p">:</span>
@@ -2823,7 +2871,7 @@
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">draw_pulse_wave</span><span class="p">(</span><span class="n">dutyCycle</span><span class="p">,</span> <span class="n">yOffset</span><span class="p">):</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">draw_pulse_wave</span><span class="p">(</span><span class="n">dutyCycle</span><span class="p">,</span> <span class="n">yOffset</span><span class="p">):</span>
     <span class="n">pulses</span> <span class="o">=</span> <span class="mi">5</span>
     <span class="n">square_wave_height</span> <span class="o">=</span> <span class="mi">20</span>
     <span class="n">sq_wave_period</span> <span class="o">=</span> <span class="n">WIDTH</span> <span class="o">//</span> <span class="n">pulses</span>

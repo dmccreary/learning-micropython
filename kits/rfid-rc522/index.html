@@ -546,6 +546,8 @@
         
       
         
+      
+        
           
         
       
@@ -858,6 +860,52 @@
   
   <span class="md-ellipsis">
     SHT40 Temp and Humidity
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../sht40-temp-display/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    SHT40 Smartwatch Display
   </span>
   
 
@@ -2311,11 +2359,11 @@ community.</p>
 <span class="normal">42</span>
 <span class="normal">43</span>
 <span class="normal">44</span>
-<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">mfrc522</span> <span class="kn">import</span> <span class="n">MFRC522</span>
-<span class="kn">import</span> <span class="nn">utime</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">mfrc522</span><span class="w"> </span><span class="kn">import</span> <span class="n">MFRC522</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">utime</span>
 
 
-<span class="k">def</span> <span class="nf">uidToString</span><span class="p">(</span><span class="n">uid</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">uidToString</span><span class="p">(</span><span class="n">uid</span><span class="p">):</span>
     <span class="n">mystring</span> <span class="o">=</span> <span class="s2">""</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">uid</span><span class="p">:</span>
         <span class="n">mystring</span> <span class="o">=</span> <span class="s2">"</span><span class="si">%02X</span><span class="s2">"</span> <span class="o">%</span> <span class="n">i</span> <span class="o">+</span> <span class="n">mystring</span>

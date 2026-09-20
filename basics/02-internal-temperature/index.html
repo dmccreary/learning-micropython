@@ -1961,6 +1961,8 @@
         
       
         
+      
+        
           
         
       
@@ -2986,8 +2988,8 @@
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="c1"># Create an ADC object for the internal temperature sensor</span>
 <span class="c1"># The internal temperature sensor is on ADC channel 4</span>
@@ -3053,10 +3055,10 @@
 <span class="normal">42</span>
 <span class="normal">43</span>
 <span class="normal">44</span>
-<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
-<span class="k">def</span> <span class="nf">read_temperature</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_temperature</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Read the internal temperature sensor and return temperature in Celsius</span>
 <span class="sd">    """</span>
@@ -3074,7 +3076,7 @@
 
     <span class="k">return</span> <span class="n">temp_celsius</span>
 
-<span class="k">def</span> <span class="nf">celsius_to_fahrenheit</span><span class="p">(</span><span class="n">celsius</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">celsius_to_fahrenheit</span><span class="p">(</span><span class="n">celsius</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Convert Celsius to Fahrenheit</span>
 <span class="sd">    """</span>
@@ -3184,28 +3186,28 @@
 <span class="normal">81</span>
 <span class="normal">82</span>
 <span class="normal">83</span>
-<span class="normal">84</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">84</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
-<span class="k">class</span> <span class="nc">TemperatureMonitor</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">TemperatureMonitor</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">temp_sensor</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">ADC</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">readings</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">min_temp</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_temp</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="k">def</span> <span class="nf">read_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">read_temperature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""Read temperature in Celsius"""</span>
         <span class="n">raw_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">temp_sensor</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
         <span class="n">voltage</span> <span class="o">=</span> <span class="n">raw_value</span> <span class="o">*</span> <span class="p">(</span><span class="mf">3.3</span> <span class="o">/</span> <span class="mi">65535</span><span class="p">)</span>
         <span class="n">temp_celsius</span> <span class="o">=</span> <span class="mi">27</span> <span class="o">-</span> <span class="p">(</span><span class="n">voltage</span> <span class="o">-</span> <span class="mf">0.706</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.001721</span>
         <span class="k">return</span> <span class="n">temp_celsius</span>
 
-    <span class="k">def</span> <span class="nf">celsius_to_fahrenheit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">celsius</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">celsius_to_fahrenheit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">celsius</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""Convert Celsius to Fahrenheit"""</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">celsius</span> <span class="o">*</span> <span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">32</span>
 
-    <span class="k">def</span> <span class="nf">update_statistics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temp</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_statistics</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temp</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""Update min, max, and average temperature statistics"""</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">readings</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
 
@@ -3219,13 +3221,13 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_temp</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">temp</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_temp</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">max_temp</span> <span class="o">=</span> <span class="n">temp</span>
 
-    <span class="k">def</span> <span class="nf">get_average</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_average</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""Calculate average of recent readings"""</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">readings</span><span class="p">:</span>
             <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">readings</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">readings</span><span class="p">)</span>
         <span class="k">return</span> <span class="mi">0</span>
 
-    <span class="k">def</span> <span class="nf">display_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temp_c</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">display_status</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temp_c</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">"""Display current temperature and statistics"""</span>
         <span class="n">temp_f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">celsius_to_fahrenheit</span><span class="p">(</span><span class="n">temp_c</span><span class="p">)</span>
         <span class="n">avg_temp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_average</span><span class="p">()</span>

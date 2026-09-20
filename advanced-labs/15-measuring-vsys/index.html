@@ -2132,6 +2132,8 @@
         
       
         
+      
+        
           
         
       
@@ -3115,14 +3117,14 @@ When I do that I get around 4.7 V when powered from USB, so it definitely works.
 <span class="normal">53</span>
 <span class="normal">54</span>
 <span class="normal">55</span>
-<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="c1"># Create ADC object for VSYS measurement</span>
 <span class="c1"># ADC(3) corresponds to the internal voltage divider for VSYS</span>
 <span class="n">vsys_adc</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">read_vsys_voltage</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_vsys_voltage</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Read VSYS voltage using the internal voltage divider</span>
 
@@ -3143,7 +3145,7 @@ When I do that I get around 4.7 V when powered from USB, so it definitely works.
 
     <span class="k">return</span> <span class="n">vsys_voltage</span>
 
-<span class="k">def</span> <span class="nf">format_voltage</span><span class="p">(</span><span class="n">voltage</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_voltage</span><span class="p">(</span><span class="n">voltage</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Format voltage for display with appropriate precision"""</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">voltage</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">V"</span>
 
@@ -3266,8 +3268,8 @@ When I do that I get around 4.7 V when powered from USB, so it definitely works.
 <span class="normal">90</span>
 <span class="normal">91</span>
 <span class="normal">92</span>
-<span class="normal">93</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">RTC</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">93</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">ADC</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">RTC</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="c1"># Initialize components</span>
 <span class="n">vsys_adc</span> <span class="o">=</span> <span class="n">ADC</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
@@ -3277,7 +3279,7 @@ When I do that I get around 4.7 V when powered from USB, so it definitely works.
 <span class="n">voltage_log</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">MAX_LOG_ENTRIES</span> <span class="o">=</span> <span class="mi">100</span>
 
-<span class="k">def</span> <span class="nf">read_vsys_voltage</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_vsys_voltage</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Read VSYS voltage with improved accuracy"""</span>
     <span class="c1"># Take multiple readings for better accuracy</span>
     <span class="n">readings</span> <span class="o">=</span> <span class="p">[]</span>
@@ -3291,7 +3293,7 @@ When I do that I get around 4.7 V when powered from USB, so it definitely works.
     <span class="c1"># Return average of readings</span>
     <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">readings</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">readings</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">log_voltage</span><span class="p">(</span><span class="n">voltage</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">log_voltage</span><span class="p">(</span><span class="n">voltage</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Log voltage with timestamp"""</span>
     <span class="n">timestamp</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="n">voltage_log</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">voltage</span><span class="p">))</span>
@@ -3300,7 +3302,7 @@ When I do that I get around 4.7 V when powered from USB, so it definitely works.
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">voltage_log</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">MAX_LOG_ENTRIES</span><span class="p">:</span>
         <span class="n">voltage_log</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">get_voltage_stats</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_voltage_stats</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Calculate voltage statistics"""</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">voltage_log</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">None</span>
@@ -3313,7 +3315,7 @@ When I do that I get around 4.7 V when powered from USB, so it definitely works.
         <span class="s1">'count'</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">voltages</span><span class="p">)</span>
     <span class="p">}</span>
 
-<span class="k">def</span> <span class="nf">display_status</span><span class="p">(</span><span class="n">voltage</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">display_status</span><span class="p">(</span><span class="n">voltage</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Display voltage with status indicators"""</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"VSYS: </span><span class="si">{</span><span class="n">voltage</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">V"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
 

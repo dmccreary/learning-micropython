@@ -2027,6 +2027,8 @@
         
       
         
+      
+        
           
         
       
@@ -2830,7 +2832,7 @@
 <h2 id="uname-getting-system-information">UName: Getting System Information</h2>
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="n">uname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">uname</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">uname</span><span class="p">)</span>
 </code></pre></div></td></tr></tbody></table></div>
@@ -2853,7 +2855,7 @@
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span>
 <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">'myfile'</span><span class="p">)</span>
 <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">()</span>
@@ -2863,7 +2865,7 @@
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">dir</span><span class="p">(</span><span class="n">os</span><span class="p">))</span>
 <span class="err">``</span>
 
@@ -2901,14 +2903,14 @@
 <span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
-<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">gc</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 
-<span class="k">def</span> <span class="nf">df</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">df</span><span class="p">():</span>
   <span class="n">s</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">statvfs</span><span class="p">(</span><span class="s1">'//'</span><span class="p">)</span>
   <span class="k">return</span> <span class="p">(</span><span class="s1">'</span><span class="si">{0}</span><span class="s1"> MB'</span><span class="o">.</span><span class="n">format</span><span class="p">((</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">s</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span><span class="o">/</span><span class="mi">1048576</span><span class="p">))</span>
 
-<span class="k">def</span> <span class="nf">free</span><span class="p">(</span><span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">free</span><span class="p">(</span><span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
   <span class="n">F</span> <span class="o">=</span> <span class="n">gc</span><span class="o">.</span><span class="n">mem_free</span><span class="p">()</span>
   <span class="n">A</span> <span class="o">=</span> <span class="n">gc</span><span class="o">.</span><span class="n">mem_alloc</span><span class="p">()</span>
   <span class="n">T</span> <span class="o">=</span> <span class="n">F</span><span class="o">+</span><span class="n">A</span>
@@ -2916,7 +2918,7 @@
   <span class="k">if</span> <span class="ow">not</span> <span class="n">full</span><span class="p">:</span> <span class="k">return</span> <span class="n">P</span>
   <span class="k">else</span> <span class="p">:</span> <span class="k">return</span> <span class="p">(</span><span class="s1">'Total:</span><span class="si">{0}</span><span class="s1"> Free:</span><span class="si">{1}</span><span class="s1"> (</span><span class="si">{2}</span><span class="s1">)'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">F</span><span class="p">,</span><span class="n">P</span><span class="p">))</span>
 
-<span class="k">def</span> <span class="nf">free</span><span class="o">-</span><span class="n">gc</span><span class="p">(</span><span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">free</span><span class="o">-</span><span class="n">gc</span><span class="p">(</span><span class="n">full</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
   <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
   <span class="n">F</span> <span class="o">=</span> <span class="n">gc</span><span class="o">.</span><span class="n">mem_free</span><span class="p">()</span>
   <span class="n">A</span> <span class="o">=</span> <span class="n">gc</span><span class="o">.</span><span class="n">mem_alloc</span><span class="p">()</span>

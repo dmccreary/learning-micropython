@@ -2105,6 +2105,8 @@
         
       
         
+      
+        
           
         
       
@@ -3051,11 +3053,11 @@ OLED display at the same time.</p>
 <span class="normal">60</span>
 <span class="normal">61</span>
 <span class="normal">62</span>
-<span class="normal">63</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">_thread</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
-<span class="kn">from</span> <span class="nn">ssd1306</span> <span class="kn">import</span> <span class="n">SSD1306_I2C</span>
-<span class="kn">import</span> <span class="nn">framebuf</span>
+<span class="normal">63</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">_thread</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ssd1306</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSD1306_I2C</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">framebuf</span>
 
 <span class="c1"># Setup I2C and Display</span>
 <span class="n">i2c</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
@@ -3068,7 +3070,7 @@ OLED display at the same time.</p>
 <span class="n">sensor_value</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">lock</span> <span class="o">=</span> <span class="n">_thread</span><span class="o">.</span><span class="n">allocate_lock</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">update_display_task</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_display_task</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Second core task: Handles display updates</span>
 <span class="sd">    This runs on core 1 and updates the display every 0.1 seconds</span>
@@ -3094,7 +3096,7 @@ OLED display at the same time.</p>
         <span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
 
 <span class="c1"># Main program (runs on core 0)</span>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="k">global</span> <span class="n">sensor_value</span>
 
     <span class="c1"># Start the second core number 1</span>
@@ -3154,7 +3156,7 @@ This line starts the new task on the second core - core number 1</p>
 <span class="n">sensor_value</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># This variable can be seen by both cores</span>
 <span class="n">lock</span> <span class="o">=</span> <span class="n">_thread</span><span class="o">.</span><span class="n">allocate_lock</span><span class="p">()</span>  <span class="c1"># This helps cores share data safely</span>
 
-<span class="k">def</span> <span class="nf">update_display_task</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update_display_task</span><span class="p">():</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="c1"># Core 1 safely reads the shared variable</span>
         <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
@@ -3163,7 +3165,7 @@ This line starts the new task on the second core - core number 1</p>
         <span class="c1"># Core 1 updates the display with this value</span>
         <span class="n">display</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Value: </span><span class="si">{</span><span class="n">current_value</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>  <span class="c1"># This runs on Core 0</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>  <span class="c1"># This runs on Core 0</span>
     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
         <span class="n">reading</span> <span class="o">=</span> <span class="n">sensor</span><span class="o">.</span><span class="n">read_u16</span><span class="p">()</span>
         <span class="c1"># Core 0 safely updates the shared variable</span>
@@ -3275,9 +3277,9 @@ Try changing <code>time.sleep(1)</code> to <code>time.sleep(0.5)</code> in the <
 <span class="normal">53</span>
 <span class="normal">54</span>
 <span class="normal">55</span>
-<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">_thread</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">56</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">_thread</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="c1"># Set up two LEDs - one for each core</span>
 <span class="n">led_core0</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>  <span class="c1"># First LED</span>
@@ -3286,7 +3288,7 @@ Try changing <code>time.sleep(1)</code> to <code>time.sleep(0.5)</code> in the <
 <span class="c1"># Variable to help us stop the program</span>
 <span class="n">running</span> <span class="o">=</span> <span class="kc">True</span>
 
-<span class="k">def</span> <span class="nf">blink_core1</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">blink_core1</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    This function will run on Core 1</span>
 <span class="sd">    It blinks LED 1 every 1 second</span>
@@ -3300,7 +3302,7 @@ Try changing <code>time.sleep(1)</code> to <code>time.sleep(0.5)</code> in the <
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">"Core 1 blink"</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    This function runs on Core 0</span>
 <span class="sd">    It blinks LED 0 every 0.25 seconds</span>
@@ -3384,9 +3386,9 @@ Try changing <code>time.sleep(1)</code> to <code>time.sleep(0.5)</code> in the <
 <span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
-<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">_thread</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">_thread</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="c1"># Setup LED and button</span>
 <span class="n">led</span> <span class="o">=</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
@@ -3396,13 +3398,13 @@ Try changing <code>time.sleep(1)</code> to <code>time.sleep(0.5)</code> in the <
 <span class="n">button_presses</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">lock</span> <span class="o">=</span> <span class="n">_thread</span><span class="o">.</span><span class="n">allocate_lock</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">button_handler</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">button_handler</span><span class="p">(</span><span class="n">pin</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Interrupt handler for button press"""</span>
     <span class="k">global</span> <span class="n">button_presses</span>
     <span class="k">with</span> <span class="n">lock</span><span class="p">:</span>
         <span class="n">button_presses</span> <span class="o">+=</span> <span class="mi">1</span>
 
-<span class="k">def</span> <span class="nf">core1_task</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">core1_task</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Second core task: LED blinking pattern</span>
 <span class="sd">    This keeps running even when button interrupts occur</span>
@@ -3412,7 +3414,7 @@ Try changing <code>time.sleep(1)</code> to <code>time.sleep(0.5)</code> in the <
         <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="c1"># Main program (runs on core 0)</span>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="c1"># Setup button interrupt</span>
     <span class="n">button</span><span class="o">.</span><span class="n">irq</span><span class="p">(</span><span class="n">trigger</span><span class="o">=</span><span class="n">machine</span><span class="o">.</span><span class="n">Pin</span><span class="o">.</span><span class="n">IRQ_FALLING</span><span class="p">,</span> <span class="n">handler</span><span class="o">=</span><span class="n">button_handler</span><span class="p">)</span>
 
@@ -3490,14 +3492,14 @@ Try changing <code>time.sleep(1)</code> to <code>time.sleep(0.5)</code> in the <
 <span class="normal">51</span>
 <span class="normal">52</span>
 <span class="normal">53</span>
-<span class="normal">54</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">rp2</span>
-<span class="kn">import</span> <span class="nn">_thread</span>
-<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">54</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rp2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">_thread</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="c1"># Define a PIO program to generate a square wave</span>
 <span class="nd">@rp2</span><span class="o">.</span><span class="n">asm_pio</span><span class="p">(</span><span class="n">set_init</span><span class="o">=</span><span class="n">rp2</span><span class="o">.</span><span class="n">PIO</span><span class="o">.</span><span class="n">OUT_LOW</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">square_wave</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">square_wave</span><span class="p">():</span>
     <span class="n">wrap_target</span><span class="p">()</span>
     <span class="nb">set</span><span class="p">(</span><span class="n">pins</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">nop</span><span class="p">()</span> <span class="p">[</span><span class="mi">31</span><span class="p">]</span>  <span class="c1"># Delay for 32 cycles</span>
@@ -3508,7 +3510,7 @@ Try changing <code>time.sleep(1)</code> to <code>time.sleep(0.5)</code> in the <
 <span class="c1"># Setup the state machine with the PIO program</span>
 <span class="n">sm</span> <span class="o">=</span> <span class="n">rp2</span><span class="o">.</span><span class="n">StateMachine</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">square_wave</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">set_base</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
 
-<span class="k">def</span> <span class="nf">core1_task</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">core1_task</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Second core task: Monitors the square wave</span>
 <span class="sd">    """</span>
@@ -3530,7 +3532,7 @@ Try changing <code>time.sleep(1)</code> to <code>time.sleep(0.5)</code> in the <
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Frequency: </span><span class="si">{</span><span class="n">transitions</span><span class="o">/</span><span class="mi">2</span><span class="si">}</span><span class="s2"> Hz"</span><span class="p">)</span>
 
 <span class="c1"># Main program (runs on core 0)</span>
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
     <span class="c1"># Start the PIO state machine</span>
     <span class="n">sm</span><span class="o">.</span><span class="n">active</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 

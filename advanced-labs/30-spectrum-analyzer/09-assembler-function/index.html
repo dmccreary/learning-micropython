@@ -546,6 +546,8 @@
         
       
         
+      
+        
           
         
       
@@ -858,6 +860,52 @@
   
   <span class="md-ellipsis">
     SHT40 Temp and Humidity
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../kits/sht40-temp-display/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    SHT40 Smartwatch Display
   </span>
   
 
@@ -1283,7 +1331,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_19" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_20" checked>
         
           
           
@@ -1299,14 +1347,14 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6_19" id="__nav_6_19_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_6_20" id="__nav_6_20_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_19_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_6_19">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_20_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_20">
             <span class="md-nav__icon md-icon"></span>
             Spectrum Analyzer
           </label>
@@ -2739,17 +2787,17 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
 <span class="normal">385</span>
 <span class="normal">386</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Sound Spectrum Analyzer with direct use of assembler FFT</span>
 <span class="c1"># Combines INMP441 I2S microphone with SSD1306 OLED display</span>
-<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>
-<span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">struct</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">array</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">I2S</span><span class="p">,</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">SPI</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">struct</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">array</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Importing FFT modules..."</span><span class="p">)</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="c1"># Try to import the direct assembler FFT function</span>
-    <span class="kn">import</span> <span class="nn">dft</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">dft</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"FFT module imported successfully"</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ImportError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Could not import FFT module: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
@@ -2796,7 +2844,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
 <span class="n">FFT_SIZE</span> <span class="o">=</span> <span class="mi">256</span>
 
 <span class="c1"># Create a Hanning window function</span>
-<span class="k">def</span> <span class="nf">hanning</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">hanning</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
     <span class="k">return</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="p">(</span><span class="n">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
 
 <span class="c1"># Check if we have the direct FFT assembler function</span>
@@ -2820,7 +2868,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
         <span class="c1"># ctrl[3] = Address of imaginary data array</span>
         <span class="c1"># ctrl[4] = Byte Offset into entry 0 of complex roots of unity</span>
         <span class="c1"># ctrl[5] = Address of scratchpad for use by fft code</span>
-        <span class="kn">from</span> <span class="nn">uctypes</span> <span class="kn">import</span> <span class="n">addressof</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">uctypes</span><span class="w"> </span><span class="kn">import</span> <span class="n">addressof</span>
         <span class="n">ctrl</span> <span class="o">=</span> <span class="n">array</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="s1">'i'</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mi">6</span><span class="p">)</span>
         <span class="n">ctrl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">FFT_SIZE</span>
         <span class="n">ctrl</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">bits</span>
@@ -2869,7 +2917,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
 <span class="n">REVERSE</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Inverse transform</span>
 
 <span class="c1"># Convert to polar coordinates</span>
-<span class="k">def</span> <span class="nf">to_polar</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">to_polar</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Convert complex values to polar (magnitude, phase)"""</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">real</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -2887,7 +2935,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
 <span class="n">total_display_time</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">cycle_count</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="k">def</span> <span class="nf">capture_audio_samples</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">capture_audio_samples</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Capture audio samples and populate the FFT input arrays"""</span>
     <span class="k">global</span> <span class="n">total_capture_time</span>
 
@@ -2929,7 +2977,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error in capture_audio_samples: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
 
-<span class="k">def</span> <span class="nf">process_fft</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">process_fft</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Process the FFT with appropriate implementation"""</span>
     <span class="k">global</span> <span class="n">total_fft_time</span>
 
@@ -2951,7 +2999,7 @@ function to increase the speed of our FFT by a factor of 7x or more.  This <code
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Error in process_fft: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
 
-<span class="k">def</span> <span class="nf">draw_spectrum</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">draw_spectrum</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Draw the frequency spectrum on the OLED display"""</span>
     <span class="k">global</span> <span class="n">total_display_time</span>
 

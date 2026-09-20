@@ -1777,6 +1777,8 @@
         
       
         
+      
+        
           
         
       
@@ -2791,8 +2793,8 @@ Keep the motor battery voltage at or below 10.8 V. Going over the maximum voltag
 <span class="normal">47</span>
 <span class="normal">48</span>
 <span class="normal">49</span>
-<span class="normal">50</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
-<span class="kn">import</span> <span class="nn">time</span>
+<span class="normal">50</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">PWM</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
 
 <span class="c1"># Set up Motor A control pins</span>
 <span class="n">motor_a_in1</span> <span class="o">=</span> <span class="n">PWM</span><span class="p">(</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># AIN1 — controls speed and direction for Motor A</span>
@@ -2808,22 +2810,22 @@ Keep the motor battery voltage at or below 10.8 V. Going over the maximum voltag
 <span class="n">motor_b_in1</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">motor_b_in2</span><span class="o">.</span><span class="n">freq</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">motor_a_forward</span><span class="p">(</span><span class="n">motor_speed</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">motor_a_forward</span><span class="p">(</span><span class="n">motor_speed</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Spin Motor A forward at the given speed (0 to 65535)."""</span>
     <span class="n">motor_a_in1</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">motor_speed</span><span class="p">)</span>  <span class="c1"># AIN1 gets the PWM signal</span>
     <span class="n">motor_a_in2</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>            <span class="c1"># AIN2 stays LOW for forward direction</span>
 
-<span class="k">def</span> <span class="nf">motor_a_backward</span><span class="p">(</span><span class="n">motor_speed</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">motor_a_backward</span><span class="p">(</span><span class="n">motor_speed</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Spin Motor A backward at the given speed (0 to 65535)."""</span>
     <span class="n">motor_a_in1</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>            <span class="c1"># AIN1 stays LOW for backward direction</span>
     <span class="n">motor_a_in2</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="n">motor_speed</span><span class="p">)</span>  <span class="c1"># AIN2 gets the PWM signal</span>
 
-<span class="k">def</span> <span class="nf">motor_a_stop</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">motor_a_stop</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Stop Motor A (coast mode — slows gradually)."""</span>
     <span class="n">motor_a_in1</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># both LOW = coast to stop</span>
     <span class="n">motor_a_in2</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">motor_a_brake</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">motor_a_brake</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Brake Motor A (stops quickly)."""</span>
     <span class="n">motor_a_in1</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">65535</span><span class="p">)</span>  <span class="c1"># both HIGH = brake mode (stops fast)</span>
     <span class="n">motor_a_in2</span><span class="o">.</span><span class="n">duty_u16</span><span class="p">(</span><span class="mi">65535</span><span class="p">)</span>

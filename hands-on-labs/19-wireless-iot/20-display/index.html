@@ -1801,6 +1801,8 @@
         
       
         
+      
+        
           
         
       
@@ -2656,12 +2658,12 @@ In this lab you will connect a display to your Pico W and show network informati
 <span class="normal">79</span>
 <span class="normal">80</span>
 <span class="normal">81</span>
-<span class="normal">82</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="kn">import</span> <span class="nn">machine</span>
-<span class="kn">import</span> <span class="nn">network</span>
-<span class="kn">import</span> <span class="nn">ssd1306</span>            <span class="c1"># OLED display driver library</span>
-<span class="kn">import</span> <span class="nn">secrets</span>            <span class="c1"># your WiFi network name and password</span>
-<span class="kn">from</span> <span class="nn">utime</span> <span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span>
+<span class="normal">82</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">machine</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">network</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ssd1306</span>            <span class="c1"># OLED display driver library</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">secrets</span>            <span class="c1"># your WiFi network name and password</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utime</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span><span class="p">,</span> <span class="n">ticks_ms</span><span class="p">,</span> <span class="n">ticks_diff</span>
 
 <span class="c1"># set up the OLED display over SPI</span>
 <span class="n">WIDTH</span> <span class="o">=</span> <span class="mi">128</span>
@@ -2675,7 +2677,7 @@ In this lab you will connect a display to your Pico W and show network informati
 <span class="n">oled</span> <span class="o">=</span> <span class="n">ssd1306</span><span class="o">.</span><span class="n">SSD1306_SPI</span><span class="p">(</span><span class="n">WIDTH</span><span class="p">,</span> <span class="n">HEIGHT</span><span class="p">,</span> <span class="n">spi</span><span class="p">,</span> <span class="n">DC</span><span class="p">,</span> <span class="n">RES</span><span class="p">,</span> <span class="n">CS</span><span class="p">)</span>
 <span class="n">oled</span><span class="o">.</span><span class="n">poweron</span><span class="p">()</span>            <span class="c1"># turn on the OLED screen</span>
 
-<span class="k">def</span> <span class="nf">mac_address_fmt</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">mac_address_fmt</span><span class="p">():</span>
     <span class="c1"># read the MAC address and return it as a formatted string like "28:cd:c1:01:35:54"</span>
     <span class="n">mac_bytes</span> <span class="o">=</span> <span class="n">wlan</span><span class="o">.</span><span class="n">config</span><span class="p">(</span><span class="s1">'mac'</span><span class="p">)</span>    <span class="c1"># returns the MAC address as 6 raw bytes</span>
     <span class="n">mac_string</span> <span class="o">=</span> <span class="s2">""</span>
@@ -2684,7 +2686,7 @@ In this lab you will connect a display to your Pico W and show network informati
     <span class="n">mac_string</span> <span class="o">+=</span> <span class="nb">hex</span><span class="p">(</span><span class="n">mac_bytes</span><span class="p">[</span><span class="mi">5</span><span class="p">])[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>  <span class="c1"># add the last byte without a trailing colon</span>
     <span class="k">return</span> <span class="n">mac_string</span>
 
-<span class="k">def</span> <span class="nf">display_startup</span><span class="p">(</span><span class="n">counter</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">display_startup</span><span class="p">(</span><span class="n">counter</span><span class="p">):</span>
     <span class="c1"># show a startup message while waiting for WiFi to connect</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                               <span class="c1"># clear the screen</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">'Running startup'</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>     <span class="c1"># row 1: startup message</span>
@@ -2693,7 +2695,7 @@ In this lab you will connect a display to your Pico W and show network informati
     <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">counter</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>          <span class="c1"># row 4: seconds elapsed</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                                <span class="c1"># send the pixel data to the screen</span>
 
-<span class="k">def</span> <span class="nf">display_status</span><span class="p">(</span><span class="n">counter</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">display_status</span><span class="p">(</span><span class="n">counter</span><span class="p">):</span>
     <span class="c1"># show network status after a successful connection</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                                               <span class="c1"># clear the screen</span>
     <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s1">'n:'</span> <span class="o">+</span> <span class="n">secrets</span><span class="o">.</span><span class="n">SSID</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                   <span class="c1"># row 0: network name</span>
