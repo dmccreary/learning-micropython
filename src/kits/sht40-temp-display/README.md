@@ -12,10 +12,11 @@ The screen is a GC9A01, a round 240 x 240 color display about the size of
 a watch face. It talks to your Pico over SPI, a faster wiring system with
 five wires.
 
-This kit is the plain SHT40 kit plus the round display. Programs 01 to 04
-are the same lessons as before. Programs 05, 06 and 07 are new. Program 05
-plots the temperature on its own, and programs 06 and 07 put the readings
-on the watch face.
+This kit is the plain SHT40 kit plus the round display and a push button.
+Programs 01 to 04 are the same lessons as before. Programs 05 to 09 are new.
+Program 05 plots the temperature on its own. Programs 06 and 07 put the
+readings on the watch face. Programs 08 and 09 add the button and turn the
+watch into a six-mode smartwatch.
 
 This kit has no NeoPixel strip. The plain SHT40 kit uses program 05 to
 light a NeoPixel strip, so here that number is used for the temperature
@@ -29,7 +30,8 @@ plot instead.
 | SHT40 breakout board | About $1.65 on eBay. Adafruit #4885 or SparkFun SEN-18652 cost more but ship faster |
 | GC9A01 round display | 240 x 240, 1.28 inch, with SPI pins (SCL, SDA, DC, CS, RST) |
 | Solderless breadboard | Half-size is plenty |
-| About 11 jumper wires | 4 for the sensor (male-to-male) and 7 for the display. Use female-to-male wires for the display if its pins stick out |
+| Push button | Any small push button (a tactile switch). It needs two wires |
+| About 13 jumper wires | 4 for the sensor (male-to-male), 7 for the display and 2 for the button. Use female-to-male wires for the display if its pins stick out |
 | USB cable | Must be a data cable, not a charge-only cable |
 
 ## Wiring
@@ -76,6 +78,23 @@ The display's pins are labeled SCL and SDA just like the sensor's, but
 they are **not** the I2C wires. The display's SCL and SDA go to GP2 and
 GP3. The sensor's SCL and SDA go to GP0 and GP1. Do not mix them up.
 
+### The push button
+
+The button needs no outside resistor. Program 09 turns on the Pico's own
+**pull-up resistor**, which holds the pin at 3.3 volts. Pressing the button
+connects the pin to GND, so a press reads as 0.
+
+1. Connect one leg of the button to Pico pin 20 (GP15). This is the pin in
+   the bottom left corner of the Pico when the USB port is at the top.
+2. Connect the other leg of the button to Pico pin 18 (GND).
+
+| Button | Pico pin | Pico name | What it does |
+|--------|----------|-----------|--------------|
+| One leg | 20 | GP15 | Reads 1 normally and 0 while pressed |
+| Other leg | 18 | GND | Ground |
+
+It does not matter which leg goes where. Run program 08 to test the button.
+
 Every pin number lives in `config.py`, so if you wire something to a
 different pin, change it there and every program follows.
 
@@ -90,16 +109,20 @@ Plug the Pico into your computer, then run:
 The script lists every serial port on your Mac, works out which one is
 your Pico, and copies everything onto it:
 
-- the `lib` folder, which holds the display driver, two fonts and a
-  shapes helper (the display programs cannot run without it)
+- the `lib` folder, which holds the display driver, two fonts, a shapes
+  helper, and the small files the smartwatch modes share (the display
+  programs cannot run without it)
 - `config.py`
 - every numbered lesson program
-- a second copy of program 07, saved as `main.py`
+- a second copy of program 09, saved as `main.py`
 
 A Pico runs `main.py` all by itself when it powers up. Once the script
-finishes, unplug the Pico and plug it back in. The watch face starts with
+finishes, unplug the Pico and plug it back in. The smartwatch starts with
 no computer needed, so you can power it from a phone charger or a battery
 pack. To stop it, plug the Pico into Thonny and click the red Stop button.
+
+Want a different program to start by itself? Change the `MAIN_LAB` line at
+the top of `upload-code.sh`.
 
 If you have two boards plugged in, the script stops and asks you to pick
 one:
@@ -245,6 +268,117 @@ line) and then, each second, writes only the numbers. Each number is
 always the same width, and every letter is drawn with a black background,
 so the new digits land right on top of the old ones and cover them up.
 
+### 08-button-and-led-test.py
+
+Tests the push button and the blinking LED. It does not need the sensor
+or the screen.
+
+1. Run the program. The green LED on the Pico blinks once a second. That
+   blink is called a **heartbeat**.
+2. Press the button three times. Try a quick tap, and try holding it for a
+   second or more.
+
+```
+Button on GP15. Press it 3 times.
+Taps shorter than 50 ms are ignored as button bounce.
+The green LED blinks once a second. Press Ctrl-C to give up.
+
+Press 1: 120 ms, a tap (next mode)
+Press 2: 1100 ms, a hold (switch F and C)
+Press 3: 3300 ms, a long hold (clear the records in Hi/Lo)
+
+The button works!
+TEST PASS
+```
+
+If the program says the button reads PRESSED when nobody is touching it,
+check the two button wires.
+
+The button waits until it has been still for 50 milliseconds before it
+trusts what it sees. That wait is called a **debounce**. It means a very
+quick tap, shorter than 50 milliseconds, is ignored. Normal taps are much longer.
+
+### 09-smartwatch-modes.py
+
+The smartwatch. A tap on the button switches to the next of six screens.
+
+| # | Mode | What you see |
+|---|------|--------------|
+| 1 | Watch | The classic watch face from program 07 |
+| 2 | Buddy | A cartoon face that feels the air. The whole face is a mood-ring color: blue when it is cold, green when it is comfy, red when it is hot. Buddy shivers, smiles, sweats and blinks |
+| 3 | Live | A graph of the last three minutes of temperature. The line changes color with the temperature |
+| 4 | Ring | Two rainbow ring gauges. The outer ring is the temperature and the inner ring is the humidity |
+| 5 | Finger | Press a fingertip on the sensor and watch a thermometer fill up to 90 F |
+| 6 | Hi/Lo | The highest and lowest temperature and humidity ever felt, saved even after you unplug the Pico |
+
+A row of small dots at the bottom of the screen shows which mode you are
+in. The bright dot is the current mode.
+
+**The button**
+
+| What you do | What happens |
+|-------------|--------------|
+| Tap | Go to the next mode. After Hi/Lo it starts over at Watch |
+| Hold for about a second | Switch between Fahrenheit (F) and Celsius (C) |
+| Hold for 3 seconds (in Hi/Lo) | Clear the records |
+
+**The blinking LED**
+
+The green LED on the Pico blinks once every time the sensor is read, so
+the speed of the blinking is the speed of the readings. Try the Finger
+mode: it reads faster, so the LED blinks faster too. Two quick blinks mean
+a reading failed. If the LED stops blinking, the program has stopped.
+
+**Mood-ring colors**
+
+A mood ring changes color with how you feel. The watch does the same with
+the temperature. It spreads the colors along a line from blue (cold)
+through cyan, green and orange to red (hot), and each temperature gets its
+own color. Look for it in the dots around the rim, Buddy's face, the graph
+line, the Ring gauges and the thermometer. The two ends of the line are
+`MOOD_COLD_F` and `MOOD_HOT_F` in `config.py`.
+
+**Things to know**
+
+- The watch keeps track of the highest and lowest readings in **every**
+  mode, not just Hi/Lo. Touching the sensor with a warm finger will set a
+  new high!
+- The records are saved in a file called `records.txt` on the Pico. To be
+  kind to the Pico's flash memory, a new record is saved at most once a
+  minute, and when you press Ctrl-C.
+- The Live graph draws one dot column for every reading. When it reaches
+  the right edge it starts over on the left.
+- If the sensor stops answering, the title at the top of the screen turns
+  into a red SENSOR FAIL. The watch keeps trying and comes back to life by
+  itself when the sensor answers.
+
+**Settings in `config.py`**
+
+| Setting | What it does |
+|---------|--------------|
+| `BUTTON_PIN`, `BUTTON_DEBOUNCE_MS` | The pin the button is wired to (15), and how long it must be still before we trust it (50 ms) |
+| `LONG_PRESS_MS`, `CLEAR_PRESS_MS` | How long to hold the button to switch F and C, and to clear the records |
+| `MOOD_COLD_F`, `MOOD_HOT_F` | The two ends of the mood-ring color line |
+| `BUDDY_COLD_F` and `TEMP_*_F` | Where Buddy starts shivering, and when Buddy looks cool, comfy, warm and hot |
+| `LIVE_WIDTH` | How many readings wide the Live graph is |
+| `FINGER_TARGET_F` | The temperature that fills the thermometer in Finger mode |
+| `HEARTBEAT_MS` | How long each blink of the LED lasts |
+
+**How the program is built**
+
+Program 09 is short because most of the work lives in small files in the
+`lib` folder. Open them and read them!
+
+| File | What it does |
+|------|--------------|
+| `sht40.py` | Reads the sensor |
+| `button.py` | The button. It uses an **interrupt**, so a press is never missed, even while the screen is busy drawing. It waits for the button to stop bouncing (50 ms) before it decides what happened |
+| `heartbeat.py` | The blinking LED |
+| `records.py` | The highest and lowest readings, saved in a file |
+| `widgets.py` | Colors, the water drop and thermometer icons, and the ring gauges. They are all built from rectangles, circles and triangles |
+| `watch_ctx.py` | What every mode shares, and the pattern every mode follows: draw the fixed parts once, then update the numbers |
+| `mode_*.py` | One small file for each of the six modes |
+
 ## Things to Try
 
 - Breathe on the sensor while the watch face is running. Watch the
@@ -253,6 +387,14 @@ so the new digits land right on top of the old ones and cover them up.
   the temperature turns orange.
 - Change `DISPLAY_SECONDS` in `config.py` to 10. How does the watch feel
   when it updates less often?
+- In program 09, go to Buddy and breathe on the sensor. Does Buddy's
+  caption change?
+- Try the Finger mode. Can you make the thermometer reach the goal in under
+  ten seconds? What happens when you take your finger away?
+- Change `MOOD_COLD_F` and `MOOD_HOT_F` to squeeze the rainbow into a
+  smaller range, then watch how the colors change in your room.
+- Watch the green LED while you switch to the Finger mode. Why does it
+  blink faster?
 
 - Put the sensor in the refrigerator for a minute, then watch it warm back up.
 - Hold the sensor near a window on a cold day and compare it to the middle
@@ -275,6 +417,13 @@ so the new digits land right on top of the old ones and cover them up.
 | "ImportError: no module named 'gc9a01'" | The `lib` folder is not on the Pico. Run `./upload-code.sh` again. |
 | The watch face starts by itself and Thonny cannot connect | That is `main.py` running. Click Thonny's red Stop button, or press Ctrl-C in the Shell. |
 | Watch face says SENSOR FAIL | The sensor is not answering. Run program 01 to check the wiring. If program 01 passes, unplug the Pico and plug it back in. |
+| Program 08 says the button reads PRESSED, or never sees a press | Check the button wires: one leg to pin 20 (GP15) and the other to pin 18 (GND). Push both wires all the way in. |
+| The button changes modes on its own | A loose wire can act like a press. Check that both button wires are pushed in firmly. |
+| The green LED never blinks | Program 09 is not running. Unplug the Pico and plug it back in, or run program 09 in Thonny. |
+| The green LED stops blinking | The program has stopped. Unplug the Pico and plug it back in. |
+| The green LED blinks twice, quickly | A reading failed. Run program 01 to check the sensor wiring. |
+| "MemoryError" when program 09 starts | The Pico ran out of memory. Unplug it, plug it back in and run program 09 again without running anything else first. |
+| The Hi/Lo records look wrong | Touching the sensor or breathing on it sets records too. Hold the button for 3 seconds in the Hi/Lo mode to clear them. |
 
 ## How the Math Works
 

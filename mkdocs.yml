@@ -407,6 +407,7 @@ nav:
     - Specialized Serial Protocols (UART/1-Wire/I2S): posters/serial-protocols/index.md
     - Communication Protocols Overview: posters/communication-protocols/index.md
     - Temperature Sensors: posters/temperature-sensors/index.md
+    - Temperature Sensors v2 (with SHT40): posters/temperature-sensors-v2/index.md
     - Distance Sensors: posters/distance-sensors/index.md
     - Motion & Light Sensors: posters/motion-light-sensors/index.md
     - Motor Types: posters/motor-types/index.md

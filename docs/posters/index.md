@@ -76,6 +76,12 @@ Each poster follows the same visual style: landscape 16:9, flat-design, off-whit
 
     DHT11, DHT22, and BMP280.
 
+-   [![Temperature Sensors v2](temperature-sensors-v2/temperature-sensors-v2-infographic.png)](temperature-sensors-v2/index.md)
+
+    **[Temperature Sensors v2](temperature-sensors-v2/index.md)**
+
+    Adds the high-accuracy SHT40 to the DHT11/DHT22, BME280, and DS18B20 comparison.
+
 -   [![Distance Sensors](../chapters/09-temp-distance-sensors/distance-sensors-infographic.png)](distance-sensors/index.md)
 
     **[Distance Sensors](distance-sensors/index.md)**

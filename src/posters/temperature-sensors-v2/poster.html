@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Temperature Sensor Comparison (poster source)</title>
+<!--
+  Source for docs/posters/temperature-sensors-v2/temperature-sensors-v2-infographic.png
+  Rendered by build.py (headless Chrome, 2400 px wide). Edit the text here, then re-run build.py.
+  build.py also rewrites the zone rectangles in data.json from the .card boxes below.
+-->
+<style>
+  :root {
+    --teal:   #1389A6;
+    --green:  #2D8A4E;
+    --purple: #6A3FB5;
+    --red:    #C7164E;
+    --ink:    #0B1F3A;
+    --rule:   #D5DBE3;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    width: 2400px;
+    background: #F7F9FC;
+    color: #1B2430;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 24px 0 26px;
+  }
+
+  /* ---------- title ---------- */
+  .head { display: flex; align-items: center; justify-content: center; gap: 40px; padding: 0 28px 18px; }
+  .head .text { text-align: center; }
+  .head h1 { margin: 0; font-size: 96px; line-height: 1.05; font-weight: 800; color: var(--ink); letter-spacing: -1px; }
+  .head p  { margin: 10px 0 0; font-size: 35px; color: #1B2430; white-space: nowrap; }
+  .head svg { flex: none; height: 130px; }
+
+  /* ---------- cards: 4 columns x 6 shared rows so section headings line up ---------- */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto auto auto auto auto;
+    column-gap: 24px;
+    row-gap: 0;
+    padding: 0 24px;
+  }
+  .card {
+    grid-row: span 6;
+    display: grid;
+    grid-template-rows: subgrid;
+    background: #fff;
+    border: 4px solid var(--c);
+    border-radius: 26px;
+    overflow: hidden;
+  }
+  .bar {
+    background: var(--c); color: #fff; height: 132px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .bar h2 { margin: 0; font-size: 64px; font-weight: 800; line-height: 1.05; }
+  .bar .sub { margin-top: 6px; font-size: 32px; font-weight: 600; opacity: .95; }
+
+  .illus { display: flex; align-items: center; justify-content: center; padding: 22px 20px; border-bottom: 2px solid var(--rule); }
+  .illus img { display: block; max-width: 100%; height: auto; }
+
+  .sec { padding: 18px 28px 20px; border-bottom: 2px solid var(--rule); }
+  .sec:last-child { border-bottom: 0; }
+  .sec h3 { margin: 0 0 12px; font-size: 32px; font-weight: 800; color: var(--c); letter-spacing: .2px; }
+
+  ul { list-style: none; margin: 0; padding: 0; }
+  .pins li { display: flex; align-items: flex-start; gap: 16px; font-size: 29px; line-height: 1.22; margin: 0 0 11px; }
+  .pins .n {
+    flex: none; width: 42px; height: 42px; border-radius: 50%; background: var(--c); color: #fff;
+    font-size: 26px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: -1px;
+  }
+  .pins b { font-weight: 800; }
+
+  .desc p { margin: 0; font-size: 27px; line-height: 1.32; }
+
+  .feat li { display: flex; align-items: flex-start; gap: 14px; font-size: 26.5px; line-height: 1.24; margin: 0 0 10px; }
+  .feat li::before {
+    content: ""; flex: none; width: 32px; height: 32px; margin-top: 1px;
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%232E9E4F'/><path d='M8.5 16.5l5 5 10-11' fill='none' stroke='white' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/></svg>") no-repeat center / contain;
+  }
+
+  /* ---------- typical price band (bottom of each card) ---------- */
+  .price {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    padding: 16px 28px 18px; background: color-mix(in srgb, var(--c) 12%, #fff);
+  }
+  .price .lbl { font-size: 28px; font-weight: 800; color: var(--c); line-height: 1.1; }
+  .price .lbl small { display: block; margin-top: 5px; font-size: 23px; font-weight: 600; color: #4A5563; }
+  .price .amt { font-size: 54px; font-weight: 800; color: var(--ink); white-space: nowrap; line-height: 1.05; }
+  .price .amt.two { font-size: 34px; line-height: 1.25; text-align: right; }
+
+  /* ---------- tips + sources ---------- */
+  .tips {
+    margin: 26px 28px 0; padding: 22px 34px; display: flex; align-items: center; gap: 30px;
+    background: #FFF8DC; border: 3px solid #F0D98C; border-radius: 26px; font-size: 33px; line-height: 1.3;
+  }
+  .tips svg { flex: none; height: 92px; }
+  .tips b { font-weight: 800; font-size: 38px; margin-right: 6px; }
+  .src { margin: 22px 40px 0; display: flex; align-items: center; gap: 18px; font-size: 28px; }
+  .src svg { flex: none; height: 50px; }
+  .src b { font-weight: 800; }
+  .note { margin: 8px 40px 0 108px; font-size: 25px; color: #4A5563; }
+</style>
+</head>
+<body>
+
+<!-- Title -->
+<div class="head">
+  <svg viewBox="0 0 70 130" aria-hidden="true">
+    <rect x="18" y="4" width="34" height="88" rx="17" fill="#fff" stroke="#0B1F3A" stroke-width="5"/>
+    <circle cx="35" cy="102" r="24" fill="#fff" stroke="#0B1F3A" stroke-width="5"/>
+    <rect x="30" y="38" width="10" height="56" rx="5" fill="#2A8FE0"/><circle cx="35" cy="102" r="15" fill="#2A8FE0"/>
+    <path d="M56 20h10M56 34h6M56 48h10M56 62h6" stroke="#0B1F3A" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+  <div class="text">
+    <h1>Temperature Sensor Comparison</h1>
+    <p>Four ways to measure temperature with MicroPython on the Raspberry Pi Pico — DHT11/DHT22 · BME280 · DS18B20 · SHT40.</p>
+  </div>
+  <svg viewBox="0 0 70 130" aria-hidden="true">
+    <rect x="18" y="4" width="34" height="88" rx="17" fill="#fff" stroke="#0B1F3A" stroke-width="5"/>
+    <circle cx="35" cy="102" r="24" fill="#fff" stroke="#0B1F3A" stroke-width="5"/>
+    <rect x="30" y="38" width="10" height="56" rx="5" fill="#2A8FE0"/><circle cx="35" cy="102" r="15" fill="#2A8FE0"/>
+    <path d="M4 20h10M8 34h6M4 48h10M8 62h6" stroke="#0B1F3A" stroke-width="4" stroke-linecap="round"/>
+  </svg>
+</div>
+
+<div class="cards">
+
+  <!-- 1. DHT11 / DHT22 -->
+  <section class="card" data-id="dht" style="--c: var(--teal)">
+    <div class="bar"><h2>DHT11 / DHT22</h2><div class="sub">Aosong · DHT22 = AM2302</div></div>
+    <div class="illus"><img src="assets/dht.png" width="500" alt="DHT11 and DHT22 modules"></div>
+    <div class="sec pins">
+      <h3>PINOUT (both, 3 pins):</h3>
+      <ul>
+        <li><span class="n">1</span><span><b>VCC</b> — 3.3 V to 5 V</span></li>
+        <li><span class="n">2</span><span><b>DATA</b> — Single-wire</span></li>
+        <li><span class="n">3</span><span><b>GND</b> — Ground</span></li>
+      </ul>
+    </div>
+    <div class="sec desc">
+      <h3>DESCRIPTION:</h3>
+      <p>Digital temperature and humidity sensors that use a single-wire protocol. Read them with MicroPython's built-in dht module. Wait at least 2 seconds between readings.</p>
+    </div>
+    <div class="sec feat">
+      <h3>FEATURES:</h3>
+      <ul>
+        <li>Measures temperature and humidity</li>
+        <li>DHT11: 0 to 50 °C, ±2 °C accuracy (typical)</li>
+        <li>DHT22: −40 to 80 °C, ±0.5 °C accuracy (typical)</li>
+        <li>3.3 V to 5 V supply</li>
+        <li>Simple — only one data pin required</li>
+        <li>Not waterproof</li>
+        <li>Ideal for basic indoor projects</li>
+      </ul>
+    </div>
+    <div class="price"><div class="lbl">TYPICAL PRICE<small>eBay, one module</small></div><div class="amt two">DHT11 $1–$2<br>DHT22 $2–$4</div></div>
+  </section>
+
+  <!-- 2. BME280 -->
+  <section class="card" data-id="bme280" style="--c: var(--green)">
+    <div class="bar"><h2>BME280</h2><div class="sub">Bosch Sensortec</div></div>
+    <div class="illus"><img src="assets/bme280.png" width="470" alt="BME280 breakout board"></div>
+    <div class="sec pins">
+      <h3>PINOUT (I2C, 6 pins):</h3>
+      <ul>
+        <li><span class="n">1</span><span><b>VIN</b> — 1.8 V to 3.6 V</span></li>
+        <li><span class="n">2</span><span><b>GND</b> — Ground</span></li>
+        <li><span class="n">3</span><span><b>SCL</b> — I2C Clock</span></li>
+        <li><span class="n">4</span><span><b>SDA</b> — I2C Data</span></li>
+        <li><span class="n">5</span><span><b>CSB</b> — Chip Select (tie HIGH)</span></li>
+        <li><span class="n">6</span><span><b>SDO</b> — I2C Address Select</span></li>
+      </ul>
+    </div>
+    <div class="sec desc">
+      <h3>DESCRIPTION:</h3>
+      <p>An advanced environmental sensor that measures temperature, humidity, and air pressure over I2C. Copy the BME280 driver file to your Pico before use.</p>
+    </div>
+    <div class="sec feat">
+      <h3>FEATURES:</h3>
+      <ul>
+        <li>Measures temperature, humidity, and pressure</li>
+        <li>Temperature: −40 to 85 °C, ±1 °C accuracy (typical)</li>
+        <li>Humidity: 0 to 100 %RH, ±3% accuracy (typical)</li>
+        <li>Pressure: 300 to 1100 hPa, ±1 hPa accuracy (typical)</li>
+        <li>Low power consumption</li>
+        <li>1.8 V to 3.6 V supply</li>
+        <li>I2C interface (up to 3.4 MHz)</li>
+        <li>Great for weather stations and advanced projects</li>
+      </ul>
+    </div>
+    <div class="price"><div class="lbl">TYPICAL PRICE<small>eBay, one module</small></div><div class="amt">$2–$4</div></div>
+  </section>
+
+  <!-- 3. DS18B20 -->
+  <section class="card" data-id="ds18b20" style="--c: var(--purple)">
+    <div class="bar"><h2>DS18B20</h2><div class="sub">Maxim / Analog Devices</div></div>
+    <div class="illus"><img src="assets/ds18b20.png" width="520" alt="DS18B20 waterproof probe"></div>
+    <div class="sec pins">
+      <h3>PINOUT (1-Wire, 3 pins):</h3>
+      <ul>
+        <li><span class="n">1</span><span><b>VDD</b> — 3.0 V to 5.5 V</span></li>
+        <li><span class="n">2</span><span><b>DATA</b> — 1-Wire Data</span></li>
+        <li><span class="n">3</span><span><b>GND</b> — Ground</span></li>
+      </ul>
+    </div>
+    <div class="sec desc">
+      <h3>DESCRIPTION:</h3>
+      <p>A digital temperature sensor that uses the 1-Wire protocol. The stainless-steel probe is waterproof. Read it with MicroPython's onewire and ds18x20 modules.</p>
+    </div>
+    <div class="sec feat">
+      <h3>FEATURES:</h3>
+      <ul>
+        <li>Measures temperature only</li>
+        <li>−55 to 125 °C, ±0.5 °C accuracy (typical)</li>
+        <li>Waterproof stainless-steel probe</li>
+        <li>1-Wire interface — only one data wire required</li>
+        <li>Multiple sensors share one wire (each has a unique 64-bit address)</li>
+        <li>3.0 V to 5.5 V supply</li>
+        <li>Perfect for outdoor, aquarium, and remote sensing</li>
+      </ul>
+    </div>
+    <div class="price"><div class="lbl">TYPICAL PRICE<small>eBay, one module</small></div><div class="amt">$1.50–$3</div></div>
+  </section>
+
+  <!-- 4. SHT40 (real photo) -->
+  <section class="card" data-id="sht40" style="--c: var(--red)">
+    <div class="bar"><h2>SHT40</h2><div class="sub">Sensirion</div></div>
+    <div class="illus"><img src="assets/sht40.png" width="380" alt="SHT40 breakout board (photo)"></div>
+    <div class="sec pins">
+      <h3>PINOUT (I2C, 4 pins):</h3>
+      <ul>
+        <li><span class="n">1</span><span><b>VIN</b> — 1.08 V to 3.6 V</span></li>
+        <li><span class="n">2</span><span><b>GND</b> — Ground</span></li>
+        <li><span class="n">3</span><span><b>SCL</b> — I2C Clock</span></li>
+        <li><span class="n">4</span><span><b>SDA</b> — I2C Data</span></li>
+      </ul>
+    </div>
+    <div class="sec desc">
+      <h3>DESCRIPTION:</h3>
+      <p>A high-accuracy temperature and humidity sensor. Read it over I2C at address 0x44: send command 0xFD, then read 6 bytes. Power it from 3.3&nbsp;V, never 5&nbsp;V.</p>
+    </div>
+    <div class="sec feat">
+      <h3>FEATURES:</h3>
+      <ul>
+        <li>Measures temperature and humidity</li>
+        <li>Temperature: −40 to 125 °C, ±0.2 °C accuracy (typical)</li>
+        <li>Humidity: 0 to 100 %RH, ±1.8% accuracy (typical)</li>
+        <li>Smallest step: 0.01 °C and 0.01 %</li>
+        <li>Drift: less than 0.03 °C per year</li>
+        <li>Checksum on every reading catches bad data</li>
+        <li>Built-in heater dries off condensation</li>
+        <li>Most accurate of the four sensors</li>
+      </ul>
+    </div>
+    <div class="price"><div class="lbl">TYPICAL PRICE<small>eBay, one module</small></div><div class="amt">$1.65</div></div>
+  </section>
+
+</div>
+
+<!-- Tips -->
+<div class="tips">
+  <svg viewBox="0 0 90 100" aria-hidden="true">
+    <path d="M45 8c-17 0-29 12-29 28 0 10 5 17 11 23 3 3 4 6 4 10h28c0-4 1-7 4-10 6-6 11-13 11-23C74 20 62 8 45 8z" fill="#FFD84A" stroke="#0B1F3A" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M33 78h24M35 87h20M39 95h12" stroke="#0B1F3A" stroke-width="4" stroke-linecap="round"/>
+    <path d="M45 42V60M38 46l7-6 7 6" fill="none" stroke="#0B1F3A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div><b>TIPS:</b> Use DHT11/DHT22 for simple temperature and humidity. Use BME280 for full environmental monitoring (temperature, humidity, pressure). Use DS18B20 when you need waterproof sensing or many temperature points on one wire. Use SHT40 when you want the most accurate temperature and humidity readings. Good sensors can also be inexpensive: the SHT40 costs only about $1.65. All four work great with MicroPython on the Raspberry Pi Pico.</div>
+</div>
+
+<!-- Sources -->
+<div class="src">
+  <svg viewBox="0 0 60 70" aria-hidden="true">
+    <path d="M8 4h32l14 14v48H8z" fill="#fff" stroke="#0B1F3A" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M40 4v14h14M16 30h30M16 40h30M16 50h30M16 60h20" fill="none" stroke="#0B1F3A" stroke-width="3.5" stroke-linecap="round"/>
+  </svg>
+  <div><b>Sources:</b> Aosong DHT11 &amp; DHT22/AM2302 datasheets &nbsp;·&nbsp; Bosch BME280 datasheet &nbsp;·&nbsp; Analog Devices/Maxim DS18B20 datasheet &nbsp;·&nbsp; Sensirion SHT4x datasheet</div>
+</div>
+<div class="note">Prices are typical eBay prices for one module, before shipping. They change from seller to seller.</div>
+
+</body>
+</html>

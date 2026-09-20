@@ -1,0 +1,138 @@
+{
+  "title": "Temperature Sensor Comparison (with SHT40)",
+  "image": "temperature-sensors-v2-infographic.png",
+  "layout": "grid",
+  "palette": [
+    "#1389A6",
+    "#2D8A4E",
+    "#6A3FB5",
+    "#C7164E"
+  ],
+  "zones": [
+    {
+      "id": "dht",
+      "label": "DHT11 / DHT22",
+      "color": "#1389A6",
+      "x1": 1.0,
+      "y1": 7.8,
+      "x2": 24.8,
+      "y2": 84.3,
+      "summary": "Single-wire digital temperature + humidity",
+      "facts": [
+        "Interface: single-wire digital; built-in dht module",
+        "Measures temperature and humidity",
+        "DHT11: 0 to 50 °C, ±2 °C accuracy (typical)",
+        "DHT22: −40 to 80 °C, ±0.5 °C accuracy (typical)",
+        "Pins: VCC (3.3–5 V), DATA, GND",
+        "Not waterproof; wait ≥2 s between readings",
+        "Typical price on eBay: DHT11 about $1–$2, DHT22 about $2–$4 (before shipping)",
+        "Best for: simple indoor temperature + humidity projects"
+      ]
+    },
+    {
+      "id": "bme280",
+      "label": "BME280",
+      "color": "#2D8A4E",
+      "x1": 25.8,
+      "y1": 7.8,
+      "x2": 49.5,
+      "y2": 84.3,
+      "summary": "I2C temperature, humidity, and pressure",
+      "facts": [
+        "Interface: I2C (up to 3.4 MHz); needs the bme280.py driver",
+        "Measures temperature, humidity, and pressure",
+        "Temperature: −40 to 85 °C, ±1 °C (typical)",
+        "Humidity: 0 to 100 %RH, ±3% (typical)",
+        "Pressure: 300 to 1100 hPa, ±1 hPa (typical)",
+        "Pins: VIN (1.8–3.6 V), GND, SCL, SDA, CSB, SDO",
+        "Typical price on eBay: about $2–$4 (before shipping)",
+        "Best for: weather stations and environmental monitoring"
+      ]
+    },
+    {
+      "id": "ds18b20",
+      "label": "DS18B20",
+      "color": "#6A3FB5",
+      "x1": 50.5,
+      "y1": 7.8,
+      "x2": 74.2,
+      "y2": 84.3,
+      "summary": "Waterproof 1-Wire temperature probe",
+      "facts": [
+        "Interface: 1-Wire; onewire + ds18x20 modules",
+        "Measures temperature only",
+        "−55 to 125 °C, ±0.5 °C accuracy (typical)",
+        "Waterproof stainless-steel probe",
+        "Pins: VDD (3.0–5.5 V), DATA, GND",
+        "Many sensors share one wire (each has a unique 64-bit address)",
+        "Typical price on eBay: about $1.50–$3 for a waterproof probe (before shipping)",
+        "Best for: outdoor, aquarium, and remote sensing"
+      ]
+    },
+    {
+      "id": "sht40",
+      "label": "SHT40",
+      "color": "#C7164E",
+      "x1": 75.2,
+      "y1": 7.8,
+      "x2": 99.0,
+      "y2": 84.3,
+      "summary": "High-accuracy I2C temperature and humidity",
+      "facts": [
+        "Interface: I2C (a two-wire way for chips to talk); address 0x44 on most boards",
+        "Measures temperature and humidity",
+        "Temperature: −40 to 125 °C, ±0.2 °C accuracy (typical)",
+        "Humidity: 0 to 100 %RH, ±1.8% accuracy (typical)",
+        "About 10× more accurate than a DHT11 and 5× more accurate than a BME280 for temperature",
+        "Sends a checksum with every reading, so a scrambled number becomes an error instead of a wrong answer",
+        "Barely drifts: less than 0.03 °C per year",
+        "Has a tiny built-in heater that dries off water droplets",
+        "Pins: VIN (1.08–3.6 V), GND, SCL, SDA. Power it from 3V3 OUT, never the 5 V VBUS pin",
+        "Typical price on eBay: about $1.65 (before shipping). Good sensors can also be inexpensive!",
+        "Best for: careful temperature and humidity logging where accuracy matters"
+      ]
+    }
+  ],
+  "quiz": [
+    {
+      "question": "Which sensor measures temperature, humidity, AND air pressure?",
+      "correct_zone": "bme280",
+      "explanation": "The BME280 is a 3-in-1 environmental sensor: temperature, humidity, and barometric pressure, all over I2C. The DHT sensors skip pressure, the DS18B20 measures temperature only, and the SHT40 measures temperature and humidity."
+    },
+    {
+      "question": "Which sensor is waterproof and can be placed directly in liquid?",
+      "correct_zone": "ds18b20",
+      "explanation": "The DS18B20 comes in a sealed stainless-steel probe, so it can measure pool, aquarium, or sous-vide temperatures. The DHT, BME280, and SHT40 are not waterproof."
+    },
+    {
+      "question": "Which sensor uses a single data wire and MicroPython's built-in dht module?",
+      "correct_zone": "dht",
+      "explanation": "The DHT11 and DHT22 use a one-wire (single data line) protocol and are read with the built-in dht module — no extra driver file needed."
+    },
+    {
+      "question": "Which sensor lets you put many probes on one data wire, each with its own address?",
+      "correct_zone": "ds18b20",
+      "explanation": "Every DS18B20 has a unique 64-bit ROM address, so many of them can share the same 1-Wire bus. ds.scan() returns all the addresses it finds."
+    },
+    {
+      "question": "Which sensor is the best choice for a weather station that also tracks barometric pressure?",
+      "correct_zone": "bme280",
+      "explanation": "The BME280's pressure reading lets you track weather trends and estimate altitude, which is why it is the go-to sensor for weather-station projects."
+    },
+    {
+      "question": "Which sensor is the most accurate of the four, at about ±0.2 °C?",
+      "correct_zone": "sht40",
+      "explanation": "The SHT40 is about ten times more accurate than a DHT11 (±2 °C) and about five times more accurate than a BME280 (±1 °C). Sensirion tests each chip at the factory, and the SHT40 drifts by less than 0.03 °C per year."
+    },
+    {
+      "question": "Which sensor has a tiny built-in heater that can dry off water droplets?",
+      "correct_zone": "sht40",
+      "explanation": "If the SHT40 gets damp enough for water to form on it, you can switch its heater on for a moment to dry it out. Most hobby sensors just read 99% and stay stuck there until they dry on their own."
+    },
+    {
+      "question": "Which sensor sends a checksum with every reading, so a scrambled number turns into an error?",
+      "correct_zone": "sht40",
+      "explanation": "A checksum is a small number the sensor sends along with the data. Your program checks it, so a bad reading becomes an error message instead of a wrong temperature. The SHT40 sends one with every reading."
+    }
+  ]
+}

@@ -3,11 +3,12 @@
 #
 # Every file this kit needs lives in this same folder, next to this
 # script: config.py, the numbered lesson programs, and lib/ (the round
-# display driver, its two fonts, and the shapes helper).
+# display driver, its fonts, and the helper files the smartwatch shares).
 #
-# The watch face lab is also copied to the Pico as main.py. A Pico runs
-# main.py by itself every time it powers up, so the watch works with the
-# USB cable plugged into a plain phone charger and no computer at all.
+# The six-mode smartwatch (lab 09) is also copied to the Pico as main.py.
+# A Pico runs main.py by itself every time it powers up, so the watch works
+# with the USB cable plugged into a plain phone charger and no computer at
+# all. To make a different lab start by itself, change MAIN_LAB below.
 #
 # Usage:
 #     ./upload-code.sh                  # find the board automatically
@@ -18,7 +19,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SRC_DIR="$SCRIPT_DIR"
 
 # This lab becomes main.py on the Pico.
-MAIN_LAB="07-display-temp-humidity.py"
+MAIN_LAB="09-smartwatch-modes.py"
 
 if [ ! -e "$SRC_DIR/config.py" ]; then
     echo "config.py is missing from:"
@@ -120,9 +121,9 @@ echo "Uploading to $PORT ..."
 
 upload_count=0
 
-# The display files go into the :lib folder on the Pico. MicroPython looks
+# The helper files go into the :lib folder on the Pico. MicroPython looks
 # in :lib on its own when a program says "import gc9a01", so the labs need
-# no special path. The display labs (06 and 07) fail to import without
+# no special path. The display labs (06, 07 and 09) fail to import without
 # these, so lib goes before the lessons.
 if ls "$SRC_DIR"/lib/*.py >/dev/null 2>&1; then
     # mkdir fails if :lib is already there, which is fine.
@@ -156,7 +157,7 @@ if [ "$upload_count" -eq 0 ]; then
     exit 1
 fi
 
-# The watch face lab, saved a second time under the name main.py.
+# The smartwatch lab, saved a second time under the name main.py.
 if [ -e "$SRC_DIR/$MAIN_LAB" ]; then
     echo "    main.py  (a copy of $MAIN_LAB)"
     mpremote connect "$PORT" fs cp "$SRC_DIR/$MAIN_LAB" :main.py >/dev/null
@@ -170,4 +171,4 @@ mpremote connect "$PORT" fs ls :lib
 
 echo
 echo "Next step: open Thonny and run 01-i2c-scanner.py"
-echo "Unplug the Pico and plug it back in to start the watch face on its own."
+echo "Unplug the Pico and plug it back in to start the smartwatch on its own."
