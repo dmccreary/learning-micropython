@@ -123,7 +123,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#build-a-temperature-and-humidity-smartwatch" class="md-skip">
+        <a href="#mood-ring-thermometer" class="md-skip">
           Skip to content
         </a>
       
@@ -908,7 +908,7 @@
               
   
   <span class="md-ellipsis">
-    SHT40 Smartwatch Display
+    Mood Ring Thermometer
   </span>
   
 
@@ -919,7 +919,7 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_11_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_11">
             <span class="md-nav__icon md-icon"></span>
-            SHT40 Smartwatch Display
+            Mood Ring Thermometer
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1640,6 +1640,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -2094,6 +2098,24 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#why-mood-ring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why "Mood Ring"?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-a-smartwatch-display" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why a Smartwatch Display?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#what-is-humidity" class="md-nav__link">
     <span class="md-ellipsis">
       What Is Humidity?
@@ -2204,13 +2226,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6-run-the-watch-face" class="md-nav__link">
+  <a href="#step-6-run-the-sensor-display" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 6: Run the Watch Face
+      Step 6: Run the Sensor Display
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Step 6: Run the Watch Face">
+    <nav class="md-nav" aria-label="Step 6: Run the Sensor Display">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2228,9 +2250,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-7-make-it-a-real-watch" class="md-nav__link">
+  <a href="#step-7-make-it-stand-alone" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 7: Make It a Real Watch
+      Step 7: Make It Stand Alone
     </span>
   </a>
   
@@ -2302,6 +2324,75 @@
       Step 10: Change a Setting
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-11-add-a-button-and-five-more-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 11: Add a Button and Five More Modes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 11: Add a Button and Five More Modes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wire-the-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wire the Button
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-the-button" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test the Button
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meet-the-six-modes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Meet the Six Modes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-blinking-heartbeat" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Blinking Heartbeat
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mood-ring-colors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mood-Ring Colors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      Try It
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2470,17 +2561,18 @@
   
 
 
-<h1 id="build-a-temperature-and-humidity-smartwatch">Build a Temperature and Humidity Smartwatch</h1>
-<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="smartwatch-face.png" data-desc-position="bottom"><img alt="Round smartwatch screen with a white ring around the edge. At the top is the word TEMPERATURE. Below it, 72.5 degrees F in big green letters, and 22.5 C in small white letters. A thin grey line splits the screen. Under the line is the word HUMIDITY, then 48.2% in big cyan letters, and a bar that is a little less than half full." src="smartwatch-face.png" width="360"></a></p>
-<p><em>This is the watch face you will build. A computer program that pretends to
-be the screen drew this picture, so your real screen may look a little
-different.</em></p>
+<h1 id="mood-ring-thermometer">Mood Ring Thermometer</h1>
+<p><em>SHT40 Sensor Kit: Temperature and Humidity on a Colorful Smartwatch Display</em></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="sht40-smartwatch-display.jpg" data-desc-position="bottom"><img alt="A real SHT40 kit on a clear plastic stand. On the left, a round color display shows TEMPERATURE 78.0 degrees F in green, 25.5 C in white, and HUMIDITY 56.2 percent in blue with a bar. Behind it, a Raspberry Pi Pico sits on a breadboard with a rainbow bundle of jumper wires, a blue push button, and the small purple SHT40 sensor board." src="sht40-smartwatch-display.jpg" width="640"></a></p>
+<p><em>The real kit. The star is the SHT40, the small purple sensor board. The round screen is a low-cost display, made for smartwatches, that lets you watch the sensor at work.</em></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="smartwatch-face.png" data-desc-position="bottom"><img alt="Round display screen with a white ring around the edge. At the top is the word TEMPERATURE. Below it, 72.5 degrees F in big green letters, and 22.5 C in small white letters. A thin grey line splits the screen. Under the line is the word HUMIDITY, then 48.2% in big cyan letters, and a bar that is a little less than half full." src="smartwatch-face.png" width="360"></a></p>
+<p><em>A round display is a great way to see a highly responsive and precise sensor that measures temperature and humidity. This second picture was drawn by a screen simulator, so your real screen may look a little different.</em></p>
 <div class="admonition mascot-welcome">
-<p class="admonition-title">Welcome to the Smartwatch Lesson</p>
+<p class="admonition-title">Welcome to the Mood Ring Thermometer</p>
 <p><img alt="Monty waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png">
-Today you will build a tiny round smartwatch that shows how warm the air
-is and how damp it is. You will wire it, test it, and read its code one
-step at a time. Let's build something amazing!</p>
+Today you will build a thermometer that changes color like a mood ring.
+You will wire a precise sensor and a round screen, test each part, and
+read the code one step at a time. Let's build something amazing!</p>
 </div>
 <h2 id="what-you-will-learn">What You Will Learn</h2>
 <p>After this lesson you will be able to:</p>
@@ -2490,7 +2582,9 @@ step at a time. Let's build something amazing!</p>
 <li>Explain what a pixel is and how x and y numbers find a spot on the screen.</li>
 <li>Change a temperature from Celsius to Fahrenheit.</li>
 <li>Read a short program and explain how it picks a color.</li>
-<li>Change a setting and predict what the watch face will do.</li>
+<li>Change a setting and predict what the display will show.</li>
+<li>Watch a precise, fast sensor react to your breath and your fingertip.</li>
+<li>Add a push button and use it to switch the display between modes.</li>
 </ol>
 <h2 id="lesson-at-a-glance">Lesson at a Glance</h2>
 <table>
@@ -2507,11 +2601,15 @@ step at a time. Let's build something amazing!</p>
 </tr>
 <tr>
 <td>Time needed</td>
-<td>About 90 minutes. Two 45-minute class periods works well</td>
+<td>About 90 minutes for Steps 1 to 10. Two 45-minute class periods works well. Step 11 adds about 45 more minutes</td>
 </tr>
 <tr>
 <td>Difficulty</td>
 <td>Beginner</td>
+</tr>
+<tr>
+<td>The big idea</td>
+<td>A very precise, very fast sensor is easy to understand when you can see it on a screen</td>
 </tr>
 <tr>
 <td>You should already know</td>
@@ -2519,7 +2617,7 @@ step at a time. Let's build something amazing!</p>
 </tr>
 <tr>
 <td>New ideas in this lesson</td>
-<td>Screens made of dots, x and y positions, percent, and choosing with <code>if</code></td>
+<td>Screens made of dots, x and y positions, percent, choosing with <code>if</code>, and buttons</td>
 </tr>
 <tr>
 <td>Help you need</td>
@@ -2546,13 +2644,13 @@ is wired. You can skip ahead to Step 2.</p>
 </tr>
 <tr>
 <td>SHT40 sensor</td>
-<td>A <strong>sensor</strong> is a part that measures the world. This one measures temperature and humidity</td>
+<td>A <strong>sensor</strong> is a part that measures the world. This one measures temperature and humidity. It is the star of this lesson</td>
 <td>Skin that feels the air</td>
 </tr>
 <tr>
 <td>GC9A01 display</td>
-<td>A round color screen, 240 dots wide and 240 dots tall</td>
-<td>The face of the watch</td>
+<td>A low-cost round color screen, 240 dots wide and 240 dots tall. It was made for smartwatches</td>
+<td>A window that shows what the sensor feels</td>
 </tr>
 <tr>
 <td>Breadboard</td>
@@ -2566,9 +2664,26 @@ is wired. You can skip ahead to Step 2.</p>
 </tr>
 </tbody>
 </table>
+<h3 id="why-mood-ring">Why "Mood Ring"?</h3>
+<p>A <strong>mood ring</strong> changes color with your mood. Your thermometer changes color
+with the air. It shows cool colors when the air is cold and warm colors when
+the air is hot.</p>
+<p>You will see it first in Step 6, when the temperature number changes color.
+Then Step 11 adds a smooth slide of colors around the rim, on a cartoon face
+named Buddy, and on a graph line. See <a href="#mood-ring-colors">Mood-Ring Colors</a>
+to learn how the program picks each color.</p>
+<h3 id="why-a-smartwatch-display">Why a Smartwatch Display?</h3>
+<p>We are <strong>not</strong> building a smartwatch. This round screen is a low-cost part
+made for smartwatches, and it costs about $5. We use it as a window on the
+star of this lesson: the <strong>SHT40</strong> sensor.</p>
+<p>The SHT40 is very precise. It measures temperature to within 0.2 degrees
+Celsius. It is also very fast. It takes a reading in about 8 milliseconds. A
+millisecond (ms) is one thousandth of a second.</p>
+<p>A sensor cannot show you its numbers by itself. Put it on a screen, and you
+can watch it react to your breath and your fingertip.</p>
 <h3 id="what-is-humidity">What Is Humidity?</h3>
 <p><strong>Humidity</strong> tells you how much water is floating in the air. The number on
-your watch is <strong>relative humidity</strong>. It compares the water in the air to the
+your screen is <strong>relative humidity</strong>. It compares the water in the air to the
 most water the air could hold.</p>
 <p>Think of a sponge. A sponge that is 50 percent full is holding half of the
 water it could hold. Air works the same way. Warm air is a bigger sponge
@@ -2610,19 +2725,23 @@ program tells each dot what to do.</p>
 </tr>
 <tr>
 <td>GC9A01 round display</td>
-<td>240 x 240 dots, about the size of a watch face. It has 7 or 8 pins</td>
+<td>A low-cost display (about $5) made for smartwatches. 240 x 240 dots. It has 7 or 8 pins</td>
 </tr>
 <tr>
 <td>Solderless breadboard</td>
 <td>Half-size is plenty</td>
 </tr>
 <tr>
-<td>About 11 jumper wires</td>
-<td>4 for the sensor and 7 for the display. See the note below</td>
+<td>About 13 jumper wires</td>
+<td>4 for the sensor, 7 for the display and 2 for the button. See the note below</td>
 </tr>
 <tr>
 <td>USB (Universal Serial Bus) data cable</td>
 <td>Some cheap cables only carry power, so they will not work</td>
+</tr>
+<tr>
+<td>Push button</td>
+<td>Any small push button. You only need it for Step 11</td>
 </tr>
 <tr>
 <td>A computer with Thonny</td>
@@ -2734,16 +2853,16 @@ your helper for its path.</p>
 <td>The <strong>configuration</strong> file. Every pin number and setting lives here</td>
 </tr>
 <tr>
-<td><code>01</code> to <code>07</code></td>
+<td><code>01</code> to <code>09</code></td>
 <td>The lab programs you will run in this lesson</td>
 </tr>
 <tr>
 <td><code>main.py</code></td>
-<td>A copy of the watch program. The Pico runs it by itself when it starts up</td>
+<td>A copy of program 09, the six-mode display. The Pico runs it by itself when it starts up</td>
 </tr>
 </tbody>
 </table>
-<p>When it finishes, it says <code>Uploaded 13 files</code> and lists what is on the Pico.</p>
+<p>When it finishes, it says <code>Uploaded 27 files</code> and lists what is on the Pico.</p>
 <p>No Mac or Terminal? Ask your teacher. You can also copy the files with
 Thonny's Files panel. Make a folder named <code>lib</code> on the Pico. Then upload each
 file.</p>
@@ -2985,12 +3104,12 @@ opposite of a math graph.</p>
 </table>
 <p>The answers match the Shell message. You just checked the computer's math!</p>
 <p><strong>Checkpoint 2:</strong> Can you read "Hello World!" on the screen? If yes, you are
-ready for the watch face. If the screen is dark, check the
+ready for the full display. If the screen is dark, check the
 <a href="#troubleshooting">Troubleshooting</a> table.</p>
-<h2 id="step-6-run-the-watch-face">Step 6: Run the Watch Face</h2>
+<h2 id="step-6-run-the-sensor-display">Step 6: Run the Sensor Display</h2>
 <p>Open <code>07-display-temp-humidity.py</code> and click <strong>Run</strong>. Look at the picture at
-the top of this page. Your watch should look like it!</p>
-<p>Here is what each part of the watch face means:</p>
+the top of this page. Your screen should look like it!</p>
+<p>Here is what each part of the display means:</p>
 <ol>
 <li>The <strong>white ring</strong> runs around the edge of the screen.</li>
 <li>The <strong>big number</strong> is the temperature in Fahrenheit (F). Its color tells you how warm it is.</li>
@@ -3004,7 +3123,7 @@ the top of this page. Your watch should look like it!</p>
 </code></pre></div></td></tr></tbody></table></div>
 <h3 id="the-color-code">The Color Code</h3>
 <p>The temperature number changes color as the air gets warmer.</p>
-<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="temperature-colors.png" data-desc-position="bottom"><img alt="Four round watch faces in a two by two grid. Top left shows 60.1 degrees F in cyan with a small humidity bar. Top right shows 72.5 degrees F in green. Bottom left shows 82.0 degrees F in orange. Bottom right shows 95.0 degrees F in red with a nearly full humidity bar." src="temperature-colors.png" width="480"></a></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="temperature-colors.png" data-desc-position="bottom"><img alt="Four round display screens in a two by two grid. Top left shows 60.1 degrees F in cyan with a small humidity bar. Top right shows 72.5 degrees F in green. Bottom left shows 82.0 degrees F in orange. Bottom right shows 95.0 degrees F in red with a nearly full humidity bar." src="temperature-colors.png" width="480"></a></p>
 <table>
 <thead>
 <tr>
@@ -3038,8 +3157,8 @@ the top of this page. Your watch should look like it!</p>
 </table>
 <p>Click the red <strong>Stop</strong> button when you are done.</p>
 <p><strong>Checkpoint 3:</strong> Do you see numbers that change when you breathe on the
-sensor? Then your watch works. Well done!</p>
-<h2 id="step-7-make-it-a-real-watch">Step 7: Make It a Real Watch</h2>
+sensor? Then your sensor display works. Well done!</p>
+<h2 id="step-7-make-it-stand-alone">Step 7: Make It Stand Alone</h2>
 <p>Remember the file called <code>main.py</code>? A Pico looks for a file with that exact
 name when it starts up, and it runs the file by itself. You do not need a
 computer!</p>
@@ -3048,8 +3167,10 @@ computer!</p>
 <li>Close Thonny.</li>
 <li>Unplug the USB cable from the computer.</li>
 <li>Plug it into a phone charger or a battery pack.</li>
-<li>Watch the watch face start on its own!</li>
+<li>Watch the display start on its own!</li>
 </ol>
+<p><code>main.py</code> is a copy of program 09. It starts on the Classic face you built. In
+Step 11 you will add a button to visit five more screens.</p>
 <p>To make changes later, plug the Pico back into the computer, open Thonny,
 and click <strong>Stop</strong>.</p>
 <h2 id="step-8-science-time">Step 8: Science Time</h2>
@@ -3078,7 +3199,7 @@ then watch the screen. Write your answers in a science log like this one:</p>
 <td></td>
 </tr>
 <tr>
-<td>Move the watch from a sunny spot to a shady spot</td>
+<td>Move the display from a sunny spot to a shady spot</td>
 <td></td>
 <td></td>
 <td></td>
@@ -3105,10 +3226,10 @@ then watch the screen. Write your answers in a science log like this one:</p>
 Reading code feels like learning a new language, and that is completely
 normal. Take it one small piece at a time. You've got this, coder!</p>
 </div>
-<p>The full watch program is 273 lines long. Do not worry! We will look at four
+<p>The full display program (program 07) is 273 lines long. Do not worry! We will look at four
 small pieces. Each piece teaches one idea.</p>
 <h3 id="piece-1-celsius-to-fahrenheit">Piece 1: Celsius to Fahrenheit</h3>
-<p>The sensor speaks Celsius. Your watch also shows Fahrenheit. This line does
+<p>The sensor speaks Celsius. Your display also shows Fahrenheit. This line does
 the change:</p>
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">temperature_f</span> <span class="o">=</span> <span class="n">temperature_c</span> <span class="o">*</span> <span class="mf">9.0</span> <span class="o">/</span> <span class="mf">5.0</span> <span class="o">+</span> <span class="mf">32.0</span>   <span class="c1"># times 9, divide by 5, then add 32</span>
 </code></pre></div></td></tr></tbody></table></div>
@@ -3175,7 +3296,7 @@ function, so Python stops at the first "yes."</p>
 <p>Because Python stops at the first yes, the second question already knows the
 temperature is 65 or more. The rest of the ladder never even runs.</p>
 <h3 id="piece-3-numbers-that-take-the-same-room">Piece 3: Numbers That Take the Same Room</h3>
-<p>The watch draws a new temperature every second. Look at what <code>%5.1f</code> does:</p>
+<p>The program draws a new temperature every second. Look at what <code>%5.1f</code> does:</p>
 <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%5.1f</span><span class="s2">"</span> <span class="o">%</span> <span class="mf">72.5</span><span class="p">)</span>     <span class="c1"># prints " 72.5"  (one space, then the number)</span>
@@ -3256,6 +3377,195 @@ is nothing to erase.</p>
 than 70.)</p>
 <p>If you run <code>upload-code.sh</code> again, it copies the computer's <code>config.py</code> onto
 the Pico and erases your change. That is a good way to reset everything!</p>
+<h2 id="step-11-add-a-button-and-five-more-modes">Step 11: Add a Button and Five More Modes</h2>
+<p>So far your display has one screen. Now you will add a <strong>push button</strong>. Each
+tap switches the display to a new <strong>mode</strong>. A mode is a different way to show
+the air.</p>
+<h3 id="wire-the-button">Wire the Button</h3>
+<p>The button has two legs. One leg goes to a pin. The other leg goes to ground.</p>
+<ol>
+<li>Unplug the Pico from the USB cable.</li>
+<li>Connect one leg of the button to Pico <strong>pin 20 (GP15)</strong>. It is the pin in
+   the bottom left corner when the USB port is at the top.</li>
+<li>Connect the other leg to Pico <strong>pin 18 (GND)</strong>.</li>
+<li>Check both wires, then plug in the USB cable.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Button</th>
+<th>Pico pin</th>
+<th>Pico name</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>One leg</td>
+<td>20</td>
+<td>GP15</td>
+<td>Reads 1 normally, and 0 while you press</td>
+</tr>
+<tr>
+<td>Other leg</td>
+<td>18</td>
+<td>GND</td>
+<td>Ground</td>
+</tr>
+</tbody>
+</table>
+<p>It does not matter which leg goes where.</p>
+<p>You do not need a resistor. The program switches on a <strong>pull-up resistor</strong>
+inside the Pico. Think of it as a tiny spring that holds the pin up at
+3.3 volts. When you press the button, it connects the pin to ground and
+pulls the pin down to 0. The program sees the change.</p>
+<h3 id="test-the-button">Test the Button</h3>
+<p>Open <code>08-button-and-led-test.py</code> and click <strong>Run</strong>. The green LED (short for
+light-emitting diode) on the Pico blinks once a second. Press the button three times. Try a quick tap, and try
+holding it. A millisecond (ms) is one thousandth of a second.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>Press 1: 120 ms, a tap (next mode)
+Press 2: 1100 ms, a hold (switch F and C)
+Press 3: 3300 ms, a long hold (clear the records in Hi/Lo)
+
+The button works!
+TEST PASS
+</code></pre></div></td></tr></tbody></table></div>
+<p>A button does not switch cleanly. For a moment it flickers, like a light
+switch that buzzes. The program waits 50 milliseconds for the flicker to
+stop. That wait is called a <strong>debounce</strong>. It means a tap shorter than 50
+milliseconds is ignored, and normal taps are much longer.</p>
+<p><strong>Checkpoint 4:</strong> Does the Shell say <code>TEST PASS</code>? If not, check the
+<a href="#troubleshooting">Troubleshooting</a> table.</p>
+<h3 id="meet-the-six-modes">Meet the Six Modes</h3>
+<p>Open <code>09-smartwatch-modes.py</code> and click <strong>Run</strong>. Tap the button to visit each
+mode. A row of dots at the bottom shows where you are. The bright dot is
+the mode you are in.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="smartwatch-modes.png" data-desc-position="bottom"><img alt="Six round display screens in a grid. Top row: the classic face with 72.5 degrees F and 48.2 percent humidity; a green smiling face with round glasses; and a line graph of temperature with a thin cursor line. Bottom row: two rainbow ring gauges around a temperature and humidity number; a big thermometer filling with orange as it climbs toward a 90 degree goal; and a records screen showing a high of 78.4 and a low of 66.1 degrees F." src="smartwatch-modes.png" width="720"></a></p>
+<p><em>These pictures were drawn by a computer program that pretends to be the
+screen, so your real screen may look a little different.</em></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="finger-test.png" data-desc-position="bottom"><img alt="" src="finger-test.png"></a></p>
+<p>Running the finger test by placing your finger firmly on the SHT40 temperature and humidity sensor.</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>What you see</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Classic</td>
+<td>The display from Step 6</td>
+</tr>
+<tr>
+<td>Buddy</td>
+<td>A cartoon face that feels the air. The whole face is a mood-ring color. Buddy shivers, smiles, sweats and blinks</td>
+</tr>
+<tr>
+<td>Live</td>
+<td>A graph of the last three minutes of temperature. The line changes color with the temperature</td>
+</tr>
+<tr>
+<td>Ring</td>
+<td>Two rainbow rings. The outer ring is temperature. The inner ring is humidity</td>
+</tr>
+<tr>
+<td>Finger</td>
+<td>Press a fingertip on the sensor. The thermometer fills up as the sensor warms to 90 F</td>
+</tr>
+<tr>
+<td>Hi/Lo</td>
+<td>The highest and lowest readings ever felt. They are saved, even when you unplug the Pico</td>
+</tr>
+</tbody>
+</table>
+<p>Here is what the button does:</p>
+<table>
+<thead>
+<tr>
+<th>What you do</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tap</td>
+<td>Go to the next mode</td>
+</tr>
+<tr>
+<td>Hold for about a second</td>
+<td>Switch between Fahrenheit (F) and Celsius (C)</td>
+</tr>
+<tr>
+<td>Hold for 3 seconds in Hi/Lo</td>
+<td>Clear the records</td>
+</tr>
+</tbody>
+</table>
+<p>Every mode is drawn with shapes: rectangles, circles and triangles. There
+are no picture files! The water drop is a circle with a triangle on top. The
+thermometer is a rectangle with two circles.</p>
+<h3 id="the-blinking-heartbeat">The Blinking Heartbeat</h3>
+<p>The green LED on the Pico blinks once every time the sensor takes a reading.
+That blink is a <strong>heartbeat</strong>. Try this:</p>
+<ul>
+<li>Switch to the Finger mode. The LED blinks faster. Why? The Finger mode reads
+  the sensor about three times a second, so the thermometer feels quick.</li>
+<li>Two quick blinks mean a reading failed.</li>
+<li>If the LED stops blinking, the program has stopped.</li>
+</ul>
+<h3 id="mood-ring-colors">Mood-Ring Colors</h3>
+<p>A mood ring changes color with your mood. Your display changes color with the
+temperature. It spreads colors along a line from blue (cold) to red (hot),
+and every temperature gets its own color. You can see it in the dots around
+the rim, Buddy's face, the graph line, the rings and the thermometer.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="buddy-moods.png" data-desc-position="bottom"><img alt="Six round faces of Buddy, a cartoon character with round glasses. From the top left: a blue shivering face saying Brrr, cold; a light blue face with a small smile; a green face with a big smile; a green face saying Thirsty because the air is dry; an orange face with a flat mouth and one sweat drop; and a red face with an open mouth, two sweat drops and the words Whew, hot." src="buddy-moods.png" width="720"></a></p>
+<p>To pick a color, the program asks: how far along the line are we? The cold end
+is 50 F and the hot end is 95 F. This line finds the answer:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">position</span> <span class="o">=</span> <span class="p">(</span><span class="n">temp_f</span> <span class="o">-</span> <span class="n">cold_f</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">hot_f</span> <span class="o">-</span> <span class="n">cold_f</span><span class="p">)</span>   <span class="c1"># 0.0 at the cold end, 1.0 at the hot end</span>
+</code></pre></div></td></tr></tbody></table></div>
+<table>
+<thead>
+<tr>
+<th>Part</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>temp_f - cold_f</code></td>
+<td>How many degrees above the cold end we are</td>
+</tr>
+<tr>
+<td><code>hot_f - cold_f</code></td>
+<td>How many degrees long the whole line is</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>Divides, which turns "degrees" into "part of the way"</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td>A number from 0.0 to 1.0. Halfway is 0.5</td>
+</tr>
+</tbody>
+</table>
+<p>Try it with 72.5 F: (72.5 − 50) ÷ (95 − 50) = 22.5 ÷ 45 = <strong>0.5</strong>. That is
+halfway along the line, so the color is green. You just found 50 percent of
+the way from cold to hot!</p>
+<h3 id="try-it">Try It</h3>
+<ul>
+<li>Open <code>config.py</code> and change <code>MOOD_COLD_F</code> and <code>MOOD_HOT_F</code> to squeeze the
+  rainbow into a smaller range. <strong>Predict first:</strong> what happens to the colors?</li>
+<li>Change <code>BUDDY_BLINK_MS</code> from 4000 to 1000. How fast does Buddy blink?</li>
+<li>In Hi/Lo, breathe on the sensor and set a new humidity record. Then hold
+  the button for 3 seconds to clear it.</li>
+</ul>
 <h2 id="challenges">Challenges</h2>
 <p>Try these in order. Each one is a little harder.</p>
 <h3 id="challenge-1-change-the-ring-color">Challenge 1: Change the Ring Color</h3>
@@ -3326,12 +3636,20 @@ and the variable's name at the top of the function.</p>
 <td>Close Thonny, or click its red <strong>Stop</strong> button</td>
 </tr>
 <tr>
-<td>The watch starts by itself and Thonny will not connect</td>
+<td>The program starts by itself and Thonny will not connect</td>
 <td>That is <code>main.py</code> running. Click Thonny's red <strong>Stop</strong> button</td>
 </tr>
 <tr>
 <td>The temperature looks a few degrees too high</td>
 <td>Move the sensor away from the Pico and the screen. Both make heat</td>
+</tr>
+<tr>
+<td>Program 08 says the button reads PRESSED, or never sees a press</td>
+<td>Check that one button leg goes to pin 20 (GP15) and the other goes to pin 18 (GND). Push the wires all the way in</td>
+</tr>
+<tr>
+<td>The green LED stops blinking</td>
+<td>The program has stopped. Unplug the Pico and plug it back in</td>
 </tr>
 <tr>
 <td>The top word says <strong>SENSOR FAIL</strong> in red</td>
@@ -3341,7 +3659,7 @@ and the variable's name at the top of the function.</p>
 </table>
 <p>This is what SENSOR FAIL looks like. The numbers stay frozen until the
 sensor answers again:</p>
-<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="sensor-fail.png" data-desc-position="bottom"><img alt="Round watch face where the top word is the red text SENSOR FAIL instead of TEMPERATURE. The last good numbers, 72.5 degrees F and 48.2 percent, are still shown below" src="sensor-fail.png" width="240"></a></p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="sensor-fail.png" data-desc-position="bottom"><img alt="Round display where the top word is the red text SENSOR FAIL instead of TEMPERATURE. The last good numbers, 72.5 degrees F and 48.2 percent, are still shown below" src="sensor-fail.png" width="240"></a></p>
 <h2 id="check-your-understanding">Check Your Understanding</h2>
 <details class="question">
 <summary>1. Which pin should power your parts: pin 36 or pin 40? Why? (Click to reveal the answer)</summary>
@@ -3352,7 +3670,7 @@ screen.</p>
 <details class="question">
 <summary>2. Why did we test the sensor before wiring the display? (Click to reveal the answer)</summary>
 <p>So we only solve one problem at a time. If the sensor test passes and the
-watch face fails later, we know the trouble is probably in the display.</p>
+display program fails later, we know the trouble is probably in the display.</p>
 </details>
 <details class="question">
 <summary>3. Where is the dot at (0, 0)? Which way does y grow? (Click to reveal the answer)</summary>
@@ -3373,6 +3691,17 @@ go <strong>down</strong> the screen.</p>
 <p>Wiping means repainting all 57,600 dots, which would make the screen
 flash. Instead the program writes each new number on top of the old one,
 so only the numbers change.</p>
+</details>
+<details class="question">
+<summary>7. Why does the button not need a resistor? (Click to reveal the answer)</summary>
+<p>The program turns on the Pico's own <strong>pull-up resistor</strong>. It holds the pin
+at 3.3 volts until you press the button. Pressing connects the pin to
+ground, and the pin reads 0.</p>
+</details>
+<details class="question">
+<summary>8. The cold end of the mood-ring line is 50 F and the hot end is 95 F. How far along the line is 61.25 F? (Click to reveal the answer)</summary>
+<p>(61.25 − 50) ÷ (95 − 50) = 11.25 ÷ 45 = <strong>0.25</strong>. That is one quarter of
+the way from cold to hot, so the color is cyan.</p>
 </details>
 <h2 id="words-to-know">Words to Know</h2>
 <table>
@@ -3431,15 +3760,39 @@ so only the numbers change.</p>
 <td>Coordinates</td>
 <td>The x and y numbers that name one spot on the screen</td>
 </tr>
+<tr>
+<td>Mode</td>
+<td>One of the ways the display shows the air, such as Buddy or Live</td>
+</tr>
+<tr>
+<td>Pull-up resistor</td>
+<td>A part inside the Pico that holds a pin at 3.3 volts until a button pulls it down</td>
+</tr>
+<tr>
+<td>Interrupt</td>
+<td>A signal that makes the Pico stop for a moment and note a button press, so no press is missed</td>
+</tr>
+<tr>
+<td>Debounce</td>
+<td>Waiting for a button to stop flickering before you trust what it says</td>
+</tr>
+<tr>
+<td>Heartbeat</td>
+<td>The blink of the green LED each time the sensor is read</td>
+</tr>
+<tr>
+<td>Gradient</td>
+<td>A smooth slide from one color to another</td>
+</tr>
 </tbody>
 </table>
 <div class="admonition mascot-celebration">
 <p class="admonition-title">Great Work, Maker!</p>
 <p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png">
-You built a real smartwatch that feels the air and shows what it finds!
-You wired two parts, tested each one, and read the code that makes it
-work. Next, try the challenges, or add a pressure sensor and build a full
-weather watch!</p>
+You built a Mood Ring Thermometer that feels the air and shows it in
+color! You wired two parts, tested each one, and read the code that makes
+it work. Next, try the challenges, or add a pressure sensor and build a full
+weather station!</p>
 </div>
 <h2 id="for-teachers">For Teachers</h2>
 <h3 id="two-period-plan">Two-Period Plan</h3>
@@ -3485,7 +3838,7 @@ weather watch!</p>
 <tr>
 <td>2</td>
 <td>10 min</td>
-<td>Run the watch face (Step 6, Checkpoint 3)</td>
+<td>Run the sensor display (Step 6, Checkpoint 3)</td>
 </tr>
 <tr>
 <td>2</td>
@@ -3499,15 +3852,16 @@ weather watch!</p>
 </tr>
 </tbody>
 </table>
-<p>Step 7 (the standalone watch), Step 10 (change a setting) and the Challenges
-do not fit in the two periods. Use them for early finishers, a third
-period, or homework.</p>
+<p>Step 7 (the standalone display), Step 10 (change a setting), Step 11 (the button
+and five more modes) and the Challenges do not fit in the two periods. Step 11
+makes a good third period. Use the other steps for early finishers or homework.</p>
 <h3 id="before-class">Before Class</h3>
 <ol>
 <li>Install <code>mpremote</code> on the teacher computer (<code>pip install mpremote</code>).</li>
 <li>Run <code>./upload-code.sh</code> once on a test Pico. Then run programs 01, 06 and 07.</li>
 <li>Pre-load the code on every Pico so Step 2 takes seconds.</li>
 <li>Check that each display's pins are the kind your jumper wires fit.</li>
+<li>For Step 11, check that each button has legs that fit the breadboard.</li>
 </ol>
 <h3 id="common-trouble-spots">Common Trouble Spots</h3>
 <ul>
@@ -3519,13 +3873,17 @@ period, or homework.</p>
 <li><strong>What humidity means.</strong> Students often think 50 percent means the air is
   half water. It means the air holds half of what it <em>could</em> hold at that
   temperature.</li>
-<li><strong><code>main.py</code> seems to trap the Pico.</strong> The watch runs by itself, so Thonny
+<li><strong><code>main.py</code> seems to trap the Pico.</strong> The program runs by itself, so Thonny
   can look stuck. Tell students to click <strong>Stop</strong> first.</li>
+<li><strong>Button wires.</strong> A loose button wire can act like a press, and the modes
+  change by themselves. Program 08 finds this problem quickly.</li>
+<li><strong>Setting records.</strong> A warm finger or a breath sets new Hi/Lo records in
+  every mode. Students can clear them by holding the button for 3 seconds.</li>
 </ul>
 <h3 id="check-for-understanding">Check for Understanding</h3>
 <p>Ask students to explain why the sensor is tested before the screen is wired.
 The answer you want: it separates a wiring problem from a code problem, so
-you fix one thing at a time. The six quiz questions above also make a good
+you fix one thing at a time. The eight quiz questions above also make a good
 exit ticket.</p>
 <h2 id="source-code">Source Code</h2>
 <p>The whole kit lives in one folder,
@@ -3544,7 +3902,7 @@ exit ticket.</p>
 </tr>
 <tr>
 <td><code>lib/</code></td>
-<td>The screen's helper code: a drawing library, two fonts and a shapes file</td>
+<td>Helper code: the screen's drawing library, two fonts and a shapes file, plus the small files the six modes share (the sensor, the button, the LED, the records, colors and icons, and one file per mode)</td>
 </tr>
 <tr>
 <td><code>01-i2c-scanner.py</code></td>
@@ -3572,11 +3930,19 @@ exit ticket.</p>
 </tr>
 <tr>
 <td><code>07-display-temp-humidity.py</code></td>
-<td>The smartwatch face</td>
+<td>The display with temperature, humidity and a bar</td>
+</tr>
+<tr>
+<td><code>08-button-and-led-test.py</code></td>
+<td>Tests the button and the blinking LED</td>
+</tr>
+<tr>
+<td><code>09-smartwatch-modes.py</code></td>
+<td>The six-mode sensor display</td>
 </tr>
 <tr>
 <td><code>upload-code.sh</code></td>
-<td>Copies everything to the Pico. It also saves lab 07 as <code>main.py</code></td>
+<td>Copies everything to the Pico. It also saves lab 09 as <code>main.py</code></td>
 </tr>
 </tbody>
 </table>
