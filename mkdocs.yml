@@ -301,7 +301,7 @@ nav:
     - SHT40 Temp and Humidity:
       - Lesson: kits/sht40-temp/index.md
       - Box Cover: kits/sht40-temp/box-cover/index.md
-    - SHT40 Smartwatch Display:
+    - Mood Ring Thermometer:
       - Lesson: kits/sht40-temp-display/index.md
     - Maker Pi RP2040:
       - Introduction: kits/maker-pi-rp2040/index.md

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mood Ring Thermometer — Box Cover</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.4in;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: #e9e9e9;
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #2b2b2b;
+    /* keep chip backgrounds and the rainbow photo frame when printing */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .toolbar {
+    text-align: center;
+    padding: 14px 0 6px;
+  }
+
+  .toolbar button {
+    font-size: 15px;
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: 1px solid #5b2c6f;
+    background: #5b2c6f;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .toolbar p {
+    font-size: 12px;
+    color: #666;
+    margin: 8px 0 0;
+  }
+
+  .sheet {
+    width: 6.6in;
+    margin: 18px auto 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35in;
+  }
+
+  .cut-note {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #999;
+    width: 6in;
+    text-align: center;
+    border-top: 1px dashed #bbb;
+    padding-top: 4px;
+  }
+
+  /* ---------- The 6in x 4in box cover ---------- */
+
+  .card {
+    width: 6in;
+    height: 4in;
+    background: #ffffff;
+    border: 1px dashed #b6b6b6;
+    position: relative;
+    overflow: hidden;
+    padding: 0.14in 0.16in;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .row-top,
+  .row-bottom {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .row-bottom {
+    align-items: flex-end;
+  }
+
+  .logo img {
+    width: 0.95in;
+    height: 0.95in;
+    display: block;
+    object-fit: contain;
+  }
+
+  .title-block {
+    flex: 1;
+    text-align: center;
+    padding: 0.02in 0.08in 0;
+  }
+
+  .title {
+    font-size: 21px;
+    font-weight: 800;
+    color: #5b2c6f;
+    letter-spacing: 0.01em;
+    line-height: 1.15;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  .tagline {
+    font-size: 10px;
+    font-weight: 700;
+    color: #3a3a3a;
+    line-height: 1.2;
+    margin: 3px 0 0;
+  }
+
+  .subtitle {
+    font-size: 10px;
+    font-style: italic;
+    color: #6a6a6a;
+    margin: 2px 0 0;
+  }
+
+  /* a row of the round Buddy faces, cold blue to hot red */
+  .faces {
+    width: 2.25in;
+    height: auto;
+    display: block;
+    margin: 0.06in auto 0;
+  }
+
+  /* the kit photo, in a rainbow frame */
+  .hero {
+    width: 1.78in;
+    flex-shrink: 0;
+    padding: 0.035in;
+    border-radius: 0.09in;
+    background: linear-gradient(135deg, #e03c31 0%, #f7941d 20%, #ffc907 38%,
+                                        #7ac943 55%, #29abe2 72%, #4c3b8c 88%, #8e44ad 100%);
+  }
+
+  .hero img {
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    object-position: 50% 85%;
+    display: block;
+    border-radius: 0.065in;
+    background: #fff;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.05in 0.09in;
+    padding: 0 0.02in;
+    align-content: center;
+  }
+
+  .feature {
+    font-size: 8.8px;
+    font-weight: 700;
+    color: #3a3a3a;
+    background: #f7f5f9;
+    border-bottom: 2.5px solid var(--accent);
+    border-radius: 3px;
+    padding: 3px 5px 2.5px;
+    text-align: center;
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+
+  .feature:nth-child(6n+1) { --accent: #e03c31; }
+  .feature:nth-child(6n+2) { --accent: #f7941d; }
+  .feature:nth-child(6n+3) { --accent: #ffc907; }
+  .feature:nth-child(6n+4) { --accent: #7ac943; }
+  .feature:nth-child(6n+5) { --accent: #29abe2; }
+  .feature:nth-child(6n)   { --accent: #8e44ad; }
+
+  .mascot img {
+    width: 0.8in;
+    height: auto;
+    display: block;
+  }
+
+  .bottom-center {
+    flex: 1;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.09in;
+    padding: 0 0.1in;
+  }
+
+  /* Monty's speech bubble; the tail points left toward Monty */
+  .bubble {
+    position: relative;
+    font-size: 11px;
+    font-weight: 700;
+    font-style: italic;
+    color: #2f7d32;
+    background: #ffffff;
+    border: 1.5px solid #7ac943;
+    border-radius: 0.12in;
+    padding: 4px 10px;
+    white-space: nowrap;
+  }
+
+  .bubble::before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: 50%;
+    width: 9px;
+    height: 9px;
+    margin-top: -4.5px;
+    background: #ffffff;
+    border-left: 1.5px solid #7ac943;
+    border-bottom: 1.5px solid #7ac943;
+    transform: rotate(45deg);
+  }
+
+  .site-url {
+    text-align: center;
+    font-size: 9.5px;
+    color: #8a8a8a;
+    letter-spacing: 0.02em;
+  }
+
+  .qr-block {
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .qr-block svg.qr {
+    width: 0.75in;
+    height: 0.75in;
+    display: block;
+  }
+
+  .qr-caption {
+    font-size: 7.5px;
+    color: #8a8a8a;
+    margin-top: 2px;
+    white-space: nowrap;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .toolbar { display: none; }
+    .sheet { margin: 0 auto; gap: 0.3in; }
+    .card { border: 1px dashed #ccc; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- The QR code is drawn once here and reused by both covers (lesson page for the kit) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="qr-sht40" viewBox="0 0 41 41">
+      <rect width="41" height="41" fill="#ffffff"/>
+      <path d="M2,2h7v1h-7zM12,2h4v1h-4zM18,2h2v1h-2zM24,2h2v1h-2zM28,2h1v1h-1zM32,2h7v1h-7zM2,3h1v1h-1zM8,3h1v1h-1zM13,3h3v1h-3zM17,3h1v1h-1zM20,3h1v1h-1zM22,3h1v1h-1zM24,3h1v1h-1zM27,3h1v1h-1zM29,3h1v1h-1zM32,3h1v1h-1zM38,3h1v1h-1zM2,4h1v1h-1zM4,4h3v1h-3zM8,4h1v1h-1zM10,4h1v1h-1zM12,4h1v1h-1zM14,4h2v1h-2zM23,4h1v1h-1zM26,4h1v1h-1zM29,4h2v1h-2zM32,4h1v1h-1zM34,4h3v1h-3zM38,4h1v1h-1zM2,5h1v1h-1zM4,5h3v1h-3zM8,5h1v1h-1zM10,5h1v1h-1zM13,5h2v1h-2zM18,5h2v1h-2zM24,5h7v1h-7zM32,5h1v1h-1zM34,5h3v1h-3zM38,5h1v1h-1zM2,6h1v1h-1zM4,6h3v1h-3zM8,6h1v1h-1zM10,6h1v1h-1zM13,6h2v1h-2zM16,6h1v1h-1zM19,6h5v1h-5zM25,6h2v1h-2zM28,6h1v1h-1zM30,6h1v1h-1zM32,6h1v1h-1zM34,6h3v1h-3zM38,6h1v1h-1zM2,7h1v1h-1zM8,7h1v1h-1zM10,7h1v1h-1zM12,7h2v1h-2zM15,7h1v1h-1zM18,7h2v1h-2zM26,7h1v1h-1zM29,7h2v1h-2zM32,7h1v1h-1zM38,7h1v1h-1zM2,8h7v1h-7zM10,8h1v1h-1zM12,8h1v1h-1zM14,8h1v1h-1zM16,8h1v1h-1zM18,8h1v1h-1zM20,8h1v1h-1zM22,8h1v1h-1zM24,8h1v1h-1zM26,8h1v1h-1zM28,8h1v1h-1zM30,8h1v1h-1zM32,8h7v1h-7zM10,9h3v1h-3zM14,9h4v1h-4zM19,9h8v1h-8zM29,9h1v1h-1zM2,10h1v1h-1zM4,10h5v1h-5zM13,10h1v1h-1zM15,10h1v1h-1zM18,10h1v1h-1zM21,10h1v1h-1zM24,10h1v1h-1zM26,10h2v1h-2zM29,10h2v1h-2zM32,10h5v1h-5zM2,11h1v1h-1zM6,11h2v1h-2zM9,11h1v1h-1zM11,11h1v1h-1zM13,11h1v1h-1zM17,11h1v1h-1zM19,11h2v1h-2zM22,11h1v1h-1zM24,11h2v1h-2zM27,11h1v1h-1zM31,11h1v1h-1zM33,11h1v1h-1zM37,11h1v1h-1zM2,12h1v1h-1zM5,12h5v1h-5zM13,12h1v1h-1zM15,12h1v1h-1zM17,12h3v1h-3zM21,12h1v1h-1zM23,12h1v1h-1zM26,12h1v1h-1zM29,12h1v1h-1zM31,12h3v1h-3zM35,12h1v1h-1zM37,12h2v1h-2zM4,13h2v1h-2zM9,13h1v1h-1zM13,13h5v1h-5zM20,13h5v1h-5zM28,13h3v1h-3zM32,13h1v1h-1zM34,13h1v1h-1zM38,13h1v1h-1zM2,14h1v1h-1zM4,14h1v1h-1zM8,14h3v1h-3zM15,14h3v1h-3zM19,14h1v1h-1zM21,14h1v1h-1zM24,14h1v1h-1zM26,14h2v1h-2zM29,14h1v1h-1zM31,14h2v1h-2zM34,14h5v1h-5zM2,15h2v1h-2zM5,15h1v1h-1zM10,15h4v1h-4zM18,15h1v1h-1zM20,15h4v1h-4zM25,15h1v1h-1zM27,15h1v1h-1zM30,15h1v1h-1zM33,15h1v1h-1zM37,15h1v1h-1zM2,16h2v1h-2zM5,16h2v1h-2zM8,16h2v1h-2zM11,16h2v1h-2zM16,16h2v1h-2zM20,16h1v1h-1zM23,16h1v1h-1zM28,16h8v1h-8zM37,16h2v1h-2zM2,17h6v1h-6zM10,17h1v1h-1zM13,17h3v1h-3zM21,17h1v1h-1zM23,17h1v1h-1zM28,17h3v1h-3zM32,17h3v1h-3zM37,17h2v1h-2zM3,18h2v1h-2zM7,18h2v1h-2zM12,18h2v1h-2zM15,18h1v1h-1zM17,18h1v1h-1zM20,18h1v1h-1zM24,18h1v1h-1zM26,18h7v1h-7zM34,18h1v1h-1zM36,18h1v1h-1zM4,19h2v1h-2zM10,19h1v1h-1zM14,19h1v1h-1zM16,19h3v1h-3zM25,19h1v1h-1zM27,19h2v1h-2zM30,19h2v1h-2zM33,19h1v1h-1zM35,19h3v1h-3zM4,20h1v1h-1zM7,20h3v1h-3zM11,20h2v1h-2zM14,20h1v1h-1zM19,20h1v1h-1zM24,20h1v1h-1zM27,20h3v1h-3zM31,20h1v1h-1zM33,20h3v1h-3zM37,20h2v1h-2zM3,21h3v1h-3zM9,21h4v1h-4zM14,21h1v1h-1zM16,21h1v1h-1zM18,21h1v1h-1zM23,21h2v1h-2zM29,21h1v1h-1zM31,21h2v1h-2zM34,21h1v1h-1zM38,21h1v1h-1zM3,22h1v1h-1zM5,22h1v1h-1zM8,22h1v1h-1zM13,22h3v1h-3zM18,22h3v1h-3zM22,22h1v1h-1zM25,22h1v1h-1zM27,22h2v1h-2zM31,22h2v1h-2zM34,22h3v1h-3zM4,23h1v1h-1zM6,23h1v1h-1zM9,23h1v1h-1zM11,23h2v1h-2zM14,23h3v1h-3zM18,23h5v1h-5zM25,23h1v1h-1zM30,23h1v1h-1zM35,23h1v1h-1zM37,23h1v1h-1zM2,24h2v1h-2zM5,24h2v1h-2zM8,24h2v1h-2zM13,24h1v1h-1zM16,24h4v1h-4zM22,24h3v1h-3zM26,24h1v1h-1zM28,24h2v1h-2zM32,24h4v1h-4zM37,24h2v1h-2zM2,25h2v1h-2zM9,25h1v1h-1zM11,25h2v1h-2zM14,25h3v1h-3zM19,25h2v1h-2zM23,25h1v1h-1zM26,25h1v1h-1zM31,25h1v1h-1zM33,25h2v1h-2zM38,25h1v1h-1zM7,26h4v1h-4zM14,26h2v1h-2zM17,26h2v1h-2zM24,26h6v1h-6zM32,26h1v1h-1zM34,26h1v1h-1zM36,26h1v1h-1zM38,26h1v1h-1zM2,27h2v1h-2zM6,27h1v1h-1zM11,27h4v1h-4zM17,27h1v1h-1zM19,27h2v1h-2zM25,27h2v1h-2zM30,27h1v1h-1zM33,27h1v1h-1zM36,27h1v1h-1zM2,28h1v1h-1zM4,28h1v1h-1zM6,28h3v1h-3zM10,28h1v1h-1zM13,28h2v1h-2zM17,28h2v1h-2zM22,28h1v1h-1zM24,28h1v1h-1zM26,28h5v1h-5zM32,28h3v1h-3zM36,28h3v1h-3zM2,29h1v1h-1zM5,29h2v1h-2zM10,29h2v1h-2zM17,29h1v1h-1zM21,29h4v1h-4zM26,29h1v1h-1zM28,29h1v1h-1zM31,29h1v1h-1zM33,29h2v1h-2zM37,29h2v1h-2zM2,30h1v1h-1zM4,30h1v1h-1zM8,30h1v1h-1zM14,30h1v1h-1zM16,30h2v1h-2zM19,30h1v1h-1zM21,30h1v1h-1zM24,30h1v1h-1zM26,30h11v1h-11zM10,31h1v1h-1zM12,31h5v1h-5zM18,31h1v1h-1zM20,31h4v1h-4zM25,31h1v1h-1zM30,31h1v1h-1zM34,31h2v1h-2zM37,31h1v1h-1zM2,32h7v1h-7zM14,32h1v1h-1zM17,32h2v1h-2zM20,32h1v1h-1zM22,32h2v1h-2zM26,32h1v1h-1zM28,32h1v1h-1zM30,32h1v1h-1zM32,32h1v1h-1zM34,32h1v1h-1zM36,32h3v1h-3zM2,33h1v1h-1zM8,33h1v1h-1zM10,33h1v1h-1zM13,33h1v1h-1zM16,33h2v1h-2zM22,33h3v1h-3zM28,33h1v1h-1zM30,33h1v1h-1zM34,33h2v1h-2zM37,33h1v1h-1zM2,34h1v1h-1zM4,34h3v1h-3zM8,34h1v1h-1zM10,34h2v1h-2zM14,34h2v1h-2zM20,34h1v1h-1zM24,34h1v1h-1zM27,34h8v1h-8zM36,34h2v1h-2zM2,35h1v1h-1zM4,35h3v1h-3zM8,35h1v1h-1zM10,35h1v1h-1zM12,35h1v1h-1zM14,35h2v1h-2zM17,35h3v1h-3zM21,35h1v1h-1zM24,35h2v1h-2zM27,35h1v1h-1zM30,35h3v1h-3zM34,35h1v1h-1zM36,35h1v1h-1zM38,35h1v1h-1zM2,36h1v1h-1zM4,36h3v1h-3zM8,36h1v1h-1zM10,36h3v1h-3zM22,36h3v1h-3zM29,36h1v1h-1zM35,36h4v1h-4zM2,37h1v1h-1zM8,37h1v1h-1zM11,37h1v1h-1zM13,37h1v1h-1zM16,37h1v1h-1zM18,37h1v1h-1zM23,37h1v1h-1zM28,37h1v1h-1zM30,37h2v1h-2zM34,37h2v1h-2zM38,37h1v1h-1zM2,38h7v1h-7zM10,38h2v1h-2zM14,38h2v1h-2zM19,38h1v1h-1zM21,38h1v1h-1zM24,38h2v1h-2zM27,38h2v1h-2zM31,38h1v1h-1zM34,38h5v1h-5z" fill="#000000"/>
+    </symbol>
+  </svg>
+
+  <div class="toolbar">
+    <button onclick="window.print()">Print Box Covers</button>
+    <p>6&Prime; &times; 4&Prime; box cover &middot; two per sheet &middot; cut along the dashed line</p>
+  </div>
+
+  <div class="sheet">
+
+    <div class="card">
+      <div class="row-top">
+        <div class="logo">
+          <img src="thinking-spot-logo.jpg" alt="The Thinking Spot logo">
+        </div>
+        <div class="title-block">
+          <p class="title">Mood Ring Thermometer</p>
+          <p class="tagline">SHT40 Sensor Kit: Temperature &amp; Humidity<br>on a Colorful Smartwatch Display</p>
+          <p class="subtitle">Hands&#8209;On Coding Kit for Ages 10+</p>
+          <img class="faces" src="sht40-buddy-rainbow.png" alt="Five round smartwatch screens showing Buddy, a cartoon face that changes color from cold blue to hot red">
+        </div>
+        <div class="hero">
+          <img src="sht40-kit-photo.jpg" alt="The SHT40 kit: a round color display showing 78 degrees F and 56 percent humidity, next to a Raspberry Pi Pico, a rainbow of jumper wires and the small purple SHT40 sensor">
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="feature">Wire It Up Yourself</div>
+        <div class="feature">No Soldering Required</div>
+        <div class="feature">Test Each Part, Squash Bugs</div>
+        <div class="feature">Write Real MicroPython Code</div>
+        <div class="feature">Teach Code to Make Decisions</div>
+        <div class="feature">Tweak Code &amp; Predict Results</div>
+        <div class="feature">Pixels &amp; X&#8209;Y Coordinates</div>
+        <div class="feature">Celsius to Fahrenheit Math</div>
+        <div class="feature">Percent Math You Can See</div>
+        <div class="feature">Super&#8209;Fast, Precise Sensor</div>
+        <div class="feature">Think Like a Scientist</div>
+        <div class="feature">How Chips Talk to Each Other</div>
+        <div class="feature">6 Colorful Display Modes</div>
+        <div class="feature">Turn Numbers into Colors</div>
+        <div class="feature">Buddy Shivers, Smiles &amp; Sweats</div>
+        <div class="feature">Finger Test: Reach 90&deg;F!</div>
+        <div class="feature">Records That Survive Unplugging</div>
+        <div class="feature">Free Online Textbook &amp; Quizzes</div>
+      </div>
+
+      <div class="row-bottom">
+        <div class="mascot">
+          <img src="../../docs/img/mascot/welcome.png" alt="Monty the MicroPython Snake, waving hello">
+        </div>
+        <div class="bottom-center">
+          <div class="bubble">Let&rsquo;s build something amazing!</div>
+          <div class="site-url">dmccreary.github.io/learning-micropython</div>
+        </div>
+        <div class="qr-block">
+          <svg class="qr" viewBox="0 0 41 41" role="img" aria-label="QR code for the SHT40 kit lesson">
+            <use href="#qr-sht40"/>
+          </svg>
+          <div class="qr-caption">Scan for the lesson</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cut-note">&#9986; cut along the dashed line &#9986;</div>
+
+    <div class="card">
+      <div class="row-top">
+        <div class="logo">
+          <img src="thinking-spot-logo.jpg" alt="The Thinking Spot logo">
+        </div>
+        <div class="title-block">
+          <p class="title">Mood Ring Thermometer</p>
+          <p class="tagline">SHT40 Sensor Kit: Temperature &amp; Humidity<br>on a Colorful Smartwatch Display</p>
+          <p class="subtitle">Hands&#8209;On Coding Kit for Ages 10+</p>
+          <img class="faces" src="sht40-buddy-rainbow.png" alt="Five round smartwatch screens showing Buddy, a cartoon face that changes color from cold blue to hot red">
+        </div>
+        <div class="hero">
+          <img src="sht40-kit-photo.jpg" alt="The SHT40 kit: a round color display showing 78 degrees F and 56 percent humidity, next to a Raspberry Pi Pico, a rainbow of jumper wires and the small purple SHT40 sensor">
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="feature">Wire It Up Yourself</div>
+        <div class="feature">No Soldering Required</div>
+        <div class="feature">Test Each Part, Squash Bugs</div>
+        <div class="feature">Write Real MicroPython Code</div>
+        <div class="feature">Teach Code to Make Decisions</div>
+        <div class="feature">Tweak Code &amp; Predict Results</div>
+        <div class="feature">Pixels &amp; X&#8209;Y Coordinates</div>
+        <div class="feature">Celsius to Fahrenheit Math</div>
+        <div class="feature">Percent Math You Can See</div>
+        <div class="feature">Super&#8209;Fast, Precise Sensor</div>
+        <div class="feature">Think Like a Scientist</div>
+        <div class="feature">How Chips Talk to Each Other</div>
+        <div class="feature">6 Colorful Display Modes</div>
+        <div class="feature">Turn Numbers into Colors</div>
+        <div class="feature">Buddy Shivers, Smiles &amp; Sweats</div>
+        <div class="feature">Finger Test: Reach 90&deg;F!</div>
+        <div class="feature">Records That Survive Unplugging</div>
+        <div class="feature">Free Online Textbook &amp; Quizzes</div>
+      </div>
+
+      <div class="row-bottom">
+        <div class="mascot">
+          <img src="../../docs/img/mascot/welcome.png" alt="Monty the MicroPython Snake, waving hello">
+        </div>
+        <div class="bottom-center">
+          <div class="bubble">Let&rsquo;s build something amazing!</div>
+          <div class="site-url">dmccreary.github.io/learning-micropython</div>
+        </div>
+        <div class="qr-block">
+          <svg class="qr" viewBox="0 0 41 41" role="img" aria-label="QR code for the SHT40 kit lesson">
+            <use href="#qr-sht40"/>
+          </svg>
+          <div class="qr-caption">Scan for the lesson</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,4 +1,6 @@
-# Show Temperature and Humidity on a Smartwatch Display
+# Mood Ring Thermometer
+
+*SHT40 Sensor Kit: Temperature and Humidity on a Colorful Smartwatch Display*
 
 ![A real SHT40 kit on a clear plastic stand. On the left, a round color display shows TEMPERATURE 78.0 degrees F in green, 25.5 C in white, and HUMIDITY 56.2 percent in blue with a bar. Behind it, a Raspberry Pi Pico sits on a breadboard with a rainbow bundle of jumper wires, a blue push button, and the small purple SHT40 sensor board.](./sht40-smartwatch-display.jpg){ width="640" }
 
@@ -8,11 +10,11 @@
 
 *A round display is a great way to see a highly responsive and precise sensor that measures temperature and humidity. This second picture was drawn by a screen simulator, so your real screen may look a little different.*
 
-!!! mascot-welcome "Welcome to the SHT40 Display Lesson"
+!!! mascot-welcome "Welcome to the Mood Ring Thermometer"
     ![Monty waving welcome](../../img/mascot/welcome.png){ class="mascot-admonition-img" }
-    Today you will use a low-cost round screen to watch a very precise, very
-    fast sensor at work. You will wire it, test it, and read its code one
-    step at a time. Let's build something amazing!
+    Today you will build a thermometer that changes color like a mood ring.
+    You will wire a precise sensor and a round screen, test each part, and
+    read the code one step at a time. Let's build something amazing!
 
 ## What You Will Learn
 
@@ -51,6 +53,17 @@ is wired. You can skip ahead to Step 2.
 | GC9A01 display | A low-cost round color screen, 240 dots wide and 240 dots tall. It was made for smartwatches | A window that shows what the sensor feels |
 | Breadboard | A plastic board with lots of holes. Metal strips inside join the holes in short rows | A way to connect parts with no glue |
 | Jumper wires | Wires with metal pins on the ends. They push into the breadboard holes | Roads between the parts |
+
+### Why "Mood Ring"?
+
+A **mood ring** changes color with your mood. Your thermometer changes color
+with the air. It shows cool colors when the air is cold and warm colors when
+the air is hot.
+
+You will see it first in Step 6, when the temperature number changes color.
+Then Step 11 adds a smooth slide of colors around the rim, on a cartoon face
+named Buddy, and on a graph line. See [Mood-Ring Colors](#mood-ring-colors)
+to learn how the program picks each color.
 
 ### Why a Smartwatch Display?
 
@@ -814,9 +827,9 @@ sensor answers again:
 
 !!! mascot-celebration "Great Work, Maker!"
     ![Monty celebrating](../../img/mascot/celebration.png){ class="mascot-admonition-img" }
-    You put a precise, fast sensor on a screen and watched it feel the air!
-    You wired two parts, tested each one, and read the code that makes it
-    work. Next, try the challenges, or add a pressure sensor and build a full
+    You built a Mood Ring Thermometer that feels the air and shows it in
+    color! You wired two parts, tested each one, and read the code that makes
+    it work. Next, try the challenges, or add a pressure sensor and build a full
     weather station!
 
 ## For Teachers
