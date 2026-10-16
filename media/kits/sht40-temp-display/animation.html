@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mood Ring Thermometer Kit Animation</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&amp;family=VT323&amp;display=swap">
+<script>
+/* One-time layout switch (not an animation timer). Open with ?format=portrait to preview vertical. */
+(function(){var m=location.search.match(/format=(\w+)/);if(m)document.documentElement.setAttribute('data-format',m[1]);})();
+</script>
+<style>
+body{margin:0;background:#0b0e13}
+:root{
+  --W:1280px; --H:720px;
+  --stage-bg:radial-gradient(900px 540px at 60% 50%,#1d1830 0%,#0b0e13 72%);
+  --cap-l:64px; --cap-t:30px; --cap-w:1152px; --kick-fs:15px; --kick-ls:.14em; --head-fs:44px; --head-mt:10px;
+  --band-t:650px;
+  --prog-l:64px; --prog-t:704px; --prog-w:1152px;
+  --pills-l:0px; --pills-w:1280px; --pill-fs:17px; --pill-pad:10px 20px; --pill-gap:12px;
+  --chips-l:0px; --chips-w:1280px; --chip-sz:40px; --chip-fs:15px; --chip-gap:8px;
+  --tag-fs:16px; --tag-pad:6px 14px;
+  --cam-wide:translate(110px,120px) scale(.85);
+  --cam-mid:translate(110px,120px) scale(.85);
+  --cam-close:translate(-418px,58px) scale(1.15);
+}
+.root{position:relative;width:var(--W);height:var(--H);overflow:hidden;background:#0b0e13}
+.stage{position:absolute;left:0;top:0;width:var(--W);height:var(--H);overflow:hidden;background:var(--stage-bg);font-family:'Rubik',system-ui,sans-serif;color:#e8edf5}
+.pause-input{position:absolute;left:calc(var(--W) - 108px);top:var(--band-t);width:44px;height:44px;margin:0;opacity:0;z-index:30;cursor:pointer}
+.pause-btn{position:absolute;left:calc(var(--W) - 108px);top:var(--band-t);width:44px;height:44px;box-sizing:border-box;border-radius:50%;border:1.5px solid #3a4659;background:#10151d;display:flex;align-items:center;justify-content:center;z-index:25}
+.ico-play{display:none}
+.pause-input:checked ~ .pause-btn .ico-pause{display:none}
+.pause-input:checked ~ .pause-btn .ico-play{display:block}
+.pause-input:checked ~ .stage *{animation-play-state:paused !important}
+.cover{position:absolute;left:0;top:0;width:var(--W);height:var(--H);background:#0b0e13;z-index:10;pointer-events:none;animation:cover 30s linear infinite both}
+.cap{position:absolute;left:var(--cap-l);top:var(--cap-t);width:var(--cap-w);opacity:0}
+.kick{font-size:var(--kick-fs);font-weight:500;line-height:1;letter-spacing:var(--kick-ls);text-transform:uppercase;color:#2fd8f0}
+.head{font-size:var(--head-fs);font-weight:700;line-height:1.1;margin-top:var(--head-mt);color:#fff;text-wrap:balance}
+.cap0{animation:cap0 30s ease-out infinite both}
+.cap1{animation:cap1 30s ease-out infinite both}
+.cap2{animation:cap2 30s ease-out infinite both}
+.cap3{animation:cap3 30s ease-out infinite both}
+.cap4{animation:cap4 30s ease-out infinite both}
+.prog-track{position:absolute;left:var(--prog-l);top:var(--prog-t);width:var(--prog-w);height:4px;border-radius:2px;background:#1d2633}
+.prog-fill{position:absolute;left:var(--prog-l);top:var(--prog-t);width:var(--prog-w);height:4px;border-radius:2px;background:#2fd8f0;transform-origin:0 50%;animation:prog 30s linear infinite both}
+.prog-tick{position:absolute;top:calc(var(--prog-t) - 4px);left:calc(var(--prog-l) + var(--prog-w) * var(--f));width:2px;height:12px;background:#3a4659}
+.pills{position:absolute;left:var(--pills-l);top:var(--band-t);width:var(--pills-w);display:flex;flex-wrap:wrap;justify-content:center;gap:var(--pill-gap);opacity:0;animation:pillsRow 30s linear infinite both}
+.pill{padding:var(--pill-pad);border-radius:999px;border:1.5px solid #3a4659;font-size:var(--pill-fs);font-weight:500;line-height:1.2;color:#9fb0c6}
+.pill0{animation:act0 30s linear infinite both}
+.pill1{animation:act1 30s linear infinite both}
+.pill2{animation:act2 30s linear infinite both}
+.pill3{animation:act3 30s linear infinite both}
+.pill4{animation:act4 30s linear infinite both}
+.pill5{animation:act5 30s linear infinite both}
+.chips{position:absolute;left:var(--chips-l);top:var(--band-t);width:var(--chips-w);display:flex;flex-wrap:wrap;justify-content:center;gap:var(--chip-gap);opacity:0;animation:chipsRow 30s linear infinite both}
+.chip{width:var(--chip-sz);height:var(--chip-sz);box-sizing:border-box;border:1.5px solid #3a4659;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:var(--chip-fs);font-weight:500;color:#7e8aa0;animation:chipOn 30s linear infinite both}
+
+.rig{position:absolute;left:0;top:0;width:1200px;height:620px;transform-origin:0 0;animation:cam 30s ease-in-out infinite both}
+.rise{animation:rise 30s ease-out infinite both}
+.bb{background-color:#e9e4d8;background-image:radial-gradient(circle,#9c9686 1.6px,transparent 2.2px);background-size:16px 16px;border-radius:12px;box-shadow:inset 0 0 0 3px #cfc8b6,0 24px 40px rgba(0,0,0,.45)}
+.pad{background:repeating-linear-gradient(to bottom,#e6c35c 0 8px,transparent 8px 20px)}
+.led{position:absolute;left:16px;top:236px;width:10px;height:10px;border-radius:50%;background:#14532d}
+.led-on{position:absolute;left:16px;top:236px;width:10px;height:10px;border-radius:50%;background:#4ade80;box-shadow:0 0 12px #4ade80;animation:ledOn 30s linear infinite both}
+.led-beat{animation:beat 1s linear infinite}
+.usb-pulse{animation:usbPulse 30s linear infinite both}
+.wires-vis{animation:wiresVis 30s linear infinite both}
+.w{fill:none;stroke-width:5;stroke-linecap:round;stroke-dasharray:700;animation:draw 30s linear infinite both}
+.tag{position:absolute;padding:var(--tag-pad);border:1.5px solid #2fd8f0;border-radius:999px;background:#0b0e13;color:#e8edf5;font-size:var(--tag-fs);font-weight:500;line-height:1.2;white-space:nowrap;opacity:0}
+.tag-amber{border-color:#ff9b2e;color:#ffd9a8}
+.tag-intro{animation:tagIntro 30s linear infinite both}
+.tag-pico{left:20px;top:22px}
+.tag-sensor{left:395px;top:580px}
+.tag-disp{left:760px;top:-12px}
+.tag-vcc{left:300px;top:96px;animation:tagVcc 30s linear infinite both}
+.tag-fast{left:560px;top:450px;animation:tagFast 30s linear infinite both}
+.tag-tap{left:560px;top:450px;animation:tagTap 30s linear infinite both}
+.ripple{animation:ripple 30s ease-out infinite both}
+.btn-press{animation:btnPress 30s ease-out infinite both}
+
+.screen{position:absolute;left:710px;top:70px;width:420px;height:420px;border-radius:50%;overflow:hidden;background:#000}
+.face{position:absolute;left:0;top:0;width:420px;height:420px;opacity:0;background-repeat:no-repeat}
+.sprite{background-image:url(../../../docs/kits/sht40-temp-display/smartwatch-modes.png);background-size:1302px 861px}
+.f-hello{background-image:url(../../../docs/kits/sht40-temp-display/hello-world.png);background-size:420px 420px;animation:fHello 30s linear infinite both}
+.f-classic{background-image:url(../../../docs/kits/sht40-temp-display/smartwatch-face.png);background-size:420px 420px;animation:fClassic 30s linear infinite both}
+.f-buddy{background-position:-441px 0;animation:fBuddy 30s linear infinite both}
+.f-live{background-position:-882px 0;animation:fLive 30s linear infinite both}
+.f-ring{background-position:0 -441px;animation:fRing 30s linear infinite both}
+.f-finger{background-position:-441px -441px;animation:fFinger 30s linear infinite both}
+.f-hilo{background-position:-882px -441px;animation:fHilo 30s linear infinite both}
+.screen-off{position:absolute;left:0;top:0;width:100%;height:100%;background:radial-gradient(circle at 35% 30%,#1c2433,#07090d 70%);animation:screenOff 30s linear infinite both}
+
+@keyframes cover {0%,2% {opacity:1} 5.333%,97.333% {opacity:0} 100% {opacity:1}}
+@keyframes cam {
+  0%,10% {transform:var(--cam-wide)}
+  13.333%,26.667% {transform:var(--cam-mid)}
+  30.667%,86.667% {transform:var(--cam-close)}
+  91.333%,100% {transform:var(--cam-wide)}
+}
+@keyframes rise {0%,2% {opacity:0;transform:translateY(28px)} 7%,100% {opacity:1;transform:translateY(0)}}
+@keyframes cap0 {0%,2.667% {opacity:0;transform:translateY(10px)} 4%,9% {opacity:1;transform:translateY(0)} 10%,100% {opacity:0;transform:translateY(-8px)}}
+@keyframes cap1 {0%,10.333% {opacity:0;transform:translateY(10px)} 11.667%,25.667% {opacity:1;transform:translateY(0)} 26.667%,100% {opacity:0;transform:translateY(-8px)}}
+@keyframes cap2 {0%,27% {opacity:0;transform:translateY(10px)} 28.333%,39% {opacity:1;transform:translateY(0)} 40%,100% {opacity:0;transform:translateY(-8px)}}
+@keyframes cap3 {0%,40.333% {opacity:0;transform:translateY(10px)} 41.667%,85.667% {opacity:1;transform:translateY(0)} 86.667%,100% {opacity:0;transform:translateY(-8px)}}
+@keyframes cap4 {0%,87% {opacity:0;transform:translateY(10px)} 88.333%,96.667% {opacity:1;transform:translateY(0)} 98%,100% {opacity:0;transform:translateY(-8px)}}
+@keyframes prog {0% {transform:scaleX(0)} 100% {transform:scaleX(1)}}
+@keyframes wiresVis {0%,10% {opacity:0} 10.333%,97.5% {opacity:1} 98.667%,100% {opacity:0}}
+@keyframes draw {0%,10.667% {stroke-dashoffset:700} 15%,100% {stroke-dashoffset:0}}
+@keyframes tagIntro {0%,3.667% {opacity:0} 5%,24.667% {opacity:1} 25.333%,100% {opacity:0}}
+@keyframes tagVcc {0%,16% {opacity:0} 17.333%,24.667% {opacity:1} 25.333%,100% {opacity:0}}
+@keyframes tagFast {0%,30% {opacity:0} 31.333%,39.333% {opacity:1} 40%,100% {opacity:0}}
+@keyframes tagTap {0%,41% {opacity:0} 42.333%,85.333% {opacity:1} 86.667%,100% {opacity:0}}
+@keyframes usbPulse {0%,23.3% {opacity:0;transform:translateY(170px)} 23.4% {opacity:1;transform:translateY(170px)} 25.3% {opacity:1;transform:translateY(0)} 25.8%,100% {opacity:0;transform:translateY(0)}}
+@keyframes ledOn {0%,25.2% {opacity:0} 25.333%,100% {opacity:1}}
+@keyframes beat {0%,12% {opacity:1} 20%,100% {opacity:.15}}
+@keyframes screenOff {0%,27.9% {opacity:1} 28%,100% {opacity:0}}
+@keyframes pillsRow {0%,40.3% {opacity:0} 41.667%,85.667% {opacity:1} 86.667%,100% {opacity:0}}
+@keyframes chipsRow {0%,86.9% {opacity:0} 88%,97.333% {opacity:1} 98.667%,100% {opacity:0}}
+@keyframes chipOn {0%,88.6% {background-color:transparent;color:#7e8aa0;border-color:#3a4659} 89.4%,100% {background-color:#2fd8f0;color:#04222b;border-color:#2fd8f0}}
+@keyframes fHello {
+  0%,28.0% {opacity:0}
+  28.02%,33.313% {opacity:1}
+  33.333%,100% {opacity:0}
+}
+@keyframes fClassic {
+  0%,33.313% {opacity:0}
+  33.333%,47.758% {opacity:1}
+  47.778%,86.647% {opacity:0}
+  86.667%,100% {opacity:1}
+}
+@keyframes fBuddy {
+  0%,47.757% {opacity:0}
+  47.777%,55.537% {opacity:1}
+  55.557%,100% {opacity:0}
+}
+@keyframes fLive {
+  0%,55.537% {opacity:0}
+  55.557%,63.313% {opacity:1}
+  63.333%,100% {opacity:0}
+}
+@keyframes fRing {
+  0%,63.313% {opacity:0}
+  63.333%,71.090% {opacity:1}
+  71.110%,100% {opacity:0}
+}
+@keyframes fFinger {
+  0%,71.090% {opacity:0}
+  71.110%,78.870% {opacity:1}
+  78.890%,100% {opacity:0}
+}
+@keyframes fHilo {
+  0%,78.870% {opacity:0}
+  78.890%,86.647% {opacity:1}
+  86.667%,100% {opacity:0}
+}
+@keyframes act0 {
+  0%,39.980% {background-color:transparent;color:#9fb0c6;border-color:#3a4659}
+  40.000%,47.757% {background-color:#2fd8f0;color:#04222b;border-color:#2fd8f0}
+  47.777%,100% {background-color:transparent;color:#9fb0c6;border-color:#3a4659}
+}
+@keyframes act1 {
+  0%,47.757% {background-color:transparent;color:#9fb0c6;border-color:#3a4659}
+  47.777%,55.537% {background-color:#2fd8f0;color:#04222b;border-color:#2fd8f0}
+  55.557%,100% {background-color:transparent;color:#9fb0c6;border-color:#3a4659}
+}
+@keyframes act2 {
+  0%,55.537% {background-color:transparent;color:#9fb0c6;border-color:#3a4659}
+  55.557%,63.313% {background-color:#2fd8f0;color:#04222b;border-color:#2fd8f0}
+  63.333%,100% {background-color:transparent;color:#9fb0c6;border-color:#3a4659}
+}
+@keyframes act3 {
+  0%,63.313% {background-color:transparent;color:#9fb0c6;border-color:#3a4659}
+  63.333%,71.090% {background-color:#2fd8f0;color:#04222b;border-color:#2fd8f0}
+  71.110%,100% {background-color:transparent;color:#9fb0c6;border-color:#3a4659}
+}
+@keyframes act4 {
+  0%,71.090% {background-color:transparent;color:#9fb0c6;border-color:#3a4659}
+  71.110%,78.870% {background-color:#2fd8f0;color:#04222b;border-color:#2fd8f0}
+  78.890%,100% {background-color:transparent;color:#9fb0c6;border-color:#3a4659}
+}
+@keyframes act5 {
+  0%,78.870% {background-color:transparent;color:#9fb0c6;border-color:#3a4659}
+  78.890%,86.647% {background-color:#2fd8f0;color:#04222b;border-color:#2fd8f0}
+  86.667%,100% {background-color:transparent;color:#9fb0c6;border-color:#3a4659}
+}
+@keyframes ripple {
+  0%,47.747% {opacity:0;transform:scale(1)}
+  47.777% {opacity:.9;transform:scale(1)}
+  49.444% {opacity:0;transform:scale(1.7)}
+  49.477%,55.527% {opacity:0;transform:scale(1)}
+  55.557% {opacity:.9;transform:scale(1)}
+  57.224% {opacity:0;transform:scale(1.7)}
+  57.257%,63.303% {opacity:0;transform:scale(1)}
+  63.333% {opacity:.9;transform:scale(1)}
+  65.000% {opacity:0;transform:scale(1.7)}
+  65.033%,71.080% {opacity:0;transform:scale(1)}
+  71.110% {opacity:.9;transform:scale(1)}
+  72.777% {opacity:0;transform:scale(1.7)}
+  72.810%,78.860% {opacity:0;transform:scale(1)}
+  78.890% {opacity:.9;transform:scale(1)}
+  80.557% {opacity:0;transform:scale(1.7)}
+  80.590%,86.637% {opacity:0;transform:scale(1)}
+  86.667% {opacity:.9;transform:scale(1)}
+  88.334% {opacity:0;transform:scale(1.7)}
+  88.367%,100.000% {opacity:0;transform:scale(1)}
+}
+@keyframes btnPress {
+  0%,47.747% {transform:scale(1)}
+  48.377% {transform:scale(.82)}
+  49.377%,55.527% {transform:scale(1)}
+  56.157% {transform:scale(.82)}
+  57.157%,63.303% {transform:scale(1)}
+  63.933% {transform:scale(.82)}
+  64.933%,71.080% {transform:scale(1)}
+  71.710% {transform:scale(.82)}
+  72.710%,78.860% {transform:scale(1)}
+  79.490% {transform:scale(.82)}
+  80.490%,86.637% {transform:scale(1)}
+  87.267% {transform:scale(.82)}
+  88.267%,100.000% {transform:scale(1)}
+}
+
+/* ---------- PORTRAIT 720 x 1280 -> 1080 x 1920. Safe box x 40..640, y 165..1025 ---------- */
+:root[data-format=portrait]{
+  --W:720px; --H:1280px;
+  --stage-bg:radial-gradient(760px 760px at 50% 48%,#1d1830 0%,#0b0e13 72%);
+  --cap-l:40px; --cap-t:170px; --cap-w:580px; --kick-fs:18px; --kick-ls:.08em; --head-fs:52px; --head-mt:14px;
+  --band-t:905px;
+  --prog-l:40px; --prog-t:1014px; --prog-w:580px;
+  --pills-l:110px; --pills-w:460px; --pill-fs:22px; --pill-pad:9px 18px; --pill-gap:10px;
+  --chips-l:100px; --chips-w:480px; --chip-sz:46px; --chip-fs:18px;
+  --tag-fs:26px; --tag-pad:8px 16px;
+  --cam-wide:translate(28px,448px) scale(.52);
+  --cam-mid:translate(-6px,356px) scale(.78);
+  --cam-close:translate(-534px,354px) scale(.95);
+}
+:root[data-format=portrait] .l-only{display:none}
+:root[data-format=portrait] .tag-pico{left:10px;top:0px}
+:root[data-format=portrait] .tag-sensor{left:330px;top:590px}
+:root[data-format=portrait] .tag-disp{left:560px;top:0px}
+:root[data-format=portrait] .tag-vcc{left:260px;top:60px}
+:root[data-format=portrait] .tag-fast{left:640px;top:520px}
+:root[data-format=portrait] .tag-tap{left:640px;top:520px}
+</style>
+<meta name="viewport" content="width=1280">
+</head>
+<body>
+<div class="root">
+  <input type="checkbox" id="pause" class="pause-input" aria-label="Pause animation">
+  <label for="pause" class="pause-btn" aria-hidden="true">
+    <svg class="ico-pause" width="16" height="16" viewBox="0 0 16 16"><rect x="3" y="2" width="3.5" height="12" rx="1" fill="#e8edf5"></rect><rect x="9.5" y="2" width="3.5" height="12" rx="1" fill="#e8edf5"></rect></svg>
+    <svg class="ico-play" width="16" height="16" viewBox="0 0 16 16"><path d="M4 2 L13 8 L4 14 Z" fill="#e8edf5"></path></svg>
+  </label>
+  <div class="stage" role="img" aria-label="A 30-second animation of the Mood Ring Thermometer kit. A Raspberry Pi Pico is wired to a small purple SHT40 temperature and humidity sensor, a round GC9A01 color screen and a push button. The screen says Hello World, then shows temperature and humidity. Tapping the button steps through six modes: Classic, Buddy, Live, Ring, Finger and Hi/Lo. The kit has 9 lab programs.">
+
+    <div class="cap cap0"><div class="kick">SHT40 temperature + humidity kit</div><div class="head">Meet the Mood Ring Thermometer</div></div>
+    <div class="cap cap1"><div class="kick">Step 1 · Wire it</div><div class="head">13 wires: sensor, screen, button</div></div>
+    <div class="cap cap2"><div class="kick">Step 2 · Power it on</div><div class="head">Reads the air in 8&nbsp;ms, to 0.2&nbsp;°C</div></div>
+    <div class="cap cap3"><div class="kick">Step 3 · Tap the button</div><div class="head">Tap the button for six modes</div></div>
+    <div class="cap cap4"><div class="kick">9 lab programs · 6th grade</div><div class="head">Feel the air. See it in color.</div></div>
+
+    <div class="rig">
+      <div class="rise" style="position:absolute;left:0;top:0;width:400px;height:620px">
+        <div class="bb" style="position:absolute;left:30px;top:70px;width:330px;height:520px"></div>
+        <div style="position:absolute;left:187px;top:70px;width:16px;height:520px;background:#d8d1bf"></div>
+        <div style="position:absolute;left:183px;top:30px;width:24px;height:110px;border-radius:4px 4px 0 0;background:linear-gradient(#cbd5e1,#f8fafc)"></div>
+        <div class="usb-pulse" style="position:absolute;left:183px;top:-80px;width:24px;height:40px;background:linear-gradient(rgba(47,216,240,0),rgba(47,216,240,.85),rgba(47,216,240,0))"></div>
+        <div style="position:absolute;left:140px;top:130px;width:110px;height:270px;border-radius:10px;background:#1b7a46;box-shadow:0 10px 24px rgba(0,0,0,.5),inset 0 0 0 2px #14613a">
+          <div class="pad" style="position:absolute;left:0;top:14px;width:6px;height:250px"></div>
+          <div class="pad" style="position:absolute;left:104px;top:14px;width:6px;height:250px"></div>
+          <div style="position:absolute;left:30px;top:0px;width:50px;height:30px;border-radius:4px;background:#d5d9df;box-shadow:inset 0 0 0 3px #a3aab6"></div>
+          <div style="position:absolute;left:34px;top:104px;width:42px;height:42px;border-radius:3px;background:#101216;box-shadow:inset 0 0 0 2px #2a2f38"></div>
+          <div style="position:absolute;left:70px;top:178px;width:24px;height:24px;border-radius:5px;background:#f1f5f9;box-shadow:inset 0 0 0 3px #cbd5e1"></div>
+          <div class="led"></div>
+          <div class="led-on"><div class="led-beat" style="width:10px;height:10px;border-radius:50%;background:#4ade80"></div></div>
+        </div>
+        <!-- push button (GP15 + GND) -->
+        <div style="position:absolute;left:50px;top:440px;width:70px;height:70px;border-radius:8px;background:#2b2f36;box-shadow:inset 0 0 0 3px #454b56,0 4px 8px rgba(0,0,0,.4)"></div>
+        <div class="ripple" style="position:absolute;left:46px;top:436px;width:78px;height:78px;box-sizing:border-box;border-radius:50%;border:3px solid #2fd8f0;opacity:0"></div>
+        <div class="btn-press" style="position:absolute;left:63px;top:453px;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#5aa0ff,#1d4fc4 70%)"></div>
+      </div>
+
+      <!-- SHT40 sensor board (purple) -->
+      <div class="rise" style="position:absolute;left:415px;top:470px;width:125px;height:100px;animation-delay:.15s">
+        <div style="position:absolute;left:0;top:0;width:125px;height:100px;border-radius:10px;background:linear-gradient(160deg,#8b3fd1,#5f21a3);box-shadow:0 14px 28px rgba(0,0,0,.5)"></div>
+        <svg style="position:absolute;left:0;top:0" width="125" height="40" viewBox="0 0 125 40"><circle cx="20" cy="8" r="6" fill="#e6c35c"></circle><text x="20" y="30" text-anchor="middle" font-size="10" font-weight="500" fill="#f3e8ff" style="font-family:Rubik,sans-serif">VIN</text><circle cx="45" cy="8" r="6" fill="#e6c35c"></circle><text x="45" y="30" text-anchor="middle" font-size="10" font-weight="500" fill="#f3e8ff" style="font-family:Rubik,sans-serif">GND</text><circle cx="70" cy="8" r="6" fill="#e6c35c"></circle><text x="70" y="30" text-anchor="middle" font-size="10" font-weight="500" fill="#f3e8ff" style="font-family:Rubik,sans-serif">SCL</text><circle cx="95" cy="8" r="6" fill="#e6c35c"></circle><text x="95" y="30" text-anchor="middle" font-size="10" font-weight="500" fill="#f3e8ff" style="font-family:Rubik,sans-serif">SDA</text></svg>
+        <div style="position:absolute;left:50px;top:52px;width:26px;height:26px;border-radius:3px;background:#c9ced6;box-shadow:inset 0 0 0 3px #8d949f"></div>
+      </div>
+
+      <svg style="position:absolute;left:0;top:0" width="1200" height="620" viewBox="0 0 1200 620">
+        <g class="wires-vis">
+          <path class="w" style="stroke:#e53935;animation-delay:0.00s" d="M250 150 C430 150 470 205 640 205"></path>
+          <path class="w" style="stroke:#212121;animation-delay:0.14s" d="M250 172 C430 172 470 235 640 235"></path>
+          <path class="w" style="stroke:#fdd835;animation-delay:0.28s" d="M250 194 C430 194 470 265 640 265"></path>
+          <path class="w" style="stroke:#1e88e5;animation-delay:0.42s" d="M250 216 C430 216 470 295 640 295"></path>
+          <path class="w" style="stroke:#43a047;animation-delay:0.56s" d="M250 238 C430 238 470 325 640 325"></path>
+          <path class="w" style="stroke:#fb8c00;animation-delay:0.70s" d="M250 260 C430 260 470 355 640 355"></path>
+          <path class="w" style="stroke:#8e24aa;animation-delay:0.84s" d="M250 282 C430 282 470 385 640 385"></path>
+          <path class="w" style="stroke:#ef5350;animation-delay:0.98s" d="M250 310 C330 310 420 360 440 478"></path>
+          <path class="w" style="stroke:#424242;animation-delay:1.12s" d="M250 328 C330 330 440 380 465 478"></path>
+          <path class="w" style="stroke:#ffee58;animation-delay:1.26s" d="M250 346 C320 350 450 400 490 478"></path>
+          <path class="w" style="stroke:#42a5f5;animation-delay:1.40s" d="M250 364 C310 370 470 420 515 478"></path>
+          <path class="w" style="stroke:#66bb6a;animation-delay:1.54s" d="M140 372 C110 372 110 430 98 452"></path>
+          <path class="w" style="stroke:#9e9e9e;animation-delay:1.68s" d="M140 390 C125 392 80 410 70 452"></path>
+        </g>
+      </svg>
+
+      <!-- round GC9A01 display -->
+      <div class="rise" style="position:absolute;left:0;top:0;width:1200px;height:620px;animation-delay:.3s">
+        <div style="position:absolute;left:580px;top:160px;width:120px;height:240px;border-radius:12px;background:#1a1d24;box-shadow:inset 0 0 0 2px #2e333d"></div>
+        <svg style="position:absolute;left:580px;top:160px" width="80" height="240" viewBox="0 160 80 240"><circle cx="52" cy="175" r="7" fill="#e6c35c"></circle><text x="10" y="179" font-size="12" font-weight="500" fill="#d7e4ff" style="font-family:Rubik,sans-serif">VCC</text><circle cx="52" cy="205" r="7" fill="#e6c35c"></circle><text x="10" y="209" font-size="12" font-weight="500" fill="#d7e4ff" style="font-family:Rubik,sans-serif">GND</text><circle cx="52" cy="235" r="7" fill="#e6c35c"></circle><text x="10" y="239" font-size="12" font-weight="500" fill="#d7e4ff" style="font-family:Rubik,sans-serif">SCL</text><circle cx="52" cy="265" r="7" fill="#e6c35c"></circle><text x="10" y="269" font-size="12" font-weight="500" fill="#d7e4ff" style="font-family:Rubik,sans-serif">SDA</text><circle cx="52" cy="295" r="7" fill="#e6c35c"></circle><text x="10" y="299" font-size="12" font-weight="500" fill="#d7e4ff" style="font-family:Rubik,sans-serif">DC</text><circle cx="52" cy="325" r="7" fill="#e6c35c"></circle><text x="10" y="329" font-size="12" font-weight="500" fill="#d7e4ff" style="font-family:Rubik,sans-serif">CS</text><circle cx="52" cy="355" r="7" fill="#e6c35c"></circle><text x="10" y="359" font-size="12" font-weight="500" fill="#d7e4ff" style="font-family:Rubik,sans-serif">RST</text></svg>
+        <div style="position:absolute;left:670px;top:30px;width:500px;height:500px;border-radius:50%;background:#1a1d24;box-shadow:0 30px 60px rgba(0,0,0,.55),inset 0 0 0 3px #2e333d"></div>
+        <div style="position:absolute;left:700px;top:60px;width:440px;height:440px;border-radius:50%;background:#e8edf5"></div>
+        <div class="screen">
+          <div class="face f-hello"></div>
+          <div class="face f-classic"></div>
+          <div class="face sprite f-buddy"></div>
+          <div class="face sprite f-live"></div>
+          <div class="face sprite f-ring"></div>
+          <div class="face sprite f-finger"></div>
+          <div class="face sprite f-hilo"></div>
+          <div class="screen-off"></div>
+          <div style="position:absolute;left:0;top:0;width:100%;height:100%;background:linear-gradient(120deg,rgba(255,255,255,.08),rgba(255,255,255,0) 38%)"></div>
+        </div>
+      </div>
+
+      <div class="tag tag-intro tag-pico">Pico · the brain</div>
+      <div class="tag tag-intro tag-sensor">SHT40 · the star</div>
+      <div class="tag tag-intro tag-disp">Round screen<span class="l-only"> · 240 x 240 dots</span></div>
+      <div class="tag tag-amber tag-vcc">Power from 3V3<span class="l-only"> · never VBUS</span></div>
+      <div class="tag tag-fast">±0.2 °C · 8 ms</div>
+      <div class="tag tag-tap">Tap: next mode</div>
+    </div>
+
+    <div class="pills">
+      <div class="pill pill0">Classic</div><div class="pill pill1">Buddy</div><div class="pill pill2">Live</div>
+      <div class="pill pill3">Ring</div><div class="pill pill4">Finger</div><div class="pill pill5">Hi/Lo</div>
+    </div>
+    <div class="chips">
+      <div class="chip" style="animation-delay:0.0s">01</div>
+      <div class="chip" style="animation-delay:0.2s">02</div>
+      <div class="chip" style="animation-delay:0.4s">03</div>
+      <div class="chip" style="animation-delay:0.6s">04</div>
+      <div class="chip" style="animation-delay:0.8s">05</div>
+      <div class="chip" style="animation-delay:1.0s">06</div>
+      <div class="chip" style="animation-delay:1.2s">07</div>
+      <div class="chip" style="animation-delay:1.4s">08</div>
+      <div class="chip" style="animation-delay:1.6s">09</div>
+    </div>
+    <div class="prog-track"></div>
+    <div class="prog-fill"></div>
+    <div class="prog-tick" style="--f:.1"></div>
+    <div class="prog-tick" style="--f:.2667"></div>
+    <div class="prog-tick" style="--f:.4"></div>
+    <div class="prog-tick" style="--f:.8667"></div>
+    <div class="cover"></div>
+  </div>
+</div>
+</body>
+</html>
