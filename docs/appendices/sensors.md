@@ -2,7 +2,11 @@
 
 Here is a list of sensors that we have been using or we are considering using
 
-## In use
+## In Use
+
+### VL530X Time-of-Flight Distance Sensor
+
+[Tutorial and Sample Code](../sensors/07-VL53L0X_GY.md)
 
 ## Considering Using
 
