@@ -1,10 +1,10 @@
 # Sourcing Parts
 
-One of the key values of CoderDojo clubs around the world is to not charge any fees for attending these clubs.  Parts need to be purchase by limited funds raised through donations.  Club organizers need to be frugal about getting low-cost parts for the participants.
+One of the key values of most coding clubs around the world is to not charge any fees for attending these clubs.  Parts need to be purchase by limited funds raised through donations.  Club organizers need to be frugal about getting low-cost parts for the participants.
 
 Our experience is that is difficult to get the right parts at low cost using firms that promise quick delivery times of a few days.  The lowest price parts often must be purchased weeks in advance from places like China and Taiwan.  As a result, clubs that use funds carefully must plan weeks if not months in advance of classes and events.  So we strongly suggest bringing an robot part procurement team together two months before you begin to offer robot courses where students can each have their own robots.
 
-## Purchasing The Raspberry Pi Kits
+## Purchasing The Raspberry Pi Pico Kits
 As of June 2021, the Raspberry Pi Pico did not come integrated into low-cost development kits that include robot kit parts.  You frequently must to purchase the independent parts yourself.  
 
 Here are some of the parts we recommend.
