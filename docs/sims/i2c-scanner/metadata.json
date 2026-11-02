@@ -1,0 +1,66 @@
+{
+  "title": "I2C Bus Scanner",
+  "creator": "Dan McCreary",
+  "subject": "Learning MicroPython",
+  "description": "Slow-motion I2C address scan. The CPU asks every address from 0x08 to 0x77 and an MPU-6050 (0x68), an HMC5883L compass (0x1E) and an SSD1306 display (0x3C) answer with ACK. Shows the SCL and SDA waveforms, an address map and the console output of i2c-scanner.py.",
+  "date": "2026-11-02",
+  "educational": {
+    "gradeLevel": [
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "I2C address scanning",
+    "learningObjectives": [
+      "Explain how an I2C scan discovers devices: the controller asks each address and only the owner answers with an ACK",
+      "Read an I2C scan result such as [30, 60, 104] and name the devices in hex and decimal",
+      "Predict how a scan result changes when a device is unplugged"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "Chapter 8: Communication Protocols (the I2C section)",
+      "Hexadecimal numbers such as 0x68"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.4",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 690
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4 (jsdelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Step-through with prediction, plus an unplug experiment",
+    "keyQuestions": [
+      "Who sends the address, the CPU or the device?",
+      "What does the wire do during the ACK clock pulse when nobody is home?",
+      "Why can two devices on one bus not share an address?"
+    ],
+    "commonMisconceptions": [
+      "Devices announce their own addresses (the CPU asks; devices only answer)",
+      "Every device sees only its own address (all devices hear every address on the shared wires)"
+    ],
+    "assessmentOpportunities": [
+      "Student explains why a device does not announce itself",
+      "Student predicts the scan result after unplugging a device"
+    ]
+  },
+  "chapter": "appendices/i2c-bus"
+}

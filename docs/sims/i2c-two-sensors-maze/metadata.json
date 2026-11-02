@@ -1,0 +1,66 @@
+{
+  "title": "I2C Two Sensors in a Maze",
+  "creator": "Dan McCreary",
+  "subject": "Learning MicroPython",
+  "description": "A robot drives a maze while the CPU polls an MPU-6050 accelerometer and then a gyroscope (same chip, 0x68) or an HMC5883L compass (0x1E) over one I2C bus. Shows raw bytes, charts, a bus timeline of reads taking turns, and the effect of the read rate.",
+  "date": "2026-11-02",
+  "educational": {
+    "gradeLevel": [
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Reading two I2C sensors on one bus",
+    "learningObjectives": [
+      "Explain why two I2C sensors on one bus are read one after another, not at the same instant",
+      "Describe what an accelerometer and a gyroscope or compass each measure about a moving robot",
+      "Explain why a slow read rate can miss quick changes"
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "I2C Bus Scanner MicroSim",
+      "Chapter 10: Motion and Light Sensors"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.4",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 675
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4 (jsdelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Exploration with a sample-rate slider and a sensor selector",
+    "keyQuestions": [
+      "Can two I2C devices send data at the same moment?",
+      "Which sensor reacts when the robot speeds up, and which when it turns?",
+      "What do you lose when the CPU reads less often?"
+    ],
+    "commonMisconceptions": [
+      "Sensors on a bus transmit at the same time (the single controller serializes the reads)",
+      "The accelerometer and gyroscope are separate chips (they share one MPU-6050 and one address)"
+    ],
+    "assessmentOpportunities": [
+      "Student explains the alternating blocks on the bus timeline",
+      "Student matches chart features to robot motions"
+    ]
+  },
+  "chapter": "appendices/i2c-bus"
+}

@@ -372,6 +372,9 @@ nav:
     - Concept Importance: sims/concept-importance/index.md
     - Digital I/O Explorer: sims/digital-io-explorer/index.md
     - E-Paper vs TFT vs OLED Comparison: sims/display-technology-comparison/index.md
+    - I2C Bus Scanner: sims/i2c-scanner/index.md
+    - I2C Five-Device Sensor Fusion: sims/i2c-sensor-fusion/index.md
+    - I2C Two Sensors in a Maze: sims/i2c-two-sensors-maze/index.md
     - Interactive Conditional Flowchart: sims/conditional-flowchart/index.md
     - IoT Data Flow Explorer: sims/iot-data-flow/index.md
     - Learning Graph Viewer: sims/graph-viewer/index.md
@@ -391,6 +394,8 @@ nav:
     - Servo PWM Signal Explorer: sims/servo-pwm-explorer/index.md
     - Spectrum Analyzer Concept: sims/spectrum-analyzer-concept/index.md
     - Ultrasonic Ranging Explorer: sims/ultrasonic-ranging/index.md
+
+
 
 
 
@@ -437,6 +442,16 @@ nav:
     - learning-graph/chapter-metrics.md
     - learning-graph/linkedin-announcement.md
     - learning-graph/logs/learning-graph-generator-0.05-2026-06-12.md
+
+  - Appendices:
+    - List of Appendices: appendices/index.md
+    - List of Sensors: appendices/sensors.md
+    - Sensor Summary Table: appendices/sensor-summary-table.md
+    - A. The I2C Bus:
+      - Content: appendices/i2c-bus/index.md
+      - Instructor Notes: appendices/i2c-bus/instructor-notes.md
+      - Annotated References: appendices/i2c-bus/references.md
+    - I2C Simulations: appendices/i2c-simulations.md
 
   - Sample AI Prompts:
     - Introduction: prompts/index.md
