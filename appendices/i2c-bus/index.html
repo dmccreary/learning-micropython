@@ -1,0 +1,3437 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="How a Raspberry Pi Pico talks to many chips over two wires. Covers addresses, ACKs, registers, raw bytes, sensor fusion and bus timing, with three MicroSims and hands-on MicroPython code.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/appendices/i2c-bus/">
+      
+      
+        <link rel="prev" href="../sensor-summary-table/">
+      
+      
+        <link rel="next" href="instructor-notes/">
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Appendix A: The I2C Bus - Learning MicroPython</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-DS16K4YVRR"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-DS16K4YVRR",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-DS16K4YVRR",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Appendix A: The I2C Bus - Learning MicroPython">
+      
+        <meta property="og:description" content="How a Raspberry Pi Pico talks to many chips over two wires. Covers addresses, ACKs, registers, raw bytes, sensor fusion and bus timing, with three MicroSims and hands-on MicroPython code.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/appendices/i2c-bus/index.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/appendices/i2c-bus/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Appendix A: The I2C Bus - Learning MicroPython">
+      
+        <meta name="twitter:description" content="How a Raspberry Pi Pico talks to many chips over two wires. Covers addresses, ACKs, registers, raw bytes, sensor fusion and bus timing, with three MicroSims and hands-on MicroPython code.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/appendices/i2c-bus/index.png">
+      
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#appendix-a-the-i2c-bus" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Learning MicroPython" class="md-header__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning MicroPython
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Appendix A: The I2C Bus
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Learning MicroPython" class="md-nav__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Learning MicroPython
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Book
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../basics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Hands-On Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../kits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Appendices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    List of Sensors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sensor-summary-table/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sensor Summary Table
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
+  <span class="md-ellipsis">
+    A. The I2C Bus
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_10_4" id="__nav_10_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10_4">
+            <span class="md-nav__icon md-icon"></span>
+            A. The I2C Bus
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="instructor-notes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Instructor Notes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotated References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../i2c-simulations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I2C Simulations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sample AI Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/content-authoring-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authoring Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teachers-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Teacher's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teachers-guide/parts-delivery-times/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parts Delivery Times
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/acknowledgements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acknowledgements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/30-colophon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Colophon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i2c-in-one-minute" class="md-nav__link">
+    <span class="md-ellipsis">
+      I2C in One Minute
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-a-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What Is a Bus?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-meet-the-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Meet the Hardware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Meet the Hardware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wire-the-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wire the Bus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-two-wires-sda-and-scl" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Two Wires: SDA and SCL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Two Wires: SDA and SCL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pull-up-resistors-why-a-wire-only-goes-one-way" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pull-up Resistors: Why a Wire Only Goes One Way
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start-stop-and-speed" class="md-nav__link">
+    <span class="md-ellipsis">
+      START, STOP and Speed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-anatomy-of-a-transaction" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Anatomy of a Transaction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-addresses-and-the-i2c-scanner" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Addresses and the I2C Scanner
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Addresses and the I2C Scanner">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-the-scanner-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How the Scanner Works
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-if-two-chips-have-the-same-address" class="md-nav__link">
+    <span class="md-ellipsis">
+      What If Two Chips Have the Same Address?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-it-a-pretend-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Try It: A Pretend Bus
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-registers-the-mailboxes-inside-a-chip" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Registers: The Mailboxes Inside a Chip
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-from-bytes-to-numbers" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. From Bytes to Numbers
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. From Bytes to Numbers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learning-check-the-robot-that-brakes-at-39-g" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learning Check: The Robot That Brakes at 3.9 g
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-two-sensors-one-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Two Sensors, One Bus
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Two Sensors, One Bus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-each-sensor-feels" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Each Sensor Feels
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-fast-enough" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading Fast Enough
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-sensor-fusion-two-wrong-answers-make-a-right-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Sensor Fusion: Two Wrong Answers Make a Right One
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-five-devices-one-pico" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Five Devices, One Pico
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Five Devices, One Pico">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-long-does-a-transaction-take" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Long Does a Transaction Take?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-picos-job-a-scheduler" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Pico's Job: A Scheduler
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixing-a-crowded-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fixing a Crowded Bus
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-complete-program" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Complete Program
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-troubleshooting-an-i2c-bus" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Troubleshooting an I2C Bus
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-words-to-remember" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Words to Remember
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Check
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Experiments
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="appendix-a-the-i2c-bus">Appendix A: The I2C Bus</h1>
+<p>By the end of this appendix you'll be able to:</p>
+<ul>
+<li>Explain how the Pico uses two wires to talk to many chips, and how it picks one chip by its address</li>
+<li>Turn the raw bytes from a sensor into a real number with Python</li>
+<li>Describe how the Pico takes turns with five devices, and why a slow display can delay the sensors</li>
+</ul>
+<p>A robot is full of small chips. One feels motion. One finds north. One measures
+distance. One watches the battery. One drives a screen. Each chip needs to talk to
+the Pico. But the Pico only has so many pins. This appendix shows the trick that
+lets one Pico talk to dozens of chips using just two wires.</p>
+<div class="admonition mascot-welcome">
+<p class="admonition-title">Welcome to the I2C Bus!</p>
+<p><img alt="Monty waving welcome" class="mascot-admonition-img" src="../../img/mascot/welcome.png">
+Today you will peek inside a robot and watch its chips talk, one polite turn at a time. You will scan a bus, read raw bytes, and see why a screen can slow down a sensor. Let's build something amazing!</p>
+</div>
+<h2 id="i2c-in-one-minute">I2C in One Minute</h2>
+<p>Here is the whole idea at a glance. Every term in this table gets its own
+explanation below.</p>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What is it?</td>
+<td>A two-wire bus that connects the Pico to many small chips</td>
+</tr>
+<tr>
+<td>What are the wires?</td>
+<td>Serial Clock (SCL) and Serial Data (SDA)</td>
+</tr>
+<tr>
+<td>Who is in charge?</td>
+<td>One controller (your Pico). It starts every conversation</td>
+</tr>
+<tr>
+<td>How does it pick a chip?</td>
+<td>Every chip has a 7-bit address. The controller says the address first</td>
+</tr>
+<tr>
+<td>How does a chip say "yes"?</td>
+<td>It pulls SDA low for one clock pulse. That is an acknowledge (ACK)</td>
+</tr>
+<tr>
+<td>Can two chips talk at once?</td>
+<td>No. There is one conversation at a time, so the Pico takes turns</td>
+</tr>
+<tr>
+<td>How fast?</td>
+<td>100,000 or 400,000 bits per second on most boards</td>
+</tr>
+</tbody>
+</table>
+<p>I2C is short for Inter-Integrated Circuit. You say it "eye-squared-see". Philips
+(now NXP) invented it in the early 1980s. <a href="../../chapters/08-communication-protocols/">Chapter 8</a>
+introduced I2C. This appendix goes much deeper. The <a href="../../sims/protocol-comparison/">Protocol Comparison Explorer</a>
+MicroSim shows how I2C compares with SPI and UART.</p>
+<h2 id="1-what-is-a-bus">1. What Is a Bus?</h2>
+<p>Picture a classroom where the teacher asks questions. Every student hears every
+question. But each question starts with a name: "Maya, what is 7 times 8?"
+Only Maya answers. Everyone else stays quiet and listens for their own name.</p>
+<p>A <strong>bus</strong> works the same way. It is a set of shared wires that many chips connect to.
+Every chip hears everything the Pico sends. Each message starts with an address.
+Only the chip that owns that address answers.</p>
+<p>Why share wires instead of giving every chip its own? Count the pins.</p>
+<table>
+<thead>
+<tr>
+<th>Connection</th>
+<th>Signal wires</th>
+<th>Chips on the same wires</th>
+<th>Typical use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I2C</td>
+<td>2 (SDA, SCL)</td>
+<td>up to 112</td>
+<td>sensors, small displays, clocks</td>
+</tr>
+<tr>
+<td>SPI</td>
+<td>3, plus 1 more for each chip</td>
+<td>a few</td>
+<td>fast displays, SD cards</td>
+</tr>
+<tr>
+<td>UART</td>
+<td>2 for each pair of chips</td>
+<td>exactly 2</td>
+<td>GPS, serial consoles</td>
+</tr>
+</tbody>
+</table>
+<p>With I2C you can add a sixth, seventh or tenth chip. The Pico still uses the same two
+pins. That is why robots, phones and laptops are full of I2C.</p>
+<h2 id="2-meet-the-hardware">2. Meet the Hardware</h2>
+<p>The robot in this appendix uses the parts below. The table lists each chip, what it
+does, and its address. The five-device MicroSim near the end uses everything except
+the compass.</p>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Chip (breakout board)</th>
+<th>What it does</th>
+<th>I2C address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accelerometer</td>
+<td>MPU-6050 (GY-521)</td>
+<td>feels pushes and gravity</td>
+<td><code>0x68</code></td>
+</tr>
+<tr>
+<td>Gyroscope</td>
+<td>MPU-6050 (same chip)</td>
+<td>feels how fast the robot turns</td>
+<td><code>0x68</code></td>
+</tr>
+<tr>
+<td>Compass</td>
+<td>HMC5883L (GY-271)</td>
+<td>senses Earth's magnetic field</td>
+<td><code>0x1E</code></td>
+</tr>
+<tr>
+<td>Distance sensor</td>
+<td>VL53L0X</td>
+<td>times a pulse of light to an obstacle</td>
+<td><code>0x29</code></td>
+</tr>
+<tr>
+<td>Battery monitor</td>
+<td>INA219</td>
+<td>measures battery voltage and current</td>
+<td><code>0x40</code></td>
+</tr>
+<tr>
+<td>Display</td>
+<td>SSD1306 128x64 OLED</td>
+<td>shows text and pictures</td>
+<td><code>0x3C</code></td>
+</tr>
+</tbody>
+</table>
+<p>(OLED stands for organic light-emitting diode. It is a screen where every pixel makes its own light.)</p>
+<p>The accelerometer and the gyroscope are one chip with one address. They are two
+sensors, but only one device on the bus. Leave out the compass and the other five
+functions need just four addresses: <code>0x68</code>, <code>0x29</code>, <code>0x40</code> and <code>0x3C</code>. Add the
+compass back and you have five addresses for six functions.</p>
+<p><a href="../../chapters/10-motion-light-sensors/">Chapter 10</a> shows the MPU-6050 and the
+compass. <a href="../../chapters/09-temp-distance-sensors/">Chapter 9</a> covers the VL53L0X
+distance sensor. <a href="../../chapters/15-oled-setup/">Chapter 15</a> sets up the OLED display.</p>
+<div class="admonition warning">
+<p class="admonition-title">Parts notes: read these before you buy</p>
+<ul>
+<li><strong>Compass clones.</strong> Many boards sold as "GY-271 / HMC5883L" now hold a different chip, the QMC5883L. It answers at <code>0x0D</code>, not <code>0x1E</code>. Some hold a QMC5883P at <code>0x2C</code>. An I2C scan tells you in seconds which chip you have. The code for each chip is different.</li>
+<li><strong>Combo boards.</strong> Some boards put an MPU-6050 and an HMC5883L together (GY-86 and GY-87). The compass hangs off the MPU-6050's own private bus. To see it from the Pico, turn on the MPU-6050's <em>bypass mode</em>. That is bit 1 of register <code>0x37</code>.</li>
+<li><strong>Age.</strong> The MPU-6050 and HMC5883L are older parts. They are cheap and well documented, so they are great for learning. Check that you can still buy them before you design a product around them.</li>
+</ul>
+</div>
+<h3 id="wire-the-bus">Wire the Bus</h3>
+<p>Every device connects to the same four lines. Wiring a new device means adding one more
+set of wires to the same rows. Follow these steps in order.</p>
+<ol>
+<li>Unplug the Pico from USB.</li>
+<li>Connect Pico pin 36 (3V3 OUT) to the VCC pin of every board. All the boards run on 3.3 volts.</li>
+<li>Connect Pico pin 38 (GND) to the GND pin of every board.</li>
+<li>Connect Pico pin 1 (GP0) to the SDA pin of every board.</li>
+<li>Connect Pico pin 2 (GP1) to the SCL pin of every board.</li>
+<li>Add one board at a time. Run the scanner (see Section 5) after each board. Exactly one new address should appear.</li>
+</ol>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="img/i2c-bus-wiring.svg" data-desc-position="bottom"><img alt="Wiring diagram showing the Pico's 3.3 volt, SCL, SDA and ground wires shared by the MPU-6050, HMC5883L, VL53L0X, INA219 and SSD1306 boards, with two 4.7 kilohm pull-up resistors" src="img/i2c-bus-wiring.svg"></a></p>
+<p>In MicroPython, <code>I2C(0, sda=Pin(0), scl=Pin(1))</code> is the bus these pins belong to. The
+Pico has two I2C buses. I2C0 can use GP0/GP1, GP4/GP5 and other pairs. I2C1 can use
+GP2/GP3, GP6/GP7 and other pairs.</p>
+<div class="admonition tip">
+<p class="admonition-title">Safety first</p>
+<p>The INA219 sits between the battery and the robot, so it handles real power. Ask an adult to help with anything that touches a LiPo battery. Never let bare battery wires touch each other.</p>
+</div>
+<h2 id="3-two-wires-sda-and-scl">3. Two Wires: SDA and SCL</h2>
+<p>I2C uses exactly two signal wires.</p>
+<ul>
+<li><strong>SCL</strong> (Serial Clock) is the clock. The Pico ticks it like a metronome. One tick moves the conversation along by one bit.</li>
+<li><strong>SDA</strong> (Serial Data) carries the bits, one for each tick. Bits travel both ways on this wire. Only one chip talks at a time, so the wire can be shared.</li>
+</ul>
+<p>The rule for data is simple. The sender may change SDA only while SCL is low. The
+receiver reads SDA while SCL is high. So the bits hold still at the moment someone
+looks at them.</p>
+<h3 id="pull-up-resistors-why-a-wire-only-goes-one-way">Pull-up Resistors: Why a Wire Only Goes One Way</h3>
+<p>Here is a surprise. No chip on an I2C bus may push a wire <em>high</em>. A chip can only pull
+a wire <em>down</em> to ground, or let go.</p>
+<p>Imagine a spring holding a rope up. A chip can pull the rope down. When it lets go,
+the spring pulls the rope back up. The spring is a <strong>pull-up resistor</strong>. It is a small
+resistor (4,700 ohms is typical) from each wire to the 3.3 volt line. When nobody pulls,
+the resistor keeps the wire high. When any chip pulls, the wire goes low.</p>
+<p>This design solves two problems:</p>
+<ol>
+<li><strong>No short circuits.</strong> If one chip pushed high while another pulled low, they would fight. With pull-down only, the worst case is a polite tie.</li>
+<li><strong>ACK works.</strong> During the ACK pulse, the Pico lets go of SDA. If a chip pulls it low, the Pico reads a 0. If nobody does, the resistor keeps it high and the Pico reads a 1.</li>
+</ol>
+<p>Most breakout boards carry their own pull-up resistors, so the bus usually works with no
+extra parts. The Pico's built-in pull-ups are weak, so count on the ones on the boards.</p>
+<h3 id="start-stop-and-speed">START, STOP and Speed</h3>
+<p>Two special moments mark the start and end of a conversation. Both happen while SCL
+is high. That is normally when SDA must hold still.</p>
+<ul>
+<li><strong>START:</strong> SDA falls while SCL is high. It means "I am about to talk."</li>
+<li><strong>STOP:</strong> SDA rises while SCL is high. It means "I am done. The bus is free."</li>
+</ul>
+<p>Most boards run the bus at 100,000 bits per second (<strong>standard mode</strong>). Some run it at
+400,000 bits per second (<strong>fast mode</strong>). MicroPython uses 400,000 unless you pass a
+different <code>freq</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Controller and target</p>
+<p>Older books call the Pico the "master" and the chips "slaves". Since Revision 7.0 (2021), the official I2C specification from NXP says <strong>controller</strong> and <strong>target</strong>. The MicroPython documentation says <em>controller</em> and <em>peripheral</em>. This appendix uses controller and target.</p>
+</div>
+<h2 id="4-anatomy-of-a-transaction">4. Anatomy of a Transaction</h2>
+<p>Every conversation is called a <strong>transaction</strong>. Every transaction follows the same script:</p>
+<ol>
+<li>The controller sends START.</li>
+<li>The controller sends the <strong>address</strong>. That is 7 bits, then one <strong>R/W bit</strong>. A 0 means "I will write to you." A 1 means "I want to read from you."</li>
+<li>The target that owns the address sends an <strong>ACK</strong>. If nobody does, the controller sees a <strong>NACK</strong> and knows nobody is home.</li>
+<li>Data bytes follow, 8 bits each. After every byte, the <em>receiver</em> sends an ACK to say "got it."</li>
+<li>The controller sends STOP.</li>
+</ol>
+<p>Every byte takes 9 clock pulses. That is 8 bits plus 1 ACK bit. Remember "nine bits
+per byte." You will use it to work out how long things take.</p>
+<p>Reading from a chip takes two steps. The chip first needs to know <em>which</em> of its
+numbers you want. The diagram shows a real read of the MPU-6050's identity register,
+<code>0x75</code>.</p>
+<p><a class="glightbox" data-type="image" data-width="100%" data-height="auto" href="img/i2c-register-read.svg" data-desc-position="bottom"><img alt="An I2C register read: START, address 0x68 plus write, ACK, register 0x75, ACK, repeated START, address 0x68 plus read, ACK, one data byte 0x68 from the target, NACK, STOP" src="img/i2c-register-read.svg"></a></p>
+<p>Look at the colors. Blue boxes come from the controller. Green boxes come from the
+target. The target only speaks for the ACKs and the data byte.</p>
+<p>Notice the <strong>repeated START</strong> (Sr). The controller does not let go of the bus between
+"point at a register" and "read from it." It starts again right away. No other
+controller can slip in between.</p>
+<p>The last byte ends with a NACK from the <em>controller</em>. That is not an error. It means
+"that was the last byte I want." The target stops driving SDA so the controller can send STOP.</p>
+<h2 id="5-addresses-and-the-i2c-scanner">5. Addresses and the I2C Scanner</h2>
+<p>Seven address bits give 128 possible addresses, <code>0x00</code> to <code>0x7F</code>. Sixteen are reserved
+for special jobs (<code>0000 XXX</code> and <code>1111 XXX</code> in the I2C specification). That leaves
+<code>0x08</code> to <code>0x77</code>, or <strong>112 usable addresses</strong>. Chapter 8 says "up to 127 devices". That
+is the number of addresses a 7-bit number can hold. The scanner only asks the 112 that
+chips are allowed to use.</p>
+<p>Here are our devices written three ways:</p>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>Hex</th>
+<th>Decimal</th>
+<th>7-bit binary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HMC5883L compass</td>
+<td><code>0x1E</code></td>
+<td>30</td>
+<td><code>0011110</code></td>
+</tr>
+<tr>
+<td>VL53L0X distance</td>
+<td><code>0x29</code></td>
+<td>41</td>
+<td><code>0101001</code></td>
+</tr>
+<tr>
+<td>SSD1306 display</td>
+<td><code>0x3C</code></td>
+<td>60</td>
+<td><code>0111100</code></td>
+</tr>
+<tr>
+<td>INA219 battery</td>
+<td><code>0x40</code></td>
+<td>64</td>
+<td><code>1000000</code></td>
+</tr>
+<tr>
+<td>MPU-6050 accel + gyro</td>
+<td><code>0x68</code></td>
+<td>104</td>
+<td><code>1101000</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition mascot-tip">
+<p class="admonition-title">Monty's Hex Helper</p>
+<p><img alt="Monty with a tip" class="mascot-admonition-img" src="../../img/mascot/tip.png">
+<code>0x68</code> is just a number written in base 16, and the <code>0x</code> means "hex". Python prints it with <code>hex(104)</code> and accepts it anywhere a number goes, so <code>0x68 == 104</code> is <code>True</code>.</p>
+</div>
+<p>Datasheets can confuse you here. The HMC5883L datasheet lists the <em>8-bit</em> write address
+<code>0x3C</code> and read address <code>0x3D</code>. Those are the 7-bit address <code>0x1E</code> shifted left one
+place, with the R/W bit added. MicroPython uses the 7-bit address, <code>0x1E</code>. (The book's
+<code>hmc5883l.py</code> driver says <code>address=30</code>, which is <code>0x1E</code> in decimal.) And that <code>0x3C</code> is
+not the SSD1306 display. The display's 7-bit address just happens to be <code>0x3C</code> too.</p>
+<h3 id="how-the-scanner-works">How the Scanner Works</h3>
+<p>Run a <strong>scan</strong> the first time you use any new bus. A scan asks every address, one after
+another, "is anyone there?" The MicroPython documentation says it this way. <code>i2c.scan()</code>
+tries every address from <code>0x08</code> to <code>0x77</code>. A device responds if it pulls SDA low after
+its address, including the write bit, is sent.</p>
+<p>This is the big idea: <strong>devices never announce themselves.</strong> The Pico asks. Only the
+owner of the address answers. Here is a complete scanner:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># i2c-scanner.py: find every chip on the I2C bus</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
+
+<span class="n">sda_pin</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                   <span class="c1"># GP0 carries the data wire (SDA)</span>
+<span class="n">scl_pin</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                   <span class="c1"># GP1 carries the clock wire (SCL)</span>
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">sda_pin</span><span class="p">,</span> <span class="n">scl</span><span class="o">=</span><span class="n">scl_pin</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>   <span class="c1"># bus 0 at 400 kHz</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Scanning the I2C bus..."</span><span class="p">)</span>
+<span class="n">device_list</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>           <span class="c1"># ask every address, keep the ones that answer</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">device_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"No devices found. Check your wiring!"</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">address</span> <span class="ow">in</span> <span class="n">device_list</span><span class="p">:</span>    <span class="c1"># one pass for each chip that answered</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Found a device at"</span><span class="p">,</span> <span class="nb">hex</span><span class="p">(</span><span class="n">address</span><span class="p">),</span> <span class="s2">"="</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="s2">"decimal"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">device_list</span><span class="p">),</span> <span class="s2">"device(s) found."</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>from machine import Pin, I2C</code></td>
+<td>Loads the tools for pins and for the I2C bus</td>
+</tr>
+<tr>
+<td><code>sda_pin = Pin(0)</code></td>
+<td>Names the pin that carries data (GP0)</td>
+</tr>
+<tr>
+<td><code>scl_pin = Pin(1)</code></td>
+<td>Names the pin that carries the clock (GP1)</td>
+</tr>
+<tr>
+<td><code>i2c = I2C(0, ...)</code></td>
+<td>Sets up I2C bus 0 on those pins at 400,000 bits per second</td>
+</tr>
+<tr>
+<td><code>device_list = i2c.scan()</code></td>
+<td>Asks addresses <code>0x08</code> to <code>0x77</code> and returns the ones that said ACK</td>
+</tr>
+<tr>
+<td><code>for address in device_list:</code></td>
+<td>Repeats the next line once for each chip found</td>
+</tr>
+<tr>
+<td><code>print(... hex(address) ...)</code></td>
+<td>Shows the address in hex and in decimal</td>
+</tr>
+</tbody>
+</table>
+<p>With our parts wired up, it prints <code>Found a device at 0x1e = 30 decimal</code>, then
+<code>0x3c = 60</code>, then <code>0x68 = 104</code>. Try it in slow motion below. Press <strong>Step</strong> to ask one
+address at a time. Or slow the speed slider all the way down and follow the clock and
+data traces bit by bit. Then unplug a chip and scan again.</p>
+<p><strong>How to use this MicroSim:</strong> Press <strong>Step</strong> or <strong>Start</strong>. Uncheck a chip to unplug it. Then press <strong>Scan again</strong>.</p>
+<iframe src="../../sims/i2c-scanner/main.html" height="692" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/i2c-scanner/">Explore the I2C Bus Scanner MicroSim</a></p>
+<h3 id="what-if-two-chips-have-the-same-address">What If Two Chips Have the Same Address?</h3>
+<p>Then the bus cannot tell them apart. Both would answer at once. Every designer meets this
+problem sooner or later. There are four ways out:</p>
+<table>
+<thead>
+<tr>
+<th>Fix</th>
+<th>How it works</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Address pin</td>
+<td>Many chips have a pin that changes one address bit</td>
+<td>MPU-6050: <code>AD0</code> low is <code>0x68</code>, high is <code>0x69</code>. INA219 breakout: jumpers <code>A0</code> and <code>A1</code> give <code>0x40</code>, <code>0x41</code>, <code>0x44</code> or <code>0x45</code></td>
+</tr>
+<tr>
+<td>Change it in software</td>
+<td>Some chips let you write a new address, so wake them one at a time</td>
+<td>VL53L0X: use its <code>XSHUT</code> pin to wake one chip at a time</td>
+</tr>
+<tr>
+<td>A second bus</td>
+<td>Use another pair of pins</td>
+<td>The Pico has two buses: I2C0 and I2C1</td>
+</tr>
+<tr>
+<td>A multiplexer</td>
+<td>A chip that switches the bus between several branches</td>
+<td>TCA9548A</td>
+</tr>
+</tbody>
+</table>
+<h3 id="try-it-a-pretend-bus">Try It: A Pretend Bus</h3>
+<p>You can practice the scan loop without any chips. The program below pretends to be a
+bus. A dictionary holds the chips. A loop asks every address, just like <code>i2c.scan()</code>.
+It runs on the Pico, or on any computer with Python.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">What Do You Think Will Happen?</p>
+<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png">
+The dictionary lists the MPU-6050 first. Before you run it, guess which device the scan prints first. Then find out!</p>
+</div>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># pretend_bus.py: practice the scan loop with no hardware</span>
+<span class="n">pretend_bus</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mh">0x68</span><span class="p">:</span> <span class="s2">"MPU-6050 accelerometer and gyroscope"</span><span class="p">,</span>
+    <span class="mh">0x1E</span><span class="p">:</span> <span class="s2">"HMC5883L compass"</span><span class="p">,</span>
+    <span class="mh">0x3C</span><span class="p">:</span> <span class="s2">"SSD1306 display"</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">answered</span> <span class="o">=</span> <span class="p">[]</span>                          <span class="c1"># addresses that said ACK</span>
+<span class="k">for</span> <span class="n">address</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mh">0x08</span><span class="p">,</span> <span class="mh">0x78</span><span class="p">):</span>      <span class="c1"># the same range as i2c.scan()</span>
+    <span class="k">if</span> <span class="n">address</span> <span class="ow">in</span> <span class="n">pretend_bus</span><span class="p">:</span>         <span class="c1"># some chip owns this address</span>
+        <span class="n">answered</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>       <span class="c1"># remember it</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Scanning the pretend bus..."</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">address</span> <span class="ow">in</span> <span class="n">answered</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Found a device at"</span><span class="p">,</span> <span class="nb">hex</span><span class="p">(</span><span class="n">address</span><span class="p">),</span> <span class="s2">"="</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="s2">"-&gt;"</span><span class="p">,</span> <span class="n">pretend_bus</span><span class="p">[</span><span class="n">address</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">answered</span><span class="p">),</span> <span class="s2">"devices found."</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pretend_bus = { ... }</code></td>
+<td>A dictionary. Each key is an address and each value is a chip name</td>
+</tr>
+<tr>
+<td><code>answered = []</code></td>
+<td>An empty list that will hold the addresses that answered</td>
+</tr>
+<tr>
+<td><code>for address in range(0x08, 0x78):</code></td>
+<td>Counts through every address a scan asks</td>
+</tr>
+<tr>
+<td><code>if address in pretend_bus:</code></td>
+<td>Is a chip living at this address?</td>
+</tr>
+<tr>
+<td><code>answered.append(address)</code></td>
+<td>Adds the address to the list</td>
+</tr>
+<tr>
+<td><code>print(... pretend_bus[address])</code></td>
+<td>Looks up the chip's name and prints it</td>
+</tr>
+</tbody>
+</table>
+<p>Were you right? The output is:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>Scanning the pretend bus...
+Found a device at 0x1e = 30 -&gt; HMC5883L compass
+Found a device at 0x3c = 60 -&gt; SSD1306 display
+Found a device at 0x68 = 104 -&gt; MPU-6050 accelerometer and gyroscope
+3 devices found.
+</code></pre></div></td></tr></tbody></table></div>
+<p>The scan walks the addresses <em>upward</em> from <code>0x08</code>. So it meets <code>0x1E</code> first, no matter
+how the dictionary is ordered. A real scanner always lists chips from the lowest address
+to the highest.</p>
+<h2 id="6-registers-the-mailboxes-inside-a-chip">6. Registers: The Mailboxes Inside a Chip</h2>
+<p>The address picks the chip. But a chip holds many separate numbers. It holds settings,
+results and an identity code. Each one lives in a numbered slot called a <strong>register</strong>.
+Think of the numbered lockers in a school hallway. The address chooses the hallway. The
+register number chooses the locker.</p>
+<p>MicroPython gives you two helpers that do the whole "point at a register, then read"
+dance from the diagram in one call:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">who_am_i</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="mh">0x68</span><span class="p">,</span> <span class="mh">0x75</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>   <span class="c1"># chip 0x68, register 0x75, read 1 byte</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">who_am_i</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>                           <span class="c1"># prints 104, which is 0x68</span>
+
+<span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="mh">0x68</span><span class="p">,</span> <span class="mh">0x6B</span><span class="p">,</span> <span class="sa">b</span><span class="s1">'</span><span class="se">\x00</span><span class="s1">'</span><span class="p">)</span>         <span class="c1"># write the value 0 into register 0x6B</span>
+</code></pre></div></td></tr></tbody></table></div>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>i2c.readfrom_mem(0x68, 0x75, 1)</code></td>
+<td>Reads 1 byte from register <code>0x75</code> of the chip at <code>0x68</code></td>
+</tr>
+<tr>
+<td><code>who_am_i[0]</code></td>
+<td>Takes the first (and only) byte as a number</td>
+</tr>
+<tr>
+<td><code>i2c.writeto_mem(0x68, 0x6B, b'\x00')</code></td>
+<td>Writes one byte, with the value 0, into register <code>0x6B</code></td>
+</tr>
+</tbody>
+</table>
+<p>Reading the identity register is the "hello" of I2C. The MPU-6050 answers <code>0x68</code> from
+its <code>WHO_AM_I</code> register. If you get that back, your wiring and your address are right.</p>
+<p>Here are the registers this robot needs. You do not have to memorize them. The
+datasheets list the rest.</p>
+<table>
+<thead>
+<tr>
+<th>Chip</th>
+<th>Register</th>
+<th>Name</th>
+<th>What it holds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MPU-6050 <code>0x68</code></td>
+<td><code>0x6B</code></td>
+<td><code>PWR_MGMT_1</code></td>
+<td>write <code>0</code> to wake the chip (it powers up <em>asleep</em>)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>0x75</code></td>
+<td><code>WHO_AM_I</code></td>
+<td>always reads <code>0x68</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>0x1C</code></td>
+<td><code>ACCEL_CONFIG</code></td>
+<td>accelerometer range: ±2, ±4, ±8 or ±16 g</td>
+</tr>
+<tr>
+<td></td>
+<td><code>0x1B</code></td>
+<td><code>GYRO_CONFIG</code></td>
+<td>gyroscope range: ±250 up to ±2000 degrees per second</td>
+</tr>
+<tr>
+<td></td>
+<td><code>0x3B</code>-<code>0x40</code></td>
+<td><code>ACCEL_XOUT_H</code> ...</td>
+<td>accelerometer X, Y, Z (high byte, then low byte)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>0x41</code>-<code>0x42</code></td>
+<td><code>TEMP_OUT_H</code> ...</td>
+<td>chip temperature</td>
+</tr>
+<tr>
+<td></td>
+<td><code>0x43</code>-<code>0x48</code></td>
+<td><code>GYRO_XOUT_H</code> ...</td>
+<td>gyroscope X, Y, Z (high byte, then low byte)</td>
+</tr>
+<tr>
+<td>HMC5883L <code>0x1E</code></td>
+<td><code>0x02</code></td>
+<td>Mode</td>
+<td><code>0x00</code> = measure all the time (the chip powers up in <em>single-measurement</em> mode)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>0x03</code>-<code>0x08</code></td>
+<td>Data output</td>
+<td>compass X, <em>Z</em>, Y (high byte first). Yes, Z comes before Y</td>
+</tr>
+<tr>
+<td></td>
+<td><code>0x0A</code>-<code>0x0C</code></td>
+<td>ID A, B, C</td>
+<td><code>0x48</code>, <code>0x34</code>, <code>0x33</code>, the letters "H43"</td>
+</tr>
+<tr>
+<td>VL53L0X <code>0x29</code></td>
+<td><code>0xC0</code></td>
+<td>Model ID</td>
+<td>reads <code>0xEE</code></td>
+</tr>
+<tr>
+<td></td>
+<td><code>0x1E</code></td>
+<td>Range result</td>
+<td>the distance in millimeters, 16 bits</td>
+</tr>
+<tr>
+<td>INA219 <code>0x40</code></td>
+<td><code>0x02</code></td>
+<td>Bus voltage</td>
+<td>battery voltage (see Section 7)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>0x01</code></td>
+<td>Shunt voltage</td>
+<td>tiny voltage across the shunt resistor (10 microvolts per step)</td>
+</tr>
+<tr>
+<td></td>
+<td><code>0x04</code></td>
+<td>Current</td>
+<td>amps, after you write a calibration number to <code>0x05</code></td>
+</tr>
+<tr>
+<td>SSD1306 <code>0x3C</code></td>
+<td>control byte</td>
+<td><code>0x00</code> or <code>0x40</code></td>
+<td>the byte after the address says "commands follow" (<code>0x00</code>) or "pixels follow" (<code>0x40</code>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A common mistake:</strong> the MPU-6050 starts in sleep mode. In sleep mode every reading is
+zero. If your accelerometer prints all zeros, write <code>0</code> to register <code>0x6B</code> first.</p>
+<p>The VL53L0X is a laser distance sensor with a long start-up recipe of dozens of register
+writes. The book's <code>VL53L0X.py</code> driver does that recipe for you. You will use it in
+Section 10. The I2C part, reading two bytes, is the easy part.</p>
+<h2 id="7-from-bytes-to-numbers">7. From Bytes to Numbers</h2>
+<p>A register is only 8 bits wide. A sensor reading needs more detail than that. So the
+chips use <strong>two bytes</strong> for each reading. They send the <strong>high byte</strong> first. The
+MPU-6050, HMC5883L, INA219 and VL53L0X all do this. To rebuild the number, shift the
+high byte left 8 places. Then <strong>OR</strong> the low byte in:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">raw_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">high_byte</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">|</span> <span class="n">low_byte</span>   <span class="c1"># glue the two bytes into one number</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>There is one more trick. An accelerometer feels pushes in <em>both</em> directions, so the
+number can be negative. Chips store negative numbers in a format called <strong>two's
+complement</strong>. A 16-bit number from <code>0x8000</code> upward means "negative." To convert it,
+subtract 65,536:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="n">raw_value</span> <span class="o">&gt;=</span> <span class="mh">0x8000</span><span class="p">:</span>                   <span class="c1"># the top bit is set, so the number is negative</span>
+    <span class="n">raw_value</span> <span class="o">=</span> <span class="n">raw_value</span> <span class="o">-</span> <span class="mh">0x10000</span>       <span class="c1"># same as: raw_value - 65536</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>In MicroPython, <code>struct.unpack('&gt;hhh', data)</code> does both steps for three readings at once.
+The <code>&gt;</code> means "high byte first." The <code>h</code> means "signed 16-bit number."</p>
+<p>Next, turn the raw count into a real unit. The scale depends on the range you picked
+in the config register:</p>
+<table>
+<thead>
+<tr>
+<th>Sensor</th>
+<th>Setting</th>
+<th>Raw counts for each unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accelerometer</td>
+<td>±2 g (default)</td>
+<td>16,384 per g</td>
+</tr>
+<tr>
+<td></td>
+<td>±4 g / ±8 g / ±16 g</td>
+<td>8,192 / 4,096 / 2,048 per g</td>
+</tr>
+<tr>
+<td>Gyroscope</td>
+<td>±250 °/s (default)</td>
+<td>131 per degree per second</td>
+</tr>
+<tr>
+<td></td>
+<td>±500 / ±1000 / ±2000 °/s</td>
+<td>65.5 / 32.8 / 16.4</td>
+</tr>
+<tr>
+<td>Compass</td>
+<td>±1.3 gauss (default)</td>
+<td>1,090 per gauss</td>
+</tr>
+<tr>
+<td>Battery (INA219)</td>
+<td>bus voltage</td>
+<td>shift right 3 bits, then 4 millivolts per step</td>
+</tr>
+<tr>
+<td>Distance (VL53L0X)</td>
+<td></td>
+<td>already millimeters</td>
+</tr>
+</tbody>
+</table>
+<p>(A "g" is the pull of gravity. At rest, an accelerometer reads 1 g straight down.)</p>
+<p>The INA219 needs an example. Say the two bytes from register <code>0x02</code> are <code>1F A0</code>.
+Together that is <code>0x1FA0</code>, or 8096. The lowest three bits are status flags, not
+voltage. So shift them away: <code>8096 &gt;&gt; 3</code> is 1012. Each step is 4 millivolts, so
+1012 × 0.004 is <strong>4.048 volts</strong>. That is a nearly full LiPo battery. The chip never says
+"percent." Your program has to look the voltage up in a battery curve itself.</p>
+<h3 id="learning-check-the-robot-that-brakes-at-39-g">Learning Check: The Robot That Brakes at 3.9 g</h3>
+<div class="admonition mascot-warning">
+<p class="admonition-title">Spot the Bug!</p>
+<p><img alt="Monty warning" class="mascot-admonition-img" src="../../img/mascot/warning.png">
+The robot is braking <em>gently</em>, but this program says 3.89 g. That would squash a real robot! The bytes are right, but the program forgot that readings can be negative. Fix it so it prints about -0.11 g.</p>
+</div>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># braking_bug.py: this program has a bug. Can you find it?</span>
+<span class="n">high_byte</span> <span class="o">=</span> <span class="mh">0xF9</span>                          <span class="c1"># bytes from the x-axis while braking gently</span>
+<span class="n">low_byte</span> <span class="o">=</span> <span class="mh">0x25</span>
+
+<span class="n">raw_value</span> <span class="o">=</span> <span class="p">(</span><span class="n">high_byte</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">|</span> <span class="n">low_byte</span>   <span class="c1"># glue the two bytes into one number</span>
+<span class="n">accel_g</span> <span class="o">=</span> <span class="n">raw_value</span> <span class="o">/</span> <span class="mi">16384</span>               <span class="c1"># 16384 counts = 1 g</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"raw number:"</span><span class="p">,</span> <span class="n">raw_value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"acceleration:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">accel_g</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">"g"</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>Run it first. It prints <code>raw number: 63781</code> and <code>acceleration: 3.89 g</code>. Hint: a 16-bit
+number of <code>0x8000</code> (32,768) or more is really a negative number. Add an <code>if</code> check
+<em>before</em> the line that works out <code>accel_g</code>.</p>
+<details class="question">
+<summary>Show me the fix (try it yourself first!)</summary>
+<p>Add these two lines right after <code>raw_value</code> is built:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="n">raw_value</span> <span class="o">&gt;=</span> <span class="mi">32768</span><span class="p">:</span>                <span class="c1"># the top bit means "negative"</span>
+    <span class="n">raw_value</span> <span class="o">=</span> <span class="n">raw_value</span> <span class="o">-</span> <span class="mi">65536</span>     <span class="c1"># turn it into a negative number</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>Now <code>raw number</code> is <code>-1755</code>. And -1755 divided by 16,384 is about <strong>-0.11 g</strong>.</p>
+</details>
+<h2 id="8-two-sensors-one-bus">8. Two Sensors, One Bus</h2>
+<p>Now put the pieces on a moving robot. In this MicroSim, a robot drives through a maze.
+The Pico reads the <strong>accelerometer</strong> and then either the <strong>gyroscope</strong> (the same chip)
+or the <strong>compass</strong> (a different chip).</p>
+<p><strong>How to use this MicroSim:</strong> Press <strong>Start</strong>. Drag <strong>Reads per second</strong>. Switch <strong>Second sensor</strong> between the gyroscope and the compass.</p>
+<iframe src="../../sims/i2c-two-sensors-maze/main.html" height="677" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/i2c-two-sensors-maze/">Explore the I2C Two Sensors in a Maze MicroSim</a></p>
+<p>It looks like both sensors send their numbers at the same time. They cannot. I2C has one
+controller and one conversation at a time. The Pico does this:</p>
+<ol>
+<li>Ask the accelerometer for its 6 bytes. Wait for them to arrive.</li>
+<li>Ask the gyroscope (or compass) for its 6 bytes. Wait for them to arrive.</li>
+<li>Use the numbers.</li>
+<li>Repeat.</li>
+</ol>
+<p>Each read takes only a tiny fraction of a millisecond. So it <em>feels</em> like both happen at
+once. The timeline at the bottom of the MicroSim stretches the reads so you can see the
+blocks take turns and never overlap.</p>
+<p><strong>Think about it:</strong> switch the second sensor from gyroscope to compass and watch the bus
+diagram. The gyroscope shares the MPU-6050's address <code>0x68</code>. The compass is a separate
+chip at <code>0x1E</code>. In the code, what changes between the two reads? Only the address and
+the register number. The Pico always does the same "point at a register, then read
+bytes" dance.</p>
+<h3 id="what-each-sensor-feels">What Each Sensor Feels</h3>
+<table>
+<thead>
+<tr>
+<th>What the robot does</th>
+<th>Accelerometer</th>
+<th>Gyroscope</th>
+<th>Compass</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sits still</td>
+<td>reads 1 g straight down (gravity)</td>
+<td>reads about 0</td>
+<td>reads a steady heading</td>
+</tr>
+<tr>
+<td>Speeds up or brakes</td>
+<td>pushes forward or backward</td>
+<td>stays near 0</td>
+<td>steady</td>
+</tr>
+<tr>
+<td>Turns in place</td>
+<td>stays near 0</td>
+<td>spikes: one sign for right, the other for left</td>
+<td>heading changes by 90°</td>
+</tr>
+<tr>
+<td>Gets bumped</td>
+<td>big noisy spike</td>
+<td>small blip</td>
+<td>small blip</td>
+</tr>
+</tbody>
+</table>
+<p>The accelerometer feels <em>pushes</em>, including gravity. The gyroscope feels <em>how fast the
+robot turns</em>. The compass reports <em>which way the robot faces</em> by sensing Earth's
+magnetic field. Each sensor is blind to something the others can see. That is why a
+robot wants several.</p>
+<h3 id="reading-fast-enough">Reading Fast Enough</h3>
+<p>Drag <strong>Reads per second</strong> down. Watch the colored dots. Between two reads, the Pico knows
+nothing new. The chart holds the last value like a stair step. Say the robot's turn lasts
+half a second and you read once a second. You can miss the turn completely. A good rule
+of thumb is to read at least five times faster than the fastest change you care about.</p>
+<p>You can also read both sensors in <em>one</em> transaction. The MPU-6050's registers <code>0x3B</code>
+through <code>0x48</code> sit side by side: accelerometer (6 bytes), temperature (2 bytes) and
+gyroscope (6 bytes). One 14-byte read gets all of them. They all belong to the same
+sample.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">struct</span>                                     <span class="c1"># tools for unpacking bytes</span>
+
+<span class="n">all_bytes</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="mh">0x68</span><span class="p">,</span> <span class="mh">0x3B</span><span class="p">,</span> <span class="mi">14</span><span class="p">)</span>      <span class="c1"># one trip for 14 bytes</span>
+<span class="p">(</span><span class="n">accel_x</span><span class="p">,</span> <span class="n">accel_y</span><span class="p">,</span> <span class="n">accel_z</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span>
+ <span class="n">gyro_x</span><span class="p">,</span> <span class="n">gyro_y</span><span class="p">,</span> <span class="n">gyro_z</span><span class="p">)</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">'&gt;hhhhhhh'</span><span class="p">,</span> <span class="n">all_bytes</span><span class="p">)</span>   <span class="c1"># 7 signed numbers</span>
+</code></pre></div></td></tr></tbody></table></div>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>all_bytes = i2c.readfrom_mem(0x68, 0x3B, 14)</code></td>
+<td>Starts at register <code>0x3B</code> and reads 14 bytes in one transaction</td>
+</tr>
+<tr>
+<td><code>struct.unpack('&gt;hhhhhhh', all_bytes)</code></td>
+<td>Turns the 14 bytes into 7 signed numbers, high byte first</td>
+</tr>
+</tbody>
+</table>
+<p>For the compass, remember the odd order: X, then Z, then Y.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span><span class="o">,</span><span class="w"> </span><span class="nn">struct</span>
+
+<span class="n">raw_bytes</span> <span class="o">=</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="mh">0x1E</span><span class="p">,</span> <span class="mh">0x03</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>             <span class="c1"># compass data registers</span>
+<span class="n">compass_x</span><span class="p">,</span> <span class="n">compass_z</span><span class="p">,</span> <span class="n">compass_y</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">'&gt;hhh'</span><span class="p">,</span> <span class="n">raw_bytes</span><span class="p">)</span>   <span class="c1"># X, Z, Y order</span>
+<span class="n">heading</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">compass_y</span><span class="p">,</span> <span class="n">compass_x</span><span class="p">))</span>    <span class="c1"># angle the sensor points</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>The heading is an angle from -180 to 180 degrees. Its sign and zero point depend on how
+you mount the sensor. A motor's magnet will disturb it. So test your own robot and
+adjust. The book's <code>hmc5883l.py</code> driver does these steps for you. It sets continuous
+mode and swaps the axes into X, Y, Z order. But it makes its own <code>I2C</code> object at 100,000
+bits per second. If you use it next to your own bus object, it can change your bus
+speed. Reading the registers yourself, as above, avoids that.</p>
+<h2 id="9-sensor-fusion-two-wrong-answers-make-a-right-one">9. Sensor Fusion: Two Wrong Answers Make a Right One</h2>
+<p>Say the robot rocks on a tilting platform, and you want its tilt angle. Two sensors can
+each estimate it. Both are flawed:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Accelerometer</th>
+<th>Gyroscope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>How it finds the angle</td>
+<td>measures which way gravity points</td>
+<td>adds up the turn rate over time</td>
+</tr>
+<tr>
+<td>Good at</td>
+<td>never drifts, because gravity never moves</td>
+<td>smooth and fast, and ignores bumps</td>
+</tr>
+<tr>
+<td>Bad at</td>
+<td>jumps around when the robot is bumped or shaken</td>
+<td>a tiny constant error adds up, so the angle <strong>drifts</strong> away</td>
+</tr>
+</tbody>
+</table>
+<p>The MPU-6050's gyroscope can be off by several degrees per second right out of the box.
+Add that up for ten seconds and the angle is wrong by tens of degrees.</p>
+<p><strong>Sensor fusion</strong> means combining sensors so each one cancels the other's weakness. The
+simplest recipe is the <strong>complementary filter</strong>. Every time you read both sensors:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>tilt = 0.98 * (tilt + gyro_rate * seconds_passed) + 0.02 * accel_angle
+</code></pre></div></td></tr></tbody></table></div>
+<p>Read it like this. <em>Mostly trust the gyroscope</em> for quick changes (98%). <em>Nudge the answer
+toward the accelerometer a little</em> each time (2%), so drift can never build up.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.98</span>                                         <span class="c1"># how much we trust the gyroscope</span>
+<span class="n">accel_angle</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">accel_x</span><span class="p">,</span> <span class="n">accel_z</span><span class="p">))</span>   <span class="c1"># tilt from gravity</span>
+<span class="n">gyro_rate</span> <span class="o">=</span> <span class="n">gyro_y</span> <span class="o">/</span> <span class="mi">131</span>                             <span class="c1"># degrees per second</span>
+<span class="n">tilt_angle</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="p">(</span><span class="n">tilt_angle</span> <span class="o">+</span> <span class="n">gyro_rate</span> <span class="o">*</span> <span class="n">seconds_passed</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">accel_angle</span>
+</code></pre></div></td></tr></tbody></table></div>
+<table>
+<thead>
+<tr>
+<th>Line</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alpha = 0.98</code></td>
+<td>Says how much to trust the gyroscope: 98 percent</td>
+</tr>
+<tr>
+<td><code>accel_angle = math.degrees(math.atan2(...))</code></td>
+<td>Works out the tilt from the way gravity points</td>
+</tr>
+<tr>
+<td><code>gyro_rate = gyro_y / 131</code></td>
+<td>Turns the raw gyroscope count into degrees per second</td>
+</tr>
+<tr>
+<td><code>tilt_angle = alpha * (...) + (1 - alpha) * accel_angle</code></td>
+<td>Blends the two estimates into one</td>
+</tr>
+</tbody>
+</table>
+<p><code>seconds_passed</code> is the real time since the last reading. Measure it with
+<code>time.ticks_ms()</code> and <code>time.ticks_diff()</code>. A read can come late, as you are about to see.</p>
+<p>Fusion is everywhere. Phones fuse an accelerometer, a gyroscope and a compass to know
+which way is up and which way is north. Stronger recipes exist: the Mahony and Madgwick
+filters and the famous Kalman filter. They follow the same idea.</p>
+<h2 id="10-five-devices-one-pico">10. Five Devices, One Pico</h2>
+<p>Now put the whole robot together. The accelerometer and gyroscope measure tilt. The
+VL53L0X measures distance. The INA219 watches the battery. The SSD1306 shows it all.
+One Pico runs one loop and takes turns with every device.</p>
+<h3 id="how-long-does-a-transaction-take">How Long Does a Transaction Take?</h3>
+<p>Every byte costs nine clock pulses. So you can work out how long any transaction takes.
+To read a register, the bytes on the wire are: the address with the write bit, the
+register number, the address with the read bit, and then the data bytes. Add about three
+bits for START, repeated START and STOP.</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>bits = 9 x (3 + number of data bytes) + 3
+time = bits / bus speed
+</code></pre></div></td></tr></tbody></table></div>
+<p>Read 6 bytes from the accelerometer: 9 × 9 + 3 = <strong>84 bits</strong>. At 400,000 bits per
+second, that takes 0.21 milliseconds. Now do the display. The SSD1306 needs a
+1,024-byte picture (128 columns × 64 rows ÷ 8 pixels in each byte). Every screen update
+sends all of it:</p>
+<table>
+<thead>
+<tr>
+<th>Transaction</th>
+<th>Bytes of data</th>
+<th>Bits on the wire</th>
+<th>At 400 kHz</th>
+<th>At 100 kHz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Read accelerometer</td>
+<td>6</td>
+<td>84</td>
+<td>0.21 ms</td>
+<td>0.84 ms</td>
+</tr>
+<tr>
+<td>Read gyroscope</td>
+<td>6</td>
+<td>84</td>
+<td>0.21 ms</td>
+<td>0.84 ms</td>
+</tr>
+<tr>
+<td>Read distance</td>
+<td>2</td>
+<td>48</td>
+<td>0.12 ms</td>
+<td>0.48 ms</td>
+</tr>
+<tr>
+<td>Read battery voltage</td>
+<td>2</td>
+<td>48</td>
+<td>0.12 ms</td>
+<td>0.48 ms</td>
+</tr>
+<tr>
+<td><strong>Send one display picture</strong></td>
+<td>1,024 (plus setup)</td>
+<td>about 9,400</td>
+<td><strong>23.5 ms</strong></td>
+<td><strong>94.2 ms</strong></td>
+</tr>
+</tbody>
+</table>
+<p>(kHz means kilohertz, or thousands of bits each second. ms means milliseconds.)</p>
+<p>One display picture costs as much bus time as about <em>a hundred</em> sensor reads. At
+100 kHz you can send at most about ten pictures each second. Nothing else can use the
+bus while a picture is on the wire. Real MicroPython adds some software time to every
+call, so these are the <em>shortest</em> possible times.</p>
+<div class="admonition mascot-thinking">
+<p class="admonition-title">Who Hogs the Bus?</p>
+<p><img alt="Monty thinking" class="mascot-admonition-img" src="../../img/mascot/thinking.png">
+Look at the table. Before you press Start, guess which device will cause the biggest delays for the others. Is it the accelerometer, the distance sensor, the battery monitor, or the display?</p>
+</div>
+<p><strong>How to use this MicroSim:</strong> Press <strong>Start</strong>. Then change <strong>Bus speed</strong> and <strong>Display</strong>. Press <strong>Bump the robot!</strong> to shake the accelerometer.</p>
+<iframe src="../../sims/i2c-sensor-fusion/main.html" height="756" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/i2c-sensor-fusion/">Explore the I2C Five-Device Sensor Fusion MicroSim</a></p>
+<p>Were you right? The display wins by a landslide. The timeline is drawn to scale. Each
+sensor read is a thin line. Each display picture is a fat orange block. While that block
+is on the wire, the gyroscope and accelerometer reads that came due turn red. They all wait.</p>
+<h3 id="the-picos-job-a-scheduler">The Pico's Job: A Scheduler</h3>
+<p>Each device needs a different amount of attention:</p>
+<table>
+<thead>
+<tr>
+<th>Device</th>
+<th>How often</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accelerometer + gyroscope</td>
+<td>100 times each second</td>
+<td>the robot tilts fast, and the filter needs fresh time steps</td>
+</tr>
+<tr>
+<td>Distance</td>
+<td>20 times each second</td>
+<td>the sensor itself needs about 30 ms to measure</td>
+</tr>
+<tr>
+<td>Battery</td>
+<td>once every few seconds</td>
+<td>a battery drains slowly (the MicroSim speeds this up)</td>
+</tr>
+<tr>
+<td>Display</td>
+<td>5 to 10 times each second</td>
+<td>your eyes cannot read faster than that</td>
+</tr>
+</tbody>
+</table>
+<p>The main loop checks each device's deadline. Then it does whatever is due:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>                            <span class="c1"># what time is it?</span>
+    <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_diff</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">next_imu_time</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>     <span class="c1"># is the motion sensor due?</span>
+        <span class="o">...</span>
+    <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_diff</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">next_distance_time</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>    <span class="c1"># is the distance sensor due?</span>
+        <span class="o">...</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>Never use <code>time.sleep()</code> in this loop. A sleeping Pico cannot read anything.</p>
+<h3 id="fixing-a-crowded-bus">Fixing a Crowded Bus</h3>
+<p>Try this in the MicroSim. Set the bus to 100 kHz and the display to 20 per second. Watch
+the sensor reads collapse from 100 each second to about 10. Then fix it. These are the
+real engineering fixes:</p>
+<table>
+<thead>
+<tr>
+<th>Fix</th>
+<th>Why it helps</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Update the display less often</td>
+<td>fewer 23.5 ms blocks</td>
+<td>a slower screen</td>
+</tr>
+<tr>
+<td>Use 400 kHz fast mode</td>
+<td>everything takes a quarter of the time</td>
+<td>needs short wires and good pull-ups</td>
+</tr>
+<tr>
+<td>Send only the part of the screen that changed</td>
+<td>the SSD1306 lets you send just one 128-byte page</td>
+<td>more code</td>
+</tr>
+<tr>
+<td>Put the display on a second I2C bus (I2C1)</td>
+<td>the sensors never wait for the screen</td>
+<td>uses two more pins</td>
+</tr>
+<tr>
+<td>Let the sensor tell you when it is ready</td>
+<td>the MPU-6050 has an <code>INT</code> pin that fires when new data arrives, so you stop polling</td>
+<td>one more wire</td>
+</tr>
+</tbody>
+</table>
+<h3 id="the-complete-program">The Complete Program</h3>
+<p>Here is the whole robot in one program. It reads the five devices on their schedules,
+fuses the tilt, and draws the result. It uses the <code>ssd1306.py</code> and <code>VL53L0X.py</code> drivers
+from <code>src/drivers</code>. Load them onto your Pico first (see <code>src/unix-scripts/load-libs.sh</code>).</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># robot_brain.py: five I2C devices, one Pico</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">machine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pin</span><span class="p">,</span> <span class="n">I2C</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">struct</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ssd1306</span><span class="w"> </span><span class="kn">import</span> <span class="n">SSD1306_I2C</span>      <span class="c1"># display driver from src/drivers</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">VL53L0X</span><span class="w"> </span><span class="kn">import</span> <span class="n">VL53L0X</span>          <span class="c1"># distance driver from src/drivers</span>
+
+<span class="n">i2c</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sda</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">scl</span><span class="o">=</span><span class="n">Pin</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="mi">400000</span><span class="p">)</span>   <span class="c1"># one bus for every device</span>
+
+<span class="n">MPU_ADDRESS</span> <span class="o">=</span> <span class="mh">0x68</span>                   <span class="c1"># accelerometer and gyroscope</span>
+<span class="n">INA_ADDRESS</span> <span class="o">=</span> <span class="mh">0x40</span>                   <span class="c1"># battery monitor</span>
+
+<span class="n">i2c</span><span class="o">.</span><span class="n">writeto_mem</span><span class="p">(</span><span class="n">MPU_ADDRESS</span><span class="p">,</span> <span class="mh">0x6B</span><span class="p">,</span> <span class="sa">b</span><span class="s1">'</span><span class="se">\x00</span><span class="s1">'</span><span class="p">)</span>   <span class="c1"># wake the MPU-6050 (it starts asleep)</span>
+
+<span class="n">oled</span> <span class="o">=</span> <span class="n">SSD1306_I2C</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">i2c</span><span class="p">)</span>     <span class="c1"># display, address 0x3C by default</span>
+<span class="n">distance_sensor</span> <span class="o">=</span> <span class="n">VL53L0X</span><span class="p">(</span><span class="n">i2c</span><span class="p">)</span>       <span class="c1"># distance sensor, address 0x29 by default</span>
+<span class="n">distance_sensor</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>              <span class="c1"># keep measuring</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.98</span>                         <span class="c1"># trust the gyroscope 98 percent</span>
+<span class="n">tilt_angle</span> <span class="o">=</span> <span class="mf">0.0</span>                     <span class="c1"># our best guess, in degrees</span>
+<span class="n">distance_mm</span> <span class="o">=</span> <span class="mi">0</span>                      <span class="c1"># latest distance</span>
+<span class="n">battery_volts</span> <span class="o">=</span> <span class="mf">0.0</span>                  <span class="c1"># latest battery voltage</span>
+<span class="n">battery_percent</span> <span class="o">=</span> <span class="mi">0</span>                  <span class="c1"># battery level</span>
+
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
+<span class="n">last_imu_time</span> <span class="o">=</span> <span class="n">start_time</span>           <span class="c1"># when we last read the motion sensor</span>
+<span class="n">next_imu_time</span> <span class="o">=</span> <span class="n">start_time</span>           <span class="c1"># the deadlines for each device</span>
+<span class="n">next_distance_time</span> <span class="o">=</span> <span class="n">start_time</span>
+<span class="n">next_battery_time</span> <span class="o">=</span> <span class="n">start_time</span>
+<span class="n">next_display_time</span> <span class="o">=</span> <span class="n">start_time</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">volts_to_percent</span><span class="p">(</span><span class="n">volts</span><span class="p">):</span>
+    <span class="c1"># A rough straight-line guess. Real LiPo batteries follow a bent curve.</span>
+    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="p">(</span><span class="n">volts</span> <span class="o">-</span> <span class="mf">3.3</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">4.2</span> <span class="o">-</span> <span class="mf">3.3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_diff</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">next_imu_time</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>         <span class="c1"># 100 times a second</span>
+        <span class="n">next_imu_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_add</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+        <span class="n">accel_x</span><span class="p">,</span> <span class="n">accel_y</span><span class="p">,</span> <span class="n">accel_z</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">'&gt;hhh'</span><span class="p">,</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">MPU_ADDRESS</span><span class="p">,</span> <span class="mh">0x3B</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+        <span class="n">gyro_x</span><span class="p">,</span> <span class="n">gyro_y</span><span class="p">,</span> <span class="n">gyro_z</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">'&gt;hhh'</span><span class="p">,</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">MPU_ADDRESS</span><span class="p">,</span> <span class="mh">0x43</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+        <span class="n">seconds_passed</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_diff</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">last_imu_time</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span>   <span class="c1"># real time since last read</span>
+        <span class="n">last_imu_time</span> <span class="o">=</span> <span class="n">now</span>
+        <span class="n">accel_angle</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">atan2</span><span class="p">(</span><span class="n">accel_x</span><span class="p">,</span> <span class="n">accel_z</span><span class="p">))</span>      <span class="c1"># tilt from gravity</span>
+        <span class="n">gyro_rate</span> <span class="o">=</span> <span class="n">gyro_y</span> <span class="o">/</span> <span class="mi">131</span>                                      <span class="c1"># degrees per second</span>
+        <span class="n">tilt_angle</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="p">(</span><span class="n">tilt_angle</span> <span class="o">+</span> <span class="n">gyro_rate</span> <span class="o">*</span> <span class="n">seconds_passed</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">accel_angle</span>
+
+    <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_diff</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">next_distance_time</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>    <span class="c1"># 20 times a second</span>
+        <span class="n">next_distance_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_add</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+        <span class="n">distance_mm</span> <span class="o">=</span> <span class="n">distance_sensor</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>             <span class="c1"># millimeters</span>
+
+    <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_diff</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">next_battery_time</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>     <span class="c1"># 4 times a second here</span>
+        <span class="n">next_battery_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_add</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="mi">250</span><span class="p">)</span>
+        <span class="n">raw_voltage</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">'&gt;H'</span><span class="p">,</span> <span class="n">i2c</span><span class="o">.</span><span class="n">readfrom_mem</span><span class="p">(</span><span class="n">INA_ADDRESS</span><span class="p">,</span> <span class="mh">0x02</span><span class="p">,</span> <span class="mi">2</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">battery_volts</span> <span class="o">=</span> <span class="p">(</span><span class="n">raw_voltage</span> <span class="o">&gt;&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.004</span>       <span class="c1"># drop 3 flag bits, 4 mV per step</span>
+        <span class="n">battery_percent</span> <span class="o">=</span> <span class="n">volts_to_percent</span><span class="p">(</span><span class="n">battery_volts</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_diff</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="n">next_display_time</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>     <span class="c1"># 10 times a second: the bus hog</span>
+        <span class="n">next_display_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_add</span><span class="p">(</span><span class="n">now</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">oled</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>                                     <span class="c1"># clear the screen memory</span>
+        <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"TILT </span><span class="si">%5.1f</span><span class="s2">"</span> <span class="o">%</span> <span class="n">tilt_angle</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>       <span class="c1"># draw three lines of text</span>
+        <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"DIST </span><span class="si">%4d</span><span class="s2"> mm"</span> <span class="o">%</span> <span class="n">distance_mm</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+        <span class="n">oled</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="s2">"BATT </span><span class="si">%3d</span><span class="s2"> </span><span class="si">%%</span><span class="s2">"</span> <span class="o">%</span> <span class="n">battery_percent</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+        <span class="n">oled</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                                      <span class="c1"># send all 1,024 bytes</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>What each part does:</p>
+<ol>
+<li><strong>Set up</strong> (the lines before <code>while True</code>): create the one bus, wake the MPU-6050, and create the display and the distance sensor.</li>
+<li><strong>Deadlines</strong>: each device has a <code>next_..._time</code>. The loop compares the clock with the deadline to see if the device is due.</li>
+<li><strong>Motion block</strong>: read 6 bytes from each of the accelerometer and gyroscope, then blend them with the complementary filter.</li>
+<li><strong>Distance block</strong>: ask the driver for the latest distance in millimeters.</li>
+<li><strong>Battery block</strong>: read the INA219 voltage register, drop the 3 flag bits, multiply by 4 millivolts, and turn volts into a percent.</li>
+<li><strong>Display block</strong>: draw the text into memory, then <code>oled.show()</code> sends the whole picture. This is the long block on the timeline.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">A detail the MicroSim leaves out</p>
+<p>The book's <code>VL53L0X.py</code> driver waits in a loop for each new result. While it waits, it checks a status register again and again. So <code>distance_sensor.read()</code> can keep the Pico busy for up to about 30 milliseconds. The MicroSim shows only the two bytes of the result.</p>
+</div>
+<h2 id="11-troubleshooting-an-i2c-bus">11. Troubleshooting an I2C Bus</h2>
+<table>
+<thead>
+<tr>
+<th>What you see</th>
+<th>Likely cause</th>
+<th>What to try</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scan returns <code>[]</code></td>
+<td>SDA and SCL swapped, no power, or a loose wire</td>
+<td>Check all four wires. Swap SDA and SCL</td>
+</tr>
+<tr>
+<td><code>OSError: [Errno 5] EIO</code> on the Pico</td>
+<td>A NACK: wrong address or the device is not answering</td>
+<td>Scan first. Then use the address it shows</td>
+</tr>
+<tr>
+<td>The address differs from the datasheet</td>
+<td>8-bit versus 7-bit address, or an address pin</td>
+<td>Use the number the scan shows</td>
+</tr>
+<tr>
+<td>Compass missing at <code>0x1E</code></td>
+<td>The board is a clone (try <code>0x0D</code>), or it sits on a combo board's private bus</td>
+<td>Scan. Turn on bypass mode on combo boards</td>
+</tr>
+<tr>
+<td>Accelerometer reads all zeros</td>
+<td>The MPU-6050 is still asleep</td>
+<td>Write <code>0</code> to register <code>0x6B</code></td>
+</tr>
+<tr>
+<td>Numbers jump to huge values</td>
+<td>You forgot to convert negative numbers</td>
+<td>Use <code>struct.unpack('&gt;h...')</code></td>
+</tr>
+<tr>
+<td>Works at 100 kHz but not 400 kHz</td>
+<td>Long wires or weak pull-ups</td>
+<td>Shorten the wires. Add 4.7 kΩ pull-ups</td>
+</tr>
+<tr>
+<td>Two devices act strangely together</td>
+<td>They share an address</td>
+<td>Change an address pin or use a second bus</td>
+</tr>
+<tr>
+<td>Readings arrive late or uneven</td>
+<td>The display is hogging the bus</td>
+<td>Lower the display rate (Section 10)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="12-words-to-remember">12. Words to Remember</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Plain-English meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bus</td>
+<td>shared wires that many chips connect to</td>
+</tr>
+<tr>
+<td>SDA / SCL</td>
+<td>the data wire and the clock wire</td>
+</tr>
+<tr>
+<td>controller / target</td>
+<td>the chip in charge (the Pico) and the chips that answer</td>
+</tr>
+<tr>
+<td>address</td>
+<td>the 7-bit number that picks one chip</td>
+</tr>
+<tr>
+<td>ACK / NACK</td>
+<td>"yes, I heard" (SDA pulled low) and "nobody answered" (SDA left high)</td>
+</tr>
+<tr>
+<td>START / STOP</td>
+<td>the signals that open and close a transaction</td>
+</tr>
+<tr>
+<td>pull-up resistor</td>
+<td>a resistor that pulls a wire high when nobody pulls it low</td>
+</tr>
+<tr>
+<td>register</td>
+<td>a numbered slot inside a chip that holds a setting or a result</td>
+</tr>
+<tr>
+<td>two's complement</td>
+<td>how chips store negative whole numbers</td>
+</tr>
+<tr>
+<td>sensor fusion</td>
+<td>combining sensors so each one cancels the other's weakness</td>
+</tr>
+<tr>
+<td>complementary filter</td>
+<td>a simple fusion recipe: mostly gyroscope, a little accelerometer</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>An I2C bus uses two wires, SDA and SCL, for as many as 112 chips.</li>
+<li>The Pico asks. A chip answers with an ACK only when it owns the address.</li>
+<li><code>i2c.scan()</code> lists every address that answers. Run it first, every time.</li>
+<li>A chip's data lives in numbered registers. Readings are two bytes, high byte first, and may be negative.</li>
+<li>The bus handles one conversation at a time. Big transfers, like a display picture, make everything else wait.</li>
+<li>Sensor fusion blends sensors so each one covers the other's weakness.</li>
+</ul>
+<h2 id="quick-check">Quick Check</h2>
+<details class="question">
+<summary>1. Why does a chip never announce its own address?</summary>
+<p>Only the controller starts a conversation. The controller calls out an address, and the chip that owns it answers with an ACK. A chip that spoke up by itself would crash into other traffic on the shared wires.</p>
+</details>
+<details class="question">
+<summary>2. What does the Pico see during the ACK pulse if nobody is home?</summary>
+<p>SDA stays high. The pull-up resistor holds it up and no chip pulls it low. The Pico reads that as a NACK.</p>
+</details>
+<details class="question">
+<summary>3. Seven bits give 128 addresses. Why does a scan only try 112?</summary>
+<p>Sixteen addresses (<code>0x00</code> to <code>0x07</code> and <code>0x78</code> to <code>0x7F</code>) are reserved for special jobs. So <code>i2c.scan()</code> tries <code>0x08</code> to <code>0x77</code>.</p>
+</details>
+<details class="question">
+<summary>4. The accelerometer and gyroscope in the MPU-6050 share address 0x68. How does the Pico ask for one or the other?</summary>
+<p>It reads from a different register: <code>0x3B</code> for the accelerometer and <code>0x43</code> for the gyroscope. The address picks the chip. The register picks the data.</p>
+</details>
+<details class="question">
+<summary>5. The bytes FF 38 come from the accelerometer. What is the acceleration in g (±2 g range)?</summary>
+<p><code>0xFF38</code> is 65,336. That is more than 32,768, so subtract 65,536 to get -200. Then -200 / 16,384 is about <strong>-0.012 g</strong>.</p>
+</details>
+<details class="question">
+<summary>6. About how long does it take to send 1,024 bytes at 400 kHz?</summary>
+<p>Nine bits for each byte is about 9,300 bits. And 9,300 / 400,000 is about 23 milliseconds.</p>
+</details>
+<details class="question">
+<summary>7. Why can a screen update make the gyroscope readings late?</summary>
+<p>I2C allows one conversation at a time. While the Pico sends the display picture (23.5 ms at 400 kHz), it cannot read the gyroscope. A read that was due every 10 ms has to wait.</p>
+</details>
+<details class="question">
+<summary>8. Why fuse a gyroscope with an accelerometer instead of using just one?</summary>
+<p>The accelerometer never drifts, but it is noisy when the robot is bumped. The gyroscope is smooth, but its small error adds up, so its angle drifts. Fusing them keeps the gyroscope's smoothness and the accelerometer's long-term accuracy.</p>
+</details>
+<h2 id="experiments">Experiments</h2>
+<p>Try these. For each one, predict first, then check.</p>
+<ol>
+<li><strong>Unplug the compass.</strong> In the I2C Bus Scanner, uncheck HMC5883L and press <strong>Scan again</strong>. <strong>You'll know it worked when</strong> <code>0x1e</code> disappears from the console and the address map.</li>
+<li><strong>Add a fourth device.</strong> In <code>pretend_bus.py</code>, add <code>0x29: "VL53L0X distance"</code> to the dictionary and run it. <strong>You'll know it worked when</strong> the scan prints four devices, with <code>0x1e</code> first and <code>0x29</code> second.</li>
+<li><strong>Starve the gyroscope.</strong> In the Five-Device MicroSim, set <strong>Bus speed</strong> to 100 kHz and <strong>Display</strong> to 20 per second. <strong>You'll know it worked when</strong> the gyro and accelerometer reads each second fall far below 100. Then bring them back above 90 by changing only <em>one</em> setting.</li>
+<li><strong>Miss the turn.</strong> In the Two Sensors MicroSim, set <strong>Reads per second</strong> to 2. <strong>You'll know it worked when</strong> the gyroscope chart shows only a couple of dots for each turn, not a smooth bump.</li>
+<li><strong>Bump it.</strong> In the Five-Device MicroSim, press <strong>Bump the robot!</strong> several times. <strong>You'll know it worked when</strong> the red accelerometer-only line jumps far from the black truth line, while the green fused line barely moves.</li>
+</ol>
+<div class="admonition mascot-celebration">
+<p class="admonition-title">Great Work!</p>
+<p><img alt="Monty celebrating" class="mascot-admonition-img" src="../../img/mascot/celebration.png">
+You went from two wires to a five-device robot brain. You can read the bytes, count the bits and fuse the sensors. Next, wire up your own bus with the <a href="../../kits/maker-pi-rp2040-robot/09-i2c-scanner-test/">I2C scanner kit page</a> and scan it for real!</p>
+</div>
+<p>For the teaching guide, see the <a href="instructor-notes/">Instructor Notes</a>. The sources are
+on the <a href="references/">References</a> page.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../sensor-summary-table/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Sensor Summary Table">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Sensor Summary Table
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="instructor-notes/" class="md-footer__link md-footer__link--next" aria-label="Next: Instructor Notes">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Instructor Notes
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.footer"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+        <script src="../../js/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

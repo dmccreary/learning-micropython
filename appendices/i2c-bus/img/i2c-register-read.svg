@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 790 215" width="100%" role="img" aria-labelledby="t d">
+<title id="t">An I2C register read, byte by byte</title>
+<desc id="d">START, address 0x68 with the write bit, ACK from the target, register number 0x75, ACK, repeated START, address 0x68 with the read bit, ACK, one data byte from the target, NACK from the controller, STOP. Blue boxes are driven by the controller, green boxes by the target.</desc>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#222} .cap{font-size:14px;font-weight:bold} .lab{font-size:15px;text-anchor:middle;font-weight:bold} .sm{font-size:12px;text-anchor:middle;fill:#444}</style>
+<rect x="20" y="70" width="36" height="46" rx="6" fill="khaki" stroke="darkgoldenrod" stroke-width="2"/>
+<text class="lab" x="38.0" y="98.0">S</text>
+<rect x="61" y="70" width="104" height="46" rx="6" fill="lightsteelblue" stroke="steelblue" stroke-width="2"/>
+<text class="lab" x="113.0" y="98.0">0x68 + W</text>
+<rect x="170" y="70" width="52" height="46" rx="6" fill="palegreen" stroke="seagreen" stroke-width="2"/>
+<text class="lab" x="196.0" y="98.0">ACK</text>
+<rect x="227" y="70" width="72" height="46" rx="6" fill="lightsteelblue" stroke="steelblue" stroke-width="2"/>
+<text class="lab" x="263.0" y="98.0">0x75</text>
+<rect x="304" y="70" width="52" height="46" rx="6" fill="palegreen" stroke="seagreen" stroke-width="2"/>
+<text class="lab" x="330.0" y="98.0">ACK</text>
+<rect x="361" y="70" width="36" height="46" rx="6" fill="khaki" stroke="darkgoldenrod" stroke-width="2"/>
+<text class="lab" x="379.0" y="98.0">Sr</text>
+<rect x="402" y="70" width="104" height="46" rx="6" fill="lightsteelblue" stroke="steelblue" stroke-width="2"/>
+<text class="lab" x="454.0" y="98.0">0x68 + R</text>
+<rect x="511" y="70" width="52" height="46" rx="6" fill="palegreen" stroke="seagreen" stroke-width="2"/>
+<text class="lab" x="537.0" y="98.0">ACK</text>
+<rect x="568" y="70" width="96" height="46" rx="6" fill="palegreen" stroke="seagreen" stroke-width="2"/>
+<text class="lab" x="616.0" y="98.0">data 0x68</text>
+<rect x="669" y="70" width="60" height="46" rx="6" fill="lightsteelblue" stroke="steelblue" stroke-width="2"/>
+<text class="lab" x="699.0" y="98.0">NACK</text>
+<rect x="734" y="70" width="36" height="46" rx="6" fill="khaki" stroke="darkgoldenrod" stroke-width="2"/>
+<text class="lab" x="752.0" y="98.0">P</text>
+<text class="cap" x="20" y="24">1. Point at a register</text>
+<text class="cap" x="361" y="24">2. Read from it</text>
+<text class="sm" style="text-anchor:start" x="20" y="44">"Chip 0x68, I am going to write... the register I want is 0x75."</text>
+<text class="sm" style="text-anchor:start" x="361" y="44">"Chip 0x68, now I will read... send me one byte."</text>
+<path d="M61 122 v8 H222 v-8" fill="none" stroke="#555" stroke-width="2"/>
+<text class="sm" x="141.5" y="146">8 bits + ACK = 9 pulses</text>
+<path d="M227 122 v8 H356 v-8" fill="none" stroke="#555" stroke-width="2"/>
+<text class="sm" x="291.5" y="146">9 pulses</text>
+<path d="M402 122 v8 H563 v-8" fill="none" stroke="#555" stroke-width="2"/>
+<text class="sm" x="482.5" y="146">9 pulses</text>
+<path d="M568 122 v8 H729 v-8" fill="none" stroke="#555" stroke-width="2"/>
+<text class="sm" x="648.5" y="146">9 pulses</text>
+<rect x="20" y="177" width="18" height="14" rx="3" fill="lightsteelblue" stroke="steelblue" stroke-width="2"/>
+<text style="font-size:13px" x="44" y="189">controller drives SDA</text>
+<rect x="210" y="177" width="18" height="14" rx="3" fill="palegreen" stroke="seagreen" stroke-width="2"/>
+<text style="font-size:13px" x="234" y="189">target drives SDA</text>
+<rect x="390" y="177" width="18" height="14" rx="3" fill="khaki" stroke="darkgoldenrod" stroke-width="2"/>
+<text style="font-size:13px" x="414" y="189">START (S), repeated START (Sr), STOP (P)</text>
+</svg>

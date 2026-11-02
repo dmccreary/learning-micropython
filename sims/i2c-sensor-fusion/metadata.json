@@ -1,0 +1,67 @@
+{
+  "title": "I2C Five-Device Sensor Fusion",
+  "creator": "Dan McCreary",
+  "subject": "Learning MicroPython",
+  "description": "Five I2C devices (MPU-6050 accelerometer and gyroscope, VL53L0X distance, INA219 battery monitor, SSD1306 display) share one bus. A to-scale timeline shows the display frame blocking sensor reads, and a complementary filter fuses accelerometer and gyroscope data.",
+  "date": "2026-11-02",
+  "educational": {
+    "gradeLevel": [
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "I2C bus scheduling and sensor fusion",
+    "learningObjectives": [
+      "Analyze how several I2C devices share one bus, using byte counts and bus speed to compute transaction time",
+      "Explain how a display update delays sensor reads and name two ways to fix it",
+      "Explain why accelerometer and gyroscope readings are fused into one estimate"
+    ],
+    "bloomsTaxonomy": "Analyze",
+    "duration": "15-20 minutes",
+    "prerequisites": [
+      "I2C Bus Scanner and I2C Two Sensors in a Maze MicroSims",
+      "Chapter 9: Temperature and Distance Sensors",
+      "Chapter 15: OLED Setup"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.4",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 754
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4 (jsdelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Controlled experiments on a scale-accurate timeline",
+    "keyQuestions": [
+      "Which device uses the most bus time, and why?",
+      "What happens to the gyroscope reads when the display refreshes 20 times a second at 100 kHz?",
+      "Why is the fused angle better than either sensor alone?"
+    ],
+    "commonMisconceptions": [
+      "Slow devices do not affect fast ones (one slow transaction blocks the whole bus)",
+      "Sensors can simply be averaged (fusion weights each sensor by what it is good at)"
+    ],
+    "assessmentOpportunities": [
+      "Student calculates transaction time from bytes and bus speed",
+      "Student predicts the effect of changing bus speed or display rate"
+    ]
+  },
+  "chapter": "appendices/i2c-bus"
+}

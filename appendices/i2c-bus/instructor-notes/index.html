@@ -1,0 +1,2310 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A teaching guide for the I2C appendix, with a 45-minute lesson script, misconception probes, hardware setup, and an assessment rubric.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/learning-micropython/appendices/i2c-bus/instructor-notes/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../references/">
+      
+      
+      <link rel="icon" href="../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+    
+    
+      
+        <title>Appendix A: Instructor Notes for the I2C Bus - Learning MicroPython</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/mascot.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-DS16K4YVRR"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-DS16K4YVRR",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-DS16K4YVRR",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+      
+        <meta property="og:type" content="website">
+      
+        <meta property="og:title" content="Appendix A: Instructor Notes for the I2C Bus - Learning MicroPython">
+      
+        <meta property="og:description" content="A teaching guide for the I2C appendix, with a 45-minute lesson script, misconception probes, hardware setup, and an assessment rubric.">
+      
+        <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/appendices/i2c-bus/instructor-notes.png">
+      
+        <meta property="og:image:type" content="image/png">
+      
+        <meta property="og:image:width" content="1200">
+      
+        <meta property="og:image:height" content="630">
+      
+        <meta property="og:url" content="https://dmccreary.github.io/learning-micropython/appendices/i2c-bus/instructor-notes/">
+      
+        <meta name="twitter:card" content="summary_large_image">
+      
+        <meta name="twitter:title" content="Appendix A: Instructor Notes for the I2C Bus - Learning MicroPython">
+      
+        <meta name="twitter:description" content="A teaching guide for the I2C appendix, with a 45-minute lesson script, misconception probes, hardware setup, and an assessment rubric.">
+      
+        <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/appendices/i2c-bus/instructor-notes.png">
+      
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#642580" data-md-color-accent="#41BAC1">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#appendix-a-instructor-notes-for-the-i2c-bus" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Learning MicroPython" class="md-header__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Learning MicroPython
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Appendix A: Instructor Notes for the I2C Bus
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Learning MicroPython" class="md-nav__button md-logo" aria-label="Learning MicroPython" data-md-component="logo">
+      
+  <img src="../../../img/mascot/neutral.png" alt="logo">
+
+    </a>
+    Learning MicroPython
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/learning-micropython" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About This Book
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course-description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Course Description
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../chapters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Chapters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    
+  
+  
+    <a href="../../../basics/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Hands-On Labs
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../kits/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Project Kits
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../sims/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    MicroSims
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../posters/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Infographic Posters
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../learning-graph/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Learning Graph
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Appendices
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Appendices
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensors/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    List of Sensors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sensor-summary-table/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Sensor Summary Table
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    A. The I2C Bus
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10_4" id="__nav_10_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10_4">
+            <span class="md-nav__icon md-icon"></span>
+            A. The I2C Bus
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Instructor Notes
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Instructor Notes
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-students-will-be-able-to-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Students Will Be Able to Do
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-and-part-choices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware and Part Choices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-45-minute-lesson" class="md-nav__link">
+    <span class="md-ellipsis">
+      A 45-Minute Lesson
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A 45-Minute Lesson">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#human-bus-8-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Human Bus (8 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scanner-and-pretend-bus-10-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scanner and Pretend Bus (10 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bytes-to-numbers-and-two-sensors-10-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bytes to Numbers and Two Sensors (10 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#five-devices-14-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Five Devices (14 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exit Ticket
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#misconceptions-to-listen-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      Misconceptions to Listen For
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discussion Questions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-real-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with Real Hardware
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#differentiation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Differentiation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-the-microsims-simplify" class="md-nav__link">
+    <span class="md-ellipsis">
+      What the MicroSims Simplify
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Annotated References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../i2c-simulations/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I2C Simulations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../prompts/index.md" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Sample AI Prompts
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+    <a href="../../../stories/" class="md-nav__link">
+      
+  
+  <span class="md-ellipsis">
+    Stories
+  </span>
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/content-authoring-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authoring Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../teachers-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Teacher's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../teachers-guide/parts-delivery-times/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parts Delivery Times
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/acknowledgements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Acknowledgements
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/30-colophon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Colophon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../license/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-students-will-be-able-to-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Students Will Be Able to Do
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-and-part-choices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware and Part Choices
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-45-minute-lesson" class="md-nav__link">
+    <span class="md-ellipsis">
+      A 45-Minute Lesson
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A 45-Minute Lesson">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#human-bus-8-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Human Bus (8 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scanner-and-pretend-bus-10-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scanner and Pretend Bus (10 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bytes-to-numbers-and-two-sensors-10-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bytes to Numbers and Two Sensors (10 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#five-devices-14-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Five Devices (14 minutes)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit-ticket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exit Ticket
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#misconceptions-to-listen-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      Misconceptions to Listen For
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#discussion-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Discussion Questions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-real-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with Real Hardware
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#differentiation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Differentiation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assessment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assessment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-the-microsims-simplify" class="md-nav__link">
+    <span class="md-ellipsis">
+      What the MicroSims Simplify
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="appendix-a-instructor-notes-for-the-i2c-bus">Appendix A: Instructor Notes for the I2C Bus</h1>
+<p>These notes are for the person teaching <a href="../">Appendix A: The I2C Bus</a>.
+The student appendix stands on its own, so you can also hand it out as self-paced
+reading. This page gives you a lesson script, the misconceptions to watch for, and
+what to do with real hardware.</p>
+<p>The appendix is much longer than a chapter on purpose. It is a reference that goes
+deeper than <a href="../../../chapters/08-communication-protocols/">Chapter 8</a>. You do not
+need to teach all of it in one sitting. The lesson below uses the three MicroSims and
+the two short code listings.</p>
+<h2 id="what-students-will-be-able-to-do">What Students Will Be Able to Do</h2>
+<table>
+<thead>
+<tr>
+<th>MicroSim</th>
+<th>Bloom level</th>
+<th>Students will be able to...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../../../sims/i2c-scanner/">I2C Bus Scanner</a></td>
+<td>Understand</td>
+<td>explain how a scan finds chips: the controller asks, and only the owner of the address answers with an ACK</td>
+</tr>
+<tr>
+<td><a href="../../../sims/i2c-two-sensors-maze/">I2C Two Sensors in a Maze</a></td>
+<td>Understand</td>
+<td>explain why two sensors on one bus are read in turns, and what an accelerometer and a gyroscope or compass each measure</td>
+</tr>
+<tr>
+<td><a href="../../../sims/i2c-sensor-fusion/">I2C Five-Device Sensor Fusion</a></td>
+<td>Analyze</td>
+<td>work out transaction times from byte counts, explain how a display update delays sensor reads, and explain why sensors are fused</td>
+</tr>
+</tbody>
+</table>
+<p>The two code listings add Python practice. <code>pretend_bus.py</code> uses a dictionary and a
+loop. <code>braking_bug.py</code> uses shifts, OR and two's complement. Both run on the Pico (in
+Thonny) or on any computer with Python.</p>
+<h2 id="hardware-and-part-choices">Hardware and Part Choices</h2>
+<p>The appendix uses these parts. You do <strong>not</strong> need any of them to teach it, because every
+idea is in the MicroSims.</p>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Part</th>
+<th>Address</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accelerometer and gyroscope</td>
+<td>MPU-6050 (GY-521 board)</td>
+<td><code>0x68</code></td>
+<td>one chip, one address; powers up asleep. See <a href="../../../chapters/10-motion-light-sensors/">Chapter 10</a></td>
+</tr>
+<tr>
+<td>Compass</td>
+<td>HMC5883L (GY-271 board)</td>
+<td><code>0x1E</code></td>
+<td>the chip is discontinued; many boards carry a QMC5883L clone at <code>0x0D</code>. See the <a href="../../../sensors/11-compass/">compass page</a></td>
+</tr>
+<tr>
+<td>Distance</td>
+<td>VL53L0X</td>
+<td><code>0x29</code></td>
+<td>needs the book's <code>VL53L0X.py</code> driver. See the <a href="../../../sensors/07-VL53L0X_GY/">VL53L0X page</a></td>
+</tr>
+<tr>
+<td>Battery monitor</td>
+<td>INA219</td>
+<td><code>0x40</code></td>
+<td>reports volts and amps, not percent, so students convert</td>
+</tr>
+<tr>
+<td>Display</td>
+<td>SSD1306 128x64 OLED</td>
+<td><code>0x3C</code></td>
+<td>some boards use <code>0x3D</code>. See <a href="../../../chapters/15-oled-setup/">Chapter 15</a></td>
+</tr>
+</tbody>
+</table>
+<p>With every board on the bus, the real scanner prints (in decimal) <code>30, 41, 60, 64, 104</code>.
+In hex that is <code>0x1e, 0x29, 0x3c, 0x40, 0x68</code>.</p>
+<p><strong>The compass clone is a gift.</strong> Say a student's scan shows <code>0x0D</code>, not <code>0x1E</code>. They have
+a QMC5883L. Do not fix it for them. Ask: "What does the scan tell us? What is different
+about this chip?" It is a real engineering moment. It also shows that the address is how
+you tell what is on the bus. If their board is a combo board (GY-86 or GY-87), the compass
+hides behind the MPU-6050 until bypass mode is on (register <code>0x37</code>, bit 1).</p>
+<p><strong>Safety.</strong> The INA219 sits between a battery and the load. Keep students on USB power for
+the bus exercises. If a LiPo battery is used, an adult makes the connections. Bare battery
+wires must never touch.</p>
+<h2 id="a-45-minute-lesson">A 45-Minute Lesson</h2>
+<table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Activity</th>
+<th>Materials</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-8 min</td>
+<td><strong>Human bus</strong> (no screens)</td>
+<td>name cards with addresses</td>
+</tr>
+<tr>
+<td>8-18 min</td>
+<td>Scanner MicroSim and pretend bus</td>
+<td>MicroSim 1, <code>pretend_bus.py</code></td>
+</tr>
+<tr>
+<td>18-28 min</td>
+<td>Bytes to numbers, then two sensors</td>
+<td><code>braking_bug.py</code>, MicroSim 2</td>
+</tr>
+<tr>
+<td>28-42 min</td>
+<td>Five devices: break it, then fix it</td>
+<td>MicroSim 3</td>
+</tr>
+<tr>
+<td>42-45 min</td>
+<td>Exit ticket</td>
+<td>three questions below</td>
+</tr>
+</tbody>
+</table>
+<h3 id="human-bus-8-minutes">Human Bus (8 minutes)</h3>
+<p>Pick three students to be chips. Give each a card with an address: <code>0x1E</code>, <code>0x3C</code>, <code>0x68</code>.
+Everyone else watches. You are the controller. Call out addresses in order, fast:
+"0x08? 0x09? 0x0A?..." The student whose card matches says "ACK". Nobody says anything
+for the NACKs. That silence is the point. After a few rounds, ask:</p>
+<ul>
+<li>"Who talked first, me or the chips?"</li>
+<li>"How did you know when to answer?"</li>
+<li>"What happens if two students hold the same card?"</li>
+</ul>
+<p>Then pick a fourth student to be the <strong>pull-up resistor</strong>. If nobody answers, they say
+"high!" That makes the NACK something you can hear. It also explains why silence is an answer.</p>
+<h3 id="scanner-and-pretend-bus-10-minutes">Scanner and Pretend Bus (10 minutes)</h3>
+<ol>
+<li>Project the scanner MicroSim. Press <strong>Step</strong> a few times. Ask students to predict each result before the status line shows it.</li>
+<li>Slow the speed slider to 1 and watch one address, bit by bit. Point out the START, the seven address bits, the write bit, and the ACK slot.</li>
+<li>Turn on <strong>Pause at each ACK</strong> and let the scan run. Students shout when they see the first ACK.</li>
+<li>Have students open <code>pretend_bus.py</code> in Thonny. Read the prediction question aloud before they run it.</li>
+</ol>
+<h3 id="bytes-to-numbers-and-two-sensors-10-minutes">Bytes to Numbers and Two Sensors (10 minutes)</h3>
+<p>Do the bug-fix listing first. It takes about four minutes and sets up the maze. Students
+now know a raw reading is two bytes and may be negative. Then project the maze MicroSim.
+Ask students to predict the charts before pressing <strong>Start</strong>: "When will the gyroscope
+spike? When will the accelerometer?"</p>
+<p>Use the timeline to answer "are they read at the same time?" Switch the second sensor to
+the compass. Ask what changed on the bus diagram (a different chip at a different address)
+and what did not (the pattern of reads).</p>
+<h3 id="five-devices-14-minutes">Five Devices (14 minutes)</h3>
+<p>Run this as a series of one-line experiments on the projector:</p>
+<table>
+<thead>
+<tr>
+<th>Try</th>
+<th>Ask</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>defaults (400 kHz, display 10 per second)</td>
+<td>which device uses the most time?</td>
+<td>the display; the reads per second dip below 100</td>
+</tr>
+<tr>
+<td>display Off</td>
+<td>what returns?</td>
+<td>reads per second reach about 100</td>
+</tr>
+<tr>
+<td>100 kHz, display 20 per second</td>
+<td>predict the reads per second</td>
+<td>the bus nears 100% busy and reads fall to about 10</td>
+</tr>
+<tr>
+<td>fix it with <em>one</em> change</td>
+<td>which fix is cheapest?</td>
+<td>display slower, or bus faster</td>
+</tr>
+<tr>
+<td><strong>Bump the robot!</strong></td>
+<td>which line do we trust?</td>
+<td>the green fused line</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exit-ticket">Exit Ticket</h3>
+<ol>
+<li>Who starts every I2C conversation, and how does a chip say "I'm here"?</li>
+<li>Two sensors seem to report at the same time. What is really happening?</li>
+<li>Name one reason a screen update can make a sensor reading late.</li>
+</ol>
+<h2 id="misconceptions-to-listen-for">Misconceptions to Listen For</h2>
+<table>
+<thead>
+<tr>
+<th>Students say</th>
+<th>What is going on</th>
+<th>A question that helps</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>"The chips tell the Pico their address."</td>
+<td>The Pico asks. The owner of the address answers with an ACK.</td>
+<td>"In the scanner, who spoke first?"</td>
+</tr>
+<tr>
+<td>"The sensors send data at the same time."</td>
+<td>There is one conversation at a time. The reads are interleaved quickly.</td>
+<td>"Can you find two blocks that overlap on the timeline?"</td>
+</tr>
+<tr>
+<td>"<code>0x68</code> and 104 are different."</td>
+<td>They are the same number in two bases.</td>
+<td>"What does <code>hex(104)</code> print?"</td>
+</tr>
+<tr>
+<td>"Two chips can share an address if they are different kinds."</td>
+<td>The bus only sees the address, so both would answer.</td>
+<td>"How would the Pico know which one replied?"</td>
+</tr>
+<tr>
+<td>"A NACK means an error."</td>
+<td>A NACK from a missing chip just means nobody is home. A controller's NACK ends a read on purpose.</td>
+<td>"In the diagram, who sends the final NACK?"</td>
+</tr>
+<tr>
+<td>"Averaging the sensors is fusion."</td>
+<td>Fusion weights each sensor by what it is good at: quick changes from the gyroscope, long-term truth from the accelerometer.</td>
+<td>"Why 98% and 2% and not 50% and 50%?"</td>
+</tr>
+<tr>
+<td>"A faster display is always better."</td>
+<td>Each picture costs bus time that the sensors need.</td>
+<td>"What did the display cost the gyroscope?"</td>
+</tr>
+</tbody>
+</table>
+<h2 id="discussion-questions">Discussion Questions</h2>
+<ol>
+<li>Why do you think I2C uses wires that only pull down, with pull-up resistors, instead of letting chips push the wire high? (Safety when two chips talk at once, and the ACK trick.)</li>
+<li>The MPU-6050 has a FIFO and an interrupt pin. How could those help the Pico in the five-device robot? (The chip collects samples by itself. The Pico reads a batch when the pin says so, instead of asking every 10 ms.)</li>
+<li>Say the robot's display needs 20 pictures each second and its gyroscope needs 100 reads each second. What are two different designs that do both? (A second I2C bus for the display; or send only the changed part of the screen; or a faster clock.)</li>
+<li>The battery chip only reports volts. Why is "percent" harder than it looks? (Voltage drops under load, and the discharge curve is not a straight line. That is why fuel-gauge chips exist.)</li>
+</ol>
+<h2 id="working-with-real-hardware">Working with Real Hardware</h2>
+<ol>
+<li>Wire the bus exactly as in the appendix: SDA to GP0, SCL to GP1, 3.3 volts and ground to every board. Add one device at a time and scan after each one. Each new scan should show exactly one new address.</li>
+<li>Ask students to predict the scan result before they plug anything in.</li>
+<li>Use <code>i2c.scan()</code> in the Thonny shell first. Then run the longer scanner from the appendix. The <a href="../../../kits/maker-pi-rp2040-robot/09-i2c-scanner-test/">I2C scanner kit page</a> has a shorter version.</li>
+<li>When the bus works, read the identity registers: <code>WHO_AM_I</code> at <code>0x75</code> on the MPU-6050 (expect <code>0x68</code>), the model ID at <code>0xC0</code> on the VL53L0X (expect <code>0xEE</code>), and the three ID registers at <code>0x0A</code> to <code>0x0C</code> on a real HMC5883L (expect the letters "H43").</li>
+<li>Optional: a cheap 8-channel USB logic analyzer and the free PulseView software include an I2C decoder. Showing the real START, address and ACK on a screen next to the MicroSim is a memorable demo.</li>
+</ol>
+<p>If the scan finds nothing, work through the troubleshooting table in the appendix in
+order: power first, then SDA and SCL swapped, then loose wires.</p>
+<h2 id="differentiation">Differentiation</h2>
+<ul>
+<li><strong>Support:</strong> Use only the scanner MicroSim and <code>pretend_bus.py</code>. Success is explaining ACK and NACK in their own words.</li>
+<li><strong>On level:</strong> The full 45-minute lesson.</li>
+<li><strong>Extension:</strong> Students work out the display picture time at 1 MHz (the SSD1306 may not support it, so ask why that matters). Or they change the filter constant <code>alpha</code> and describe the trade-off. Or they write the burst-read version of the motion loop.</li>
+</ul>
+<h2 id="assessment">Assessment</h2>
+<p>Use the eight Quick Check questions at the end of the appendix (the answers are in the
+collapsible boxes). Use this rubric for the experiments:</p>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>4 - Exceeds</th>
+<th>3 - Meets</th>
+<th>2 - Approaching</th>
+<th>1 - Beginning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Explains the scan</td>
+<td>explains who asks, who answers and how, including NACK</td>
+<td>explains ACK correctly</td>
+<td>mentions addresses only</td>
+<td>cannot explain</td>
+</tr>
+<tr>
+<td>Converts bytes</td>
+<td>handles negatives and units without a hint</td>
+<td>converts with a hint</td>
+<td>joins the bytes only</td>
+<td>cannot join the bytes</td>
+</tr>
+<tr>
+<td>Reasons about bus time</td>
+<td>works out a time from bytes and speed, and proposes two fixes</td>
+<td>explains why a picture blocks reads</td>
+<td>notices the delay</td>
+<td>does not notice</td>
+</tr>
+<tr>
+<td>Explains fusion</td>
+<td>explains both sensor flaws and how the filter cancels them</td>
+<td>names one flaw of each sensor</td>
+<td>says "it is more accurate"</td>
+<td>cannot explain</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-the-microsims-simplify">What the MicroSims Simplify</h2>
+<p>Be honest with curious students about these simplifications:</p>
+<ul>
+<li>Bus times come from byte counts (nine bits for each byte, plus a few extra bits). Real MicroPython adds software time to each call, and chips can stretch the clock. So real reads take a bit longer.</li>
+<li>The VL53L0X's own measuring time (about 30 ms) is not shown. The book's <code>VL53L0X.py</code> driver also waits in a loop and checks a status register again and again. So a real <code>read()</code> can keep the Pico busy for up to about 30 ms.</li>
+<li>The battery drains far faster than a real one, so you can see it move.</li>
+<li>The noise on the accelerometer, gyroscope and compass is made up. The gyroscope's drift (a 6 degree per second error) is large on purpose. The MPU-6050 datasheet allows an uncalibrated offset of up to 20 degrees per second.</li>
+<li>Time in the five-device MicroSim runs in slow motion (10% by default) so students can follow it. The world, the Pico and the bus all slow down together.</li>
+</ul>
+<p>See the <a href="../references/">Annotated References</a> for the sources behind the numbers.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Content">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256l137.3-137.4c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"></path></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Content
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../references/" class="md-footer__link md-footer__link--next" aria-label="Next: Annotated References">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Annotated References
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"></path></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../../js/extra.js"></script>
+      
+        <script src="../../../js/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

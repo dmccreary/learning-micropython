@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 470" width="100%" role="img" aria-labelledby="t d">
+<title id="t">Wiring diagram: one Raspberry Pi Pico and five I2C boards sharing four wires</title>
+<desc id="d">The Pico pin 36 (3V3 OUT) feeds the 3.3 volt wire, pin 2 (GP1) is the SCL clock wire, pin 1 (GP0) is the SDA data wire and pin 38 is ground. Two 4.7 kilohm pull-up resistors connect SCL and SDA to 3.3 volts. Five boards connect to the same four wires: MPU-6050 at 0x68, HMC5883L at 0x1E, VL53L0X at 0x29, INA219 at 0x40 and SSD1306 at 0x3C.</desc>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#222} .t{font-size:15px;font-weight:bold} .s{font-size:12.5px} .p{font-size:12px;text-anchor:end} .c{font-size:13px;text-anchor:middle}</style>
+<rect x="18" y="36" width="150" height="218" rx="10" fill="lightgreen" stroke="darkgreen" stroke-width="3"/>
+<text class="t" x="93.0" y="60" text-anchor="middle">Raspberry Pi Pico</text>
+<text class="s" x="93.0" y="78" text-anchor="middle">(the controller)</text>
+<text class="p" x="158" y="100">3V3(OUT) pin 36</text>
+<line x1="168" y1="96" x2="836" y2="96" stroke="firebrick" stroke-width="4"/>
+<circle cx="168" cy="96" r="5" fill="firebrick"/>
+<text class="s" x="836" y="88" text-anchor="end" style="fill:firebrick;font-weight:bold">3.3 V power</text>
+<text class="p" x="158" y="144">GP1 pin 2</text>
+<line x1="168" y1="140" x2="836" y2="140" stroke="purple" stroke-width="4"/>
+<circle cx="168" cy="140" r="5" fill="purple"/>
+<text class="s" x="836" y="132" text-anchor="end" style="fill:purple;font-weight:bold">SCL clock</text>
+<text class="p" x="158" y="188">GP0 pin 1</text>
+<line x1="168" y1="184" x2="836" y2="184" stroke="navy" stroke-width="4"/>
+<circle cx="168" cy="184" r="5" fill="navy"/>
+<text class="s" x="836" y="176" text-anchor="end" style="fill:navy;font-weight:bold">SDA data</text>
+<text class="p" x="158" y="232">GND pin 38</text>
+<line x1="168" y1="228" x2="836" y2="228" stroke="black" stroke-width="4"/>
+<circle cx="168" cy="228" r="5" fill="black"/>
+<text class="s" x="836" y="220" text-anchor="end" style="fill:black;font-weight:bold">GND ground</text>
+<line x1="190" y1="96" x2="190" y2="140" stroke="purple" stroke-width="2"/>
+<rect x="183" y="106.0" width="14" height="24" fill="white" stroke="purple" stroke-width="2"/>
+<circle cx="190" cy="96" r="4" fill="firebrick"/><circle cx="190" cy="140" r="4" fill="purple"/>
+<line x1="216" y1="96" x2="216" y2="184" stroke="navy" stroke-width="2"/>
+<rect x="209" y="128.0" width="14" height="24" fill="white" stroke="navy" stroke-width="2"/>
+<circle cx="216" cy="96" r="4" fill="firebrick"/><circle cx="216" cy="184" r="4" fill="navy"/>
+<text class="s" x="18" y="294" style="font-weight:bold">Two 4.7 k&#937; pull-up</text>
+<text class="s" x="18" y="310" style="font-weight:bold">resistors (the small boxes)</text>
+<text class="s" x="18" y="330" style="fill:#555">Most boards already have</text>
+<text class="s" x="18" y="346" style="fill:#555">their own pull-ups.</text>
+<rect x="236" y="320" width="108" height="116" rx="8" fill="white" stroke="steelblue" stroke-width="3"/>
+<rect x="236" y="320" width="108" height="26" rx="8" fill="steelblue"/>
+<text class="c" x="290.0" y="338" style="fill:white;font-weight:bold">MPU-6050</text>
+<text class="c" x="290.0" y="370">accel + gyro</text>
+<text class="c" x="290.0" y="398" style="font-family:monospace;font-size:17px;font-weight:bold">0x68</text>
+<line x1="252" y1="96" x2="252" y2="320" stroke="firebrick" stroke-width="2.5"/>
+<circle cx="252" cy="96" r="4.5" fill="firebrick"/>
+<text x="252" y="424" text-anchor="middle" style="font-size:11px;fill:firebrick;font-weight:bold">VCC</text>
+<line x1="277" y1="140" x2="277" y2="320" stroke="purple" stroke-width="2.5"/>
+<circle cx="277" cy="140" r="4.5" fill="purple"/>
+<text x="277" y="424" text-anchor="middle" style="font-size:11px;fill:purple;font-weight:bold">SCL</text>
+<line x1="302" y1="184" x2="302" y2="320" stroke="navy" stroke-width="2.5"/>
+<circle cx="302" cy="184" r="4.5" fill="navy"/>
+<text x="302" y="424" text-anchor="middle" style="font-size:11px;fill:navy;font-weight:bold">SDA</text>
+<line x1="327" y1="228" x2="327" y2="320" stroke="black" stroke-width="2.5"/>
+<circle cx="327" cy="228" r="4.5" fill="black"/>
+<text x="327" y="424" text-anchor="middle" style="font-size:11px;fill:black;font-weight:bold">GND</text>
+<rect x="352" y="320" width="108" height="116" rx="8" fill="white" stroke="seagreen" stroke-width="3"/>
+<rect x="352" y="320" width="108" height="26" rx="8" fill="seagreen"/>
+<text class="c" x="406.0" y="338" style="fill:white;font-weight:bold">HMC5883L</text>
+<text class="c" x="406.0" y="370">compass</text>
+<text class="c" x="406.0" y="398" style="font-family:monospace;font-size:17px;font-weight:bold">0x1E</text>
+<line x1="368" y1="96" x2="368" y2="320" stroke="firebrick" stroke-width="2.5"/>
+<circle cx="368" cy="96" r="4.5" fill="firebrick"/>
+<text x="368" y="424" text-anchor="middle" style="font-size:11px;fill:firebrick;font-weight:bold">VCC</text>
+<line x1="393" y1="140" x2="393" y2="320" stroke="purple" stroke-width="2.5"/>
+<circle cx="393" cy="140" r="4.5" fill="purple"/>
+<text x="393" y="424" text-anchor="middle" style="font-size:11px;fill:purple;font-weight:bold">SCL</text>
+<line x1="418" y1="184" x2="418" y2="320" stroke="navy" stroke-width="2.5"/>
+<circle cx="418" cy="184" r="4.5" fill="navy"/>
+<text x="418" y="424" text-anchor="middle" style="font-size:11px;fill:navy;font-weight:bold">SDA</text>
+<line x1="443" y1="228" x2="443" y2="320" stroke="black" stroke-width="2.5"/>
+<circle cx="443" cy="228" r="4.5" fill="black"/>
+<text x="443" y="424" text-anchor="middle" style="font-size:11px;fill:black;font-weight:bold">GND</text>
+<rect x="468" y="320" width="108" height="116" rx="8" fill="white" stroke="teal" stroke-width="3"/>
+<rect x="468" y="320" width="108" height="26" rx="8" fill="teal"/>
+<text class="c" x="522.0" y="338" style="fill:white;font-weight:bold">VL53L0X</text>
+<text class="c" x="522.0" y="370">distance</text>
+<text class="c" x="522.0" y="398" style="font-family:monospace;font-size:17px;font-weight:bold">0x29</text>
+<line x1="484" y1="96" x2="484" y2="320" stroke="firebrick" stroke-width="2.5"/>
+<circle cx="484" cy="96" r="4.5" fill="firebrick"/>
+<text x="484" y="424" text-anchor="middle" style="font-size:11px;fill:firebrick;font-weight:bold">VCC</text>
+<line x1="509" y1="140" x2="509" y2="320" stroke="purple" stroke-width="2.5"/>
+<circle cx="509" cy="140" r="4.5" fill="purple"/>
+<text x="509" y="424" text-anchor="middle" style="font-size:11px;fill:purple;font-weight:bold">SCL</text>
+<line x1="534" y1="184" x2="534" y2="320" stroke="navy" stroke-width="2.5"/>
+<circle cx="534" cy="184" r="4.5" fill="navy"/>
+<text x="534" y="424" text-anchor="middle" style="font-size:11px;fill:navy;font-weight:bold">SDA</text>
+<line x1="559" y1="228" x2="559" y2="320" stroke="black" stroke-width="2.5"/>
+<circle cx="559" cy="228" r="4.5" fill="black"/>
+<text x="559" y="424" text-anchor="middle" style="font-size:11px;fill:black;font-weight:bold">GND</text>
+<rect x="584" y="320" width="108" height="116" rx="8" fill="white" stroke="goldenrod" stroke-width="3"/>
+<rect x="584" y="320" width="108" height="26" rx="8" fill="goldenrod"/>
+<text class="c" x="638.0" y="338" style="fill:white;font-weight:bold">INA219</text>
+<text class="c" x="638.0" y="370">battery monitor</text>
+<text class="c" x="638.0" y="398" style="font-family:monospace;font-size:17px;font-weight:bold">0x40</text>
+<line x1="600" y1="96" x2="600" y2="320" stroke="firebrick" stroke-width="2.5"/>
+<circle cx="600" cy="96" r="4.5" fill="firebrick"/>
+<text x="600" y="424" text-anchor="middle" style="font-size:11px;fill:firebrick;font-weight:bold">VCC</text>
+<line x1="625" y1="140" x2="625" y2="320" stroke="purple" stroke-width="2.5"/>
+<circle cx="625" cy="140" r="4.5" fill="purple"/>
+<text x="625" y="424" text-anchor="middle" style="font-size:11px;fill:purple;font-weight:bold">SCL</text>
+<line x1="650" y1="184" x2="650" y2="320" stroke="navy" stroke-width="2.5"/>
+<circle cx="650" cy="184" r="4.5" fill="navy"/>
+<text x="650" y="424" text-anchor="middle" style="font-size:11px;fill:navy;font-weight:bold">SDA</text>
+<line x1="675" y1="228" x2="675" y2="320" stroke="black" stroke-width="2.5"/>
+<circle cx="675" cy="228" r="4.5" fill="black"/>
+<text x="675" y="424" text-anchor="middle" style="font-size:11px;fill:black;font-weight:bold">GND</text>
+<rect x="700" y="320" width="108" height="116" rx="8" fill="white" stroke="darkorange" stroke-width="3"/>
+<rect x="700" y="320" width="108" height="26" rx="8" fill="darkorange"/>
+<text class="c" x="754.0" y="338" style="fill:white;font-weight:bold">SSD1306</text>
+<text class="c" x="754.0" y="370">OLED display</text>
+<text class="c" x="754.0" y="398" style="font-family:monospace;font-size:17px;font-weight:bold">0x3C</text>
+<line x1="716" y1="96" x2="716" y2="320" stroke="firebrick" stroke-width="2.5"/>
+<circle cx="716" cy="96" r="4.5" fill="firebrick"/>
+<text x="716" y="424" text-anchor="middle" style="font-size:11px;fill:firebrick;font-weight:bold">VCC</text>
+<line x1="741" y1="140" x2="741" y2="320" stroke="purple" stroke-width="2.5"/>
+<circle cx="741" cy="140" r="4.5" fill="purple"/>
+<text x="741" y="424" text-anchor="middle" style="font-size:11px;fill:purple;font-weight:bold">SCL</text>
+<line x1="766" y1="184" x2="766" y2="320" stroke="navy" stroke-width="2.5"/>
+<circle cx="766" cy="184" r="4.5" fill="navy"/>
+<text x="766" y="424" text-anchor="middle" style="font-size:11px;fill:navy;font-weight:bold">SDA</text>
+<line x1="791" y1="228" x2="791" y2="320" stroke="black" stroke-width="2.5"/>
+<circle cx="791" cy="228" r="4.5" fill="black"/>
+<text x="791" y="424" text-anchor="middle" style="font-size:11px;fill:black;font-weight:bold">GND</text>
+<text class="s" x="236" y="458" style="fill:#444">Every board connects to the same four wires. Add one board at a time, and run the scanner after each one.</text>
+</svg>
