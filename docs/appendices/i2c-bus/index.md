@@ -1,6 +1,6 @@
 ---
 title: "Appendix A: The I2C Bus"
-description: How a Raspberry Pi Pico talks to many chips over two wires. Covers addresses, ACKs, registers, raw bytes, sensor fusion and bus timing, with three MicroSims and hands-on MicroPython code.
+description: How a Raspberry Pi Pico talks to many chips over two wires. Covers addresses, ACKs, registers, raw bytes, sensor fusion and bus timing, with four MicroSims and hands-on MicroPython code.
 ---
 
 # Appendix A: The I2C Bus
@@ -458,6 +458,32 @@ number of `0x8000` (32,768) or more is really a negative number. Add an `if` che
     ```
 
     Now `raw number` is `-1755`. And -1755 divided by 16,384 is about **-0.11 g**.
+
+### Put It to Work: A Collision-Avoidance Robot
+
+You can now read a distance from the VL53L0X. Next, use it. In this MicroSim, a robot
+drives around an arena with only one sensor. The Pico reads the distance over I2C again
+and again. When the wall is 15 centimeters away or closer, the robot backs up 20
+centimeters. Then it flips a coin and turns left or right.
+
+**How to use this MicroSim:** Press **Start**. Watch the I2C log and the two data bytes. Then set **Reads per second** to 1 and **Robot speed** to 40.
+
+<iframe src="../../sims/i2c-collision-avoidance/main.html" height="679" width="100%" scrolling="no"></iframe>
+
+[Explore the I2C Collision-Avoidance Robot MicroSim](../../sims/i2c-collision-avoidance/index.md){ .md-button }
+
+Find the line in the log marked `TOO CLOSE!`. The two bytes on that line are the sensor's
+answer. Join them and you get millimeters. For example, `00 94` is `0x0094`, which is 148
+millimeters, or 14.8 centimeters. That is under 15, so the robot backs up.
+
+The robot only knows the distance when a read finishes. Between reads, it drives blind.
+At 20 cm per second and 10 reads per second, the robot moves 2 cm between reads. That is
+safe. At 40 cm per second and 1 read per second, it moves 40 cm between reads. Then it
+bumps the wall. Speed divided by reads per second tells you how far the robot goes before
+it can react.
+
+The code is short. The [collision-avoidance robot kit](../../kits/maker-pi-rp2040-robot/20-collision-avoidance-robot.md)
+has a full program. The MicroSim page shows the main loop line by line.
 
 ## 8. Two Sensors, One Bus
 

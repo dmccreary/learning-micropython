@@ -12,14 +12,15 @@ what to do with real hardware.
 
 The appendix is much longer than a chapter on purpose. It is a reference that goes
 deeper than [Chapter 8](../../chapters/08-communication-protocols/index.md). You do not
-need to teach all of it in one sitting. The lesson below uses the three MicroSims and
-the two short code listings.
+need to teach all of it in one sitting. The lesson below uses three of the four MicroSims
+and the two short code listings. The fourth is an optional extension.
 
 ## What Students Will Be Able to Do
 
 | MicroSim | Bloom level | Students will be able to... |
 |----------|-------------|-----------------------------|
 | [I2C Bus Scanner](../../sims/i2c-scanner/index.md) | Understand | explain how a scan finds chips: the controller asks, and only the owner of the address answers with an ACK |
+| [I2C Collision-Avoidance Robot](../../sims/i2c-collision-avoidance/index.md) | Apply | predict how the read rate and the robot's speed change how close the robot gets to a wall before it reacts, and read two data bytes as millimeters |
 | [I2C Two Sensors in a Maze](../../sims/i2c-two-sensors-maze/index.md) | Understand | explain why two sensors on one bus are read in turns, and what an accelerometer and a gyroscope or compass each measure |
 | [I2C Five-Device Sensor Fusion](../../sims/i2c-sensor-fusion/index.md) | Analyze | work out transaction times from byte counts, explain how a display update delays sensor reads, and explain why sensors are fused |
 
@@ -113,6 +114,18 @@ Run this as a series of one-line experiments on the projector:
 2. Two sensors seem to report at the same time. What is really happening?
 3. Name one reason a screen update can make a sensor reading late.
 
+### Optional Extension: Collision-Avoidance Robot (10 minutes)
+
+Use this after the exit ticket, or as a follow-up lesson. It uses only one sensor, so it is
+a good bridge to a real robot. The [collision-avoidance kit](../../kits/maker-pi-rp2040-robot/20-collision-avoidance-robot.md)
+builds the same plan with motors.
+
+1. Ask: "How many bumps will the robot make in one minute at the default settings?" (None.)
+2. Press **Start**. Have students find the `TOO CLOSE!` line in the log and read its two bytes.
+3. Set **Reads per second** to 1 and **Robot speed** to 40. Ask students to explain the bumps.
+4. Ask for two fixes. (Read faster, drive slower, or raise the 15 cm limit in the code.)
+5. After a minute, compare the left and right turn counts. They should be close, but not exactly equal.
+
 ## Misconceptions to Listen For
 
 | Students say | What is going on | A question that helps |
@@ -123,6 +136,8 @@ Run this as a series of one-line experiments on the projector:
 | "Two chips can share an address if they are different kinds." | The bus only sees the address, so both would answer. | "How would the Pico know which one replied?" |
 | "A NACK means an error." | A NACK from a missing chip just means nobody is home. A controller's NACK ends a read on purpose. | "In the diagram, who sends the final NACK?" |
 | "Averaging the sensors is fusion." | Fusion weights each sensor by what it is good at: quick changes from the gyroscope, long-term truth from the accelerometer. | "Why 98% and 2% and not 50% and 50%?" |
+| "The robot always sees the wall." | It only knows the distance when a read finishes. Between reads it is driving blind. | "How far does the robot move between two reads?" |
+| "A coin flip alternates left and right." | Each turn is a fresh 50/50 chance, so runs of the same direction happen. | "Can you find two left turns in a row?" |
 | "A faster display is always better." | Each picture costs bus time that the sensors need. | "What did the display cost the gyroscope?" |
 
 ## Discussion Questions

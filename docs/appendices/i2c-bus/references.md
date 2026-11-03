@@ -42,4 +42,5 @@ The numbers in the appendix and the MicroSims come from these sources.
 - [Instructor Notes](instructor-notes.md) - lesson script and misconceptions
 - [Chapter 8: Communication Protocols](../../chapters/08-communication-protocols/index.md) - the first look at I2C, SPI and UART
 - [Chapter 9: Temperature and Distance Sensors](../../chapters/09-temp-distance-sensors/index.md), [Chapter 10: Motion and Light Sensors](../../chapters/10-motion-light-sensors/index.md) and [Chapter 15: OLED Setup](../../chapters/15-oled-setup/index.md)
-- [I2C Bus Scanner](../../sims/i2c-scanner/index.md), [I2C Two Sensors in a Maze](../../sims/i2c-two-sensors-maze/index.md) and [I2C Five-Device Sensor Fusion](../../sims/i2c-sensor-fusion/index.md) - the three MicroSims
+- [I2C Bus Scanner](../../sims/i2c-scanner/index.md), [I2C Collision-Avoidance Robot](../../sims/i2c-collision-avoidance/index.md), [I2C Two Sensors in a Maze](../../sims/i2c-two-sensors-maze/index.md) and [I2C Five-Device Sensor Fusion](../../sims/i2c-sensor-fusion/index.md) - the four MicroSims
+- [Maker Pi RP2040 Collision Avoidance Robot](../../kits/maker-pi-rp2040-robot/20-collision-avoidance-robot.md) - the kit that uses the same back-up-and-turn plan
