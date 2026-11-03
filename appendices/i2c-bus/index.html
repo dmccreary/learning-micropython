@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="How a Raspberry Pi Pico talks to many chips over two wires. Covers addresses, ACKs, registers, raw bytes, sensor fusion and bus timing, with three MicroSims and hands-on MicroPython code.">
+        <meta name="description" content="How a Raspberry Pi Pico talks to many chips over two wires. Covers addresses, ACKs, registers, raw bytes, sensor fusion and bus timing, with four MicroSims and hands-on MicroPython code.">
       
       
         <meta name="author" content="Dan McCreary">
@@ -74,7 +74,7 @@
       
         <meta property="og:title" content="Appendix A: The I2C Bus - Learning MicroPython">
       
-        <meta property="og:description" content="How a Raspberry Pi Pico talks to many chips over two wires. Covers addresses, ACKs, registers, raw bytes, sensor fusion and bus timing, with three MicroSims and hands-on MicroPython code.">
+        <meta property="og:description" content="How a Raspberry Pi Pico talks to many chips over two wires. Covers addresses, ACKs, registers, raw bytes, sensor fusion and bus timing, with four MicroSims and hands-on MicroPython code.">
       
         <meta property="og:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/appendices/i2c-bus/index.png">
       
@@ -90,7 +90,7 @@
       
         <meta name="twitter:title" content="Appendix A: The I2C Bus - Learning MicroPython">
       
-        <meta name="twitter:description" content="How a Raspberry Pi Pico talks to many chips over two wires. Covers addresses, ACKs, registers, raw bytes, sensor fusion and bus timing, with three MicroSims and hands-on MicroPython code.">
+        <meta name="twitter:description" content="How a Raspberry Pi Pico talks to many chips over two wires. Covers addresses, ACKs, registers, raw bytes, sensor fusion and bus timing, with four MicroSims and hands-on MicroPython code.">
       
         <meta name="twitter:image" content="https://dmccreary.github.io/learning-micropython/assets/images/social/appendices/i2c-bus/index.png">
       
@@ -591,6 +591,10 @@
   
     
     
+      
+        
+          
+        
       
         
           
@@ -1708,6 +1712,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#put-it-to-work-a-collision-avoidance-robot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Put It to Work: A Collision-Avoidance Robot
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2642,6 +2655,25 @@ number of <code>0x8000</code> (32,768) or more is really a negative number. Add 
 </code></pre></div></td></tr></tbody></table></div>
 <p>Now <code>raw number</code> is <code>-1755</code>. And -1755 divided by 16,384 is about <strong>-0.11 g</strong>.</p>
 </details>
+<h3 id="put-it-to-work-a-collision-avoidance-robot">Put It to Work: A Collision-Avoidance Robot</h3>
+<p>You can now read a distance from the VL53L0X. Next, use it. In this MicroSim, a robot
+drives around an arena with only one sensor. The Pico reads the distance over I2C again
+and again. When the wall is 15 centimeters away or closer, the robot backs up 20
+centimeters. Then it flips a coin and turns left or right.</p>
+<p><strong>How to use this MicroSim:</strong> Press <strong>Start</strong>. Watch the I2C log and the two data bytes. Then set <strong>Reads per second</strong> to 1 and <strong>Robot speed</strong> to 40.</p>
+<iframe src="../../sims/i2c-collision-avoidance/main.html" height="679" width="100%" scrolling="no"></iframe>
+
+<p><a class="md-button" href="../../sims/i2c-collision-avoidance/">Explore the I2C Collision-Avoidance Robot MicroSim</a></p>
+<p>Find the line in the log marked <code>TOO CLOSE!</code>. The two bytes on that line are the sensor's
+answer. Join them and you get millimeters. For example, <code>00 94</code> is <code>0x0094</code>, which is 148
+millimeters, or 14.8 centimeters. That is under 15, so the robot backs up.</p>
+<p>The robot only knows the distance when a read finishes. Between reads, it drives blind.
+At 20 cm per second and 10 reads per second, the robot moves 2 cm between reads. That is
+safe. At 40 cm per second and 1 read per second, it moves 40 cm between reads. Then it
+bumps the wall. Speed divided by reads per second tells you how far the robot goes before
+it can react.</p>
+<p>The code is short. The <a href="../../kits/maker-pi-rp2040-robot/20-collision-avoidance-robot/">collision-avoidance robot kit</a>
+has a full program. The MicroSim page shows the main loop line by line.</p>
 <h2 id="8-two-sensors-one-bus">8. Two Sensors, One Bus</h2>
 <p>Now put the pieces on a moving robot. In this MicroSim, a robot drives through a maze.
 The Pico reads the <strong>accelerometer</strong> and then either the <strong>gyroscope</strong> (the same chip)

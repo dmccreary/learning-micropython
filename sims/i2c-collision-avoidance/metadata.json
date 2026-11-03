@@ -1,0 +1,67 @@
+{
+  "title": "I2C Collision-Avoidance Robot",
+  "creator": "Dan McCreary",
+  "subject": "Learning MicroPython",
+  "description": "Top view of a robot driving in a rectangular arena with one VL53L0X distance sensor on the I2C bus. Within 15 cm it backs up 20 cm, flips a coin and turns left or right. Shows the I2C transaction bytes, the distance values, a chart and a log of reads, with sliders for read rate and robot speed.",
+  "date": "2026-11-02",
+  "educational": {
+    "gradeLevel": [
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "Using an I2C distance sensor for collision avoidance",
+    "learningObjectives": [
+      "Predict how the read rate and the robot speed change how close the robot gets to a wall before it reacts",
+      "Explain that the robot only knows the distance when an I2C read finishes",
+      "Read two data bytes from the sensor and turn them into millimeters and centimeters"
+    ],
+    "bloomsTaxonomy": "Apply",
+    "duration": "10-15 minutes",
+    "prerequisites": [
+      "I2C Bus Scanner MicroSim",
+      "Chapter 9: Temperature and Distance Sensors",
+      "Chapter 13: Robots and Mobile Systems"
+    ],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "2.3.4",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 677
+    },
+    "responsive": true,
+    "dependencies": [
+      "p5.js 2.3.4 (jsdelivr CDN)"
+    ],
+    "accessibility": {
+      "hasAltText": true,
+      "keyboardNavigable": true
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Predict-then-test with two sliders",
+    "keyQuestions": [
+      "How far does the robot travel between two reads?",
+      "What happens when the read rate is too slow for the robot speed?",
+      "Is the coin flip really 50 percent each way?"
+    ],
+    "commonMisconceptions": [
+      "The robot sees the wall all the time (it only knows the distance when a read finishes)",
+      "A coin flip alternates left and right (each turn is an independent 50/50 chance)"
+    ],
+    "assessmentOpportunities": [
+      "Student predicts the bump count for new slider settings",
+      "Student decodes two data bytes into millimeters"
+    ]
+  },
+  "chapter": "appendices/i2c-bus"
+}

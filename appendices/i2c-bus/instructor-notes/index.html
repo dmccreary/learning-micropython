@@ -720,6 +720,10 @@
           
         
       
+        
+          
+        
+      
     
     
     
@@ -1252,6 +1256,15 @@
   <a href="#exit-ticket" class="md-nav__link">
     <span class="md-ellipsis">
       Exit Ticket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-extension-collision-avoidance-robot-10-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional Extension: Collision-Avoidance Robot (10 minutes)
     </span>
   </a>
   
@@ -1799,6 +1812,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#optional-extension-collision-avoidance-robot-10-minutes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional Extension: Collision-Avoidance Robot (10 minutes)
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1883,8 +1905,8 @@ reading. This page gives you a lesson script, the misconceptions to watch for, a
 what to do with real hardware.</p>
 <p>The appendix is much longer than a chapter on purpose. It is a reference that goes
 deeper than <a href="../../../chapters/08-communication-protocols/">Chapter 8</a>. You do not
-need to teach all of it in one sitting. The lesson below uses the three MicroSims and
-the two short code listings.</p>
+need to teach all of it in one sitting. The lesson below uses three of the four MicroSims
+and the two short code listings. The fourth is an optional extension.</p>
 <h2 id="what-students-will-be-able-to-do">What Students Will Be Able to Do</h2>
 <table>
 <thead>
@@ -1899,6 +1921,11 @@ the two short code listings.</p>
 <td><a href="../../../sims/i2c-scanner/">I2C Bus Scanner</a></td>
 <td>Understand</td>
 <td>explain how a scan finds chips: the controller asks, and only the owner of the address answers with an ACK</td>
+</tr>
+<tr>
+<td><a href="../../../sims/i2c-collision-avoidance/">I2C Collision-Avoidance Robot</a></td>
+<td>Apply</td>
+<td>predict how the read rate and the robot's speed change how close the robot gets to a wall before it reacts, and read two data bytes as millimeters</td>
 </tr>
 <tr>
 <td><a href="../../../sims/i2c-two-sensors-maze/">I2C Two Sensors in a Maze</a></td>
@@ -2078,6 +2105,17 @@ and what did not (the pattern of reads).</p>
 <li>Two sensors seem to report at the same time. What is really happening?</li>
 <li>Name one reason a screen update can make a sensor reading late.</li>
 </ol>
+<h3 id="optional-extension-collision-avoidance-robot-10-minutes">Optional Extension: Collision-Avoidance Robot (10 minutes)</h3>
+<p>Use this after the exit ticket, or as a follow-up lesson. It uses only one sensor, so it is
+a good bridge to a real robot. The <a href="../../../kits/maker-pi-rp2040-robot/20-collision-avoidance-robot/">collision-avoidance kit</a>
+builds the same plan with motors.</p>
+<ol>
+<li>Ask: "How many bumps will the robot make in one minute at the default settings?" (None.)</li>
+<li>Press <strong>Start</strong>. Have students find the <code>TOO CLOSE!</code> line in the log and read its two bytes.</li>
+<li>Set <strong>Reads per second</strong> to 1 and <strong>Robot speed</strong> to 40. Ask students to explain the bumps.</li>
+<li>Ask for two fixes. (Read faster, drive slower, or raise the 15 cm limit in the code.)</li>
+<li>After a minute, compare the left and right turn counts. They should be close, but not exactly equal.</li>
+</ol>
 <h2 id="misconceptions-to-listen-for">Misconceptions to Listen For</h2>
 <table>
 <thead>
@@ -2117,6 +2155,16 @@ and what did not (the pattern of reads).</p>
 <td>"Averaging the sensors is fusion."</td>
 <td>Fusion weights each sensor by what it is good at: quick changes from the gyroscope, long-term truth from the accelerometer.</td>
 <td>"Why 98% and 2% and not 50% and 50%?"</td>
+</tr>
+<tr>
+<td>"The robot always sees the wall."</td>
+<td>It only knows the distance when a read finishes. Between reads it is driving blind.</td>
+<td>"How far does the robot move between two reads?"</td>
+</tr>
+<tr>
+<td>"A coin flip alternates left and right."</td>
+<td>Each turn is a fresh 50/50 chance, so runs of the same direction happen.</td>
+<td>"Can you find two left turns in a row?"</td>
 </tr>
 <tr>
 <td>"A faster display is always better."</td>
