@@ -1,0 +1,57 @@
+{
+  "title": "I2C Start Bit and Address Framing",
+  "creator": "Dan McCreary",
+  "subject": "Learning MicroPython",
+  "description": "Step through a 13-event I2C transaction between a controller, an EEPROM at 0x50 and an LCD backpack at 0x27 to see why the start bit, not the byte value, decides whether a device is being addressed.",
+  "date": "2026-11-03",
+  "educational": {
+    "gradeLevel": [
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "Adult"
+    ],
+    "subjectArea": "Computer Science",
+    "topic": "I2C Start Bit and Address Framing",
+    "learningObjectives": [
+      "Explain why an I2C device checks an incoming byte against its own address only immediately after a start bit or repeated start.",
+      "Trace a complete I2C transaction (start, address, ACK, data bytes, repeated start, stop) and identify what each bus event means.",
+      "Explain why a second device on the same bus cannot confuse another device's data bytes with its own address."
+    ],
+    "bloomsTaxonomy": "Understand",
+    "duration": "10-15 minutes",
+    "prerequisites": ["I2C addresses and ACK/NACK", "Hexadecimal and binary notation"],
+    "standards": []
+  },
+  "technical": {
+    "framework": "p5.js",
+    "version": "1.0",
+    "canvasDimensions": {
+      "width": "responsive",
+      "height": 700
+    },
+    "responsive": true,
+    "dependencies": [],
+    "accessibility": {
+      "hasAltText": false,
+      "keyboardNavigable": false
+    }
+  },
+  "pedagogical": {
+    "teachingStrategy": "Step-through worked example with synchronized code highlighting",
+    "keyQuestions": [
+      "When does a device compare an incoming byte to its own address?",
+      "Why can't the EEPROM's memory-address bytes be mistaken for the LCD's device address?"
+    ],
+    "commonMisconceptions": [
+      "Students often assume every byte on the bus is checked against every device's address, rather than only the byte immediately after a start bit."
+    ],
+    "assessmentOpportunities": ["Discussion questions in index.md", "Step-by-step narration recall"]
+  },
+  "chapter": ""
+}

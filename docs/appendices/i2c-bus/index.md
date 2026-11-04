@@ -1,6 +1,6 @@
 ---
 title: "Appendix A: The I2C Bus"
-description: How a Raspberry Pi Pico talks to many chips over two wires. Covers addresses, ACKs, registers, raw bytes, sensor fusion and bus timing, with four MicroSims and hands-on MicroPython code.
+description: How a Raspberry Pi Pico talks to many chips over two wires. Covers addresses, ACKs, start bits, registers, raw bytes, sensor fusion and bus timing, with five MicroSims and hands-on MicroPython code.
 ---
 
 # Appendix A: The I2C Bus
@@ -185,6 +185,31 @@ controller can slip in between.
 
 The last byte ends with a NACK from the *controller*. That is not an error. It means
 "that was the last byte I want." The target stops driving SDA so the controller can send STOP.
+
+### Why Two Devices Never Get Confused
+
+The diagram above shows one target. Real buses usually carry several. Here is the
+question that trips people up: if a target like an EEPROM gets sent a *data* byte that
+happens to match some other chip's address, does that other chip wake up and answer by
+mistake?
+
+No -- and the reason is timing, not luck. A target only compares a byte to its own
+address **immediately after a START or repeated START**. The moment the address byte
+does not match, a target stops listening and ignores every byte that follows, no matter
+what it contains, until the bus sees a START again. So an EEPROM's internal memory
+address can never be mistaken for another chip's device address, even if the numbers
+collide, because the chip that did not match already dropped off the bus.
+
+**How to use this MicroSim:** Press **Next** or **Play** to step through a real
+transaction, byte by byte: a controller writes a 16-bit memory address to an EEPROM at
+`0x50`, then reads one byte back, while an LCD backpack at `0x27` shares the same wires.
+Watch the LCD panel switch to "ignoring the bus" right after the first address byte --
+and stay that way through both memory-address bytes -- until the repeated START wakes it
+up to check again.
+
+<iframe src="../../sims/i2c-start-bit-framing/main.html" height="702" width="100%" scrolling="no"></iframe>
+
+[Explore the I2C Start Bit and Address Framing MicroSim](../../sims/i2c-start-bit-framing/index.md){ .md-button }
 
 ## 5. Addresses and the I2C Scanner
 

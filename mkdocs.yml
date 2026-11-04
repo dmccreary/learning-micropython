@@ -375,6 +375,7 @@ nav:
     - I2C Bus Scanner: sims/i2c-scanner/index.md
     - I2C Collision-Avoidance Robot: sims/i2c-collision-avoidance/index.md
     - I2C Five-Device Sensor Fusion: sims/i2c-sensor-fusion/index.md
+    - I2C Start Bit and Address Framing: sims/i2c-start-bit-framing/index.md
     - I2C Two Sensors in a Maze: sims/i2c-two-sensors-maze/index.md
     - Interactive Conditional Flowchart: sims/conditional-flowchart/index.md
     - IoT Data Flow Explorer: sims/iot-data-flow/index.md
@@ -395,6 +396,8 @@ nav:
     - Servo PWM Signal Explorer: sims/servo-pwm-explorer/index.md
     - Spectrum Analyzer Concept: sims/spectrum-analyzer-concept/index.md
     - Ultrasonic Ranging Explorer: sims/ultrasonic-ranging/index.md
+
+
 
 
 
